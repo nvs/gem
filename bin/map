@@ -1,0 +1,262 @@
+#!/usr/bin/env lua
+
+if not arg [1]
+	or arg [1] == 'help'
+	or arg [1] ~= 'check'
+	or arg [1] ~= 'build'
+	or not arg [2]
+then
+	print ([[
+map - JASS script checker/builder
+
+Usage:
+
+map help                       Displays this help message.
+map check [configuration-file] Checks the scripts that form the project to
+                               ensure that they are valid JASS.
+map build [configuration-file] Takes the scripts and builds a single project
+                               script, which is then checked afterwards.  The
+                               process involves gathering all global variable
+                               declarations into a single block, then putting
+                               all other content after.  The order specified
+                               in the `configuration-file` is maintained.
+
+A `configuration-file` is nothing more than a Lua file returning a table
+with the following format.  Note that relative paths are specified with the
+location of the `configuration-file` in mind.
+
+- `name`              : This is the name of the project, and the name used
+                        when building the project's script.
+- `patch_directory`   : The path that points to the `common.j` and
+                        `blizzard.j`.
+- `output_directory`  : The path where the project script will be placed after
+                        building.  The value specified by `name` will be used.
+- `scripts_directory` : The path that points to the scripts location.
+- `scripts`           : The scripts that together represent the entire
+                        project.  They should be listed in an order that
+                        reflects any needed depdencies.  Formatting uses a
+                        similar tyle to that of the `require` function in Lua,
+                        in that directories are represented by a period and
+                        that there is no need to specify the file extension.
+                        For example, `directory.script` refers to
+                        './directory/script.j'.
+- `pjass`             : The command to execute pjass.  This will vary, and
+                        can even involve the use of other programs.  For
+                        example, using Wine: `wine pjass.exe`.]])
+
+	os.exit (0)
+end
+
+local Posix = {
+	libgen = require ('posix.libgen'),
+	unistd = require ('posix.unistd')
+}
+
+-- Attempt to load the [Lua function `package.searchpath ()`] [1].  This
+-- function is available in Lua 5.2, Lua 5.3, and LuaJIT.  If not found,
+-- a compatible version is used.
+--
+-- [1]: https://www.lua.org/manual/5.3/manual.html#pdf-package.searchpath
+local search_path = package.searchpath
+
+if not search_path then
+
+	-- All magic characters are contained within the punctuation character
+	-- class, which needs to be escaped.
+	local function escape (input)
+		return input and tostring (input):gsub ('(%p)', '%%%1')
+	end
+
+	-- Returns whether or not the specified path object is readable.
+	local function is_readable (path)
+		return Posix.unistd.access (path, 'r') == 0
+	end
+
+	local module_separator = escape ('.')
+
+	local _, _, directory_separator, template_separator,
+		template_substitute = package.config:find ('^(.-)\n(.-)\n(.-)\n.*$')
+
+	directory_separator = escape (directory_separator)
+	template_substitute = escape (template_substitute)
+	template_separator = '[^' .. template_separator .. ']+'
+
+	-- Searches for the provided name in the given path templates.
+	function search_path (name, templates, separator, replacement)
+		separator = escape (separator) or module_separator
+		replacement = escape (replacement) or directory_separator
+		name = escape (name:gsub (separator, replacement))
+
+		local messages = {}
+
+		for template in templates:gmatch (template_separator) do
+			local path = template:gsub (template_substitute, name)
+
+			if is_readable (path) then
+				return path
+			end
+
+			messages [#messages + 1] = '\n\tno file \'' .. path .. '\''
+		end
+
+		return nil, table.concat (messages)
+	end
+end
+
+local configuration
+do
+	local chunk, message = loadfile (arg [2])
+
+	if not chunk then
+		print (message)
+		os.exit (1)
+	end
+
+	configuration = chunk ()
+end
+
+-- We change into the directory containing this script.  This formats the
+-- script paths a bit nicer.
+do
+	local directory = Posix.libgen.dirname (arg [2])
+	local result, message = Posix.unistd.chdir (directory)
+
+	if result ~= 0 then
+		print (message)
+		os.exit (1)
+	end
+end
+
+-- Returns a `boolean` indicating whether or not all the mentioned JASS
+-- scripts within the `scripts (table)` exist.  The path to each script is
+-- added to the `files (table)`.  An error message is displayed for each
+-- script that does not exist.
+local function do_scripts_exist (path, scripts, files)
+	local is_missing_script = false
+
+	for _, script in ipairs (scripts) do
+		local result, message = search_path (script, path)
+
+		if result then
+			files [#files + 1] = string.format ('%q', result)
+		else
+			if not is_missing_script then
+				is_missing_script = true
+				io.write ('Error:')
+			end
+
+			io.write (message)
+		end
+	end
+
+	if is_missing_script then
+		io.write ('\n')
+
+		return false
+	else
+		return true
+	end
+end
+
+-- Files to be passed to pjass.
+local files = {}
+
+-- Load the common.j and blizzard.j.
+do
+	local scripts = {
+		'common',
+		'blizzard'
+	}
+
+	local path = configuration.patch_directory .. '/?.j'
+	local result = do_scripts_exist (path, scripts, files)
+
+	if not result then
+		os.exit (1)
+	end
+end
+
+if arg [1] == 'check' then
+	local path = configuration.scripts_directory .. '/?.j'
+	local result = do_scripts_exist (path, configuration.scripts, files)
+
+	if not result then
+		os.exit (1)
+	end
+
+elseif arg [1] == 'build' then
+	local is_missing_script = false
+	local path = configuration.scripts_directory .. '/?.j'
+
+	-- Open the globals block.
+	local globals = { 'globals\n' }
+	local content = {}
+
+	for _, script in ipairs (configuration.scripts) do
+		local result, message = search_path (script, path)
+
+		if result then
+			local file = io.open (result, 'r')
+			local action = false
+
+			for line in file:lines () do
+				if line:match ('^%s*globals.*$') then
+					action = true
+				elseif line:match ('^%s*endglobals.*$') then
+					action = false
+				else
+					line = line .. '\n'
+
+					if action == true then
+						globals [#globals + 1] = line
+					elseif action == false then
+						content [#content + 1] = line
+					end
+				end
+			end
+
+			file:close ()
+		else
+			if not is_missing_script then
+				is_missing_script = true
+				io.write ('Error:')
+			end
+
+			io.write (message)
+		end
+	end
+
+	if is_missing_script then
+		io.write ('\n')
+		os.exit (1)
+	end
+
+	-- Finish the globals block.
+	globals [#globals + 1] = 'endglobals\n'
+
+	local path = configuration.output_directory .. '/'
+		.. configuration.name .. '.j'
+	local file = io.open (path, 'w+')
+
+	if file then
+		for _, line in ipairs (globals) do
+			file:write (line)
+		end
+
+		file:write ('\n')
+
+		for _, line in ipairs (content) do
+			file:write (line)
+		end
+
+		file:close ()
+	end
+
+	files [#files + 1] = path
+end
+
+-- Check the scripts using pjass.
+os.execute (string.format ('%s %s', configuration.pjass,
+	table.concat (files, ' ')))
+
+os.exit (0)
