@@ -2,8 +2,8 @@
 
 if not arg [1]
 	or arg [1] == 'help'
-	or arg [1] ~= 'check'
-	or arg [1] ~= 'build'
+	or (arg [1] ~= 'check'
+		and arg [1] ~= 'build')
 	or not arg [2]
 then
 	print ([[
