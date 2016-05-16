@@ -7,6 +7,8 @@ return {
 	scripts_directory = '../src',
 	scripts = {
 		'gem-3_1',
+
+		'main',
 		'config'
 	},
 
