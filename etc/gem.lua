@@ -6,7 +6,8 @@ return {
 
 	scripts_directory = '../src',
 	scripts = {
-		'gem-3_1'
+		'gem-3_1',
+		'config'
 	},
 
 	pjass = 'pjass'
