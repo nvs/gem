@@ -9291,6 +9291,8 @@ function Trig_DownGrade_Func037001 takes nothing returns boolean
 	return(GetUnitTypeId(GetSpellAbilityUnit())=='e004')
 endfunction
 function Trig_DownGrade_Actions takes nothing returns nothing
+	local unit u
+
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
 	loop
@@ -9363,7 +9365,8 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 		call DoNothing()
 	endif
 	if(Trig_DownGrade_Func016001())then
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h00A',bj_UNIT_STATE_METHOD_MAXIMUM)
+		set u = ReplaceUnitBJ(GetSpellAbilityUnit(),'h00A',bj_UNIT_STATE_METHOD_MAXIMUM)
+		call SetUnitAbilityLevel (u, 'S008', 2)
 	else
 		call DoNothing()
 	endif
@@ -9403,7 +9406,8 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 		call DoNothing()
 	endif
 	if(Trig_DownGrade_Func025001())then
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h00K',bj_UNIT_STATE_METHOD_MAXIMUM)
+		set u = ReplaceUnitBJ(GetSpellAbilityUnit(),'h00K',bj_UNIT_STATE_METHOD_MAXIMUM)
+		call SetUnitAbilityLevel (u, 'S008', 3)
 	else
 		call DoNothing()
 	endif
@@ -9443,7 +9447,8 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 		call DoNothing()
 	endif
 	if(Trig_DownGrade_Func034001())then
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h00P',bj_UNIT_STATE_METHOD_MAXIMUM)
+		set u = ReplaceUnitBJ(GetSpellAbilityUnit(),'h00P',bj_UNIT_STATE_METHOD_MAXIMUM)
+		call SetUnitAbilityLevel (u, 'S008', 4)
 	else
 		call DoNothing()
 	endif
@@ -9463,6 +9468,8 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 		call DoNothing()
 	endif
 	call AddSpecialEffectLocBJ(GetUnitLoc(GetLastReplacedUnitBJ()),"Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl")
+
+	set u = null
 endfunction
 function InitTrig_DownGrade takes nothing returns nothing
 	set gg_trg_DownGrade=CreateTrigger()
