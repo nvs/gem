@@ -1,9 +1,10 @@
 # Issue Labels
 
-The following labels are used for issues in this project.  Only one label of
-each category is applied at a time, according to the descriptions below.
+The following labels are used for issues in this project.
 
 ## Types
+
+Only one label is applied to an issue at a time.
 
 - `Bug`: Something does not work as intended.
 - `Enhancement`: Request to support a new feature or behavior.
@@ -13,10 +14,10 @@ each category is applied at a time, according to the descriptions below.
 - `Discussion`: A fairly broad category, used for talking about a
   generalized, less focused concept or topic.
 
-### Status
+## Status
 
-Only applied to issues with the following types: `Bug`, `Enhancement`,
-and `Task`.
+Only one label is applied to an issue at a time.  Only applied to issues with
+the following types: `Bug`, `Enhancement`, and `Task`.
 
 - `Duplicate`: The issue already exists, and will be closed.  Reference to the
   original should be made.
@@ -41,12 +42,25 @@ and `Task`.
   it has started or not.  The reasons can vary, and should be mentioned.  The
   issue will be closed.
 
-### Priority
+## Priority
 
-When an issue is closed its priority label should be removed, as they are
-intended to be labls for open issues only.
+Only one label is applied to an issue at a time.  When an issue is closed its
+priority label should be removed, as they are intended to be labls for open
+issues only.
 
 - `Now`: This issue has priority over other work.
 - `Soon`: This issue needs to be resolved in a relatively timely fashion.
 - `Later`: This issue is not critical, and can be pushed back if need be.
 - `None`: Other issues should be considered before this one.
+
+## Area
+
+Multiple area labels may be applied as necessary to aid in describing the
+issue's scope.  However, they should only be applied once the area of focus
+has been identified. 
+
+- `JASS`: This issue is related to the JASS code.
+- `Map`: This issue is related to the `*.w3x` map object specifically.
+- `Build`: This issue is related to the build script for the project, as well
+  as the associated configuration.
+- `Documentation`: This issue is related to project documentation.
