@@ -12,5 +12,5 @@ return {
 		'config'
 	},
 
-	pjass = 'pjass'
+	pjass = 'wine ../lib/pjass/pjass.exe',
 }
