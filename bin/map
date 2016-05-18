@@ -3,7 +3,8 @@
 if not arg [1]
 	or arg [1] == 'help'
 	or (arg [1] ~= 'check'
-		and arg [1] ~= 'build')
+		and arg [1] ~= 'build'
+		and arg [1] ~= 'data')
 	or not arg [2]
 then
 	print ([[
@@ -11,7 +12,7 @@ map - JASS script checker/builder
 
 Usage:
 
-map help                       Displays this help message.
+map help     Displays this help message.
 map check [configuration-file] Checks the scripts that form the project to
                                ensure that they are valid JASS.
 map build [configuration-file] Takes the scripts and builds a single project
@@ -20,17 +21,21 @@ map build [configuration-file] Takes the scripts and builds a single project
                                declarations into a single block, then putting
                                all other content after.  The order specified
                                in the `configuration-file` is maintained.
+map data [configuration-file]  Takes the objects and load them into a copy of
+                               the specified map file.
 
 A `configuration-file` is nothing more than a Lua file returning a table
 with the following format.  Note that relative paths are specified with the
 location of the `configuration-file` in mind.
 
 - `name`              : This is the name of the project, and the name used
-                        when building the project's script.
+                        when building the project's script or map file.
+- `map_directory`     : The path that contains the map file.  The value
+                        specified by `name` is the file used.
 - `patch_directory`   : The path that points to the `common.j` and
                         `blizzard.j`.
-- `output_directory`  : The path where the project script will be placed after
-                        building.  The value specified by `name` will be used.
+- `output_directory`  : The path where the project script or mape file will be
+                        placed after building.  The value specified by `name` will be used.
 - `scripts_directory` : The path that points to the scripts location.
 - `scripts`           : The scripts that together represent the entire
                         project.  They should be listed in an order that
@@ -40,9 +45,13 @@ location of the `configuration-file` in mind.
                         that there is no need to specify the file extension.
                         For example, `directory.script` refers to
                         './directory/script.j'.
-- `pjass`             : The command to execute pjass.  This will vary, and
+- `objects_directory` : The path that points to the objects location.
+- `objects`           : The object files to process with ObjectMerger.  The
+                        same formatting used for `scripts` is used here.
+- `pjass`             : The command to invoke pjass.  This will vary, and
                         can even involve the use of other programs.  For
-                        example, using Wine: `wine pjass.exe`.]])
+                        example, using Wine: `wine pjass.exe`.
+- `object_merger`     : The command to invoke ObjectMerger.]])
 
 	os.exit (0)
 end
@@ -127,21 +136,20 @@ do
 	end
 end
 
--- Returns a `boolean` indicating whether or not all the mentioned JASS
--- scripts within the `scripts (table)` exist.  The path to each script is
--- added to the `files (table)`.  An error message is displayed for each
--- script that does not exist.
-local function do_scripts_exist (path, scripts, files)
-	local is_missing_script = false
+-- Returns a `boolean` indicating whether or not the mentioned files within
+-- the `check (table)` exist.  The path to each file is added to the `files
+-- (table)`.  An error is displayed for each script that does not exist.
+local function do_files_exist (path, check, files)
+	local is_missing_file = false
 
-	for _, script in ipairs (scripts) do
-		local result, message = search_path (script, path)
+	for _, file in ipairs (check) do
+		local result, message = search_path (file, path)
 
 		if result then
 			files [#files + 1] = string.format ('%q', result)
 		else
-			if not is_missing_script then
-				is_missing_script = true
+			if not is_missing_file then
+				is_missing_file = true
 				io.write ('Error:')
 			end
 
@@ -149,114 +157,178 @@ local function do_scripts_exist (path, scripts, files)
 		end
 	end
 
-	if is_missing_script then
+	if is_missing_file then
 		io.write ('\n')
-
 		return false
 	else
 		return true
 	end
 end
 
--- Files to be passed to pjass.
+-- Files to be passed to pjass or ObjectManager.
 local files = {}
 
--- Load the common.j and blizzard.j.
-do
-	local scripts = {
-		'common',
-		'blizzard'
-	}
+if arg [1] == 'check'
+	or arg [1] == 'build'
+then
+	-- Load the common.j and blizzard.j.
+	do
+		local scripts = {
+			'common',
+			'blizzard'
+		}
 
-	local path = configuration.patch_directory .. '/?.j'
-	local result = do_scripts_exist (path, scripts, files)
+		local path = configuration.patch_directory .. '/?.j'
+		local result = do_files_exist (path, scripts, files)
 
-	if not result then
-		os.exit (1)
-	end
-end
-
-if arg [1] == 'check' then
-	local path = configuration.scripts_directory .. '/?.j'
-	local result = do_scripts_exist (path, configuration.scripts, files)
-
-	if not result then
-		os.exit (1)
+		if not result then
+			os.exit (1)
+		end
 	end
 
-elseif arg [1] == 'build' then
-	local is_missing_script = false
-	local path = configuration.scripts_directory .. '/?.j'
+	if arg [1] == 'check' then
+		local path = configuration.scripts_directory .. '/?.j'
+		local result = do_files_exist (path, configuration.scripts, files)
 
-	-- Open the globals block.
-	local globals = { 'globals\n' }
-	local content = {}
+		if not result then
+			os.exit (1)
+		end
 
-	for _, script in ipairs (configuration.scripts) do
-		local result, message = search_path (script, path)
+	elseif arg [1] == 'build' then
+		local is_missing_file = false
+		local path = configuration.scripts_directory .. '/?.j'
 
-		if result then
-			local file = io.open (result, 'r')
-			local action = false
+		-- Open the globals block.
+		local globals = { 'globals\n' }
+		local content = {}
 
-			for line in file:lines () do
-				if line:match ('^%s*globals.*$') then
-					action = true
-				elseif line:match ('^%s*endglobals.*$') then
-					action = false
-				else
-					line = line .. '\n'
+		for _, script in ipairs (configuration.scripts) do
+			local result, message = search_path (script, path)
 
-					if action == true then
-						globals [#globals + 1] = line
-					elseif action == false then
-						content [#content + 1] = line
+			if result then
+				local file = io.open (result, 'r')
+				local action = false
+
+				for line in file:lines () do
+					if line:match ('^%s*globals.*$') then
+						action = true
+					elseif line:match ('^%s*endglobals.*$') then
+						action = false
+					else
+						line = line .. '\n'
+
+						if action == true then
+							globals [#globals + 1] = line
+						elseif action == false then
+							content [#content + 1] = line
+						end
 					end
 				end
+
+				file:close ()
+			else
+				if not is_missing_file then
+					is_missing_file = true
+					io.write ('Error:')
+				end
+
+				io.write (message)
+			end
+		end
+
+		if is_missing_file then
+			io.write ('\n')
+			os.exit (1)
+		end
+
+		-- Finish the globals block.
+		globals [#globals + 1] = 'endglobals\n'
+
+		local path = configuration.output_directory .. '/'
+			.. configuration.name .. '.j'
+		local file = io.open (path, 'w+')
+
+		if file then
+			for _, line in ipairs (globals) do
+				file:write (line)
+			end
+
+			file:write ('\n')
+
+			for _, line in ipairs (content) do
+				file:write (line)
 			end
 
 			file:close ()
-		else
-			if not is_missing_script then
-				is_missing_script = true
-				io.write ('Error:')
-			end
-
-			io.write (message)
 		end
+
+		files [#files + 1] = path
 	end
 
-	if is_missing_script then
-		io.write ('\n')
+	-- Check the scripts using pjass.
+	os.execute (string.format ('%s %s', configuration.pjass,
+		table.concat (files, ' ')))
+
+elseif arg [1] == 'data' then
+	local path = configuration.objects_directory .. '/?.lua'
+	local result = do_files_exist (path, configuration.objects, files)
+
+	if not result then
 		os.exit (1)
 	end
 
-	-- Finish the globals block.
-	globals [#globals + 1] = 'endglobals\n'
+	local source_path = configuration.map_directory .. '/'
+		.. configuration.name .. '.w3x'
+	local destination_path = configuration.output_directory .. '/'
+		.. configuration.name .. '.w3x'
 
-	local path = configuration.output_directory .. '/'
-		.. configuration.name .. '.j'
-	local file = io.open (path, 'w+')
+	local source = io.open (source_path, 'rb')
 
-	if file then
-		for _, line in ipairs (globals) do
-			file:write (line)
-		end
-
-		file:write ('\n')
-
-		for _, line in ipairs (content) do
-			file:write (line)
-		end
-
-		file:close ()
+	if not source then
+		os.exit (1)
 	end
 
-	files [#files + 1] = path
-end
+	local destination = io.open (destination_path, 'w+b')
 
--- Check the scripts using pjass.
-os.execute (string.format ('%s %s', configuration.pjass,
-	table.concat (files, ' ')))
+	if not destination then
+		os.exit (1)
+	end
+
+	while true do
+		local bytes = source:read (512)
+
+		if not bytes then
+			break
+		end
+
+		destination:write (bytes)
+	end
+
+	if not source:close ()
+		or not destination:close ()
+	then
+		os.remove (destination_path)
+		os.exit (1)
+	end
+
+	-- Run the object files using ObjectManager.
+	local result = os.execute (string.format ('%s %s lookuppaths %s',
+		configuration.object_merger, destination_path,
+		table.concat (files, ' ')))
+
+	-- Move the log file to a more suitable location.
+	os.remove ('../tmp/grimex.txt')
+	os.rename ('logs/grimex.txt', '../tmp/grimex.txt')
+	os.remove ('logs')
+
+	-- When successful, another line break is needed.  Also, ensure that
+	-- checking the result is comptible with the varying versions of
+	-- `os.execute`.
+	if result == true
+		or result == 0
+	then
+		io.write ('\n')
+	end
+end
 
 os.exit (0)
