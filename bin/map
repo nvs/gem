@@ -34,8 +34,9 @@ location of the `configuration-file` in mind.
                         specified by `name` is the file used.
 - `patch_directory`   : The path that points to the `common.j` and
                         `blizzard.j`.
-- `output_directory`  : The path where the project script or mape file will be
-                        placed after building.  The value specified by `name` will be used.
+- `output_directory`  : The path where the project script or map file will be
+                        placed after building.  The value specified by `name`
+                        will be used.
 - `scripts_directory` : The path that points to the scripts location.
 - `scripts`           : The scripts that together represent the entire
                         project.  They should be listed in an order that
