@@ -12,7 +12,7 @@ map - JASS script checker/builder
 
 Usage:
 
-map help     Displays this help message.
+map help                       Displays this help message.
 map check [configuration-file] Checks the scripts that form the project to
                                ensure that they are valid JASS.
 map build [configuration-file] Takes the scripts and builds a single project
@@ -25,8 +25,8 @@ map data [configuration-file]  Takes the objects and load them into a copy of
                                the specified map file.
 
 A `configuration-file` is nothing more than a Lua file returning a table
-with the following format.  Note that relative paths are specified with the
-location of the `configuration-file` in mind.
+with the following format.  Note that relative paths are specified with
+respect to the location of the `configuration-file`.
 
 - `name`              : This is the name of the project, and the name used
                         when building the project's script or map file.
