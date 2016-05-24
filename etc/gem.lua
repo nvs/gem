@@ -7,6 +7,9 @@ return {
 
 	scripts_directory = '../src',
 	scripts = {
+		'unit-indexer',
+		'unit-user-data',
+
 		'gem-3_1',
 
 		'main',
@@ -15,6 +18,7 @@ return {
 
 	objects_directory = '../share/objects',
 	objects = {
+		'unit-indexer'
 	},
 
 	pjass = 'wine ../lib/pjass/pjass.exe',

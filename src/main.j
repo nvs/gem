@@ -314,6 +314,11 @@ function main takes nothing returns nothing
 	call SetAmbientDaySound ("SunkenRuinsDay")
 	call SetAmbientNightSound ("SunkenRuinsNight")
 	call SetMapMusic ("Music", true, 0)
+
+	// Initialization of each system gets its own thread.
+	call ExecuteFunc ("Unit_Indexer__Initialize")
+	call ExecuteFunc ("Unit_User_Data__Initialize")
+
 	call InitSounds ()
 	call CreateRegions ()
 	call CreateAllDestructables ()

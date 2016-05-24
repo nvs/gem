@@ -3897,73 +3897,73 @@ function Trig_Gem_Awards_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Gem_Awards_Func002C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==10))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==10))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func003C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==20))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==20))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func004C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==30))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==30))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func005C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==40))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==40))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func006C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==50))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==50))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func007C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==60))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==60))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func008C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==70))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==70))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func009C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==80))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==80))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func010C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==90))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==90))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func011C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==100))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==100))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func012C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==110))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==110))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Func013C takes nothing returns boolean
-	if(not(GetUnitUserData(GetKillingUnitBJ())==120))then
+	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==120))then
 		return false
 	endif
 	return true
@@ -4002,7 +4002,7 @@ function Trig_Gem_Awards_Func026001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func026001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==10)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==10)
 endfunction
 function Trig_Gem_Awards_Func026001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func026001001(),Trig_Gem_Awards_Func026001002())
@@ -4011,7 +4011,7 @@ function Trig_Gem_Awards_Func027001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func027001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==20)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==20)
 endfunction
 function Trig_Gem_Awards_Func027001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func027001001(),Trig_Gem_Awards_Func027001002())
@@ -4020,7 +4020,7 @@ function Trig_Gem_Awards_Func028001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func028001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==30)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==30)
 endfunction
 function Trig_Gem_Awards_Func028001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func028001001(),Trig_Gem_Awards_Func028001002())
@@ -4029,7 +4029,7 @@ function Trig_Gem_Awards_Func029001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func029001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==40)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==40)
 endfunction
 function Trig_Gem_Awards_Func029001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func029001001(),Trig_Gem_Awards_Func029001002())
@@ -4038,7 +4038,7 @@ function Trig_Gem_Awards_Func030001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func030001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==50)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==50)
 endfunction
 function Trig_Gem_Awards_Func030001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func030001001(),Trig_Gem_Awards_Func030001002())
@@ -4047,7 +4047,7 @@ function Trig_Gem_Awards_Func031001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func031001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==60)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==60)
 endfunction
 function Trig_Gem_Awards_Func031001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func031001001(),Trig_Gem_Awards_Func031001002())
@@ -4056,7 +4056,7 @@ function Trig_Gem_Awards_Func032001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func032001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==70)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==70)
 endfunction
 function Trig_Gem_Awards_Func032001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func032001001(),Trig_Gem_Awards_Func032001002())
@@ -4065,7 +4065,7 @@ function Trig_Gem_Awards_Func033001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func033001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==80)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==80)
 endfunction
 function Trig_Gem_Awards_Func033001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func033001001(),Trig_Gem_Awards_Func033001002())
@@ -4074,7 +4074,7 @@ function Trig_Gem_Awards_Func034001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func034001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==90)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==90)
 endfunction
 function Trig_Gem_Awards_Func034001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func034001001(),Trig_Gem_Awards_Func034001002())
@@ -4083,13 +4083,13 @@ function Trig_Gem_Awards_Func035001001 takes nothing returns boolean
 	return(GetUnitTypeId(GetKillingUnitBJ())=='n00F')
 endfunction
 function Trig_Gem_Awards_Func035001002 takes nothing returns boolean
-	return(GetUnitUserData(GetKillingUnitBJ())==100)
+	return(Unit_User_Data__Get(GetKillingUnitBJ())==100)
 endfunction
 function Trig_Gem_Awards_Func035001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Gem_Awards_Func035001001(),Trig_Gem_Awards_Func035001002())
 endfunction
 function Trig_Gem_Awards_Actions takes nothing returns nothing
-	call SetUnitUserData(GetKillingUnitBJ(),(GetUnitUserData(GetKillingUnitBJ())+1))
+	call Unit_User_Data__Set(GetKillingUnitBJ(),(Unit_User_Data__Get(GetKillingUnitBJ())+1))
 	if(Trig_Gem_Awards_Func002C())then
 		call UnitAddAbilityBJ('A01L',GetKillingUnitBJ())
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
@@ -4313,106 +4313,106 @@ function InitTrig_Gem_Awards takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Gem_Awards,function Trig_Gem_Awards_Actions)
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func002C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=10))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=10))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<20))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<20))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func003C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=20))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=20))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<30))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<30))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func004C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=30))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=30))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<40))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<40))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func005C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=40))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=40))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<50))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<50))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func006C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=50))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=50))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<60))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<60))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func007C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=60))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=60))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<70))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<70))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func008C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=70))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=70))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<80))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<80))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func009C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=80))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=80))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<90))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<90))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func010C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=90))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=90))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<100))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<100))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func011C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=100))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=100))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<110))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<110))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func012C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=110))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=110))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())<120))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())<120))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Func013C takes nothing returns boolean
-	if(not(GetUnitUserData(GetTriggerUnit())>=120))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())>=120))then
 		return false
 	endif
 	return true
@@ -4958,7 +4958,7 @@ function Trig_Creeps_attacking_Func002Func008001 takes nothing returns boolean
 	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
 endfunction
 function Trig_Creeps_attacking_Func002C takes nothing returns boolean
-	if(not(GetUnitUserData(GetAttacker())==6))then
+	if(not(Unit_User_Data__Get(GetAttacker())==6))then
 		return false
 	endif
 	return true
@@ -5012,7 +5012,7 @@ function Trig_Creeps_attacking_Func003Func017001 takes nothing returns boolean
 	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
 endfunction
 function Trig_Creeps_attacking_Func003C takes nothing returns boolean
-	if(not(GetUnitUserData(GetAttacker())==5))then
+	if(not(Unit_User_Data__Get(GetAttacker())==5))then
 		return false
 	endif
 	return true
@@ -5066,7 +5066,7 @@ function Trig_Creeps_attacking_Func004Func017001 takes nothing returns boolean
 	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
 endfunction
 function Trig_Creeps_attacking_Func004C takes nothing returns boolean
-	if(not(GetUnitUserData(GetAttacker())==4))then
+	if(not(Unit_User_Data__Get(GetAttacker())==4))then
 		return false
 	endif
 	return true
@@ -5120,7 +5120,7 @@ function Trig_Creeps_attacking_Func005Func017001 takes nothing returns boolean
 	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
 endfunction
 function Trig_Creeps_attacking_Func005C takes nothing returns boolean
-	if(not(GetUnitUserData(GetAttacker())==3))then
+	if(not(Unit_User_Data__Get(GetAttacker())==3))then
 		return false
 	endif
 	return true
@@ -5174,7 +5174,7 @@ function Trig_Creeps_attacking_Func006Func017001 takes nothing returns boolean
 	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
 endfunction
 function Trig_Creeps_attacking_Func006C takes nothing returns boolean
-	if(not(GetUnitUserData(GetAttacker())==2))then
+	if(not(Unit_User_Data__Get(GetAttacker())==2))then
 		return false
 	endif
 	return true
@@ -5228,7 +5228,7 @@ function Trig_Creeps_attacking_Func007Func017001 takes nothing returns boolean
 	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
 endfunction
 function Trig_Creeps_attacking_Func007C takes nothing returns boolean
-	if(not(GetUnitUserData(GetAttacker())==1))then
+	if(not(Unit_User_Data__Get(GetAttacker())==1))then
 		return false
 	endif
 	return true
@@ -5361,7 +5361,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		call TriggerSleepAction(0.10)
-		call SetUnitUserData(GetAttacker(),6)
+		call Unit_User_Data__Set(GetAttacker(),6)
 	else
 	endif
 	if(Trig_Creeps_attacking_Func004C())then
@@ -5447,7 +5447,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		call TriggerSleepAction(0.10)
-		call SetUnitUserData(GetAttacker(),5)
+		call Unit_User_Data__Set(GetAttacker(),5)
 	else
 	endif
 	if(Trig_Creeps_attacking_Func005C())then
@@ -5533,7 +5533,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		call TriggerSleepAction(0.10)
-		call SetUnitUserData(GetAttacker(),4)
+		call Unit_User_Data__Set(GetAttacker(),4)
 	else
 	endif
 	if(Trig_Creeps_attacking_Func006C())then
@@ -5619,7 +5619,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		call TriggerSleepAction(0.10)
-		call SetUnitUserData(GetAttacker(),3)
+		call Unit_User_Data__Set(GetAttacker(),3)
 	else
 	endif
 	if(Trig_Creeps_attacking_Func007C())then
@@ -5705,7 +5705,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		call TriggerSleepAction(0.10)
-		call SetUnitUserData(GetAttacker(),2)
+		call Unit_User_Data__Set(GetAttacker(),2)
 	else
 	endif
 endfunction
@@ -8559,106 +8559,106 @@ function Trig_Reworked_Combining_specials_Classic_Func023Func001Func005001001 ta
 	return(GetOwningPlayer(udg_CombineSpecialUnit[GetForLoopIndexA()])==GetFilterPlayer())
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func007C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=10))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=10))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<20))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<20))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func008C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=20))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=20))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<30))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<30))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func009C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=30))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=30))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<40))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<40))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func010C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=40))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=40))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<50))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<50))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func011C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=50))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=50))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<60))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<60))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func012C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=60))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=60))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<70))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<70))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func013C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=70))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=70))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<80))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<80))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func014C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=80))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=80))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<90))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<90))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func015C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=90))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=90))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<100))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<100))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func016C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=100))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=100))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<110))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<110))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func017C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=110))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=110))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<120))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<120))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Classic_Func023Func001Func018C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=120))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=120))then
 		return false
 	endif
 	return true
@@ -8681,24 +8681,24 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 		endif
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
-	set udg_KillsNUMBER=GetUnitUserData(GetSpellAbilityUnit())
+	set udg_KillsNUMBER=Unit_User_Data__Get(GetSpellAbilityUnit())
 	call GroupRemoveUnitSimple(GetSpellAbilityUnit(),udg_UnitGroupSPECIAL)
 	if(Trig_Reworked_Combining_specials_Classic_Func005C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func005Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00V'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func005Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00N'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func005Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h008'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8709,19 +8709,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func006C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func006Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00J'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func006Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00K'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func006Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00B'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8732,19 +8732,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func007C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func007Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Y'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func007Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e002'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func007Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00I'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8755,19 +8755,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func008C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func008Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h004'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func008Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h005'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func008Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00C'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8778,19 +8778,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func009C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func009Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e004'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func009Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00A'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func009Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00L'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8801,19 +8801,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func010C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func010Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00W'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func010Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e003'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func010Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00R'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8824,19 +8824,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func011C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func011Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e000'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func011Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h000'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func011Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h001'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8847,19 +8847,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func012C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func012Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00X'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func012Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00O'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func012Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03R'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8870,19 +8870,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func013C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func013Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00T'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func013Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03U'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func013Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00H'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8893,19 +8893,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func014C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func014Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00U'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func014Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Q'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func014Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e001'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8916,19 +8916,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func015C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func015Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00S'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func015Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00M'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func015Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h007'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -8939,13 +8939,13 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func016C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func016Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n000'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call RemoveUnit(udg_SpecCombUnit[1])
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func016Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n002'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call RemoveUnit(udg_SpecCombUnit[2])
 		else
 		endif
@@ -8956,13 +8956,13 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func017C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func017Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n001'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call RemoveUnit(udg_SpecCombUnit[1])
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func017Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n004'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call RemoveUnit(udg_SpecCombUnit[2])
 		else
 		endif
@@ -8973,13 +8973,13 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func018C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func018Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n009'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call RemoveUnit(udg_SpecCombUnit[1])
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func018Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n008'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call RemoveUnit(udg_SpecCombUnit[2])
 		else
 		endif
@@ -8990,13 +8990,13 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func019C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func019Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00C'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call RemoveUnit(udg_SpecCombUnit[1])
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func019Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00E'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call RemoveUnit(udg_SpecCombUnit[2])
 		else
 		endif
@@ -9007,19 +9007,19 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func020C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func020Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03T'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func020Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h002'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func020Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h003'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -9030,25 +9030,25 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 	if(Trig_Reworked_Combining_specials_Classic_Func021C())then
 		if(Trig_Reworked_Combining_specials_Classic_Func021Func001C())then
 			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03V'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func021Func002C())then
 			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00P'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func021Func003C())then
 			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03S'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
 		if(Trig_Reworked_Combining_specials_Classic_Func021Func004C())then
 			set udg_SpecCombUnit[4]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h009'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[4]))
+			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[4]))
 			call ReplaceUnitBJ(udg_SpecCombUnit[4],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 		endif
@@ -9062,7 +9062,7 @@ function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns 
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Reworked_Combining_specials_Classic_Func023Func001C())then
 			set udg_CombineSpecialUnit[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
-			call SetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()],udg_KillsNUMBER)
+			call Unit_User_Data__Set(udg_CombineSpecialUnit[GetForLoopIndexA()],udg_KillsNUMBER)
 			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func004C())then
 				set udg_CheckSpelllvlUNIT=udg_CombineSpecialUnit[GetForLoopIndexA()]
 				call ConditionalTriggerExecute(gg_trg_Find_spell_levels)
@@ -10788,88 +10788,88 @@ function Trig_Find_spell_levels_Func005001 takes nothing returns boolean
 	return(GetUnitTypeId(udg_CheckSpelllvlUNIT)=='h02U')
 endfunction
 function Trig_Find_spell_levels_Func006C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=10))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=10))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<20))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<20))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func007C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=20))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=20))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<30))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<30))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func008C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=30))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=30))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<40))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<40))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func009C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=40))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=40))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<50))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<50))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func010C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=50))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=50))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<60))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<60))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func011C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=60))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=60))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<70))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<70))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func012C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=70))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=70))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<80))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<80))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func013C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=80))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=80))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<90))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<90))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func014C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=90))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=90))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)<100))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<100))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Find_spell_levels_Func015C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CheckSpelllvlUNIT)>=100))then
+	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=100))then
 		return false
 	endif
 	return true
@@ -11043,34 +11043,34 @@ function Trig_Ancient_Bloodstone_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func003001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Ancient_Bloodstone_Func002Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Ancient_Bloodstone_Func002C takes nothing returns boolean
 	if(not(udg_Random[6]==2))then
@@ -11257,34 +11257,34 @@ function Trig_Elder_Slate_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func002Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func002Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func002Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func002Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func002Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func002Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func002Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func002Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func002Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func002Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func002C takes nothing returns boolean
 	if(not(udg_Random[7]>=1))then
@@ -11296,34 +11296,34 @@ function Trig_Elder_Slate_Func002C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func003Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func003Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func003Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func003Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func003Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func003Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func003Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func003Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func003Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func003Func014001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func003C takes nothing returns boolean
 	if(not(udg_Random[7]>=6))then
@@ -11335,34 +11335,34 @@ function Trig_Elder_Slate_Func003C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func004Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func004Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func004Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func004Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func004Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func004Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func004Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func004Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func004Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func004Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func004C takes nothing returns boolean
 	if(not(udg_Random[7]>=14))then
@@ -11374,34 +11374,34 @@ function Trig_Elder_Slate_Func004C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func005Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func005Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func005Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func005Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func005Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func005Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func005Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func005Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func005Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func005Func014001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func005C takes nothing returns boolean
 	if(not(udg_Random[7]>=19))then
@@ -11413,34 +11413,34 @@ function Trig_Elder_Slate_Func005C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func006Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func006Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func006Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func006Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func006Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func006Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func006Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func006Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func006Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func006Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func006C takes nothing returns boolean
 	if(not(udg_Random[7]>=26))then
@@ -11461,34 +11461,34 @@ function Trig_Elder_Slate_Func007C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func008Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func008Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func008Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func008Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func008Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func008Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func008Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func008Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func008Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func008Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func008C takes nothing returns boolean
 	if(not(udg_Random[7]>=36))then
@@ -11500,34 +11500,34 @@ function Trig_Elder_Slate_Func008C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Func009Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Elder_Slate_Func009Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Elder_Slate_Func009Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Elder_Slate_Func009Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Elder_Slate_Func009Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Elder_Slate_Func009Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Elder_Slate_Func009Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Elder_Slate_Func009Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Elder_Slate_Func009Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Elder_Slate_Func009Func013001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Elder_Slate_Func009C takes nothing returns boolean
 	if(not(udg_Random[7]>=41))then
@@ -11825,10 +11825,10 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 	endif
 	if(Trig_Elder_Slate_Func007C())then
 		call PlaySoundAtPointBJ(gg_snd_Gold3sym,100,GetUnitLoc(GetAttacker()),0)
-		call CreateTextTagLocBJ((I2S((5+(GetUnitUserData(GetAttacker())/ 10)))+" Gold!"),GetUnitLoc(GetAttacker()),0,9.00,100,100,0.00,0)
+		call CreateTextTagLocBJ((I2S((5+(Unit_User_Data__Get(GetAttacker())/ 10)))+" Gold!"),GetUnitLoc(GetAttacker()),0,9.00,100,100,0.00,0)
 		call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 		call SetTextTagLifespanBJ(GetLastCreatedTextTag(),2.00)
-		call AdjustPlayerStateBJ((5+(GetUnitUserData(GetAttacker())/ 10)),GetOwningPlayer(GetAttacker()),PLAYER_STATE_RESOURCE_GOLD)
+		call AdjustPlayerStateBJ((5+(Unit_User_Data__Get(GetAttacker())/ 10)),GetOwningPlayer(GetAttacker()),PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_Elder_Slate_Func008C())then
@@ -12121,10 +12121,10 @@ endfunction
 function Trig_Hold_Slate_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsInRangeOfLocMatching(600.00,GetUnitLoc(GetAttackedUnitBJ()),Condition(function Trig_Hold_Slate_Func001001003)),function Trig_Hold_Slate_Func001002)
 	call SetUnitAcquireRangeBJ(GetAttackedUnitBJ(),250.00)
-	call CreateTextTagLocBJ((I2S(((GetUnitUserData(GetAttacker())*20)+160))+" Damage!"),GetUnitLoc(GetAttacker()),0,10,0.00,100,0.00,0)
+	call CreateTextTagLocBJ((I2S(((Unit_User_Data__Get(GetAttacker())*20)+160))+" Damage!"),GetUnitLoc(GetAttacker()),0,10,0.00,100,0.00,0)
 	call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 	call SetTextTagLifespanBJ(GetLastCreatedTextTag(),3.00)
-	call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(GetUnitUserData(GetAttacker()))*20.00)+160.00),ATTACK_TYPE_CHAOS,DAMAGE_TYPE_NORMAL)
+	call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*20.00)+160.00),ATTACK_TYPE_CHAOS,DAMAGE_TYPE_NORMAL)
 	call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
 	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl")
 	call PauseUnitBJ(true,GetAttackedUnitBJ())
@@ -12168,10 +12168,10 @@ function Trig_Damage_Slate_Func002C takes nothing returns boolean
 endfunction
 function Trig_Damage_Slate_Actions takes nothing returns nothing
 	if(Trig_Damage_Slate_Func001C())then
-		call CreateTextTagLocBJ((I2S(((GetUnitUserData(GetAttacker())*10)+(udg_Level*20)))+" Damage!"),OffsetLocation(GetUnitLoc(GetAttacker()),-75.00,0),0,10,GetRandomReal(0,100.00),GetRandomReal(0,100.00),GetRandomReal(0,100.00),0)
+		call CreateTextTagLocBJ((I2S(((Unit_User_Data__Get(GetAttacker())*10)+(udg_Level*20)))+" Damage!"),OffsetLocation(GetUnitLoc(GetAttacker()),-75.00,0),0,10,GetRandomReal(0,100.00),GetRandomReal(0,100.00),GetRandomReal(0,100.00),0)
 		call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 		call SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.50)
-		call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(GetUnitUserData(GetAttacker()))*10.00)+(I2R(udg_Level)*20.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
+		call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*10.00)+(I2R(udg_Level)*20.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
 		call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl")
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl")
 		call PauseUnitBJ(true,GetAttacker())
@@ -12185,10 +12185,10 @@ function Trig_Damage_Slate_Actions takes nothing returns nothing
 		loop
 			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 			if(Trig_Damage_Slate_Func002Func001Func001C())then
-				call CreateTextTagLocBJ((I2S(((GetUnitUserData(GetAttacker())*10)+(udg_RLevel[GetForLoopIndexA()]*20)))+" Damage!"),OffsetLocation(GetUnitLoc(GetAttacker()),-75.00,0),0,10,GetRandomReal(0,100.00),GetRandomReal(0,100.00),GetRandomReal(0,100.00),0)
+				call CreateTextTagLocBJ((I2S(((Unit_User_Data__Get(GetAttacker())*10)+(udg_RLevel[GetForLoopIndexA()]*20)))+" Damage!"),OffsetLocation(GetUnitLoc(GetAttacker()),-75.00,0),0,10,GetRandomReal(0,100.00),GetRandomReal(0,100.00),GetRandomReal(0,100.00),0)
 				call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 				call SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.50)
-				call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(GetUnitUserData(GetAttacker()))*10.00)+(I2R(udg_RLevel[GetForLoopIndexA()])*20.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
+				call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*10.00)+(I2R(udg_RLevel[GetForLoopIndexA()])*20.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
 				call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl")
 				call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl")
 				call PauseUnitBJ(true,GetAttacker())
@@ -12214,34 +12214,34 @@ function Trig_Poison_Slate_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Poison_Slate_Func003001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=10)
+	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
 function Trig_Poison_Slate_Func004001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=20)
+	return(Unit_User_Data__Get(GetAttacker())>=20)
 endfunction
 function Trig_Poison_Slate_Func005001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=30)
+	return(Unit_User_Data__Get(GetAttacker())>=30)
 endfunction
 function Trig_Poison_Slate_Func006001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=40)
+	return(Unit_User_Data__Get(GetAttacker())>=40)
 endfunction
 function Trig_Poison_Slate_Func007001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=50)
+	return(Unit_User_Data__Get(GetAttacker())>=50)
 endfunction
 function Trig_Poison_Slate_Func008001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=60)
+	return(Unit_User_Data__Get(GetAttacker())>=60)
 endfunction
 function Trig_Poison_Slate_Func009001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=70)
+	return(Unit_User_Data__Get(GetAttacker())>=70)
 endfunction
 function Trig_Poison_Slate_Func010001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=80)
+	return(Unit_User_Data__Get(GetAttacker())>=80)
 endfunction
 function Trig_Poison_Slate_Func011001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=90)
+	return(Unit_User_Data__Get(GetAttacker())>=90)
 endfunction
 function Trig_Poison_Slate_Func012001 takes nothing returns boolean
-	return(GetUnitUserData(GetAttacker())>=100)
+	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Poison_Slate_Actions takes nothing returns nothing
 	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl")
@@ -12353,8 +12353,8 @@ function Trig_Ancient_Slate_Actions takes nothing returns nothing
 	call SetUnitAcquireRangeBJ(GetAttackedUnitBJ(),250.00)
 	set udg_Random[5]=GetRandomInt(5,120)
 	if(Trig_Ancient_Slate_Func006C())then
-		call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(GetUnitUserData(GetAttacker()))*I2R(udg_Random[5]))+(I2R(udg_Level)*50.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
-		call CreateTextTagLocBJ((I2S(((GetUnitUserData(GetAttacker())*udg_Random[5])+(udg_Level*50)))+" Damage!"),GetUnitLoc(GetAttacker()),0,10,100,100,0.00,0)
+		call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*I2R(udg_Random[5]))+(I2R(udg_Level)*50.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
+		call CreateTextTagLocBJ((I2S(((Unit_User_Data__Get(GetAttacker())*udg_Random[5])+(udg_Level*50)))+" Damage!"),GetUnitLoc(GetAttacker()),0,10,100,100,0.00,0)
 		call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 		call SetTextTagLifespanBJ(GetLastCreatedTextTag(),3.00)
 	else
@@ -12365,8 +12365,8 @@ function Trig_Ancient_Slate_Actions takes nothing returns nothing
 		loop
 			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 			if(Trig_Ancient_Slate_Func007Func001Func001C())then
-				call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(GetUnitUserData(GetAttacker()))*I2R(udg_Random[5]))+(I2R(udg_RLevel[GetForLoopIndexA()])*50.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
-				call CreateTextTagLocBJ((I2S(((GetUnitUserData(GetAttacker())*udg_Random[5])+(udg_RLevel[GetForLoopIndexA()]*50)))+" Damage!"),GetUnitLoc(GetAttacker()),0,10,100,100,0.00,0)
+				call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*I2R(udg_Random[5]))+(I2R(udg_RLevel[GetForLoopIndexA()])*50.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
+				call CreateTextTagLocBJ((I2S(((Unit_User_Data__Get(GetAttacker())*udg_Random[5])+(udg_RLevel[GetForLoopIndexA()]*50)))+" Damage!"),GetUnitLoc(GetAttacker()),0,10,100,100,0.00,0)
 				call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 				call SetTextTagLifespanBJ(GetLastCreatedTextTag(),3.00)
 			else
@@ -13376,7 +13376,7 @@ function Trig_Race_Mid_Game_ReRunner_1_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[0],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_1))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13427,7 +13427,7 @@ function Trig_Race_Mid_Game_ReRunner_2_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[1],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_2))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13478,7 +13478,7 @@ function Trig_Race_Mid_Game_ReRunner_3_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[2],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_3))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13529,7 +13529,7 @@ function Trig_Race_Mid_Game_ReRunner_4_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[3],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_4))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13580,7 +13580,7 @@ function Trig_Race_Mid_Game_ReRunner_5_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[4],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_5))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13631,7 +13631,7 @@ function Trig_Race_Mid_Game_ReRunner_6_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[5],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_6))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13682,7 +13682,7 @@ function Trig_Race_Mid_Game_ReRunner_7_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[6],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_7))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -13733,7 +13733,7 @@ function Trig_Race_Mid_Game_ReRunner_8_Actions takes nothing returns nothing
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[7],(("|cffff00ffYou have done|r "+R2S((50000.00-GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit()))))+" |cffff00ffdamage.|r ReRunner now has 10 less armor"))
 	call IncUnitAbilityLevelSwapped('A02K',GetTriggerUnit())
-	call SetUnitUserData(GetTriggerUnit(),11)
+	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_8))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move1))
 	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
@@ -16449,31 +16449,31 @@ function Trig_Movement1_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_1_Func003001(),Trig_Movement1_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_1_Actions takes nothing returns nothing
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move2))
 endfunction
 function InitTrig_Movement1_1 takes nothing returns nothing
@@ -16492,13 +16492,13 @@ function Trig_Movement1_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_2_Func004001(),Trig_Movement1_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_2_Actions takes nothing returns nothing
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move3))
 	set udg_CountMove1[1]=(udg_CountMove1[1]+1)
 endfunction
@@ -16518,14 +16518,14 @@ function Trig_Movement1_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_3_Func004001(),Trig_Movement1_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[1]=(udg_CountMove2[1]+1)
 endfunction
 function InitTrig_Movement1_3 takes nothing returns nothing
@@ -16544,14 +16544,14 @@ function Trig_Movement1_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_4_Func004001(),Trig_Movement1_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[1]=(udg_CountMove3[1]+1)
 endfunction
 function InitTrig_Movement1_4 takes nothing returns nothing
@@ -16570,14 +16570,14 @@ function Trig_Movement1_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_5_Func004001(),Trig_Movement1_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[1]=(udg_CountMove4[1]+1)
 endfunction
 function InitTrig_Movement1_5 takes nothing returns nothing
@@ -16596,14 +16596,14 @@ function Trig_Movement1_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_6_Func004001(),Trig_Movement1_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[1]=(udg_CountMove5[1]+1)
 endfunction
 function InitTrig_Movement1_6 takes nothing returns nothing
@@ -16622,14 +16622,14 @@ function Trig_Movement1_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_7_Func003001(),Trig_Movement1_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement1_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_1))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement1_7 takes nothing returns nothing
 	set gg_trg_Movement1_7=CreateTrigger()
@@ -21364,32 +21364,32 @@ function Trig_Movement2_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_1_Func003001(),Trig_Movement2_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_1_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move2))
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 endfunction
 function InitTrig_Movement2_1 takes nothing returns nothing
 	set gg_trg_Movement2_1=CreateTrigger()
@@ -21407,14 +21407,14 @@ function Trig_Movement2_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_2_Func004001(),Trig_Movement2_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[2]=(udg_CountMove1[2]+1)
 endfunction
 function InitTrig_Movement2_2 takes nothing returns nothing
@@ -21433,14 +21433,14 @@ function Trig_Movement2_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_3_Func004001(),Trig_Movement2_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[2]=(udg_CountMove2[2]+1)
 endfunction
 function InitTrig_Movement2_3 takes nothing returns nothing
@@ -21459,14 +21459,14 @@ function Trig_Movement2_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_4_Func004001(),Trig_Movement2_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[2]=(udg_CountMove3[2]+1)
 endfunction
 function InitTrig_Movement2_4 takes nothing returns nothing
@@ -21485,14 +21485,14 @@ function Trig_Movement2_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_5_Func004001(),Trig_Movement2_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[2]=(udg_CountMove4[2]+1)
 endfunction
 function InitTrig_Movement2_5 takes nothing returns nothing
@@ -21511,14 +21511,14 @@ function Trig_Movement2_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_6_Func004001(),Trig_Movement2_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[2]=(udg_CountMove5[2]+1)
 endfunction
 function InitTrig_Movement2_6 takes nothing returns nothing
@@ -21537,14 +21537,14 @@ function Trig_Movement2_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_7_Func003001(),Trig_Movement2_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement2_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_2))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement2_7 takes nothing returns nothing
 	set gg_trg_Movement2_7=CreateTrigger()
@@ -26225,31 +26225,31 @@ function Trig_Movement3_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_1_Func003001(),Trig_Movement3_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_1_Actions takes nothing returns nothing
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move2))
 endfunction
 function InitTrig_Movement3_1 takes nothing returns nothing
@@ -26268,14 +26268,14 @@ function Trig_Movement3_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_2_Func004001(),Trig_Movement3_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[3]=(udg_CountMove1[3]+1)
 endfunction
 function InitTrig_Movement3_2 takes nothing returns nothing
@@ -26294,14 +26294,14 @@ function Trig_Movement3_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_3_Func004001(),Trig_Movement3_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[3]=(udg_CountMove2[3]+1)
 endfunction
 function InitTrig_Movement3_3 takes nothing returns nothing
@@ -26320,14 +26320,14 @@ function Trig_Movement3_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_4_Func004001(),Trig_Movement3_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[3]=(udg_CountMove3[3]+1)
 endfunction
 function InitTrig_Movement3_4 takes nothing returns nothing
@@ -26346,14 +26346,14 @@ function Trig_Movement3_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_5_Func004001(),Trig_Movement3_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[3]=(udg_CountMove4[3]+1)
 endfunction
 function InitTrig_Movement3_5 takes nothing returns nothing
@@ -26372,14 +26372,14 @@ function Trig_Movement3_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_6_Func004001(),Trig_Movement3_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[3]=(udg_CountMove5[3]+1)
 endfunction
 function InitTrig_Movement3_6 takes nothing returns nothing
@@ -26398,14 +26398,14 @@ function Trig_Movement3_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_7_Func003001(),Trig_Movement3_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement3_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement3_7 takes nothing returns nothing
 	set gg_trg_Movement3_7=CreateTrigger()
@@ -31088,32 +31088,32 @@ function Trig_Movement4_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_1_Func003001(),Trig_Movement4_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_1_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move2))
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 endfunction
 function InitTrig_Movement4_1 takes nothing returns nothing
 	set gg_trg_Movement4_1=CreateTrigger()
@@ -31131,14 +31131,14 @@ function Trig_Movement4_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_2_Func004001(),Trig_Movement4_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[4]=(udg_CountMove1[4]+1)
 endfunction
 function InitTrig_Movement4_2 takes nothing returns nothing
@@ -31157,14 +31157,14 @@ function Trig_Movement4_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_3_Func004001(),Trig_Movement4_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[4]=(udg_CountMove2[4]+1)
 endfunction
 function InitTrig_Movement4_3 takes nothing returns nothing
@@ -31183,14 +31183,14 @@ function Trig_Movement4_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_4_Func004001(),Trig_Movement4_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[4]=(udg_CountMove3[4]+1)
 endfunction
 function InitTrig_Movement4_4 takes nothing returns nothing
@@ -31209,14 +31209,14 @@ function Trig_Movement4_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_5_Func004001(),Trig_Movement4_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[4]=(udg_CountMove4[4]+1)
 endfunction
 function InitTrig_Movement4_5 takes nothing returns nothing
@@ -31235,14 +31235,14 @@ function Trig_Movement4_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_6_Func004001(),Trig_Movement4_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[4]=(udg_CountMove5[4]+1)
 endfunction
 function InitTrig_Movement4_6 takes nothing returns nothing
@@ -31261,14 +31261,14 @@ function Trig_Movement4_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_7_Func003001(),Trig_Movement4_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement4_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement4_7 takes nothing returns nothing
 	set gg_trg_Movement4_7=CreateTrigger()
@@ -35948,32 +35948,32 @@ function Trig_Movement5_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_1_Func003001(),Trig_Movement5_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_1_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move2))
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 endfunction
 function InitTrig_Movement5_1 takes nothing returns nothing
 	set gg_trg_Movement5_1=CreateTrigger()
@@ -35991,14 +35991,14 @@ function Trig_Movement5_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_2_Func004001(),Trig_Movement5_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[5]=(udg_CountMove1[5]+1)
 endfunction
 function InitTrig_Movement5_2 takes nothing returns nothing
@@ -36017,14 +36017,14 @@ function Trig_Movement5_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_3_Func004001(),Trig_Movement5_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[5]=(udg_CountMove2[5]+1)
 endfunction
 function InitTrig_Movement5_3 takes nothing returns nothing
@@ -36043,14 +36043,14 @@ function Trig_Movement5_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_4_Func004001(),Trig_Movement5_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[5]=(udg_CountMove3[5]+1)
 endfunction
 function InitTrig_Movement5_4 takes nothing returns nothing
@@ -36069,14 +36069,14 @@ function Trig_Movement5_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_5_Func004001(),Trig_Movement5_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[5]=(udg_CountMove4[5]+1)
 endfunction
 function InitTrig_Movement5_5 takes nothing returns nothing
@@ -36095,14 +36095,14 @@ function Trig_Movement5_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_6_Func004001(),Trig_Movement5_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[5]=(udg_CountMove5[5]+1)
 endfunction
 function InitTrig_Movement5_6 takes nothing returns nothing
@@ -36121,14 +36121,14 @@ function Trig_Movement5_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_7_Func003001(),Trig_Movement5_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement5_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement5_7 takes nothing returns nothing
 	set gg_trg_Movement5_7=CreateTrigger()
@@ -40808,32 +40808,32 @@ function Trig_Movement6_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_1_Func003001(),Trig_Movement6_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_1_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move2))
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 endfunction
 function InitTrig_Movement6_1 takes nothing returns nothing
 	set gg_trg_Movement6_1=CreateTrigger()
@@ -40851,14 +40851,14 @@ function Trig_Movement6_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_2_Func004001(),Trig_Movement6_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[6]=(udg_CountMove1[6]+1)
 endfunction
 function InitTrig_Movement6_2 takes nothing returns nothing
@@ -40877,14 +40877,14 @@ function Trig_Movement6_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_3_Func004001(),Trig_Movement6_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[6]=(udg_CountMove2[6]+1)
 endfunction
 function InitTrig_Movement6_3 takes nothing returns nothing
@@ -40903,14 +40903,14 @@ function Trig_Movement6_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_4_Func004001(),Trig_Movement6_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[6]=(udg_CountMove3[6]+1)
 endfunction
 function InitTrig_Movement6_4 takes nothing returns nothing
@@ -40929,14 +40929,14 @@ function Trig_Movement6_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_5_Func004001(),Trig_Movement6_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[6]=(udg_CountMove4[6]+1)
 endfunction
 function InitTrig_Movement6_5 takes nothing returns nothing
@@ -40955,14 +40955,14 @@ function Trig_Movement6_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_6_Func004001(),Trig_Movement6_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[6]=(udg_CountMove5[6]+1)
 endfunction
 function InitTrig_Movement6_6 takes nothing returns nothing
@@ -40981,14 +40981,14 @@ function Trig_Movement6_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_7_Func003001(),Trig_Movement6_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement6_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement6_7 takes nothing returns nothing
 	set gg_trg_Movement6_7=CreateTrigger()
@@ -45668,32 +45668,32 @@ function Trig_Movement7_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_1_Func003001(),Trig_Movement7_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_1_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move2))
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 endfunction
 function InitTrig_Movement7_1 takes nothing returns nothing
 	set gg_trg_Movement7_1=CreateTrigger()
@@ -45711,14 +45711,14 @@ function Trig_Movement7_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_2_Func004001(),Trig_Movement7_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[7]=(udg_CountMove1[7]+1)
 endfunction
 function InitTrig_Movement7_2 takes nothing returns nothing
@@ -45737,14 +45737,14 @@ function Trig_Movement7_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_3_Func004001(),Trig_Movement7_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[7]=(udg_CountMove2[7]+1)
 endfunction
 function InitTrig_Movement7_3 takes nothing returns nothing
@@ -45763,14 +45763,14 @@ function Trig_Movement7_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_4_Func004001(),Trig_Movement7_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[7]=(udg_CountMove3[7]+1)
 endfunction
 function InitTrig_Movement7_4 takes nothing returns nothing
@@ -45789,14 +45789,14 @@ function Trig_Movement7_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_5_Func004001(),Trig_Movement7_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[7]=(udg_CountMove4[7]+1)
 endfunction
 function InitTrig_Movement7_5 takes nothing returns nothing
@@ -45815,14 +45815,14 @@ function Trig_Movement7_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_6_Func004001(),Trig_Movement7_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[7]=(udg_CountMove5[7]+1)
 endfunction
 function InitTrig_Movement7_6 takes nothing returns nothing
@@ -45841,14 +45841,14 @@ function Trig_Movement7_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_7_Func003001(),Trig_Movement7_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement7_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement7_7 takes nothing returns nothing
 	set gg_trg_Movement7_7=CreateTrigger()
@@ -50528,32 +50528,32 @@ function Trig_Movement8_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_1_Func003001(),Trig_Movement8_1_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=1))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=2))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=3))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=4))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=5))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=6))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())!=7))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())!=7))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_1_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move2))
-	call SetUnitUserData(GetTriggerUnit(),1)
+	call Unit_User_Data__Set(GetTriggerUnit(),1)
 endfunction
 function InitTrig_Movement8_1 takes nothing returns nothing
 	set gg_trg_Movement8_1=CreateTrigger()
@@ -50571,14 +50571,14 @@ function Trig_Movement8_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_2_Func004001(),Trig_Movement8_2_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==1))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==1))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_2_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move3))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove1[8]=(udg_CountMove1[8]+1)
 endfunction
 function InitTrig_Movement8_2 takes nothing returns nothing
@@ -50597,14 +50597,14 @@ function Trig_Movement8_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_3_Func004001(),Trig_Movement8_3_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==2))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==2))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_3_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move4))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove2[8]=(udg_CountMove2[8]+1)
 endfunction
 function InitTrig_Movement8_3 takes nothing returns nothing
@@ -50623,14 +50623,14 @@ function Trig_Movement8_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_4_Func004001(),Trig_Movement8_4_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==3))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==3))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_4_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move5))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove3[8]=(udg_CountMove3[8]+1)
 endfunction
 function InitTrig_Movement8_4 takes nothing returns nothing
@@ -50649,14 +50649,14 @@ function Trig_Movement8_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_5_Func004001(),Trig_Movement8_5_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==4))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==4))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_5_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move6))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove4[8]=(udg_CountMove4[8]+1)
 endfunction
 function InitTrig_Movement8_5 takes nothing returns nothing
@@ -50675,14 +50675,14 @@ function Trig_Movement8_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_6_Func004001(),Trig_Movement8_6_Func004002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==5))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==5))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_6_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move7))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 	set udg_CountMove5[8]=(udg_CountMove5[8]+1)
 endfunction
 function InitTrig_Movement8_6 takes nothing returns nothing
@@ -50701,14 +50701,14 @@ function Trig_Movement8_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_7_Func003001(),Trig_Movement8_7_Func003002()))then
 		return false
 	endif
-	if(not(GetUnitUserData(GetTriggerUnit())==6))then
+	if(not(Unit_User_Data__Get(GetTriggerUnit())==6))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Movement8_7_Actions takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_Finish_8))
-	call SetUnitUserData(GetTriggerUnit(),(GetUnitUserData(GetTriggerUnit())+1))
+	call Unit_User_Data__Set(GetTriggerUnit(),(Unit_User_Data__Get(GetTriggerUnit())+1))
 endfunction
 function InitTrig_Movement8_7 takes nothing returns nothing
 	set gg_trg_Movement8_7=CreateTrigger()
@@ -62996,106 +62996,106 @@ function Trig_Reworked_Combining_specials_Race_Func002Func001Func025001001 takes
 	return(GetOwningPlayer(udg_CombineSpecialUnit[GetForLoopIndexA()])==GetFilterPlayer())
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func026C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=10))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=10))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<20))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<20))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func027C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=20))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=20))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<30))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<30))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func028C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=30))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=30))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<40))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<40))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func029C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=40))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=40))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<50))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<50))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func030C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=50))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=50))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<60))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<60))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func031C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=60))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=60))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<70))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<70))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func032C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=70))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=70))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<80))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<80))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func033C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=80))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=80))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<90))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<90))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func034C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=90))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=90))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<100))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<100))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func035C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=100))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=100))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<110))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<110))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func036C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=110))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=110))then
 		return false
 	endif
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])<120))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<120))then
 		return false
 	endif
 	return true
 endfunction
 function Trig_Reworked_Combining_specials_Race_Func002Func001Func037C takes nothing returns boolean
-	if(not(GetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()])>=120))then
+	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=120))then
 		return false
 	endif
 	return true
@@ -63132,24 +63132,24 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Reworked_Combining_specials_Race_Func002Func001C())then
-			set udg_KillsNUMBER=GetUnitUserData(GetSpellAbilityUnit())
+			set udg_KillsNUMBER=Unit_User_Data__Get(GetSpellAbilityUnit())
 			call GroupRemoveUnitSimple(GetSpellAbilityUnit(),udg_UnitGroupSPECIAL)
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00V'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00N'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h008'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63160,19 +63160,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00J'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00K'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00B'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63183,19 +63183,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Y'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e002'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00I'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63206,19 +63206,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h004'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h005'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00C'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63229,19 +63229,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e004'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00A'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00L'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63252,19 +63252,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00W'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e003'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00R'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63275,19 +63275,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e000'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h000'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h001'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63298,19 +63298,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00X'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00O'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03R'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63321,19 +63321,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00T'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03U'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00H'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63344,19 +63344,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00U'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Q'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e001'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63367,19 +63367,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00S'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00M'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h007'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63390,13 +63390,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func014C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func014Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n000'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func014Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n002'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
 				endif
@@ -63407,13 +63407,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func015C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func015Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n001'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func015Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n004'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
 				endif
@@ -63424,13 +63424,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func016C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func016Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n009'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func016Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n008'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
 				endif
@@ -63441,13 +63441,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func017C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func017Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00C'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func017Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00E'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
 				endif
@@ -63458,19 +63458,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03T'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h002'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h003'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63481,25 +63481,25 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func001C())then
 					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03V'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[1]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func002C())then
 					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00P'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[2]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func003C())then
 					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03S'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[3]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func004C())then
 					set udg_SpecCombUnit[4]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h009'))
-					set udg_KillsNUMBER=(udg_KillsNUMBER+GetUnitUserData(udg_SpecCombUnit[4]))
+					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[4]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[4],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
@@ -63508,7 +63508,7 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			else
 			endif
 			set udg_CombineSpecialUnit[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
-			call SetUnitUserData(udg_CombineSpecialUnit[GetForLoopIndexA()],udg_KillsNUMBER)
+			call Unit_User_Data__Set(udg_CombineSpecialUnit[GetForLoopIndexA()],udg_KillsNUMBER)
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func024C())then
 				set udg_CheckSpelllvlUNIT=udg_CombineSpecialUnit[GetForLoopIndexA()]
 				call ConditionalTriggerExecute(gg_trg_Find_spell_levels)
