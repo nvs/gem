@@ -1,4 +1,5 @@
 globals
+	integer array udg_CreepOwner
 	timer udg_SpawnTimer=null
 	rect array udg_Spawn
 	rect array udg_Move1st
@@ -1918,78 +1919,22 @@ function InitTrig_Update_Classic_multi takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Update_Classic_multi,function Trig_Update_Classic_multi_Actions)
 endfunction
 function Trig_kills_and_remove_Corpse_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_kills_and_remove_Corpse_Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(0))
-endfunction
-function Trig_kills_and_remove_Corpse_Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(1))
-endfunction
-function Trig_kills_and_remove_Corpse_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(2))
-endfunction
-function Trig_kills_and_remove_Corpse_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(3))
-endfunction
-function Trig_kills_and_remove_Corpse_Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(4))
-endfunction
-function Trig_kills_and_remove_Corpse_Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(5))
-endfunction
-function Trig_kills_and_remove_Corpse_Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(6))
-endfunction
-function Trig_kills_and_remove_Corpse_Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(7))
+	return GetOwningPlayer (GetDyingUnit ()) == Player (11)
 endfunction
 function Trig_kills_and_remove_Corpse_Actions takes nothing returns nothing
-	if(Trig_kills_and_remove_Corpse_Func001001())then
-		set udg_Kills[1]=(udg_Kills[1]+1)
-	else
-		call DoNothing()
+	local unit killed = GetDyingUnit ()
+	local integer index = Unit_Indexer__Unit_Index (killed)
+	local integer player_id = udg_CreepOwner [index]
+
+	if player_id >= 1 and player_id <= 8 then
+		set udg_Kills [player_id] = udg_Kills [player_id] + 1
 	endif
-	if(Trig_kills_and_remove_Corpse_Func002001())then
-		set udg_Kills[2]=(udg_Kills[2]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_kills_and_remove_Corpse_Func003001())then
-		set udg_Kills[3]=(udg_Kills[3]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_kills_and_remove_Corpse_Func004001())then
-		set udg_Kills[4]=(udg_Kills[4]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_kills_and_remove_Corpse_Func005001())then
-		set udg_Kills[5]=(udg_Kills[5]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_kills_and_remove_Corpse_Func006001())then
-		set udg_Kills[6]=(udg_Kills[6]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_kills_and_remove_Corpse_Func007001())then
-		set udg_Kills[7]=(udg_Kills[7]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_kills_and_remove_Corpse_Func008001())then
-		set udg_Kills[8]=(udg_Kills[8]+1)
-	else
-		call DoNothing()
-	endif
-	call TriggerSleepAction(2)
-	call RemoveUnit(GetDyingUnit())
+
+	call TriggerSleepAction (2.00)
+
+	call RemoveUnit (killed)
+
+	set killed = null
 endfunction
 function InitTrig_kills_and_remove_Corpse takes nothing returns nothing
 	set gg_trg_kills_and_remove_Corpse=CreateTrigger()
@@ -2679,6 +2624,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func016Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2692,6 +2638,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func018Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2705,6 +2652,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func020Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2718,6 +2666,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func022Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2731,6 +2680,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func024Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2744,6 +2694,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func026Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2757,6 +2708,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func028Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2770,6 +2722,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func030Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2783,6 +2736,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func032Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -2796,6 +2750,7 @@ function Trig_Spawning_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Spawning_Func034Func001001())then
 			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -4791,7 +4746,7 @@ function Trig_Lvl_15_1st_kill_money_bonus_Conditions takes nothing returns boole
 	return true
 endfunction
 function Trig_Lvl_15_1st_kill_money_bonus_Func001Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==udg_Player[GetForLoopIndexA()])
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == bj_forLoopAIndex
 endfunction
 function Trig_Lvl_15_1st_kill_money_bonus_Func001Func002001 takes nothing returns boolean
 	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
@@ -4873,7 +4828,7 @@ function Trig_Lvl_15_2nd_kill_money_bonus_Conditions takes nothing returns boole
 	return true
 endfunction
 function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==udg_Player[GetForLoopIndexA()])
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == bj_forLoopAIndex
 endfunction
 function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func002001 takes nothing returns boolean
 	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
@@ -12821,6 +12776,7 @@ function Trig_Mid_game_dmg_test_inihilaize_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Mid_game_dmg_test_inihilaize_Func015Func001001())then
 			call CreateNUnitsAtLoc(1,'h02S',Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -13263,76 +13219,17 @@ function InitTrig_Mid_game_dmg_test_Finish takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Mid_game_dmg_test_Finish,function Trig_Mid_game_dmg_test_Finish_Actions)
 endfunction
 function Trig_Mid_game_dmg_test_kills_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='h02S'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(0))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(1))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(2))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(3))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(4))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(5))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(6))
-endfunction
-function Trig_Mid_game_dmg_test_kills_Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(7))
+	return GetUnitTypeId (GetDyingUnit ()) == 'h025'
 endfunction
 function Trig_Mid_game_dmg_test_kills_Actions takes nothing returns nothing
-	if(Trig_Mid_game_dmg_test_kills_Func001001())then
-		set udg_Damage[1]=7500
-	else
-		call DoNothing()
+	local unit killed = GetDyingUnit ()
+	local integer index = Unit_Indexer__Unit_Index (killed)
+	local integer player_id = udg_CreepOwner [index]
+
+	if player_id >= 1 and player_id <= 8 then
+		set udg_Damage [player_id] = 7500
 	endif
-	if(Trig_Mid_game_dmg_test_kills_Func002001())then
-		set udg_Damage[2]=7500
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_kills_Func003001())then
-		set udg_Damage[3]=7500
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_kills_Func004001())then
-		set udg_Damage[4]=7500
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_kills_Func005001())then
-		set udg_Damage[5]=7500
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_kills_Func006001())then
-		set udg_Damage[6]=7500
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_kills_Func007001())then
-		set udg_Damage[7]=7500
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_kills_Func008001())then
-		set udg_Damage[8]=7500
-	else
-		call DoNothing()
-	endif
+
 	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!!|r")))
 	call TriggerSleepAction(300.00)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -13883,6 +13780,7 @@ function Trig_Late_game_dmg_test_inihilaize_Actions takes nothing returns nothin
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_Late_game_dmg_test_inihilaize_Func015Func001001())then
 			call CreateNUnitsAtLoc(1,'h02T',Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
+			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
 		else
 			call DoNothing()
 		endif
@@ -14325,76 +14223,17 @@ function InitTrig_Late_game_dmg_test_Finish takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Late_game_dmg_test_Finish,function Trig_Late_game_dmg_test_Finish_Actions)
 endfunction
 function Trig_Late_game_dmg_test_kills_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='h02T'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_kills_Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(0))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(1))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(2))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(3))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(4))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(5))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(6))
-endfunction
-function Trig_Late_game_dmg_test_kills_Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(7))
+	return GetUnitTypeId (GetDyingUnit ()) == 'h02T'
 endfunction
 function Trig_Late_game_dmg_test_kills_Actions takes nothing returns nothing
-	if(Trig_Late_game_dmg_test_kills_Func001001())then
-		set udg_Damage[1]=150000
-	else
-		call DoNothing()
+	local unit killed = GetDyingUnit ()
+	local integer index = Unit_Indexer__Unit_Index (killed)
+	local integer player_id = udg_CreepOwner [index]
+
+	if player_id >= 1 and player_id <= 8 then
+		set udg_Damage [player_id] = 150000
 	endif
-	if(Trig_Late_game_dmg_test_kills_Func002001())then
-		set udg_Damage[2]=150000
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_kills_Func003001())then
-		set udg_Damage[3]=150000
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_kills_Func004001())then
-		set udg_Damage[4]=150000
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_kills_Func005001())then
-		set udg_Damage[5]=150000
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_kills_Func006001())then
-		set udg_Damage[6]=150000
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_kills_Func007001())then
-		set udg_Damage[7]=150000
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_kills_Func008001())then
-		set udg_Damage[8]=150000
-	else
-		call DoNothing()
-	endif
+
 	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!!|r")))
 	call TriggerSleepAction(300.00)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -14808,41 +14647,49 @@ function Trig_End_game_dmg_test_inihilaize_Actions takes nothing returns nothing
 	call TriggerSleepAction(3.00)
 	if(Trig_End_game_dmg_test_inihilaize_Func013001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func014001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func015001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func016001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func017001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func018001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func019001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
 	if(Trig_End_game_dmg_test_inihilaize_Func020001())then
 		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -15294,26 +15141,17 @@ function InitTrig_End_game_dmg_test_Finish takes nothing returns nothing
 	call TriggerAddAction(gg_trg_End_game_dmg_test_Finish,function Trig_End_game_dmg_test_Finish_Actions)
 endfunction
 function Trig_End_game_dmg_test_kills_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='H036'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_kills_Func001Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==udg_Player[GetForLoopIndexA()])
+	return GetUnitTypeId (GetDyingUnit ()) == 'H036'
 endfunction
 function Trig_End_game_dmg_test_kills_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_kills_Func001Func001001())then
-			set udg_Damage[GetForLoopIndexA()]=1000000
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
+	local unit killed = GetDyingUnit ()
+	local integer index = Unit_Indexer__Unit_Index (killed)
+	local integer player_id = udg_CreepOwner [index]
+
+	if player_id >= 1 and player_id <= 8 then
+		set udg_Damage [player_id] = 1000000
+	endif
+
 	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!!|r")))
 endfunction
 function InitTrig_End_game_dmg_test_kills takes nothing returns nothing
@@ -15335,23 +15173,22 @@ function Trig_End_game_dmg_test_RACE_kills_Func003001 takes nothing returns bool
 	return(udg_Mode==2)
 endfunction
 function Trig_End_game_dmg_test_RACE_kills_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_RACE_kills_Func001Func001001())then
-			set udg_Damage[GetForLoopIndexA()]=2000000
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!! Dealing 2,000,000 DAMAGE!|r")))
-	if(Trig_End_game_dmg_test_RACE_kills_Func003001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+"!! on completing Race Mode.|r")))
-	else
-		call DoNothing()
+	local unit killed = GetDyingUnit ()
+	local integer index = Unit_Indexer__Unit_Index (killed)
+	local integer owner_id = udg_CreepOwner [index]
+	local player owner = Player (owner_id - 1)
+
+	if owner_id >= 1 and owner_id <= 8 then
+		set udg_Damage [owner_id] = 2000000
 	endif
+
+	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(owner)+" has killed their damage test!!!! Dealing 2,000,000 DAMAGE!|r")))
+
+	if udg_Mode == 2 then
+		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(owner)+"!! on completing Race Mode.|r")))
+	endif
+
+	set owner = null
 endfunction
 function InitTrig_End_game_dmg_test_RACE_kills takes nothing returns nothing
 	set gg_trg_End_game_dmg_test_RACE_kills=CreateTrigger()
@@ -60436,75 +60273,29 @@ function InitTrig_BJ_PlayerDealer_Runoff_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_BJ_PlayerDealer_Runoff_2,function Trig_BJ_PlayerDealer_Runoff_2_Actions)
 endfunction
 function Trig_Kills_ReRunner_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='h04Q'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Kills_ReRunner_Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(0))
-endfunction
-function Trig_Kills_ReRunner_Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(1))
-endfunction
-function Trig_Kills_ReRunner_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(2))
-endfunction
-function Trig_Kills_ReRunner_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(3))
-endfunction
-function Trig_Kills_ReRunner_Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(4))
-endfunction
-function Trig_Kills_ReRunner_Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(5))
-endfunction
-function Trig_Kills_ReRunner_Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(6))
-endfunction
-function Trig_Kills_ReRunner_Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==Player(7))
+	return GetUnitTypeId (GetDyingUnit ()) == 'h04Q'
 endfunction
 function Trig_Kills_ReRunner_Actions takes nothing returns nothing
-	if(Trig_Kills_ReRunner_Func001001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func002001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P2)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func003001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P3)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func004001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P4)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func005001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P5)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func006001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P6)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func007001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P7)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Kills_ReRunner_Func008001())then
-		call ConditionalTriggerExecute(gg_trg_New_Level_P8)
-	else
-		call DoNothing()
+	local unit killed = GetDyingUnit ()
+	local integer index = Unit_Indexer__Unit_Index (killed)
+	local integer player_id = udg_CreepOwner [index]
+
+	if player_id == 1 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P1)
+	elseif player_id == 2 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P2)
+	elseif player_id == 3 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P3)
+	elseif player_id == 4 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P4)
+	elseif player_id == 5 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P5)
+	elseif player_id == 6 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P6)
+	elseif player_id == 7 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P7)
+	elseif player_id == 8 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P8)
 	endif
 endfunction
 function InitTrig_Kills_ReRunner takes nothing returns nothing
@@ -60713,6 +60504,7 @@ function Trig_Level_25_P1_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P1_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -60785,6 +60577,7 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P1_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -60851,6 +60644,7 @@ function Trig_Level_25_P2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P2_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -60923,6 +60717,7 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P2_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -60989,6 +60784,7 @@ function Trig_Level_25_P3_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P3_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -61061,6 +60857,7 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P3_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -61127,6 +60924,7 @@ function Trig_Level_25_P4_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P4_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -61199,6 +60997,7 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P4_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -61265,6 +61064,7 @@ function Trig_Level_25_P5_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P5_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -61337,6 +61137,7 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P5_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -61403,6 +61204,7 @@ function Trig_Level_25_P6_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P6_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -61475,6 +61277,7 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P6_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -61541,6 +61344,7 @@ function Trig_Level_25_P7_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P7_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -61613,6 +61417,7 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P7_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -61679,6 +61484,7 @@ function Trig_Level_25_P8_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P8_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -61751,6 +61557,7 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P8_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -61957,7 +61764,7 @@ function Trig_Race_Mode_Kills_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Race_Mode_Kills_Func001Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==udg_Player[GetForLoopIndexA()])
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == bj_forLoopAIndex
 endfunction
 function Trig_Race_Mode_Kills_Func002Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[1]==10)
@@ -61987,10 +61794,7 @@ function Trig_Race_Mode_Kills_Func002Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func002Func003001001(),Trig_Race_Mode_Kills_Func002Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func002C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(0)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 1
 endfunction
 function Trig_Race_Mode_Kills_Func003Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[2]==10)
@@ -62020,10 +61824,7 @@ function Trig_Race_Mode_Kills_Func003Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func003Func003001001(),Trig_Race_Mode_Kills_Func003Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func003C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(1)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 2
 endfunction
 function Trig_Race_Mode_Kills_Func004Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[3]==10)
@@ -62053,10 +61854,7 @@ function Trig_Race_Mode_Kills_Func004Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func004Func003001001(),Trig_Race_Mode_Kills_Func004Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func004C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(2)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 3
 endfunction
 function Trig_Race_Mode_Kills_Func005Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[4]==10)
@@ -62086,10 +61884,7 @@ function Trig_Race_Mode_Kills_Func005Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func005Func003001001(),Trig_Race_Mode_Kills_Func005Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func005C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(3)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 4
 endfunction
 function Trig_Race_Mode_Kills_Func006Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[5]==10)
@@ -62119,10 +61914,7 @@ function Trig_Race_Mode_Kills_Func006Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func006Func003001001(),Trig_Race_Mode_Kills_Func006Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func006C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(4)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 5
 endfunction
 function Trig_Race_Mode_Kills_Func007Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[6]==10)
@@ -62152,10 +61944,7 @@ function Trig_Race_Mode_Kills_Func007Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func007Func003001001(),Trig_Race_Mode_Kills_Func007Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func007C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(5)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 6
 endfunction
 function Trig_Race_Mode_Kills_Func008Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[7]==10)
@@ -62185,10 +61974,7 @@ function Trig_Race_Mode_Kills_Func008Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func008Func003001001(),Trig_Race_Mode_Kills_Func008Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func008C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(6)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 7
 endfunction
 function Trig_Race_Mode_Kills_Func009Func001001001 takes nothing returns boolean
 	return(udg_RaceModeKills[8]==10)
@@ -62218,10 +62004,7 @@ function Trig_Race_Mode_Kills_Func009Func003001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Race_Mode_Kills_Func009Func003001001(),Trig_Race_Mode_Kills_Func009Func003001002())
 endfunction
 function Trig_Race_Mode_Kills_Func009C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetKillingUnitBJ())==Player(7)))then
-		return false
-	endif
-	return true
+	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 8
 endfunction
 function Trig_Race_Mode_Kills_Actions takes nothing returns nothing
 	set bj_forLoopAIndex=1
@@ -63749,6 +63532,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P1)
 	if(Trig_Finish_Build_Race_P1_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63756,6 +63540,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63763,6 +63548,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63770,6 +63556,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63777,6 +63564,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63784,6 +63572,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63791,6 +63580,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63798,6 +63588,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63805,6 +63596,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63812,6 +63604,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P1_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 	else
 		call DoNothing()
 	endif
@@ -63978,6 +63771,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P2)
 	if(Trig_Finish_Build_Race_P2_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -63985,6 +63779,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -63992,6 +63787,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -63999,6 +63795,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64006,6 +63803,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64013,6 +63811,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64020,6 +63819,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64027,6 +63827,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64034,6 +63835,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64041,6 +63843,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P2_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 	else
 		call DoNothing()
 	endif
@@ -64208,6 +64011,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P3)
 	if(Trig_Finish_Build_Race_P3_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64215,6 +64019,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64222,6 +64027,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64229,6 +64035,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64236,6 +64043,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64243,6 +64051,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64250,6 +64059,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64257,6 +64067,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64264,6 +64075,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64271,6 +64083,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P3_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 	else
 		call DoNothing()
 	endif
@@ -64438,6 +64251,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P4)
 	if(Trig_Finish_Build_Race_P4_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64445,6 +64259,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64452,6 +64267,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64459,6 +64275,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64466,6 +64283,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64473,6 +64291,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64480,6 +64299,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64487,6 +64307,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64494,6 +64315,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64501,6 +64323,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P4_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 	else
 		call DoNothing()
 	endif
@@ -64668,6 +64491,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P5)
 	if(Trig_Finish_Build_Race_P5_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64675,6 +64499,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64682,6 +64507,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64689,6 +64515,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64696,6 +64523,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64703,6 +64531,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64710,6 +64539,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64717,6 +64547,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64724,6 +64555,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64731,6 +64563,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P5_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 	else
 		call DoNothing()
 	endif
@@ -64898,6 +64731,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P6)
 	if(Trig_Finish_Build_Race_P6_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64905,6 +64739,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64912,6 +64747,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64919,6 +64755,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64926,6 +64763,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64933,6 +64771,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64940,6 +64779,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64947,6 +64787,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64954,6 +64795,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -64961,6 +64803,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P6_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 	else
 		call DoNothing()
 	endif
@@ -65128,6 +64971,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P7)
 	if(Trig_Finish_Build_Race_P7_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65135,6 +64979,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65142,6 +64987,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65149,6 +64995,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65156,6 +65003,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65163,6 +65011,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65170,6 +65019,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65177,6 +65027,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65184,6 +65035,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65191,6 +65043,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P7_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 	else
 		call DoNothing()
 	endif
@@ -65358,6 +65211,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P8)
 	if(Trig_Finish_Build_Race_P8_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65365,6 +65219,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func032001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65372,6 +65227,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func035001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65379,6 +65235,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func038001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65386,6 +65243,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func041001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65393,6 +65251,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func044001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65400,6 +65259,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func047001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65407,6 +65267,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func050001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65414,6 +65275,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func053001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
@@ -65421,6 +65283,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(1.50)
 	if(Trig_Finish_Build_Race_P8_Func056001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
+		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 	else
 		call DoNothing()
 	endif
