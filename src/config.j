@@ -25,6 +25,7 @@ function config takes nothing returns nothing
 	loop
 		set p = Player (i)
 
+		call ForcePlayerStartLocation (p, i)
 		call SetPlayerColor (p, ConvertPlayerColor (i))
 		call SetPlayerRacePreference (p, RACE_PREF_HUMAN)
 		call SetPlayerRaceSelectable (p, false)
