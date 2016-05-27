@@ -12,6 +12,11 @@ return {
 
 		'gem-3_1',
 
+		'settings',
+		'settings.hcl',
+		'settings.dialog',
+		'settings.initialize',
+
 		'main',
 		'config'
 	},

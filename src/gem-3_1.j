@@ -32,8 +32,6 @@ globals
 	boolean array udg_SpecialsPLACED3
 	unit array udg_GemPlaced3
 	unit array udg_KeepingGem3
-	dialog udg_SettingsDIA=null
-	button array udg_SettingsBTN
 	unit array udg_GemPlaced4
 	unit array udg_KeepingGem4
 	boolean array udg_SpecialsPLACED4
@@ -106,8 +104,6 @@ globals
 	boolean array udg_BJD1stHit
 	boolean array udg_BJCanHit
 	integer array udg_FirstKillNo
-	dialog udg_RaceClassDIA=null
-	button array udg_RaceClassBTN
 	integer udg_Mode=0
 	integer array udg_RaceModeKills
 	integer array udg_RLevel
@@ -282,10 +278,6 @@ globals
 	sound gg_snd_BansheeGhostYesAttack1=null
 	sound gg_snd_BansheeGhostYesAttack2=null
 	sound gg_snd_BloodLustCry=null
-	trigger gg_trg_Game_settings_1=null
-	trigger gg_trg_Game_settings_2=null
-	trigger gg_trg_Game_settings_3=null
-	trigger gg_trg_Game_settings_ClassRace=null
 	trigger gg_trg_Classic_Multi_Setup=null
 	trigger gg_trg_Update_Classic_multi=null
 	trigger gg_trg_kills_and_remove_Corpse=null
@@ -704,7 +696,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_SpecialsPLACED3[i]=false
 		set i=i+1
 	endloop
-	set udg_SettingsDIA=DialogCreate()
 	set i=0
 	loop
 		exitwhen(i>40)
@@ -936,7 +927,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_FirstKillNo[i]=0
 		set i=i+1
 	endloop
-	set udg_RaceClassDIA=DialogCreate()
 	set udg_Mode=0
 	set i=0
 	loop
@@ -1465,236 +1455,6 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_Slot_Run_7=Rect(-608.0,-864.0,-512.0,-768.0)
 	set gg_rct_Slot_Run_6=Rect(-544.0,-320.0,-448.0,-192.0)
 endfunction
-function Trig_Game_settings_1_Actions takes nothing returns nothing
-	call SetUserControlForceOff(GetPlayersAll())
-	call SetUserControlForceOn(bj_FORCE_PLAYER[0])
-	call DialogSetMessageBJ(udg_SettingsDIA,"|cff33ff33Please choose difficulty|r")
-	call DialogAddButtonBJ(udg_SettingsDIA,"Easy")
-	set udg_SettingsBTN[1]=GetLastCreatedButtonBJ()
-	call DialogAddButtonBJ(udg_SettingsDIA,"Normal")
-	set udg_SettingsBTN[2]=GetLastCreatedButtonBJ()
-	call DialogAddButtonBJ(udg_SettingsDIA,"Hard")
-	set udg_SettingsBTN[3]=GetLastCreatedButtonBJ()
-	call DialogAddButtonBJ(udg_SettingsDIA,"Extreme")
-	set udg_SettingsBTN[4]=GetLastCreatedButtonBJ()
-	call DialogSetMessageBJ(udg_RaceClassDIA,"|cff33ff33Select Mode|r")
-	call DialogAddButtonBJ(udg_RaceClassDIA,"Classic")
-	set udg_RaceClassBTN[1]=GetLastCreatedButtonBJ()
-	call DialogAddButtonBJ(udg_RaceClassDIA,"Race")
-	set udg_RaceClassBTN[2]=GetLastCreatedButtonBJ()
-endfunction
-function InitTrig_Game_settings_1 takes nothing returns nothing
-	set gg_trg_Game_settings_1=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Game_settings_1,0.10)
-	call TriggerAddAction(gg_trg_Game_settings_1,function Trig_Game_settings_1_Actions)
-endfunction
-function Trig_Game_settings_2_Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Game_settings_2_Actions takes nothing returns nothing
-	if(Trig_Game_settings_2_Func001001())then
-		call DialogDisplayBJ(true,udg_SettingsDIA,Player(0))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_Game_settings_2 takes nothing returns nothing
-	set gg_trg_Game_settings_2=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Game_settings_2,1.00)
-	call TriggerAddAction(gg_trg_Game_settings_2,function Trig_Game_settings_2_Actions)
-endfunction
-function Trig_Game_settings_3_Func003001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[1])
-endfunction
-function Trig_Game_settings_3_Func004001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[2])
-endfunction
-function Trig_Game_settings_3_Func005001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[3])
-endfunction
-function Trig_Game_settings_3_Func006001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[3])
-endfunction
-function Trig_Game_settings_3_Func007001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[4])
-endfunction
-function Trig_Game_settings_3_Func008001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[4])
-endfunction
-function Trig_Game_settings_3_Func009001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[1])
-endfunction
-function Trig_Game_settings_3_Func010001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[2])
-endfunction
-function Trig_Game_settings_3_Func011001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[3])
-endfunction
-function Trig_Game_settings_3_Func012001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_SettingsBTN[4])
-endfunction
-function Trig_Game_settings_3_Func014C takes nothing returns boolean
-	if(not(udg_DiffLevel==4))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Game_settings_3_Actions takes nothing returns nothing
-	call DisableTrigger(GetTriggeringTrigger())
-	call DialogDisplayBJ(false,udg_SettingsDIA,GetTriggerPlayer())
-	if(Trig_Game_settings_3_Func003001())then
-		call UnitAddAbilityBJ('A00S',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func004001())then
-		call UnitAddAbilityBJ('A00T',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func005001())then
-		call UnitAddAbilityBJ('A01E',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func006001())then
-		set udg_DiffLevel=3
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func007001())then
-		call UnitAddAbilityBJ('A00U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func008001())then
-		set udg_DiffLevel=4
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func009001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff0000Game has been set on Easy mode|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func010001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff0000Game has been set on Normal mode|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func011001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff0000Game has been set on Hard mode|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_3_Func012001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff0000Game has been set on Extreme mode|r")
-	else
-		call DoNothing()
-	endif
-	call DialogDisplayBJ(true,udg_RaceClassDIA,Player(0))
-	if(Trig_Game_settings_3_Func014C())then
-		set udg_SpawningUnit[17]='h02I'
-		set udg_SpawningUnit[18]='h037'
-		set udg_SpawningUnit[19]='h038'
-		set udg_SpawningUnit[21]='h039'
-		set udg_SpawningUnit[22]='h03A'
-		set udg_SpawningUnit[23]='h03B'
-		set udg_SpawningUnit[25]='h03C'
-		set udg_SpawningUnit[26]='h03D'
-		set udg_SpawningUnit[27]='h03E'
-		set udg_SpawningUnit[29]='h03F'
-		set udg_SpawningUnit[30]='h03G'
-		set udg_SpawningUnit[31]='h03H'
-		set udg_SpawningUnit[33]='h03I'
-		set udg_SpawningUnit[34]='h03J'
-		set udg_SpawningUnit[35]='h03K'
-		set udg_SpawningUnit[37]='h03L'
-		set udg_SpawningUnit[38]='h03M'
-		set udg_SpawningUnit[39]='h03N'
-		set udg_SpawningUnit[41]='h03O'
-		set udg_SpawningUnit[42]='h03P'
-		set udg_SpawningUnit[43]='h04K'
-		set udg_SpawningUnit[45]='h04L'
-		set udg_SpawningUnit[46]='h04M'
-		set udg_SpawningUnit[47]='h04N'
-		set udg_SpawningUnit[49]='h04O'
-		set udg_SpawningUnit[50]='h04P'
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffff00ffFrom level 17 onwards, all ground enemies will be Extreme Creeps.|r")
-	else
-	endif
-endfunction
-function InitTrig_Game_settings_3 takes nothing returns nothing
-	set gg_trg_Game_settings_3=CreateTrigger()
-	call TriggerRegisterDialogEventBJ(gg_trg_Game_settings_3,udg_SettingsDIA)
-	call TriggerAddAction(gg_trg_Game_settings_3,function Trig_Game_settings_3_Actions)
-endfunction
-function Trig_Game_settings_ClassRace_Func002001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[1])
-endfunction
-function Trig_Game_settings_ClassRace_Func003001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[1])
-endfunction
-function Trig_Game_settings_ClassRace_Func004001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[2])
-endfunction
-function Trig_Game_settings_ClassRace_Func005001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[2])
-endfunction
-function Trig_Game_settings_ClassRace_Func006001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[2])
-endfunction
-function Trig_Game_settings_ClassRace_Func007001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[2])
-endfunction
-function Trig_Game_settings_ClassRace_Func012001 takes nothing returns boolean
-	return(GetClickedButtonBJ()==udg_RaceClassBTN[2])
-endfunction
-function Trig_Game_settings_ClassRace_Actions takes nothing returns nothing
-	call DialogDisplayBJ(false,udg_RaceClassDIA,Player(0))
-	if(Trig_Game_settings_ClassRace_Func002001())then
-		set udg_Mode=1
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_ClassRace_Func003001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff22ff22Game has been set to Classic Mode|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_ClassRace_Func004001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff22ff22Game has been set to Race Mode:|r The first Player to defeat level 50 wins! ")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_ClassRace_Func005001())then
-		set udg_Mode=2
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_ClassRace_Func006001())then
-		call PauseTimerBJ(true,udg_SpawnTimer)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Game_settings_ClassRace_Func007001())then
-		call TimerDialogDisplayBJ(false,udg_TimerWindow)
-	else
-		call DoNothing()
-	endif
-	call SetUserControlForceOn(GetPlayersAll())
-	call DisableTrigger(GetTriggeringTrigger())
-	if(Trig_Game_settings_ClassRace_Func012001())then
-		set udg_Level=2
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_Game_settings_ClassRace takes nothing returns nothing
-	set gg_trg_Game_settings_ClassRace=CreateTrigger()
-	call TriggerRegisterDialogEventBJ(gg_trg_Game_settings_ClassRace,udg_RaceClassDIA)
-	call TriggerAddAction(gg_trg_Game_settings_ClassRace,function Trig_Game_settings_ClassRace_Actions)
-endfunction
 function Trig_Classic_Multi_Setup_Conditions takes nothing returns boolean
 	if(not(udg_Mode==1))then
 		return false
@@ -1932,54 +1692,6 @@ endfunction
 function Trig_Inihilization_Func071002 takes nothing returns nothing
 	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_GOLD,10)
 endfunction
-function Trig_Inihilization_Func094C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(0))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func095C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(1))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func096C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(2))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func097C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(3))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func098C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(4))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func099C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(5))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func100C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(6))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Inihilization_Func101C takes nothing returns boolean
-	if(not(GetPlayerSlotState(Player(7))==PLAYER_SLOT_STATE_PLAYING))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Inihilization_Actions takes nothing returns nothing
 	set udg_Player[1]=Player(0)
 	set udg_Player[2]=Player(1)
@@ -2074,47 +1786,6 @@ function Trig_Inihilization_Actions takes nothing returns nothing
 	set udg_SpawnUnit=udg_SpawningUnit[1]
 	set udg_SwapUnitPosition[3]=GetRectCenter(gg_rct_Spawn_Creator)
 	call TriggerSleepAction(0.50)
-	if(Trig_Inihilization_Func094C())then
-		set udg_PlayerHERE[1]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(0),GetRectCenter(gg_rct_1start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func095C())then
-		set udg_PlayerHERE[2]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(1),GetRectCenter(gg_rct_2start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func096C())then
-		set udg_PlayerHERE[3]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(2),GetRectCenter(gg_rct_3start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func097C())then
-		set udg_PlayerHERE[4]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(3),GetRectCenter(gg_rct_4start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func098C())then
-		set udg_PlayerHERE[5]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(4),GetRectCenter(gg_rct_5start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func099C())then
-		set udg_PlayerHERE[6]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(5),GetRectCenter(gg_rct_6start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func100C())then
-		set udg_PlayerHERE[7]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(6),GetRectCenter(gg_rct_7start),bj_UNIT_FACING)
-	else
-	endif
-	if(Trig_Inihilization_Func101C())then
-		set udg_PlayerHERE[8]=true
-		call CreateNUnitsAtLoc(1,'u000',Player(7),GetRectCenter(gg_rct_8start),bj_UNIT_FACING)
-	else
-	endif
-	call TriggerSleepAction(1.00)
 	set udg_DowngradeAbleGems[1]='h007'
 	set udg_DowngradeAbleGems[2]='h03S'
 	set udg_DowngradeAbleGems[3]='h008'
@@ -2178,11 +1849,6 @@ function Trig_First_Level_Timer_Starting_Actions takes nothing returns nothing
 	set udg_TimerWindow=GetLastCreatedTimerDialogBJ()
 	call TimerDialogDisplayBJ(true,udg_TimerWindow)
 	call ConditionalTriggerExecute(gg_trg_Setup_New_Round_1)
-endfunction
-function InitTrig_First_Level_Timer_Starting takes nothing returns nothing
-	set gg_trg_First_Level_Timer_Starting=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_First_Level_Timer_Starting,0.05)
-	call TriggerAddAction(gg_trg_First_Level_Timer_Starting,function Trig_First_Level_Timer_Starting_Actions)
 endfunction
 function Trig_Round_Finish_reset_Conditions takes nothing returns boolean
 	if(not(udg_Level<=41))then
@@ -4688,11 +4354,6 @@ function Trig_Setup_LeaderBoards_Actions takes nothing returns nothing
 		call LeaderboardSetLabelColorBJ(udg_Leaderboard[GetForLoopIndexA()],100,100.00,100.00,0)
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
-endfunction
-function InitTrig_Setup_LeaderBoards takes nothing returns nothing
-	set gg_trg_Setup_LeaderBoards=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Setup_LeaderBoards,0.03)
-	call TriggerAddAction(gg_trg_Setup_LeaderBoards,function Trig_Setup_LeaderBoards_Actions)
 endfunction
 function Trig_Quests_messages_Actions takes nothing returns nothing
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","[BK's] Gem TD was created with the standard Wc3 Editor. If you see any resembalance to other tower defences like Poker TD or Cube defence, I have not looked at any of those maps, all the triggers I have taught myself. Over 100 hrs of straight work in this map so please don't ask how to create combines and such.|nThanks to turbopower for all the beta testing.","ReplaceableTextures\\CommandButtons\\BTNSoulBurn.blp")

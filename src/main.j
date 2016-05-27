@@ -1,13 +1,8 @@
 function InitCustomTriggers takes nothing returns nothing
-	call InitTrig_Game_settings_1 ()
-	call InitTrig_Game_settings_2 ()
-	call InitTrig_Game_settings_3 ()
-	call InitTrig_Game_settings_ClassRace ()
 	call InitTrig_Classic_Multi_Setup ()
 	call InitTrig_Update_Classic_multi ()
 	call InitTrig_kills_and_remove_Corpse ()
 	call InitTrig_Inihilization ()
-	call InitTrig_First_Level_Timer_Starting ()
 	call InitTrig_Round_Finish_reset ()
 	call InitTrig_Spawning ()
 	call InitTrig_Setup_New_Round_1 ()
@@ -16,7 +11,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Gem_Awards ()
 	call InitTrig_Gem_Awards_Upgrade_debug ()
 	call InitTrig_Player_Leaves ()
-	call InitTrig_Setup_LeaderBoards ()
 	call InitTrig_Quests_messages ()
 	call InitTrig_Lvl_15_1st_kill_money_bonus ()
 	call InitTrig_Lvl_15_2nd_kill_money_bonus ()
@@ -324,4 +318,7 @@ function main takes nothing returns nothing
 	call InitGlobals ()
 	call InitCustomTriggers ()
 	call RunInitializationTriggers ()
+
+	// Must occur after all Gem 3.1 initializations (for now).
+	call ExecuteFunc ("Settings__Initialize")
 endfunction
