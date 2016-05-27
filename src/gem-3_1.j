@@ -49,7 +49,6 @@ globals
 	boolean array udg_SpecialsPLACED6
 	boolean array udg_SpecialsPLACED7
 	boolean array udg_SpecialsPLACED8
-	unit array udg_IntroUnits
 	integer array udg_Damage
 	boolean array udg_PlayerDie
 	integer array udg_SpecialsROUNDp1
@@ -245,12 +244,6 @@ globals
 	rect gg_rct_Build4=null
 	rect gg_rct_Build5=null
 	rect gg_rct_Spawn_Creator=null
-	rect gg_rct_Intromove1=null
-	rect gg_rct_Intromove2=null
-	rect gg_rct_Intromove3=null
-	rect gg_rct_Intromove4=null
-	rect gg_rct_Intromove5=null
-	rect gg_rct_RemovingIntroUnits=null
 	rect gg_rct_Slot_Run_1=null
 	rect gg_rct_Slot_Run_2=null
 	rect gg_rct_Slot_Run_3=null
@@ -349,10 +342,6 @@ globals
 	trigger gg_trg_Ancient_Slate=null
 	trigger gg_trg_Lucky_China_Jade=null
 	trigger gg_trg_Opal_Vein_SLate=null
-	trigger gg_trg_Intro_activate=null
-	trigger gg_trg_Intro_Movie=null
-	trigger gg_trg_Intro_Chat=null
-	trigger gg_trg_Intro_Timed_out=null
 	trigger gg_trg_Mid_game_dmg_test_inihilaize=null
 	trigger gg_trg_Mid_game_dmg_test_Finish=null
 	trigger gg_trg_Mid_game_dmg_test_kills=null
@@ -1465,12 +1454,6 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_Build4=Rect(5024.0,4448.0,5152.0,4576.0)
 	set gg_rct_Build5=Rect(5152.0,4448.0,5280.0,4576.0)
 	set gg_rct_Spawn_Creator=Rect(4896.0,4768.0,5024.0,4896.0)
-	set gg_rct_Intromove1=Rect(4704.0,4608.0,4768.0,4672.0)
-	set gg_rct_Intromove2=Rect(4800.0,4608.0,4864.0,4672.0)
-	set gg_rct_Intromove3=Rect(4928.0,4608.0,4992.0,4672.0)
-	set gg_rct_Intromove4=Rect(5056.0,4608.0,5120.0,4672.0)
-	set gg_rct_Intromove5=Rect(5184.0,4608.0,5248.0,4672.0)
-	set gg_rct_RemovingIntroUnits=Rect(4576.0,4384.0,5344.0,4640.0)
 	set gg_rct_Slot_Run_1=Rect(-608.0,160.0,-512.0,256.0)
 	set gg_rct_Slot_Run_2=Rect(-64.0,-704.0,64.0,-608.0)
 	set gg_rct_Slot_Run_3=Rect(512.0,160.0,608.0,256.0)
@@ -1701,8 +1684,6 @@ function Trig_Game_settings_ClassRace_Actions takes nothing returns nothing
 	endif
 	call SetUserControlForceOn(GetPlayersAll())
 	call DisableTrigger(GetTriggeringTrigger())
-	call TriggerSleepAction(10.00)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,("|cffffff00"+(GetPlayerName(Player(0))+" can type |r-intro |cffffff00within the next 10 seconds to view the Tutorial.|r")))
 	if(Trig_Game_settings_ClassRace_Func012001())then
 		set udg_Level=2
 	else
@@ -12587,157 +12568,6 @@ function InitTrig_Opal_Vein_SLate takes nothing returns nothing
 	call TriggerRegisterPlayerUnitEventSimple(gg_trg_Opal_Vein_SLate,Player(11),EVENT_PLAYER_UNIT_ATTACKED)
 	call TriggerAddCondition(gg_trg_Opal_Vein_SLate,Condition(function Trig_Opal_Vein_SLate_Conditions))
 	call TriggerAddAction(gg_trg_Opal_Vein_SLate,function Trig_Opal_Vein_SLate_Actions)
-endfunction
-function Trig_Intro_activate_Actions takes nothing returns nothing
-	call DisableTrigger(GetTriggeringTrigger())
-	call SetUserControlForceOff(GetPlayersAll())
-	call ConditionalTriggerExecute(gg_trg_Intro_Chat)
-	call ConditionalTriggerExecute(gg_trg_Intro_Movie)
-	call CinematicModeBJ(true,GetPlayersAll())
-endfunction
-function InitTrig_Intro_activate takes nothing returns nothing
-	set gg_trg_Intro_activate=CreateTrigger()
-	call TriggerRegisterPlayerChatEvent(gg_trg_Intro_activate,Player(0),"-intro",true)
-	call TriggerAddAction(gg_trg_Intro_activate,function Trig_Intro_activate_Actions)
-endfunction
-function Trig_Intro_Movie_Conditions takes nothing returns boolean
-	if(not(udg_Level==1))then
-		return false
-	endif
-	if(not(udg_BuildingPeriod==true))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Intro_Movie_Func010002 takes nothing returns nothing
-	call PanCameraToTimedLocForPlayer(GetEnumPlayer(),GetRectCenter(gg_rct_Intromove3),0)
-endfunction
-function Trig_Intro_Movie_Func074002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Intro_Movie_Func075001 takes nothing returns boolean
-	return(udg_Mode==1)
-endfunction
-function Trig_Intro_Movie_Func079002 takes nothing returns nothing
-	call PanCameraToTimedLocForPlayer(GetEnumPlayer(),GetUnitLoc(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetEnumPlayer(),'u000'))),0)
-endfunction
-function Trig_Intro_Movie_Actions takes nothing returns nothing
-	call DisableTrigger(GetTriggeringTrigger())
-	call PauseTimerBJ(true,udg_SpawnTimer)
-	call DisplayTextToForce(GetPlayersAll(),"Tutorial will now be shown.")
-	call SetUserControlForceOff(GetPlayersAll())
-	call CinematicModeBJ(true,GetPlayersAll())
-	call CinematicFadeBJ(bj_CINEFADETYPE_FADEOUT,1.50,"ReplaceableTextures\\CameraMasks\\Black_mask.blp",0,0,0,0)
-	call TriggerSleepAction(1.50)
-	call ForForce(GetPlayersAll(),function Trig_Intro_Movie_Func010002)
-	call CreateNUnitsAtLocFacingLocBJ(1,'u000',Player(PLAYER_NEUTRAL_PASSIVE),GetRectCenter(gg_rct_Spawn_Creator),GetRectCenter(gg_rct_Build3))
-	set udg_IntroUnits[1]=GetLastCreatedUnit()
-	call TriggerSleepAction(1.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"Welcome to [BK's] Gem Tower Defence",GetRectCenter(GetPlayableMapRect()),null,"This introduction will show you how to create gems.|nPlease do not press ESC during this intro.",bj_TIMETYPE_SET,4.00,true)
-	call TriggerSleepAction(2)
-	call CinematicFadeBJ(bj_CINEFADETYPE_FADEIN,1.00,"ReplaceableTextures\\CameraMasks\\Black_mask.blp",0,0,0,0)
-	call TriggerSleepAction(1.50)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"First of all select your |cff33ff33Miner|r and order him to build |cff33ff335 Random Gems|r.",bj_TIMETYPE_SET,5.00,true)
-	call TriggerSleepAction(1.50)
-	call CreateTextTagLocBJ("Do not press Esc during intro",GetRectCenter(GetPlayableMapRect()),0,10,100,0.00,0.00,0)
-	call ShowTextTagForceBJ(true,GetLastCreatedTextTag(),GetPlayersAll())
-	call IssuePointOrderLocBJ(udg_IntroUnits[1],"move",GetRectCenter(gg_rct_Intromove1))
-	call TriggerSleepAction(0.50)
-	call CreateNUnitsAtLoc(1,'h002',Player(PLAYER_NEUTRAL_PASSIVE),GetRectCenter(gg_rct_Build1),bj_UNIT_FACING)
-	call SetUnitFacingToFaceUnitTimed(udg_IntroUnits[1],GetLastCreatedUnit(),0.10)
-	set udg_IntroUnits[2]=GetLastCreatedUnit()
-	call TriggerSleepAction(0.25)
-	call IssuePointOrderLocBJ(udg_IntroUnits[1],"move",GetRectCenter(gg_rct_Intromove2))
-	call TriggerSleepAction(0.15)
-	call CreateNUnitsAtLoc(1,'h003',Player(PLAYER_NEUTRAL_PASSIVE),GetRectCenter(gg_rct_Build2),bj_UNIT_FACING)
-	call SetUnitFacingToFaceUnitTimed(udg_IntroUnits[1],GetLastCreatedUnit(),0.10)
-	set udg_IntroUnits[3]=GetLastCreatedUnit()
-	call TriggerSleepAction(0.25)
-	call IssuePointOrderLocBJ(udg_IntroUnits[1],"move",GetRectCenter(gg_rct_Intromove3))
-	call TriggerSleepAction(0.15)
-	call CreateNUnitsAtLoc(1,'h002',Player(PLAYER_NEUTRAL_PASSIVE),GetRectCenter(gg_rct_Build3),bj_UNIT_FACING)
-	call SetUnitFacingToFaceUnitTimed(udg_IntroUnits[1],GetLastCreatedUnit(),0.10)
-	set udg_IntroUnits[4]=GetLastCreatedUnit()
-	call TriggerSleepAction(0.25)
-	call IssuePointOrderLocBJ(udg_IntroUnits[1],"move",GetRectCenter(gg_rct_Intromove4))
-	call TriggerSleepAction(0.15)
-	call CreateNUnitsAtLoc(1,'h000',Player(PLAYER_NEUTRAL_PASSIVE),GetRectCenter(gg_rct_Build4),bj_UNIT_FACING)
-	call SetUnitFacingToFaceUnitTimed(udg_IntroUnits[1],GetLastCreatedUnit(),0.10)
-	set udg_IntroUnits[5]=GetLastCreatedUnit()
-	call TriggerSleepAction(0.25)
-	call IssuePointOrderLocBJ(udg_IntroUnits[1],"move",GetRectCenter(gg_rct_Intromove5))
-	call TriggerSleepAction(0.15)
-	call CreateNUnitsAtLoc(1,'h004',Player(PLAYER_NEUTRAL_PASSIVE),GetRectCenter(gg_rct_Build5),bj_UNIT_FACING)
-	call SetUnitFacingToFaceUnitTimed(udg_IntroUnits[1],GetLastCreatedUnit(),0.10)
-	set udg_IntroUnits[6]=GetLastCreatedUnit()
-	call TriggerSleepAction(0.25)
-	call IssuePointOrderLocBJ(udg_IntroUnits[1],"move",GetRectCenter(gg_rct_Spawn_Creator))
-	call TriggerSleepAction(1.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"Once you have built 5 gems you can choose which one you want to |cff33ff33Keep|r or which you want to |cff33ff33combine|r.",bj_TIMETYPE_SET,5.00,true)
-	call TriggerSleepAction(4.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"You can only |cff33ff33combine|r gems if you have created 2 or more of the same. Combining gems will give you the next grade of gem.",bj_TIMETYPE_SET,5.00,true)
-	call TriggerSleepAction(4.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"In this case, we have two |cff33ff33Chipped Emeralds|r. I will select any one of them and click the |cff33ff33blue combine button|r.",bj_TIMETYPE_SET,5.00,true)
-	call TriggerSleepAction(2)
-	set bj_forLoopAIndex=3
-	set bj_forLoopAIndexEnd=6
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ReplaceUnitBJ(udg_IntroUnits[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call ReplaceUnitBJ(udg_IntroUnits[2],'h009',bj_UNIT_STATE_METHOD_MAXIMUM)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_IntroUnits[2]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
-	call TriggerSleepAction(2.50)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"Now i have created a |cff33ff33Flawed Emerald|r. It is more powerful and better.|n|cffff0000If you don't get 2 or more of the same gem. Press the red \"keep button\" to one.|r",bj_TIMETYPE_SET,5.00,true)
-	call TriggerSleepAction(3.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"You will notice the rest of the gems turn into |cff33ff33Mazing Rocks|r. These are used to create mazes in the game. You can also remove unwanted Mazing Rocks.",bj_TIMETYPE_SET,5.00,true)
-	call TriggerSleepAction(5.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"To create |cff33ff33Special Towers|r you will need all the gems required in the recipe.|nIf you are lucky enough, you can create a special tower straight up with your 5 placed gems. Otherwise, you can use your previous rounds gems to create them. |cff33ff33The game will notify you|r if you have all the gems required to create a special tower.",bj_TIMETYPE_SET,8.00,true)
-	call TriggerSleepAction(8.00)
-	call TransmissionFromUnitTypeWithNameBJ(GetPlayersAll(),Player(0),'nser',"",GetRectCenter(GetPlayableMapRect()),null,"Last of all, it is important to use your gold to upgrade your Gem quality. To do this, select your |cff33ff33Mine|r and click the |cff33ff33Increase Gem Quality|r button. This increases the chance to create better gems. You can also use gold to |cff33ff33Buy Lives.|r",bj_TIMETYPE_SET,6.00,true)
-	call TriggerSleepAction(6.00)
-	call RemoveUnit(udg_IntroUnits[1])
-	call ForGroupBJ(GetUnitsInRectAll(gg_rct_RemovingIntroUnits),function Trig_Intro_Movie_Func074002)
-	if(Trig_Intro_Movie_Func075001())then
-		call PauseTimerBJ(false,udg_SpawnTimer)
-	else
-		call DoNothing()
-	endif
-	call SetUserControlForceOn(GetPlayersAll())
-	call CinematicModeBJ(false,GetPlayersAll())
-	call TriggerSleepAction(1.00)
-	call ForForce(GetPlayersAll(),function Trig_Intro_Movie_Func079002)
-	call DestroyTextTagBJ(GetLastCreatedTextTag())
-endfunction
-function InitTrig_Intro_Movie takes nothing returns nothing
-	set gg_trg_Intro_Movie=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Intro_Movie,Condition(function Trig_Intro_Movie_Conditions))
-	call TriggerAddAction(gg_trg_Intro_Movie,function Trig_Intro_Movie_Actions)
-endfunction
-function Trig_Intro_Chat_Actions takes nothing returns nothing
-	call TriggerSleepAction(5.00)
-	call DisplayTimedTextToForce(GetPlayersAll(),31.00,"|cffff0000Don't press esc during the intro|r")
-	call TriggerSleepAction(2.00)
-	call DisplayTimedTextToForce(GetPlayersAll(),30,"|cffffff00- Important information -|r")
-	call TriggerSleepAction(1.00)
-	call DisplayTimedTextToForce(GetPlayersAll(),30,"- Build 5 gems per round.")
-	call DisplayTimedTextToForce(GetPlayersAll(),30,"- Press |cff33ff33Keep|r or |cff33ff33Combine|r to one of them.")
-	call DisplayTimedTextToForce(GetPlayersAll(),30,"- Maze with your rocks")
-	call DisplayTimedTextToForce(GetPlayersAll(),30,"- Upgrade \"Increase Gem Quality\" at your Mine.")
-endfunction
-function InitTrig_Intro_Chat takes nothing returns nothing
-	set gg_trg_Intro_Chat=CreateTrigger()
-	call TriggerAddAction(gg_trg_Intro_Chat,function Trig_Intro_Chat_Actions)
-endfunction
-function Trig_Intro_Timed_out_Actions takes nothing returns nothing
-	call DisableTrigger(gg_trg_Intro_activate)
-	call DisableTrigger(GetTriggeringTrigger())
-endfunction
-function InitTrig_Intro_Timed_out takes nothing returns nothing
-	set gg_trg_Intro_Timed_out=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Intro_Timed_out,25.00)
-	call TriggerAddAction(gg_trg_Intro_Timed_out,function Trig_Intro_Timed_out_Actions)
 endfunction
 function Trig_Mid_game_dmg_test_inihilaize_Conditions takes nothing returns boolean
 	if(not(udg_Mode==1))then
