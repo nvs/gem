@@ -2,7 +2,7 @@
 //
 // This system is simply a JASS version of the HCL library.  It allows reading
 // a command string that has been transparently encoded into player handicaps.
-// This process is almost always done by hosting bots.
+// This process is almost always only done by hosting bots.
 //
 // Notes:
 // - Empty slots are not considered, however computer ones are.
