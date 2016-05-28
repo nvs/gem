@@ -278,7 +278,6 @@ globals
 	sound gg_snd_BansheeGhostYesAttack1=null
 	sound gg_snd_BansheeGhostYesAttack2=null
 	sound gg_snd_BloodLustCry=null
-	trigger gg_trg_Classic_Multi_Setup=null
 	trigger gg_trg_Update_Classic_multi=null
 	trigger gg_trg_kills_and_remove_Corpse=null
 	trigger gg_trg_Inihilization=null
@@ -536,7 +535,6 @@ globals
 	trigger gg_trg_BJ_Player_Stays_2=null
 	trigger gg_trg_BJ_PlayerDealer_Runoff_2=null
 	trigger gg_trg_Kills_ReRunner=null
-	trigger gg_trg_Race_Multi=null
 	trigger gg_trg_Level_25_P1=null
 	trigger gg_trg_Fin_P1_2=null
 	trigger gg_trg_Level_25_P2=null
@@ -1615,12 +1613,6 @@ function Trig_Classic_Multi_Setup_Actions takes nothing returns nothing
 		call DoNothing()
 	endif
 	call MultiboardDisplayBJ(false,udg_MainMulti)
-endfunction
-function InitTrig_Classic_Multi_Setup takes nothing returns nothing
-	set gg_trg_Classic_Multi_Setup=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Classic_Multi_Setup,10.00)
-	call TriggerAddCondition(gg_trg_Classic_Multi_Setup,Condition(function Trig_Classic_Multi_Setup_Conditions))
-	call TriggerAddAction(gg_trg_Classic_Multi_Setup,function Trig_Classic_Multi_Setup_Actions)
 endfunction
 function Trig_Update_Classic_multi_Conditions takes nothing returns boolean
 	if(not(udg_Mode==1))then
@@ -59968,12 +59960,6 @@ function Trig_Race_Multi_Actions takes nothing returns nothing
 		call LeaderboardDisplayBJ(false,udg_Leaderboard[GetForLoopIndexA()])
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
-endfunction
-function InitTrig_Race_Multi takes nothing returns nothing
-	set gg_trg_Race_Multi=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Race_Multi,10.00)
-	call TriggerAddCondition(gg_trg_Race_Multi,Condition(function Trig_Race_Multi_Conditions))
-	call TriggerAddAction(gg_trg_Race_Multi,function Trig_Race_Multi_Actions)
 endfunction
 function Trig_Level_25_P1_Conditions takes nothing returns boolean
 	if(not(udg_Rmode25[1]==false))then

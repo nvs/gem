@@ -1,5 +1,4 @@
 function InitCustomTriggers takes nothing returns nothing
-	call InitTrig_Classic_Multi_Setup ()
 	call InitTrig_Update_Classic_multi ()
 	call InitTrig_kills_and_remove_Corpse ()
 	call InitTrig_Inihilization ()
@@ -257,7 +256,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_BJ_Player_Stays_2 ()
 	call InitTrig_BJ_PlayerDealer_Runoff_2 ()
 	call InitTrig_Kills_ReRunner ()
-	call InitTrig_Race_Multi ()
 	call InitTrig_Level_25_P1 ()
 	call InitTrig_Fin_P1_2 ()
 	call InitTrig_Level_25_P2 ()

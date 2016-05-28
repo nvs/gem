@@ -169,8 +169,13 @@ function Settings__Setup_Game takes nothing returns nothing
 
 	call Settings___Setup_Mode ()
 	call Settings___Setup_Difficulty ()
-
 	call Settings___Create_Miners ()
+
+	if udg_Mode == 1 then
+		call Trig_Classic_Multi_Setup_Actions ()
+	elseif udg_Mode == 2 then
+		call Trig_Race_Multi_Actions ()
+	endif
 endfunction
 
 function Settings___Call_Setup_Game takes nothing returns nothing
