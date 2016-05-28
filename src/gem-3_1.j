@@ -282,7 +282,6 @@ globals
 	trigger gg_trg_Update_Classic_multi=null
 	trigger gg_trg_kills_and_remove_Corpse=null
 	trigger gg_trg_Inihilization=null
-	trigger gg_trg_First_Level_Timer_Starting=null
 	trigger gg_trg_Round_Finish_reset=null
 	trigger gg_trg_Spawning=null
 	trigger gg_trg_Setup_New_Round_1=null
@@ -291,7 +290,6 @@ globals
 	trigger gg_trg_Gem_Awards=null
 	trigger gg_trg_Gem_Awards_Upgrade_debug=null
 	trigger gg_trg_Player_Leaves=null
-	trigger gg_trg_Setup_LeaderBoards=null
 	trigger gg_trg_Quests_messages=null
 	trigger gg_trg_Lvl_15_1st_kill_money_bonus=null
 	trigger gg_trg_Lvl_15_2nd_kill_money_bonus=null
