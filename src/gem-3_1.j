@@ -1451,12 +1451,6 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_Slot_Run_7=Rect(-608.0,-864.0,-512.0,-768.0)
 	set gg_rct_Slot_Run_6=Rect(-544.0,-320.0,-448.0,-192.0)
 endfunction
-function Trig_Classic_Multi_Setup_Conditions takes nothing returns boolean
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Classic_Multi_Setup_Func002001 takes nothing returns boolean
 	return(udg_PlayerHERE[1]==true)
 endfunction
@@ -59784,12 +59778,6 @@ function InitTrig_Kills_ReRunner takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Kills_ReRunner,EVENT_PLAYER_UNIT_DEATH)
 	call TriggerAddCondition(gg_trg_Kills_ReRunner,Condition(function Trig_Kills_ReRunner_Conditions))
 	call TriggerAddAction(gg_trg_Kills_ReRunner,function Trig_Kills_ReRunner_Actions)
-endfunction
-function Trig_Race_Multi_Conditions takes nothing returns boolean
-	if(not(udg_Mode==2))then
-		return false
-	endif
-	return true
 endfunction
 function Trig_Race_Multi_Func002001 takes nothing returns boolean
 	return(udg_PlayerHERE[1]==true)
