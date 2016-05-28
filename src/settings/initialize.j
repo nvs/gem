@@ -30,6 +30,7 @@ function Settings__Initialize takes nothing returns nothing
 
 		// Certain Gem 3.1 initializations (leaderboards/multiboards) must be
 		// done once the map is loaded, or they will not function properly.
-		call TimerStart (CreateTimer (), 0.00, false, function Settings___Call_Setup_Game)
+		set Settings___Timer = CreateTimer ()
+		call TimerStart (Settings___Timer, 0.00, false, function Settings__Setup_Game)
 	endif
 endfunction

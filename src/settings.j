@@ -1,4 +1,6 @@
 globals
+	timer Settings___Timer = null
+
 	integer Settings___Mode = 0
 	string array Settings___Modes
 
@@ -164,6 +166,11 @@ function Settings___Create_Miners takes nothing returns nothing
 endfunction
 
 function Settings__Setup_Game takes nothing returns nothing
+	if Settings___Timer != null then
+		call DestroyTimer (Settings___Timer)
+		set Settings___Timer = null
+	endif
+
 	call Trig_First_Level_Timer_Starting_Actions ()
 	call Trig_Setup_LeaderBoards_Actions ()
 
@@ -176,9 +183,4 @@ function Settings__Setup_Game takes nothing returns nothing
 	elseif udg_Mode == 2 then
 		call Trig_Race_Multi_Actions ()
 	endif
-endfunction
-
-function Settings___Call_Setup_Game takes nothing returns nothing
-	call DestroyTimer (GetExpiredTimer ())
-	call Settings__Setup_Game ()
 endfunction
