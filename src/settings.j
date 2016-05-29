@@ -172,7 +172,6 @@ function Settings__Setup_Game takes nothing returns nothing
 	endif
 
 	call Trig_First_Level_Timer_Starting_Actions ()
-	call Trig_Setup_LeaderBoards_Actions ()
 
 	call Settings___Setup_Mode ()
 	call Settings___Setup_Difficulty ()

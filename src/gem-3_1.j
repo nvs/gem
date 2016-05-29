@@ -20,7 +20,6 @@ globals
 	multiboard udg_MainMulti=null
 	integer array udg_Kills
 	unit array udg_GemPlaced2
-	leaderboard array udg_Leaderboard
 	player array udg_Player
 	unit array udg_KeepingGem1
 	boolean array udg_QuadCombine
@@ -1816,18 +1815,6 @@ function InitTrig_Inihilization takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Inihilization,function Trig_Inihilization_Actions)
 endfunction
 function Trig_First_Level_Timer_Starting_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardDisplayBJ(true,udg_Leaderboard[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call StartTimerBJ(udg_SpawnTimer,false,55.00)
 	call CreateTimerDialogBJ(GetLastCreatedTimerBJ(),("|cff33ff33Level "+(I2S(udg_Level)+" in...|r")))
 	set udg_TimerWindow=GetLastCreatedTimerDialogBJ()
@@ -1964,7 +1951,6 @@ function Trig_Round_Finish_reset_Actions takes nothing returns nothing
 	set bj_forLoopAIndexEnd=8
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardDisplayBJ(true,udg_Leaderboard[GetForLoopIndexA()])
 		if(Trig_Round_Finish_reset_Func010Func002001())then
 			call AdjustPlayerStateBJ((5+(udg_Level*2)),udg_Player[GetForLoopIndexA()],PLAYER_STATE_RESOURCE_GOLD)
 		else
@@ -2224,13 +2210,6 @@ function Trig_Spawning_Actions takes nothing returns nothing
 	call PlaySoundBJ(gg_snd_QuestNew)
 	set udg_BuildingPeriod=false
 	call DisplayTextToForce(GetPlayersAll(),("|cff33ff33Level "+(I2S(udg_Level)+"|r")))
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForForce(GetPlayersAll(),function Trig_Spawning_Func010002)
 	call ForForce(GetPlayersAll(),function Trig_Spawning_Func011002)
 	call TimerDialogDisplayBJ(false,udg_TimerWindow)
@@ -2796,13 +2775,6 @@ function Trig_Setup_New_Round_1_Actions takes nothing returns nothing
 	set bj_forLoopAIndexEnd=8
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardDisplayBJ(true,udg_Leaderboard[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemNumber[GetForLoopIndexA()]=0
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
@@ -2967,21 +2939,6 @@ function Trig_Setup_New_Round_1_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_SpecialsPLACED8[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(0.01)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardSetLabelColorBJ(udg_Leaderboard[GetForLoopIndexA()],100,100.00,100.00,0)
-		call LeaderboardSetValueColorBJ(udg_Leaderboard[GetForLoopIndexA()],100,80,20,100.00)
-		call LeaderboardSetPlayerItemLabelColorBJ(Player(0),udg_Leaderboard[GetForLoopIndexA()],100,0.00,0.00,0)
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-")
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 endfunction
@@ -4307,37 +4264,6 @@ function InitTrig_Player_Leaves takes nothing returns nothing
 	call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(6))
 	call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(7))
 	call TriggerAddAction(gg_trg_Player_Leaves,function Trig_Player_Leaves_Actions)
-endfunction
-function Trig_Setup_LeaderBoards_Actions takes nothing returns nothing
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[0],"Gem Tower Defence")
-	set udg_Leaderboard[1]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[1],"Gem Tower Defence")
-	set udg_Leaderboard[2]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[2],"Gem Tower Defence")
-	set udg_Leaderboard[3]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[3],"Gem Tower Defence")
-	set udg_Leaderboard[4]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[4],"Gem Tower Defence")
-	set udg_Leaderboard[5]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[5],"Gem Tower Defence")
-	set udg_Leaderboard[6]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[6],"Gem Tower Defence")
-	set udg_Leaderboard[7]=GetLastCreatedLeaderboard()
-	call CreateLeaderboardBJ(bj_FORCE_PLAYER[7],"Gem Tower Defence")
-	set udg_Leaderboard[8]=GetLastCreatedLeaderboard()
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardAddItemBJ(Player(0),udg_Leaderboard[GetForLoopIndexA()],"Current Gems",0)
-		call LeaderboardAddItemBJ(Player(1),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-",0)
-		call LeaderboardAddItemBJ(Player(2),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-",0)
-		call LeaderboardAddItemBJ(Player(3),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-",0)
-		call LeaderboardAddItemBJ(Player(4),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-",0)
-		call LeaderboardAddItemBJ(Player(5),udg_Leaderboard[GetForLoopIndexA()],"-No Gem Created-",0)
-		call LeaderboardSetLabelColorBJ(udg_Leaderboard[GetForLoopIndexA()],100,100.00,100.00,0)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 endfunction
 function Trig_Quests_messages_Actions takes nothing returns nothing
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","[BK's] Gem TD was created with the standard Wc3 Editor. If you see any resembalance to other tower defences like Poker TD or Cube defence, I have not looked at any of those maps, all the triggers I have taught myself. Over 100 hrs of straight work in this map so please don't ask how to create combines and such.|nThanks to turbopower for all the beta testing.","ReplaceableTextures\\CommandButtons\\BTNSoulBurn.blp")
@@ -9822,7 +9748,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[1]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[1])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func002Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n000',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -9888,7 +9813,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[2]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[2])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func003Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -9954,7 +9878,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[3]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[3])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func004Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -10020,7 +9943,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[4]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[4])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func005Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -10086,7 +10008,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[5]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[5])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func006Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -10152,7 +10073,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[6]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[6])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func007Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -10218,7 +10138,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[7]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[7])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func008Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -10284,7 +10203,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[8]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[8])
 		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func009Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -12586,13 +12504,6 @@ function Trig_Mid_game_dmg_test_Finish_Actions takes nothing returns nothing
 	call TriggerSleepAction(4.00)
 	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
 	call PlaySoundBJ(gg_snd_GoodJob)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardDisplayBJ(true,udg_Leaderboard[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForForce(GetPlayersAll(),function Trig_Mid_game_dmg_test_Finish_Func023002)
 	set udg_Level=(udg_Level+1)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -13590,13 +13501,6 @@ function Trig_Late_game_dmg_test_Finish_Actions takes nothing returns nothing
 	call TriggerSleepAction(4.00)
 	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
 	call PlaySoundBJ(gg_snd_GoodJob)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardDisplayBJ(true,udg_Leaderboard[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForForce(GetPlayersAll(),function Trig_Late_game_dmg_test_Finish_Func023002)
 	set udg_Level=(udg_Level+1)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -17725,29 +17629,24 @@ function Trig_B_Reworked_Placing_gems_P1_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P1_Func025C())then
 		set udg_GemPlaced1[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[1],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P1_Func026C())then
 		set udg_GemPlaced1[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[1],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P1_Func027C())then
 		set udg_GemPlaced1[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[1],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P1_Func028C())then
 		set udg_GemPlaced1[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[1],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P1_Func029C())then
 		set udg_ExtraChanceON[1]=false
 		set udg_PlayerFinishBuild[1]=true
 		set udg_GemPlaced1[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[1],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -18635,7 +18534,6 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[1]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[1])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Mark_P1_Func004Func006001())then
 			call ReplaceUnitBJ(udg_GemPlaced1[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -19114,7 +19012,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P1_Func002C())then
 		set udg_PlayerFinished[1]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[1])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001())then
 			set udg_QuadCombine[1]=true
@@ -22622,29 +22519,24 @@ function Trig_B_Reworked_Placing_gems_P2_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P2_Func024C())then
 		set udg_GemPlaced2[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[2],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P2_Func025C())then
 		set udg_GemPlaced2[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[2],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P2_Func026C())then
 		set udg_GemPlaced2[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[2],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P2_Func027C())then
 		set udg_GemPlaced2[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[2],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P2_Func028C())then
 		set udg_ExtraChanceON[2]=false
 		set udg_PlayerFinishBuild[2]=true
 		set udg_GemPlaced2[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[2],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -23513,7 +23405,6 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[2]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[2])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -23975,7 +23866,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P2_Func002C())then
 		set udg_PlayerFinished[2]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[2])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001())then
 			set udg_QuadCombine[2]=true
@@ -27486,29 +27376,24 @@ function Trig_B_Reworked_Placing_gems_P3_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P3_Func026C())then
 		set udg_GemPlaced3[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[3],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P3_Func027C())then
 		set udg_GemPlaced3[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[3],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P3_Func028C())then
 		set udg_GemPlaced3[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[3],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P3_Func029C())then
 		set udg_GemPlaced3[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[3],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P3_Func030C())then
 		set udg_ExtraChanceON[3]=false
 		set udg_PlayerFinishBuild[3]=true
 		set udg_GemPlaced3[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[3],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -28377,7 +28262,6 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[3]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[3])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -28838,7 +28722,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P3_Func002C())then
 		set udg_PlayerFinished[3]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[3])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001())then
 			set udg_QuadCombine[3]=true
@@ -32346,29 +32229,24 @@ function Trig_B_Reworked_Placing_gems_P4_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P4_Func025C())then
 		set udg_GemPlaced4[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[4],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P4_Func026C())then
 		set udg_GemPlaced4[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[4],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P4_Func027C())then
 		set udg_GemPlaced4[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[4],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P4_Func028C())then
 		set udg_GemPlaced4[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[4],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P4_Func029C())then
 		set udg_ExtraChanceON[4]=false
 		set udg_PlayerFinishBuild[4]=true
 		set udg_GemPlaced4[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[4],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -33237,7 +33115,6 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[4]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[4])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -33698,7 +33575,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P4_Func002C())then
 		set udg_PlayerFinished[4]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[4])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001())then
 			set udg_QuadCombine[4]=true
@@ -37206,29 +37082,24 @@ function Trig_B_Reworked_Placing_gems_P5_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P5_Func025C())then
 		set udg_GemPlaced5[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[5],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P5_Func026C())then
 		set udg_GemPlaced5[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[5],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P5_Func027C())then
 		set udg_GemPlaced5[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[5],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P5_Func028C())then
 		set udg_GemPlaced5[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[5],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P5_Func029C())then
 		set udg_ExtraChanceON[5]=false
 		set udg_PlayerFinishBuild[5]=true
 		set udg_GemPlaced5[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[5],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -38097,7 +37968,6 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[5]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[5])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -38558,7 +38428,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P5_Func002C())then
 		set udg_PlayerFinished[5]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[5])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001())then
 			set udg_QuadCombine[5]=true
@@ -42066,29 +41935,24 @@ function Trig_B_Reworked_Placing_gems_P6_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P6_Func025C())then
 		set udg_GemPlaced6[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[6],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P6_Func026C())then
 		set udg_GemPlaced6[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[6],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P6_Func027C())then
 		set udg_GemPlaced6[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[6],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P6_Func028C())then
 		set udg_GemPlaced6[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[6],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P6_Func029C())then
 		set udg_PlayerFinishBuild[6]=true
 		set udg_ExtraChanceON[6]=false
 		set udg_GemPlaced6[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[6],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -42957,7 +42821,6 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[6]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[6])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -43418,7 +43281,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P6_Func002C())then
 		set udg_PlayerFinished[6]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[6])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001())then
 			set udg_QuadCombine[6]=true
@@ -46926,29 +46788,24 @@ function Trig_B_Reworked_Placing_gems_P7_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P7_Func025C())then
 		set udg_GemPlaced7[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[7],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P7_Func026C())then
 		set udg_GemPlaced7[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[7],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P7_Func027C())then
 		set udg_GemPlaced7[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[7],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P7_Func028C())then
 		set udg_GemPlaced7[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[7],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P7_Func029C())then
 		set udg_ExtraChanceON[7]=false
 		set udg_PlayerFinishBuild[7]=true
 		set udg_GemPlaced7[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[7],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -47817,7 +47674,6 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[7]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[7])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -48278,7 +48134,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P7_Func002C())then
 		set udg_PlayerFinished[7]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[7])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001())then
 			set udg_QuadCombine[7]=true
@@ -51786,29 +51641,24 @@ function Trig_B_Reworked_Placing_gems_P8_Actions takes nothing returns nothing
 	endif
 	if(Trig_B_Reworked_Placing_gems_P8_Func024C())then
 		set udg_GemPlaced8[1]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(1),udg_Leaderboard[8],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P8_Func025C())then
 		set udg_GemPlaced8[2]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(2),udg_Leaderboard[8],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P8_Func026C())then
 		set udg_GemPlaced8[3]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(3),udg_Leaderboard[8],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P8_Func027C())then
 		set udg_GemPlaced8[4]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(4),udg_Leaderboard[8],GetUnitName(GetLastReplacedUnitBJ()))
 	else
 	endif
 	if(Trig_B_Reworked_Placing_gems_P8_Func028C())then
 		set udg_ExtraChanceON[8]=false
 		set udg_PlayerFinishBuild[8]=true
 		set udg_GemPlaced8[5]=GetLastReplacedUnitBJ()
-		call LeaderboardSetPlayerItemLabelBJ(Player(5),udg_Leaderboard[8],GetUnitName(GetLastReplacedUnitBJ()))
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff66ffffNow see what you can combine!!|r")
 	else
 	endif
@@ -52677,7 +52527,6 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[8]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[8])
 		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -53138,7 +52987,6 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns noth
 	endif
 	if(Trig_B_Reworked_Comb_Special_Mark_P8_Func002C())then
 		set udg_PlayerFinished[8]=true
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[8])
 		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001())then
 			set udg_QuadCombine[8]=true
@@ -59941,13 +59789,6 @@ function Trig_Race_Multi_Actions takes nothing returns nothing
 	call MultiboardSetItemValueBJ(udg_MainMulti,1,udg_MultiBoardRows,"Game Time:")
 	call MultiboardSetItemColorBJ(udg_MainMulti,0,udg_MultiBoardRows,100.00,100.00,0.00,0)
 	call MultiboardDisplayBJ(true,udg_MainMulti)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call LeaderboardDisplayBJ(false,udg_Leaderboard[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 endfunction
 function Trig_Level_25_P1_Conditions takes nothing returns boolean
 	if(not(udg_Rmode25[1]==false))then
