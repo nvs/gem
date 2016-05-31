@@ -17,6 +17,9 @@ return {
 		'settings.dialog',
 		'settings.initialize',
 
+		'commands.zoom',
+		'commands',
+
 		'main',
 		'config'
 	},

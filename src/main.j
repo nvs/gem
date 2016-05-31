@@ -319,4 +319,6 @@ function main takes nothing returns nothing
 
 	// Must occur after all Gem 3.1 initializations (for now).
 	call ExecuteFunc ("Settings__Initialize")
+
+	call ExecuteFunc ("Commands__Initialize")
 endfunction
