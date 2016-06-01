@@ -1474,9 +1474,6 @@ endfunction
 function Trig_Classic_Multi_Setup_Func009001 takes nothing returns boolean
 	return(udg_PlayerHERE[8]==true)
 endfunction
-function Trig_Classic_Multi_Setup_Func012002 takes nothing returns nothing
-	call MultiboardDisplayBJ(false,udg_MainMulti)
-endfunction
 function Trig_Classic_Multi_Setup_Func033001 takes nothing returns boolean
 	return(udg_PlayerHERE[1]==true)
 endfunction
@@ -1544,7 +1541,6 @@ function Trig_Classic_Multi_Setup_Actions takes nothing returns nothing
 	endif
 	call CreateMultiboardBJ(4,udg_MultiBoardRows,"|cff33ff33Gem TD|r")
 	set udg_MainMulti=GetLastCreatedMultiboard()
-	call ForForce(GetPlayersAll(),function Trig_Classic_Multi_Setup_Func012002)
 	call MultiboardSetItemStyleBJ(udg_MainMulti,0,0,true,false)
 	call MultiboardSetItemColorBJ(udg_MainMulti,0,1,100.00,100.00,100.00,0)
 	call MultiboardSetItemColorBJ(udg_MainMulti,1,2,100.00,0.00,0.00,0)
@@ -1605,7 +1601,7 @@ function Trig_Classic_Multi_Setup_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	call MultiboardDisplayBJ(false,udg_MainMulti)
+	call MultiboardDisplayBJ(true,udg_MainMulti)
 endfunction
 function Trig_Update_Classic_multi_Conditions takes nothing returns boolean
 	if(not(udg_Mode==1))then
@@ -1839,9 +1835,6 @@ endfunction
 function Trig_Round_Finish_reset_Func001002 takes nothing returns nothing
 	call RemoveUnit(GetEnumUnit())
 endfunction
-function Trig_Round_Finish_reset_Func007002 takes nothing returns nothing
-	call MultiboardDisplayBJ(false,udg_MainMulti)
-endfunction
 function Trig_Round_Finish_reset_Func010Func002001 takes nothing returns boolean
 	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
 endfunction
@@ -1944,7 +1937,6 @@ endfunction
 function Trig_Round_Finish_reset_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfTypeIdAll('h006'),function Trig_Round_Finish_reset_Func001002)
 	call TriggerSleepAction(0.50)
-	call ForForce(GetPlayersAll(),function Trig_Round_Finish_reset_Func007002)
 	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
 	call PlaySoundBJ(gg_snd_GoodJob)
 	set bj_forLoopAIndex=1
@@ -2117,9 +2109,6 @@ endfunction
 function Trig_Spawning_Func002003002 takes nothing returns nothing
 	call RemoveUnit(GetEnumUnit())
 endfunction
-function Trig_Spawning_Func010002 takes nothing returns nothing
-	call MultiboardDisplayBJ(true,udg_MainMulti)
-endfunction
 function Trig_Spawning_Func011002 takes nothing returns nothing
 	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,0)
 endfunction
@@ -2210,7 +2199,6 @@ function Trig_Spawning_Actions takes nothing returns nothing
 	call PlaySoundBJ(gg_snd_QuestNew)
 	set udg_BuildingPeriod=false
 	call DisplayTextToForce(GetPlayersAll(),("|cff33ff33Level "+(I2S(udg_Level)+"|r")))
-	call ForForce(GetPlayersAll(),function Trig_Spawning_Func010002)
 	call ForForce(GetPlayersAll(),function Trig_Spawning_Func011002)
 	call TimerDialogDisplayBJ(false,udg_TimerWindow)
 	call TriggerSleepAction(2.00)
@@ -12141,9 +12129,6 @@ function Trig_Mid_game_dmg_test_inihilaize_Conditions takes nothing returns bool
 	endif
 	return true
 endfunction
-function Trig_Mid_game_dmg_test_inihilaize_Func004002 takes nothing returns nothing
-	call MultiboardDisplayBJ(false,udg_MainMulti)
-endfunction
 function Trig_Mid_game_dmg_test_inihilaize_Func015Func001001 takes nothing returns boolean
 	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
 endfunction
@@ -12152,7 +12137,6 @@ function Trig_Mid_game_dmg_test_inihilaize_Func015Func002002 takes nothing retur
 endfunction
 function Trig_Mid_game_dmg_test_inihilaize_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
-	call ForForce(GetPlayersAll(),function Trig_Mid_game_dmg_test_inihilaize_Func004002)
 	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
 	call PlaySoundBJ(gg_snd_GoodJob)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -13138,9 +13122,6 @@ function Trig_Late_game_dmg_test_inihilaize_Conditions takes nothing returns boo
 	endif
 	return true
 endfunction
-function Trig_Late_game_dmg_test_inihilaize_Func004002 takes nothing returns nothing
-	call MultiboardDisplayBJ(false,udg_MainMulti)
-endfunction
 function Trig_Late_game_dmg_test_inihilaize_Func015Func001001 takes nothing returns boolean
 	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
 endfunction
@@ -13149,7 +13130,6 @@ function Trig_Late_game_dmg_test_inihilaize_Func015Func002002 takes nothing retu
 endfunction
 function Trig_Late_game_dmg_test_inihilaize_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
-	call ForForce(GetPlayersAll(),function Trig_Late_game_dmg_test_inihilaize_Func004002)
 	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
 	call PlaySoundBJ(gg_snd_GoodJob)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -59651,9 +59631,6 @@ endfunction
 function Trig_Race_Multi_Func009001 takes nothing returns boolean
 	return(udg_PlayerHERE[8]==true)
 endfunction
-function Trig_Race_Multi_Func013002 takes nothing returns nothing
-	call MultiboardDisplayBJ(true,udg_MainMulti)
-endfunction
 function Trig_Race_Multi_Func037001 takes nothing returns boolean
 	return(udg_PlayerHERE[1]==true)
 endfunction
@@ -59722,7 +59699,6 @@ function Trig_Race_Multi_Actions takes nothing returns nothing
 	set udg_MultiBoardRows=(udg_MultiBoardRows+1)
 	call CreateMultiboardBJ(5,udg_MultiBoardRows,"|cff33ff33Gem TD|r")
 	set udg_MainMulti=GetLastCreatedMultiboard()
-	call ForForce(GetPlayersAll(),function Trig_Race_Multi_Func013002)
 	call MultiboardSetItemStyleBJ(udg_MainMulti,0,0,true,false)
 	call MultiboardSetItemColorBJ(udg_MainMulti,0,1,100.00,100.00,100.00,0)
 	call MultiboardSetItemColorBJ(udg_MainMulti,1,2,100.00,0.00,0.00,0)
