@@ -4268,11 +4268,6 @@ function Trig_Quests_messages_Actions takes nothing returns nothing
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","|cff22ff22[BK's] Gem TD v2.0|r - Changelog|n|n- Added Aquamarine, a new base gem|n- Added 2 new special towers, all with upgrades|n- Added a Range Check button to gems with an aura|n- Added a Anti-Stuck button on Miners|n- Fixed Blocking/Creeps attacking so they will teleport to there destination not the start.|n- Added an Extra Chance button on your mine to use up more gold|n- Fixed some create slate bug issues|n- Fixed text on Hold Slate displaying wrong damage|n- Increase base move speed on extreme creeps and lowered hitpoints to reduce game time.","ReplaceableTextures\\CommandButtons\\BTNSpellBookBLS.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","|cff22ff22[BK's] Gem TD v1.9|r - Changelog|n|n- Added a new Final Damage test with 600,000 Hitpoints instead of 500,000|n- Improved: Uranium, Blood Stones, Ruby Damage, Wraith Slate (+20% damage), Flawed Emerald (+1 damage), Hold Slate, Enchanted Emerald damage, Great Diamond damage, Air Slate range.|n- Dimmed: Dark/Enchanted Emerald Stun, China Jade (attack speed, increased gold cost), Lucky China Jade (increased gold cost, gold bonus, damage, critical, attack speed), Pink/Great Pink Diamond (damage).|n- Added Extreme creeps from level 17 onwards (Extreme Mode)|n- Basic Slates requirements changed (Removed chipped requirement and added a flawed)|n- Many small balancing, this version will be the most balanced Gem TD.","ReplaceableTextures\\CommandButtons\\BTNSpellBookBLS.blp")
 endfunction
-function InitTrig_Quests_messages takes nothing returns nothing
-	set gg_trg_Quests_messages=CreateTrigger()
-	call TriggerRegisterTimerEventSingle(gg_trg_Quests_messages,3.00)
-	call TriggerAddAction(gg_trg_Quests_messages,function Trig_Quests_messages_Actions)
-endfunction
 function Trig_Lvl_15_1st_kill_money_bonus_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
 		return false

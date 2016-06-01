@@ -182,4 +182,6 @@ function Settings__Setup_Game takes nothing returns nothing
 	elseif udg_Mode == 2 then
 		call Trig_Race_Multi_Actions ()
 	endif
+
+	call Trig_Quests_messages_Actions ()
 endfunction
