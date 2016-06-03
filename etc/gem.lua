@@ -19,6 +19,8 @@ return {
 		'settings.dialog',
 		'settings.initialize',
 
+		'board',
+
 		'commands.zoom',
 		'commands',
 

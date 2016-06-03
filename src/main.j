@@ -1,5 +1,4 @@
 function InitCustomTriggers takes nothing returns nothing
-	call InitTrig_Update_Classic_multi ()
 	call InitTrig_kills_and_remove_Corpse ()
 	call InitTrig_Inihilization ()
 	call InitTrig_Round_Finish_reset ()
@@ -271,7 +270,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Fin_P7_2 ()
 	call InitTrig_Level_25_P8 ()
 	call InitTrig_Fin_P8_2 ()
-	call InitTrig_Update_Race_Multi ()
 	call InitTrig_Race_Mode_Kills ()
 	call InitTrig_Reworked_Combining_specials_Race ()
 	call InitTrig_Finish_Build_Race_P1 ()
