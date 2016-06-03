@@ -12,6 +12,8 @@ return {
 
 		'gem-3_1',
 
+		'time',
+
 		'settings',
 		'settings.hcl',
 		'settings.dialog',
