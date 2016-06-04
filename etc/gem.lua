@@ -13,13 +13,12 @@ return {
 		'gem-3_1',
 
 		'time',
+		'board',
 
 		'settings',
 		'settings.hcl',
 		'settings.dialog',
 		'settings.initialize',
-
-		'board',
 
 		'commands.zoom',
 		'commands',
