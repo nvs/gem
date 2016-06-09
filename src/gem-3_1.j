@@ -60531,6 +60531,10 @@ function InitTrig_Fin_P8_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Fin_P8_2,function Trig_Fin_P8_2_Actions)
 endfunction
 function Trig_Race_Mode_Kills_Conditions takes nothing returns boolean
+	local integer unit_id = GetUnitTypeId (GetDyingUnit ())
+	if unit_id == 'h04Q' or unit_id == 'H04B' then
+		return false
+	endif
 	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
 		return false
 	endif
