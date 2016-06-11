@@ -22,17 +22,8 @@ function Settings_HCL__Process takes nothing returns nothing
 	local string character
 	local integer value
 
-	// Process the mode:
-	if StringLength (Settings_HCL___Command) > 0 then
-		set index = 0
-		set character = SubString (Settings_HCL___Command, index, index + 1)
-		set value = S2I (character)
-
-		call Settings__Mode_Set (value)
-	endif
-
 	// Process the difficulty:
-	if StringLength (Settings_HCL___Command) > 1 then
+	if StringLength (Settings_HCL___Command) > 0 then
 		set index = 1
 		set character = SubString (Settings_HCL___Command, index, index + 1)
 		set value = S2I (character)

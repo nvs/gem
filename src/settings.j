@@ -70,15 +70,8 @@ endfunction
 function Settings___Setup_Mode takes nothing returns nothing
 	call DisplayTextToPlayer (GetLocalPlayer (), 0.00, 0.00, "|cff22ff22Game mode has been set to " + Settings__Mode_Name () + "|r")
 
-	if Settings___Mode == 0 then
-		set udg_Mode = 2
-		set udg_Level = 2
-
-		call PauseTimer (udg_SpawnTimer)
-		call TimerDialogDisplay (udg_TimerWindow, false)
-	elseif Settings___Mode == 1 then
-		set udg_Mode = 1
-	endif
+	set udg_Mode = 2
+	set udg_Level = 2
 endfunction
 
 function Settings___Setup_Difficulty takes nothing returns nothing
@@ -170,8 +163,6 @@ function Settings__Setup_Game takes nothing returns nothing
 		call DestroyTimer (Settings___Timer)
 		set Settings___Timer = null
 	endif
-
-	call Trig_First_Level_Timer_Starting_Actions ()
 
 	call Settings___Setup_Mode ()
 	call Settings___Setup_Difficulty ()

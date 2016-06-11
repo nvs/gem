@@ -51,9 +51,7 @@ function Board___Update takes nothing returns nothing
 				elseif column == 3 then
 					set value = I2S (GetPlayerState (Player (player_index), PLAYER_STATE_RESOURCE_GOLD))
 				elseif column == 4 then
-					if udg_Mode == 1 then
-						set value = I2S (udg_Level)
-					elseif udg_Mode == 2 then
+					if udg_Mode == 2 then
 						set value = I2S (udg_RLevel [player_index + 1])
 					endif
 				endif

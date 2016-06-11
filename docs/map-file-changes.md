@@ -13,7 +13,10 @@ objects from the map directly.
 - [Removed cheats (#14)] [issue-14]
     * Removed abilities: `'A070'` and `'A071'`.
     * Removed unit: `'h04R'`.
+- [Removed `Classic` mode (#24)] [issue-24]
+    * Removed units: `'h02S'`, '`h02T'`, and `'h036'`.
 
 [issue-14]: https://github.com/nvs/gem/issues/14
+[issue-24]: https://github.com/nvs/gem/issues/24
 [issue-29]: https://github.com/nvs/gem/issues/29
 [issue-30]: https://github.com/nvs/gem/issues/30

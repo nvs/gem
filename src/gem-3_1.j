@@ -1,12 +1,9 @@
 globals
 	integer array udg_CreepOwner
-	timer udg_SpawnTimer=null
 	rect array udg_Spawn
 	rect array udg_Move1st
 	integer udg_Level=0
 	boolean array udg_PlayerHERE
-	timerdialog udg_TimerWindow=null
-	boolean udg_BuildingPeriod=false
 	integer array udg_Random
 	integer array udg_GemNumber
 	group array udg_UnitGroup
@@ -69,7 +66,6 @@ globals
 	boolean array udg_ExtraChanceON
 	unit array udg_Boulders
 	integer array udg_DowngradeAbleGems
-	boolean udg_TestMode=false
 	dialog udg_xExtraChanceDIA=null
 	button array udg_xExtraChanceBTN
 	unit array udg_WslotMachine
@@ -275,20 +271,13 @@ globals
 	sound gg_snd_BansheeGhostYesAttack1=null
 	sound gg_snd_BansheeGhostYesAttack2=null
 	sound gg_snd_BloodLustCry=null
-	trigger gg_trg_Update_Classic_multi=null
 	trigger gg_trg_kills_and_remove_Corpse=null
 	trigger gg_trg_Inihilization=null
-	trigger gg_trg_Round_Finish_reset=null
-	trigger gg_trg_Spawning=null
-	trigger gg_trg_Setup_New_Round_1=null
-	trigger gg_trg_Set_keeping_Gem=null
 	trigger gg_trg_Special_Mark=null
 	trigger gg_trg_Gem_Awards=null
 	trigger gg_trg_Gem_Awards_Upgrade_debug=null
 	trigger gg_trg_Player_Leaves=null
 	trigger gg_trg_Quests_messages=null
-	trigger gg_trg_Lvl_15_1st_kill_money_bonus=null
-	trigger gg_trg_Lvl_15_2nd_kill_money_bonus=null
 	trigger gg_trg_Creeps_attacking=null
 	trigger gg_trg_Debug=null
 	trigger gg_trg_Type_Air=null
@@ -308,7 +297,6 @@ globals
 	trigger gg_trg_Maxed_out_quality_Upgrade=null
 	trigger gg_trg_Maxed_out_Extra_chance_upgrade=null
 	trigger gg_trg_Buying_Lives=null
-	trigger gg_trg_Reworked_Combining_specials_Classic=null
 	trigger gg_trg_DownGrade_find=null
 	trigger gg_trg_DownGrade=null
 	trigger gg_trg_Create_Slates=null
@@ -328,9 +316,6 @@ globals
 	trigger gg_trg_Ancient_Slate=null
 	trigger gg_trg_Lucky_China_Jade=null
 	trigger gg_trg_Opal_Vein_SLate=null
-	trigger gg_trg_Mid_game_dmg_test_inihilaize=null
-	trigger gg_trg_Mid_game_dmg_test_Finish=null
-	trigger gg_trg_Mid_game_dmg_test_kills=null
 	trigger gg_trg_Race_Mid_Game_ReRunner_1=null
 	trigger gg_trg_Race_Mid_Game_ReRunner_2=null
 	trigger gg_trg_Race_Mid_Game_ReRunner_3=null
@@ -340,13 +325,6 @@ globals
 	trigger gg_trg_Race_Mid_Game_ReRunner_7=null
 	trigger gg_trg_Race_Mid_Game_ReRunner_8=null
 	trigger gg_trg_Hits_mid_tester=null
-	trigger gg_trg_Hits_GemBaby=null
-	trigger gg_trg_Late_game_dmg_test_inihilaize=null
-	trigger gg_trg_Late_game_dmg_test_Finish=null
-	trigger gg_trg_Late_game_dmg_test_kills=null
-	trigger gg_trg_End_game_dmg_test_inihilaize=null
-	trigger gg_trg_End_game_dmg_test_Finish=null
-	trigger gg_trg_End_game_dmg_test_kills=null
 	trigger gg_trg_End_game_dmg_test_RACE_kills=null
 	trigger gg_trg_P1_Dmg_test=null
 	trigger gg_trg_P2_Dmg_test=null
@@ -361,7 +339,6 @@ globals
 	trigger gg_trg_Players_attacking=null
 	trigger gg_trg_Miner_Leaves_area=null
 	trigger gg_trg_Leak_and_lose_P1=null
-	trigger gg_trg_Not_Finished_P1=null
 	trigger gg_trg_Movement1_1=null
 	trigger gg_trg_Movement1_2=null
 	trigger gg_trg_Movement1_3=null
@@ -374,7 +351,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P1=null
 	trigger gg_trg_Finding_Special_combinations_P1=null
 	trigger gg_trg_Leak_and_lose_P2=null
-	trigger gg_trg_Not_Finished_P2=null
 	trigger gg_trg_Movement2_1=null
 	trigger gg_trg_Movement2_2=null
 	trigger gg_trg_Movement2_3=null
@@ -387,7 +363,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P2=null
 	trigger gg_trg_Finding_Special_combinations_P2=null
 	trigger gg_trg_Leak_and_lose_P3=null
-	trigger gg_trg_Not_Finished_P3=null
 	trigger gg_trg_Movement3_1=null
 	trigger gg_trg_Movement3_2=null
 	trigger gg_trg_Movement3_3=null
@@ -400,7 +375,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P3=null
 	trigger gg_trg_Finding_Special_combinations_P3=null
 	trigger gg_trg_Leak_and_lose_P4=null
-	trigger gg_trg_Not_Finished_P4=null
 	trigger gg_trg_Movement4_1=null
 	trigger gg_trg_Movement4_2=null
 	trigger gg_trg_Movement4_3=null
@@ -413,7 +387,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P4=null
 	trigger gg_trg_Finding_Special_combinations_P4=null
 	trigger gg_trg_Leak_and_lose_P5=null
-	trigger gg_trg_Not_Finished_P5=null
 	trigger gg_trg_Movement5_1=null
 	trigger gg_trg_Movement5_2=null
 	trigger gg_trg_Movement5_3=null
@@ -426,7 +399,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P5=null
 	trigger gg_trg_Finding_Special_combinations_P5=null
 	trigger gg_trg_Leak_and_lose_P6=null
-	trigger gg_trg_Not_Finished_P6=null
 	trigger gg_trg_Movement6_1=null
 	trigger gg_trg_Movement6_2=null
 	trigger gg_trg_Movement6_3=null
@@ -439,7 +411,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P6=null
 	trigger gg_trg_Finding_Special_combinations_P6=null
 	trigger gg_trg_Leak_and_lose_P7=null
-	trigger gg_trg_Not_Finished_P7=null
 	trigger gg_trg_Movement7_1=null
 	trigger gg_trg_Movement7_2=null
 	trigger gg_trg_Movement7_3=null
@@ -452,7 +423,6 @@ globals
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P7=null
 	trigger gg_trg_Finding_Special_combinations_P7=null
 	trigger gg_trg_Leak_and_lose_P8=null
-	trigger gg_trg_Not_Finished_P8=null
 	trigger gg_trg_Movement8_1=null
 	trigger gg_trg_Movement8_2=null
 	trigger gg_trg_Movement8_3=null
@@ -606,7 +576,6 @@ globals
 endglobals
 function InitGlobals takes nothing returns nothing
 	local integer i=0
-	set udg_SpawnTimer=CreateTimer()
 	set udg_Level=1
 	set i=0
 	loop
@@ -614,7 +583,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_PlayerHERE[i]=false
 		set i=i+1
 	endloop
-	set udg_BuildingPeriod=true
 	set i=0
 	loop
 		exitwhen(i>10)
@@ -791,7 +759,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_ExtraChanceON[i]=false
 		set i=i+1
 	endloop
-	set udg_TestMode=false
 	set udg_xExtraChanceDIA=DialogCreate()
 	set i=0
 	loop
@@ -1618,1605 +1585,6 @@ endfunction
 function InitTrig_Inihilization takes nothing returns nothing
 	set gg_trg_Inihilization=CreateTrigger()
 	call TriggerAddAction(gg_trg_Inihilization,function Trig_Inihilization_Actions)
-endfunction
-function Trig_First_Level_Timer_Starting_Actions takes nothing returns nothing
-	call StartTimerBJ(udg_SpawnTimer,false,55.00)
-	call CreateTimerDialogBJ(GetLastCreatedTimerBJ(),("|cff33ff33Level "+(I2S(udg_Level)+" in...|r")))
-	set udg_TimerWindow=GetLastCreatedTimerDialogBJ()
-	call TimerDialogDisplayBJ(true,udg_TimerWindow)
-	call ConditionalTriggerExecute(gg_trg_Setup_New_Round_1)
-endfunction
-function Trig_Round_Finish_reset_Conditions takes nothing returns boolean
-	if(not(udg_Level<=41))then
-		return false
-	endif
-	if(not(udg_Level!=14))then
-		return false
-	endif
-	if(not(udg_Level!=28))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Round_Finish_reset_Func001002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Round_Finish_reset_Func010Func002001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Round_Finish_reset_Func013001001 takes nothing returns boolean
-	return(udg_Level==25)
-endfunction
-function Trig_Round_Finish_reset_Func013001002 takes nothing returns boolean
-	return(udg_DiffLevel>=3)
-endfunction
-function Trig_Round_Finish_reset_Func013001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Round_Finish_reset_Func013001001(),Trig_Round_Finish_reset_Func013001002())
-endfunction
-function Trig_Round_Finish_reset_Func015001 takes nothing returns boolean
-	return(udg_TestMode==true)
-endfunction
-function Trig_Round_Finish_reset_Func016001 takes nothing returns boolean
-	return(udg_TestMode==false)
-endfunction
-function Trig_Round_Finish_reset_Func022001001 takes nothing returns boolean
-	return(udg_Level==17)
-endfunction
-function Trig_Round_Finish_reset_Func022001002 takes nothing returns boolean
-	return(udg_DiffLevel==4)
-endfunction
-function Trig_Round_Finish_reset_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Round_Finish_reset_Func022001001(),Trig_Round_Finish_reset_Func022001002())
-endfunction
-function Trig_Round_Finish_reset_Func023001 takes nothing returns boolean
-	return(udg_Level==14)
-endfunction
-function Trig_Round_Finish_reset_Func024001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Round_Finish_reset_Func025001 takes nothing returns boolean
-	return(udg_Level==42)
-endfunction
-function Trig_Round_Finish_reset_Func026001 takes nothing returns boolean
-	return(udg_Level==4)
-endfunction
-function Trig_Round_Finish_reset_Func027001 takes nothing returns boolean
-	return(udg_Level==8)
-endfunction
-function Trig_Round_Finish_reset_Func028001 takes nothing returns boolean
-	return(udg_Level==12)
-endfunction
-function Trig_Round_Finish_reset_Func029001 takes nothing returns boolean
-	return(udg_Level==16)
-endfunction
-function Trig_Round_Finish_reset_Func030001 takes nothing returns boolean
-	return(udg_Level==20)
-endfunction
-function Trig_Round_Finish_reset_Func031001 takes nothing returns boolean
-	return(udg_Level==24)
-endfunction
-function Trig_Round_Finish_reset_Func032001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Round_Finish_reset_Func033001 takes nothing returns boolean
-	return(udg_Level==32)
-endfunction
-function Trig_Round_Finish_reset_Func035001 takes nothing returns boolean
-	return(udg_Level==3)
-endfunction
-function Trig_Round_Finish_reset_Func036001 takes nothing returns boolean
-	return(udg_Level==29)
-endfunction
-function Trig_Round_Finish_reset_Func037001 takes nothing returns boolean
-	return(udg_Level==14)
-endfunction
-function Trig_Round_Finish_reset_Func038001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Round_Finish_reset_Func039001 takes nothing returns boolean
-	return(udg_Level==42)
-endfunction
-function Trig_Round_Finish_reset_Func040001 takes nothing returns boolean
-	return(udg_Level==4)
-endfunction
-function Trig_Round_Finish_reset_Func041001 takes nothing returns boolean
-	return(udg_Level==8)
-endfunction
-function Trig_Round_Finish_reset_Func042001 takes nothing returns boolean
-	return(udg_Level==12)
-endfunction
-function Trig_Round_Finish_reset_Func043001 takes nothing returns boolean
-	return(udg_Level==16)
-endfunction
-function Trig_Round_Finish_reset_Func044001 takes nothing returns boolean
-	return(udg_Level==20)
-endfunction
-function Trig_Round_Finish_reset_Func045001 takes nothing returns boolean
-	return(udg_Level==24)
-endfunction
-function Trig_Round_Finish_reset_Func046001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Round_Finish_reset_Func047001 takes nothing returns boolean
-	return(udg_Level==32)
-endfunction
-function Trig_Round_Finish_reset_Actions takes nothing returns nothing
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h006'),function Trig_Round_Finish_reset_Func001002)
-	call TriggerSleepAction(0.50)
-	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
-	call PlaySoundBJ(gg_snd_GoodJob)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Round_Finish_reset_Func010Func002001())then
-			call AdjustPlayerStateBJ((5+(udg_Level*2)),udg_Player[GetForLoopIndexA()],PLAYER_STATE_RESOURCE_GOLD)
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_Level=(udg_Level+1)
-	call DisableTrigger(GetTriggeringTrigger())
-	if(Trig_Round_Finish_reset_Func013001())then
-		call UnitAddAbilityBJ('A02S',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func015001())then
-		call StartTimerBJ(udg_SpawnTimer,false,18.00)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func016001())then
-		call StartTimerBJ(udg_SpawnTimer,false,40.00)
-	else
-		call DoNothing()
-	endif
-	call CreateTimerDialogBJ(GetLastCreatedTimerBJ(),("|cff33ff33Level "+(I2S(udg_Level)+" in...|r")))
-	set udg_TimerWindow=GetLastCreatedTimerDialogBJ()
-	call TimerDialogDisplayBJ(true,udg_TimerWindow)
-	call ConditionalTriggerExecute(gg_trg_Setup_New_Round_1)
-	call TriggerSleepAction(8.00)
-	if(Trig_Round_Finish_reset_Func022001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00All enemies now will be extreme mode creeps. Faster movement, less slowed and more hitpoints.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func023001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff3300First Damage test after this round.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func024001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff3300Mid Damage test after this round.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func025001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff3300Final Damage test after this round.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func026001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func027001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func028001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func029001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func030001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func031001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func032001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func033001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	call TriggerSleepAction(13.00)
-	if(Trig_Round_Finish_reset_Func035001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffffff00Go to Quest Menu to view Changelog.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func036001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffffff00Go to Quest Menu to view Changelog.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func037001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff3300First Damage test after this round.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func038001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff3300Mid Damage test after this round.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func039001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffff3300Final Damage test after this round.|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func040001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func041001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func042001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func043001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func044001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func045001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func046001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Round_Finish_reset_Func047001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_Round_Finish_reset takes nothing returns nothing
-	set gg_trg_Round_Finish_reset=CreateTrigger()
-	call DisableTrigger(gg_trg_Round_Finish_reset)
-	call TriggerRegisterPlayerStateEvent(gg_trg_Round_Finish_reset,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_Round_Finish_reset,Condition(function Trig_Round_Finish_reset_Conditions))
-	call TriggerAddAction(gg_trg_Round_Finish_reset,function Trig_Round_Finish_reset_Actions)
-endfunction
-function Trig_Spawning_Func002003002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Spawning_Func011002 takes nothing returns nothing
-	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,0)
-endfunction
-function Trig_Spawning_Func014003002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Spawning_Func015003002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),udg_Player[GetForLoopIndexA()],true)
-endfunction
-function Trig_Spawning_Func016Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func016Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func018Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func018Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func020Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func020Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func022Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func022Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func024Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func024Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func026Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func026Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func028Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func028Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func030Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func030Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func032Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func032Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Func034Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Spawning_Func034Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Spawning_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_FirstKillNo[GetForLoopIndexA()]=0
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ForGroupBJ(udg_LocationGroup[GetForLoopIndexA()],function Trig_Spawning_Func002003002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call EnableTrigger(gg_trg_Lvl_15_1st_kill_money_bonus)
-	call DisableTrigger(gg_trg_Lvl_15_2nd_kill_money_bonus)
-	call PlaySoundBJ(gg_snd_QuestNew)
-	set udg_BuildingPeriod=false
-	call DisplayTextToForce(GetPlayersAll(),("|cff33ff33Level "+(I2S(udg_Level)+"|r")))
-	call ForForce(GetPlayersAll(),function Trig_Spawning_Func011002)
-	call TimerDialogDisplayBJ(false,udg_TimerWindow)
-	call TriggerSleepAction(2.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ForGroupBJ(udg_UnitGroup[GetForLoopIndexA()],function Trig_Spawning_Func014003002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ForGroupBJ(udg_UnitGroup[GetForLoopIndexA()],function Trig_Spawning_Func015003002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func016Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func016Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func018Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func018Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func020Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func020Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func022Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func022Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func024Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func024Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func026Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func026Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func028Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func028Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func030Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func030Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func032Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func032Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(1.50)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Spawning_Func034Func001001())then
-			call CreateNUnitsAtLoc(1,udg_SpawnUnit,Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Spawning_Func034Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call EnableTrigger(gg_trg_Round_Finish_reset)
-endfunction
-function InitTrig_Spawning takes nothing returns nothing
-	set gg_trg_Spawning=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Spawning,udg_SpawnTimer)
-	call TriggerAddAction(gg_trg_Spawning,function Trig_Spawning_Actions)
-endfunction
-function Trig_Setup_New_Round_1_Func002002 takes nothing returns nothing
-	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,5)
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002001002002002001(),Trig_Setup_New_Round_1_Func008001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002001002002001(),Trig_Setup_New_Round_1_Func008001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002001002001(),Trig_Setup_New_Round_1_Func008001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func008001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002001001(),Trig_Setup_New_Round_1_Func008001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func008001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func008001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002002002001(),Trig_Setup_New_Round_1_Func008001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func008001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002002001(),Trig_Setup_New_Round_1_Func008001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func008001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func008001002001(),Trig_Setup_New_Round_1_Func008001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func008002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[1])
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002001002002002001(),Trig_Setup_New_Round_1_Func009001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002001002002001(),Trig_Setup_New_Round_1_Func009001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002001002001(),Trig_Setup_New_Round_1_Func009001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func009001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002001001(),Trig_Setup_New_Round_1_Func009001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func009001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func009001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002002002001(),Trig_Setup_New_Round_1_Func009001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func009001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002002001(),Trig_Setup_New_Round_1_Func009001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func009001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func009001002001(),Trig_Setup_New_Round_1_Func009001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func009002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[2])
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002001002002002001(),Trig_Setup_New_Round_1_Func010001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002001002002001(),Trig_Setup_New_Round_1_Func010001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002001002001(),Trig_Setup_New_Round_1_Func010001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func010001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002001001(),Trig_Setup_New_Round_1_Func010001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func010001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func010001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002002002001(),Trig_Setup_New_Round_1_Func010001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func010001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002002001(),Trig_Setup_New_Round_1_Func010001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func010001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func010001002001(),Trig_Setup_New_Round_1_Func010001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func010002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[3])
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002001002002002001(),Trig_Setup_New_Round_1_Func011001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002001002002001(),Trig_Setup_New_Round_1_Func011001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002001002001(),Trig_Setup_New_Round_1_Func011001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func011001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002001001(),Trig_Setup_New_Round_1_Func011001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func011001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func011001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002002002001(),Trig_Setup_New_Round_1_Func011001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func011001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002002001(),Trig_Setup_New_Round_1_Func011001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func011001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func011001002001(),Trig_Setup_New_Round_1_Func011001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func011002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[4])
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002001002002002001(),Trig_Setup_New_Round_1_Func012001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002001002002001(),Trig_Setup_New_Round_1_Func012001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002001002001(),Trig_Setup_New_Round_1_Func012001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func012001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002001001(),Trig_Setup_New_Round_1_Func012001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func012001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func012001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002002002001(),Trig_Setup_New_Round_1_Func012001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func012001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002002001(),Trig_Setup_New_Round_1_Func012001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func012001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func012001002001(),Trig_Setup_New_Round_1_Func012001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func012002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[5])
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002001002002002001(),Trig_Setup_New_Round_1_Func013001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002001002002001(),Trig_Setup_New_Round_1_Func013001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002001002001(),Trig_Setup_New_Round_1_Func013001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func013001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002001001(),Trig_Setup_New_Round_1_Func013001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func013001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func013001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002002002001(),Trig_Setup_New_Round_1_Func013001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func013001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002002001(),Trig_Setup_New_Round_1_Func013001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func013001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func013001002001(),Trig_Setup_New_Round_1_Func013001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func013002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[6])
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002001002002002001(),Trig_Setup_New_Round_1_Func014001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002001002002001(),Trig_Setup_New_Round_1_Func014001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002001002001(),Trig_Setup_New_Round_1_Func014001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func014001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002001001(),Trig_Setup_New_Round_1_Func014001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func014001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func014001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002002002001(),Trig_Setup_New_Round_1_Func014001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func014001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002002001(),Trig_Setup_New_Round_1_Func014001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func014001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func014001002001(),Trig_Setup_New_Round_1_Func014001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func014002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[7])
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002001002002002001(),Trig_Setup_New_Round_1_Func015001002001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002001002002001(),Trig_Setup_New_Round_1_Func015001002001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002001002001(),Trig_Setup_New_Round_1_Func015001002001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func015001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002001001(),Trig_Setup_New_Round_1_Func015001002001002())
-endfunction
-function Trig_Setup_New_Round_1_Func015001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Setup_New_Round_1_Func015001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002002002001(),Trig_Setup_New_Round_1_Func015001002002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func015001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002002001(),Trig_Setup_New_Round_1_Func015001002002002())
-endfunction
-function Trig_Setup_New_Round_1_Func015001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Setup_New_Round_1_Func015001002001(),Trig_Setup_New_Round_1_Func015001002002())
-endfunction
-function Trig_Setup_New_Round_1_Func015002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[8])
-endfunction
-function Trig_Setup_New_Round_1_Func016003002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_Setup_New_Round_1_Func017003002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
-function Trig_Setup_New_Round_1_Actions takes nothing returns nothing
-	set udg_SpawnUnit=udg_SpawningUnit[udg_Level]
-	call ForForce(GetPlayersAll(),function Trig_Setup_New_Round_1_Func002002)
-	set udg_BuildingPeriod=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemNumber[GetForLoopIndexA()]=0
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_PlayerFinishBuild[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_PlayerFinished[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Setup_New_Round_1_Func008001002)),function Trig_Setup_New_Round_1_Func008002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Setup_New_Round_1_Func009001002)),function Trig_Setup_New_Round_1_Func009002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Setup_New_Round_1_Func010001002)),function Trig_Setup_New_Round_1_Func010002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Setup_New_Round_1_Func011001002)),function Trig_Setup_New_Round_1_Func011002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Setup_New_Round_1_Func012001002)),function Trig_Setup_New_Round_1_Func012002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Setup_New_Round_1_Func013001002)),function Trig_Setup_New_Round_1_Func013002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Setup_New_Round_1_Func014001002)),function Trig_Setup_New_Round_1_Func014002)
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Setup_New_Round_1_Func015001002)),function Trig_Setup_New_Round_1_Func015002)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ForGroupBJ(udg_UnitGroup[GetForLoopIndexA()],function Trig_Setup_New_Round_1_Func016003002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ForGroupBJ(udg_UnitGroup[GetForLoopIndexA()],function Trig_Setup_New_Round_1_Func017003002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call DisplayTextToForce(GetPlayersAll(),"|cff0000ff                                                   Place 5 new gems|r")
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialONplace[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_QuadCombine[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced1[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced2[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced3[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced4[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced5[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced6[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced7[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced8[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED1[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED2[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED3[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED4[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED5[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED6[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED7[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED8[GetForLoopIndexA()]=false
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Setup_New_Round_1 takes nothing returns nothing
-	set gg_trg_Setup_New_Round_1=CreateTrigger()
-	call TriggerAddAction(gg_trg_Setup_New_Round_1,function Trig_Setup_New_Round_1_Actions)
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002001002002001(),Trig_Set_keeping_Gem_Func002002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002001002001(),Trig_Set_keeping_Gem_Func002002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002001001(),Trig_Set_keeping_Gem_Func002002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002002001001(),Trig_Set_keeping_Gem_Func002002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002002002002001(),Trig_Set_keeping_Gem_Func002002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002002002001(),Trig_Set_keeping_Gem_Func002002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002002001(),Trig_Set_keeping_Gem_Func002002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func002002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func002002001002001(),Trig_Set_keeping_Gem_Func002002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002001002002001(),Trig_Set_keeping_Gem_Func003002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002001002001(),Trig_Set_keeping_Gem_Func003002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002001001(),Trig_Set_keeping_Gem_Func003002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002002001001(),Trig_Set_keeping_Gem_Func003002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002002002002001(),Trig_Set_keeping_Gem_Func003002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002002002001(),Trig_Set_keeping_Gem_Func003002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002002001(),Trig_Set_keeping_Gem_Func003002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func003002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func003002001002001(),Trig_Set_keeping_Gem_Func003002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002001002002001(),Trig_Set_keeping_Gem_Func004002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002001002001(),Trig_Set_keeping_Gem_Func004002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002001001(),Trig_Set_keeping_Gem_Func004002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002002001001(),Trig_Set_keeping_Gem_Func004002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002002002002001(),Trig_Set_keeping_Gem_Func004002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002002002001(),Trig_Set_keeping_Gem_Func004002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002002001(),Trig_Set_keeping_Gem_Func004002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func004002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func004002001002001(),Trig_Set_keeping_Gem_Func004002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002001002002001(),Trig_Set_keeping_Gem_Func005002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002001002001(),Trig_Set_keeping_Gem_Func005002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002001001(),Trig_Set_keeping_Gem_Func005002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002002001001(),Trig_Set_keeping_Gem_Func005002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002002002002001(),Trig_Set_keeping_Gem_Func005002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002002002001(),Trig_Set_keeping_Gem_Func005002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002002001(),Trig_Set_keeping_Gem_Func005002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func005002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func005002001002001(),Trig_Set_keeping_Gem_Func005002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002001002002001(),Trig_Set_keeping_Gem_Func006002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002001002001(),Trig_Set_keeping_Gem_Func006002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002001001(),Trig_Set_keeping_Gem_Func006002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002002001001(),Trig_Set_keeping_Gem_Func006002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002002002002001(),Trig_Set_keeping_Gem_Func006002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002002002001(),Trig_Set_keeping_Gem_Func006002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002002001(),Trig_Set_keeping_Gem_Func006002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func006002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func006002001002001(),Trig_Set_keeping_Gem_Func006002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002001002002001(),Trig_Set_keeping_Gem_Func007002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002001002001(),Trig_Set_keeping_Gem_Func007002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002001001(),Trig_Set_keeping_Gem_Func007002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002002001001(),Trig_Set_keeping_Gem_Func007002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002002002002001(),Trig_Set_keeping_Gem_Func007002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002002002001(),Trig_Set_keeping_Gem_Func007002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002002001(),Trig_Set_keeping_Gem_Func007002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func007002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func007002001002001(),Trig_Set_keeping_Gem_Func007002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002001002002001(),Trig_Set_keeping_Gem_Func008002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002001002001(),Trig_Set_keeping_Gem_Func008002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002001001(),Trig_Set_keeping_Gem_Func008002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002002001001(),Trig_Set_keeping_Gem_Func008002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002002002002001(),Trig_Set_keeping_Gem_Func008002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002002002001(),Trig_Set_keeping_Gem_Func008002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002002001(),Trig_Set_keeping_Gem_Func008002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func008002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func008002001002001(),Trig_Set_keeping_Gem_Func008002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h01V')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h045')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h047')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h043')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002001002002001(),Trig_Set_keeping_Gem_Func009002001002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002001002001(),Trig_Set_keeping_Gem_Func009002001002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002001001(),Trig_Set_keeping_Gem_Func009002001002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h034')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00E')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002002001001(),Trig_Set_keeping_Gem_Func009002001002002001002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='u000')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h00G')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())!='h006')
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002002002002001(),Trig_Set_keeping_Gem_Func009002001002002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002002002001(),Trig_Set_keeping_Gem_Func009002001002002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002002001(),Trig_Set_keeping_Gem_Func009002001002002002())
-endfunction
-function Trig_Set_keeping_Gem_Func009002001002 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Set_keeping_Gem_Func009002001002001(),Trig_Set_keeping_Gem_Func009002001002002())
-endfunction
-function Trig_Set_keeping_Gem_Func034002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Set_keeping_Gem_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.70)
-	set udg_KeepingGem1[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Set_keeping_Gem_Func002002001002)))
-	set udg_KeepingGem2[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Set_keeping_Gem_Func003002001002)))
-	set udg_KeepingGem3[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Set_keeping_Gem_Func004002001002)))
-	set udg_KeepingGem4[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Set_keeping_Gem_Func005002001002)))
-	set udg_KeepingGem5[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Set_keeping_Gem_Func006002001002)))
-	set udg_KeepingGem6[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Set_keeping_Gem_Func007002001002)))
-	set udg_KeepingGem7[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Set_keeping_Gem_Func008002001002)))
-	set udg_KeepingGem8[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Set_keeping_Gem_Func009002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem8[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h006'),function Trig_Set_keeping_Gem_Func034002)
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem8[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A00R',udg_KeepingGem8[udg_Level])
-endfunction
-function InitTrig_Set_keeping_Gem takes nothing returns nothing
-	set gg_trg_Set_keeping_Gem=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Set_keeping_Gem,udg_SpawnTimer)
-	call TriggerAddAction(gg_trg_Set_keeping_Gem,function Trig_Set_keeping_Gem_Actions)
 endfunction
 function Trig_Special_Mark_Func001002 takes nothing returns nothing
 	call AddSpecialEffectLocBJ(GetUnitLoc(GetEnumUnit()),"Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl")
@@ -4075,155 +2443,6 @@ function Trig_Quests_messages_Actions takes nothing returns nothing
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","|cff22ff22[BK's] Gem TD v2.2|r - Changelog|n|n- Added a Downgrade button after pressing keep to a gem.|n- Extra chance is now a higher chance and costs slightly less. The normal chance is 1.25% - Old Extra chance was 4.82% - New Extra chance is 5.95% (Per gem placed, not for the total 5).|n- Increased hitpoints on level 28 Damage Test (from 100,000 to 150,000) and on last Damage Test (600,000 to 700,000)|n- Improved Aquamarines damages by about 20% (also fixed Great Aquas range)|n- Fixed Extra chance cancel bug, not being able to use it when canceled.|n- Slightly increase attack range of Hold/Ancient Slate, they were sometimes not grabbing.|n" + "- Changed a few tiles, giving a less bland look, also made the map fully symetricical (was a bit off before)|n- Keep will now appear only after you have made 5 gems (I really should of done this earlier :S)|n- Reworked Ancient BloodStone|n- Added a new Extra Chance for Slates|n- Increase chipped ruby min damage by 1|n- Added a -3 armor aura (1000 range) to all units for the Great Amethyst|n- Bug fix on some players pressing keep on a special on place, then getting a new gem|n- Improved Wraith Slate damage stacking and explosion area.","ReplaceableTextures\\CommandButtons\\BTNSpellBookBLS.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","|cff22ff22[BK's] Gem TD v2.0|r - Changelog|n|n- Added Aquamarine, a new base gem|n- Added 2 new special towers, all with upgrades|n- Added a Range Check button to gems with an aura|n- Added a Anti-Stuck button on Miners|n- Fixed Blocking/Creeps attacking so they will teleport to there destination not the start.|n- Added an Extra Chance button on your mine to use up more gold|n- Fixed some create slate bug issues|n- Fixed text on Hold Slate displaying wrong damage|n- Increase base move speed on extreme creeps and lowered hitpoints to reduce game time.","ReplaceableTextures\\CommandButtons\\BTNSpellBookBLS.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED,"[BK's] Gem Tower Defense","|cff22ff22[BK's] Gem TD v1.9|r - Changelog|n|n- Added a new Final Damage test with 600,000 Hitpoints instead of 500,000|n- Improved: Uranium, Blood Stones, Ruby Damage, Wraith Slate (+20% damage), Flawed Emerald (+1 damage), Hold Slate, Enchanted Emerald damage, Great Diamond damage, Air Slate range.|n- Dimmed: Dark/Enchanted Emerald Stun, China Jade (attack speed, increased gold cost), Lucky China Jade (increased gold cost, gold bonus, damage, critical, attack speed), Pink/Great Pink Diamond (damage).|n- Added Extreme creeps from level 17 onwards (Extreme Mode)|n- Basic Slates requirements changed (Removed chipped requirement and added a flawed)|n- Many small balancing, this version will be the most balanced Gem TD.","ReplaceableTextures\\CommandButtons\\BTNSpellBookBLS.blp")
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
-		return false
-	endif
-	if(not(udg_Level>=15))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func001001 takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == bj_forLoopAIndex
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func002001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func003001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func004001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func005001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func006001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Func001Func007001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_1st_kill_money_bonus_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func001001())then
-			set udg_FirstKillNo[GetForLoopIndexA()]=(udg_FirstKillNo[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func002001())then
-			call DisableTrigger(GetTriggeringTrigger())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func003001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff99"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" is the first to kill this round. Adding "+(I2S((udg_Level-5))+" gold.|r")))))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func004001())then
-			set udg_Count1stkills[GetForLoopIndexA()]=(udg_Count1stkills[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func005001())then
-			call AdjustPlayerStateBJ((udg_Level-5),udg_Player[GetForLoopIndexA()],PLAYER_STATE_RESOURCE_GOLD)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func006001())then
-			call EnableTrigger(gg_trg_Lvl_15_2nd_kill_money_bonus)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_1st_kill_money_bonus_Func001Func007001())then
-			set udg_FirstKillNo[GetForLoopIndexA()]=11
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Lvl_15_1st_kill_money_bonus takes nothing returns nothing
-	set gg_trg_Lvl_15_1st_kill_money_bonus=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Lvl_15_1st_kill_money_bonus,EVENT_PLAYER_UNIT_DEATH)
-	call TriggerAddCondition(gg_trg_Lvl_15_1st_kill_money_bonus,Condition(function Trig_Lvl_15_1st_kill_money_bonus_Conditions))
-	call TriggerAddAction(gg_trg_Lvl_15_1st_kill_money_bonus,function Trig_Lvl_15_1st_kill_money_bonus_Actions)
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
-		return false
-	endif
-	if(not(udg_Level>=15))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func001001 takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == bj_forLoopAIndex
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func002001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func003001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func004001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Func001Func005001 takes nothing returns boolean
-	return(udg_FirstKillNo[GetForLoopIndexA()]==10)
-endfunction
-function Trig_Lvl_15_2nd_kill_money_bonus_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Lvl_15_2nd_kill_money_bonus_Func001Func001001())then
-			set udg_FirstKillNo[GetForLoopIndexA()]=(udg_FirstKillNo[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_2nd_kill_money_bonus_Func001Func002001())then
-			call DisableTrigger(GetTriggeringTrigger())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_2nd_kill_money_bonus_Func001Func003001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff99"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" is the second to kill this round. Adding "+(I2S((udg_Level-10))+" gold.|r")))))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_2nd_kill_money_bonus_Func001Func004001())then
-			set udg_Count2ndKills[GetForLoopIndexA()]=(udg_Count2ndKills[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Lvl_15_2nd_kill_money_bonus_Func001Func005001())then
-			call AdjustPlayerStateBJ((udg_Level-10),udg_Player[GetForLoopIndexA()],PLAYER_STATE_RESOURCE_GOLD)
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Lvl_15_2nd_kill_money_bonus takes nothing returns nothing
-	set gg_trg_Lvl_15_2nd_kill_money_bonus=CreateTrigger()
-	call DisableTrigger(gg_trg_Lvl_15_2nd_kill_money_bonus)
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Lvl_15_2nd_kill_money_bonus,EVENT_PLAYER_UNIT_DEATH)
-	call TriggerAddCondition(gg_trg_Lvl_15_2nd_kill_money_bonus,Condition(function Trig_Lvl_15_2nd_kill_money_bonus_Conditions))
-	call TriggerAddAction(gg_trg_Lvl_15_2nd_kill_money_bonus,function Trig_Lvl_15_2nd_kill_money_bonus_Actions)
 endfunction
 function Trig_Creeps_attacking_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetAttacker())==Player(11)))then
@@ -6610,15 +4829,6 @@ function Trig_AntiStuck_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_AntiStuck_Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellTargetUnit())!='H036'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h02T'))then
-		return false
-	endif
 	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h04Q'))then
 		return false
 	endif
@@ -7244,1210 +5454,7 @@ function InitTrig_Buying_Lives takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Buying_Lives,Condition(function Trig_Buying_Lives_Conditions))
 	call TriggerAddAction(gg_trg_Buying_Lives,function Trig_Buying_Lives_Actions)
 endfunction
-function Trig_Reworked_Combining_specials_Classic_Conditions takes nothing returns boolean
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	if(not(udg_BuildingPeriod==false))then
-		return false
-	endif
-	if(not(GetSpellAbilityId()=='A00R'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func001003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetSpellAbilityUnit())==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00V'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00N'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h008'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00V')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00N')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h008')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func005Func006002001(),Trig_Reworked_Combining_specials_Classic_Func005Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func005C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func005Func006001(),Trig_Reworked_Combining_specials_Classic_Func005Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00J'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00K'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00J')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00K')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00B')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func006Func006002001(),Trig_Reworked_Combining_specials_Classic_Func006Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func006C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func006Func006001(),Trig_Reworked_Combining_specials_Classic_Func006Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00Y'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='e002'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00I'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00Y')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='e002')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00I')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func007Func006002001(),Trig_Reworked_Combining_specials_Classic_Func007Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func007C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func007Func006001(),Trig_Reworked_Combining_specials_Classic_Func007Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h004'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h005'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00C'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h004')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h005')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00C')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func008Func006002001(),Trig_Reworked_Combining_specials_Classic_Func008Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func008C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func008Func006001(),Trig_Reworked_Combining_specials_Classic_Func008Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='e004'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00A'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00L'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='e004')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00A')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00L')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func009Func006002001(),Trig_Reworked_Combining_specials_Classic_Func009Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func009C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func009Func006001(),Trig_Reworked_Combining_specials_Classic_Func009Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00W'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='e003'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00R'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00W')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='e003')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00R')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func010Func006002001(),Trig_Reworked_Combining_specials_Classic_Func010Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func010C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func010Func006001(),Trig_Reworked_Combining_specials_Classic_Func010Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='e000'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h000'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h001'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='e000')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h000')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h001')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func011Func006002001(),Trig_Reworked_Combining_specials_Classic_Func011Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func011C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func011Func006001(),Trig_Reworked_Combining_specials_Classic_Func011Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00X'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00O'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h03R'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00X')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00O')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h03R')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func012Func006002001(),Trig_Reworked_Combining_specials_Classic_Func012Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func012C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func012Func006001(),Trig_Reworked_Combining_specials_Classic_Func012Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00T'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h03U'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00H'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00T')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h03U')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00H')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func013Func006002001(),Trig_Reworked_Combining_specials_Classic_Func013Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func013C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func013Func006001(),Trig_Reworked_Combining_specials_Classic_Func013Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00U'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00Q'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='e001'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00U')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00Q')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='e001')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func014Func006002001(),Trig_Reworked_Combining_specials_Classic_Func014Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func014C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func014Func006001(),Trig_Reworked_Combining_specials_Classic_Func014Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00S'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00M'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h007'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00S')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00M')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h007')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func015Func006002001(),Trig_Reworked_Combining_specials_Classic_Func015Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func015C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func015Func006001(),Trig_Reworked_Combining_specials_Classic_Func015Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func016Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n000'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func016Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n002'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func016Func005001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n000')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func016Func005002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n002')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func016C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func016Func005001(),Trig_Reworked_Combining_specials_Classic_Func016Func005002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func017Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n001'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func017Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n004'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func017Func005001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n004')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func017Func005002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n001')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func017C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func017Func005001(),Trig_Reworked_Combining_specials_Classic_Func017Func005002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func018Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n009'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func018Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n008'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func018Func005001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n009')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func018Func005002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n008')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func018C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func018Func005001(),Trig_Reworked_Combining_specials_Classic_Func018Func005002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func019Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n00C'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func019Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='n00E'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func019Func005001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n00C')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func019Func005002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='n00E')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func019C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func019Func005001(),Trig_Reworked_Combining_specials_Classic_Func019Func005002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h03T'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h002'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h003'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func006001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h03T')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func006002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h002')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func006002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h003')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020Func006002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func020Func006002001(),Trig_Reworked_Combining_specials_Classic_Func020Func006002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func020C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func020Func006001(),Trig_Reworked_Combining_specials_Classic_Func020Func006002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h03V'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h00P'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h03S'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellAbilityUnit())!='h009'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func007001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h03V')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func007002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h009')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func007002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h00P')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func007002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())=='h03S')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func007002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func021Func007002002001(),Trig_Reworked_Combining_specials_Classic_Func021Func007002002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021Func007002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func021Func007002001(),Trig_Reworked_Combining_specials_Classic_Func021Func007002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func021C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func021Func007001(),Trig_Reworked_Combining_specials_Classic_Func021Func007002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CombineSpecialUnit[GetForLoopIndexA()])=='n00F')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CombineSpecialUnit[GetForLoopIndexA()])=='n00A')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003002002 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CombineSpecialUnit[GetForLoopIndexA()])=='h016')
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003002001(),Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003002002())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func004C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003001(),Trig_Reworked_Combining_specials_Classic_Func023Func001Func004Func003002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func005001001 takes nothing returns boolean
-	return(GetOwningPlayer(udg_CombineSpecialUnit[GetForLoopIndexA()])==GetFilterPlayer())
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func007C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=10))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<20))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func008C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=20))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<30))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func009C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=30))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<40))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func010C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=40))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<50))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func011C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=50))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<60))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func012C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=60))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<70))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func013C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=70))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<80))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func014C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=80))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<90))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func015C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=90))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<100))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func016C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=100))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<110))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func017C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=110))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])<120))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001Func018C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CombineSpecialUnit[GetForLoopIndexA()])>=120))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Func023Func001C takes nothing returns boolean
-	if(not(GetOwningPlayer(GetLastReplacedUnitBJ())==udg_Player[GetForLoopIndexA()]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Reworked_Combining_specials_Classic_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Reworked_Combining_specials_Classic_Func001003001())then
-			set udg_CountSpecials[GetForLoopIndexA()]=(udg_CountSpecials[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_KillsNUMBER=Unit_User_Data__Get(GetSpellAbilityUnit())
-	call GroupRemoveUnitSimple(GetSpellAbilityUnit(),udg_UnitGroupSPECIAL)
-	if(Trig_Reworked_Combining_specials_Classic_Func005C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func005Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00V'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func005Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00N'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func005Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h008'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h01B',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func006C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func006Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00J'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func006Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00K'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func006Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00B'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h018',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func007C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func007Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Y'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func007Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e002'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func007Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00I'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h017',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func008C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func008Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h004'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func008Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h005'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func008Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00C'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h016',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func009C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func009Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e004'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func009Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00A'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func009Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00L'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h019',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func010C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func010Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00W'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func010Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e003'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func010Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00R'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h014',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func011C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func011Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e000'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func011Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h000'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func011Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h001'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h01A',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func012C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func012Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00X'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func012Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00O'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func012Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03R'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h015',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func013C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func013Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00T'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func013Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03U'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func013Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00H'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h01O',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func014C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func014Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00U'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func014Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Q'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func014Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e001'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h01N',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func015C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func015Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00S'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func015Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00M'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func015Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h007'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h029',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func016C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func016Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n000'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call RemoveUnit(udg_SpecCombUnit[1])
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func016Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n002'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call RemoveUnit(udg_SpecCombUnit[2])
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'n003',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func017C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func017Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n001'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call RemoveUnit(udg_SpecCombUnit[1])
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func017Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n004'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call RemoveUnit(udg_SpecCombUnit[2])
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'n005',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func018C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func018Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n009'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call RemoveUnit(udg_SpecCombUnit[1])
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func018Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n008'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call RemoveUnit(udg_SpecCombUnit[2])
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'n00A',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func019C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func019Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00C'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call RemoveUnit(udg_SpecCombUnit[1])
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func019Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00E'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call RemoveUnit(udg_SpecCombUnit[2])
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'n00F',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func020C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func020Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03T'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func020Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h002'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func020Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h003'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h03X',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	if(Trig_Reworked_Combining_specials_Classic_Func021C())then
-		if(Trig_Reworked_Combining_specials_Classic_Func021Func001C())then
-			set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03V'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func021Func002C())then
-			set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00P'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func021Func003C())then
-			set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03S'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		if(Trig_Reworked_Combining_specials_Classic_Func021Func004C())then
-			set udg_SpecCombUnit[4]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h009'))
-			set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[4]))
-			call ReplaceUnitBJ(udg_SpecCombUnit[4],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-		endif
-		call ReplaceUnitBJ(GetSpellAbilityUnit(),'h040',bj_UNIT_STATE_METHOD_MAXIMUM)
-		call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
-	else
-	endif
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Reworked_Combining_specials_Classic_Func023Func001C())then
-			set udg_CombineSpecialUnit[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
-			call Unit_User_Data__Set(udg_CombineSpecialUnit[GetForLoopIndexA()],udg_KillsNUMBER)
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func004C())then
-				set udg_CheckSpelllvlUNIT=udg_CombineSpecialUnit[GetForLoopIndexA()]
-				call ConditionalTriggerExecute(gg_trg_Find_spell_levels)
-			else
-			endif
-			call DisplayTextToForce(GetPlayersMatching(Condition(function Trig_Reworked_Combining_specials_Classic_Func023Func001Func005001001)),("- "+(GetUnitName(udg_CombineSpecialUnit[GetForLoopIndexA()])+(" |cffffff00has been created with |r"+(I2S(udg_KillsNUMBER)+" |cffffff00kills saved from it's combined gems.|r")))))
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func007C())then
-				call UnitAddAbilityBJ('A01L',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func008C())then
-				call UnitAddAbilityBJ('A01N',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func009C())then
-				call UnitAddAbilityBJ('A01M',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func010C())then
-				call UnitAddAbilityBJ('A01O',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A01Z',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func011C())then
-				call UnitAddAbilityBJ('A01V',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A01P',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func012C())then
-				call UnitAddAbilityBJ('A01R',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A022',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func013C())then
-				call UnitAddAbilityBJ('A01S',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A023',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A026',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func014C())then
-				call UnitAddAbilityBJ('A01T',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A024',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A027',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func015C())then
-				call UnitAddAbilityBJ('A01U',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A021',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A028',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func016C())then
-				call UnitAddAbilityBJ('A01W',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A020',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A029',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A02C',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func017C())then
-				call UnitAddAbilityBJ('A01X',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A01Y',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A02A',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A02D',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-			if(Trig_Reworked_Combining_specials_Classic_Func023Func001Func018C())then
-				call UnitAddAbilityBJ('A01Q',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A025',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A02B',udg_CombineSpecialUnit[GetForLoopIndexA()])
-				call UnitAddAbilityBJ('A02E',udg_CombineSpecialUnit[GetForLoopIndexA()])
-			else
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Reworked_Combining_specials_Classic takes nothing returns nothing
-	set gg_trg_Reworked_Combining_specials_Classic=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Reworked_Combining_specials_Classic,EVENT_PLAYER_UNIT_SPELL_CAST)
-	call TriggerAddCondition(gg_trg_Reworked_Combining_specials_Classic,Condition(function Trig_Reworked_Combining_specials_Classic_Conditions))
-	call TriggerAddAction(gg_trg_Reworked_Combining_specials_Classic,function Trig_Reworked_Combining_specials_Classic_Actions)
-endfunction
 function Trig_DownGrade_find_Conditions takes nothing returns boolean
-	if(not(udg_BuildingPeriod==true))then
-		return false
-	endif
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
 	endif
@@ -8481,9 +5488,6 @@ function InitTrig_DownGrade_find takes nothing returns nothing
 	call TriggerAddAction(gg_trg_DownGrade_find,function Trig_DownGrade_find_Actions)
 endfunction
 function Trig_DownGrade_Conditions takes nothing returns boolean
-	if(not(udg_BuildingPeriod==true))then
-		return false
-	endif
 	if(not(GetSpellAbilityId()=='A02G'))then
 		return false
 	endif
@@ -8775,17 +5779,11 @@ function InitTrig_DownGrade takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_DownGrade,Condition(function Trig_DownGrade_Conditions))
 	call TriggerAddAction(gg_trg_DownGrade,function Trig_DownGrade_Actions)
 endfunction
-function Trig_Create_Slates_Func011001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_Create_Slates_Func011002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_Create_Slates_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A03M'))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_Create_Slates_Func011001(),Trig_Create_Slates_Func011002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -11264,23 +8262,11 @@ endfunction
 function Trig_Dark_Emerald_Func006001 takes nothing returns boolean
 	return(udg_Random[2]==1)
 endfunction
-function Trig_Dark_Emerald_Func007Func002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())=='H036')
-endfunction
-function Trig_Dark_Emerald_Func007Func002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())=='h02T')
-endfunction
 function Trig_Dark_Emerald_Func007Func002001 takes nothing returns boolean
-	return GetBooleanOr(Trig_Dark_Emerald_Func007Func002001001(),Trig_Dark_Emerald_Func007Func002001002())
-endfunction
-function Trig_Dark_Emerald_Func007Func003001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())!='H036')
-endfunction
-function Trig_Dark_Emerald_Func007Func003001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())!='h02T')
+	return false
 endfunction
 function Trig_Dark_Emerald_Func007Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Dark_Emerald_Func007Func003001001(),Trig_Dark_Emerald_Func007Func003001002())
+	return true
 endfunction
 function Trig_Dark_Emerald_Func007C takes nothing returns boolean
 	if(not(udg_Random[2]==1))then
@@ -11354,16 +8340,7 @@ function Trig_Slow_Slate_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Slow_Slate_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttackedUnitBJ())!='h02S'))then
-		return false
-	endif
 	if(not(GetUnitTypeId(GetAttackedUnitBJ())!='h04Q'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetAttackedUnitBJ())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetAttackedUnitBJ())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetAttackedUnitBJ())!='H04B'))then
@@ -11756,23 +8733,11 @@ endfunction
 function Trig_Lucky_China_Jade_Func009Func006001 takes nothing returns boolean
 	return(udg_Random[7]==2)
 endfunction
-function Trig_Lucky_China_Jade_Func009Func007Func002001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())=='h02S')
-endfunction
-function Trig_Lucky_China_Jade_Func009Func007Func002001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())=='h02T')
-endfunction
 function Trig_Lucky_China_Jade_Func009Func007Func002001 takes nothing returns boolean
-	return GetBooleanOr(Trig_Lucky_China_Jade_Func009Func007Func002001001(),Trig_Lucky_China_Jade_Func009Func007Func002001002())
-endfunction
-function Trig_Lucky_China_Jade_Func009Func007Func003001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())!='h02S')
-endfunction
-function Trig_Lucky_China_Jade_Func009Func007Func003001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetAttackedUnitBJ())!='h02T')
+	return false
 endfunction
 function Trig_Lucky_China_Jade_Func009Func007Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Lucky_China_Jade_Func009Func007Func003001001(),Trig_Lucky_China_Jade_Func009Func007Func003001002())
+	return true
 endfunction
 function Trig_Lucky_China_Jade_Func009Func007C takes nothing returns boolean
 	if(not(udg_Random[7]==2))then
@@ -11922,497 +8887,6 @@ function InitTrig_Opal_Vein_SLate takes nothing returns nothing
 	call TriggerRegisterPlayerUnitEventSimple(gg_trg_Opal_Vein_SLate,Player(11),EVENT_PLAYER_UNIT_ATTACKED)
 	call TriggerAddCondition(gg_trg_Opal_Vein_SLate,Condition(function Trig_Opal_Vein_SLate_Conditions))
 	call TriggerAddAction(gg_trg_Opal_Vein_SLate,function Trig_Opal_Vein_SLate_Actions)
-endfunction
-function Trig_Mid_game_dmg_test_inihilaize_Conditions takes nothing returns boolean
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	if(not(udg_Level==14))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_inihilaize_Func015Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Mid_game_dmg_test_inihilaize_Func015Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Mid_game_dmg_test_inihilaize_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.50)
-	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
-	call PlaySoundBJ(gg_snd_GoodJob)
-	call DisableTrigger(GetTriggeringTrigger())
-	call EnableTrigger(gg_trg_Mid_game_dmg_test_kills)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Now to find out whos got the best maze, We will run a DAMAGE TEST.|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00The winner will recieve 50 bonus gold.|r")
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Kill your Damage Test for an extra 50 gold.|r")
-	call TriggerSleepAction(2.00)
-	call PlaySoundBJ(gg_snd_QuestNew)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Mid_game_dmg_test_inihilaize_Func015Func001001())then
-			call CreateNUnitsAtLoc(1,'h02S',Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Mid_game_dmg_test_inihilaize_Func015Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(2)
-	call EnableTrigger(gg_trg_Mid_game_dmg_test_Finish)
-endfunction
-function InitTrig_Mid_game_dmg_test_inihilaize takes nothing returns nothing
-	set gg_trg_Mid_game_dmg_test_inihilaize=CreateTrigger()
-	call TriggerRegisterPlayerStateEvent(gg_trg_Mid_game_dmg_test_inihilaize,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_Mid_game_dmg_test_inihilaize,Condition(function Trig_Mid_game_dmg_test_inihilaize_Conditions))
-	call TriggerAddAction(gg_trg_Mid_game_dmg_test_inihilaize,function Trig_Mid_game_dmg_test_inihilaize_Actions)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Conditions takes nothing returns boolean
-	if(not(udg_Level==14))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func008Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func011C takes nothing returns boolean
-	if(not(udg_Damage[1]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func012C takes nothing returns boolean
-	if(not(udg_Damage[2]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func013C takes nothing returns boolean
-	if(not(udg_Damage[3]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func014C takes nothing returns boolean
-	if(not(udg_Damage[4]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func015C takes nothing returns boolean
-	if(not(udg_Damage[5]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func016C takes nothing returns boolean
-	if(not(udg_Damage[6]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func017C takes nothing returns boolean
-	if(not(udg_Damage[7]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func018C takes nothing returns boolean
-	if(not(udg_Damage[8]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[7]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func023002 takes nothing returns nothing
-	call AdjustPlayerStateBJ((5+(udg_Level*2)),GetEnumPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func032001 takes nothing returns boolean
-	return(udg_Level==4)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func033001 takes nothing returns boolean
-	return(udg_Level==8)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func034001 takes nothing returns boolean
-	return(udg_Level==12)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func035001 takes nothing returns boolean
-	return(udg_Level==16)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func036001 takes nothing returns boolean
-	return(udg_Level==20)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func037001 takes nothing returns boolean
-	return(udg_Level==24)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func038001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func039001 takes nothing returns boolean
-	return(udg_Level==32)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func041001 takes nothing returns boolean
-	return(udg_Level==4)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func042001 takes nothing returns boolean
-	return(udg_Level==8)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func043001 takes nothing returns boolean
-	return(udg_Level==12)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func044001 takes nothing returns boolean
-	return(udg_Level==16)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func045001 takes nothing returns boolean
-	return(udg_Level==20)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func046001 takes nothing returns boolean
-	return(udg_Level==24)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func047001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func048001 takes nothing returns boolean
-	return(udg_Level==32)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Func050002 takes nothing returns nothing
-	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,0)
-endfunction
-function Trig_Mid_game_dmg_test_Finish_Actions takes nothing returns nothing
-	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Damage Test Complete|r")
-	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00The winner recieves an extra 50 gold!|r")
-	call TriggerSleepAction(2)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Mid_game_dmg_test_Finish_Func008Func001001())then
-			call DisplayTextToForce(GetPlayersAll(),(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" has done "+(I2S(udg_Damage[GetForLoopIndexA()])+" damage."))))
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(5.00)
-	if(Trig_Mid_game_dmg_test_Finish_Func011C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(0))+(" with "+(I2S(udg_Damage[1])+" damage!|r")))))
-		call AdjustPlayerStateBJ(50,Player(0),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func012C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(1))+(" with "+(I2S(udg_Damage[2])+" damage!|r")))))
-		call AdjustPlayerStateBJ(50,Player(1),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func013C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(2))+(" with "+(I2S(udg_Damage[3])+" damage!|r")))))
-		call AdjustPlayerStateBJ(50,Player(2),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func014C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(3))+(" with "+(I2S(udg_Damage[4])+" damage!|r")))))
-		call AdjustPlayerStateBJ(50,Player(3),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func015C())then
-		call AdjustPlayerStateBJ(50,Player(4),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(4))+(" with "+(I2S(udg_Damage[5])+" damage!|r")))))
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func016C())then
-		call AdjustPlayerStateBJ(50,Player(5),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(5))+(" with "+(I2S(udg_Damage[6])+" damage!|r")))))
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func017C())then
-		call AdjustPlayerStateBJ(50,Player(6),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(6))+(" with "+(I2S(udg_Damage[7])+" damage!|r")))))
-	else
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func018C())then
-		call AdjustPlayerStateBJ(50,Player(7),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(7))+(" with "+(I2S(udg_Damage[8])+" damage!|r")))))
-	else
-	endif
-	call TriggerSleepAction(4.00)
-	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
-	call PlaySoundBJ(gg_snd_GoodJob)
-	call ForForce(GetPlayersAll(),function Trig_Mid_game_dmg_test_Finish_Func023002)
-	set udg_Level=(udg_Level+1)
-	call DisableTrigger(GetTriggeringTrigger())
-	call StartTimerBJ(udg_SpawnTimer,false,40.00)
-	call CreateTimerDialogBJ(GetLastCreatedTimerBJ(),("|cff33ff33Level "+(I2S(udg_Level)+" in...|r")))
-	set udg_TimerWindow=GetLastCreatedTimerDialogBJ()
-	call TimerDialogDisplayBJ(true,udg_TimerWindow)
-	call ConditionalTriggerExecute(gg_trg_Setup_New_Round_1)
-	call TriggerSleepAction(8.00)
-	if(Trig_Mid_game_dmg_test_Finish_Func032001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func033001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func034001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func035001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func036001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func037001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func038001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func039001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	call TriggerSleepAction(13.00)
-	if(Trig_Mid_game_dmg_test_Finish_Func041001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func042001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func043001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func044001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func045001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func046001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func047001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Mid_game_dmg_test_Finish_Func048001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	call TriggerSleepAction(16.50)
-	call ForForce(GetPlayersAll(),function Trig_Mid_game_dmg_test_Finish_Func050002)
-endfunction
-function InitTrig_Mid_game_dmg_test_Finish takes nothing returns nothing
-	set gg_trg_Mid_game_dmg_test_Finish=CreateTrigger()
-	call DisableTrigger(gg_trg_Mid_game_dmg_test_Finish)
-	call TriggerRegisterPlayerStateEvent(gg_trg_Mid_game_dmg_test_Finish,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_Mid_game_dmg_test_Finish,Condition(function Trig_Mid_game_dmg_test_Finish_Conditions))
-	call TriggerAddAction(gg_trg_Mid_game_dmg_test_Finish,function Trig_Mid_game_dmg_test_Finish_Actions)
-endfunction
-function Trig_Mid_game_dmg_test_kills_Conditions takes nothing returns boolean
-	return GetUnitTypeId (GetDyingUnit ()) == 'h025'
-endfunction
-function Trig_Mid_game_dmg_test_kills_Actions takes nothing returns nothing
-	local unit killed = GetDyingUnit ()
-	local integer index = Unit_Indexer__Unit_Index (killed)
-	local integer player_id = udg_CreepOwner [index]
-
-	if player_id >= 1 and player_id <= 8 then
-		set udg_Damage [player_id] = 7500
-	endif
-
-	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!!|r")))
-	call TriggerSleepAction(300.00)
-	call DisableTrigger(GetTriggeringTrigger())
-endfunction
-function InitTrig_Mid_game_dmg_test_kills takes nothing returns nothing
-	set gg_trg_Mid_game_dmg_test_kills=CreateTrigger()
-	call DisableTrigger(gg_trg_Mid_game_dmg_test_kills)
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Mid_game_dmg_test_kills,EVENT_PLAYER_UNIT_DEATH)
-	call TriggerAddCondition(gg_trg_Mid_game_dmg_test_kills,Condition(function Trig_Mid_game_dmg_test_kills_Conditions))
-	call TriggerAddAction(gg_trg_Mid_game_dmg_test_kills,function Trig_Mid_game_dmg_test_kills_Actions)
 endfunction
 function Trig_Race_Mid_Game_ReRunner_1_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h04Q'))then
@@ -12861,1467 +9335,6 @@ function InitTrig_Hits_mid_tester takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Hits_mid_tester,Condition(function Trig_Hits_mid_tester_Conditions))
 	call TriggerAddAction(gg_trg_Hits_mid_tester,function Trig_Hits_mid_tester_Actions)
 endfunction
-function Trig_Hits_GemBaby_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttackedUnitBJ())=='h02S'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Hits_GemBaby_Func002001 takes nothing returns boolean
-	return(udg_Random[10]==50)
-endfunction
-function Trig_Hits_GemBaby_Func003001 takes nothing returns boolean
-	return(udg_Random[10]==51)
-endfunction
-function Trig_Hits_GemBaby_Func004001 takes nothing returns boolean
-	return(udg_Random[10]==52)
-endfunction
-function Trig_Hits_GemBaby_Func005001 takes nothing returns boolean
-	return(udg_Random[10]==53)
-endfunction
-function Trig_Hits_GemBaby_Func006001 takes nothing returns boolean
-	return(udg_Random[10]==54)
-endfunction
-function Trig_Hits_GemBaby_Actions takes nothing returns nothing
-	set udg_Random[10]=GetRandomInt(1,650)
-	if(Trig_Hits_GemBaby_Func002001())then
-		call PlaySoundOnUnitBJ(gg_snd_BansheeGhostWhat1,100,GetAttackedUnitBJ())
-	else
-		call DoNothing()
-	endif
-	if(Trig_Hits_GemBaby_Func003001())then
-		call PlaySoundOnUnitBJ(gg_snd_BansheeGhostYes1,100,GetAttackedUnitBJ())
-	else
-		call DoNothing()
-	endif
-	if(Trig_Hits_GemBaby_Func004001())then
-		call PlaySoundOnUnitBJ(gg_snd_BansheeGhostYes2,100,GetAttackedUnitBJ())
-	else
-		call DoNothing()
-	endif
-	if(Trig_Hits_GemBaby_Func005001())then
-		call PlaySoundOnUnitBJ(gg_snd_BansheeGhostYesAttack1,100,GetAttackedUnitBJ())
-	else
-		call DoNothing()
-	endif
-	if(Trig_Hits_GemBaby_Func006001())then
-		call PlaySoundOnUnitBJ(gg_snd_BansheeGhostYesAttack2,100,GetAttackedUnitBJ())
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_Hits_GemBaby takes nothing returns nothing
-	set gg_trg_Hits_GemBaby=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Hits_GemBaby,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Hits_GemBaby,Condition(function Trig_Hits_GemBaby_Conditions))
-	call TriggerAddAction(gg_trg_Hits_GemBaby,function Trig_Hits_GemBaby_Actions)
-endfunction
-function Trig_Late_game_dmg_test_inihilaize_Conditions takes nothing returns boolean
-	if(not(udg_Level==28))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_inihilaize_Func015Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Late_game_dmg_test_inihilaize_Func015Func002002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Late_game_dmg_test_inihilaize_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.50)
-	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
-	call PlaySoundBJ(gg_snd_GoodJob)
-	call DisableTrigger(GetTriggeringTrigger())
-	call EnableTrigger(gg_trg_Late_game_dmg_test_kills)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Now to find out whos got the best maze, We will run a DAMAGE TEST.|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00The winner will recieve 150 bonus gold.|r")
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Kill your Damage Test for an extra 150 gold.|r")
-	call TriggerSleepAction(2.00)
-	call PlaySoundBJ(gg_snd_QuestNew)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Late_game_dmg_test_inihilaize_Func015Func001001())then
-			call CreateNUnitsAtLoc(1,'h02T',Player(11),GetRectCenter(udg_Spawn[GetForLoopIndexA()]),bj_UNIT_FACING)
-			set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = bj_forLoopAIndex
-		else
-			call DoNothing()
-		endif
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Late_game_dmg_test_inihilaize_Func015Func002002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(2)
-	call EnableTrigger(gg_trg_Late_game_dmg_test_Finish)
-endfunction
-function InitTrig_Late_game_dmg_test_inihilaize takes nothing returns nothing
-	set gg_trg_Late_game_dmg_test_inihilaize=CreateTrigger()
-	call TriggerRegisterPlayerStateEvent(gg_trg_Late_game_dmg_test_inihilaize,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_Late_game_dmg_test_inihilaize,Condition(function Trig_Late_game_dmg_test_inihilaize_Conditions))
-	call TriggerAddAction(gg_trg_Late_game_dmg_test_inihilaize,function Trig_Late_game_dmg_test_inihilaize_Actions)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Conditions takes nothing returns boolean
-	if(not(udg_Level==28))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func008Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func011C takes nothing returns boolean
-	if(not(udg_Damage[1]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func012C takes nothing returns boolean
-	if(not(udg_Damage[2]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func013C takes nothing returns boolean
-	if(not(udg_Damage[3]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func014C takes nothing returns boolean
-	if(not(udg_Damage[4]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func015C takes nothing returns boolean
-	if(not(udg_Damage[5]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func016C takes nothing returns boolean
-	if(not(udg_Damage[6]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func017C takes nothing returns boolean
-	if(not(udg_Damage[7]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func018C takes nothing returns boolean
-	if(not(udg_Damage[8]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[7]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func023002 takes nothing returns nothing
-	call AdjustPlayerStateBJ((5+(udg_Level*2)),GetEnumPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func032001 takes nothing returns boolean
-	return(udg_Level==4)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func033001 takes nothing returns boolean
-	return(udg_Level==8)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func034001 takes nothing returns boolean
-	return(udg_Level==12)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func035001 takes nothing returns boolean
-	return(udg_Level==16)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func036001 takes nothing returns boolean
-	return(udg_Level==20)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func037001 takes nothing returns boolean
-	return(udg_Level==24)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func038001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func039001 takes nothing returns boolean
-	return(udg_Level==32)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func041001 takes nothing returns boolean
-	return(udg_Level==4)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func042001 takes nothing returns boolean
-	return(udg_Level==8)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func043001 takes nothing returns boolean
-	return(udg_Level==12)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func044001 takes nothing returns boolean
-	return(udg_Level==16)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func045001 takes nothing returns boolean
-	return(udg_Level==20)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func046001 takes nothing returns boolean
-	return(udg_Level==24)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func047001 takes nothing returns boolean
-	return(udg_Level==28)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func048001 takes nothing returns boolean
-	return(udg_Level==32)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Func050002 takes nothing returns nothing
-	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,0)
-endfunction
-function Trig_Late_game_dmg_test_Finish_Actions takes nothing returns nothing
-	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Damage Test Complete|r")
-	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00The winner recieves an extra 150 gold!|r")
-	call TriggerSleepAction(2)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Late_game_dmg_test_Finish_Func008Func001001())then
-			call DisplayTextToForce(GetPlayersAll(),(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" has done "+(I2S(udg_Damage[GetForLoopIndexA()])+" damage."))))
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(5.00)
-	if(Trig_Late_game_dmg_test_Finish_Func011C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(0))+(" with "+(I2S(udg_Damage[1])+" damage!|r")))))
-		call AdjustPlayerStateBJ(150,Player(0),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func012C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(1))+(" with "+(I2S(udg_Damage[2])+" damage!|r")))))
-		call AdjustPlayerStateBJ(150,Player(1),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func013C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(2))+(" with "+(I2S(udg_Damage[3])+" damage!|r")))))
-		call AdjustPlayerStateBJ(150,Player(2),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func014C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(3))+(" with "+(I2S(udg_Damage[4])+" damage!|r")))))
-		call AdjustPlayerStateBJ(150,Player(3),PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func015C())then
-		call AdjustPlayerStateBJ(150,Player(4),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(4))+(" with "+(I2S(udg_Damage[5])+" damage!|r")))))
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func016C())then
-		call AdjustPlayerStateBJ(150,Player(5),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(5))+(" with "+(I2S(udg_Damage[6])+" damage!|r")))))
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func017C())then
-		call AdjustPlayerStateBJ(150,Player(6),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(6))+(" with "+(I2S(udg_Damage[7])+" damage!|r")))))
-	else
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func018C())then
-		call AdjustPlayerStateBJ(150,Player(7),PLAYER_STATE_RESOURCE_GOLD)
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(7))+(" with "+(I2S(udg_Damage[8])+" damage!|r")))))
-	else
-	endif
-	call TriggerSleepAction(4.00)
-	call SetSoundVolumeBJ(gg_snd_GoodJob,100)
-	call PlaySoundBJ(gg_snd_GoodJob)
-	call ForForce(GetPlayersAll(),function Trig_Late_game_dmg_test_Finish_Func023002)
-	set udg_Level=(udg_Level+1)
-	call DisableTrigger(GetTriggeringTrigger())
-	call StartTimerBJ(udg_SpawnTimer,false,40.00)
-	call CreateTimerDialogBJ(GetLastCreatedTimerBJ(),("|cff33ff33Level "+(I2S(udg_Level)+" in...|r")))
-	set udg_TimerWindow=GetLastCreatedTimerDialogBJ()
-	call TimerDialogDisplayBJ(true,udg_TimerWindow)
-	call ConditionalTriggerExecute(gg_trg_Setup_New_Round_1)
-	call TriggerSleepAction(8.00)
-	if(Trig_Late_game_dmg_test_Finish_Func032001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func033001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func034001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func035001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func036001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func037001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func038001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func039001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	call TriggerSleepAction(13.00)
-	if(Trig_Late_game_dmg_test_Finish_Func041001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func042001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func043001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func044001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func045001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func046001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func047001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	if(Trig_Late_game_dmg_test_Finish_Func048001())then
-		call DisplayTextToForce(GetPlayersAll(),"|cff33ff33   Next level is an air round!!|r")
-	else
-		call DoNothing()
-	endif
-	call TriggerSleepAction(16.50)
-	call ForForce(GetPlayersAll(),function Trig_Late_game_dmg_test_Finish_Func050002)
-endfunction
-function InitTrig_Late_game_dmg_test_Finish takes nothing returns nothing
-	set gg_trg_Late_game_dmg_test_Finish=CreateTrigger()
-	call DisableTrigger(gg_trg_Late_game_dmg_test_Finish)
-	call TriggerRegisterPlayerStateEvent(gg_trg_Late_game_dmg_test_Finish,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_Late_game_dmg_test_Finish,Condition(function Trig_Late_game_dmg_test_Finish_Conditions))
-	call TriggerAddAction(gg_trg_Late_game_dmg_test_Finish,function Trig_Late_game_dmg_test_Finish_Actions)
-endfunction
-function Trig_Late_game_dmg_test_kills_Conditions takes nothing returns boolean
-	return GetUnitTypeId (GetDyingUnit ()) == 'h02T'
-endfunction
-function Trig_Late_game_dmg_test_kills_Actions takes nothing returns nothing
-	local unit killed = GetDyingUnit ()
-	local integer index = Unit_Indexer__Unit_Index (killed)
-	local integer player_id = udg_CreepOwner [index]
-
-	if player_id >= 1 and player_id <= 8 then
-		set udg_Damage [player_id] = 150000
-	endif
-
-	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!!|r")))
-	call TriggerSleepAction(300.00)
-	call DisableTrigger(GetTriggeringTrigger())
-endfunction
-function InitTrig_Late_game_dmg_test_kills takes nothing returns nothing
-	set gg_trg_Late_game_dmg_test_kills=CreateTrigger()
-	call DisableTrigger(gg_trg_Late_game_dmg_test_kills)
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Late_game_dmg_test_kills,EVENT_PLAYER_UNIT_DEATH)
-	call TriggerAddCondition(gg_trg_Late_game_dmg_test_kills,Condition(function Trig_Late_game_dmg_test_kills_Conditions))
-	call TriggerAddAction(gg_trg_Late_game_dmg_test_kills,function Trig_Late_game_dmg_test_kills_Actions)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Conditions takes nothing returns boolean
-	if(not(udg_Level==42))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func013001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func014001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func015001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func016001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func017001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func018001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func019001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func020001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func023002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func024002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func025002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func026002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func027002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func028002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func029002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func030002 takes nothing returns nothing
-	call SetHeroLevelBJ(GetEnumUnit(),50,false)
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func032002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func034002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func035002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func037002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func038002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func043Func001Func001001 takes nothing returns boolean
-	return(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func043Func001C takes nothing returns boolean
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[1]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[2]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[3]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[4]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[5]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[6]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[7]))then
-		return false
-	endif
-	if(not(udg_Count1stkills[GetForLoopIndexA()]>=udg_Count1stkills[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func045Func001Func001001 takes nothing returns boolean
-	return(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func045Func001C takes nothing returns boolean
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[1]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[2]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[3]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[4]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[5]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[6]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[7]))then
-		return false
-	endif
-	if(not(udg_Count2ndKills[GetForLoopIndexA()]>=udg_Count2ndKills[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func047Func001Func001001 takes nothing returns boolean
-	return(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func047Func001C takes nothing returns boolean
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[1]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[2]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[3]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[4]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[5]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[6]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[7]))then
-		return false
-	endif
-	if(not(udg_CountSpecials[GetForLoopIndexA()]>=udg_CountSpecials[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func049Func001Func009001 takes nothing returns boolean
-	return(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func049Func001C takes nothing returns boolean
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[1]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[2]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[3]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[4]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[5]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[6]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[7]))then
-		return false
-	endif
-	if(not(udg_CountBuyLives[GetForLoopIndexA()]>=udg_CountBuyLives[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func051Func001Func009001 takes nothing returns boolean
-	return(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func051Func001C takes nothing returns boolean
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[1]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[2]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[3]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[4]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[5]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[6]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[7]))then
-		return false
-	endif
-	if(not(udg_CountDownGrades[GetForLoopIndexA()]>=udg_CountDownGrades[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func053Func001Func001001 takes nothing returns boolean
-	return(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func053Func001C takes nothing returns boolean
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[1]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[2]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[3]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[4]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[5]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[6]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[7]))then
-		return false
-	endif
-	if(not(udg_CountJadeMoney[GetForLoopIndexA()]>=udg_CountJadeMoney[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func055Func001Func009001 takes nothing returns boolean
-	return(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func055Func001C takes nothing returns boolean
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[1]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[2]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[3]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[4]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[5]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[6]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[7]))then
-		return false
-	endif
-	if(not(udg_CountRocks[GetForLoopIndexA()]>=udg_CountRocks[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func057Func001Func009001 takes nothing returns boolean
-	return(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func057Func001C takes nothing returns boolean
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[1]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[2]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[3]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[4]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[5]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[6]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[7]))then
-		return false
-	endif
-	if(not(udg_CountGambler[GetForLoopIndexA()]>=udg_CountGambler[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func059Func001Func009001 takes nothing returns boolean
-	return(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func059Func001C takes nothing returns boolean
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[1]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[2]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[3]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[4]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[5]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[6]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[7]))then
-		return false
-	endif
-	if(not(udg_CountExtrachance[GetForLoopIndexA()]>=udg_CountExtrachance[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func061Func001Func009001 takes nothing returns boolean
-	return(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Func061Func001C takes nothing returns boolean
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[1]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[2]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[3]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[4]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[5]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[6]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[7]))then
-		return false
-	endif
-	if(not(udg_CountExtraChanceMoney[GetForLoopIndexA()]>=udg_CountExtraChanceMoney[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_inihilaize_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountRocks[GetForLoopIndexA()]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(udg_Player[GetForLoopIndexA()],'h00G'))
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call DisableTrigger(GetTriggeringTrigger())
-	call PlayMusicBJ(gg_snd_Credits)
-	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cff33ff33Congratulations!!|r")
-	call TriggerSleepAction(2.00)
-	call UnitRemoveAbilityBJ('A00U',gg_unit_h027_0019)
-	call UnitRemoveAbilityBJ('A00S',gg_unit_h027_0019)
-	call UnitRemoveAbilityBJ('A00T',gg_unit_h027_0019)
-	call UnitRemoveAbilityBJ('A01E',gg_unit_h027_0019)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Now to find out whos got the best maze, We will run a DAMAGE TEST.|r")
-	call TriggerSleepAction(3.00)
-	if(Trig_End_game_dmg_test_inihilaize_Func013001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func014001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func015001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func016001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func017001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func018001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func019001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	if(Trig_End_game_dmg_test_inihilaize_Func020001())then
-		call CreateNUnitsAtLoc(1,'H036',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(1.00)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_End_game_dmg_test_inihilaize_Func023002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_End_game_dmg_test_inihilaize_Func024002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_End_game_dmg_test_inihilaize_Func025002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_End_game_dmg_test_inihilaize_Func026002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_End_game_dmg_test_inihilaize_Func027002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_End_game_dmg_test_inihilaize_Func028002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_End_game_dmg_test_inihilaize_Func029002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_End_game_dmg_test_inihilaize_Func030002)
-	call TriggerSleepAction(1.00)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_End_game_dmg_test_inihilaize_Func032002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_End_game_dmg_test_inihilaize_Func033002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_End_game_dmg_test_inihilaize_Func034002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_End_game_dmg_test_inihilaize_Func035002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_End_game_dmg_test_inihilaize_Func036002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_End_game_dmg_test_inihilaize_Func037002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_End_game_dmg_test_inihilaize_Func038002)
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_End_game_dmg_test_inihilaize_Func039002)
-	call TriggerSleepAction(2)
-	call EnableTrigger(gg_trg_End_game_dmg_test_Finish)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func043Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func043Func001Func001001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Pro Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_Count1stkills[GetForLoopIndexA()])+" |cffffff00times winning first to kill.|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func045Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func045Func001Func001001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Runner-Up Pro Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_Count2ndKills[GetForLoopIndexA()])+" |cffffff00times winning second to kill.|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func047Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func047Func001Func001001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Special Crafter Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountSpecials[GetForLoopIndexA()])+" |cffffff00Specials.|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func049Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func049Func001Func009001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Worried Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountBuyLives[GetForLoopIndexA()])+" |cffffff00lives bought.|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func051Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func051Func001Func009001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Special Hunter Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountDownGrades[GetForLoopIndexA()])+" |cffffff00Downgrades.|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func053Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func053Func001Func001001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Lucky Charm Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountJadeMoney[GetForLoopIndexA()])+" |cffffff00Gold earned from his/her Lucky China Jades|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func055Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func055Func001Func009001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Rock Head Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountRocks[GetForLoopIndexA()])+" |cffffff00Mazing Rocks!|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func057Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func057Func001Func009001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Gambling Addict Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S((udg_CountGambler[GetForLoopIndexA()]*10))+" |cffffff00Gold spent on Slot machines / Blackjack tables!|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func059Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func059Func001Func009001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Chancer Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountExtrachance[GetForLoopIndexA()])+" |cffffff00 times getting extra chanced gems/slates.|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(15.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_inihilaize_Func061Func001C())then
-			if(Trig_End_game_dmg_test_inihilaize_Func061Func001Func009001())then
-				call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00Frustration Award - |r"+(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" |cffffff00with|r "+(I2S(udg_CountExtraChanceMoney[GetForLoopIndexA()])+" |cffffff00 Gold Spent on Extra Chancing!|r")))))
-			else
-				call DoNothing()
-			endif
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_End_game_dmg_test_inihilaize takes nothing returns nothing
-	set gg_trg_End_game_dmg_test_inihilaize=CreateTrigger()
-	call TriggerRegisterPlayerStateEvent(gg_trg_End_game_dmg_test_inihilaize,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_End_game_dmg_test_inihilaize,Condition(function Trig_End_game_dmg_test_inihilaize_Conditions))
-	call TriggerAddAction(gg_trg_End_game_dmg_test_inihilaize,function Trig_End_game_dmg_test_inihilaize_Actions)
-endfunction
-function Trig_End_game_dmg_test_Finish_Conditions takes nothing returns boolean
-	if(not(udg_Level>=42))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func006Func001001 takes nothing returns boolean
-	return(udg_PlayerHERE[GetForLoopIndexA()]==true)
-endfunction
-function Trig_End_game_dmg_test_Finish_Func009C takes nothing returns boolean
-	if(not(udg_Damage[1]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[1]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func010C takes nothing returns boolean
-	if(not(udg_Damage[2]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[2]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func011C takes nothing returns boolean
-	if(not(udg_Damage[3]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[3]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func012C takes nothing returns boolean
-	if(not(udg_Damage[4]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[4]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func013C takes nothing returns boolean
-	if(not(udg_Damage[5]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[5]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func014C takes nothing returns boolean
-	if(not(udg_Damage[6]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[7]))then
-		return false
-	endif
-	if(not(udg_Damage[6]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func015C takes nothing returns boolean
-	if(not(udg_Damage[7]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[7]>=udg_Damage[8]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func016C takes nothing returns boolean
-	if(not(udg_Damage[8]>=udg_Damage[1]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[2]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[3]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[4]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[5]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[6]))then
-		return false
-	endif
-	if(not(udg_Damage[8]>=udg_Damage[7]))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_Finish_Func022002 takes nothing returns nothing
-	call CustomVictoryBJ(GetEnumPlayer(),true,true)
-endfunction
-function Trig_End_game_dmg_test_Finish_Actions takes nothing returns nothing
-	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Damage Test Complete|r")
-	call TriggerSleepAction(2)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_End_game_dmg_test_Finish_Func006Func001001())then
-			call DisplayTextToForce(GetPlayersAll(),(GetPlayerName(udg_Player[GetForLoopIndexA()])+(" has done "+(I2S(udg_Damage[GetForLoopIndexA()])+" damage."))))
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(5.00)
-	if(Trig_End_game_dmg_test_Finish_Func009C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(0))+(" with "+(I2S(udg_Damage[1])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func010C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(1))+(" with "+(I2S(udg_Damage[2])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func011C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(2))+(" with "+(I2S(udg_Damage[3])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func012C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(3))+(" with "+(I2S(udg_Damage[4])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func013C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(4))+(" with "+(I2S(udg_Damage[5])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func014C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(5))+(" with "+(I2S(udg_Damage[6])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func015C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(6))+(" with "+(I2S(udg_Damage[7])+" damage!|r")))))
-	else
-	endif
-	if(Trig_End_game_dmg_test_Finish_Func016C())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,("|cffffff00The winner is "+(GetPlayerName(Player(7))+(" with "+(I2S(udg_Damage[8])+" damage!|r")))))
-	else
-	endif
-	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"|cffffff00Thanks for playing [BK's] Gem Tower Defense|r - Bryvx")
-	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,"If you have any ideas, feel free to message me. But please don't add me to your friends list, I'm having trouble with the ammount of random spam I'm getting. Also, if you have an idea for a new gem, don't just say what it is called, please provide details on what the gem can do and what purpose is has in the game.")
-	call TriggerSleepAction(10.00)
-	call ForForce(GetPlayersAll(),function Trig_End_game_dmg_test_Finish_Func022002)
-endfunction
-function InitTrig_End_game_dmg_test_Finish takes nothing returns nothing
-	set gg_trg_End_game_dmg_test_Finish=CreateTrigger()
-	call DisableTrigger(gg_trg_End_game_dmg_test_Finish)
-	call TriggerRegisterPlayerStateEvent(gg_trg_End_game_dmg_test_Finish,Player(11),PLAYER_STATE_RESOURCE_FOOD_USED,EQUAL,0.00)
-	call TriggerAddCondition(gg_trg_End_game_dmg_test_Finish,Condition(function Trig_End_game_dmg_test_Finish_Conditions))
-	call TriggerAddAction(gg_trg_End_game_dmg_test_Finish,function Trig_End_game_dmg_test_Finish_Actions)
-endfunction
-function Trig_End_game_dmg_test_kills_Conditions takes nothing returns boolean
-	return GetUnitTypeId (GetDyingUnit ()) == 'H036'
-endfunction
-function Trig_End_game_dmg_test_kills_Actions takes nothing returns nothing
-	local unit killed = GetDyingUnit ()
-	local integer index = Unit_Indexer__Unit_Index (killed)
-	local integer player_id = udg_CreepOwner [index]
-
-	if player_id >= 1 and player_id <= 8 then
-		set udg_Damage [player_id] = 1000000
-	endif
-
-	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(GetOwningPlayer(GetKillingUnitBJ()))+" has killed their damage test!!!!|r")))
-endfunction
-function InitTrig_End_game_dmg_test_kills takes nothing returns nothing
-	set gg_trg_End_game_dmg_test_kills=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_End_game_dmg_test_kills,EVENT_PLAYER_UNIT_DEATH)
-	call TriggerAddCondition(gg_trg_End_game_dmg_test_kills,Condition(function Trig_End_game_dmg_test_kills_Conditions))
-	call TriggerAddAction(gg_trg_End_game_dmg_test_kills,function Trig_End_game_dmg_test_kills_Actions)
-endfunction
 function Trig_End_game_dmg_test_RACE_kills_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetDyingUnit())=='H04B'))then
 		return false
@@ -14358,17 +9371,11 @@ function InitTrig_End_game_dmg_test_RACE_kills takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_End_game_dmg_test_RACE_kills,Condition(function Trig_End_game_dmg_test_RACE_kills_Conditions))
 	call TriggerAddAction(gg_trg_End_game_dmg_test_RACE_kills,function Trig_End_game_dmg_test_RACE_kills_Actions)
 endfunction
-function Trig_P1_Dmg_test_Func008001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P1_Dmg_test_Func008001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P1_Dmg_test_Func008001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P1_Dmg_test_Func008001001(),Trig_P1_Dmg_test_Func008001002())
+	return false
 endfunction
 function Trig_P1_Dmg_test_Func008002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P1_Dmg_test_Func008002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14383,22 +9390,13 @@ function Trig_P1_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P1_Dmg_test_Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P1_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P1_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P1_Dmg_test_Func004Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14448,17 +9446,11 @@ function InitTrig_P1_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P1_Dmg_test,Condition(function Trig_P1_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P1_Dmg_test,function Trig_P1_Dmg_test_Actions)
 endfunction
-function Trig_P2_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P2_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P2_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P2_Dmg_test_Func001001001(),Trig_P2_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P2_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P2_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14473,22 +9465,13 @@ function Trig_P2_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P2_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P2_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P2_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P2_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14538,17 +9521,11 @@ function InitTrig_P2_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P2_Dmg_test,Condition(function Trig_P2_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P2_Dmg_test,function Trig_P2_Dmg_test_Actions)
 endfunction
-function Trig_P3_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P3_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P3_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P3_Dmg_test_Func001001001(),Trig_P3_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P3_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P3_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14563,22 +9540,13 @@ function Trig_P3_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P3_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P3_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P3_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P3_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14628,17 +9596,11 @@ function InitTrig_P3_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P3_Dmg_test,Condition(function Trig_P3_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P3_Dmg_test,function Trig_P3_Dmg_test_Actions)
 endfunction
-function Trig_P4_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P4_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P4_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P4_Dmg_test_Func001001001(),Trig_P4_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P4_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P4_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14653,22 +9615,13 @@ function Trig_P4_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P4_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P4_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P4_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P4_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14718,17 +9671,11 @@ function InitTrig_P4_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P4_Dmg_test,Condition(function Trig_P4_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P4_Dmg_test,function Trig_P4_Dmg_test_Actions)
 endfunction
-function Trig_P5_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P5_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P5_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P5_Dmg_test_Func001001001(),Trig_P5_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P5_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P5_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14743,22 +9690,13 @@ function Trig_P5_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P5_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P5_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P5_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P5_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14808,17 +9746,11 @@ function InitTrig_P5_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P5_Dmg_test,Condition(function Trig_P5_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P5_Dmg_test,function Trig_P5_Dmg_test_Actions)
 endfunction
-function Trig_P6_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P6_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P6_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P6_Dmg_test_Func001001001(),Trig_P6_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P6_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P6_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14833,22 +9765,13 @@ function Trig_P6_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P6_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P6_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P6_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P6_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14898,17 +9821,11 @@ function InitTrig_P6_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P6_Dmg_test,Condition(function Trig_P6_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P6_Dmg_test,function Trig_P6_Dmg_test_Actions)
 endfunction
-function Trig_P7_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P7_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P7_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P7_Dmg_test_Func001001001(),Trig_P7_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P7_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P7_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -14923,22 +9840,13 @@ function Trig_P7_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P7_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P7_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P7_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P7_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -14988,17 +9896,11 @@ function InitTrig_P7_Dmg_test takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_P7_Dmg_test,Condition(function Trig_P7_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P7_Dmg_test,function Trig_P7_Dmg_test_Actions)
 endfunction
-function Trig_P8_Dmg_test_Func001001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02S')
-endfunction
-function Trig_P8_Dmg_test_Func001001002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='h02T')
-endfunction
 function Trig_P8_Dmg_test_Func001001 takes nothing returns boolean
-	return GetBooleanOr(Trig_P8_Dmg_test_Func001001001(),Trig_P8_Dmg_test_Func001001002())
+	return false
 endfunction
 function Trig_P8_Dmg_test_Func001002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H036')
+	return false
 endfunction
 function Trig_P8_Dmg_test_Func001002002 takes nothing returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
@@ -15013,22 +9915,13 @@ function Trig_P8_Dmg_test_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_P8_Dmg_test_Func002C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02S'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P8_Dmg_test_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='h02T'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P8_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H036'))then
-		return false
-	endif
-	return true
+	return false
 endfunction
 function Trig_P8_Dmg_test_Func005Func002001 takes nothing returns boolean
 	return(udg_Mode==2)
@@ -15254,16 +10147,7 @@ function Trig_Leak_and_lose_P1_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
-		return false
-	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='h04Q'))then
@@ -15382,61 +10266,6 @@ function InitTrig_Leak_and_lose_P1 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P1,gg_rct_Finish_1)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P1,Condition(function Trig_Leak_and_lose_P1_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P1,function Trig_Leak_and_lose_P1_Actions)
-endfunction
-function Trig_Not_Finished_P1_Conditions takes nothing returns boolean
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[1]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[1]==true))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P1_Func004Func001Func002003001 takes nothing returns boolean
-	return(udg_Random[1]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P1_Func004Func001C takes nothing returns boolean
-	if(not(udg_GemNumber[1]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P1_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.04)
-	set udg_PlayerFinished[1]=true
-	call DisplayTextToForce(udg_PlayerGroup[1],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Not_Finished_P1_Func004Func001C())then
-			set udg_Random[1]=GetRandomInt(1,udg_GemNumber[1])
-			set bj_forLoopAIndex=1
-			set bj_forLoopAIndexEnd=udg_GemNumber[1]
-			loop
-				exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-				if(Trig_Not_Finished_P1_Func004Func001Func002003001())then
-					call ReplaceUnitBJ(udg_GemPlaced1[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-				else
-					call DoNothing()
-				endif
-				set bj_forLoopAIndex=bj_forLoopAIndex+1
-			endloop
-		else
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P1 takes nothing returns nothing
-	set gg_trg_Not_Finished_P1=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P1,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P1,Condition(function Trig_Not_Finished_P1_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P1,function Trig_Not_Finished_P1_Actions)
 endfunction
 function Trig_Movement1_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -15636,14 +10465,8 @@ function InitTrig_Movement1_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement1_7,Condition(function Trig_Movement1_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement1_7,function Trig_Movement1_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P1_Func001001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P1_Func001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P1_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P1_Func001001(),Trig_B_Reworked_Placing_gems_P1_Func001002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
@@ -18218,12 +13041,6 @@ function InitTrig_B_Reworked_Placing_gems_P1 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P1,Condition(function Trig_B_Reworked_Placing_gems_P1_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P1,function Trig_B_Reworked_Placing_gems_P1_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P1_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P1_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P1_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -18231,7 +13048,7 @@ function Trig_B_Reworked_Mark_P1_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[1]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P1_Func007001(),Trig_B_Reworked_Mark_P1_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -18374,12 +13191,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P1_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P1_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P1_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func003002()))then
 		return false
@@ -18387,7 +13198,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[1]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P1_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(udg_RaceBuildingPeriod[1]==true))then
@@ -20160,21 +14971,11 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P1 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P1=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P1,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P1,Condition(function Trig_Finding_Special_combinations_P1_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P1,function Trig_Finding_Special_combinations_P1_Actions)
 endfunction
 function Trig_Leak_and_lose_P2_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -20296,55 +15097,6 @@ function InitTrig_Leak_and_lose_P2 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P2,gg_rct_Finish_2)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P2,Condition(function Trig_Leak_and_lose_P2_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P2,function Trig_Leak_and_lose_P2_Actions)
-endfunction
-function Trig_Not_Finished_P2_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[2]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[2]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P2_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[2]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P2_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[2]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P2_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.02)
-	call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[2]=true
-	if(Trig_Not_Finished_P2_Func004C())then
-		set udg_Random[2]=GetRandomInt(1,udg_GemNumber[2])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[2]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P2_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced2[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P2 takes nothing returns nothing
-	set gg_trg_Not_Finished_P2=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P2,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P2,Condition(function Trig_Not_Finished_P2_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P2,function Trig_Not_Finished_P2_Actions)
 endfunction
 function Trig_Movement2_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -20544,17 +15296,11 @@ function InitTrig_Movement2_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement2_7,Condition(function Trig_Movement2_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement2_7,function Trig_Movement2_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P2_Func059001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P2_Func059002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P2_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P2_Func059001(),Trig_B_Reworked_Placing_gems_P2_Func059002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -23101,12 +17847,6 @@ function InitTrig_B_Reworked_Placing_gems_P2 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P2,Condition(function Trig_B_Reworked_Placing_gems_P2_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P2,function Trig_B_Reworked_Placing_gems_P2_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P2_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P2_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P2_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -23114,7 +17854,7 @@ function Trig_B_Reworked_Mark_P2_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[2]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P2_Func007001(),Trig_B_Reworked_Mark_P2_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -23231,12 +17971,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P2_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P2_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P2_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func003002()))then
 		return false
@@ -23244,7 +17978,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[2]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P2_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -25014,21 +19748,11 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P2 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P2=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P2,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P2,Condition(function Trig_Finding_Special_combinations_P2_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P2,function Trig_Finding_Special_combinations_P2_Actions)
 endfunction
 function Trig_Leak_and_lose_P3_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -25150,55 +19874,6 @@ function InitTrig_Leak_and_lose_P3 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P3,gg_rct_Finish_3)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P3,Condition(function Trig_Leak_and_lose_P3_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P3,function Trig_Leak_and_lose_P3_Actions)
-endfunction
-function Trig_Not_Finished_P3_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[3]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[3]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P3_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[3]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P3_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[3]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P3_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.04)
-	call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[3]=true
-	if(Trig_Not_Finished_P3_Func004C())then
-		set udg_Random[3]=GetRandomInt(1,udg_GemNumber[3])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[3]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P3_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced3[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P3 takes nothing returns nothing
-	set gg_trg_Not_Finished_P3=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P3,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P3,Condition(function Trig_Not_Finished_P3_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P3,function Trig_Not_Finished_P3_Actions)
 endfunction
 function Trig_Movement3_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -25398,17 +20073,8 @@ function InitTrig_Movement3_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement3_7,Condition(function Trig_Movement3_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement3_7,function Trig_Movement3_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P3_Func001001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P3_Func001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P3_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P3_Func001001(),Trig_B_Reworked_Placing_gems_P3_Func001002()))then
-		return false
-	endif
-	if(not(udg_BuildingPeriod==true))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
@@ -27958,12 +22624,6 @@ function InitTrig_B_Reworked_Placing_gems_P3 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P3,Condition(function Trig_B_Reworked_Placing_gems_P3_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P3,function Trig_B_Reworked_Placing_gems_P3_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P3_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P3_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P3_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -27971,7 +22631,7 @@ function Trig_B_Reworked_Mark_P3_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[3]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P3_Func007001(),Trig_B_Reworked_Mark_P3_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -28087,12 +22747,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P3_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P3_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P3_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func003002()))then
 		return false
@@ -28100,7 +22754,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[3]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P3_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -29870,21 +24524,11 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P3 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P3=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P3,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P3,Condition(function Trig_Finding_Special_combinations_P3_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P3,function Trig_Finding_Special_combinations_P3_Actions)
 endfunction
 function Trig_Leak_and_lose_P4_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -30006,55 +24650,6 @@ function InitTrig_Leak_and_lose_P4 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P4,gg_rct_Finish_4)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P4,Condition(function Trig_Leak_and_lose_P4_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P4,function Trig_Leak_and_lose_P4_Actions)
-endfunction
-function Trig_Not_Finished_P4_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[4]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[4]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P4_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[4]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P4_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[4]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P4_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.05)
-	call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[4]=true
-	if(Trig_Not_Finished_P4_Func004C())then
-		set udg_Random[4]=GetRandomInt(1,udg_GemNumber[4])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[4]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P4_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced4[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P4 takes nothing returns nothing
-	set gg_trg_Not_Finished_P4=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P4,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P4,Condition(function Trig_Not_Finished_P4_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P4,function Trig_Not_Finished_P4_Actions)
 endfunction
 function Trig_Movement4_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -30254,14 +24849,8 @@ function InitTrig_Movement4_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement4_7,Condition(function Trig_Movement4_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement4_7,function Trig_Movement4_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P4_Func001001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P4_Func001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P4_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P4_Func001001(),Trig_B_Reworked_Placing_gems_P4_Func001002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
@@ -32811,12 +27400,6 @@ function InitTrig_B_Reworked_Placing_gems_P4 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P4,Condition(function Trig_B_Reworked_Placing_gems_P4_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P4,function Trig_B_Reworked_Placing_gems_P4_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P4_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P4_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P4_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -32824,7 +27407,7 @@ function Trig_B_Reworked_Mark_P4_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[4]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P4_Func007001(),Trig_B_Reworked_Mark_P4_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -32940,12 +27523,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P4_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P4_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P4_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func003002()))then
 		return false
@@ -32953,7 +27530,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[4]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P4_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -34723,21 +29300,11 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P4 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P4=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P4,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P4,Condition(function Trig_Finding_Special_combinations_P4_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P4,function Trig_Finding_Special_combinations_P4_Actions)
 endfunction
 function Trig_Leak_and_lose_P5_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -34859,55 +29426,6 @@ function InitTrig_Leak_and_lose_P5 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P5,gg_rct_Finish_5)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P5,Condition(function Trig_Leak_and_lose_P5_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P5,function Trig_Leak_and_lose_P5_Actions)
-endfunction
-function Trig_Not_Finished_P5_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[5]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[5]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P5_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[5]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P5_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[5]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P5_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.06)
-	call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[5]=true
-	if(Trig_Not_Finished_P5_Func004C())then
-		set udg_Random[5]=GetRandomInt(1,udg_GemNumber[5])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[5]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P5_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced5[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P5 takes nothing returns nothing
-	set gg_trg_Not_Finished_P5=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P5,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P5,Condition(function Trig_Not_Finished_P5_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P5,function Trig_Not_Finished_P5_Actions)
 endfunction
 function Trig_Movement5_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -35107,14 +29625,8 @@ function InitTrig_Movement5_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement5_7,Condition(function Trig_Movement5_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement5_7,function Trig_Movement5_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P5_Func001001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P5_Func001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P5_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P5_Func001001(),Trig_B_Reworked_Placing_gems_P5_Func001002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
@@ -37664,12 +32176,6 @@ function InitTrig_B_Reworked_Placing_gems_P5 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P5,Condition(function Trig_B_Reworked_Placing_gems_P5_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P5,function Trig_B_Reworked_Placing_gems_P5_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P5_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P5_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P5_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -37677,7 +32183,7 @@ function Trig_B_Reworked_Mark_P5_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[5]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P5_Func007001(),Trig_B_Reworked_Mark_P5_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -37793,12 +32299,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P5_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P5_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P5_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func003002()))then
 		return false
@@ -37806,7 +32306,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[5]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P5_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -39576,21 +34076,11 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P5 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P5=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P5,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P5,Condition(function Trig_Finding_Special_combinations_P5_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P5,function Trig_Finding_Special_combinations_P5_Actions)
 endfunction
 function Trig_Leak_and_lose_P6_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -39708,59 +34198,10 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P6 takes nothing returns nothing
-	set gg_trg_Leak_and_lose_P6=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P6,gg_rct_Finish_6)
-	call TriggerAddCondition(gg_trg_Leak_and_lose_P6,Condition(function Trig_Leak_and_lose_P6_Conditions))
-	call TriggerAddAction(gg_trg_Leak_and_lose_P6,function Trig_Leak_and_lose_P6_Actions)
-endfunction
-function Trig_Not_Finished_P6_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[6]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[6]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P6_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[6]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P6_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[6]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P6_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.07)
-	call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[6]=true
-	if(Trig_Not_Finished_P6_Func004C())then
-		set udg_Random[6]=GetRandomInt(1,udg_GemNumber[6])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[6]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P6_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced6[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P6 takes nothing returns nothing
-	set gg_trg_Not_Finished_P6=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P6,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P6,Condition(function Trig_Not_Finished_P6_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P6,function Trig_Not_Finished_P6_Actions)
+       set gg_trg_Leak_and_lose_P6=CreateTrigger()
+       call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P6,gg_rct_Finish_6)
+       call TriggerAddCondition(gg_trg_Leak_and_lose_P6,Condition(function Trig_Leak_and_lose_P6_Conditions))
+       call TriggerAddAction(gg_trg_Leak_and_lose_P6,function Trig_Leak_and_lose_P6_Actions)
 endfunction
 function Trig_Movement6_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -39960,14 +34401,8 @@ function InitTrig_Movement6_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement6_7,Condition(function Trig_Movement6_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement6_7,function Trig_Movement6_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P6_Func001001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P6_Func001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P6_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P6_Func001001(),Trig_B_Reworked_Placing_gems_P6_Func001002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
@@ -42517,20 +36952,11 @@ function InitTrig_B_Reworked_Placing_gems_P6 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P6,Condition(function Trig_B_Reworked_Placing_gems_P6_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P6,function Trig_B_Reworked_Placing_gems_P6_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P6_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P6_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P6_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
 	endif
-	if(not(udg_BuildingPeriod==true))then
-		return false
-	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P6_Func007001(),Trig_B_Reworked_Mark_P6_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -42646,12 +37072,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P6_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P6_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P6_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func003002()))then
 		return false
@@ -42659,7 +37079,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[6]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P6_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -44429,21 +38849,11 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P6 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P6=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P6,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P6,Condition(function Trig_Finding_Special_combinations_P6_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P6,function Trig_Finding_Special_combinations_P6_Actions)
 endfunction
 function Trig_Leak_and_lose_P7_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -44565,55 +38975,6 @@ function InitTrig_Leak_and_lose_P7 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P7,gg_rct_Finish_7)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P7,Condition(function Trig_Leak_and_lose_P7_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P7,function Trig_Leak_and_lose_P7_Actions)
-endfunction
-function Trig_Not_Finished_P7_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[7]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[7]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P7_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[7]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P7_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[7]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P7_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.08)
-	call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[7]=true
-	if(Trig_Not_Finished_P7_Func004C())then
-		set udg_Random[7]=GetRandomInt(1,udg_GemNumber[7])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[7]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P7_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced7[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P7 takes nothing returns nothing
-	set gg_trg_Not_Finished_P7=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P7,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P7,Condition(function Trig_Not_Finished_P7_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P7,function Trig_Not_Finished_P7_Actions)
 endfunction
 function Trig_Movement7_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -44813,14 +39174,8 @@ function InitTrig_Movement7_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement7_7,Condition(function Trig_Movement7_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement7_7,function Trig_Movement7_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P7_Func001001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P7_Func001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P7_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P7_Func001001(),Trig_B_Reworked_Placing_gems_P7_Func001002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
@@ -47370,12 +41725,6 @@ function InitTrig_B_Reworked_Placing_gems_P7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P7,Condition(function Trig_B_Reworked_Placing_gems_P7_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P7,function Trig_B_Reworked_Placing_gems_P7_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P7_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P7_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P7_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -47383,7 +41732,7 @@ function Trig_B_Reworked_Mark_P7_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[7]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P7_Func007001(),Trig_B_Reworked_Mark_P7_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -47499,12 +41848,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P7_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P7_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P7_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func003002()))then
 		return false
@@ -47512,7 +41855,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[7]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P7_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -49282,21 +43625,11 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P7 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P7=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P7,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P7,Condition(function Trig_Finding_Special_combinations_P7_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P7,function Trig_Finding_Special_combinations_P7_Actions)
 endfunction
 function Trig_Leak_and_lose_P8_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02T'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='h02S'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H036'))then
 		return false
 	endif
 	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
@@ -49418,55 +43751,6 @@ function InitTrig_Leak_and_lose_P8 takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P8,gg_rct_Finish_8)
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P8,Condition(function Trig_Leak_and_lose_P8_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P8,function Trig_Leak_and_lose_P8_Actions)
-endfunction
-function Trig_Not_Finished_P8_Conditions takes nothing returns boolean
-	if(not(udg_PlayerFinished[8]==false))then
-		return false
-	endif
-	if(not(udg_PlayerHERE[8]==true))then
-		return false
-	endif
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P8_Func004Func002003001 takes nothing returns boolean
-	return(udg_Random[8]!=GetForLoopIndexA())
-endfunction
-function Trig_Not_Finished_P8_Func004C takes nothing returns boolean
-	if(not(udg_GemNumber[8]>=2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Not_Finished_P8_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.09)
-	call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cffccff33You have not marked or combined a gem for this round. A random placed gem will be kept.|r")
-	set udg_PlayerFinished[8]=true
-	if(Trig_Not_Finished_P8_Func004C())then
-		set udg_Random[8]=GetRandomInt(1,udg_GemNumber[8])
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=udg_GemNumber[8]
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_Not_Finished_P8_Func004Func002003001())then
-				call ReplaceUnitBJ(udg_GemPlaced8[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-	else
-	endif
-	call TriggerSleepAction(2.00)
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl")
-endfunction
-function InitTrig_Not_Finished_P8 takes nothing returns nothing
-	set gg_trg_Not_Finished_P8=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Not_Finished_P8,udg_SpawnTimer)
-	call TriggerAddCondition(gg_trg_Not_Finished_P8,Condition(function Trig_Not_Finished_P8_Conditions))
-	call TriggerAddAction(gg_trg_Not_Finished_P8,function Trig_Not_Finished_P8_Actions)
 endfunction
 function Trig_Movement8_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
@@ -49666,17 +43950,11 @@ function InitTrig_Movement8_7 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Movement8_7,Condition(function Trig_Movement8_7_Conditions))
 	call TriggerAddAction(gg_trg_Movement8_7,function Trig_Movement8_7_Actions)
 endfunction
-function Trig_B_Reworked_Placing_gems_P8_Func059001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Placing_gems_P8_Func059002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Placing_gems_P8_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Placing_gems_P8_Func059001(),Trig_B_Reworked_Placing_gems_P8_Func059002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -52223,12 +46501,6 @@ function InitTrig_B_Reworked_Placing_gems_P8 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_B_Reworked_Placing_gems_P8,Condition(function Trig_B_Reworked_Placing_gems_P8_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P8,function Trig_B_Reworked_Placing_gems_P8_Actions)
 endfunction
-function Trig_B_Reworked_Mark_P8_Func007001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Mark_P8_Func007002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Mark_P8_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A009'))then
 		return false
@@ -52236,7 +46508,7 @@ function Trig_B_Reworked_Mark_P8_Conditions takes nothing returns boolean
 	if(not(udg_PlayerFinished[8]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Mark_P8_Func007001(),Trig_B_Reworked_Mark_P8_Func007002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -52352,12 +46624,6 @@ endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func003002 takes nothing returns boolean
 	return(GetSpellAbilityId()=='A00R')
 endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P8_Func005001 takes nothing returns boolean
-	return(udg_BuildingPeriod==true)
-endfunction
-function Trig_B_Reworked_Comb_Special_Mark_P8_Func005002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P8_Func003001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func003002()))then
 		return false
@@ -52365,7 +46631,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Conditions takes nothing returns b
 	if(not(udg_PlayerFinished[8]==false))then
 		return false
 	endif
-	if(not GetBooleanOr(Trig_B_Reworked_Comb_Special_Mark_P8_Func005001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func005002()))then
+	if udg_Mode != 2 then
 		return false
 	endif
 	return true
@@ -54135,7 +48401,6 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 endfunction
 function InitTrig_Finding_Special_combinations_P8 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P8=CreateTrigger()
-	call TriggerRegisterTimerExpireEventBJ(gg_trg_Finding_Special_combinations_P8,udg_SpawnTimer)
 	call TriggerAddCondition(gg_trg_Finding_Special_combinations_P8,Condition(function Trig_Finding_Special_combinations_P8_Conditions))
 	call TriggerAddAction(gg_trg_Finding_Special_combinations_P8,function Trig_Finding_Special_combinations_P8_Actions)
 endfunction

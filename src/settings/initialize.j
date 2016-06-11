@@ -12,7 +12,6 @@ function Settings__Initialize takes nothing returns nothing
 	endloop
 
 	set Settings___Modes [0] = "Race"
-	set Settings___Modes [1] = "Classic"
 
 	set Settings___Difficulties [0] = "Extreme"
 	set Settings___Difficulties [1] = "Hard"
