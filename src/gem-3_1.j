@@ -1,4 +1,5 @@
 globals
+	boolexpr filterUnitByIdAndNotSpecial = null
 	integer array udg_CreepOwner
 	rect array udg_Spawn
 	rect array udg_Move1st
@@ -574,6 +575,20 @@ globals
 	destructable gg_dest_DTlv_0010=null
 	destructable gg_dest_DTlv_0011=null
 endglobals
+function UnitByIdAndNotSpecialFilter takes nothing returns boolean
+	return GetUnitTypeId (GetFilterUnit ()) == bj_groupEnumTypeId and GetUnitAbilityLevel (GetFilterUnit (), 'A00R') == 0
+endfunction
+function GetUnitsOfPlayerAndTypeIdAndNotSpecial takes player the_player, integer unit_id returns group
+	local group the_group = CreateGroup ()
+
+	if filterUnitByIdAndNotSpecial == null then
+		set filterUnitByIdAndNotSpecial = Filter (function UnitByIdAndNotSpecialFilter)
+	endif
+
+	set bj_groupEnumTypeId = unit_id
+	call GroupEnumUnitsOfPlayer (the_group, the_player, filterUnitByIdAndNotSpecial)
+	return the_group
+endfunction
 function InitGlobals takes nothing returns nothing
 	local integer i=0
 	set udg_Level=1
@@ -14489,7 +14504,6 @@ function Trig_Finding_Special_combinations_P1_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P1_Actions takes nothing returns nothing
-	call TriggerSleepAction(2.01)
 	if(Trig_Finding_Special_combinations_P1_Func003001())then
 		set udg_SpecialsROUNDp1[1]=(udg_SpecialsROUNDp1[1]+1)
 	else
@@ -19266,7 +19280,6 @@ function Trig_Finding_Special_combinations_P2_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P2_Actions takes nothing returns nothing
-	call TriggerSleepAction(2.03)
 	if(Trig_Finding_Special_combinations_P2_Func003001())then
 		set udg_SpecialsROUNDp2[1]=(udg_SpecialsROUNDp2[1]+1)
 	else
@@ -24042,7 +24055,6 @@ function Trig_Finding_Special_combinations_P3_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P3_Actions takes nothing returns nothing
-	call TriggerSleepAction(2.10)
 	if(Trig_Finding_Special_combinations_P3_Func003001())then
 		set udg_SpecialsROUNDp3[1]=(udg_SpecialsROUNDp3[1]+1)
 	else
@@ -28818,7 +28830,6 @@ function Trig_Finding_Special_combinations_P4_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P4_Actions takes nothing returns nothing
-	call TriggerSleepAction(2.07)
 	if(Trig_Finding_Special_combinations_P4_Func003001())then
 		set udg_SpecialsROUNDp4[1]=(udg_SpecialsROUNDp4[1]+1)
 	else
@@ -33594,7 +33605,6 @@ function Trig_Finding_Special_combinations_P5_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P5_Actions takes nothing returns nothing
-	call TriggerSleepAction(1.86)
 	if(Trig_Finding_Special_combinations_P5_Func003001())then
 		set udg_SpecialsROUNDp5[1]=(udg_SpecialsROUNDp5[1]+1)
 	else
@@ -38367,7 +38377,6 @@ function Trig_Finding_Special_combinations_P6_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P6_Actions takes nothing returns nothing
-	call TriggerSleepAction(1.90)
 	if(Trig_Finding_Special_combinations_P6_Func003001())then
 		set udg_SpecialsROUNDp6[1]=(udg_SpecialsROUNDp6[1]+1)
 	else
@@ -43143,7 +43152,6 @@ function Trig_Finding_Special_combinations_P7_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P7_Actions takes nothing returns nothing
-	call TriggerSleepAction(1.93)
 	if(Trig_Finding_Special_combinations_P7_Func003001())then
 		set udg_SpecialsROUNDp7[1]=(udg_SpecialsROUNDp7[1]+1)
 	else
@@ -47919,7 +47927,6 @@ function Trig_Finding_Special_combinations_P8_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P8_Actions takes nothing returns nothing
-	call TriggerSleepAction(1.96)
 	if(Trig_Finding_Special_combinations_P8_Func003001())then
 		set udg_SpecialsROUNDp8[1]=(udg_SpecialsROUNDp8[1]+1)
 	else
@@ -55964,19 +55971,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			call GroupRemoveUnitSimple(GetSpellAbilityUnit(),udg_UnitGroupSPECIAL)
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00V'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00V'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00N'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00N'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func003Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h008'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h008'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -55987,19 +55994,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00J'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00J'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00K'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00K'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func004Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00B'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00B'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56010,19 +56017,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Y'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00Y'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e002'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'e002'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func005Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00I'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00I'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56033,19 +56040,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h004'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h004'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h005'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h005'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func006Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00C'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00C'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56056,19 +56063,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e004'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'e004'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00A'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00A'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func007Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00L'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00L'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56079,19 +56086,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00W'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00W'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e003'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'e003'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func008Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00R'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00R'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56102,19 +56109,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e000'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'e000'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h000'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h000'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func009Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h001'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h001'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56125,19 +56132,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00X'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00X'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00O'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00O'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func010Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03R'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h03R'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56148,19 +56155,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00T'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00T'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03U'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h03U'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func011Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00H'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00H'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56171,19 +56178,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00U'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00U'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00Q'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00Q'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func012Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'e001'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'e001'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56194,19 +56201,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00S'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00S'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00M'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00M'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func013Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h007'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h007'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56217,13 +56224,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func014C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func014Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n000'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n000'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func014Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n002'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n002'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
@@ -56234,13 +56241,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func015C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func015Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n001'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n001'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func015Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n004'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n004'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
@@ -56251,13 +56258,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func016C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func016Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n009'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n009'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func016Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n008'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n008'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
@@ -56268,13 +56275,13 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func017C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func017Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00C'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n00C'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call RemoveUnit(udg_SpecCombUnit[1])
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func017Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'n00E'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'n00E'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call RemoveUnit(udg_SpecCombUnit[2])
 				else
@@ -56285,19 +56292,19 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03T'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h03T'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h002'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h002'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func018Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h003'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h003'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56308,25 +56315,25 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019C())then
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func001C())then
-					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03V'))
+					set udg_SpecCombUnit[1]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h03V'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[1]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func002C())then
-					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h00P'))
+					set udg_SpecCombUnit[2]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h00P'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[2]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func003C())then
-					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h03S'))
+					set udg_SpecCombUnit[3]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h03S'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[3]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
 				endif
 				if(Trig_Reworked_Combining_specials_Race_Func002Func001Func019Func004C())then
-					set udg_SpecCombUnit[4]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(GetOwningPlayer(GetSpellAbilityUnit()),'h009'))
+					set udg_SpecCombUnit[4]=GroupPickRandomUnit(GetUnitsOfPlayerAndTypeIdAndNotSpecial(GetOwningPlayer(GetSpellAbilityUnit()),'h009'))
 					set udg_KillsNUMBER=(udg_KillsNUMBER+Unit_User_Data__Get(udg_SpecCombUnit[4]))
 					call ReplaceUnitBJ(udg_SpecCombUnit[4],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 				else
@@ -56543,6 +56550,16 @@ endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[1],function Trig_Finish_Build_Race_P1_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[1]=false
+	set udg_KeepingGem1[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Finish_Build_Race_P1_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem1[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem1[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
+	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P1)
 	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -56562,19 +56579,9 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[1]=false
-	set udg_KeepingGem1[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Finish_Build_Race_P1_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem1[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem1[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P1)
 	if(Trig_Finish_Build_Race_P1_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
@@ -56782,6 +56789,16 @@ endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[2],function Trig_Finish_Build_Race_P2_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[2]=false
+	set udg_KeepingGem2[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Finish_Build_Race_P2_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem2[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem2[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
+	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P2)
 	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -56801,19 +56818,9 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[2]=false
-	set udg_KeepingGem2[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Finish_Build_Race_P2_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem2[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem2[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P2)
 	if(Trig_Finish_Build_Race_P2_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
@@ -57022,6 +57029,16 @@ endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[3],function Trig_Finish_Build_Race_P3_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[3]=false
+	set udg_KeepingGem3[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Finish_Build_Race_P3_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem3[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem3[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem3[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
+	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P3)
 	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -57041,19 +57058,9 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[3]=false
-	set udg_KeepingGem3[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Finish_Build_Race_P3_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem3[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem3[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P3)
 	if(Trig_Finish_Build_Race_P3_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
@@ -57262,6 +57269,16 @@ endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[4],function Trig_Finish_Build_Race_P4_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[4]=false
+	set udg_KeepingGem4[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Finish_Build_Race_P4_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem4[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem4[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem4[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
+	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P4)
 	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -57281,19 +57298,9 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[4]=false
-	set udg_KeepingGem4[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Finish_Build_Race_P4_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem4[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem4[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P4)
 	if(Trig_Finish_Build_Race_P4_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
@@ -57502,6 +57509,16 @@ endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[5],function Trig_Finish_Build_Race_P5_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[5]=false
+	set udg_KeepingGem5[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Finish_Build_Race_P5_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem5[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem5[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
+	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P5)
 	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -57521,19 +57538,9 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[5]=false
-	set udg_KeepingGem5[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Finish_Build_Race_P5_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem5[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem5[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P5)
 	if(Trig_Finish_Build_Race_P5_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
@@ -57742,6 +57749,16 @@ endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[6],function Trig_Finish_Build_Race_P6_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[6]=false
+	set udg_KeepingGem6[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Finish_Build_Race_P6_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem6[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem6[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
+	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P6)
 	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -57761,19 +57778,9 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[6]=false
-	set udg_KeepingGem6[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Finish_Build_Race_P6_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem6[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem6[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P6)
 	if(Trig_Finish_Build_Race_P6_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
@@ -57982,6 +57989,16 @@ endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[7],function Trig_Finish_Build_Race_P7_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[7]=false
+	set udg_KeepingGem7[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Finish_Build_Race_P7_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem7[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem7[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
+	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P7)
 	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -58001,19 +58018,9 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[7]=false
-	set udg_KeepingGem7[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Finish_Build_Race_P7_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem7[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem7[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P7)
 	if(Trig_Finish_Build_Race_P7_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
@@ -58222,6 +58229,16 @@ endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[8],function Trig_Finish_Build_Race_P8_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
+	set udg_RaceBuildingPeriod[8]=false
+	set udg_KeepingGem8[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Finish_Build_Race_P8_Func017002001002)))
+	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem8[udg_Level])
+	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
+	call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
+	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem8[udg_Level])
+	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
+	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
+	call TriggerExecute(gg_trg_Finding_Special_combinations_P8)
 	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
 
 	")
@@ -58241,19 +58258,9 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),0.00,100.00,0.00,0)
-	set udg_RaceBuildingPeriod[8]=false
-	set udg_KeepingGem8[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Finish_Build_Race_P8_Func017002001002)))
-	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem8[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
-	call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
-	call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
-	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem8[udg_Level])
 	call TriggerSleepAction(0.50)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100.00,100.00,100.00,0)
 	call QuestMessageBJ(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P8)
 	if(Trig_Finish_Build_Race_P8_Func029001())then
 		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
