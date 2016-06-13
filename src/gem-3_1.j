@@ -3619,82 +3619,82 @@ function Trig_Extra_Chance_1_Actions takes nothing returns nothing
 	if(Trig_Extra_Chance_1_Func002C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func003C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func004C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func005C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func006C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func007C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func008C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func009C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func010C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func011C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func012C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func013C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func014C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func015C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func016C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_ExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Extra_Chance_1_Func017C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 175 Gold.|r")
 		call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 endfunction
 function InitTrig_Extra_Chance_1 takes nothing returns nothing
@@ -3912,6 +3912,7 @@ function Trig_Extra_Chance_2_Func002Func020001 takes nothing returns boolean
 endfunction
 function Trig_Extra_Chance_2_Actions takes nothing returns nothing
 	call DialogDisplayBJ(false,udg_ExtraChanceDIA,GetTriggerPlayer())
+	set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = false
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
 	loop
@@ -4227,82 +4228,82 @@ function Trig_Slate_Extra_Chance_1_Actions takes nothing returns nothing
 	if(Trig_Slate_Extra_Chance_1_Func002C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func003C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func004C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func005C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func006C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func007C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func008C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func009C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func010C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func011C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func012C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func013C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func014C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func015C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func016C())then
 		set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = true
 		call DialogDisplayBJ(true,udg_xExtraChanceDIA,GetTriggerPlayer())
-	else
+		return
 	endif
 	if(Trig_Slate_Extra_Chance_1_Func017C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cffff00ffExtra Chance is already turned on this round, or Chance Window is open. Adding back 125 Gold.|r")
 		call AdjustPlayerStateBJ(125,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
-	else
+		return
 	endif
 endfunction
 function InitTrig_Slate_Extra_Chance_1 takes nothing returns nothing
