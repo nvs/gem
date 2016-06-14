@@ -74,7 +74,7 @@ function Board___Update takes nothing returns nothing
 	set board_item = null
 endfunction
 
-function Board___Setup takes nothing returns nothing
+function Board__Setup takes nothing returns nothing
 	local integer index
 	local integer count
 	local integer player_index
