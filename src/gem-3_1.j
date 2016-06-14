@@ -53915,7 +53915,7 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [1]), GetRectCenterY (udg_Spawn [1]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [1]), GetRectCenterY (udg_Move1st [1]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54045,7 +54045,7 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [2]), GetRectCenterY (udg_Spawn [2]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [2]), GetRectCenterY (udg_Move1st [2]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54175,7 +54175,7 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [3]), GetRectCenterY (udg_Spawn [3]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [3]), GetRectCenterY (udg_Move1st [3]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54305,7 +54305,7 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [4]), GetRectCenterY (udg_Spawn [4]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [4]), GetRectCenterY (udg_Move1st [4]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54435,7 +54435,7 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [5]), GetRectCenterY (udg_Spawn [5]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [5]), GetRectCenterY (udg_Move1st [5]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54565,7 +54565,7 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [6]), GetRectCenterY (udg_Spawn [6]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [6]), GetRectCenterY (udg_Move1st [6]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54695,7 +54695,7 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [7]), GetRectCenterY (udg_Spawn [7]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [7]), GetRectCenterY (udg_Move1st [7]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
@@ -54825,7 +54825,7 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Spawn [8]), GetRectCenterY (udg_Spawn [8]))
+		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [8]), GetRectCenterY (udg_Move1st [8]))
 	endif
 	call PlaySoundBJ(gg_snd_QuestNew)
 	call TriggerSleepAction(10.00)
