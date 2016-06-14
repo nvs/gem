@@ -585,7 +585,7 @@ function UnitByIdAndNotSpecialAndNotKeptFilter takes nothing returns boolean
 	if player_id == 0 then
 		set is_not_kept = udg_KeepingGem1 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 1 then
-		set is_not_kept = udg_KeepingGem2 [udg_level] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem2 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 2 then
 		set is_not_kept = udg_KeepingGem3 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 3 then
