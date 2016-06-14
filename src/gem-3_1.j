@@ -583,21 +583,21 @@ function UnitByIdAndNotSpecialAndNotKeptFilter takes nothing returns boolean
 	local boolean is_not_kept = false
 
 	if player_id == 0 then
-		set is_not_kept = udg_KeepingGem1 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem1 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 1 then
-		set is_not_kept = udg_KeepingGem2 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem2 [udg_level] != GetFilterUnit ()
 	elseif player_id == 2 then
-		set is_not_kept = udg_KeepingGem3 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem3 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 3 then
-		set is_not_kept = udg_KeepingGem4 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem4 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 4 then
-		set is_not_kept = udg_KeepingGem5 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem5 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 5 then
-		set is_not_kept = udg_KeepingGem6 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem6 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 6 then
-		set is_not_kept = udg_KeepingGem7 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem7 [udg_Level] != GetFilterUnit ()
 	elseif player_id == 7 then
-		set is_not_kept = udg_KeepingGem8 [player_id] != GetFilterUnit ()
+		set is_not_kept = udg_KeepingGem8 [udg_Level] != GetFilterUnit ()
 	endif
 
 	return is_type and is_not_special and is_not_kept
