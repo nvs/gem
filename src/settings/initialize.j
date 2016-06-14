@@ -11,13 +11,7 @@ function Settings__Initialize takes nothing returns nothing
 		exitwhen index == Settings___MAXIMUM_PLAYERS
 	endloop
 
-	set Settings___Modes [0] = "Race"
-
-	set Settings___Difficulties [0] = "Extreme"
-	set Settings___Difficulties [1] = "Hard"
-	set Settings___Difficulties [2] = "Normal"
-	set Settings___Difficulties [3] = "Easy"
-
+	call Settings_Difficulty__Initialize ()
 	call Settings_HCL__Initialize ()
 
 	// An empty string is taken to mean that a player must specify the game
@@ -27,9 +21,9 @@ function Settings__Initialize takes nothing returns nothing
 	else
 		call Settings_HCL__Process ()
 
-		// Certain Gem 3.1 initializations (leaderboards/multiboards) must be
-		// done once the map is loaded, or they will not function properly.
+		// Certain Gem 3.1 initializations (boards) must be done once the map is
+		// loaded, or they will not function properly.
 		set Settings___Timer = CreateTimer ()
-		call TimerStart (Settings___Timer, 0.00, false, function Settings__Setup_Game)
+		call TimerStart (Settings___Timer, 0.00, false, function Settings__Setup)
 	endif
 endfunction

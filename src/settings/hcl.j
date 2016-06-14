@@ -5,7 +5,8 @@
 // This process is almost always only done by hosting bots.
 //
 // Notes:
-// - Empty slots are not considered, however computer ones are.
+// - Each player in the game allows this system to support an additional
+//   character.  Empty slots are not considered, however computer ones are.
 //
 // [1]: http://www.wc3c.net/showthread.php?p=1094560
 globals
@@ -28,7 +29,7 @@ function Settings_HCL__Process takes nothing returns nothing
 		set character = SubString (Settings_HCL___Command, index, index + 1)
 		set value = S2I (character)
 
-		call Settings__Difficulty_Set (value)
+		call Settings_Difficulty__Set (value)
 	endif
 endfunction
 

@@ -9,9 +9,8 @@ globals
 	timerdialog Settings_Dialog___Countdown = CreateTimerDialog (Settings_Dialog___Timer)
 
 	constant string Settings_Dialog___TITLE = "|c00fe0303Settings|r"
-
+	constant string Settings_Dialog___BUTTON_RESET_DEFAULTS = "|c00feba0eReset Defaults|r"
 	constant string Settings_Dialog___BUTTON_CONFIRM = "|c0020c000Confirm|r"
-
 	constant string Settings_Dialog___BUTTON_DIFFICULTY = "|c00feba0eDifficulty:|r "
 
 	button array Settings_Dialog___Buttons
@@ -49,17 +48,24 @@ function Settings_Dialog___Destroy takes nothing returns nothing
 	call DestroyTrigger (Settings_Dialog___Trigger)
 	set Settings_Dialog___Trigger = null
 
-	call Settings__Setup_Game ()
+	call Settings__Setup ()
 endfunction
 
 function Settings_Dialog___Refresh takes nothing returns nothing
+	local string text
 	local player the_player = Player (Settings_Dialog___Player_Index)
 
 	call DialogClear (Settings_Dialog___Menu)
 	call DialogSetMessage (Settings_Dialog___Menu, Settings_Dialog___TITLE)
 
-	set Settings_Dialog___Buttons [0] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_DIFFICULTY + "|c00ffffff" + Settings__Difficulty_Name () + "|r", 0)
-	set Settings_Dialog___Buttons [1] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_CONFIRM, 0)
+	// Difficulty:
+	set Settings_Dialog___Buttons [0] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_DIFFICULTY + "|c00ffffff" + Settings_Difficulty__Name () + "|r", 0)
+
+	// Reset:
+	set Settings_Dialog___Buttons [1] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_RESET_DEFAULTS, 0)
+
+	// Confirm:
+	set Settings_Dialog___Buttons [2] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_CONFIRM, 0)
 
 	if GetLocalPlayer () == the_player then
 		call EnableUserControl (true)
@@ -97,10 +103,18 @@ endfunction
 function Settings_Dialog___On_Click takes nothing returns boolean
 	local button the_button = GetClickedButton ()
 
+	// Difficulty:
 	if Settings_Dialog___Buttons [0] == the_button then
-		call Settings__Difficulty_Next ()
+		call Settings_Difficulty__Next ()
 		call Settings_Dialog___Refresh ()
+
+	// Reset:
 	elseif Settings_Dialog___Buttons [1] == the_button then
+		call Settings__Reset ()
+		call Settings_Dialog___Refresh ()
+
+	// Confirm:
+	elseif Settings_Dialog___Buttons [2] == the_button then
 		call Settings_Dialog___Destroy ()
 	endif
 

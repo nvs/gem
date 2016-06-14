@@ -15,7 +15,9 @@ return {
 		'time',
 		'board',
 
-		'settings',
+		'settings.common',
+		'settings.difficulty',
+		'settings.setup',
 		'settings.hcl',
 		'settings.dialog',
 		'settings.initialize',
