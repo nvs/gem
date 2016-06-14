@@ -36,15 +36,6 @@ function Time___Update takes nothing returns nothing
 	endif
 endfunction
 
-function Time___Begin takes nothing returns nothing
-	local timer the_timer = GetExpiredTimer ()
-
-	call PauseTimer (the_timer)
-	call TimerStart (the_timer, 1.00, true, function Time___Update)
-
-	set the_timer = null
-endfunction
-
-function Time__Initialize takes nothing returns nothing
-	call TimerStart (CreateTimer (), 0.00, false, function Time___Begin)
+function Time__Setup takes nothing returns nothing
+	call TimerStart (CreateTimer (), 1.00, true, function Time___Update)
 endfunction

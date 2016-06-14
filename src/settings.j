@@ -168,6 +168,7 @@ function Settings__Setup_Game takes nothing returns nothing
 	call Settings___Setup_Difficulty ()
 	call Settings___Create_Miners ()
 
+	call Time__Setup ()
 	call Board___Setup ()
 
 	call Trig_Quests_messages_Actions ()
