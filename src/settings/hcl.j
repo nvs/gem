@@ -25,7 +25,7 @@ function Settings_HCL__Process takes nothing returns nothing
 
 	// Process the difficulty:
 	if StringLength (Settings_HCL___Command) > 0 then
-		set index = 1
+		set index = 0
 		set character = SubString (Settings_HCL___Command, index, index + 1)
 		set value = S2I (character)
 
