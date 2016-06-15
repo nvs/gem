@@ -204,7 +204,7 @@ function Board__Setup takes nothing returns nothing
 		exitwhen row == row_count
 	endloop
 
-	call TimerStart (CreateTimer (), 1.00, true, function Board___Update)
+	call TimerStart (CreateTimer (), 0.50, true, function Board___Update)
 
 	call MultiboardDisplay (Board, true)
 	call Board___Update ()
