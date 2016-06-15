@@ -66,6 +66,5 @@ function Settings__Setup takes nothing returns nothing
 
 	call Time__Setup ()
 	call Board__Setup ()
-
-	call Trig_Quests_messages_Actions ()
+	call Quests__Setup ()
 endfunction

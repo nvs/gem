@@ -14,6 +14,7 @@ return {
 
 		'time',
 		'board',
+		'quests',
 
 		'settings.common',
 		'settings.difficulty',
