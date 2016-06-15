@@ -11,7 +11,7 @@ function Quests___What_Is_Gem_TD_Plus takes nothing returns nothing
 	call QuestSetRequired (the_quest, false)
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
-	call QuestSetDescription (the_quest, "Gem TD+ is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.). Its primary purpose is to fix bugs and address performance issues. Perhaps at a later time balancing can occur, and perhaps other additions to the map to increase replay value.")
+	call QuestSetDescription (the_quest, "Gem TD+ is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.). Its primary purpose is to fix bugs and address performance issues. After receiving community feedback, balancing and increasing the replay value might possibly occur.")
 
 	set the_quest = null
 endfunction
