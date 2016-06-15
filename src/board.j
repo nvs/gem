@@ -164,7 +164,7 @@ function Board__Setup takes nothing returns nothing
 
 	call MultiboardSetRowCount (Board, count + 2)
 	call MultiboardSetColumnCount (Board, 5)
-	call MultiboardSetTitleText (Board, "|cff33ff33Gem TD|r")
+	call MultiboardSetTitleText (Board, "|cfffed312Gem TD+ 1.0-beta.2|r")
 
 	set row = 0
 	set row_count = MultiboardGetRowCount (Board)
@@ -184,7 +184,7 @@ function Board__Setup takes nothing returns nothing
 			if row == 0 then
 				call MultiboardSetItemValue (board_item, header [column])
 			elseif row == row_count - 1 then
-				call MultiboardSetItemValueColor (board_item, 255, 255, 0, 255)
+				call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
 
 				if column == 0 then
 					call MultiboardSetItemValue (board_item, "Game Time:")

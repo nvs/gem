@@ -32,7 +32,8 @@ return {
 
 	objects_directory = '../share/objects',
 	objects = {
-		'unit-indexer'
+		'unit-indexer',
+		'update-map-information'
 	},
 
 	pjass = 'wine ../lib/pjass/pjass.exe',

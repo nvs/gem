@@ -7,8 +7,6 @@ if objectexists ('Adef') then
 	createobject ('Adef', 'UIDL')
 
 	if currentobject () == 'UIDL' then
-		log (currentobjecttype (), currentobject ())
-
 		makechange (current, 'Name', 'Detect Leave')
 		makechange (current, 'EditorSuffix', '(Unit Indexer)')
 		makechange (current, 'Art', '')
