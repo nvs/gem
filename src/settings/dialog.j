@@ -8,10 +8,10 @@ globals
 	dialog Settings_Dialog___Menu = DialogCreate ()
 	timerdialog Settings_Dialog___Countdown = CreateTimerDialog (Settings_Dialog___Timer)
 
-	constant string Settings_Dialog___TITLE = "|c00fe0303Settings|r"
-	constant string Settings_Dialog___BUTTON_RESET_DEFAULTS = "|c00feba0eReset Defaults|r"
-	constant string Settings_Dialog___BUTTON_CONFIRM = "|c0020c000Confirm|r"
-	constant string Settings_Dialog___BUTTON_DIFFICULTY = "|c00feba0eDifficulty:|r "
+	constant string Settings_Dialog___TITLE = "Gem TD Settings"
+	constant string Settings_Dialog___BUTTON_RESET_DEFAULTS = "|cfffed312Reset Defaults|r"
+	constant string Settings_Dialog___BUTTON_CONFIRM = "|cfffed312Confirm|r"
+	constant string Settings_Dialog___BUTTON_DIFFICULTY = "|cfffed312Difficulty:|r "
 
 	button array Settings_Dialog___Buttons
 
