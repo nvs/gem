@@ -3274,21 +3274,6 @@ endfunction
 function Trig_Debug_Func001Func001002 takes nothing returns nothing
 	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
 endfunction
-function Trig_Debug_Func002002 takes nothing returns nothing
-	call SetUnitAbilityLevelSwapped('S008',GetEnumUnit(),6)
-endfunction
-function Trig_Debug_Func003002 takes nothing returns nothing
-	call SetUnitAbilityLevelSwapped('S008',GetEnumUnit(),5)
-endfunction
-function Trig_Debug_Func004002 takes nothing returns nothing
-	call SetUnitAbilityLevelSwapped('S008',GetEnumUnit(),4)
-endfunction
-function Trig_Debug_Func005002 takes nothing returns nothing
-	call SetUnitAbilityLevelSwapped('S008',GetEnumUnit(),3)
-endfunction
-function Trig_Debug_Func006002 takes nothing returns nothing
-	call SetUnitAbilityLevelSwapped('S008',GetEnumUnit(),2)
-endfunction
 function Trig_Debug_Actions takes nothing returns nothing
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -3297,11 +3282,6 @@ function Trig_Debug_Actions takes nothing returns nothing
 		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Debug_Func001Func001002)
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h030'),function Trig_Debug_Func002002)
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h00X'),function Trig_Debug_Func003002)
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h00P'),function Trig_Debug_Func004002)
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h00K'),function Trig_Debug_Func005002)
-	call ForGroupBJ(GetUnitsOfTypeIdAll('h00A'),function Trig_Debug_Func006002)
 	call DisplayTextToForce(GetPlayersAll(),"|cffffff00Debugging.....|r")
 	call DisableTrigger(GetTriggeringTrigger())
 	call TriggerSleepAction(10.00)
