@@ -9,9 +9,15 @@ globals
 	timerdialog Settings_Dialog___Countdown = CreateTimerDialog (Settings_Dialog___Timer)
 
 	constant string Settings_Dialog___TITLE = "Gem TD+ Settings"
-	constant string Settings_Dialog___BUTTON_RESET_DEFAULTS = "|cfffed312Reset Defaults|r"
-	constant string Settings_Dialog___BUTTON_CONFIRM = "|cfffed312Confirm|r"
-	constant string Settings_Dialog___BUTTON_DIFFICULTY = "|cfffed312Difficulty:|r "
+
+	constant string Settings_Dialog___BUTTON_RESET_DEFAULTS_TEXT = "|cffffffffR|r|cfffed312eset Defaults|r"
+	constant integer Settings_Dialog___BUTTON_RESET_DEFAULTS_KEY = 82
+
+	constant string Settings_Dialog___BUTTON_CONFIRM_TEXT = "|cffffffffC|r|cfffed312onfirm|r"
+	constant integer Settings_Dialog___BUTTON_CONFIRM_KEY = 67
+
+	constant string Settings_Dialog___BUTTON_DIFFICULTY_TEXT = "|cffffffffD|r|cfffed312ifficulty:|r "
+	constant integer Settings_Dialog___BUTTON_DIFFICULTY_KEY = 68
 
 	button array Settings_Dialog___Buttons
 
@@ -59,13 +65,13 @@ function Settings_Dialog___Refresh takes nothing returns nothing
 	call DialogSetMessage (Settings_Dialog___Menu, Settings_Dialog___TITLE)
 
 	// Difficulty:
-	set Settings_Dialog___Buttons [0] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_DIFFICULTY + "|c00ffffff" + Settings_Difficulty__Name () + "|r", 0)
+	set Settings_Dialog___Buttons [0] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_DIFFICULTY_TEXT + "|cffffffff" + Settings_Difficulty__Name () + "|r", Settings_Dialog___BUTTON_DIFFICULTY_KEY)
 
 	// Reset:
-	set Settings_Dialog___Buttons [1] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_RESET_DEFAULTS, 0)
+	set Settings_Dialog___Buttons [1] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_RESET_DEFAULTS_TEXT, Settings_Dialog___BUTTON_RESET_DEFAULTS_KEY)
 
 	// Confirm:
-	set Settings_Dialog___Buttons [2] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_CONFIRM, 0)
+	set Settings_Dialog___Buttons [2] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_CONFIRM_TEXT, Settings_Dialog___BUTTON_CONFIRM_KEY)
 
 	if GetLocalPlayer () == the_player then
 		call EnableUserControl (true)
