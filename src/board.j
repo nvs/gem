@@ -115,38 +115,38 @@ function Board__Setup takes nothing returns nothing
 
 	// Blue:
 	set red [1] = 0
-	set green [1] = 65
+	set green [1] = 66
 	set blue [1] = 255
 
 	// Teal:
-	set red [2] = 27
-	set green [2] = 229
-	set blue [2] = 184
+	set red [2] = 28
+	set green [2] = 230
+	set blue [2] = 185
 
 	// Purple:
-	set red [3] = 83
+	set red [3] = 84
 	set green [3] = 0
-	set blue [3] = 128
+	set blue [3] = 129
 
 	// Yellow:
 	set red [4] = 255
-	set green [4] = 255
-	set blue [4] = 0
+	set green [4] = 252
+	set blue [4] = 1
 
 	// Orange:
 	set red [5] = 254
-	set green [5] = 137
-	set blue [5] = 13
+	set green [5] = 138
+	set blue [5] = 14
 
 	// Green:
-	set red [6] = 31
-	set green [6] = 191
+	set red [6] = 32
+	set green [6] = 192
 	set blue [6] = 0
 
 	// Pink:
-	set red [7] = 228
-	set green [7] = 90
-	set blue [7] = 170
+	set red [7] = 229
+	set green [7] = 91
+	set blue [7] = 176
 
 	set player_index = 0
 	set count = 0
