@@ -164,7 +164,8 @@ function Board__Setup takes nothing returns nothing
 
 	call MultiboardSetRowCount (Board, count + 2)
 	call MultiboardSetColumnCount (Board, 5)
-	call MultiboardSetTitleText (Board, "|cfffed312" + Gem__NAME_VERSION + "|r")
+	call MultiboardSetTitleText (Board, Gem__NAME_VERSION)
+	call MultiboardSetTitleTextColor (Board, 254, 211, 18, 255)
 
 	set row = 0
 	set row_count = MultiboardGetRowCount (Board)
