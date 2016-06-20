@@ -613,6 +613,62 @@ function GetUnitsOfPlayerAndTypeIdAndNotSpecialAndNotKept takes player the_playe
 	call GroupEnumUnitsOfPlayer (the_group, the_player, filterUnitByIdAndNotSpecialAndNotKept)
 	return the_group
 endfunction
+function QuestMessage takes force the_force, integer message_type, string message returns nothing
+	if IsPlayerInForce (GetLocalPlayer (), the_force) then
+		if (message_type == bj_QUESTMESSAGE_DISCOVERED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUEST, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUEST, message)
+			call StartSound(bj_questDiscoveredSound)
+		elseif (message_type == bj_QUESTMESSAGE_UPDATED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTUPDATE, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTUPDATE, message)
+			call StartSound(bj_questUpdatedSound)
+		elseif (message_type == bj_QUESTMESSAGE_COMPLETED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTDONE, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTDONE, message)
+			call StartSound(bj_questCompletedSound)
+		elseif (message_type == bj_QUESTMESSAGE_FAILED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTFAILED, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTFAILED, message)
+			call StartSound(bj_questFailedSound)
+			call FlashQuestDialogButton()
+		elseif (message_type == bj_QUESTMESSAGE_REQUIREMENT) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_QUESTREQUIREMENT, message)
+		elseif (message_type == bj_QUESTMESSAGE_MISSIONFAILED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_MISSIONFAILED, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_MISSIONFAILED, message)
+			call StartSound(bj_questFailedSound)
+		elseif (message_type == bj_QUESTMESSAGE_HINT) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_HINT, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_HINT, message)
+			call StartSound(bj_questHintSound)
+		elseif (message_type == bj_QUESTMESSAGE_ALWAYSHINT) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_ALWAYSHINT, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_ALWAYSHINT, message)
+			call StartSound(bj_questHintSound)
+		elseif (message_type == bj_QUESTMESSAGE_SECRET) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_SECRET, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_SECRET, message)
+			call StartSound(bj_questSecretSound)
+		elseif (message_type == bj_QUESTMESSAGE_UNITACQUIRED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_UNITACQUIRED, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_UNITACQUIRED, message)
+			call StartSound(bj_questHintSound)
+		elseif (message_type == bj_QUESTMESSAGE_UNITAVAILABLE) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_UNITAVAILABLE, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_UNITAVAILABLE, message)
+			call StartSound(bj_questHintSound)
+		elseif (message_type == bj_QUESTMESSAGE_ITEMACQUIRED) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_ITEMACQUIRED, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_ITEMACQUIRED, message)
+			call StartSound(bj_questItemAcquiredSound)
+		elseif (message_type == bj_QUESTMESSAGE_WARNING) then
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_WARNING, " ")
+			call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, bj_TEXT_DELAY_WARNING, message)
+			call StartSound(bj_questWarningSound)
+		endif
+	endif
+endfunction
 function InitGlobals takes nothing returns nothing
 	local integer i=0
 	set udg_Level=1
@@ -4696,7 +4752,7 @@ endfunction
 function Trig_Swap_Reworked_Actions takes nothing returns nothing
 	if(Trig_Swap_Reworked_Func001C())then
 	else
-		call QuestMessageBJ(GetPlayersMatching(Condition(function Trig_Swap_Reworked_Func001Func002001001)),bj_QUESTMESSAGE_UPDATED,"|cffff33ffYou need 200 Gold to swap|r")
+		call QuestMessage(GetPlayersMatching(Condition(function Trig_Swap_Reworked_Func001Func002001001)),bj_QUESTMESSAGE_UPDATED,"|cffff33ffYou need 200 Gold to swap|r")
 	endif
 	if(Trig_Swap_Reworked_Func002C())then
 		call DisableTrigger(GetTriggeringTrigger())
@@ -9478,7 +9534,7 @@ function Trig_End_game_dmg_test_RACE_kills_Actions takes nothing returns nothing
 	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(owner)+" has killed their damage test!!!! Dealing 2,000,000 DAMAGE!|r")))
 
 	if udg_Mode == 2 then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(owner)+"!! on completing Race Mode.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(owner)+"!! on completing Race Mode.|r")))
 	endif
 
 	set owner = null
@@ -9544,7 +9600,7 @@ function Trig_P1_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P1_Dmg_test_Func004C())then
 		set udg_Damage[1]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P1_Dmg_test_Func004Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(0))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(0))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -9553,7 +9609,7 @@ function Trig_P1_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cffff0000Your maze has done "+(I2S(udg_Damage[1])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P1_Dmg_test_Func007001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+(" has done "+(I2S(udg_Damage[1])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+(" has done "+(I2S(udg_Damage[1])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -9619,7 +9675,7 @@ function Trig_P2_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P2_Dmg_test_Func005C())then
 		set udg_Damage[2]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P2_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(1))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(1))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -9628,7 +9684,7 @@ function Trig_P2_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cffff0000Your maze has done "+(I2S(udg_Damage[2])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P2_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+(" has done "+(I2S(udg_Damage[2])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+(" has done "+(I2S(udg_Damage[2])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -9694,7 +9750,7 @@ function Trig_P3_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P3_Dmg_test_Func005C())then
 		set udg_Damage[3]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P3_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(2))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(2))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -9703,7 +9759,7 @@ function Trig_P3_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cffff0000Your maze has done "+(I2S(udg_Damage[3])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P3_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+(" has done "+(I2S(udg_Damage[3])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+(" has done "+(I2S(udg_Damage[3])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -9769,7 +9825,7 @@ function Trig_P4_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P4_Dmg_test_Func005C())then
 		set udg_Damage[4]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P4_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(3))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(3))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -9778,7 +9834,7 @@ function Trig_P4_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cffff0000Your maze has done "+(I2S(udg_Damage[4])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P4_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+(" has done "+(I2S(udg_Damage[4])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+(" has done "+(I2S(udg_Damage[4])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -9844,7 +9900,7 @@ function Trig_P5_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P5_Dmg_test_Func005C())then
 		set udg_Damage[5]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P5_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(4))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(4))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -9853,7 +9909,7 @@ function Trig_P5_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cffff0000Your maze has done "+(I2S(udg_Damage[5])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P5_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+(" has done "+(I2S(udg_Damage[5])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+(" has done "+(I2S(udg_Damage[5])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -9919,7 +9975,7 @@ function Trig_P6_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P6_Dmg_test_Func005C())then
 		set udg_Damage[6]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P6_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(5))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(5))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -9928,7 +9984,7 @@ function Trig_P6_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cffff0000Your maze has done "+(I2S(udg_Damage[6])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P6_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+(" has done "+(I2S(udg_Damage[6])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+(" has done "+(I2S(udg_Damage[6])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -9994,7 +10050,7 @@ function Trig_P7_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P7_Dmg_test_Func005C())then
 		set udg_Damage[7]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P7_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(6))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(6))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -10003,7 +10059,7 @@ function Trig_P7_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cffff0000Your maze has done "+(I2S(udg_Damage[7])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P7_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+(" has done "+(I2S(udg_Damage[7])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+(" has done "+(I2S(udg_Damage[7])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -10069,7 +10125,7 @@ function Trig_P8_Dmg_test_Actions takes nothing returns nothing
 	if(Trig_P8_Dmg_test_Func005C())then
 		set udg_Damage[8]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 		if(Trig_P8_Dmg_test_Func005Func002001())then
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(7))+"!! on completing Race Mode.|r")))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(7))+"!! on completing Race Mode.|r")))
 		else
 			call DoNothing()
 		endif
@@ -10078,7 +10134,7 @@ function Trig_P8_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cffff0000Your maze has done "+(I2S(udg_Damage[8])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P8_Dmg_test_Func008001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+(" has done "+(I2S(udg_Damage[8])+" damage!|r"))))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+(" has done "+(I2S(udg_Damage[8])+" damage!|r"))))
 	else
 		call DoNothing()
 	endif
@@ -14215,7 +14271,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func015C())then
 			set udg_CountSpecials[1]=(udg_CountSpecials[1]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[1],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -18992,7 +19048,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func015C())then
 			set udg_CountSpecials[2]=(udg_CountSpecials[2]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[2],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -23768,7 +23824,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func015C())then
 			set udg_CountSpecials[3]=(udg_CountSpecials[3]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[3],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -28544,7 +28600,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func015C())then
 			set udg_CountSpecials[4]=(udg_CountSpecials[4]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[4],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -33320,7 +33376,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func015C())then
 			set udg_CountSpecials[5]=(udg_CountSpecials[5]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[5],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -38093,7 +38149,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func015C())then
 			set udg_CountSpecials[6]=(udg_CountSpecials[6]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[6],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -42869,7 +42925,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func015C())then
 			set udg_CountSpecials[7]=(udg_CountSpecials[7]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[7],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -47645,7 +47701,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns noth
 		if(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func015C())then
 			set udg_CountSpecials[8]=(udg_CountSpecials[8]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[8],bj_UNIT_STATE_METHOD_MAXIMUM)
-			call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -53808,7 +53864,7 @@ endfunction
 function Trig_Level_25_P1_Actions takes nothing returns nothing
 	set udg_Rmode25[1]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P1_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
@@ -53819,7 +53875,7 @@ function Trig_Level_25_P1_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Level_25_P1_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -53831,31 +53887,31 @@ function Trig_Level_25_P1_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[1]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(0),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[1])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[1])))
 endfunction
 function InitTrig_Level_25_P1 takes nothing returns nothing
 	set gg_trg_Level_25_P1=CreateTrigger()
@@ -53875,7 +53931,7 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[1]=0
 	set udg_RmodeFinished[1]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P1_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
@@ -53892,31 +53948,31 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[1]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(0),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[1])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[1])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[1])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[1])))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[1])))
 endfunction
 function InitTrig_Fin_P1_2 takes nothing returns nothing
 	set gg_trg_Fin_P1_2=CreateTrigger()
@@ -53938,7 +53994,7 @@ endfunction
 function Trig_Level_25_P2_Actions takes nothing returns nothing
 	set udg_Rmode25[2]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P2_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
@@ -53949,7 +54005,7 @@ function Trig_Level_25_P2_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Level_25_P2_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -53961,31 +54017,31 @@ function Trig_Level_25_P2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[2]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(1),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[2])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[2])))
 endfunction
 function InitTrig_Level_25_P2 takes nothing returns nothing
 	set gg_trg_Level_25_P2=CreateTrigger()
@@ -54005,7 +54061,7 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[2]=0
 	set udg_RmodeFinished[2]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P2_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
@@ -54022,31 +54078,31 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[2]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(1),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[2])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[2])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[2])))
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[2])))
 endfunction
 function InitTrig_Fin_P2_2 takes nothing returns nothing
 	set gg_trg_Fin_P2_2=CreateTrigger()
@@ -54068,7 +54124,7 @@ endfunction
 function Trig_Level_25_P3_Actions takes nothing returns nothing
 	set udg_Rmode25[3]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P3_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
@@ -54079,7 +54135,7 @@ function Trig_Level_25_P3_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Level_25_P3_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -54091,31 +54147,31 @@ function Trig_Level_25_P3_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[3]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(2),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[3])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[3])))
 endfunction
 function InitTrig_Level_25_P3 takes nothing returns nothing
 	set gg_trg_Level_25_P3=CreateTrigger()
@@ -54135,7 +54191,7 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[3]=0
 	set udg_RmodeFinished[3]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P3_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
@@ -54152,31 +54208,31 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[3]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(2),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[3])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[3])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[3])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[3])))
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[3])))
 endfunction
 function InitTrig_Fin_P3_2 takes nothing returns nothing
 	set gg_trg_Fin_P3_2=CreateTrigger()
@@ -54198,7 +54254,7 @@ endfunction
 function Trig_Level_25_P4_Actions takes nothing returns nothing
 	set udg_Rmode25[4]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P4_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
@@ -54209,7 +54265,7 @@ function Trig_Level_25_P4_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Level_25_P4_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -54221,31 +54277,31 @@ function Trig_Level_25_P4_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[4]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(3),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[4])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[4])))
 endfunction
 function InitTrig_Level_25_P4 takes nothing returns nothing
 	set gg_trg_Level_25_P4=CreateTrigger()
@@ -54265,7 +54321,7 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[4]=0
 	set udg_RmodeFinished[4]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P4_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
@@ -54282,31 +54338,31 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[4]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(3),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[4])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[4])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[4])))
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[4])))
 endfunction
 function InitTrig_Fin_P4_2 takes nothing returns nothing
 	set gg_trg_Fin_P4_2=CreateTrigger()
@@ -54328,7 +54384,7 @@ endfunction
 function Trig_Level_25_P5_Actions takes nothing returns nothing
 	set udg_Rmode25[5]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P5_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
@@ -54339,7 +54395,7 @@ function Trig_Level_25_P5_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Level_25_P5_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -54351,31 +54407,31 @@ function Trig_Level_25_P5_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[5]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(4),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[5])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[5])))
 endfunction
 function InitTrig_Level_25_P5 takes nothing returns nothing
 	set gg_trg_Level_25_P5=CreateTrigger()
@@ -54395,7 +54451,7 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[5]=0
 	set udg_RmodeFinished[5]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P5_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
@@ -54412,31 +54468,31 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[5]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(4),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[5])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[5])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[5])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[5])))
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[5])))
 endfunction
 function InitTrig_Fin_P5_2 takes nothing returns nothing
 	set gg_trg_Fin_P5_2=CreateTrigger()
@@ -54458,7 +54514,7 @@ endfunction
 function Trig_Level_25_P6_Actions takes nothing returns nothing
 	set udg_Rmode25[6]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P6_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
@@ -54469,7 +54525,7 @@ function Trig_Level_25_P6_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Level_25_P6_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -54481,31 +54537,31 @@ function Trig_Level_25_P6_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[6]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(5),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[6])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[6])))
 endfunction
 function InitTrig_Level_25_P6 takes nothing returns nothing
 	set gg_trg_Level_25_P6=CreateTrigger()
@@ -54525,7 +54581,7 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[6]=0
 	set udg_RmodeFinished[6]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P6_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
@@ -54542,31 +54598,31 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[6]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(5),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[6])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[6])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[6])))
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[6])))
 endfunction
 function InitTrig_Fin_P6_2 takes nothing returns nothing
 	set gg_trg_Fin_P6_2=CreateTrigger()
@@ -54588,7 +54644,7 @@ endfunction
 function Trig_Level_25_P7_Actions takes nothing returns nothing
 	set udg_Rmode25[7]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P7_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
@@ -54599,7 +54655,7 @@ function Trig_Level_25_P7_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Level_25_P7_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -54611,31 +54667,31 @@ function Trig_Level_25_P7_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[7]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(6),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[7])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[7])))
 endfunction
 function InitTrig_Level_25_P7 takes nothing returns nothing
 	set gg_trg_Level_25_P7=CreateTrigger()
@@ -54655,7 +54711,7 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[7]=0
 	set udg_RmodeFinished[7]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P7_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
@@ -54672,31 +54728,31 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[7]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(6),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[7])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[7])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[7])))
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[7])))
 endfunction
 function InitTrig_Fin_P7_2 takes nothing returns nothing
 	set gg_trg_Fin_P7_2=CreateTrigger()
@@ -54718,7 +54774,7 @@ endfunction
 function Trig_Level_25_P8_Actions takes nothing returns nothing
 	set udg_Rmode25[8]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 25! Running boss."))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 25! Running boss."))
 	if(Trig_Level_25_P8_Func005001())then
 		call CreateNUnitsAtLoc(1,'h04Q',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
@@ -54729,7 +54785,7 @@ function Trig_Level_25_P8_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.50)
 	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Level_25_P8_Func008002)
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_ALWAYSHINT,"|cffffff00This boss will go back to the start of your maze and heal 5,000 hitpoints when it reaches your mine until it has been killed.|r
 
 	")
 	call TriggerSleepAction(10.00)
@@ -54741,31 +54797,31 @@ function Trig_Level_25_P8_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[8]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(7),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,"|cffffff00Current Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[8])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[8])))
 endfunction
 function InitTrig_Level_25_P8 takes nothing returns nothing
 	set gg_trg_Level_25_P8=CreateTrigger()
@@ -54785,7 +54841,7 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[8]=0
 	set udg_RmodeFinished[8]=true
 	call TriggerSleepAction(2)
-	call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 50! Running Damage test!|r"))
 	if(Trig_Fin_P8_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
@@ -54802,31 +54858,31 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	set udg_CountRocks[8]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(7),'h00G'))
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[8])))
 	call TriggerSleepAction(2.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[8])))
 	call TriggerSleepAction(5.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[8])))
 	call TriggerSleepAction(1.00)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[8])))
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[8])))
 endfunction
 function InitTrig_Fin_P8_2 takes nothing returns nothing
 	set gg_trg_Fin_P8_2=CreateTrigger()
@@ -56581,21 +56637,21 @@ endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[1],function Trig_Finish_Build_Race_P1_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -56609,7 +56665,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem1[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P1)
@@ -56820,21 +56876,21 @@ endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[2],function Trig_Finish_Build_Race_P2_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -56848,7 +56904,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem2[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
+	call QuestMessage(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P2)
@@ -57060,21 +57116,21 @@ endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[3],function Trig_Finish_Build_Race_P3_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -57088,7 +57144,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem3[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
+	call QuestMessage(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P3)
@@ -57300,21 +57356,21 @@ endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[4],function Trig_Finish_Build_Race_P4_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -57328,7 +57384,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem4[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
+	call QuestMessage(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P4)
@@ -57540,21 +57596,21 @@ endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[5],function Trig_Finish_Build_Race_P5_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -57568,7 +57624,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem5[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
+	call QuestMessage(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P5)
@@ -57780,21 +57836,21 @@ endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[6],function Trig_Finish_Build_Race_P6_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -57808,7 +57864,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem6[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
+	call QuestMessage(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P6)
@@ -58020,21 +58076,21 @@ endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[7],function Trig_Finish_Build_Race_P7_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -58048,7 +58104,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem7[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
+	call QuestMessage(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P7)
@@ -58260,21 +58316,21 @@ endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[8],function Trig_Finish_Build_Race_P8_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100,0.00,0.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100,0.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),0.00,0.00,100.00,0)
 	call TriggerSleepAction(1.00)
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),0.00,100.00,100.00,0)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
 
 	")
 	call TriggerSleepAction(1.00)
@@ -58288,7 +58344,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem8[udg_Level])
 	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100.00,100.00,100.00,0)
-	call QuestMessageBJ(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
+	call QuestMessage(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P8)
@@ -58526,14 +58582,14 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P1_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P1_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -58555,14 +58611,14 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	if(Trig_New_Level_P1_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P1_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -58721,14 +58777,14 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P2_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P2_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -58750,14 +58806,14 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	if(Trig_New_Level_P2_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P2_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -58916,14 +58972,14 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P3_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P3_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -58945,14 +59001,14 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	if(Trig_New_Level_P3_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P3_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -59111,14 +59167,14 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P4_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P4_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -59140,14 +59196,14 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	if(Trig_New_Level_P4_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P4_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -59306,14 +59362,14 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P5_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P5_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -59335,14 +59391,14 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	if(Trig_New_Level_P5_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P5_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -59501,14 +59557,14 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P6_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P6_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -59530,14 +59586,14 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	if(Trig_New_Level_P6_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P6_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -59696,14 +59752,14 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P7_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P7_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -59725,14 +59781,14 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	if(Trig_New_Level_P7_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P7_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
@@ -59892,14 +59948,14 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
-	call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P8_Func020001())then
-		call QuestMessageBJ(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
+		call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P8_Func021001())then
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))
 	else
 		call DoNothing()
 	endif
@@ -59921,14 +59977,14 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	if(Trig_New_Level_P8_Func025C())then
 		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 20, adding 50 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P8_Func026C())then
 		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
-		call QuestMessageBJ(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 30, adding 75 Gold.|r"))
+		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
