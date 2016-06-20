@@ -15,8 +15,8 @@ return {
 
 		'gem-3_1',
 
-		'settings.common',
 		'settings.difficulty',
+		'settings.common',
 
 		'time',
 		'board',

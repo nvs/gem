@@ -2,10 +2,6 @@ globals
 	timer Settings___Timer = null
 endglobals
 
-function Settings__Reset takes nothing returns nothing
-	call Settings_Difficulty__Reset ()
-endfunction
-
 function Settings___Setup_Mode takes nothing returns nothing
 	call DisplayTextToPlayer (GetLocalPlayer (), 0.00, 0.00, "|cff22ff22Game mode has been set to Race|r")
 
