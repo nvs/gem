@@ -40,7 +40,7 @@ function Board___Update takes nothing returns nothing
 			set board_item = MultiboardGetItem (Board, row, column)
 
 			if row == row_count - 1 then
-				if column == 2 then
+				if column == 1 then
 					set value = Board___Time ()
 				endif
 			else
@@ -183,12 +183,24 @@ function Board__Setup takes nothing returns nothing
 			call MultiboardSetItemWidth (board_item, width [column])
 
 			if row == 0 then
+				call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
 				call MultiboardSetItemValue (board_item, header [column])
 			elseif row == row_count - 1 then
-				call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
-
 				if column == 0 then
 					call MultiboardSetItemValue (board_item, "Game Time:")
+					call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
+					call MultiboardSetItemWidth (board_item, 0.049)
+				elseif column == 1 then
+					call MultiboardSetItemWidth (board_item, 0.044)
+				elseif column == 2 then
+					call MultiboardSetItemValue (board_item, "Settings:")
+					call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
+					call MultiboardSetItemWidth (board_item, 0.037)
+				elseif column == 3 then
+					call MultiboardSetItemValue (board_item, "Race / " + Settings_Difficulty__Name ())
+					call MultiboardSetItemWidth (board_item, 0.090)
+				else
+					call MultiboardSetItemWidth (board_item, 0.00)
 				endif
 			elseif column == 0 then
 				call MultiboardSetItemValue (board_item, GetPlayerName (Player (player_index)))

@@ -14,12 +14,13 @@ return {
 
 		'gem-3_1',
 
+		'settings.common',
+		'settings.difficulty',
+
 		'time',
 		'board',
 		'quests',
 
-		'settings.common',
-		'settings.difficulty',
 		'settings.setup',
 		'settings.hcl',
 		'settings.dialog',
