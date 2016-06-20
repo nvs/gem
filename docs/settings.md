@@ -1,6 +1,6 @@
-# Gem TD Settings
+# Gem TD+ Settings
 
-There are currently two ways to specify game settings in Gem TD:
+There are currently two ways to specify game settings in Gem TD+:
 
 - Using a Hostbot Command Library (HCL) string.  This must be a non-empty
   string, and when present will be used to specify the game settings, even if
@@ -11,7 +11,7 @@ There are currently two ways to specify game settings in Gem TD:
   for every category, even in future versions.  If no HCL string is specified,
   then the players are presented with the option to select the game settings.
 - Using the in-game option window to cycle through settings, then confirming.
-  If too much time passes, a player will essentially pass their turn and the
+  If too much time elapses, a player will essentially pass their turn and the
   opportunity to select game settings will be presented to the next player.
   If all players pass, then the default game settings will be used.
 
