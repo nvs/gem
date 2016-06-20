@@ -206,8 +206,10 @@ function Board__Setup takes nothing returns nothing
 
 	call TimerStart (CreateTimer (), 0.50, true, function Board___Update)
 
-	call MultiboardDisplay (Board, true)
 	call Board___Update ()
+
+	call MultiboardDisplay (Board, true)
+	call MultiboardMinimize (Board, false)
 
 	set board_item = null
 endfunction
