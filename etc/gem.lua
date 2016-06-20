@@ -7,6 +7,8 @@ return {
 
 	scripts_directory = '../src',
 	scripts = {
+		'gem',
+
 		'unit-indexer',
 		'unit-user-data',
 

@@ -5,13 +5,18 @@ endglobals
 
 function Quests___What_Is_Gem_TD_Plus takes nothing returns nothing
 	local quest the_quest = CreateQuest ()
+	local string text = ""
 
-	call QuestSetTitle (the_quest, "What is Gem TD+?")
+	call QuestSetTitle (the_quest, "What is " + Gem__NAME + "?")
 	call QuestSetIconPath (the_quest, Quests___INFORMATION_ICON)
 	call QuestSetRequired (the_quest, false)
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
-	call QuestSetDescription (the_quest, "Gem TD+ is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.). Its primary purpose is to fix bugs and address performance issues. After receiving community feedback, balancing and increasing the replay value might possibly occur.")
+
+	set text = text + Gem__NAME + " is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.). Its primary purpose, for now, is to fix bugs and address performance issues. "
+	set text = text + "Currently " + Gem__NAME + " is maintained by " + Gem__MAINTAINER + ". For more information and discussion on the map, or to report bugs and other issues, see: |cff33ff33" + Gem__WEBSITE + "|r."
+
+	call QuestSetDescription (the_quest, text)
 
 	set the_quest = null
 endfunction
