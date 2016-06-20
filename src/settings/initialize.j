@@ -11,6 +11,8 @@ function Settings__Initialize takes nothing returns nothing
 		exitwhen index == Settings___MAXIMUM_PLAYERS
 	endloop
 
+	call EnableUserControl (false)
+
 	call Settings_Difficulty__Initialize ()
 	call Settings_HCL__Initialize ()
 

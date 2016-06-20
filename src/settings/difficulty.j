@@ -38,7 +38,6 @@ function Settings_Difficulty__Is_Default takes nothing returns boolean
 endfunction
 
 function Settings__Difficulty_Setup takes nothing returns nothing
-	call DisplayTextToPlayer (GetLocalPlayer (), 0.00, 0.00, "|cffff0000Game difficulty has been set to " + Settings_Difficulty__Name () + "|r")
 
 	// Extreme:
 	if Settings_Difficulty___Value == 1 then
@@ -71,10 +70,6 @@ function Settings__Difficulty_Setup takes nothing returns nothing
 		set udg_SpawningUnit [47] = 'h04N'
 		set udg_SpawningUnit [49] = 'h04O'
 		set udg_SpawningUnit [50] = 'h04P'
-
-		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.00, bj_TEXT_DELAY_HINT, " ")
-		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.00, bj_TEXT_DELAY_HINT, "|cffff00ffFrom Round 17 onwards, all ground enemies will be " + Settings_Difficulty__Name () + " Creeps.|r")
-      call StartSound(bj_questHintSound)
 
 	// Hard:
 	elseif Settings_Difficulty___Value == 2 then

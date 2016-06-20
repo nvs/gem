@@ -27,7 +27,7 @@ endglobals
 function Settings_Dialog___Destroy takes nothing returns nothing
 	local integer index = 0
 
-	call EnableUserControl (true)
+	call EnableUserControl (false)
 
 	loop
 		exitwhen Settings_Dialog___Buttons [index] == null
@@ -101,13 +101,17 @@ function Settings_Dialog___Core takes nothing returns nothing
 		call Settings_Dialog___Refresh ()
 
 		call TimerStart (Settings_Dialog___Timer, Settings_Dialog___SELECTION_TIME, false, function Settings_Dialog___Core)
-		call TimerDialogDisplay (Settings_Dialog___Countdown, true)
 		call TimerDialogSetTitle (Settings_Dialog___Countdown, "Time before " + Player_Color__String (Settings_Dialog___Player_Index) + GetPlayerName (Player (Settings_Dialog___Player_Index)) + "|r passes:")
+		call TimerDialogSetTitleColor (Settings_Dialog___Countdown, 255, 255, 255, 255)
+		call TimerDialogSetTimeColor (Settings_Dialog___Countdown, 255, 255, 255, 255)
+		call TimerDialogDisplay (Settings_Dialog___Countdown, true)
 	endif
 endfunction
 
 function Settings_Dialog___On_Click takes nothing returns boolean
 	local button the_button = GetClickedButton ()
+
+	call EnableUserControl (false)
 
 	// Difficulty:
 	if Settings_Dialog___Buttons [0] == the_button then
@@ -123,6 +127,8 @@ function Settings_Dialog___On_Click takes nothing returns boolean
 	elseif Settings_Dialog___Buttons [2] == the_button then
 		call Settings_Dialog___Destroy ()
 	endif
+
+	set the_button = null
 
 	return false
 endfunction
