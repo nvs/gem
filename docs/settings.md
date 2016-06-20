@@ -10,7 +10,7 @@ There are currently two ways to specify game settings in Gem TD+:
   that passing a single `0` will ensure that the default settings will be used
   for every category, even in future versions.  If no HCL string is specified,
   then the players are presented with the option to select the game settings.
-- Using the in-game option window to cycle through settings, then confirming.
+- Using the in-game options window to cycle through settings, then confirming.
   If too much time elapses, a player will essentially pass their turn and the
   opportunity to select game settings will be presented to the next player.
   If all players pass, then the default game settings will be used.
