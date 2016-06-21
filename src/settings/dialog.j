@@ -99,7 +99,7 @@ function Settings_Dialog___Core takes nothing returns nothing
 		call Settings_Dialog___Refresh ()
 
 		call TimerStart (Settings_Dialog___Timer, Settings_Dialog___SELECTION_TIME, false, function Settings_Dialog___Core)
-		call TimerDialogSetTitle (Settings_Dialog___Countdown, "Time before " + Player_Color__String (Settings_Dialog___Player_Index) + GetPlayerName (Player (Settings_Dialog___Player_Index)) + "|r passes:")
+		call TimerDialogSetTitle (Settings_Dialog___Countdown, "Time before passing:")
 		call TimerDialogSetTitleColor (Settings_Dialog___Countdown, 255, 255, 255, 255)
 		call TimerDialogSetTimeColor (Settings_Dialog___Countdown, 255, 255, 255, 255)
 		call TimerDialogDisplay (Settings_Dialog___Countdown, true)

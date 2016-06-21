@@ -83,7 +83,6 @@ function Quests___Version_1_0_Beta_3 takes nothing returns nothing
 	set text = text + "- Game start has been worked. Until the game start timer expires all player control has been removed, similar to the behavior of game settings selection. During this period the camera and unit selection will remain locked onto the player's Miner.|n"
 	set text = text + "- Adjusted board layout and contents. The game clock has been shifted, and the current game settings are now displayed.|n"
 	set text = text + "- The game selections timer text color has been changed.|n"
-	set text = text + "- The player currently selecting game settings will have their name displayed on the game selections timer.|n"
 	set text = text + "- The Information tab will no longer flash throughout the game.|n"
 	set text = text + "- Continuing to rework the Information tab.|n|n"
 

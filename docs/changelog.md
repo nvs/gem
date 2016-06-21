@@ -21,8 +21,6 @@ This file presents a list of changes from the perspective of the player.
 - Adjusted board layout and contents.  The game clock has been shifted, and
   the current game settings are now displayed.
 - The game selections timer text color has been changed.
-- The player currently selecting game settings will have their name displayed
-  on the game selections timer.
 - The Information tab will no longer flash throughout the game.
 - Continuing to rework the Information tab.
 
