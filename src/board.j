@@ -120,7 +120,7 @@ function Board__Setup takes nothing returns nothing
 		if udg_PlayerHERE [player_index + 1] then
 			set Board___Players [count] = player_index
 
-			set length = StringLength (GetPlayerName (Player (player_index))) / 100.00
+			set length = (StringLength (GetPlayerName (Player (player_index))) - 1) / 100.00
 
 			if length > width [0] then
 				set width [0] = length
