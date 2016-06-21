@@ -96,6 +96,8 @@ function Board__Setup takes nothing returns nothing
 	local real array width
 	local string array header
 
+	local real length
+
 	local multiboarditem board_item
 
 	// Header (by column):
@@ -106,7 +108,7 @@ function Board__Setup takes nothing returns nothing
 	set header [4] = "Level"
 
 	// Width (by column):
-	set width [0] = 0.08
+	set width [0] = 0.055
 	set width [1] = 0.035
 	set width [2] = 0.035
 	set width [3] = 0.035
@@ -117,6 +119,13 @@ function Board__Setup takes nothing returns nothing
 	loop
 		if udg_PlayerHERE [player_index + 1] then
 			set Board___Players [count] = player_index
+
+			set length = StringLength (GetPlayerName (Player (player_index))) / 100.00
+
+			if length > width [0] then
+				set width [0] = length
+			endif
+
 			set count = count + 1
 		endif
 
@@ -162,7 +171,7 @@ function Board__Setup takes nothing returns nothing
 					call MultiboardSetItemWidth (board_item, 0.037)
 				elseif column == 3 then
 					call MultiboardSetItemValue (board_item, Settings__String ())
-					call MultiboardSetItemWidth (board_item, 0.068)
+					call MultiboardSetItemWidth (board_item, width [0] + 0.012)
 				else
 					call MultiboardSetItemWidth (board_item, 0.00)
 				endif
