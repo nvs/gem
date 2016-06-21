@@ -93,10 +93,6 @@ function Board__Setup takes nothing returns nothing
 	local integer column
 	local integer column_count
 
-	local integer array red
-	local integer array green
-	local integer array blue
-
 	local real array width
 	local string array header
 
