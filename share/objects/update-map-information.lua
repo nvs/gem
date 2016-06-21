@@ -26,10 +26,10 @@ if objectexists ('A06Z') then
 		makechange (current, 'Tip', 1, '|cfffed312' .. name .. '|r')
 		makechange (current, 'Ubertip', 1,
 			'See |cfffed312Information (F9)|r for latest changelog.|n|n' ..
-			'|cffff33ffCommands:|r|n' ..
-			'|cfffed312-air|r Displays air rounds.|n' ..
-			'|cfffed312-aura on/off|r Show or hide aura when placing gems.|n' ..
-			'|cfffed312-debug|r Forces creeps stuck at the spawn to move.|n' ..
-			'|cfffed312-zoom value|r Sets the camera to the specified value.')
+			'|cfffed312Commands:|r|n' ..
+			'|cffff33ff-air|r Displays air rounds.|n' ..
+			'|cffff33ff-aura on/off|r Show or hide aura when placing gems.|n' ..
+			'|cffff33ff-debug|r Forces creeps stuck at the spawn to move.|n' ..
+			'|cffff33ff-zoom value|r Sets the camera to the specified value.')
 	end
 end
