@@ -16,6 +16,14 @@ function Board___Time takes nothing returns string
 	return Board___Format_Time (Time__Hours ()) + ":" + Board___Format_Time (Time__Minutes ()) + ":" + Board___Format_Time (Time__Seconds ())
 endfunction
 
+function Board__Display takes nothing returns nothing
+	call MultiboardDisplay (Board, true)
+endfunction
+
+function Board__Hide takes nothing returns nothing
+	call MultiboardDisplay (Board, false)
+endfunction
+
 function Board___Update takes nothing returns nothing
 	local integer player_index
 
@@ -181,7 +189,9 @@ function Board__Setup takes nothing returns nothing
 
 	call Board___Update ()
 
-	call MultiboardDisplay (Board, true)
+	// Ensure that the board always is maximized on game start.
+	call Board__Display ()
+
 	call MultiboardMinimize (Board, false)
 
 	set board_item = null

@@ -63,12 +63,13 @@ function Settings___Begin_Game takes nothing returns nothing
 	call DestroyTimer (Settings___Timer)
 	set Settings___Timer = null
 
-	call EnableUserControl (true)
-	call ResetToGameCamera (0.00)
-
-	call Quests__Setup ()
 	call Time__Setup ()
-	call Board__Setup ()
+
+	// This will cause the board to hide, so we must show it again.
+	call EnableUserControl (true)
+	call Board__Display ()
+
+	call ResetToGameCamera (0.00)
 endfunction
 
 // This function is guaranteed to run after map initialization, and currently
@@ -79,6 +80,12 @@ function Settings__Setup takes nothing returns nothing
 	call Settings__Difficulty_Setup ()
 	call Settings___Create_Miners ()
 
+	call Quests__Setup ()
+
+	call EnableUserControl (true)
+	call Board__Setup ()
+	call EnableUserControl (false)
+
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()
 	else
@@ -87,7 +94,7 @@ function Settings__Setup takes nothing returns nothing
 
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)
 	set Settings___Countdown = CreateTimerDialog (Settings___Timer)
-	call TimerDialogSetTitle (Settings___Countdown, "Game (|cfffed312" + Settings__String () + "|r) starts in:")
+	call TimerDialogSetTitle (Settings___Countdown, "Game starts in:")
 	call TimerDialogSetTitleColor (Settings___Countdown, 255, 255, 255, 255)
 	call TimerDialogSetTimeColor (Settings___Countdown, 255, 255, 255, 255)
 	call TimerDialogDisplay (Settings___Countdown, true)
