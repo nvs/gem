@@ -94,8 +94,6 @@ function Settings_Dialog___Core takes nothing returns nothing
 	if Settings_Dialog___Player_Index == Settings___MAXIMUM_PLAYERS then
 		call Settings__Reset ()
 		call Settings_Dialog___Destroy ()
-
-		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.00, 60.00, "All players passed. Using default settings.")
 	else
 		call Settings__Reset ()
 		call Settings_Dialog___Refresh ()
