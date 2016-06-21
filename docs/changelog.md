@@ -19,7 +19,8 @@ This file presents a list of changes from the perspective of the player.
   selection.  During this period the camera and unit selection will remain
   locked onto the player's Miner.
 - Adjusted board layout and contents.  The game clock has been shifted, and
-  the current game settings are now displayed.
+  the current game settings are now displayed.  Additionally, the board width
+  is now dynamic, dependent on player name length.
 - The game selections timer text color has been changed.
 - The Information tab will no longer flash throughout the game.
 - Continuing to rework the Information tab.
