@@ -2,6 +2,8 @@
 
 This file presents a list of changes from the perspective of the player.
 
+## 1.0-beta.4
+
 ## 1.0-beta.3
 
 ### Added

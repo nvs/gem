@@ -63,6 +63,23 @@ function Quests___Random_Information takes nothing returns nothing
 	set the_quest = null
 endfunction
 
+function Quests___Version_1_0_Beta_4 takes nothing returns nothing
+	local quest the_quest = CreateQuest ()
+	local string text = ""
+
+	call QuestSetTitle (the_quest, Gem__NAME + " 1.0-beta.4")
+	call QuestSetIconPath (the_quest, Quests___CHANGELOG_ICON)
+	call QuestSetRequired (the_quest, false)
+	call QuestSetDiscovered (the_quest, true)
+	call QuestSetCompleted (the_quest, false)
+
+	set text = text + "|n"
+
+	call QuestSetDescription (the_quest, text)
+
+	set the_quest = null
+endfunction
+
 function Quests___Version_1_0_Beta_3 takes nothing returns nothing
 	local quest the_quest = CreateQuest ()
 	local string text = ""
@@ -188,6 +205,7 @@ function Quests__Setup takes nothing returns nothing
 	call Quests___Random_Information ()
 
 	// Changelogs:
+	call Quests___Version_1_0_Beta_4 ()
 	call Quests___Version_1_0_Beta_3 ()
 	call Quests___Version_1_0_Beta_2 ()
 	call Quests___Version_1_0_Beta_1_Part_1 ()
