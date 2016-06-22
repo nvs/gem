@@ -9,6 +9,7 @@ return {
 	scripts = {
 		'gem',
 		'player-color',
+		'character-width',
 
 		'unit-indexer',
 		'unit-user-data',

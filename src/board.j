@@ -2,6 +2,9 @@ globals
 	multiboard Board = null
 
 	integer array Board___Players
+
+	constant real Board___NAME_BUFFER = 0.015 - Character_Width__WIDTH
+	constant real Board___MINIMUM_NAME_WIDTH = Board___NAME_BUFFER + Character_Width__WIDTH * 5
 endglobals
 
 function Board___Format_Time takes integer value returns string
@@ -82,6 +85,22 @@ function Board___Update takes nothing returns nothing
 	set board_item = null
 endfunction
 
+function Board___Name_Width takes player the_player returns real
+	local string name = GetPlayerName (the_player)
+	local real width = 0.00
+	local integer index = 0
+	local string character = null
+
+	loop
+		set character = SubString (name, index, index + 1)
+		set width = width + Character_Width__Value (character)
+		exitwhen character == null
+		set index = index + 1
+	endloop
+
+	return width
+endfunction
+
 function Board__Setup takes nothing returns nothing
 	local integer index
 	local integer count
@@ -96,7 +115,7 @@ function Board__Setup takes nothing returns nothing
 	local real array width
 	local string array header
 
-	local real length
+	local real name_width
 
 	local multiboarditem board_item
 
@@ -108,7 +127,7 @@ function Board__Setup takes nothing returns nothing
 	set header [4] = "Level"
 
 	// Width (by column):
-	set width [0] = 0.055
+	set width [0] = Board___MINIMUM_NAME_WIDTH
 	set width [1] = 0.035
 	set width [2] = 0.035
 	set width [3] = 0.035
@@ -119,11 +138,10 @@ function Board__Setup takes nothing returns nothing
 	loop
 		if udg_PlayerHERE [player_index + 1] then
 			set Board___Players [count] = player_index
+			set name_width = Board___NAME_BUFFER + Board___Name_Width (Player (player_index))
 
-			set length = (StringLength (GetPlayerName (Player (player_index))) - 1) / 100.00
-
-			if length > width [0] then
-				set width [0] = length
+			if name_width > width [0] then
+				set width [0] = name_width
 			endif
 
 			set count = count + 1
