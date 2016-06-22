@@ -4,6 +4,14 @@ This file presents a list of changes from the perspective of the player.
 
 ## 1.0-beta.4
 
+### Changed
+- The behavior dictating board width has been vastly improved, and detects
+  player name length on a per character basis.  Note that this system was
+  designed around the default Warcraft 3 font; however, this should not matter
+  to the vast majority of players.
+- Text colors for the game selection and game start timers has been returned
+  to their default values.  This allows their messages to be more apparent.
+
 ## 1.0-beta.3
 
 ### Added

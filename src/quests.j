@@ -73,7 +73,9 @@ function Quests___Version_1_0_Beta_4 takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "|n"
+	set text = text + "|cfffed312Changed:|r|n"
+	set text = text + "- The behavior dictating board width has been vastly improved, and detects player name length on a per character basis. Note that this system was designed around the default Warcraft 3 font; however, this should not matter to the vast majority of players.|n"
+	set text = text + "- Text colors for the game selection and game start timers has been returned to their default values. This allows their messages to be more apparent."
 
 	call QuestSetDescription (the_quest, text)
 
