@@ -18,7 +18,7 @@ function Settings__Initialize takes nothing returns nothing
 	// An empty string is taken to mean that a player must specify the game
 	// settings, regardless of whether a host bot is involved.
 	if Settings_HCL__Command () == "" then
-		call Settings_Dialog__Initialize ()
+		call Settings_Window__Initialize ()
 	else
 		call Settings_HCL__Process ()
 

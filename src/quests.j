@@ -73,6 +73,9 @@ function Quests___Version_1_0_Beta_5 takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
+	set text = text + "|cfffed312Added:|r|n"
+	set text = text + "- An additional button has been added to the settings selection menu, allowing a player the ability to pass their turn. Previously it was necessary to wait the entire duration of their turn to achieve the same result.|n|n"
+
 	set text = text + "|cfffed312Changed:|r|n"
 	set text = text + "- Player control is no longer removed during game settings selection nor the game start timer. Note that the Miner will be paused and unable to move until the game starts."
 

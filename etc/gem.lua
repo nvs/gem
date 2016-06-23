@@ -27,7 +27,7 @@ return {
 
 		'settings.setup',
 		'settings.hcl',
-		'settings.dialog',
+		'settings.window',
 		'settings.initialize',
 
 		'commands.zoom',
