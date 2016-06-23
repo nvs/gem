@@ -3,6 +3,8 @@ globals
 	timerdialog Settings___Countdown = null
 
 	constant real Settings___COUNTDOWN_TIME = 10.00
+
+	unit array Settings___Miners
 endglobals
 
 function Settings___Setup_Mode takes nothing returns nothing
@@ -13,7 +15,6 @@ endfunction
 function Settings___Create_Miners takes nothing returns nothing
 	local player the_player
 	local integer index
-	local unit the_unit
 
 	local real x
 	local real y
@@ -37,12 +38,8 @@ function Settings___Create_Miners takes nothing returns nothing
 			set x = GetRectCenterX (starts [index])
 			set y = GetRectCenterY (starts [index])
 
-			set the_unit = CreateUnit (the_player, 'u000', x, y, bj_UNIT_FACING)
-
-			if GetLocalPlayer () == the_player then
-				call SelectUnit (the_unit, true)
-				call SetCameraTargetController (the_unit, 0, 0, false)
-			endif
+			set Settings___Miners [index] = CreateUnit (the_player, 'u000', x, y, bj_UNIT_FACING)
+			call PauseUnit (Settings___Miners [index], true)
 		endif
 		set starts [index] = null
 
@@ -50,11 +47,12 @@ function Settings___Create_Miners takes nothing returns nothing
 		exitwhen index == Settings___MAXIMUM_PLAYERS
 	endloop
 
-	set the_unit = null
 	set the_player = null
 endfunction
 
 function Settings___Begin_Game takes nothing returns nothing
+	local integer index
+
 	call TimerDialogDisplay (Settings___Countdown, false)
 	call DestroyTimerDialog (Settings___Countdown)
 	set Settings___Countdown = null
@@ -65,11 +63,15 @@ function Settings___Begin_Game takes nothing returns nothing
 
 	call Time__Setup ()
 
-	// This will cause the board to hide, so we must show it again.
-	call EnableUserControl (true)
-	call Board__Display ()
+	set index = 0
+	loop
+		if Settings___Miners [index] != null then
+			call PauseUnit (Settings___Miners [index], false)
+		endif
 
-	call ResetToGameCamera (0.00)
+		set index = index + 1
+		exitwhen index == Settings___MAXIMUM_PLAYERS
+	endloop
 endfunction
 
 // This function is guaranteed to run after map initialization, and currently
@@ -78,13 +80,9 @@ endfunction
 function Settings__Setup takes nothing returns nothing
 	call Settings___Setup_Mode ()
 	call Settings__Difficulty_Setup ()
-	call Settings___Create_Miners ()
 
 	call Quests__Setup ()
-
-	call EnableUserControl (true)
 	call Board__Setup ()
-	call EnableUserControl (false)
 
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()

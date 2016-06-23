@@ -73,7 +73,8 @@ function Quests___Version_1_0_Beta_5 takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "|n"
+	set text = text + "|cfffed312Changed:|r|n"
+	set text = text + "- Player control is no longer removed during game settings selection nor the game start timer. Note that the Miner will be paused and unable to move until the game starts."
 
 	call QuestSetDescription (the_quest, text)
 

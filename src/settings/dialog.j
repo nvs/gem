@@ -27,8 +27,6 @@ endglobals
 function Settings_Dialog___Destroy takes nothing returns nothing
 	local integer index = 0
 
-	call EnableUserControl (false)
-
 	loop
 		exitwhen Settings_Dialog___Buttons [index] == null
 		set Settings_Dialog___Buttons [index] = null
@@ -74,7 +72,6 @@ function Settings_Dialog___Refresh takes nothing returns nothing
 	set Settings_Dialog___Buttons [2] = DialogAddButton (Settings_Dialog___Menu, Settings_Dialog___BUTTON_CONFIRM_TEXT, Settings_Dialog___BUTTON_CONFIRM_KEY)
 
 	if GetLocalPlayer () == the_player then
-		call EnableUserControl (true)
 		call DialogDisplay (the_player, Settings_Dialog___Menu, true)
 	endif
 
@@ -82,7 +79,6 @@ function Settings_Dialog___Refresh takes nothing returns nothing
 endfunction
 
 function Settings_Dialog___Core takes nothing returns nothing
-	call EnableUserControl (false)
 	call DialogDisplay (GetLocalPlayer (), Settings_Dialog___Menu, false)
 
 	loop
@@ -107,8 +103,6 @@ endfunction
 
 function Settings_Dialog___On_Click takes nothing returns boolean
 	local button the_button = GetClickedButton ()
-
-	call EnableUserControl (false)
 
 	// Difficulty:
 	if Settings_Dialog___Buttons [0] == the_button then

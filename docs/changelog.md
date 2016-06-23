@@ -4,6 +4,11 @@ This file presents a list of changes from the perspective of the player.
 
 ## 1.0-beta.5
 
+### Changed
+- Player control is no longer removed during game settings selection nor the
+  game start timer.  Note that the Miner will be paused and unable to move
+  until the game starts.
+
 ## 1.0-beta.4
 
 ### Changed

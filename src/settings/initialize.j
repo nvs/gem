@@ -11,10 +11,9 @@ function Settings__Initialize takes nothing returns nothing
 		exitwhen index == Settings___MAXIMUM_PLAYERS
 	endloop
 
-	call EnableUserControl (false)
-
 	call Settings_Difficulty__Initialize ()
 	call Settings_HCL__Initialize ()
+	call Settings___Create_Miners ()
 
 	// An empty string is taken to mean that a player must specify the game
 	// settings, regardless of whether a host bot is involved.
