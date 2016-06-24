@@ -92,8 +92,8 @@ function Settings_Window___Core takes nothing returns nothing
 
 		call PauseTimer (Settings_Window___Timer)
 		call TimerStart (Settings_Window___Timer, Settings_Window___SELECTION_TIME, false, function Settings_Window___Core)
-		call TimerDialogSetTimeColor (Settings_Window___Countdown, 255, 255, 255, 255)
 		call TimerDialogSetTitle (Settings_Window___Timer_Dialog, "Time before passing:")
+		call TimerDialogSetTimeColor (Settings_Window___Timer_Dialog, 255, 255, 255, 0)
 		call TimerDialogDisplay (Settings_Window___Timer_Dialog, true)
 	endif
 endfunction
