@@ -1,46 +1,58 @@
 globals
-	constant integer Settings_Difficulty___DEFAULT_VALUE = 1
+	constant integer Settings_Difficulty___DEFAULT_OPTION = 1
 
-	integer Settings_Difficulty___Value = Settings_Difficulty___DEFAULT_VALUE
-	string array Settings_Difficulty___Values
+	integer Settings_Difficulty___Option = Settings_Difficulty___DEFAULT_OPTION
+	string array Settings_Difficulty___Options
+
+	constant integer Settings_Difficulty__HOTKEY = 68
+
+	string array Settings_Difficulty___Labels
 endglobals
 
-function Settings_Difficulty__Value takes nothing returns integer
-	return Settings_Difficulty___Value
+function Settings_Difficulty__Option takes nothing returns integer
+	return Settings_Difficulty___Option
 endfunction
 
 function Settings_Difficulty__Name takes nothing returns string
-	return Settings_Difficulty___Values [Settings_Difficulty___Value]
+	return Settings_Difficulty___Options [Settings_Difficulty___Option]
+endfunction
+
+function Settings_Difficulty__Label takes nothing returns string
+	if Settings_Difficulty___Labels [Settings_Difficulty___Option] == null then
+		set Settings_Difficulty___Labels [Settings_Difficulty___Option] = Color__White ("D") + Color__Gold ("ifficulty: ") + Color__White (Settings_Difficulty__Name ())
+	endif
+
+	return Settings_Difficulty___Labels [Settings_Difficulty___Option]
 endfunction
 
 function Settings_Difficulty__Reset takes nothing returns nothing
-	set Settings_Difficulty___Value = Settings_Difficulty___DEFAULT_VALUE
+	set Settings_Difficulty___Option = Settings_Difficulty___DEFAULT_OPTION
 endfunction
 
 function Settings_Difficulty__Set takes integer difficulty returns nothing
-	if Settings_Difficulty___Values [difficulty] != null then
-		set Settings_Difficulty___Value = difficulty
-	else
+	if Settings_Difficulty___Options [difficulty] == null then
 		call Settings_Difficulty__Reset ()
+	else
+		set Settings_Difficulty___Option = difficulty
 	endif
 endfunction
 
 function Settings_Difficulty__Next takes nothing returns nothing
-	set Settings_Difficulty___Value = Settings_Difficulty___Value + 1
+	set Settings_Difficulty___Option = Settings_Difficulty___Option + 1
 
 	if Settings_Difficulty__Name () == null then
-		set Settings_Difficulty___Value = 1
+		set Settings_Difficulty___Option = 1
 	endif
 endfunction
 
 function Settings_Difficulty__Is_Default takes nothing returns boolean
-	return Settings_Difficulty___Value == Settings_Difficulty___DEFAULT_VALUE
+	return Settings_Difficulty___Option == Settings_Difficulty___DEFAULT_OPTION
 endfunction
 
 function Settings__Difficulty_Setup takes nothing returns nothing
 
 	// Extreme:
-	if Settings_Difficulty___Value == 1 then
+	if Settings_Difficulty___Option == 1 then
 		call UnitAddAbility (gg_unit_h027_0019, 'A00U')
 		set udg_DiffLevel = 4
 
@@ -72,23 +84,23 @@ function Settings__Difficulty_Setup takes nothing returns nothing
 		set udg_SpawningUnit [50] = 'h04P'
 
 	// Hard:
-	elseif Settings_Difficulty___Value == 2 then
+	elseif Settings_Difficulty___Option == 2 then
 		call UnitAddAbility (gg_unit_h027_0019, 'A01E')
 		set udg_DiffLevel = 3
 
 	// Normal:
-	elseif Settings_Difficulty___Value == 3 then
+	elseif Settings_Difficulty___Option == 3 then
 		call UnitAddAbility (gg_unit_h027_0019, 'A00T')
 
 	// Easy:
-	elseif Settings_Difficulty___Value == 4 then
+	elseif Settings_Difficulty___Option == 4 then
 		call UnitAddAbility (gg_unit_h027_0019, 'A00S')
 	endif
 endfunction
 
 function Settings_Difficulty__Initialize takes nothing returns nothing
-	set Settings_Difficulty___Values [1] = "Extreme"
-	set Settings_Difficulty___Values [2] = "Hard"
-	set Settings_Difficulty___Values [3] = "Normal"
-	set Settings_Difficulty___Values [4] = "Easy"
+	set Settings_Difficulty___Options [1] = "Extreme"
+	set Settings_Difficulty___Options [2] = "Hard"
+	set Settings_Difficulty___Options [3] = "Normal"
+	set Settings_Difficulty___Options [4] = "Easy"
 endfunction
