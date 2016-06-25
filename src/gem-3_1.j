@@ -577,30 +577,50 @@ globals
 	destructable gg_dest_DTlv_0011=null
 endglobals
 function UnitByIdAndNotSpecialAndNotKeptFilter takes nothing returns boolean
-	local integer player_id = GetPlayerId (GetOwningPlayer (GetFilterUnit ()))
-	local boolean is_type = GetUnitTypeId (GetFilterUnit ()) == bj_groupEnumTypeId
-	local boolean is_not_special = GetUnitAbilityLevel (GetFilterUnit (), 'A00R') == 0
-	local boolean is_not_kept = false
+	local unit the_unit = GetFilterUnit ()
+	local integer player_id
+	local boolean is_not_kept
 
-	if player_id == 0 then
-		set is_not_kept = udg_KeepingGem1 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 1 then
-		set is_not_kept = udg_KeepingGem2 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 2 then
-		set is_not_kept = udg_KeepingGem3 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 3 then
-		set is_not_kept = udg_KeepingGem4 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 4 then
-		set is_not_kept = udg_KeepingGem5 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 5 then
-		set is_not_kept = udg_KeepingGem6 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 6 then
-		set is_not_kept = udg_KeepingGem7 [udg_Level] != GetFilterUnit ()
-	elseif player_id == 7 then
-		set is_not_kept = udg_KeepingGem8 [udg_Level] != GetFilterUnit ()
+	// Ensure the unit is of the proper type.
+	if GetUnitTypeId (the_unit) != bj_groupEnumTypeId then
+		set the_unit = null
+		return false
 	endif
 
-	return is_type and is_not_special and is_not_kept
+	// Check to see if the unit is the special part of a recipe.  If so, return
+	// false because we do not want to use it to fulfill another recipe as it
+	// would disappear.
+	if GetUnitAbilityLevel (the_unit, 'A00R') > 0 then
+		set the_unit = null
+		return false
+	endif
+
+	// Check if the unit is the unit that has been kept this round.  If so,
+	// return false because it will not have been properly registered yet.
+	set player_id = GetPlayerId (GetOwningPlayer (the_unit))
+	set is_not_kept = false
+
+	if player_id == 0 then
+		set is_not_kept = udg_KeepingGem1 [udg_Level] != the_unit
+	elseif player_id == 1 then
+		set is_not_kept = udg_KeepingGem2 [udg_Level] != the_unit
+	elseif player_id == 2 then
+		set is_not_kept = udg_KeepingGem3 [udg_Level] != the_unit
+	elseif player_id == 3 then
+		set is_not_kept = udg_KeepingGem4 [udg_Level] != the_unit
+	elseif player_id == 4 then
+		set is_not_kept = udg_KeepingGem5 [udg_Level] != the_unit
+	elseif player_id == 5 then
+		set is_not_kept = udg_KeepingGem6 [udg_Level] != the_unit
+	elseif player_id == 6 then
+		set is_not_kept = udg_KeepingGem7 [udg_Level] != the_unit
+	elseif player_id == 7 then
+		set is_not_kept = udg_KeepingGem8 [udg_Level] != the_unit
+	endif
+
+	set the_unit = null
+
+	return is_not_kept
 endfunction
 function GetUnitsOfPlayerAndTypeIdAndNotSpecialAndNotKept takes player the_player, integer unit_id returns group
 	local group the_group = CreateGroup ()
