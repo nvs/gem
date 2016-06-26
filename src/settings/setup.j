@@ -93,6 +93,7 @@ function Settings__Setup takes nothing returns nothing
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)
 	set Settings___Countdown = CreateTimerDialog (Settings___Timer)
 	call TimerDialogSetTitle (Settings___Countdown, "Game starts in:")
+	call TimerDialogSetTitleColor (Settings___Countdown, 255, 255, 255, 0)
 	call TimerDialogSetTimeColor (Settings___Countdown, 255, 255, 255, 0)
 	call TimerDialogDisplay (Settings___Countdown, true)
 endfunction

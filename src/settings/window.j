@@ -92,7 +92,8 @@ function Settings_Window___Core takes nothing returns nothing
 
 		call PauseTimer (Settings_Window___Timer)
 		call TimerStart (Settings_Window___Timer, Settings_Window___SELECTION_TIME, false, function Settings_Window___Core)
-		call TimerDialogSetTitle (Settings_Window___Timer_Dialog, "Time before passing:")
+		call TimerDialogSetTitle (Settings_Window___Timer_Dialog, Player_Color__Text (Settings_Window___Player_Index, Player_Color__Word (Settings_Window___Player_Index, false) + "'s") + " turn to select:")
+		call TimerDialogSetTitleColor (Settings_Window___Timer_Dialog, 255, 255, 255, 0)
 		call TimerDialogSetTimeColor (Settings_Window___Timer_Dialog, 255, 255, 255, 0)
 		call TimerDialogDisplay (Settings_Window___Timer_Dialog, true)
 	endif
