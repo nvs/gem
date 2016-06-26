@@ -4,6 +4,11 @@ This file presents a list of changes from the perspective of the player.
 
 ## 1.0-beta.5
 
+### Added
+- An additional button has been added to the settings selection menu, allowing
+  a player the ability to pass their turn.  Previously it was necessary to
+  wait the entire duration of their turn to achieve the same result.
+
 ### Changed
 - Player control is no longer removed during game settings selection nor the
   game start timer.  Note that the Miner will be paused and unable to move
@@ -11,11 +16,6 @@ This file presents a list of changes from the perspective of the player.
 - Text colors for the game selection and game start timers has been changed
   back to white.  This allows better contrast with the new colored player
   references and the gold colored board.
-
-### Added
-- An additional button has been added to the settings selection menu, allowing
-  a player the ability to pass their turn.  Previously it was necessary to
-  wait the entire duration of their turn to achieve the same result.
 
 ## 1.0-beta.4
 
