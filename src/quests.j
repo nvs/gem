@@ -99,12 +99,12 @@ function Quests___Version_1_0_RC_1_Part_1 takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "|cfffed312Added:|r|n"
+	set text = text + Color__Gold ("Added:") + "|n"
 	set text = text + "- A host bot can now specify the game mode via HCL and start the game without any player intervention. Note that if a HCL command is not specified, then the players will have the option to select the game settings. See the documentation on [Gem TD+ Settings] (docs/settings.md) for more information.|n"
 	set text = text + "- The `-zoom` command has been added. It did not exist in the last official version, but has become popular in unofficial versions.|n"
 	set text = text + "- Once game settings have been selected, a brief timer is displayed indicating the time before the game starts. Players have full control during this period over everything but their Miner, which is paused and unmovable until the game officially begins.|n|n"
 
-	set text = text + "|cfffed312Removed:|r|n"
+	set text = text + Color__Gold ("Removed:") + "|n"
 	set text = text + "- All cheat commands and ban lists have been removed from the map.|n"
 	set text = text + "- Classic mode has been removed entirely and not simply disabled. As a result Race mode is now the only supported mode.|n"
 	set text = text + "- The introduction has been removed in favor of improving in-game information to help guide newer players. This will be an ongoing process.|n"
@@ -126,7 +126,7 @@ function Quests___Version_1_0_RC_1_Part_2 takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "|cfffed312Changed:|r|n"
+	set text = text + Color__Gold ("Changed:") + "|n"
 	set text = text + "- Player control is no longer disabled during game settings selection.|n"
 	set text = text + "- There is now a default difficulty: Extreme.|n"
 	set text = text + "- Red can be absent and the game will start properly.|n"
@@ -155,7 +155,7 @@ function Quests___Version_1_0_RC_1_Part_3 takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "|cfffed312Fixed:|r|n"
+	set text = text + Color__Gold ("Fixed:") + "|n"
 	set text = text + "- The game no longer freezes if settings are not selected, previously requiring the player to close Warcraft 3 or wait for Red to return.|n"
 	set text = text + "- It was possible for a round to not start because a piece of a recipe landed a killing blow at the exact moment a player combined. The result was the game essentially ending for that player. This has been fixed.|n"
 	set text = text + "- It was also possible for a round to not start because another player landed the killing blow, thus stealing the kill. The result was the game essentially ending for the first player. Additionally, the game would bug for the second, as their rounds would end early, allowing unexpected behavior to occur. This too has been fixed.|n"
