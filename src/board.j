@@ -87,14 +87,15 @@ endfunction
 
 function Board___Name_Width takes player the_player returns real
 	local string name = GetPlayerName (the_player)
+	local integer length = StringLength (name)
 	local real width = 0.00
 	local integer index = 0
 	local string character = null
 
 	loop
+		exitwhen index == length
 		set character = SubString (name, index, index + 1)
 		set width = width + Character_Width__Value (character)
-		exitwhen character == null
 		set index = index + 1
 	endloop
 
