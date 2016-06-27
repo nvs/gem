@@ -1,7 +1,8 @@
 globals
 	constant string Quests___MAP_ICON = "ReplaceableTextures\\CommandButtons\\BTNScrollOfHealing.blp"
+	constant string Quests___TALKING_ICON = "ReplaceableTextures\\CommandButtons\\BTNScrollOfProtection.blp"
 	constant string Quests___THANKS_ICON = "ReplaceableTextures\\CommandButtons\\BTNScrollOfTownPortal.blp"
-	constant string Quests___INFORMATION_ICON = "ReplaceableTextures\\CommandButtons\\BTNScrollOfProtection.blp"
+	constant string Quests___INFORMATION_ICON = "ReplaceableTextures\\CommandButtons\\BTNScroll.blp"
 
 	constant string Quests___CHANGELOG_ICON = "ReplaceableTextures\\CommandButtons\\BTNSpellBookBLS.blp"
 endglobals
@@ -18,6 +19,31 @@ function Quests___What_Is_Gem_TD_Plus takes nothing returns nothing
 
 	set text = text + Gem__NAME + " is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.). Its primary purpose, for now, is to fix bugs and address performance issues. "
 	set text = text + "Currently " + Gem__NAME + " is maintained by " + Gem__MAINTAINER + ". For more information and discussion on the map, or to report bugs and other issues, see: |cff33ff33" + Gem__WEBSITE + "|r."
+
+	call QuestSetDescription (the_quest, text)
+
+	set the_quest = null
+endfunction
+
+function Quests___Talking_Points takes nothing returns nothing
+	local quest the_quest = CreateQuest ()
+	local string text = ""
+
+	call QuestSetTitle (the_quest, "Talking Points")
+	call QuestSetIconPath (the_quest, Quests___TALKING_ICON)
+	call QuestSetRequired (the_quest, true)
+	call QuestSetDiscovered (the_quest, true)
+	call QuestSetCompleted (the_quest, false)
+
+	set text = text + "For the foreseeable future Gem TD+ will involve bug fixes and performance improvements. However, at some point it would be nice to approach other topics such as balancing and increasing the replay value of the map. However, it would be best if there was some community involvement in the process. So please visit the map website and share your opinions in the `Issues` area under topics labeled `Discussions`, or start your own. Thanks.|n|n"
+
+	set text = text + Color__Gold ("Current topics:") + "|n"
+	set text = text + "- The 'glitch'. For the most part it looks like a bug, however it has been in the game for so long now that it is generally accepted and more accurately represents a balance issue. Still, it needs addressing.|n"
+	set text = text + "- A number of structures in the map (e.g. Greats, slates, and the Stone of Bryvx) are not exactly in sync with the rest of the map in terms of balance, especially given how easy they are to acquire.|n"
+	set text = text + "- Rethink the nature of the Damage Test. Should this challenge really be possible to complete, or should it honestly be what its name implies?|n"
+	set text = text + "- The difficulty can be rescaled to present more of a challenge, especially given that 'Extreme' seems to be the only one played anymore.|n"
+	set text = text + "- Increase the replay value of the map by adding new features that may or may not deviate from the existing functionality, and/or by reworking what is already present.|n"
+	set text = text + "- Are various parts of the map (e.g. the gamblers) actually needed?"
 
 	call QuestSetDescription (the_quest, text)
 
@@ -154,6 +180,7 @@ function Quests__Setup takes nothing returns nothing
 
 	// Information:
 	call Quests___What_Is_Gem_TD_Plus ()
+	call Quests___Talking_Points ()
 	call Quests___Special_Thanks ()
 	call Quests___Random_Information ()
 
