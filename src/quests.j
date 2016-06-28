@@ -35,7 +35,7 @@ function Quests___Talking_Points takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "For the foreseeable future Gem TD+ will involve bug fixes and performance improvements. However, at some point it would be nice to approach other topics such as balancing and increasing the replay value of the map. However, it would be best if there was some community involvement in the process. So please visit the map website and share your opinions in the `Issues` area under topics labeled `Discussions`, or start your own. Thanks.|n|n"
+	set text = text + "For the foreseeable future Gem TD+ will mostly deal with bug fixes and performance improvements. However, at some point it would be nice to approach other topics such as balancing and increasing the replay value of the map. My feeling is that it would be best if there was some community involvement in the process. So please visit the map website and share your opinions in the `Issues` area under topics labeled `Discussions`, or start your own. Thanks.|n|n"
 
 	set text = text + Color__Gold ("Current topics:") + "|n"
 	set text = text + "- The 'glitch'. For the most part it looks like a bug, however it has been in the game for so long now that it is generally accepted and more accurately represents a balance issue. Still, it needs addressing.|n"
