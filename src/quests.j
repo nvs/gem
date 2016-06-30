@@ -100,7 +100,7 @@ function Quests___Version_1_0_RC_1_Part_1 takes nothing returns nothing
 	call QuestSetCompleted (the_quest, false)
 
 	set text = text + Color__Gold ("Added:") + "|n"
-	set text = text + "- A host bot can now specify the game mode via HCL and start the game without any player intervention. Note that if a HCL command is not specified, then the players will have the option to select the game settings. See the documentation on [Gem TD+ Settings] (docs/settings.md) for more information.|n"
+	set text = text + "- A host bot can now specify the game mode via HCL and start the game without any player intervention. Note that if a HCL command is not specified, then the players will have the option to select the game settings. See the documentation on [Gem TD+ Settings] (settings.md) for more information.|n"
 	set text = text + "- The `-zoom` command has been added. It did not exist in the last official version, but has become popular in unofficial versions.|n"
 	set text = text + "- Once game settings have been selected, a brief timer is displayed indicating the time before the game starts. Players have full control during this period over everything but their Miner, which is paused and unmovable until the game officially begins.|n|n"
 
