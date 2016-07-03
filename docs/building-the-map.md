@@ -34,8 +34,8 @@ executables to function properly.
     Changes] (map-file-changes.md) file. 
 08. Use Vexorian's Optimizer (which is included in the repository) to process
     the map.  Simply invokve the build script: `bin/map optimize etc/gem.lua`.
-    This will produced both an optimized script file (`tmp/gem-optimized.j`)
-    and map file (`tmp/gem-optimized.w3x`).  Rename the map file as needed to
+    This will produced both an optimized map file `tmp/gem-optimized.w3x` and
+    a script file `tmp/gem-optimized.w3x.j`.  Rename the map file as needed to
     match the version being released.
 
 ## Verifying the `war3map.j`
