@@ -60,7 +60,8 @@ function Quests___Special_Thanks takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "Recognition needs to be given to those who supported Bryvx in the making of Gem TD: turbopower; MafaBaby; DMVPDemonMOM; and Ghost-007."
+	set text = text + "Recognition needs to be given to those who supported Bryvx in the making of Gem TD: turbopower; MafaBaby; DMVPDemonMOM; and Ghost-007.|n|n"
+	set text = text + "And of course, a big thank you to everyone who has played Gem TD over the years and helped it continue to thrive as a map we all love and enjoy."
 
 	call QuestSetDescription (the_quest, text)
 
