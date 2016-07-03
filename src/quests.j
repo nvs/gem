@@ -35,14 +35,14 @@ function Quests___Talking_Points takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "For the foreseeable future Gem TD+ will deal with bug fixes and performance improvements. However, at some point it would be nice to approach other topics such as balancing or finding ways to increase the replay value of the map. In these cases it would be best if there was community involvement in the process. So please visit the map website and share your opinions in the `Issues` are under topics labeled `Discussion`, or start your own. Thanks.|n|n"
+	set text = text + "For the foreseeable future Gem TD+ will deal with bug fixes and performance improvements. However, at some point it would be nice to approach other topics such as balancing or finding ways to increase the replay value of the map. In these cases it would be best if there was community involvement in the process. So please visit the map website and share your opinions in the `Issues` area under topics labeled `Category: Discussion`, or go ahead and start your own. Thanks.|n|n"
 
 	set text = text + Color__Gold ("Current topics:") + "|n"
-	set text = text + "- The gamblers. If you have an excellent case for why they should stay, I need to hear it. All signs point to them being removed in `1.1` unless someone does an excellent job arguing for them to remain.|n"
+	set text = text + "- The gamblers. Should they be removed or reworked? I personally feel they should be disconnected from the main game (no more gold cost/reward). Perhaps more mini-games could be added. Perhaps a new 'currency', one external from the main game and used for other silly purposes.|n"
 	set text = text + "- The 'glitch'. A hidden move that shouldn't be hidden. Represents a valid balance concern, but at the same time allows people to approach their luck from another vantage point. Given how long this bug (yes, it's a bug) has existed, it is more or less here to stay. But it can be improved.|n"
 	set text = text + "- Balancing. Okay, so this won't happen for a while, if at all. But things most often mentioned seem to be the Stars, the slates, the Greats, and the Stone of Bryvx. Some of these don't scale with difficulties properly, some provide too large of a power spike too early, and some scale into the end game far too effectively.|n"
 	set text = text + "- Add replay value. This is rather open ended. Lots of ideas here: randomized pathing; more game modes; obstacles; new settings; more round types; new slates; more strategies. If you have an idea, I want to hear it!|n"
-	set text = text + "- The Damage Test. Perhaps this should be exactly what its name implies: a nearly impossible check of one's maze. Ideally there would be multiple viable strategies to get one through the game, and the Damage Test would help figure out if any are too strong. If someone managed to kill the Damage Test, then perhaps their name could be added to the map. Just a thought.|n"
+	set text = text + "- The Damage Test. Perhaps this should be exactly what its name implies: a nearly impossible check of one's maze. Ideally there would be multiple viable strategies to get one through the game, and the Damage Test would help figure out if any are too strong. If someone managed to kill the Damage Test, then perhaps their name could be added to the map. Just a thought."
 
 	call QuestSetDescription (the_quest, text)
 
@@ -59,8 +59,7 @@ function Quests___Special_Thanks takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "Recognition needs to be given to those who supported Bryvx in the making of Gem TD: turbopower; MafaBaby; DMVPDemonMOM; and Ghost-007.|n|n"
-	set text = text + "And of course, a big thank you to everyone who has played Gem TD over the years and helped it continue to thrive as a map we all love and enjoy."
+	set text = text + "Recognition needs to be given to those who supported Bryvx in the making of Gem TD: turbopower; MafaBaby; DMVPDemonMOM; and Ghost-007. And of course, a big thank you to everyone who has played Gem TD over the years and helped it continue to thrive as a map we all love and enjoy."
 
 	call QuestSetDescription (the_quest, text)
 
