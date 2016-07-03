@@ -4,7 +4,8 @@ if not arg [1]
 	or arg [1] == 'help'
 	or (arg [1] ~= 'check'
 		and arg [1] ~= 'build'
-		and arg [1] ~= 'data')
+		and arg [1] ~= 'data'
+		and arg [1] ~= 'optimize')
 	or not arg [2]
 then
 	print ([[
@@ -12,21 +13,26 @@ map - JASS script checker/builder
 
 Usage:
 
-map help                       Displays this help message.
-map check [configuration-file] Checks the scripts that form the project to
-                               ensure that they are valid JASS.
-map build [configuration-file] Takes the scripts and builds a single project
-                               script, which is then checked afterwards.  The
-                               process involves gathering all global variable
-                               declarations into a single block, then putting
-                               all other content after.  The order specified
-                               in the `configuration-file` is maintained.
-map data [configuration-file]  Takes the objects and load them into a copy of
-                               the specified map file.
+map help                     Displays this help message.
+map check [configuration]    Checks the scripts that form the project to
+                             ensure that they are valid JASS.
+map build [configuration]    Takes the scripts and builds a single project
+                             script, which is then checked afterwards.  The
+                             process involves gathering all global variable
+                             declarations into a single block, then putting
+                             all other content after.  The order specified
+                             in the `configuration` is maintained.
+map data [configuration]     Takes the objects and load them into a copy of
+                             the specified map file.
+map optimize [configuration] Optimizes the map, decreasing file size,
+                             improving run-time performance, and doing other
+                             useful things.  Currently uses Vexorian's
+                             Optimizer.  The resulting map will reside in the
+                             `output_directory`.
 
-A `configuration-file` is nothing more than a Lua file returning a table
+A `configuration` is nothing more than a Lua file returning a table
 with the following format.  Note that relative paths are specified with
-respect to the location of the `configuration-file`.
+respect to the location of the `configuration`.
 
 - `name`              : This is the name of the project, and the name used
                         when building the project's script or map file.
@@ -329,6 +335,32 @@ elseif arg [1] == 'data' then
 		or result == 0
 	then
 		io.write ('\n')
+	end
+elseif arg [1] == 'optimize' then
+	local path = configuration.objects_directory .. '/?.lua'
+
+	-- source path MUST be the file inside the output directory
+	local source_path = configuration.output_directory .. '/'
+		.. configuration.name .. '.w3x'
+	local destination_path = configuration.output_directory .. '/'
+		.. configuration.name .. '-optimized.w3x'
+
+	-- Optimizer will fail if the destination already exists.
+	os.remove (destination_path)
+	os.remove (destination_path .. '.j')
+
+	local result = os.execute (string.format ('%s %s --do %s --checkall '
+		.. '--tweak %s --exit', configuration.optimizer, source_path,
+		destination_path, configuration.optimizer_tweaks))
+
+	if result == true
+		or result == 0
+	then
+		print (string.format ('Optimized map created: %s', destination_path))
+	else
+		-- No sense keeping the result if we encountered a failure.
+		os.remove (destination_path)
+		os.remove (destination_path .. '.j')
 	end
 end
 

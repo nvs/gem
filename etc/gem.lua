@@ -44,5 +44,8 @@ return {
 	},
 
 	pjass = 'wine ../lib/pjass/pjass.exe',
-	object_merger = 'wine ../lib/grimex/ObjectMerger.exe'
+	object_merger = 'wine ../lib/grimex/ObjectMerger.exe',
+
+	optimizer = 'wine ../lib/optimizer/VXJWTSOPT.exe',
+	optimizer_tweaks = '../etc/gem.vxtweak'
 }
