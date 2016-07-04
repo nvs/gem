@@ -90,6 +90,13 @@ function Settings__Setup takes nothing returns nothing
 		call PauseTimer (Settings___Timer)
 	endif
 
+	call ClearTextMessages ()
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!"))
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, "The game will start when the countdown timer finishes.")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, "Feel free to chat and use commands such as `-zoom`.")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, " ")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, "See " + Color__Gold ("Information (F9)") + " for a list of changes.")
+
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)
 	set Settings___Countdown = CreateTimerDialog (Settings___Timer)
 	call TimerDialogSetTitle (Settings___Countdown, "Game starts in:")

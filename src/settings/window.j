@@ -14,6 +14,8 @@ globals
 
 	string array Settings_Window___Menu_Labels
 	integer array Settings_Window___Menu_Hotkeys
+
+	boolean Settings_Window___Displayed_Information = false
 endglobals
 
 function Settings_Window___Menu_Destroy takes nothing returns nothing
@@ -76,6 +78,12 @@ endfunction
 
 function Settings_Window___Core takes nothing returns nothing
 	call DialogDisplay (GetLocalPlayer (), Settings_Window___Menu_Dialog, false)
+
+	if not Settings_Window___Displayed_Information then
+		set Settings_Window___Displayed_Information = true
+
+		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 1.20, Settings_Window___SELECTION_TIME * Settings___MAXIMUM_PLAYERS, "Please be patient, game settings are currently being selected.")
+	endif
 
 	loop
 		set Settings_Window___Player_Index = Settings_Window___Player_Index + 1
