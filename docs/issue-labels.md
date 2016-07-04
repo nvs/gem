@@ -2,7 +2,17 @@
 
 The following labels are used for issues in this project.
 
-## Types
+## Special
+
+These labels have no real category, but are grouped together here as they
+serve special purposes.  Multiple labels can be applied, and merely help serve
+as a guide in regards to how an issue is being used.  Note that the `-`
+character is used to push the label before others alphabetically.
+
+- `- Table of Contents`: This issue represents a focal point for a greater
+  number of issues, providing a means of organizing them into one spot.
+
+## Categories
 
 Only one label is applied to an issue at a time.
 
@@ -42,25 +52,16 @@ the following types: `Bug`, `Enhancement`, and `Task`.
   it has started or not.  The reasons can vary, and should be mentioned.  The
   issue will be closed.
 
-## Priority
+## Scope
 
-Only one label is applied to an issue at a time.  When an issue is closed its
-priority label should be removed, as they are intended to be labls for open
-issues only.
-
-- `Now`: This issue has priority over other work.
-- `Soon`: This issue needs to be resolved in a relatively timely fashion.
-- `Later`: This issue is not critical, and can be pushed back if need be.
-- `None`: Other issues should be considered before this one.
-
-## Area
-
-Multiple area labels may be applied as necessary to aid in describing the
-issue's scope.  However, they should only be applied once the area of focus
-has been identified. 
+Multiple scope labels may be applied as necessary to aid in describing the
+issue.  However, they should only be applied once the area of focus has been
+identified.
 
 - `JASS`: This issue is related to the JASS code.
 - `Map`: This issue is related to the `*.w3x` map object specifically.
 - `Build`: This issue is related to the build script for the project, as well
   as the associated configuration.
 - `Documentation`: This issue is related to project documentation.
+- `Balance`: This is a balance issue.
+- `Objects`: This issue relates to object data, e.g. units, ablities, etc.
