@@ -1,20 +1,22 @@
-# Gem TD+: A Warcraft 3 Tower Defense
+# Gem Tower Defense Plus
 
 Gem TD+ is an updated version of the original Gem Tower Defense created by
 Bryvx (Bryan K.).  Its primary purpose, for now, is to fix bugs and address
 performance issues.
 
 Currently Gem TD+ is maintained by NVS.  For more information and discussion
-on the map, or to report bugs and other issues, visit [the website] [1].
+on the map, or to report bugs and other issues, see [the website] [1].
 
 ## The Plan
 
-The current plan is to approach the map in three phases:
-
-01. Bug fixes, address glaring errors, and remove memory leaks.
-02. Balancing without changing the current game too much.  This will require
-    community feedback.
-03. Perhaps attempt to increase the replay value of the map.  No real clue
-    how to go about this just yet, but brainstorming as time goes on.
+For the foreseeable future Gem TD+ will deal with bugs and performance
+improvements.  However, at some point it would be nice to approach other
+topics such as balancing or finding ways to increase the replay value of the
+map.  In these cases it would be best if there was community involvement in
+the process.  So please visit the map website and share your opinions in the
+[Issues] [2] area under topics labeled [Category: Discussion] [3], or go ahead
+and start your own.  Thanks.
 
 [1]: https://github.com/nvs/gem
+[2]: https://github.com/nvs/gem/issues
+[3]: https://github.com/nvs/gem/labels/Category%3A%20Discussion
