@@ -78,6 +78,8 @@ endfunction
 // handles setting up the game start.  Note that this is expected to be called
 // either directly or via an expired timer.
 function Settings__Setup takes nothing returns nothing
+	local integer index
+
 	call Settings___Setup_Mode ()
 	call Settings__Difficulty_Setup ()
 
@@ -96,6 +98,21 @@ function Settings__Setup takes nothing returns nothing
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, "Feel free to chat and use commands such as `-zoom`.")
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, " ")
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 0.80, Settings___COUNTDOWN_TIME, "See " + Color__Gold ("Information (F9)") + " for a list of changes.")
+
+	// Ensure that the unit selected is the Miner, and that the camera is
+	// focused on it initially.
+	set index = 0
+	loop
+		if Settings___Miners [index] != null then
+			if GetLocalPlayer () == Player (index) then
+				call SelectUnit (Settings___Miners [index], true)
+				call SetCameraPosition (GetUnitX (Settings___Miners [index]), GetUnitY (Settings___Miners [index]))
+			endif
+		endif
+
+		set index = index + 1
+		exitwhen index == Settings___MAXIMUM_PLAYERS
+	endloop
 
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)
 	set Settings___Countdown = CreateTimerDialog (Settings___Timer)
