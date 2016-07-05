@@ -2,16 +2,6 @@
 
 The following labels are used for issues in this project.
 
-## Special
-
-These labels have no real category, but are grouped together here as they
-serve special purposes.  Multiple labels can be applied, and merely help serve
-as a guide in regards to how an issue is being used.  Note that the `-`
-character is used to push the label before others alphabetically.
-
-- `- Table of Contents`: This issue represents a focal point for a greater
-  number of issues, providing a means of organizing them into one spot.
-
 ## Categories
 
 Only one label is applied to an issue at a time.
@@ -22,7 +12,8 @@ Only one label is applied to an issue at a time.
   facing impact.
 - `Question`: An inquiry regarding the project.
 - `Discussion`: A fairly broad category, used for talking about a
-  generalized, less focused concept or topic.
+  generalized, less focused concept or topic.  Note that Multiple related
+  discusions tend to be organized with a `Milestone`.
 
 ## Status
 
@@ -31,6 +22,8 @@ the following types: `Bug`, `Enhancement`, and `Task`.
 
 - `Duplicate`: The issue already exists, and will be closed.  Reference to the
   original should be made.
+- `Blocked`: The issue cannot be completed due to another issue needing to be
+  resolved first.
 - `Unconfirmed`: Default for bugs.  An issue will remain at this status until
   someone validates, reproduces, or otherwise confirms it is a bug.  Once
   confirmed the status is changed to `Not Started`.
