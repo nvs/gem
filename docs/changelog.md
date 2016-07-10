@@ -24,9 +24,6 @@ This file presents a list of changes from the perspective of the player.
   to help guide newer players.  This will be an ongoing process.
 - The leaderboard that appeared briefly before the multiboard appears is
   now gone.
-- There was an issue with text at the start of the game not being visible when
-  the map was hosted with a HCL command.  That text has been removed in favor
-  of displaying the above mentioned game start timer along with the board.
 
 ### Changed
 - Player control is no longer disabled during game settings selection.

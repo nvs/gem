@@ -108,8 +108,7 @@ function Quests___Version_1_0_RC_Part_1 takes nothing returns nothing
 	set text = text + "- All cheat commands and ban lists have been removed from the map.|n"
 	set text = text + "- Classic mode has been removed entirely and not simply disabled. As a result Race mode is now the only supported mode.|n"
 	set text = text + "- The introduction has been removed in favor of improving in-game information to help guide newer players. This will be an ongoing process.|n"
-	set text = text + "- The leaderboard that appeared briefly before the multiboard appears is now gone.|n"
-	set text = text + "- There was an issue with text at the start of the game not being visible when the map was hosted with a HCL command. That text has been removed in favor of displaying the above mentioned game start timer along with the board."
+	set text = text + "- The leaderboard that appeared briefly before the multiboard appears is now gone."
 
 	call QuestSetDescription (the_quest, text)
 
