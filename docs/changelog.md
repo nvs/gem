@@ -2,7 +2,7 @@
 
 This file presents a list of changes from the perspective of the player.
 
-## 1.0-rc.2
+## 1.0 - 2016-07-09
 
 ### Added
 - A host bot can now specify the game mode via HCL and start the game without
