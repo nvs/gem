@@ -26,7 +26,7 @@ objects from the map directly.
                 An updated version of Gem Tower Defense, a map originally created by |c00ff0000Bryvx (Bryan K.)|r. Currently maintained by |c00ff0000NVS.|r
 
                 For more information see:
-                |c0033ff33https://github.com/nvs/gem|r
+                |c0000ff00https://github.com/nvs/gem|r
         - Author: `NVS`
     * Scenario - Map Loading Screen:
         - Loading Screen Title: `|c00fed312Version X.Y|r`
@@ -46,7 +46,7 @@ objects from the map directly.
 
                                                   For further information and discussion on the
                                                   map, or to report bugs and other issues, see:
-                                                  |c0033ff33https://github.com/nvs/gem|r
+                                                  |c0000ff00https://github.com/nvs/gem|r
 
 - [Change `Quests` tab to `Information` (#63)] [issue-63]
     * Advanced - Gameplay Interface:
