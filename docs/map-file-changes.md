@@ -33,20 +33,17 @@ objects from the map directly.
         - Loading Screen Subtitle: `Gem Tower Defense Plus`
         - Loading Screen Text:
 
-            _Note that there are exactly 34 spaces before each line in the
-            below block._
+                An updated version of Gem Tower Defense,
+                a map originally created by |c00ff0000Bryvx (Bryan K.)|r.
 
-                                                  An updated version of Gem Tower Defense,
-                                                  a map originally created by |c00ff0000Bryvx (Bryan K.)|r.
+                Currently maintained by |c00ff0000NVS|r.
 
-                                                  Currently maintained by |c00ff0000NVS|r.
+                For map information, including a list of
+                changes, see |c00fed312Information (F9)|r in game.
 
-                                                  For map information, including a list of
-                                                  changes, see |c00fed312Information (F9)|r in game.
-
-                                                  For further information and discussion on the
-                                                  map, or to report bugs and other issues, see:
-                                                  |c0000ff00https://github.com/nvs/gem|r
+                For further information and discussion on the
+                map, or to report bugs and other issues, see:
+                |c0000ff00https://github.com/nvs/gem|r
 
 - [Change `Quests` tab to `Information` (#63)] [issue-63]
     * Advanced - Gameplay Interface:
