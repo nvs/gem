@@ -13,10 +13,12 @@ For the foreseeable future Gem TD+ will deal with bugs and performance
 improvements.  However, at some point it would be nice to approach other
 topics such as balancing or finding ways to increase the replay value of the
 map.  In these cases it would be best if there was community involvement in
-the process.  So please visit the map website and share your opinions in the
-[Issues] [2] area under topics labeled [Category: Discussion] [3], or go ahead
-and start your own.  Thanks.
+the process.  So please visit the map website and share your opinions.  Check
+the [Issues] [2] area, and look under [Milestones] [3] for discussion focal
+points.  Also check under the label [Category: Discussion] [4] for another
+route to many topics.  Thanks.
 
 [1]: https://github.com/nvs/gem
 [2]: https://github.com/nvs/gem/issues
-[3]: https://github.com/nvs/gem/labels/Category%3A%20Discussion
+[3]: https://github.com/nvs/gem/milestones
+[4]: https://github.com/nvs/gem/labels/Category%3A%20Discussion
