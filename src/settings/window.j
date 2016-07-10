@@ -82,7 +82,8 @@ function Settings_Window___Core takes nothing returns nothing
 	if not Settings_Window___Displayed_Information then
 		set Settings_Window___Displayed_Information = true
 
-		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0.00, 1.20, Settings_Window___SELECTION_TIME * Settings___MAXIMUM_PLAYERS, "Please be patient, game settings are currently being selected.")
+		call ClearTextMessages ()
+		call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!") + "\nPlease be patient, game settings are currently being selected.\n\n\n\n\n\n\n\n\n")
 	endif
 
 	loop
