@@ -1701,11 +1701,19 @@ function InitTrig_Inihilization takes nothing returns nothing
 	set gg_trg_Inihilization=CreateTrigger()
 	call TriggerAddAction(gg_trg_Inihilization,function Trig_Inihilization_Actions)
 endfunction
-function Trig_Special_Mark_Func001002 takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetEnumUnit()),"Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl")
+function Trig_Special_Mark takes nothing returns nothing
+	local unit the_unit = GetEnumUnit ()
+	local effect sfx = AddSpecialEffect ("Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit))
+	call TriggerSleepAction (5.00)
+	call DestroyEffect (sfx)
+	set the_unit = null
+	set sfx = null
+endfunction
+function Trig_Special_Mark_Enum takes nothing returns nothing
+	call ExecuteFunc ("Trig_Special_Mark")
 endfunction
 function Trig_Special_Mark_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_UnitGroupSPECIAL,function Trig_Special_Mark_Func001002)
+	call ForGroup (udg_UnitGroupSPECIAL, function Trig_Special_Mark_Enum)
 endfunction
 function InitTrig_Special_Mark takes nothing returns nothing
 	set gg_trg_Special_Mark=CreateTrigger()
@@ -1914,21 +1922,21 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetKillingUnitBJ(),(Unit_User_Data__Get(GetKillingUnitBJ())+1))
 	if(Trig_Gem_Awards_Func002C())then
 		call UnitAddAbilityBJ('A01L',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func003C())then
 		call UnitRemoveAbilityBJ('A01L',GetKillingUnitBJ())
 		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01N',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func004C())then
 		call UnitRemoveAbilityBJ('A01N',GetKillingUnitBJ())
 		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01M',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func005C())then
@@ -1936,7 +1944,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01O',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A01Z',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func006C())then
@@ -1945,7 +1953,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01V',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A01P',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func007C())then
@@ -1954,7 +1962,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01R',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A022',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func008C())then
@@ -1964,7 +1972,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A01S',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A023',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A026',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func009C())then
@@ -1975,7 +1983,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A01T',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A024',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A027',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func010C())then
@@ -1986,7 +1994,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A01U',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A021',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A028',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func011C())then
@@ -1998,7 +2006,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A020',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A029',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02C',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func012C())then
@@ -2011,7 +2019,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A01Y',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02A',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02D',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func013C())then
@@ -2024,7 +2032,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A025',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02B',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02E',GetKillingUnitBJ())
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetKillingUnitBJ()),"Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func015001())then
@@ -5004,10 +5012,10 @@ function Trig_Slate_Stack_Check_Actions takes nothing returns nothing
 	call TriggerSleepAction(0.01)
 	if(Trig_Slate_Stack_Check_Func012C())then
 		call DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_SlateStackUnit)),"|cff33ff33Slate Stacking found!|r")
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_SlateStackUnit),"Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 		call SetUnitPositionLoc(udg_SlateStackUnit,PolarProjectionBJ(udg_SlateStackDestination,400.00,GetRandomReal(0,359.00)))
 		call TriggerSleepAction(0.01)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_SlateStackUnit),"Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 		call TriggerExecute(GetTriggeringTrigger())
 	else
 	endif
@@ -5238,7 +5246,7 @@ function Trig_Slate_move_Func019001 takes nothing returns boolean
 	return(udg_SlateStackNo>=1)
 endfunction
 function Trig_Slate_move_Func019002002 takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetEnumUnit()),"Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetEnumUnit()), GetUnitY (GetEnumUnit())))
 endfunction
 function Trig_Slate_move_Actions takes nothing returns nothing
 	call DisableTrigger(GetTriggeringTrigger())
@@ -5277,7 +5285,7 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_SlateStackUnit),"Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 	call TriggerSleepAction(0.02)
 	if(Trig_Slate_move_Func019001())then
 		call ForGroupBJ(udg_SlateStackGROUP,function Trig_Slate_move_Func019002002)
@@ -5409,7 +5417,7 @@ function Trig_Remove_rocks_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Remove_rocks_Actions takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetTriggerUnit()),"Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl", GetUnitX (GetTriggerUnit()), GetUnitY (GetTriggerUnit())))
 	call TriggerSleepAction(0.10)
 	call RemoveUnit(GetTriggerUnit())
 endfunction
@@ -5557,7 +5565,7 @@ function Trig_Buying_Lives_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call RemoveUnit(GetTrainedUnit())
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetTriggerUnit()),"Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", GetUnitX (GetTriggerUnit()), GetUnitY (GetTriggerUnit())))
 	call ForceAddPlayerSimple(GetOwningPlayer(GetTriggerUnit()),udg_CombiningPlayer)
 	call DisplayTextToForce(udg_CombiningPlayer,"|cffff00ffYou have bought a life|r")
 	call ForceRemovePlayerSimple(GetOwningPlayer(GetTriggerUnit()),udg_CombiningPlayer)
@@ -5963,7 +5971,7 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetLastReplacedUnitBJ()),"Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl", GetUnitX (GetLastReplacedUnitBJ()), GetUnitY (GetLastReplacedUnitBJ())))
 
 	set u = null
 endfunction
@@ -6728,7 +6736,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	if(Trig_Create_Slates_Func002C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[1]=true
 		call TriggerSleepAction(0.03)
@@ -6793,7 +6801,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func003C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[2]=true
 		call TriggerSleepAction(0.03)
@@ -6858,7 +6866,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[3]=true
 		call TriggerSleepAction(0.03)
@@ -6923,7 +6931,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func005C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[4]=true
 		call TriggerSleepAction(0.03)
@@ -6988,7 +6996,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func006C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[5]=true
 		call TriggerSleepAction(0.03)
@@ -7053,7 +7061,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[6]=true
 		call TriggerSleepAction(0.03)
@@ -7118,7 +7126,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func008C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[7]=true
 		call TriggerSleepAction(0.03)
@@ -7183,7 +7191,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Create_Slates_Func009C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[8]=true
 		call TriggerSleepAction(0.03)
@@ -8079,7 +8087,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_Elder_Slate_Func003C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call UnitAddAbilityBJ('A05Y',GetAttacker())
 		if(Trig_Elder_Slate_Func003Func005001())then
 			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
@@ -8188,12 +8196,12 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		call IssueImmediateOrderBJ(GetAttacker(),"thunderclap")
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call UnitRemoveAbilityBJ('A05X',GetAttacker())
 	else
 	endif
 	if(Trig_Elder_Slate_Func005C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call UnitAddAbilityBJ('A05W',GetAttacker())
 		if(Trig_Elder_Slate_Func005Func005001())then
 			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
@@ -8474,7 +8482,7 @@ endfunction
 function Trig_Dark_Emerald_Actions takes nothing returns nothing
 	set udg_Random[2]=GetRandomInt(1,8)
 	if(Trig_Dark_Emerald_Func004001())then
-		call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl")
+		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", GetAttackedUnitBJ(), "chest"))
 	else
 		call DoNothing()
 	endif
@@ -8517,9 +8525,7 @@ function Trig_Air_Slate_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Air_Slate_Actions takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Human\\Feedback\\SpellBreakerAttack.mdl")
-	call TriggerSleepAction(0.10)
-	call DestroyEffectBJ(GetLastCreatedEffectBJ())
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Feedback\\SpellBreakerAttack.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 endfunction
 function InitTrig_Air_Slate takes nothing returns nothing
 	set gg_trg_Air_Slate=CreateTrigger()
@@ -8543,14 +8549,11 @@ function Trig_Slow_Slate_Func003C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Slow_Slate_Actions takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Human\\Feedback\\ArcaneTowerAttack.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttackedUnitBJ()),"Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Feedback\\ArcaneTowerAttack.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl", GetUnitX (GetAttackedUnitBJ()), GetUnitY (GetAttackedUnitBJ())))
 	if(Trig_Slow_Slate_Func003C())then
 		call SetUnitMoveSpeed(GetAttackedUnitBJ(),(GetUnitDefaultMoveSpeed(GetAttackedUnitBJ())*0.85))
-	else
 	endif
-	call TriggerSleepAction(0.10)
-	call DestroyEffectBJ(GetLastCreatedEffectBJ())
 endfunction
 function InitTrig_Slow_Slate takes nothing returns nothing
 	set gg_trg_Slow_Slate=CreateTrigger()
@@ -8586,12 +8589,11 @@ function Trig_Hold_Slate_Actions takes nothing returns nothing
 	call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 	call SetTextTagLifespanBJ(GetLastCreatedTextTag(),3.00)
 	call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*20.00)+160.00),ATTACK_TYPE_CHAOS,DAMAGE_TYPE_NORMAL)
-	call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl", GetAttackedUnitBJ(), "chest"))
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 	call PauseUnitBJ(true,GetAttackedUnitBJ())
 	call PauseUnitBJ(true,GetAttacker())
 	call TriggerSleepAction(1.50)
-	call DestroyEffectBJ(GetLastCreatedEffectBJ())
 	call SetUnitAcquireRangeBJ(GetAttackedUnitBJ(),500.00)
 	call PauseUnitBJ(false,GetAttackedUnitBJ())
 	call TriggerSleepAction(2.02)
@@ -8633,8 +8635,8 @@ function Trig_Damage_Slate_Actions takes nothing returns nothing
 		call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 		call SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.50)
 		call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*10.00)+(I2R(udg_Level)*20.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
-		call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl")
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl")
+		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl", GetAttackedUnitBJ(), "chest"))
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call PauseUnitBJ(true,GetAttacker())
 		call TriggerSleepAction(1.00)
 		call PauseUnitBJ(false,GetAttacker())
@@ -8650,8 +8652,8 @@ function Trig_Damage_Slate_Actions takes nothing returns nothing
 				call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 				call SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.50)
 				call UnitDamageTargetBJ(GetAttacker(),GetAttackedUnitBJ(),((I2R(Unit_User_Data__Get(GetAttacker()))*10.00)+(I2R(udg_RLevel[GetForLoopIndexA()])*20.00)),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
-				call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl")
-				call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl")
+				call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl", GetAttackedUnitBJ(), "chest"))
+				call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 				call PauseUnitBJ(true,GetAttacker())
 				call TriggerSleepAction(1.00)
 				call PauseUnitBJ(false,GetAttacker())
@@ -8705,7 +8707,7 @@ function Trig_Poison_Slate_Func012001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Poison_Slate_Actions takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 	call UnitAddAbilityBJ('A05N',GetAttacker())
 	if(Trig_Poison_Slate_Func003001())then
 		call IncUnitAbilityLevelSwapped('A05N',GetAttacker())
@@ -8836,12 +8838,11 @@ function Trig_Ancient_Slate_Actions takes nothing returns nothing
 		endloop
 	else
 	endif
-	call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl", GetAttackedUnitBJ(), "chest"))
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 	call PauseUnitBJ(true,GetAttackedUnitBJ())
 	call PauseUnitBJ(true,GetAttacker())
 	call TriggerSleepAction(2.50)
-	call DestroyEffectBJ(GetLastCreatedEffectBJ())
 	call UnitRemoveAbilityBJ('A02I',GetAttackedUnitBJ())
 	call UnitRemoveBuffBJ('B008',GetAttackedUnitBJ())
 	call SetUnitAcquireRangeBJ(GetAttackedUnitBJ(),500.00)
@@ -9013,7 +9014,7 @@ function Trig_Lucky_China_Jade_Actions takes nothing returns nothing
 	endloop
 	if(Trig_Lucky_China_Jade_Func009C())then
 		if(Trig_Lucky_China_Jade_Func009Func001001())then
-			call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl")
+			call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", GetAttackedUnitBJ(), "chest"))
 		else
 			call DoNothing()
 		endif
@@ -9073,8 +9074,8 @@ function Trig_Opal_Vein_SLate_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Opal_Vein_SLate_Actions takes nothing returns nothing
-	call AddSpecialEffectLocBJ(GetUnitLoc(GetAttacker()),"Abilities\\Spells\\Human\\Feedback\\ArcaneTowerAttack.mdl")
-	call AddSpecialEffectTargetUnitBJ("chest",GetAttackedUnitBJ(),"Abilities\\Spells\\Orc\\Devour\\DevourEffectArt.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Feedback\\ArcaneTowerAttack.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Orc\\Devour\\DevourEffectArt.mdl", GetAttackedUnitBJ(), "chest"))
 endfunction
 function InitTrig_Opal_Vein_SLate takes nothing returns nothing
 	set gg_trg_Opal_Vein_SLate=CreateTrigger()
@@ -9117,7 +9118,7 @@ function Trig_Race_Mid_Game_ReRunner_1_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_1))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_1move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9168,7 +9169,7 @@ function Trig_Race_Mid_Game_ReRunner_2_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_2))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_2move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9219,7 +9220,7 @@ function Trig_Race_Mid_Game_ReRunner_3_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_3))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_3move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9270,7 +9271,7 @@ function Trig_Race_Mid_Game_ReRunner_4_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_4))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_4move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9321,7 +9322,7 @@ function Trig_Race_Mid_Game_ReRunner_5_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_5))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_5move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9372,7 +9373,7 @@ function Trig_Race_Mid_Game_ReRunner_6_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_6))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_6move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9423,7 +9424,7 @@ function Trig_Race_Mid_Game_ReRunner_7_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_7))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_7move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -9474,7 +9475,7 @@ function Trig_Race_Mid_Game_ReRunner_8_Actions takes nothing returns nothing
 	call Unit_User_Data__Set(GetTriggerUnit(),11)
 	call SetUnitPositionLoc(GetTriggerUnit(),GetRectCenter(gg_rct_Spawn_8))
 	call IssuePointOrderLocBJ(GetTriggerUnit(),"move",GetRectCenter(gg_rct_8move1))
-	call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetTriggerUnit(), "overhead"))
 	call TriggerSleepAction(0.10)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
@@ -10418,7 +10419,7 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0011,I2R(udg_Lives[1]))
 	if(Trig_Leak_and_lose_P1_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0011),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0011), GetUnitY (gg_unit_h01V_0011)))
 		call ForceAddPlayerSimple(Player(0),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[1])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(0),udg_CombiningPlayer)
@@ -13325,7 +13326,7 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P1_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[1]=true
 		call TriggerSleepAction(0.03)
@@ -14319,7 +14320,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem1[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
@@ -14683,6 +14684,7 @@ function Trig_Finding_Special_combinations_P1_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P1_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(2.01)
 	if(Trig_Finding_Special_combinations_P1_Func003001())then
 		set udg_SpecialsROUNDp1[1]=(udg_SpecialsROUNDp1[1]+1)
@@ -14934,8 +14936,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func053C())then
@@ -14948,8 +14952,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func054C())then
@@ -14962,8 +14968,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func055C())then
@@ -14976,8 +14984,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func056C())then
@@ -14990,8 +15000,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func057C())then
@@ -15004,8 +15016,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func058C())then
@@ -15018,8 +15032,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func059C())then
@@ -15032,8 +15048,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func060C())then
@@ -15046,8 +15064,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func061C())then
@@ -15060,8 +15080,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func062C())then
@@ -15074,8 +15096,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func063C())then
@@ -15088,8 +15112,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func064C())then
@@ -15102,8 +15128,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func065C())then
@@ -15116,8 +15144,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func066C())then
@@ -15130,8 +15160,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func067C())then
@@ -15144,8 +15176,10 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P1_Func068C())then
@@ -15158,10 +15192,13 @@ function Trig_Finding_Special_combinations_P1_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp1[GetForLoopIndexA()]=(udg_SpecialsROUNDp1[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem1[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P1 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P1=CreateTrigger()
@@ -15249,7 +15286,7 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0012,I2R(udg_Lives[2]))
 	if(Trig_Leak_and_lose_P2_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0012),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0012), GetUnitY (gg_unit_h01V_0012)))
 		call ForceAddPlayerSimple(Player(1),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[2])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(1),udg_CombiningPlayer)
@@ -18119,7 +18156,7 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P2_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[2]=true
 		call TriggerSleepAction(0.03)
@@ -19096,7 +19133,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem2[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
@@ -19460,6 +19497,7 @@ function Trig_Finding_Special_combinations_P2_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P2_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(2.03)
 	if(Trig_Finding_Special_combinations_P2_Func003001())then
 		set udg_SpecialsROUNDp2[1]=(udg_SpecialsROUNDp2[1]+1)
@@ -19711,8 +19749,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func053C())then
@@ -19725,8 +19765,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func054C())then
@@ -19739,8 +19781,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func055C())then
@@ -19753,8 +19797,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func056C())then
@@ -19767,8 +19813,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func057C())then
@@ -19781,8 +19829,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func058C())then
@@ -19795,8 +19845,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func059C())then
@@ -19809,8 +19861,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func060C())then
@@ -19823,8 +19877,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func061C())then
@@ -19837,8 +19893,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func062C())then
@@ -19851,8 +19909,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func063C())then
@@ -19865,8 +19925,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func064C())then
@@ -19879,8 +19941,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func065C())then
@@ -19893,8 +19957,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func066C())then
@@ -19907,8 +19973,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func067C())then
@@ -19921,8 +19989,10 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P2_Func068C())then
@@ -19935,10 +20005,13 @@ function Trig_Finding_Special_combinations_P2_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp2[GetForLoopIndexA()]=(udg_SpecialsROUNDp2[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem2[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P2 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P2=CreateTrigger()
@@ -20026,7 +20099,7 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0013,I2R(udg_Lives[3]))
 	if(Trig_Leak_and_lose_P3_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0013),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0013), GetUnitY (gg_unit_h01V_0013)))
 		call ForceAddPlayerSimple(Player(2),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[3])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(2),udg_CombiningPlayer)
@@ -22896,7 +22969,7 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P3_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[3]=true
 		call TriggerSleepAction(0.03)
@@ -23872,7 +23945,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem3[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem3[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
@@ -24236,6 +24309,7 @@ function Trig_Finding_Special_combinations_P3_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P3_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(2.10)
 	if(Trig_Finding_Special_combinations_P3_Func003001())then
 		set udg_SpecialsROUNDp3[1]=(udg_SpecialsROUNDp3[1]+1)
@@ -24487,8 +24561,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func053C())then
@@ -24501,8 +24577,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func054C())then
@@ -24515,8 +24593,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func055C())then
@@ -24529,8 +24609,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func056C())then
@@ -24543,8 +24625,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func057C())then
@@ -24557,8 +24641,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func058C())then
@@ -24571,8 +24657,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func059C())then
@@ -24585,8 +24673,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func060C())then
@@ -24599,8 +24689,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func061C())then
@@ -24613,8 +24705,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func062C())then
@@ -24627,8 +24721,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func063C())then
@@ -24641,8 +24737,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func064C())then
@@ -24655,8 +24753,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func065C())then
@@ -24669,8 +24769,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func066C())then
@@ -24683,8 +24785,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func067C())then
@@ -24697,8 +24801,10 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P3_Func068C())then
@@ -24711,10 +24817,13 @@ function Trig_Finding_Special_combinations_P3_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp3[GetForLoopIndexA()]=(udg_SpecialsROUNDp3[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem3[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P3 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P3=CreateTrigger()
@@ -24802,7 +24911,7 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0014,I2R(udg_Lives[4]))
 	if(Trig_Leak_and_lose_P4_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0014),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0014), GetUnitY (gg_unit_h01V_0014)))
 		call ForceAddPlayerSimple(Player(3),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[4])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(3),udg_CombiningPlayer)
@@ -27672,7 +27781,7 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P4_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[4]=true
 		call TriggerSleepAction(0.03)
@@ -28648,7 +28757,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem4[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem4[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
@@ -29012,6 +29121,7 @@ function Trig_Finding_Special_combinations_P4_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P4_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(2.07)
 	if(Trig_Finding_Special_combinations_P4_Func003001())then
 		set udg_SpecialsROUNDp4[1]=(udg_SpecialsROUNDp4[1]+1)
@@ -29263,8 +29373,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func053C())then
@@ -29277,8 +29389,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func054C())then
@@ -29291,8 +29405,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func055C())then
@@ -29305,8 +29421,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func056C())then
@@ -29319,8 +29437,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func057C())then
@@ -29333,8 +29453,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func058C())then
@@ -29347,8 +29469,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func059C())then
@@ -29361,8 +29485,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func060C())then
@@ -29375,8 +29501,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func061C())then
@@ -29389,8 +29517,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func062C())then
@@ -29403,8 +29533,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func063C())then
@@ -29417,8 +29549,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func064C())then
@@ -29431,8 +29565,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func065C())then
@@ -29445,8 +29581,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func066C())then
@@ -29459,8 +29597,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func067C())then
@@ -29473,8 +29613,10 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P4_Func068C())then
@@ -29487,10 +29629,13 @@ function Trig_Finding_Special_combinations_P4_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp4[GetForLoopIndexA()]=(udg_SpecialsROUNDp4[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem4[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P4 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P4=CreateTrigger()
@@ -29578,7 +29723,7 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0016,I2R(udg_Lives[5]))
 	if(Trig_Leak_and_lose_P5_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0016),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0016), GetUnitY (gg_unit_h01V_0016)))
 		call ForceAddPlayerSimple(Player(4),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[5])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(4),udg_CombiningPlayer)
@@ -32448,7 +32593,7 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P5_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[5]=true
 		call TriggerSleepAction(0.03)
@@ -33424,7 +33569,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem5[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
@@ -33788,6 +33933,7 @@ function Trig_Finding_Special_combinations_P5_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P5_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(1.86)
 	if(Trig_Finding_Special_combinations_P5_Func003001())then
 		set udg_SpecialsROUNDp5[1]=(udg_SpecialsROUNDp5[1]+1)
@@ -34039,8 +34185,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func053C())then
@@ -34053,8 +34201,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func054C())then
@@ -34067,8 +34217,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func055C())then
@@ -34081,8 +34233,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func056C())then
@@ -34095,8 +34249,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func057C())then
@@ -34109,8 +34265,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func058C())then
@@ -34123,8 +34281,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func059C())then
@@ -34137,8 +34297,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func060C())then
@@ -34151,8 +34313,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func061C())then
@@ -34165,8 +34329,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func062C())then
@@ -34179,8 +34345,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func063C())then
@@ -34193,8 +34361,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func064C())then
@@ -34207,8 +34377,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func065C())then
@@ -34221,8 +34393,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func066C())then
@@ -34235,8 +34409,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func067C())then
@@ -34249,8 +34425,10 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P5_Func068C())then
@@ -34263,10 +34441,13 @@ function Trig_Finding_Special_combinations_P5_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp5[GetForLoopIndexA()]=(udg_SpecialsROUNDp5[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem5[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P5 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P5=CreateTrigger()
@@ -34354,7 +34535,7 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0015,I2R(udg_Lives[6]))
 	if(Trig_Leak_and_lose_P6_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0015),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0015), GetUnitY (gg_unit_h01V_0015)))
 		call ForceAddPlayerSimple(Player(5),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[6])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(5),udg_CombiningPlayer)
@@ -37221,7 +37402,7 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P6_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[6]=true
 		call TriggerSleepAction(0.03)
@@ -38197,7 +38378,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem6[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
@@ -38561,6 +38742,7 @@ function Trig_Finding_Special_combinations_P6_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P6_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(1.90)
 	if(Trig_Finding_Special_combinations_P6_Func003001())then
 		set udg_SpecialsROUNDp6[1]=(udg_SpecialsROUNDp6[1]+1)
@@ -38812,8 +38994,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func053C())then
@@ -38826,8 +39010,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func054C())then
@@ -38840,8 +39026,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func055C())then
@@ -38854,8 +39042,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func056C())then
@@ -38868,8 +39058,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func057C())then
@@ -38882,8 +39074,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func058C())then
@@ -38896,8 +39090,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func059C())then
@@ -38910,8 +39106,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func060C())then
@@ -38924,8 +39122,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func061C())then
@@ -38938,8 +39138,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func062C())then
@@ -38952,8 +39154,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func063C())then
@@ -38966,8 +39170,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func064C())then
@@ -38980,8 +39186,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func065C())then
@@ -38994,8 +39202,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func066C())then
@@ -39008,8 +39218,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func067C())then
@@ -39022,8 +39234,10 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P6_Func068C())then
@@ -39036,10 +39250,13 @@ function Trig_Finding_Special_combinations_P6_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp6[GetForLoopIndexA()]=(udg_SpecialsROUNDp6[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem6[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P6 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P6=CreateTrigger()
@@ -39127,7 +39344,7 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0017,I2R(udg_Lives[7]))
 	if(Trig_Leak_and_lose_P7_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0017),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0017), GetUnitY (gg_unit_h01V_0017)))
 		call ForceAddPlayerSimple(Player(6),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[7])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(6),udg_CombiningPlayer)
@@ -41997,7 +42214,7 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P7_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[7]=true
 		call TriggerSleepAction(0.03)
@@ -42973,7 +43190,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem7[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
@@ -43337,6 +43554,7 @@ function Trig_Finding_Special_combinations_P7_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P7_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(1.93)
 	if(Trig_Finding_Special_combinations_P7_Func003001())then
 		set udg_SpecialsROUNDp7[1]=(udg_SpecialsROUNDp7[1]+1)
@@ -43588,8 +43806,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func053C())then
@@ -43602,8 +43822,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func054C())then
@@ -43616,8 +43838,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func055C())then
@@ -43630,8 +43854,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func056C())then
@@ -43644,8 +43870,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func057C())then
@@ -43658,8 +43886,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func058C())then
@@ -43672,8 +43902,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func059C())then
@@ -43686,8 +43918,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func060C())then
@@ -43700,8 +43934,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func061C())then
@@ -43714,8 +43950,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func062C())then
@@ -43728,8 +43966,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func063C())then
@@ -43742,8 +43982,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func064C())then
@@ -43756,8 +43998,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func065C())then
@@ -43770,8 +44014,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func066C())then
@@ -43784,8 +44030,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func067C())then
@@ -43798,8 +44046,10 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P7_Func068C())then
@@ -43812,10 +44062,13 @@ function Trig_Finding_Special_combinations_P7_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp7[GetForLoopIndexA()]=(udg_SpecialsROUNDp7[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem7[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P7 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P7=CreateTrigger()
@@ -43903,7 +44156,7 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 	endif
 	call SetUnitLifeBJ(gg_unit_h01V_0018,I2R(udg_Lives[8]))
 	if(Trig_Leak_and_lose_P8_Func007C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(gg_unit_h01V_0018),"Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0018), GetUnitY (gg_unit_h01V_0018)))
 		call ForceAddPlayerSimple(Player(7),udg_CombiningPlayer)
 		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[8])+" |cffff0000 lives left!!|r"))))
 		call ForceRemovePlayerSimple(Player(7),udg_CombiningPlayer)
@@ -46773,7 +47026,7 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 	else
 	endif
 	if(Trig_B_Reworked_Mark_P8_Func004C())then
-		call AddSpecialEffectLocBJ(GetUnitLoc(GetSpellAbilityUnit()),"Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
 		set udg_PlayerFinished[8]=true
 		call TriggerSleepAction(0.03)
@@ -47749,7 +48002,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns noth
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		call TriggerSleepAction(0.30)
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl")
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level])))
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem8[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
@@ -48113,6 +48366,7 @@ function Trig_Finding_Special_combinations_P8_Func068C takes nothing returns boo
 	return true
 endfunction
 function Trig_Finding_Special_combinations_P8_Actions takes nothing returns nothing
+	local effect sfx = null
 	call TriggerSleepAction(1.96)
 	if(Trig_Finding_Special_combinations_P8_Func003001())then
 		set udg_SpecialsROUNDp8[1]=(udg_SpecialsROUNDp8[1]+1)
@@ -48364,8 +48618,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func053C())then
@@ -48378,8 +48634,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func054C())then
@@ -48392,8 +48650,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func055C())then
@@ -48406,8 +48666,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func056C())then
@@ -48420,8 +48682,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func057C())then
@@ -48434,8 +48698,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func058C())then
@@ -48448,8 +48714,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func059C())then
@@ -48462,8 +48730,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func060C())then
@@ -48476,8 +48746,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func061C())then
@@ -48490,8 +48762,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func062C())then
@@ -48504,8 +48778,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func063C())then
@@ -48518,8 +48794,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func064C())then
@@ -48532,8 +48810,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func065C())then
@@ -48546,8 +48826,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func066C())then
@@ -48560,8 +48842,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func067C())then
@@ -48574,8 +48858,10 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
 	if(Trig_Finding_Special_combinations_P8_Func068C())then
@@ -48588,10 +48874,13 @@ function Trig_Finding_Special_combinations_P8_Actions takes nothing returns noth
 			set udg_SpecialsROUNDp8[GetForLoopIndexA()]=(udg_SpecialsROUNDp8[GetForLoopIndexA()]-1)
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl")
 		call GroupAddUnitSimple(udg_KeepingGem8[udg_Level],udg_UnitGroupSPECIAL)
+		set sfx = AddSpecialEffect ("Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level]))
+		call TriggerSleepAction (5.00)
+		call DestroyEffect (sfx)
 	else
 	endif
+	set sfx = null
 endfunction
 function InitTrig_Finding_Special_combinations_P8 takes nothing returns nothing
 	set gg_trg_Finding_Special_combinations_P8=CreateTrigger()
@@ -56680,7 +56969,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[1]=false
 	set udg_KeepingGem1[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Finish_Build_Race_P1_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem1[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem1[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem1[udg_Level])
@@ -56919,7 +57208,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[2]=false
 	set udg_KeepingGem2[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Finish_Build_Race_P2_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem2[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem2[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem2[udg_Level])
@@ -57159,7 +57448,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[3]=false
 	set udg_KeepingGem3[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Finish_Build_Race_P3_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem3[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem3[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem3[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem3[udg_Level])
@@ -57399,7 +57688,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[4]=false
 	set udg_KeepingGem4[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Finish_Build_Race_P4_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem4[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem4[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem4[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem4[udg_Level])
@@ -57639,7 +57928,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[5]=false
 	set udg_KeepingGem5[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Finish_Build_Race_P5_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem5[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem5[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem5[udg_Level])
@@ -57879,7 +58168,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[6]=false
 	set udg_KeepingGem6[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Finish_Build_Race_P6_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem6[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem6[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem6[udg_Level])
@@ -58119,7 +58408,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[7]=false
 	set udg_KeepingGem7[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Finish_Build_Race_P7_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem7[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem7[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem7[udg_Level])
@@ -58359,7 +58648,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[8]=false
 	set udg_KeepingGem8[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Finish_Build_Race_P8_Func017002001002)))
 	call UnitRemoveAbilityBJ('A03M',udg_KeepingGem8[udg_Level])
-	call AddSpecialEffectLocBJ(GetUnitLoc(udg_KeepingGem8[udg_Level]),"Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level])))
 	call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
 	call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
 	call UnitRemoveAbilityBJ('A02G',udg_KeepingGem8[udg_Level])
