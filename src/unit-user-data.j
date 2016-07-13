@@ -4,7 +4,7 @@
 // Essentially it provides function calls to simulate the use of unit user
 // data, not requiring too much change to existing code.
 //
-// Additionally, upon unit indexing it resets the internal value associated
+// Additionally, upon unit deindexing it resets the internal value associated
 // with that specific index to zero, as existing code expects each unit to
 // begin fresh.
 globals
