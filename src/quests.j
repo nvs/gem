@@ -101,6 +101,9 @@ function Quests___Version_1_1 takes nothing returns nothing
 
 	call QuestSetDescription (the_quest, text)
 
+	set text = text + Color__Gold ("Fixed:") + "\n"
+	set text = text + "- Leaks related to special effects have been resolved. This will increase FPS and game responsiveness for many players throughout the game, especially end game."
+
 	set the_quest = null
 endfunction
 

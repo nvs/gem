@@ -2,6 +2,13 @@
 
 This file presents a list of changes from the perspective of the player.
 
+## Unreleased
+
+### Fixed
+- Leaks related to special effects have been resolved.  This will increase FPS
+  and game responsiveness for many players throughout the game, especially end
+  game.
+
 ## 1.0 - 2016-07-09
 
 ### Added
