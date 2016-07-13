@@ -89,11 +89,11 @@ function Quests___Random_Information takes nothing returns nothing
 	set the_quest = null
 endfunction
 
-function Quests___Version_1_0_RC_Part_1 takes nothing returns nothing
+function Quests___Version_1_0_Part_1 takes nothing returns nothing
 	local quest the_quest = CreateQuest ()
 	local string text = ""
 
-	call QuestSetTitle (the_quest, Gem__NAME_VERSION + " [1 of 3]")
+	call QuestSetTitle (the_quest, Gem__NAME + " 1.0 [1 of 3]")
 	call QuestSetIconPath (the_quest, Quests___CHANGELOG_ICON)
 	call QuestSetRequired (the_quest, false)
 	call QuestSetDiscovered (the_quest, true)
@@ -115,11 +115,11 @@ function Quests___Version_1_0_RC_Part_1 takes nothing returns nothing
 	set the_quest = null
 endfunction
 
-function Quests___Version_1_0_RC_Part_2 takes nothing returns nothing
+function Quests___Version_1_0_Part_2 takes nothing returns nothing
 	local quest the_quest = CreateQuest ()
 	local string text = ""
 
-	call QuestSetTitle (the_quest, Gem__NAME_VERSION + " [2 of 3]")
+	call QuestSetTitle (the_quest, Gem__NAME + " 1.0 [2 of 3]")
 	call QuestSetIconPath (the_quest, Quests___CHANGELOG_ICON)
 	call QuestSetRequired (the_quest, false)
 	call QuestSetDiscovered (the_quest, true)
@@ -144,11 +144,11 @@ function Quests___Version_1_0_RC_Part_2 takes nothing returns nothing
 	set the_quest = null
 endfunction
 
-function Quests___Version_1_0_RC_Part_3 takes nothing returns nothing
+function Quests___Version_1_0_Part_3 takes nothing returns nothing
 	local quest the_quest = CreateQuest ()
 	local string text = ""
 
-	call QuestSetTitle (the_quest, Gem__NAME_VERSION + " [3 of 3]")
+	call QuestSetTitle (the_quest, Gem__NAME + " 1.0 [3 of 3]")
 	call QuestSetIconPath (the_quest, Quests___CHANGELOG_ICON)
 	call QuestSetRequired (the_quest, false)
 	call QuestSetDiscovered (the_quest, true)
@@ -184,7 +184,9 @@ function Quests__Setup takes nothing returns nothing
 	call Quests___Random_Information ()
 
 	// Changelogs:
-	call Quests___Version_1_0_RC_Part_1 ()
-	call Quests___Version_1_0_RC_Part_2 ()
-	call Quests___Version_1_0_RC_Part_3 ()
+
+	// 1.0:
+	call Quests___Version_1_0_Part_1 ()
+	call Quests___Version_1_0_Part_2 ()
+	call Quests___Version_1_0_Part_3 ()
 endfunction
