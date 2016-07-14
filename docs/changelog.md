@@ -2,7 +2,11 @@
 
 This file presents a list of changes from the perspective of the player.
 
-## Unreleased
+## 1.1 - Unreleased
+
+### Changed
+- Canceling an upgrade previously returned only a partial refund.  Now it
+  returns the full amount.
 
 ### Fixed
 - Leaks related to special effects have been resolved.  This will increase FPS
