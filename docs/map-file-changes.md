@@ -54,6 +54,8 @@ objects from the map directly.
         - Text - General - This dialog displays all of the current quests
           which you have been given: `This dialog displays information related
           to |c00fed312Gem TD+|r.`
+- [Remove `BLANK` unit (#139)] [issue-139]
+    * Removed unit: `'h00F'`
 
 [issue-14]: https://github.com/nvs/gem/issues/14
 [issue-24]: https://github.com/nvs/gem/issues/24
@@ -61,3 +63,4 @@ objects from the map directly.
 [issue-30]: https://github.com/nvs/gem/issues/30
 [issue-63]: https://github.com/nvs/gem/issues/63
 [issue-64]: https://github.com/nvs/gem/issues/64
+[issue-139]: https://github.com/nvs/gem/issues/139
