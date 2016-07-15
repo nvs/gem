@@ -100,10 +100,10 @@ function Quests___Version_1_1 takes nothing returns nothing
 	call QuestSetCompleted (the_quest, false)
 
 	set text = text + Color__Gold ("Changed:") + "\n"
-	set text = text + "- Canceling an upgrade previously returned only a partial refund. Now it returns the full amount, which is the behavior many players expect.\n\n"
+	set text = text + "- Canceling an upgrade previously returned only a partial refund. Now the full amount is returned, which is the behavior many players expect.\n\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
-	set text = text + "- Leaks related to special effects have been resolved. This will increase FPS and game responsiveness for many players throughout the game, especially end game."
+	set text = text + "- Leaks related to special effects have been resolved. This will increase FPS and responsiveness for many players throughout the game."
 
 	call QuestSetDescription (the_quest, text)
 

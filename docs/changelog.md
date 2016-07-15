@@ -5,13 +5,12 @@ This file presents a list of changes from the perspective of the player.
 ## 1.1 - Unreleased
 
 ### Changed
-- Canceling an upgrade previously returned only a partial refund.  Now it
-  returns the full amount.
+- Canceling an upgrade previously returned only a partial refund.  Now the
+  full amount is returned, which is the behavior many players expect.
 
 ### Fixed
 - Leaks related to special effects have been resolved.  This will increase FPS
-  and game responsiveness for many players throughout the game, especially end
-  game.
+  and responsiveness for many players throughout the game.
 
 ## 1.0 - 2016-07-09
 
