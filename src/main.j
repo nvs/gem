@@ -8,7 +8,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Creeps_attacking ()
 	call InitTrig_Debug ()
 	call InitTrig_Type_Air ()
-	call InitTrig_Cancels_Building_idiot_proofing ()
 	call InitTrig_Setting_Extra_Chances ()
 	call InitTrig_Extra_Chance_1 ()
 	call InitTrig_Extra_Chance_2 ()

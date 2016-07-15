@@ -55,6 +55,9 @@ objects from the map directly.
           to |c00fed312Gem TD+|r.`
 - [Remove `BLANK` unit (#139)] [issue-139]
     * Removed unit: `'h00F'`
+- [Refund for canceling building construction (#140)] [issue-140]
+    * Advanced - Gameplay Constants:
+        - Cancel Building Factor - Building Construction: `1.00`
 - [Refund for canceling building upgrade (#107)] [issue-107]
     * Advanced - Gameplay Constants:
         - Cancel Building Factor - Building Upgrade: `1.00`
@@ -67,3 +70,4 @@ objects from the map directly.
 [issue-64]: https://github.com/nvs/gem/issues/64
 [issue-107]: https://github.com/nvs/gem/issues/107
 [issue-139]: https://github.com/nvs/gem/issues/139
+[issue-140]: https://github.com/nvs/gem/issues/140

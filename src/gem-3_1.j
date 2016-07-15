@@ -3405,21 +3405,6 @@ function InitTrig_Type_Air takes nothing returns nothing
 	call TriggerRegisterPlayerChatEvent(gg_trg_Type_Air,Player(7),"-air",true)
 	call TriggerAddAction(gg_trg_Type_Air,function Trig_Type_Air_Actions)
 endfunction
-function Trig_Cancels_Building_idiot_proofing_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetCancelledStructure())=='h006'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Cancels_Building_idiot_proofing_Actions takes nothing returns nothing
-	call AdjustPlayerStateBJ(1,GetOwningPlayer(GetCancelledStructure()),PLAYER_STATE_RESOURCE_LUMBER)
-endfunction
-function InitTrig_Cancels_Building_idiot_proofing takes nothing returns nothing
-	set gg_trg_Cancels_Building_idiot_proofing=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Cancels_Building_idiot_proofing,EVENT_PLAYER_UNIT_CONSTRUCT_CANCEL)
-	call TriggerAddCondition(gg_trg_Cancels_Building_idiot_proofing,Condition(function Trig_Cancels_Building_idiot_proofing_Conditions))
-	call TriggerAddAction(gg_trg_Cancels_Building_idiot_proofing,function Trig_Cancels_Building_idiot_proofing_Actions)
-endfunction
 function Trig_Setting_Extra_Chances_Actions takes nothing returns nothing
 	call DialogSetMessageBJ(udg_ExtraChanceDIA,"|cff33ff00Please choose a Perfect Gem.|r")
 	call DialogAddButtonBJ(udg_ExtraChanceDIA,"Perfect Amethyst")
