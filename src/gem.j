@@ -10,5 +10,7 @@ globals
 	constant string Gem__NAME_VERSION = Gem__NAME + " " + Gem__VERSION
 
 	constant string Gem__MAINTAINER = "NVS"
-	constant string Gem__WEBSITE = "https://github.com/nvs/gem"
+
+	constant string Gem__WEBSITE_FORUM = "https://entgaming.net"
+	constant string Gem__WEBSITE_REPOSITORY = "https://github.com/nvs/gem"
 endglobals

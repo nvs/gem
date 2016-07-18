@@ -17,8 +17,9 @@ function Quests___What_Is_Gem_TD_Plus takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + Gem__NAME + " is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.). Its primary purpose, for now, is to fix bugs and address performance issues. "
-	set text = text + "Currently " + Gem__NAME + " is maintained by " + Gem__MAINTAINER + ". For more information and discussion on the map, or to report bugs and other issues, see: " + Color__Green (Gem__WEBSITE) + "."
+	set text = text + Gem__NAME + " is an updated version of the original Gem Tower Defense created by Bryvx (Bryan K.) and is maintained by " + Gem__MAINTAINER + ". Its current purpose is to fix bugs and address performance issues.\n\n"
+
+	set text = text + "For general map discussion, or anything Gem related, please visit the Gem TD+ forum (located at the ENT Gaming website): " + Color__Green (Gem__WEBSITE_FORUM) + ". For more development centric information and discussion, or to report bugs and other issues, please see the Gem TD+ repository: " + Color__Green (Gem__WEBSITE_REPOSITORY) + "."
 
 	call QuestSetDescription (the_quest, text)
 
@@ -35,15 +36,15 @@ function Quests___Talking_Points takes nothing returns nothing
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 
-	set text = text + "For the foreseeable future Gem TD+ will deal with bug fixes and performance improvements. However, at some point it would be nice to approach other topics such as balancing or finding ways to increase the replay value of the map. In these cases it would be best if there was community involvement in the process. So please visit the map website and share your opinions. Check the `Issues` area, and look under `Milestones` for discussion focal points. Also check under the label `Category: Discussion` for another route to many topics. Thanks.\n\n"
+	set text = text + "For the foreseeable future Gem TD+ will primarily deal with bug fixes and performance improvements. However, at some point, it would be nice to approach other topics such as balancing or finding ways to increase the replay value of the map. In these cases it would be best if there was community involvement in the process, so please share your opinions. Feel free to discuss matters on the forum, or check the 'Issues' area of the repository.\n\n"
 
 	set text = text + Color__Gold ("Some current topics:") + "\n"
 	set text = text + "- General Gem discussion. Help pinpoint the defining features of Gem TD, what has been successful, what has not, and the ways in which players can demonstrate their skill and understanding of the map.\n"
-	set text = text + "- The 'glitch'. This bug (yes, it's a bug) has existed without being addressed for far too long. It represents a valid balance concern, but at the same time allows people to approach their luck from another vantage point. Something needs to be done.\n"
+	set text = text + "- The 'glitch'. This bug (yes, it's a bug) has existed without being addressed for far too long. It represents a valid balance concern, but at the same time allows people to approach their luck from another vantage point. Regardless, something needs to be done.\n"
 	set text = text + "- General balancing. The things most often mentioned seem to be the Stars, the Slates, the Greats, and the Stone of Bryvx. Some of these don't scale with difficulties properly, some provide too large of a power spike too early, and some scale into the end game far too effectively.\n"
-	set text = text + "- Adding replay value. This is rather open ended, and there is plenty of room for more ideas. Some current ones: more games modes; randomized checkpoint locations; obstacles; new settings; more round types; new slates; more strategies.\n"
-	set text = text + "- The Damage Test. Officially you complete 'Race' mode whether you kill the Test or not. However, expectations tend to dictate that the game ends with the Test dying, in no small part due to the effectiveness of Ancient Slates. Perhaps these expectations are wrong, and the Damage Test should be exactly what its name implies? Just a thought."
-	set text = text + "- The gamblers. Should they be removed or reworked? Disconnecting them from the main game in regards to their use of gold would assist in balancing the map. Perhaps there could be more mini-games. Perhaps silly rewards, such as in-game graphical customizations. Who knows?"
+	set text = text + "- Adding replay value. This is rather open-ended, and there is plenty of room for more ideas. Some current ones: more games modes; randomized checkpoint locations; obstacles; new settings; additional round types; new slates; more strategies.\n"
+	set text = text + "- The Damage Test. Officially you complete 'Race' mode whether you kill the Test or not. However, expectations tend to dictate that the game ends with the Test dying, in no small part due to the effectiveness of Ancient Slates. Perhaps these expectations are wrong.\n"
+	set text = text + "- The gamblers. Should they be removed or reworked? Disconnecting them from the main game in regards to their use of gold would assist in balancing the map. Perhaps there could be more mini-games and even silly rewards, such as in-game graphical customizations. Who knows?"
 
 	call QuestSetDescription (the_quest, text)
 
