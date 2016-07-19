@@ -15,8 +15,8 @@ performance improvements.  However, at some point, it would be nice to
 approach other topics such as balancing or finding ways to increase the replay
 value of the map.  In these cases it would be best if there was community
 involvement in the process, so please share your opinions.  Feel free to
-discuss matters on the forum, or check the [issues] area of the repository.
+discuss matters on the forum, or check the [Issues] area of the repository.
 
 [Gem TD+ forum]: https://entgaming.net/forum/viewforum.php?f=246
 [Gem TD+ repository]: https://github.com/nvs/gem
-[issues]: https://github.com/nvs/gem/issues
+[Issues]: https://github.com/nvs/gem/issues
