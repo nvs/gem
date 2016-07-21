@@ -50,7 +50,7 @@ endfunction
 
 function Unit_Indexer___Stack_Pop takes nothing returns integer
 	if Unit_Indexer___Stack_Is_Empty () then
-		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0, 0, 60, "Unit_Indexer___Stack_Pop (): Underflow error. Please report this error.")
+		call Error ("Unit_Indexer___Stack_Pop ()", "Underflow. Please report this error.")
 
 		return 0
 	endif
@@ -62,7 +62,7 @@ endfunction
 
 function Unit_Indexer___Stack_Push takes integer index returns nothing
 	if Unit_Indexer___Stack_Is_Full () then
-		call DisplayTimedTextToPlayer (GetLocalPlayer (), 0, 0, 60, "Unit_Indexer___Stack_Push (): Overflow error. Please report this error.")
+		call Error ("Unit_Indexer___Stack_Push ()", "Overflow. Please report this error.")
 
 		return
 	endif

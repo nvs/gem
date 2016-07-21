@@ -8,6 +8,7 @@ return {
 	scripts_directory = '../src',
 	scripts = {
 		'color',
+		'error',
 
 		'gem',
 		'player-color',
