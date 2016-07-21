@@ -12,7 +12,7 @@ if objectexists ('h027') then
 	modifyobject ('h027')
 
 	if currentobject () == 'h027' then
-		makechange (current, 'Name', '|cfffed312' .. name .. ' by NVS|r')
+		makechange (current, 'unam', '|cfffed312' .. name .. ' by NVS|r')
 	end
 end
 
@@ -23,8 +23,8 @@ if objectexists ('A06Z') then
 	modifyobject ('A06Z')
 
 	if currentobject () == 'A06Z' then
-		makechange (current, 'Tip', 1, '|cfffed312' .. name .. '|r')
-		makechange (current, 'Ubertip', 1,
+		makechange (current, 'atp1', 1, '|cfffed312' .. name .. '|r')
+		makechange (current, 'aub1', 1,
 			'See |c00fed312Information (F9)|r for latest changelog.|n|n' ..
 			'|c00fed312Commands:|r|n' ..
 			'|c00ff33ff-air|r Displays air rounds.|n' ..
