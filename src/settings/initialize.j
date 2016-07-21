@@ -8,7 +8,7 @@ function Settings__Initialize takes nothing returns nothing
 		endif
 
 		set index = index + 1
-		exitwhen index == Settings___MAXIMUM_PLAYERS
+		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 
 	call Settings_Difficulty__Initialize ()

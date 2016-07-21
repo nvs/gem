@@ -88,11 +88,11 @@ function Settings_Window___Core takes nothing returns nothing
 
 	loop
 		set Settings_Window___Player_Index = Settings_Window___Player_Index + 1
-		exitwhen Settings_Window___Player_Index == Settings___MAXIMUM_PLAYERS
+		exitwhen Settings_Window___Player_Index == Gem__MAXIMUM_PLAYERS
 		exitwhen udg_PlayerHERE [Settings_Window___Player_Index + 1]
 	endloop
 
-	if Settings_Window___Player_Index == Settings___MAXIMUM_PLAYERS then
+	if Settings_Window___Player_Index == Gem__MAXIMUM_PLAYERS then
 		call Settings__Reset ()
 		call Settings_Window___Destroy ()
 	else

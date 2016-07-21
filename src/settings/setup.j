@@ -44,7 +44,7 @@ function Settings___Create_Miners takes nothing returns nothing
 		set starts [index] = null
 
 		set index = index + 1
-		exitwhen index == Settings___MAXIMUM_PLAYERS
+		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 
 	set the_player = null
@@ -70,7 +70,7 @@ function Settings___Begin_Game takes nothing returns nothing
 		endif
 
 		set index = index + 1
-		exitwhen index == Settings___MAXIMUM_PLAYERS
+		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 endfunction
 
@@ -107,7 +107,7 @@ function Settings__Setup takes nothing returns nothing
 		endif
 
 		set index = index + 1
-		exitwhen index == Settings___MAXIMUM_PLAYERS
+		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)

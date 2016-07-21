@@ -149,7 +149,7 @@ function Board__Setup takes nothing returns nothing
 		endif
 
 		set player_index = player_index + 1
-		exitwhen player_index == bj_MAX_PLAYERS
+		exitwhen player_index == Gem__MAXIMUM_PLAYERS
 	endloop
 
 	set Board = CreateMultiboard ()

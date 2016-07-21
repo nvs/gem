@@ -5,8 +5,6 @@ globals
 	// display functions.
 	constant real Settings___TEXT_DISPLAY_X = 0.00
 	constant real Settings___TEXT_DISPLAY_Y = 0.66
-
-	constant integer Settings___MAXIMUM_PLAYERS = 8
 endglobals
 
 function Settings__String takes nothing returns string

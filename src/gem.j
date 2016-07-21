@@ -13,4 +13,6 @@ globals
 
 	constant string Gem__WEBSITE_FORUM = "https://entgaming.net"
 	constant string Gem__WEBSITE_REPOSITORY = "https://github.com/nvs/gem"
+
+	constant integer Gem__MAXIMUM_PLAYERS = 8
 endglobals
