@@ -32,9 +32,11 @@ executables to function properly.
     file.  One method of doing this is using the World Editor to import the
     file either into the base directory of the map, or inside a `scripts`
     directory.  Gem TD+ prefers the base directory.
-08. Using the World Editor make the changes mentioned in the [Map File
+08. Import all the files within the `share/imports` directory into the
+    `tmp/gem.w3x` map file.  Again, the World Editor is a good choice here.
+09. Using the World Editor make the changes mentioned in the [Map File
     Changes] (map-file-changes.md) file. 
-09. Use Vexorian's Optimizer (which is included in the repository) to process
+10. Use Vexorian's Optimizer (which is included in the repository) to process
     the map.  Simply invokve the build script: `bin/map optimize etc/gem.lua`.
     This will produced both an optimized map file `tmp/gem-optimized.w3x` and
     a script file `tmp/gem-optimized.w3x.j`.  Rename the map file as needed to
