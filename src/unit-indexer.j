@@ -18,15 +18,19 @@ globals
 	constant integer Unit_Indexer___DETECT_LEAVE_ABILITY = 'UIDL'
 	constant integer Unit_Indexer___DETECT_LEAVE_ORDER_ID = 852056
 
-	constant integer Unit_Indexer___STACK_MAXIMUM_SIZE = JASS_MAX_ARRAY_SIZE
+	// In order to ensure save/load compatibility, the index `8191` must not be
+	// used. If it is, the game will crash during loading. As such, the
+	// maximum size of the stack will always be one less than the
+	// `JASS_MAX_ARRAY_SIZE`.
+	constant integer Unit_Indexer___STACK_MAXIMUM_SIZE = JASS_MAX_ARRAY_SIZE - 1
 
-	constant integer Unit_Indexer___STACK_MINIMUM = 0
-	constant integer Unit_Indexer___STACK_MAXIMUM = Unit_Indexer___STACK_MAXIMUM_SIZE - 1
+	constant integer Unit_Indexer___STACK_MINIMUM_INDEX = 0
+	constant integer Unit_Indexer___STACK_MAXIMUM_INDEX = Unit_Indexer___STACK_MAXIMUM_SIZE - 1 // 8190
 
 	integer Unit_Indexer___Stack_Index = Unit_Indexer___STACK_MAXIMUM_SIZE
 
 	// An already populated stack, where the inserted integers are in
-	// decreasing order.  Note that only integers that have been popped off
+	// decreasing order. Note that only integers that have been popped off
 	// count toward the size of the stack.
 	integer array Unit_Indexer___Stack
 
@@ -41,11 +45,11 @@ globals
 endglobals
 
 function Unit_Indexer___Stack_Is_Empty takes nothing returns boolean
-	return Unit_Indexer___Stack_Index == Unit_Indexer___STACK_MINIMUM
+	return Unit_Indexer___Stack_Index == Unit_Indexer___STACK_MINIMUM_INDEX
 endfunction
 
 function Unit_Indexer___Stack_Is_Full takes nothing returns boolean
-	return Unit_Indexer___Stack_Index == Unit_Indexer___STACK_MAXIMUM
+	return Unit_Indexer___Stack_Index == Unit_Indexer___STACK_MAXIMUM_INDEX
 endfunction
 
 function Unit_Indexer___Stack_Pop takes nothing returns integer
@@ -76,8 +80,8 @@ function Unit_Indexer___Stack_Size takes nothing returns integer
 endfunction
 
 function Unit_Indexer___Stack_Initialize takes nothing returns nothing
-	local integer index = Unit_Indexer___STACK_MAXIMUM
-	local integer unit_index = Unit_Indexer___STACK_MINIMUM + 1
+	local integer index = Unit_Indexer___STACK_MAXIMUM_INDEX
+	local integer unit_index = Unit_Indexer___STACK_MINIMUM_INDEX + 1
 
 	loop
 		set Unit_Indexer___Stack [index] = unit_index
@@ -85,7 +89,7 @@ function Unit_Indexer___Stack_Initialize takes nothing returns nothing
 		set index = index - 1
 		set unit_index = unit_index + 1
 
-		exitwhen index < Unit_Indexer___STACK_MINIMUM
+		exitwhen index < Unit_Indexer___STACK_MINIMUM_INDEX
 	endloop
 endfunction
 
@@ -103,7 +107,7 @@ endfunction
 
 // Returns the index of the last index allocated or deallocated by the system.
 // Intended for use in triggers that have been registered with either
-// `Unit_Indexer__on_index ()` or `Unit_Indexer__on_deindex ()`.  This value
+// `Unit_Indexer__on_index ()` or `Unit_Indexer__on_deindex ()`. This value
 // is only valid when called within a registered trigger, and will always
 // return zero otherwise.
 function Unit_Indexer__Last_Index takes nothing returns integer
@@ -154,7 +158,7 @@ function Unit_Indexer___Deregister takes nothing returns boolean
 	if GetIssuedOrderId () == Unit_Indexer___DETECT_LEAVE_ORDER_ID then
 		set the_unit = GetTriggerUnit ()
 
-		// Only deal with units that have been removed.  A positive integer here
+		// Only deal with units that have been removed. A positive integer here
 		// implies that the unit was killed.
 		if GetUnitAbilityLevel (the_unit, Unit_Indexer___DETECT_LEAVE_ABILITY) == 0 then
 			set index = Unit_Indexer__Unit_Index (the_unit)

@@ -25,7 +25,18 @@ return {
 
 		'time',
 		'board',
-		'quests',
+
+		'quests.common',
+
+		'quests.information.what-is-gem-td-plus',
+		'quests.information.special-thanks',
+		'quests.information.random-information',
+
+		'quests.changelogs.1_2',
+		'quests.changelogs.1_1',
+		'quests.changelogs.1_0',
+
+		'quests.initialize',
 
 		'settings.setup',
 		'settings.hcl',
