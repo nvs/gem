@@ -21,6 +21,7 @@ objects from the map directly.
           respectively.
     * Scenario - Map Description:
         - Name: `|c00fed312Gem TD+ X.Y|r`
+        - Suggested Players: `8`
         - Description:
 
                 An updated version of Gem Tower Defense, a map originally created by |c00ff0000Bryvx (Bryan K.)|r. Maintained by |c00ff0000NVS.|r
