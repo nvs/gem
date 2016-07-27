@@ -4,11 +4,11 @@ setobjecttype ('abilities')
 
 -- ## Detect Leave
 if objectexists ('Adef') then
-	createobject ('Adef', 'UIDL')
+	createobject ('Adef', 'UEDL')
 
-	if currentobject () == 'UIDL' then
+	if currentobject () == 'UEDL' then
 		makechange (current, 'anam', 'Detect Leave')
-		makechange (current, 'ansf', '(Unit Indexer)')
+		makechange (current, 'ansf', '(Unit Event)')
 		makechange (current, 'aart', '')
 		makechange (current, 'auar', '')
 		makechange (current, 'arac', 'Other')

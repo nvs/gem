@@ -15,8 +15,15 @@ return {
 		'player-color',
 		'character-width',
 
-		'unit-indexer',
-		'unit-user-data',
+		'unit.event',
+		'unit.event.enters',
+		'unit.event.leaves',
+		'unit.event.initialize',
+
+		'unit.indexer.stack',
+		'unit.indexer',
+
+		'unit.user-data',
 
 		'gem-3_1',
 
@@ -52,7 +59,7 @@ return {
 
 	objects_directory = '../share/objects',
 	objects = {
-		'unit-indexer',
+		'unit-event',
 		'update-map-information',
 		'fix-lumber-costs'
 	},
