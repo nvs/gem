@@ -1,3 +1,3 @@
 function Commands__Initialize takes nothing returns nothing
-	call Commands_Zoom__Initialize ()
+	call Commands___Initialize_Zoom ()
 endfunction

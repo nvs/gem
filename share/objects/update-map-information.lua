@@ -30,6 +30,7 @@ if objectexists ('A06Z') then
 			'|c00ff33ff-air|r Displays air rounds.|n' ..
 			'|c00ff33ff-aura on/off|r Show or hide aura when placing gems.|n' ..
 			'|c00ff33ff-debug|r Forces creeps stuck at the spawn to move.|n' ..
-			'|c00ff33ff-zoom value|r Sets the camera to the specified value.')
+			'|c00ff33ff-zoom value|r Sets the camera to the specified value. The
+			default Warcraft 3 zoom is `1650`.')
 	end
 end
