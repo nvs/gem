@@ -1,5 +1,7 @@
 globals
 	boolexpr filterUnitByIdAndNotSpecialAndNotKept = null
+	// It should be noted one-base indices are used to reference the players in
+	// this array.
 	integer array udg_CreepOwner
 	boolean array udg_ExtraChanceDialogDisplayed
 	rect array udg_Spawn
