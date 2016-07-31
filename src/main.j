@@ -6,7 +6,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Gem_Awards_Upgrade_debug ()
 	call InitTrig_Player_Leaves ()
 	call InitTrig_Creeps_attacking ()
-	call InitTrig_Debug ()
 	call InitTrig_Type_Air ()
 	call InitTrig_Setting_Extra_Chances ()
 	call InitTrig_Extra_Chance_1 ()

@@ -3342,34 +3342,6 @@ function InitTrig_Creeps_attacking takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Creeps_attacking,Condition(function Trig_Creeps_attacking_Conditions))
 	call TriggerAddAction(gg_trg_Creeps_attacking,function Trig_Creeps_attacking_Actions)
 endfunction
-function Trig_Debug_Func001Func001002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[GetForLoopIndexA()]))
-endfunction
-function Trig_Debug_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[GetForLoopIndexA()]),function Trig_Debug_Func001Func001002)
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	call DisplayTextToForce(GetPlayersAll(),"|cffffff00Debugging.....|r")
-	call DisableTrigger(GetTriggeringTrigger())
-	call TriggerSleepAction(10.00)
-	call EnableTrigger(GetTriggeringTrigger())
-endfunction
-function InitTrig_Debug takes nothing returns nothing
-	set gg_trg_Debug=CreateTrigger()
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(0),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(1),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(2),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(3),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(4),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(5),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(6),"-debug",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Debug,Player(7),"-debug",true)
-	call TriggerAddAction(gg_trg_Debug,function Trig_Debug_Actions)
-endfunction
 function Trig_Type_Air_Func002C takes nothing returns boolean
 	if(not(udg_Mode==1))then
 		return false

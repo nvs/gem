@@ -50,6 +50,7 @@ return {
 		'settings.window',
 		'settings.initialize',
 
+		'commands.debug',
 		'commands.zoom',
 		'commands',
 
