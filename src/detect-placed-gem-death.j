@@ -200,7 +200,7 @@ function Detect_Placed_Gem_Death___Core takes nothing returns boolean
 	// We only need to do the check if all of the gems have been placed.
 	if udg_PlayerFinishBuild [player_index + 1] then
 		if Detect_Placed_Gem_Death___Count [player_index] >= 5 then
-			call DisplayTextToPlayer (the_player, 0.0, 0.0, "|c0066ffffYou have destroyed all your gems this round!.|r")
+			call DisplayTextToPlayer (the_player, 0.0, 0.0, "|c0066ffffYou have destroyed all your gems this round!|r")
 
 			// Gems belonging to the player must be removed, assuming they still
 			// exist and have not fully decayed, otherwise they may be considered
