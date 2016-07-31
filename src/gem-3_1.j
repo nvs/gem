@@ -5928,7 +5928,10 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 		call DoNothing()
 	endif
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl", GetUnitX (GetLastReplacedUnitBJ()), GetUnitY (GetLastReplacedUnitBJ())))
-
+	if GetLocalPlayer () == GetTriggerPlayer () then
+		call ClearSelection ()
+		call SelectUnit (bj_lastReplacedUnit, true)
+	endif
 	set u = null
 endfunction
 function InitTrig_DownGrade takes nothing returns nothing
@@ -6735,6 +6738,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
+		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -6798,6 +6805,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n00E',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 			call DoNothing()
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -6863,6 +6874,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
+		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -6926,6 +6941,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n00E',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 			call DoNothing()
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -6991,6 +7010,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
+		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -7054,6 +7077,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n00E',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 			call DoNothing()
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -7119,6 +7146,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
+		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -7182,6 +7213,10 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n00E',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
 			call DoNothing()
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -13274,6 +13309,10 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P1_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[1]=true
 		if(Trig_B_Reworked_Mark_P1_Func004Func006001())then
 			call ReplaceUnitBJ(udg_GemPlaced1[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
@@ -14232,6 +14271,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 			set udg_CountSpecials[1]=(udg_CountSpecials[1]+1)
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),udg_SpecialTower[1],bj_UNIT_STATE_METHOD_MAXIMUM)
 			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_UPDATED,(("|cff00ffff"+GetPlayerName(GetOwningPlayer(GetLastReplacedUnitBJ())))+(" has created "+(GetUnitName(GetLastReplacedUnitBJ())+" |cff00ffffin one hit!|r"))))
+
 			call PlaySoundAtPointBJ(gg_snd_Avatar,100,GetUnitLoc(GetLastReplacedUnitBJ()),0)
 			set bj_forLoopAIndex=1
 			set bj_forLoopAIndexEnd=5
@@ -14245,6 +14285,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem1[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -18093,6 +18137,10 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P2_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[2]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -19047,6 +19095,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem2[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -22895,6 +22947,10 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P3_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[3]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -23849,6 +23905,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem3[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -27697,6 +27757,10 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P4_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[4]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -28651,6 +28715,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem4[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -32499,6 +32567,10 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P5_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[5]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -33453,6 +33525,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem5[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -37298,6 +37374,10 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P6_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[6]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -38252,6 +38332,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem6[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -42100,6 +42184,10 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P7_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[7]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -43054,6 +43142,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem7[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -46902,6 +46994,10 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 	if(Trig_B_Reworked_Mark_P8_Func004C())then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (GetSpellAbilityUnit (), true)
+		endif
 		set udg_PlayerFinished[8]=true
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -47856,6 +47952,10 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns noth
 				set bj_forLoopAIndex=bj_forLoopAIndex+1
 			endloop
 		else
+		endif
+		if GetLocalPlayer () == GetTriggerPlayer () then
+			call ClearSelection ()
+			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
 		set udg_KeepingGem8[udg_Level]=GetLastReplacedUnitBJ()
 		set bj_forLoopAIndex=1
@@ -56612,6 +56712,10 @@ function Trig_Reworked_Combining_specials_Race_Actions takes nothing returns not
 			else
 			endif
 			call DisplayTextToForce(GetPlayersMatching(Condition(function Trig_Reworked_Combining_specials_Race_Func002Func001Func025001001)),("- "+(GetUnitName(udg_CombineSpecialUnit[GetForLoopIndexA()])+(" |cffffff00has been created with |r"+(I2S(udg_KillsNUMBER)+" |cffffff00kills saved from it's combined gems.|r")))))
+			if GetLocalPlayer () == GetTriggerPlayer () then
+				call ClearSelection ()
+				call SelectUnit (udg_CombineSpecialUnit [bj_forLoopAIndex], true)
+			endif
 			if(Trig_Reworked_Combining_specials_Race_Func002Func001Func026C())then
 				call UnitAddAbilityBJ('A01L',udg_CombineSpecialUnit[GetForLoopIndexA()])
 			else
