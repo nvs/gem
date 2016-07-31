@@ -11,6 +11,9 @@ This file presents a list of changes from the perspective of the player.
 
 ### Fixed
 - Resolved issues that broke save/load compatibility.
+- Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability)
+  could cause the code to behave improperly. Instead of receiving the combined
+  gem, a rock would appear, for a total of five rocks. This has been resolved.
 
 ## 1.1 - 2016-07-19
 
