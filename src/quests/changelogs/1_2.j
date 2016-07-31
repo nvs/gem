@@ -7,7 +7,8 @@ function Quests___Version_1_2 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Resolved issues that broke save/load compatibility.\n"
-	set text = text + "- Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability) could cause the code to behave improperly. Instead of receiving the combined gem, a rock would appear, for a total of five rocks. This has been resolved."
+	set text = text + "- Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability) could cause the code to behave improperly. Instead of receiving the combined gem, a rock would appear, for a total of five rocks. This has been resolved.\n"
+	set text = text + "- If a player opted to destroy all five of their placed gems, the round would not continue and their game would effectively end. This has been fixed."
 
 	call Quests___Add_Changelog (title, text)
 endfunction

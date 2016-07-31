@@ -14,6 +14,8 @@ This file presents a list of changes from the perspective of the player.
 - Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability)
   could cause the code to behave improperly. Instead of receiving the combined
   gem, a rock would appear, for a total of five rocks. This has been resolved.
+- If a player opted to destroy all five of their placed gems, the round would
+  not continue and their game would effectively end. This has been fixed.
 
 ## 1.1 - 2016-07-19
 

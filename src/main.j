@@ -294,4 +294,5 @@ function main takes nothing returns nothing
 	call ExecuteFunc ("Settings__Initialize")
 
 	call ExecuteFunc ("Commands__Initialize")
+	call ExecuteFunc ("Detect_Placed_Gem_Death__Initialize")
 endfunction

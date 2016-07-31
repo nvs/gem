@@ -54,6 +54,8 @@ return {
 		'commands.zoom',
 		'commands',
 
+		'detect-placed-gem-death',
+
 		'main',
 		'config'
 	},
