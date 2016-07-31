@@ -5617,10 +5617,7 @@ function InitTrig_Buying_Lives takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Buying_Lives,function Trig_Buying_Lives_Actions)
 endfunction
 function Trig_DownGrade_find_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009'
 endfunction
 function Trig_DownGrade_find_Func003003001 takes nothing returns boolean
 	return(GetUnitTypeId(GetSpellAbilityUnit())==udg_DowngradeAbleGems[GetForLoopIndexA()])
@@ -5630,7 +5627,6 @@ function Trig_DownGrade_find_Func003Func001001 takes nothing returns boolean
 endfunction
 function Trig_DownGrade_find_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-	call TriggerSleepAction(0.15)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=32
 	loop
