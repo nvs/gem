@@ -58,3 +58,4 @@ identified.
 - `Documentation`: This issue is related to project documentation.
 - `Balance`: This is a balance issue.
 - `Objects`: This issue relates to object data, e.g. units, ablities, etc.
+- `Website`: This issue relates to the repository and/or the forums.
