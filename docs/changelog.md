@@ -9,6 +9,12 @@ This file presents a list of changes from the perspective of the player.
   an old Warcraft 3 bug and the cause is unknown. However, functionality to
   restore selection has been added to the `-debug` command.
 
+### Changed
+- Previously, the player's selection would only remain on the result when
+  keeping a gem. Now this behavior extends to other various actions (e.g.
+  combining, one-hits, keeping slates, fulfilling recipes, downgrading, etc.),
+  and the resulting structure will be automatically selected for the player.
+
 ### Fixed
 - Resolved issues that broke save/load compatibility.
 - Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability)
