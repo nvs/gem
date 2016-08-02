@@ -50,7 +50,8 @@ objects from the map directly.
         - Text - General - Main Quests: `Information`
         - Text - General - Optional Quests: `Changelogs`
         - Text - General - Quest Dialog: `Information (|c00fed312F9|r)`
-        - Text - General - Quests: `Information (|c00fed312F9|r)`
+        - Text - General - Quests (|cfffed312F9|r): `Information (|c00fed312F9|r)`
+        - Text - General - Quests: `Information`
         - Text - General - This dialog displays all of the current quests
           which you have been given: `This dialog displays information related
           to |c00fed312Gem TD+|r.`
