@@ -10,6 +10,7 @@ This file presents a list of changes from the perspective of the player.
   restore selection has been added to the `-debug` command.
 
 ### Changed
+- Slates can now be repaired.
 - Previously, the player's selection would only remain on the result when
   keeping a gem. Now this behavior extends to other various actions (e.g.
   combining, one-hits, keeping slates, fulfilling recipes, downgrading, etc.),
