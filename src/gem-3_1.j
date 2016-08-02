@@ -4969,12 +4969,10 @@ function Trig_Slate_Stack_Check_Actions takes nothing returns nothing
 	else
 	endif
 	set udg_SlateStackNo=CountUnitsInGroup(udg_SlateStackGROUP)
-	call TriggerSleepAction(0.01)
 	if(Trig_Slate_Stack_Check_Func012C())then
 		call DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_SlateStackUnit)),"|cff33ff33Slate Stacking found!|r")
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 		call SetUnitPositionLoc(udg_SlateStackUnit,PolarProjectionBJ(udg_SlateStackDestination,400.00,GetRandomReal(0,359.00)))
-		call TriggerSleepAction(0.01)
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 		call TriggerExecute(GetTriggeringTrigger())
 	else
@@ -5232,21 +5230,17 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	else
 	endif
 	set udg_SlateStackNo=CountUnitsInGroup(udg_SlateStackGROUP)
-	call TriggerSleepAction(0.01)
 	if(Trig_Slate_move_Func014C())then
 		call SetUnitPositionLoc(udg_SlateStackUnit,udg_SlateStackDestination)
-		call TriggerSleepAction(0.03)
 		call UnitRemoveAbilityBJ('A02J',udg_SlateStackUnit)
 	else
 	endif
-	call TriggerSleepAction(0.02)
 	if(Trig_Slate_move_Func016001())then
 		call DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_SlateStackUnit)),"|cffffff00You cannot stack the same slates or its combinations ontop of each other|r")
 	else
 		call DoNothing()
 	endif
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
-	call TriggerSleepAction(0.02)
 	if(Trig_Slate_move_Func019001())then
 		call ForGroupBJ(udg_SlateStackGROUP,function Trig_Slate_move_Func019002002)
 	else
@@ -6673,6 +6667,7 @@ function Trig_Create_Slates_Func009C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Create_Slates_Actions takes nothing returns nothing
+	local unit the_unit
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=8
 	loop
@@ -6742,7 +6737,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -6759,6 +6754,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -6810,7 +6806,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -6827,6 +6823,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -6878,7 +6875,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -6895,6 +6892,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -6946,7 +6944,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -6963,6 +6961,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -7014,7 +7013,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -7031,6 +7030,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -7082,7 +7082,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -7099,6 +7099,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -7150,7 +7151,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -7167,6 +7168,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
@@ -7218,7 +7220,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 			call ClearSelection ()
 			call SelectUnit (bj_lastReplacedUnit, true)
 		endif
-		set udg_SlateStackUnit=GetLastReplacedUnitBJ()
+		set the_unit = bj_lastReplacedUnit
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -7235,9 +7237,11 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
+		set udg_SlateStackUnit = the_unit
 		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
 	else
 	endif
+	set the_unit = null
 endfunction
 function InitTrig_Create_Slates takes nothing returns nothing
 	set gg_trg_Create_Slates=CreateTrigger()

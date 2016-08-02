@@ -22,6 +22,8 @@ This file presents a list of changes from the perspective of the player.
   gem, a rock would appear, for a total of five rocks. This has been resolved.
 - If a player opted to destroy all five of their placed gems, the round would
   not continue and their game would effectively end. This has been fixed.
+- Slate movement was inconsistent, and the ability to move could be missing
+  from a new slate, or could remain on a recently moved slate.
 
 ## 1.1 - 2016-07-19
 
