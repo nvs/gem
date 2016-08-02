@@ -5627,6 +5627,10 @@ function Trig_DownGrade_find_Actions takes nothing returns nothing
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_DownGrade_find_Func003003001())then
 			call UnitAddAbilityBJ('A02G',GetSpellAbilityUnit())
+			// This is needed, or certain gems (e.g. Topazes) will not be able to
+			// use the 'Downgrade' ability without manually telling them to
+			// 'Stop'.
+			call IssueImmediateOrder (GetSpellAbilityUnit (), "stop")
 		else
 			call DoNothing()
 		endif
