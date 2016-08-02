@@ -28,6 +28,8 @@ This file presents a list of changes from the perspective of the player.
   not continue and their game would effectively end. This has been fixed.
 - Slate movement was inconsistent, and the ability to move could be missing
   from a new slate, or could remain on a recently moved slate.
+- Due to a similar cause as the previous issue, slates could stack on rate
+  occasions. This has been fixed.
 
 ## 1.1 - 2016-07-19
 
