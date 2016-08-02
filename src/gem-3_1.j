@@ -5042,7 +5042,7 @@ function Trig_Slate_move_Func008Func001001003002 takes nothing returns boolean
 	return GetBooleanOr(Trig_Slate_move_Func008Func001001003002001(),Trig_Slate_move_Func008Func001001003002002())
 endfunction
 function Trig_Slate_move_Func008Func001001003 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func008Func001001003001(),Trig_Slate_move_Func008Func001001003002())
+	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func008Func001001003001(),Trig_Slate_move_Func008Func001001003002())
 endfunction
 function Trig_Slate_move_Func008Func001002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
@@ -5084,7 +5084,7 @@ function Trig_Slate_move_Func009Func001001003002 takes nothing returns boolean
 	return GetBooleanOr(Trig_Slate_move_Func009Func001001003002001(),Trig_Slate_move_Func009Func001001003002002())
 endfunction
 function Trig_Slate_move_Func009Func001001003 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func009Func001001003001(),Trig_Slate_move_Func009Func001001003002())
+	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func009Func001001003001(),Trig_Slate_move_Func009Func001001003002())
 endfunction
 function Trig_Slate_move_Func009Func001002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
@@ -5126,7 +5126,7 @@ function Trig_Slate_move_Func010Func001001003002 takes nothing returns boolean
 	return GetBooleanOr(Trig_Slate_move_Func010Func001001003002001(),Trig_Slate_move_Func010Func001001003002002())
 endfunction
 function Trig_Slate_move_Func010Func001001003 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func010Func001001003001(),Trig_Slate_move_Func010Func001001003002())
+	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func010Func001001003001(),Trig_Slate_move_Func010Func001001003002())
 endfunction
 function Trig_Slate_move_Func010Func001002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
@@ -5168,7 +5168,7 @@ function Trig_Slate_move_Func011Func001001003002 takes nothing returns boolean
 	return GetBooleanOr(Trig_Slate_move_Func011Func001001003002001(),Trig_Slate_move_Func011Func001001003002002())
 endfunction
 function Trig_Slate_move_Func011Func001001003 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func011Func001001003001(),Trig_Slate_move_Func011Func001001003002())
+	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func011Func001001003001(),Trig_Slate_move_Func011Func001001003002())
 endfunction
 function Trig_Slate_move_Func011Func001002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
@@ -5212,7 +5212,6 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	set udg_SlateStackUnit=GetSpellAbilityUnit()
 	set udg_SlateStackPoint=GetUnitLoc(udg_SlateStackUnit)
 	set udg_SlateStackDestination=GetSpellTargetLoc()
-	call ForGroupBJ(GetUnitsInRangeOfLocMatching(220.00,GetSpellTargetLoc(),Condition(function Trig_Slate_move_Func006001003)),function Trig_Slate_move_Func006002)
 	if(Trig_Slate_move_Func008C())then
 		call ForGroupBJ(GetUnitsInRangeOfLocMatching(220.00,GetSpellTargetLoc(),Condition(function Trig_Slate_move_Func008Func001001003)),function Trig_Slate_move_Func008Func001002)
 	else

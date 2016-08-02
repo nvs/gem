@@ -14,6 +14,10 @@ This file presents a list of changes from the perspective of the player.
   keeping a gem. Now this behavior extends to other various actions (e.g.
   combining, one-hits, keeping slates, fulfilling recipes, downgrading, etc.),
   and the resulting structure will be automatically selected for the player.
+- In older versions, a slate could not move close to its original location, as
+  the game believed it would stack with itself. This behavior has been
+  changed, and now a slate can move anywhere in range, so long as it will not
+  stack with another slate.
 
 ### Fixed
 - Resolved issues that broke save/load compatibility.
