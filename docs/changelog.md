@@ -34,7 +34,7 @@ This file presents a list of changes from the perspective of the player.
 ## 1.1 - 2016-07-19
 
 ### Changed
-- Canceling an upgrade previously returned only a partial refund. Now the
+- Cancelling an upgrade previously returned only a partial refund. Now the
   full amount is returned, which is the behavior many players expect.
 
 ### Fixed
