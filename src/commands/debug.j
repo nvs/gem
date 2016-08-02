@@ -32,12 +32,6 @@ function Commands___Debug takes nothing returns boolean
 	// particular player.
 	call GroupEnumUnitsInRect (Commands___Debug_Group, udg_Spawn [player_index + 1], Commands___Debug_Group_Filter)
 
-	// Deal with disabled player selection. Typically this is expressed by the
-	// inability to select, drag, and issue orders primarily with the mouse.
-	if GetLocalPlayer () == the_player then
-		call EnableSelect (true, true)
-	endif
-
 	set the_player = null
 
 	return false

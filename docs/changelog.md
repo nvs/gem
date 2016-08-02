@@ -4,11 +4,6 @@ This file presents a list of changes from the perspective of the player.
 
 ## 1.2 - Unreleased
 
-### Added
-- At times the ability to select with the mouse can become disabled. This is
-  an old Warcraft 3 bug and the cause is unknown. However, functionality to
-  restore selection has been added to the `-debug` command.
-
 ### Changed
 - Slates can now be repaired.
 - Previously, the player's selection would only remain on the result when
