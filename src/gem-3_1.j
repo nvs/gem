@@ -5610,7 +5610,10 @@ function InitTrig_Buying_Lives takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Buying_Lives,function Trig_Buying_Lives_Actions)
 endfunction
 function Trig_DownGrade_find_Conditions takes nothing returns boolean
-	return GetSpellAbilityId () == 'A009'
+	if(not(GetSpellAbilityId()=='A009'))then
+		return false
+	endif
+	return true
 endfunction
 function Trig_DownGrade_find_Func003003001 takes nothing returns boolean
 	return(GetUnitTypeId(GetSpellAbilityUnit())==udg_DowngradeAbleGems[GetForLoopIndexA()])
@@ -5620,16 +5623,13 @@ function Trig_DownGrade_find_Func003Func001001 takes nothing returns boolean
 endfunction
 function Trig_DownGrade_find_Actions takes nothing returns nothing
 	call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+	call TriggerSleepAction(0.15)
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=32
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		if(Trig_DownGrade_find_Func003003001())then
 			call UnitAddAbilityBJ('A02G',GetSpellAbilityUnit())
-			// This is needed, or certain gems (e.g. Topazes) will not be able to
-			// use the 'Downgrade' ability without manually telling them to
-			// 'Stop'.
-			call IssueImmediateOrder (GetSpellAbilityUnit (), "stop")
 		else
 			call DoNothing()
 		endif
@@ -6696,6 +6696,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[1]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func002Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n000',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6765,6 +6766,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[2]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func003Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6834,6 +6836,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[3]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func004Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6903,6 +6906,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[4]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func005Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6972,6 +6976,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[5]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func006Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -7041,6 +7046,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[6]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func007Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -7110,6 +7116,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[7]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func008Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -7179,6 +7186,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[8]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func009Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -10420,6 +10428,7 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0011)
 		set udg_PlayerHERE[1]=false
 		set udg_PlayerDie[1]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(0)),function Trig_Leak_and_lose_P1_Func008Func009002)
 	else
@@ -12445,6 +12454,7 @@ function Trig_B_Reworked_Placing_gems_P1_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[1])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P1_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -13321,6 +13331,7 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[1]=true
+		call TriggerSleepAction(0.03)
 		if(Trig_B_Reworked_Mark_P1_Func004Func006001())then
 			call ReplaceUnitBJ(udg_GemPlaced1[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -13347,10 +13358,15 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 			call DoNothing()
 		endif
 		set udg_KeepingGem1[udg_Level]=GetSpellAbilityUnit()
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem1[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
 		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem1[udg_Level])
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(0)),function Trig_B_Reworked_Mark_P1_Func004Func021002)
 		if(Trig_B_Reworked_Mark_P1_Func004Func022001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P1)
@@ -14674,6 +14690,7 @@ function Trig_Finding_Special_combinations_P1_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P1_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(2.01)
 	if(Trig_Finding_Special_combinations_P1_Func003001())then
 		set udg_SpecialsROUNDp1[1]=(udg_SpecialsROUNDp1[1]+1)
 	else
@@ -15285,6 +15302,7 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0012)
 		set udg_PlayerHERE[2]=false
 		set udg_PlayerDie[2]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(1)),function Trig_Leak_and_lose_P2_Func008Func009002)
 	else
@@ -17292,6 +17310,7 @@ function Trig_B_Reworked_Placing_gems_P2_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[2])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P2_Func032C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -18149,6 +18168,7 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[2]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -18161,11 +18181,16 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem2[udg_Level]=GetSpellAbilityUnit()
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem2[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem2[udg_Level])
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call ForGroupBJ(GetUnitsOfPlayerAll(Player(1)),function Trig_B_Reworked_Mark_P2_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
 		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem2[udg_Level])
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(1)),function Trig_B_Reworked_Mark_P2_Func004Func010002)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P2_Func004Func018001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P2)
 		else
@@ -19484,6 +19509,7 @@ function Trig_Finding_Special_combinations_P2_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P2_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(2.03)
 	if(Trig_Finding_Special_combinations_P2_Func003001())then
 		set udg_SpecialsROUNDp2[1]=(udg_SpecialsROUNDp2[1]+1)
 	else
@@ -20095,6 +20121,7 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0013)
 		set udg_PlayerHERE[3]=false
 		set udg_PlayerDie[3]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(2)),function Trig_Leak_and_lose_P3_Func008Func009002)
 	else
@@ -22102,6 +22129,7 @@ function Trig_B_Reworked_Placing_gems_P3_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[3])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P3_Func034C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -22959,6 +22987,7 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[3]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -22971,11 +23000,15 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem3[udg_Level]=GetSpellAbilityUnit()
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem3[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem3[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem3[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem3[udg_Level])
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(2)),function Trig_B_Reworked_Mark_P3_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P3_Func004Func017001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P3)
 		else
@@ -24294,6 +24327,7 @@ function Trig_Finding_Special_combinations_P3_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P3_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(2.10)
 	if(Trig_Finding_Special_combinations_P3_Func003001())then
 		set udg_SpecialsROUNDp3[1]=(udg_SpecialsROUNDp3[1]+1)
 	else
@@ -24905,6 +24939,7 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0014)
 		set udg_PlayerHERE[4]=false
 		set udg_PlayerDie[4]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(3)),function Trig_Leak_and_lose_P4_Func008Func009002)
 	else
@@ -26912,6 +26947,7 @@ function Trig_B_Reworked_Placing_gems_P4_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[4])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P4_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -27769,6 +27805,7 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[4]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -27781,11 +27818,15 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem4[udg_Level]=GetSpellAbilityUnit()
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem4[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem4[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem4[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem4[udg_Level])
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(3)),function Trig_B_Reworked_Mark_P4_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P4_Func004Func017001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P4)
 		else
@@ -29104,6 +29145,7 @@ function Trig_Finding_Special_combinations_P4_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P4_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(2.07)
 	if(Trig_Finding_Special_combinations_P4_Func003001())then
 		set udg_SpecialsROUNDp4[1]=(udg_SpecialsROUNDp4[1]+1)
 	else
@@ -29715,6 +29757,7 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0016)
 		set udg_PlayerHERE[5]=false
 		set udg_PlayerDie[5]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(4)),function Trig_Leak_and_lose_P5_Func008Func009002)
 	else
@@ -31722,6 +31765,7 @@ function Trig_B_Reworked_Placing_gems_P5_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[5])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P5_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -32579,6 +32623,7 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[5]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -32591,11 +32636,15 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem5[udg_Level]=GetSpellAbilityUnit()
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem5[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem5[udg_Level])
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(4)),function Trig_B_Reworked_Mark_P5_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem5[udg_Level])
+		call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
+		call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P5_Func004Func017001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P5)
 		else
@@ -33914,6 +33963,7 @@ function Trig_Finding_Special_combinations_P5_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P5_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(1.86)
 	if(Trig_Finding_Special_combinations_P5_Func003001())then
 		set udg_SpecialsROUNDp5[1]=(udg_SpecialsROUNDp5[1]+1)
 	else
@@ -34525,6 +34575,7 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0015)
 		set udg_PlayerHERE[6]=false
 		set udg_PlayerDie[6]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(5)),function Trig_Leak_and_lose_P6_Func008Func009002)
 	else
@@ -36532,6 +36583,7 @@ function Trig_B_Reworked_Placing_gems_P6_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[6])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P6_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -37386,6 +37438,7 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[6]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -37398,11 +37451,15 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem6[udg_Level]=GetSpellAbilityUnit()
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call ForGroupBJ(GetUnitsOfPlayerAll(Player(5)),function Trig_B_Reworked_Mark_P6_Func004Func010002)
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem6[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem6[udg_Level])
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(5)),function Trig_B_Reworked_Mark_P6_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P6_Func004Func017001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P6)
 		else
@@ -38721,6 +38778,7 @@ function Trig_Finding_Special_combinations_P6_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P6_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(1.90)
 	if(Trig_Finding_Special_combinations_P6_Func003001())then
 		set udg_SpecialsROUNDp6[1]=(udg_SpecialsROUNDp6[1]+1)
 	else
@@ -39332,6 +39390,7 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0017)
 		set udg_PlayerHERE[7]=false
 		set udg_PlayerDie[7]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(6)),function Trig_Leak_and_lose_P7_Func008Func009002)
 	else
@@ -41339,6 +41398,7 @@ function Trig_B_Reworked_Placing_gems_P7_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[7])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P7_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -42196,6 +42256,7 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[7]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -42208,11 +42269,15 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem7[udg_Level]=GetSpellAbilityUnit()
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call ForGroupBJ(GetUnitsOfPlayerAll(Player(6)),function Trig_B_Reworked_Mark_P7_Func004Func010002)
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem7[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem7[udg_Level])
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(6)),function Trig_B_Reworked_Mark_P7_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P7_Func004Func017001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P7)
 		else
@@ -43531,6 +43596,7 @@ function Trig_Finding_Special_combinations_P7_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P7_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(1.93)
 	if(Trig_Finding_Special_combinations_P7_Func003001())then
 		set udg_SpecialsROUNDp7[1]=(udg_SpecialsROUNDp7[1]+1)
 	else
@@ -44142,6 +44208,7 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0018)
 		set udg_PlayerHERE[8]=false
 		set udg_PlayerDie[8]=true
+		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
 		call ForGroupBJ(GetUnitsOfPlayerAll(Player(7)),function Trig_Leak_and_lose_P8_Func008Func009002)
 	else
@@ -46149,6 +46216,7 @@ function Trig_B_Reworked_Placing_gems_P8_Actions takes nothing returns nothing
 		call GroupAddUnitSimple(GetLastCreatedUnit(),udg_LocationGroup[8])
 	else
 	endif
+	call TriggerSleepAction(0.05)
 	if(Trig_B_Reworked_Placing_gems_P8_Func032C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -47006,6 +47074,7 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 			call SelectUnit (GetSpellAbilityUnit (), true)
 		endif
 		set udg_PlayerFinished[8]=true
+		call TriggerSleepAction(0.03)
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
 		loop
@@ -47018,11 +47087,15 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
 		set udg_KeepingGem8[udg_Level]=GetSpellAbilityUnit()
+		call TriggerSleepAction(0.30)
+		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
+		call ForGroupBJ(GetUnitsOfPlayerAll(Player(7)),function Trig_B_Reworked_Mark_P8_Func004Func010002)
 		call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
 		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem8[udg_Level])
 		call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem8[udg_Level])
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(7)),function Trig_B_Reworked_Mark_P8_Func004Func010002)
+		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
+		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
 		if(Trig_B_Reworked_Mark_P8_Func004Func017001())then
 			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P8)
 		else
@@ -48341,6 +48414,7 @@ function Trig_Finding_Special_combinations_P8_Func068C takes nothing returns boo
 endfunction
 function Trig_Finding_Special_combinations_P8_Actions takes nothing returns nothing
 	local effect sfx = null
+	call TriggerSleepAction(1.96)
 	if(Trig_Finding_Special_combinations_P8_Func003001())then
 		set udg_SpecialsROUNDp8[1]=(udg_SpecialsROUNDp8[1]+1)
 	else
