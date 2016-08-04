@@ -19,7 +19,8 @@ function Quests___Version_1_2_Part_2 takes nothing returns nothing
 	set text = text + "- Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability) could cause the code to behave improperly. Instead of receiving the combined gem, a rock would appear, for a total of five rocks. This has been resolved.\n"
 	set text = text + "- If a player opted to destroy all five of their placed gems, the round would not continue and their game would effectively end. This has been fixed.\n"
 	set text = text + "- Slate movement was inconsistent, and the ability to move could be missing from a new slate, or could remain on a recently moved slate.\n"
-	set text = text + "- Slates could stack on rare occasions. This has been fixed."
+	set text = text + "- Slates could stack on rare occasions. This has been fixed.\n"
+	set text = text + "- It no longer possible for 'Combine' to appear if multiple of the same slate has been extra chanced."
 
 	call Quests___Add_Changelog (title, text)
 endfunction

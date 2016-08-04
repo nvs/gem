@@ -579,6 +579,11 @@ globals
 	destructable gg_dest_DTlv_0010=null
 	destructable gg_dest_DTlv_0011=null
 endglobals
+function IsSlate takes unit the_unit returns boolean
+	local integer unit_type = GetUnitTypeId (the_unit)
+
+	return unit_type == 'n000' or unit_type == 'n002' or unit_type == 'n003' or unit_type == 'n001' or unit_type == 'n004' or unit_type == 'n005' or unit_type == 'n008' or unit_type == 'n009' or unit_type == 'n00A' or unit_type == 'n00C' or unit_type == 'n00E' or unit_type == 'n00F'
+endfunction
 function UnitByIdAndNotSpecialAndNotKeptFilter takes nothing returns boolean
 	local unit the_unit = GetFilterUnit ()
 	local integer player_id
@@ -12463,105 +12468,115 @@ function Trig_B_Reworked_Placing_gems_P1_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced1[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced1 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced1 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced1 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced1 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P1_Func033Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced1 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P1_Func033Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced1[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -17319,105 +17334,115 @@ function Trig_B_Reworked_Placing_gems_P2_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced2[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced2 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced2 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced2 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced2 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P2_Func032Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced2 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P2_Func032Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced2[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -22138,105 +22163,115 @@ function Trig_B_Reworked_Placing_gems_P3_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced3[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced3 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced3 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced3 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced3 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P3_Func034Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced3 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P3_Func034Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced3[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -26956,105 +26991,115 @@ function Trig_B_Reworked_Placing_gems_P4_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced4[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced4 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced4 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced4 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced4 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P4_Func033Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced4 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P4_Func033Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced4[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -31774,105 +31819,115 @@ function Trig_B_Reworked_Placing_gems_P5_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced5[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced5 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced5 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced5 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced5 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P5_Func033Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced5 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P5_Func033Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced5[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -36592,105 +36647,115 @@ function Trig_B_Reworked_Placing_gems_P6_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced6[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced6 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced6 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced6 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced6 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P6_Func033Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced6 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P6_Func033Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced6[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -41407,105 +41472,115 @@ function Trig_B_Reworked_Placing_gems_P7_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced7[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced7 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced7 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced7 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced7 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P7_Func033Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced7 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P7_Func033Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced7[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif
@@ -46225,105 +46300,115 @@ function Trig_B_Reworked_Placing_gems_P8_Actions takes nothing returns nothing
 			call UnitAddAbilityBJ('A009',udg_GemPlaced8[GetForLoopIndexA()])
 			set bj_forLoopAIndex=bj_forLoopAIndex+1
 		endloop
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func003001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced8 [1]) then
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func003001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func004001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func005001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func006001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func004001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced8 [2]) then
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func008001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func009001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func010001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func011001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func005001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced8 [3]) then
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func013001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func014001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func015001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func016001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func006001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[1])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced8 [4]) then
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func018001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func019001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func020001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func021001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
+			else
+				call DoNothing()
+			endif
 		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func008001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func009001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func010001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func011001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[2])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func013001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func014001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func015001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func016001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[3])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func018001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func019001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func020001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func021001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[4])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func023001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func024001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func025001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Placing_gems_P8_Func032Func026001())then
-			call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
-		else
-			call DoNothing()
+		if not IsSlate (udg_GemPlaced8 [5]) then
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func023001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func024001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func025001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
+			else
+				call DoNothing()
+			endif
+			if(Trig_B_Reworked_Placing_gems_P8_Func032Func026001())then
+				call UnitAddAbilityBJ('A007',udg_GemPlaced8[5])
+			else
+				call DoNothing()
+			endif
 		endif
 	else
 	endif

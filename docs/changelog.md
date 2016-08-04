@@ -25,6 +25,8 @@ This file presents a list of changes from the perspective of the player.
 - Slate movement was inconsistent, and the ability to move could be missing
   from a new slate, or could remain on a recently moved slate.
 - Slates could stack on rare occasions. This has been fixed.
+- It no longer possible for 'Combine' to appear if multiple of the same slate
+  has been extra chanced.
 
 ## 1.1 - 2016-07-19
 
