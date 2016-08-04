@@ -5207,7 +5207,6 @@ function Trig_Slate_move_Func019002002 takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetEnumUnit()), GetUnitY (GetEnumUnit())))
 endfunction
 function Trig_Slate_move_Actions takes nothing returns nothing
-	call DisableTrigger(GetTriggeringTrigger())
 	call GroupClear(udg_SlateStackGROUP)
 	set udg_SlateStackUnit=GetSpellAbilityUnit()
 	set udg_SlateStackPoint=GetUnitLoc(udg_SlateStackUnit)
@@ -5231,7 +5230,9 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	set udg_SlateStackNo=CountUnitsInGroup(udg_SlateStackGROUP)
 	if(Trig_Slate_move_Func014C())then
 		call SetUnitPositionLoc(udg_SlateStackUnit,udg_SlateStackDestination)
-		call UnitRemoveAbilityBJ('A02J',udg_SlateStackUnit)
+		// Needed, or moving and then immediately combining will crash the game.
+		call TriggerSleepAction (0.00)
+		call UnitRemoveAbility (GetSpellAbilityUnit (), 'A02J')
 	else
 	endif
 	if(Trig_Slate_move_Func016001())then
@@ -5245,7 +5246,6 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	call EnableTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing
 	set gg_trg_Slate_move=CreateTrigger()
