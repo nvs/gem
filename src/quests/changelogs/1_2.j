@@ -20,7 +20,7 @@ function Quests___Version_1_2_Part_2 takes nothing returns nothing
 	set text = text + "- If a player opted to destroy all five of their placed gems, the round would not continue and their game would effectively end. This has been fixed.\n"
 	set text = text + "- Slate movement was inconsistent, and the ability to move could be missing from a new slate, or could remain on a recently moved slate.\n"
 	set text = text + "- Slates could stack on rare occasions. This has been fixed.\n"
-	set text = text + "- It no longer possible for 'Combine' to appear if multiple of the same slate has been extra chanced."
+	set text = text + "- It is no longer possible for 'Combine' to appear if multiple of the same slate has been extra chanced."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
