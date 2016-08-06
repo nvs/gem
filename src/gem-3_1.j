@@ -9558,7 +9558,7 @@ function Trig_End_game_dmg_test_RACE_kills_Actions takes nothing returns nothing
 	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(owner)+" has killed their damage test!!!! Dealing 2,000,000 DAMAGE!|r")))
 
 	if udg_Mode == 2 then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(owner)+"!! on completing Race Mode.|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (owner) + "!!|r")
 	endif
 
 	set owner = null
@@ -9596,9 +9596,6 @@ endfunction
 function Trig_P1_Dmg_test_Func003C takes nothing returns boolean
 	return false
 endfunction
-function Trig_P1_Dmg_test_Func004Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
 function Trig_P1_Dmg_test_Func004C takes nothing returns boolean
 	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
 		return false
@@ -9623,12 +9620,6 @@ function Trig_P1_Dmg_test_Actions takes nothing returns nothing
 	endif
 	if(Trig_P1_Dmg_test_Func004C())then
 		set udg_Damage[1]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P1_Dmg_test_Func004Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(0))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cffff0000Your maze has done "+(I2S(udg_Damage[1])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
@@ -54372,7 +54363,7 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[1]=0
 	set udg_RmodeFinished[1]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [1]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P1_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
@@ -54502,7 +54493,7 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[2]=0
 	set udg_RmodeFinished[2]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [2]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P2_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
@@ -54632,7 +54623,7 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[3]=0
 	set udg_RmodeFinished[3]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [3]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P3_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
@@ -54762,7 +54753,7 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[4]=0
 	set udg_RmodeFinished[4]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [4]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P4_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
@@ -54892,7 +54883,7 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[5]=0
 	set udg_RmodeFinished[5]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [5]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P5_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
@@ -55022,7 +55013,7 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[6]=0
 	set udg_RmodeFinished[6]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [6]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P6_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
@@ -55152,7 +55143,7 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[7]=0
 	set udg_RmodeFinished[7]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [7]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P7_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
@@ -55282,7 +55273,7 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 	set udg_CountWastedGems[8]=0
 	set udg_RmodeFinished[8]=true
 	call TriggerSleepAction(2)
-	call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" has finished level 50! Running Damage test!|r"))
+	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [8]) + " has finished Race Mode! Running Damage Test!|r")
 	if(Trig_Fin_P8_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
