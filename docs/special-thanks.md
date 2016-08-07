@@ -12,6 +12,8 @@ Gem TD:
 - MafaBaby
 - DMVPDemonMOM
 - Ghost-007
+- Vinxu
+- Spiriax
 
 ## Gem Tower Defense Plus
 

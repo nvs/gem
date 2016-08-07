@@ -9,7 +9,9 @@ function Quests___Special_Thanks takes nothing returns nothing
 	set text = text + "- turbopower\n"
 	set text = text + "- MafaBaby\n"
 	set text = text + "- DMVPDemonMOM\n"
-	set text = text + "- Ghost-007\n\n"
+	set text = text + "- Ghost-007\n"
+	set text = text + "- Vinxu\n"
+	set text = text + "- Spiriax\n\n"
 
 	set text = text + "The following people deserve recognition for their support in the making of Gem TD+:\n"
 	set text = text + "- bunnyjean\n"
