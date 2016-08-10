@@ -93,7 +93,7 @@ function Settings__Setup takes nothing returns nothing
 	endif
 
 	call ClearTextMessages ()
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME * 2, Color__Gold ("Welcome to " + Gem__NAME + "!") + "\nThe game will start when the countdown timer finishes.\nFeel free to chat and use commands such as `-zoom`\nduring this period.\n\nFor map information, including a list of\nchanges, see " + Color__Gold ("Information (F9)") + ".\n\nFor further information and discussion on the\nmap, or to report bugs and other issues, see:\n" + Color__Green (Gem__WEBSITE_FORUM) + " or " + Color__Green (Gem__WEBSITE_REPOSITORY) + "\n\nPlease note that the bug known as the 'glitch' will be\naddressed in a future version. Visit the websites to see\nthe current plan and reasoning behind the decision.")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME * 2, Color__Gold ("Welcome to " + Gem__NAME + "!") + "\nThe game will start when the countdown timer finishes.\nFeel free to chat and use commands such as `-zoom`\nduring this period.\n\nFor map information, including a list of\nchanges, see " + Color__Gold ("Information (F9)") + ".\n\nFor further information and discussion on the\nmap, or to report bugs and other issues, see:\n" + Color__Green (Gem__WEBSITE_FORUM) + " or " + Color__Green (Gem__WEBSITE_REPOSITORY) + "\n\nPlease note that the 'glitch' will be fixed in a future\nversion. Visit the forum to see reasoning behind the\ndecision, as well as the  general plan for Gem TD+.")
 
 	// Ensure that the unit selected is the Miner, and that the camera is
 	// focused on it initially.
