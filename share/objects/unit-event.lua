@@ -1,4 +1,4 @@
--- # Unit Indexer
+-- # Unit Event
 
 setobjecttype ('abilities')
 
