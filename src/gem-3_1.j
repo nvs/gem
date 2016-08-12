@@ -5212,6 +5212,7 @@ function Trig_Slate_move_Func019002002 takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetEnumUnit()), GetUnitY (GetEnumUnit())))
 endfunction
 function Trig_Slate_move_Actions takes nothing returns nothing
+	local unit the_unit
 	call GroupClear(udg_SlateStackGROUP)
 	set udg_SlateStackUnit=GetSpellAbilityUnit()
 	set udg_SlateStackPoint=GetUnitLoc(udg_SlateStackUnit)
@@ -5233,13 +5234,7 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	else
 	endif
 	set udg_SlateStackNo=CountUnitsInGroup(udg_SlateStackGROUP)
-	if(Trig_Slate_move_Func014C())then
-		call SetUnitPositionLoc(udg_SlateStackUnit,udg_SlateStackDestination)
-		// Needed, or moving and then immediately combining will crash the game.
-		call TriggerSleepAction (0.00)
-		call UnitRemoveAbility (GetSpellAbilityUnit (), 'A02J')
-	else
-	endif
+
 	if(Trig_Slate_move_Func016001())then
 		call DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_SlateStackUnit)),"|cffffff00You cannot stack the same slates or its combinations ontop of each other|r")
 	else
@@ -5250,6 +5245,14 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_SlateStackGROUP,function Trig_Slate_move_Func019002002)
 	else
 		call DoNothing()
+	endif
+	if(Trig_Slate_move_Func014C())then
+		call SetUnitPositionLoc(udg_SlateStackUnit,udg_SlateStackDestination)
+		set the_unit = udg_SlateStackUnit
+		// Needed, or moving and then immediately combining will crash the game.
+		call TriggerSleepAction (0.00)
+		call UnitRemoveAbility (the_unit, 'A02J')
+		set the_unit = null
 	endif
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing

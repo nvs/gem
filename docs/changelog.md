@@ -4,6 +4,10 @@ This file presents a list of changes from the perspective of the player.
 
 ## 1.3 - Unreleased
 
+### Fixed
+- A slate could still retain the ability to move even after moving due to
+  another slate movement bug.
+
 ## 1.2 - 2016-08-10
 
 ### Changed
