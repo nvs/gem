@@ -3,7 +3,7 @@
 -- This is needed to maintain the current map name for objects in the map that
 -- make use of it.
 
-local name = 'Gem TD+ 1.2'
+local name = 'Gem TD+ 1.3'
 
 setobjecttype ('units')
 

@@ -2,6 +2,8 @@
 
 This file presents a list of changes from the perspective of the player.
 
+## 1.3 - Unreleased
+
 ## 1.2 - 2016-08-10
 
 ### Changed
