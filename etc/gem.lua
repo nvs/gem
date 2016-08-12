@@ -65,7 +65,8 @@ return {
 	objects = {
 		'unit-event',
 		'update-map-information',
-		'fix-lumber-costs'
+		'fix-lumber-costs',
+		'make-slates-repairable'
 	},
 
 	pjass = 'wine ../lib/pjass/pjass.exe',
