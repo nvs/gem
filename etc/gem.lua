@@ -30,6 +30,7 @@ return {
 		'dummy-caster',
 
 		'unit.user-data',
+		'unit.stun',
 
 		'gem-3_1',
 
@@ -84,7 +85,8 @@ return {
 		'update-map-information',
 		'fix-lumber-costs',
 		'make-slates-repairable',
-		'dummy-caster'
+		'dummy-caster',
+		'unit-stun'
 	},
 
 	imports_directory = 'share/imports',
