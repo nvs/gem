@@ -1,11 +1,11 @@
 return {
 	name = 'gem',
 
-	map_directory = '../share/base',
-	patch_directory = '../lib/patch/1.27a',
-	output_directory = '../tmp',
+	map_directory = 'share/base',
+	patch_directory = 'lib/patch/1.27a',
+	output_directory = 'tmp',
 
-	scripts_directory = '../src',
+	scripts_directory = 'src',
 	scripts = {
 		'string',
 		'color',
@@ -61,7 +61,18 @@ return {
 		'config'
 	},
 
-	objects_directory = '../share/objects',
+	constants_directory = 'share/constants',
+	constants = {
+		gameplay = {
+			'gem'
+		},
+
+		interface = {
+			'gem'
+		}
+	},
+
+	objects_directory = 'share/objects',
 	objects = {
 		'unit-event',
 		'update-map-information',
@@ -69,9 +80,13 @@ return {
 		'make-slates-repairable'
 	},
 
-	pjass = 'wine ../lib/pjass/pjass.exe',
-	object_merger = 'wine ../lib/grimex/ObjectMerger.exe',
+	imports_directory = 'share/imports',
 
-	optimizer = 'wine ../lib/optimizer/VXJWTSOPT.exe',
-	optimizer_tweaks = '../etc/gem.vxtweak'
+	prefix = 'wine',
+
+	pjass = 'lib/pjass/pjass.exe',
+	grimex = 'lib/grimex',
+
+	optimizer = 'lib/optimizer/VXJWTSOPT.exe',
+	optimizer_tweaks = 'etc/gem.vxtweak'
 }

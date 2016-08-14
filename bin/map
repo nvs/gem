@@ -4,72 +4,108 @@ if not arg [1]
 	or arg [1] == 'help'
 	or (arg [1] ~= 'check'
 		and arg [1] ~= 'build'
-		and arg [1] ~= 'data'
+		and arg [1] ~= 'prepare'
+		and arg [1] ~= 'constants'
+		and arg [1] ~= 'objects'
+		and arg [1] ~= 'imports'
 		and arg [1] ~= 'optimize')
 	or not arg [2]
 then
 	print ([[
-map - JASS script checker/builder
+map - A Warcraft 3 map management tool
 
 Usage:
+  map <command> [configuration]
 
-map help                     Displays this help message.
-map check [configuration]    Checks the scripts that form the project to
-                             ensure that they are valid JASS.
-map build [configuration]    Takes the scripts and builds a single project
-                             script, which is then checked afterwards.  The
-                             process involves gathering all global variable
-                             declarations into a single block, then putting
-                             all other content after.  The order specified
-                             in the `configuration` is maintained.
-map data [configuration]     Takes the objects and load them into a copy of
-                             the specified map file.
-map optimize [configuration] Optimizes the map, decreasing file size,
-                             improving run-time performance, and doing other
-                             useful things.  Currently uses Vexorian's
-                             Optimizer.  The resulting map will reside in the
-                             `output_directory`.
+  All commands except `help` expect a configuration file to be specified. See
+  below (after the command listing) for the configuration file specification.
 
-A `configuration` is nothing more than a Lua file returning a table
-with the following format.  Note that relative paths are specified with
-respect to the location of the `configuration`.
+Commands:
+  help          Displays this help message
+  check         Checks the scripts that form the project to ensure that they
+                are valid JASS.
+  build         Takes the scripts that form the project and builds a single
+                script, which is then checked afterwards. The process involves
+                gathering all global variable declarations into a single
+                block, then putting all other content after. The order
+                specified in the configuration file is maintained.
+  prepare       Uses the base map file to create a new working map file within
+                the output directory. This command will destructively
+                overwrite an existing working map file.
+  constants     Process the project's constants files, loading the data into
+                the working map file. Take care to keep gameplay constants and
+                interface settings in their respective directories, or this
+                command will fail.
+  objects       Processes the project's object files, loading the data into
+                the working map file.
+  imports       Takes all the files within the specified imports directory,
+                and places them into the map.
+  optimize      Optimizes the map, decreasing file size, improving run-time
+                performance, and doing other useful things. Creates both an
+                optimized map and script. The resulting files will reside in
+                the output directory, with '-optimized' in their file names.
 
-- `name`              : This is the name of the project, and the name used
-                        when building the project's script or map file.
-- `map_directory`     : The path that contains the map file.  The value
-                        specified by `name` is the file used.
-- `patch_directory`   : The path that points to the `common.j` and
-                        `blizzard.j`.
-- `output_directory`  : The path where the project script or map file will be
-                        placed after building.  The value specified by `name`
-                        will be used.
-- `scripts_directory` : The path that points to the scripts location.
-- `scripts`           : The scripts that together represent the entire
-                        project.  They should be listed in an order that
-                        reflects any needed depdencies.  Formatting uses a
-                        similar tyle to that of the `require` function in Lua,
-                        in that directories are represented by a period and
-                        that there is no need to specify the file extension.
-                        For example, `directory.script` refers to
-                        './directory/script.j'.
-- `objects_directory` : The path that points to the objects location.
-- `objects`           : The object files to process with ObjectMerger.  The
-                        same formatting used for `scripts` is used here.
-- `pjass`             : The command to invoke pjass.  This will vary, and
-                        can even involve the use of other programs.  For
-                        example, using Wine: `wine pjass.exe`.
-- `object_merger`     : The command to invoke ObjectMerger.]])
+Configuration:
+  A configuration file is nothing more than a Lua file returning a table with
+  the following format. Note that relative paths are specified with respect to
+  the project's root directory.
+
+  When a list is expected, the formatting for the values use a similar style
+  to that of the `require` function in Lua (see `package.searchpath` in the
+  Lua Reference Manual). Specifically, that directories are represented by a
+  period, and that there is no need to specify the file extension. For
+  example, 'this.file.path' refers to './this/file/path.j' (when referring to
+  a JASS file). Please recognize that the order of a list is always respected.
+
+  name                 The name of the project, and the name used when
+                       refrencing and working with numerous files throughout
+                       the project.
+  map_directory        The directory containing the base map file. The value
+                       specified by `name` ('name.w3x') is the file used.
+  patch_directory      The directory that contains the script files (common.j
+                       and blizzard.j) for the specific patch being built
+                       against.
+  output_directory     The directory where the project work files will be
+                       placed. The value specified by `name` will be used,
+                       giving, for example, 'name.j' and 'name.w3x', depending
+                       on the commands used.
+  scripts_directory    The directory that points to the scripts location.
+  scripts              A list of JASS files ('*.j') that together represent
+                       the entire project.
+  objects_directory    The directory that points to the objects location.
+  objects              A list of Lua files containing object data to be loaded
+                       into the working map file.
+  constants_directory  The path that points to the constants location. Note
+                       that directory should contain two more directions:
+                       'gameplay' and 'interface'.
+  constants            A table containing two additional tables: 'gameplay'
+                       and 'interface.
+  constants.gameplay   A list of Lua files containing gameplay constant values
+                       that are to be loaded into the working map file.
+  constants.interface  A list of Lua files containing interface setting values
+                       that are to be loaded into the working map file.
+  prefix               A prefix to put before all commands. Note that this is
+                       primarily intended to make use of Wine, but other uses
+                       may exist. Set this to an emptry string if not needed.
+  pjass                The command to invoke pjass.
+  grimex               The directory containing the entire set of GrimEx
+                       tools. These tools should not be renamed. Note that if
+                       another tool must be used to invoke these tools (e.g.
+                       Wine), then this should preceed the directory.
+  optimizer            The command to invoke Vexorian's Optimizer.
+  optimizer_tweaks     The path to the Optimizer tweaks file.]])
 
 	os.exit (0)
 end
 
 local Posix = {
 	libgen = require ('posix.libgen'),
+	stdlib = require ('posix.stdlib'),
 	unistd = require ('posix.unistd')
 }
 
--- Attempt to load the [Lua function `package.searchpath ()`] [1].  This
--- function is available in Lua 5.2, Lua 5.3, and LuaJIT.  If not found,
+-- Attempt to load the [Lua function `package.searchpath ()`] [1]. This
+-- function is available in Lua 5.2, Lua 5.3, and LuaJIT. If not found,
 -- a compatible version is used.
 --
 -- [1]: https://www.lua.org/manual/5.3/manual.html#pdf-package.searchpath
@@ -131,10 +167,10 @@ do
 	configuration = chunk ()
 end
 
--- We change into the directory containing this script.  This formats the
--- script paths a bit nicer.
+-- We change into the root directory of the project. This simplifies
+-- organization, and outputs nicer paths in certain commands.
 do
-	local directory = Posix.libgen.dirname (arg [2])
+	local directory = Posix.libgen.dirname (Posix.libgen.dirname (arg [2]))
 	local result, message = Posix.unistd.chdir (directory)
 
 	if result ~= 0 then
@@ -144,8 +180,8 @@ do
 end
 
 -- Returns a `boolean` indicating whether or not the mentioned files within
--- the `check (table)` exist.  The path to each file is added to the `files
--- (table)`.  An error is displayed for each script that does not exist.
+-- the `check (table)` exist. The path to each file is added to the `files
+-- (table)`. An error is displayed for each script that does not exist.
 local function do_files_exist (path, check, files)
 	local is_missing_file = false
 
@@ -172,133 +208,102 @@ local function do_files_exist (path, check, files)
 	end
 end
 
--- Files to be passed to pjass or ObjectManager.
-local files = {}
+-- Loads the 'common.j' and 'blizzard.j' into the provided `files (array)`.
+-- Will exit if either is missing.
+local function load_patch_scripts (files)
+	local path = string.format ('%s/?.j', configuration.patch_directory)
+	local scripts = {
+		'common',
+		'blizzard'
+	}
 
-if arg [1] == 'check'
-	or arg [1] == 'build'
-then
-	-- Load the common.j and blizzard.j.
-	do
-		local scripts = {
-			'common',
-			'blizzard'
-		}
-
-		local path = configuration.patch_directory .. '/?.j'
-		local result = do_files_exist (path, scripts, files)
-
-		if not result then
-			os.exit (1)
-		end
-	end
-
-	if arg [1] == 'check' then
-		local path = configuration.scripts_directory .. '/?.j'
-		local result = do_files_exist (path, configuration.scripts, files)
-
-		if not result then
-			os.exit (1)
-		end
-
-	elseif arg [1] == 'build' then
-		local is_missing_file = false
-		local path = configuration.scripts_directory .. '/?.j'
-
-		-- Open the globals block.
-		local globals = { 'globals\n' }
-		local content = {}
-
-		for _, script in ipairs (configuration.scripts) do
-			local result, message = search_path (script, path)
-
-			if result then
-				local file = io.open (result, 'r')
-				local action = false
-
-				for line in file:lines () do
-					if line:match ('^%s*globals.*$') then
-						action = true
-					elseif line:match ('^%s*endglobals.*$') then
-						action = false
-					else
-						line = line .. '\n'
-
-						if action == true then
-							globals [#globals + 1] = line
-						elseif action == false then
-							content [#content + 1] = line
-						end
-					end
-				end
-
-				file:close ()
-			else
-				if not is_missing_file then
-					is_missing_file = true
-					io.write ('Error:')
-				end
-
-				io.write (message)
-			end
-		end
-
-		if is_missing_file then
-			io.write ('\n')
-			os.exit (1)
-		end
-
-		-- Finish the globals block.
-		globals [#globals + 1] = 'endglobals\n'
-
-		local path = configuration.output_directory .. '/'
-			.. configuration.name .. '.j'
-		local file = io.open (path, 'w+')
-
-		if file then
-			for _, line in ipairs (globals) do
-				file:write (line)
-			end
-
-			file:write ('\n')
-
-			for _, line in ipairs (content) do
-				file:write (line)
-			end
-
-			file:close ()
-		end
-
-		files [#files + 1] = path
-	end
-
-	-- Check the scripts using pjass.
-	os.execute (string.format ('%s %s', configuration.pjass,
-		table.concat (files, ' ')))
-
-elseif arg [1] == 'data' then
-	local path = configuration.objects_directory .. '/?.lua'
-	local result = do_files_exist (path, configuration.objects, files)
-
-	if not result then
+	if not do_files_exist (path, scripts, files) then
 		os.exit (1)
 	end
+end
 
-	local source_path = configuration.map_directory .. '/'
-		.. configuration.name .. '.w3x'
-	local destination_path = configuration.output_directory .. '/'
-		.. configuration.name .. '.w3x'
+-- GrimEx will attempt to place logs within a 'logs' directory. However, this
+-- function moves the latest GrimEx log file to the output directory, and then
+-- proceeds to clean things up. The log file is renamed to include the
+-- provided `name (string)`.
+local function grimex_log (name)
+	local log = string.format ('%s/grimex-%s.txt',
+		configuration.output_directory, name)
+
+	os.remove (log)
+	os.rename ('logs/grimex.txt', log)
+	os.remove ('logs')
+end
+
+-- Runs a GrimEx `command (string)`, using the provided `input`. This can
+-- either be a `string`, typically representing a single directory. Or, it can
+-- be a `table`, containing a list of paths to files. Returns the result
+local function grimex_command (command, input, name, text)
+	if type (input) == 'string' then
+		input = { input }
+	end
+
+	local command = string.format (
+		'%s %s/%s %s/%s.w3x lookuppaths %s 2>/dev/null',
+		configuration.prefix, configuration.grimex, command,
+		configuration.output_directory, configuration.name,
+		table.concat (input, ' '))
+	local process = io.popen (command, 'r')
+
+	if not process then
+		return nil
+	end
+
+	local result = process:read ()
+
+	if not process:close () then
+		return nil
+	end
+
+	return result
+end
+
+local function grimex_process (result, name, text)
+	grimex_log (name)
+
+	io.write (text)
+
+	if result then
+		print (': OK')
+	else
+		print (': Failure')
+	end
+end
+
+local function load_scripts (files)
+	local path = configuration.scripts_directory .. '/?.j'
+
+	if not do_files_exist (path, configuration.scripts, files) then
+		os.exit (1)
+	end
+end
+
+local function check_scripts (files)
+	os.execute (string.format ('%s %s %s', configuration.prefix or '',
+		configuration.pjass, table.concat (files, ' ')))
+end
+
+local function initialize_temporary_map ()
+	local source_path = string.format ('%s/%s.w3x',
+		configuration.map_directory, configuration.name)
+	local destination_path = string.format ('%s/%s.w3x',
+		configuration.output_directory, configuration.name)
 
 	local source = io.open (source_path, 'rb')
 
 	if not source then
-		os.exit (1)
+		return nil
 	end
 
 	local destination = io.open (destination_path, 'w+b')
 
 	if not destination then
-		os.exit (1)
+		return nil
 	end
 
 	while true do
@@ -315,49 +320,145 @@ elseif arg [1] == 'data' then
 		or not destination:close ()
 	then
 		os.remove (destination_path)
+		return nil
+	end
+
+	return true
+end
+
+if arg [1] == 'check' then
+	local files = {}
+
+	load_patch_scripts (files)
+	load_scripts (files)
+	check_scripts (files)
+
+elseif arg [1] == 'build' then
+	local files = {}
+	local scripts = {}
+	local path = configuration.scripts_directory .. '/?.j'
+
+	load_patch_scripts (files)
+	load_scripts (scripts)
+
+	local globals = { 'globals\n' }
+	local content = {}
+
+	for _, script in ipairs (scripts) do
+		local file = io.open (script:gsub ('"', ''), 'r')
+		local in_globals = false
+
+		for line in file:lines () do
+			if line:match ('^%s*globals.*$') then
+				in_globals = true
+			elseif line:match ('^%s*endglobals.*$') then
+				in_globals = false
+			else
+				line = line .. '\n'
+
+				if in_globals then
+					globals [#globals + 1] = line
+				else
+					content [#content + 1] = line
+				end
+			end
+		end
+
+		file:close ()
+	end
+
+	globals [#globals + 1] = 'endglobals\n'
+
+	local path = string.format ('%s/%s.j',
+		configuration.output_directory, configuration.name)
+	local file = io.open (path, 'w+')
+
+	if file then
+		for _, line in ipairs (globals) do
+			file:write (line)
+		end
+
+		file:write ('\n')
+
+		for _, line in ipairs (content) do
+			file:write (line)
+		end
+
+		file:close ()
+	end
+
+	files [#files + 1] = path
+
+	check_scripts (files)
+
+elseif arg[1] == 'prepare' then
+	io.write ('Prepare: ')
+
+	if initialize_temporary_map () then
+		print ('OK')
+	else
+		print ('Failure')
+	end
+
+elseif arg [1] == 'constants' then
+	local function grimex_constants (name, text)
+		local files = {}
+		local path = string.format ('%s/%s/?.lua',
+			configuration.constants_directory, name)
+
+		if not do_files_exist (path, configuration.constants [name], files) then
+			os.exit (1)
+		end
+
+		local result = grimex_command ('ConstantMerger.exe', files)
+		grimex_process (result, 'constants-' .. name, text)
+	end
+
+	grimex_constants ('gameplay', 'Gameplay Constants')
+	grimex_constants ('interface', 'Interface Settings')
+
+elseif arg [1] == 'objects' then
+	local files = {}
+	local path = string.format ('%s/?.lua',
+		configuration.objects_directory, name)
+
+	if not do_files_exist (path, configuration.objects, files) then
 		os.exit (1)
 	end
 
-	-- Run the object files using ObjectManager.
-	local result = os.execute (string.format ('%s %s lookuppaths %s',
-		configuration.object_merger, destination_path,
-		table.concat (files, ' ')))
+	local result = grimex_command ('ObjectMerger.exe', files)
+	grimex_process (result, arg [1], 'Objects')
 
-	-- Move the log file to a more suitable location.
-	os.remove ('../tmp/grimex.txt')
-	os.rename ('logs/grimex.txt', '../tmp/grimex.txt')
-	os.remove ('logs')
+elseif arg [1] == 'imports' then
+	-- FileImporter requires an absolute path to work properly.
+	local result = grimex_command ('FileImporter.exe',
+		Posix.stdlib.realpath (configuration.imports_directory))
+	grimex_process (result, arg [1], 'Imports')
 
-	-- When successful, another line break is needed.  Also, ensure that
-	-- checking the result is comptible with the varying versions of
-	-- `os.execute`.
-	if result == true
-		or result == 0
-	then
-		io.write ('\n')
-	end
 elseif arg [1] == 'optimize' then
-	local path = configuration.objects_directory .. '/?.lua'
-
-	-- source path MUST be the file inside the output directory
-	local source_path = configuration.output_directory .. '/'
-		.. configuration.name .. '.w3x'
-	local destination_path = configuration.output_directory .. '/'
-		.. configuration.name .. '-optimized.w3x'
+	local source_path = string.format ('%s/%s.w3x',
+		configuration.output_directory, configuration.name)
+	local destination_path = string.format ('%s/%s-optimized.w3x',
+		configuration.output_directory, configuration.name)
 
 	-- Optimizer will fail if the destination already exists.
 	os.remove (destination_path)
 	os.remove (destination_path .. '.j')
 
-	local result = os.execute (string.format ('%s %s --do %s --checkall '
-		.. '--tweak %s --exit', configuration.optimizer, source_path,
-		destination_path, configuration.optimizer_tweaks))
+	local result = os.execute (string.format ('%s %s %s --do %s --checkall '
+		.. '--tweak %s --exit', configuration.prefix or '',
+		configuration.optimizer, source_path, destination_path,
+		configuration.optimizer_tweaks))
+
+	io.write ('Optimizer: ')
 
 	if result == true
 		or result == 0
 	then
-		print (string.format ('Optimized map created: %s', destination_path))
+		print ('OK')
 	else
+		print ('Failure')
+
 		-- No sense keeping the result if we encountered a failure.
 		os.remove (destination_path)
 		os.remove (destination_path .. '.j')

@@ -13,37 +13,47 @@ configuration settings have been altered, beyond the needed paths for the
 executables to function properly. 
 
 01. Have a valid Warcraft 3 installation. This is necessary to ensure that
-    later tools can properly access the Warcraft 3 MPQ files.
+    later tools can properly access the Warcraft 3 MPQ files. You may want to
+    verify that the registry key `HKEY_CURRENT_USER\Software\Blizzard
+    Entertainment\Warcraft III\InstallPath` is set to the Warcraft 3
+    directory. This must be set, regardless of whether you use Windows or
+    Wine, or the provided tools will not function properly.
 02. Have a working [Lua] [1] (5.1, 5.2, 5.3, or [LuaJIT] [2]) installation.
     Also, need to have [luaposix] [3] installed as well.
 03. Clone the repository.
-04. Checkout the version of the map in question.
+04. Checkout the version of the map in question. You may have to look at this
+    file again as the build process may have changed between versions.
 05. Look at the configuration file (`etc/gem.lua`) and adjust any paths as
-    necessary. It is currently setup to run under Linux with the use of
-    WINE in mind.
-06. Run the build script: `bin/map data etc/gem.lua`. This will take the base
-    version of the map (`share/base/gem.w3x` in our case) and load in objects
-    and other data via GrimEx (which is included in the repository). The
-    result should reside in the temporary directory: `tmp/gem.w3x`.
-07. Run the build script again, but with different arguments: `bin/map build
-    etc/gem.lua`. This should compile the map's `war3map.j` from the multiple
-    script files that are spread out for organizational purposes. This makes
-    use of pjass, which is included in the repository.
-08. Import the built script file `tmp/gem.j` into the `tmp/gem.w3x` map
-    file, renaming it to `war3map.j`. One method of doing this is using the
-    World Editor to import the file either into the base directory of the map,
-    or inside a `scripts` directory. Gem TD+ prefers the base directory.
-09. Import all the files within the `share/imports` directory into the
-    `tmp/gem.w3x` map file. Ensure that they are in the base directory by
-    removing the prefix `war3mapImported` from each file. Again, the World
-    Editor is a good choice here.
-10. Using the World Editor make the changes mentioned in the [Map File
-    Changes] (map-file-changes.md) file. 
-11. Use Vexorian's Optimizer (which is included in the repository) to process
+    necessary. Typically this should not be needed. Of note is the `prefix`
+    setting, which is by default set to `'wine'`. Windows users will most
+    likely want to set this to an empty string: `''`.
+06. Change into the project's root directory.
+07. Use the build script to initialize a working map file: `bin/map prepare
+    etc/gem.lua`. This will take the base version of the map
+    (`share/base/gem.w3x` in the default case) and place a copy within the
+    temporary directory: `tmp/gem.w3x`. This is the file that will be used to
+    build the map. Note that the `prepare` command is destructive and will
+    overwrite an existing `tmp/gem.w3x` file.
+08. Load constants into the map with the following command: `bin/map constants
+    etc/gem.lua`. This uses GrimEx (which is included in the repository).
+09. Load objects into the map with the following command: `bin/map objects
+    etc/gem.lua`.
+    scripts inside the project: `bin/map objects etc/gem.lua`.
+10. Build the map's `war3map.j` file: `bin/map build etc/gem.lua`. This will
+    create the map's script file from multiple sources that are spread out for
+    organizational purposes. This makes use of pjass, which is included in the
+    repository, to check the JASS files.
+11. Import all the files within the `share/imports` directory into the
+    `tmp/gem.w3x` map file with the following command: `bin/map imports
+    etc/gem.lua`.
+12. Using the World Editor, make the changes mentioned in the [Map File
+    Changes] (map-file-changes.md) file.
+13. Use Vexorian's Optimizer (which is included in the repository) to process
     the map. Simply invokve the build script: `bin/map optimize etc/gem.lua`.
-    This will produced both an optimized map file `tmp/gem-optimized.w3x` and
+    This will produce both an optimized map file `tmp/gem-optimized.w3x` and
     a script file `tmp/gem-optimized.w3x.j`. Rename the map file as needed to
-    match the version being released.
+    match the version being released. This step is only necessary if you wish
+    to have an optimized version of the map.
 
 ## Verifying the `war3map.j`
 
