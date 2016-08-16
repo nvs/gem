@@ -6704,7 +6704,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[1]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func002Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n000',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6774,7 +6773,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[2]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func003Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6844,7 +6842,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[3]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func004Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6914,7 +6911,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[4]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func005Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -6984,7 +6980,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[5]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func006Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -7054,7 +7049,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[6]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func007Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -7124,7 +7118,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[7]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func008Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
@@ -7194,7 +7187,6 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff66ffffSlate Created!|r")
 		set udg_PlayerFinished[8]=true
-		call TriggerSleepAction(0.03)
 		if(Trig_Create_Slates_Func009Func006001())then
 			call ReplaceUnitBJ(GetSpellAbilityUnit(),'n001',bj_UNIT_STATE_METHOD_MAXIMUM)
 		else
