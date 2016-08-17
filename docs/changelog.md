@@ -7,6 +7,9 @@ This file presents a list of changes from the perspective of the player.
 ### Fixed
 - A slate could still retain the ability to move even after moving due to
   another slate movement bug.
+- Spamming 'Keep Slate', when offered multiple slates, could cause extra units
+  to spawn. This made it possible to skip multiple rounds, assuming the units
+  were killed. This has been fixed.
 
 ## 1.2 - 2016-08-10
 
