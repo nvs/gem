@@ -19,6 +19,7 @@ function Quests___Version_1_3_Part_2 takes nothing returns nothing
 	set text = ""
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
+	set text = text + "- The bug known as the 'glitch' has been removed.\n"
 	set text = text + "- Creeps should no longer get stuck at the spawn point.\n"
 	set text = text + "- Addressed an issue where waits related to stuns (as well as the units that could stun) would not last their full duration as they were susceptible to lag and pauses.\n"
 	set text = text + "- Certain types of damage (most notably area of effect) did not apply to units that were stunned. This has been resolved.\n"
