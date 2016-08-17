@@ -1,7 +1,7 @@
 # Gem Tower Defense Plus
 
-Gem TD+ is an updated version of the original Gem Tower Defense that was
-created by Bryvx (Bryan K.) and is maintained by NVS.
+Gem TD+ is maintained by NVS and is an updated version of the original Gem
+Tower Defense created by Bryvx (Bryan K.).
 
 For general map discussion, or anything Gem related, please visit the [Gem TD+
 forum].  For more development centric information and discussion, or to report
