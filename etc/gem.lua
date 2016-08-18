@@ -7,6 +7,8 @@ return {
 
 	scripts_directory = 'src',
 	scripts = {
+		'handle-id',
+
 		'string',
 		'color',
 		'error',
