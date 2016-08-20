@@ -12,6 +12,7 @@ return {
 		'error',
 
 		'id',
+		'handle',
 
 		'gem',
 		'player-color',
