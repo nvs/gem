@@ -27,6 +27,8 @@ function Commands___Debug takes nothing returns boolean
 	set the_player = GetTriggerPlayer ()
 	set player_index = GetPlayerId (the_player)
 
+	call DisplayTextToPlayer (the_player, 0.00, 0.00, "Debugging...")
+
 	// Ensure that units stuck at the player's spawn point receive the 'move'
 	// order. It is assumed that unit's within a spawn point belong to a
 	// particular player.
