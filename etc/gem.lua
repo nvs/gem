@@ -11,6 +11,8 @@ return {
 		'color',
 		'error',
 
+		'id',
+
 		'gem',
 		'player-color',
 		'character-width',
