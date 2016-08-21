@@ -279,6 +279,7 @@ function main takes nothing returns nothing
 	call ExecuteFunc ("Character_Width__Initialize")
 	call ExecuteFunc ("Unit_Event__Initialize")
 	call ExecuteFunc ("Unit_Indexer__Initialize")
+	call ExecuteFunc ("Dummy_Caster__Initialize")
 	call ExecuteFunc ("Unit_User_Data__Initialize")
 
 	call InitSounds ()

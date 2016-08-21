@@ -27,6 +27,8 @@ return {
 		'unit.indexer.stack',
 		'unit.indexer',
 
+		'dummy-caster',
+
 		'unit.user-data',
 
 		'gem-3_1',
@@ -81,7 +83,8 @@ return {
 		'unit-event',
 		'update-map-information',
 		'fix-lumber-costs',
-		'make-slates-repairable'
+		'make-slates-repairable',
+		'dummy-caster'
 	},
 
 	imports_directory = 'share/imports',
