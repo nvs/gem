@@ -6,4 +6,5 @@
 function Unit_Event__Initialize takes nothing returns nothing
 	call Unit_Event___Initialize_Enters ()
 	call Unit_Event___Initialize_Leaves ()
+	call Unit_Event___Initialize_Death ()
 endfunction

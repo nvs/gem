@@ -21,6 +21,7 @@ return {
 		'unit.event',
 		'unit.event.enters',
 		'unit.event.leaves',
+		'unit.event.death',
 		'unit.event.initialize',
 
 		'unit.indexer.stack',
