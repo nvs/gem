@@ -15,4 +15,7 @@ globals
 	constant string Gem__WEBSITE_REPOSITORY = "https://github.com/nvs/gem"
 
 	constant integer Gem__MAXIMUM_PLAYERS = 8
+
+	constant integer Gem__PLAYER_CREEPS_INDEX = 11
+	constant player Gem__PLAYER_CREEPS = Player (Gem__PLAYER_CREEPS_INDEX)
 endglobals
