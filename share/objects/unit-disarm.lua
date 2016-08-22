@@ -49,6 +49,7 @@ if objectexists ('ANdh') then
 		makechange (current, 'Htb1', 1, 0) -- Damage
 		makechange (current, 'adur', 1, 0.00) -- Duration (Normal)
 		makechange (current, 'ahdu', 1, 0.00) -- Duration (Hero)
+		makechange (current, 'alev', 1) -- Levels
 		makechange (current, 'amcs', 1, 0) -- Mana Cost
 		makechange (current, 'arac', 0) -- Race
 
@@ -60,8 +61,8 @@ if objectexists ('ANdh') then
 			'invulnerable,vulnerable')
 
 		-- Text:
-		makechange (current, 'ansf', '(Unit Stun)') -- Editor Suffix
-		makechange (current, 'anam', 'Stun Ability') -- Name
-		makechange (current, 'aord', 'firebolt') -- Order String - Use/Turn On
+		makechange (current, 'ansf', '(Unit Disarm)') -- Editor Suffix
+		makechange (current, 'anam', 'Disarm Ability') -- Name
+		makechange (current, 'aord', 'drunkenhaze') -- Order String - Use/Turn On
 	end
 end
