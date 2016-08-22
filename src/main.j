@@ -282,6 +282,7 @@ function main takes nothing returns nothing
 	call ExecuteFunc ("Dummy_Caster__Initialize")
 	call ExecuteFunc ("Unit_User_Data__Initialize")
 	call ExecuteFunc ("Unit_Stun__Initialize")
+	call ExecuteFunc ("Unit_Disarm__Initialize")
 
 	call InitSounds ()
 	call CreateRegions ()

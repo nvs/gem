@@ -30,6 +30,7 @@ return {
 		'dummy-caster',
 
 		'unit.user-data',
+		'unit.disarm',
 		'unit.stun',
 
 		'gem-3_1',
@@ -86,6 +87,7 @@ return {
 		'fix-lumber-costs',
 		'make-slates-repairable',
 		'dummy-caster',
+		'unit-disarm',
 		'unit-stun'
 	},
 
