@@ -36,7 +36,6 @@ endfunction
 function Dummy_Caster___Teardown takes integer ability_id returns nothing
 	call SetUnitOwner (Dummy_Caster, Dummy_Caster___OWNER, false)
 	call UnitRemoveAbility (Dummy_Caster, ability_id)
-	call SetUnitPosition (Dummy_Caster, Dummy_Caster___X, Dummy_Caster___Y)
 endfunction
 
 // Move the dummy to the specified location and cast the ability.
@@ -47,6 +46,7 @@ function Dummy_Caster__Cast_Immediate takes player owner, integer ability_id, in
 	call SetUnitX (Dummy_Caster, x)
 	call SetUnitX (Dummy_Caster, y)
 	set result = IssueImmediateOrderById (Dummy_Caster, order)
+	call SetUnitPosition (Dummy_Caster, Dummy_Caster___X, Dummy_Caster___Y)
 	call Dummy_Caster___Teardown (ability_id)
 
 	return result
