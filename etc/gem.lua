@@ -65,7 +65,12 @@ return {
 
 		'detect-placed-gem-death',
 
+		'gem.slate.hold',
+		'gem.slate.ancient',
 		'gem.slate.initialize',
+
+		'gem.special.dark-emerald',
+		'gem.special.jade',
 		'gem.special.initialize',
 
 		'main',
