@@ -65,6 +65,9 @@ return {
 
 		'detect-placed-gem-death',
 
+		'gem.slate.initialize',
+		'gem.special.initialize',
+
 		'main',
 		'config'
 	},
