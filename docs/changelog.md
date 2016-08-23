@@ -5,6 +5,11 @@ This file presents a list of changes from the perspective of the player.
 ## 1.3 - Unreleased
 
 ### Fixed
+- Addressed an issue where waits related to stuns (as well as the units that
+  could stun) would not last their full duration as they were susceptible to
+  lag and pauses.
+- Certain types of damage (most notably area of effect) did not apply to units
+  that were stunned. This has been resolved.
 - A slate could still retain the ability to move even after moving due to
   another slate movement bug.
 - Spamming 'Keep Slate', when offered multiple slates, could cause extra units
