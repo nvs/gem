@@ -14,6 +14,8 @@ if objectexists ('BNdh') then
 		-- Art:
 		makechange (current, 'fart', -- Icon
 		'ReplaceableTextures\\CommandButtons\\BTNBattleStations.blp')
+		makechange (current, 'ftat', '') -- Target
+		makechange (current, 'fta0', '') -- Target Attachment Point 1
 
 		-- Text:
 		makechange (current, 'fnsf', '(Unit Disarm)') -- Editor Suffix
@@ -32,10 +34,12 @@ if objectexists ('ANdh') then
 
 	if currentobject () == 'UDDA' then
 		-- Art:
+		makechange (current, 'amac', 0.00) -- Missile Arc
 		makechange (current, 'amat', '') -- Missile Art
 		makechange (current, 'amsp', 0) -- Missile Speed
 
 		-- Data/Stats:
+		makechange (current, 'aare', 1, 0.00) -- Area of Effect
 		makechange (current, 'abuf', 1, 'UDDB') -- Buffs
 		makechange (current, 'Nsi1', 1, 3) -- Attacks Prevented (Both)
 		makechange (current, 'Nsi2', 1, 0.00) -- Chance To Miss

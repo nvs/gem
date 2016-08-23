@@ -7,6 +7,10 @@ if objectexists ('BSTN') then
 	createobject ('BSTN', 'USSB')
 
 	if currentobject () == 'USSB' then
+		-- Art:
+		makechange (current, 'ftat', '') -- Target
+		makechange (current, 'fta0', '') -- Target Attachment Point 1
+
 		-- Text:
 		makechange (current, 'fnsf', '(Unit Stun)') -- Editor Suffix
 		makechange (current, 'fnam', 'Stun Buff') -- Name (Editor Only)
@@ -41,6 +45,7 @@ if objectexists ('ACfb') then
 		makechange (current, 'Htb1', 1, 0) -- Damage
 		makechange (current, 'adur', 1, 0.00) -- Duration (Normal)
 		makechange (current, 'ahdu', 1, 0.00) -- Duration (Hero)
+		makechange (current, 'alev', 1) -- Levels
 		makechange (current, 'amcs', 1, 0) -- Mana Cost
 		makechange (current, 'arac', 0) -- Race
 

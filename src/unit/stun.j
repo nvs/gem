@@ -83,23 +83,22 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns nothing
 	// No sense trying to stun a unit that is not indexed, or if the stun
 	// duration is not greater than zero.
 	if index > 0 and duration > 0.00 then
-		set the_timer = Unit_Stun___Timers [index]
-
-		if the_timer == null then
-			set the_timer = CreateTimer ()
-			call Handle__Save (the_timer, Unit_Stun___ID_UNIT_INDEX, index)
-			set Unit_Stun___Timers [index] = the_timer
-		endif
-
 		// A stun lasts forever, technically. So we only need to stun a unit if
 		// it has not actually been stunned.
-		if not Unit_Stun___Is_Stunned [index] then
-			call Dummy_Caster__Cast_On_Target (null, Unit_Stun___ABILITY_ID, 1, Unit_Stun___ORDER_ID, the_unit)
+		if not Unit_Stun___Is_Stunned [index] and Dummy_Caster__Cast_On_Target (null, Unit_Stun___ABILITY_ID, 1, Unit_Stun___ORDER_ID, the_unit) then
 			set Unit_Stun___Is_Stunned [index] = true
+
+			set the_timer = Unit_Stun___Timers [index]
+
+			if the_timer == null then
+				set the_timer = CreateTimer ()
+				call Handle__Save (the_timer, Unit_Stun___ID_UNIT_INDEX, index)
+				set Unit_Stun___Timers [index] = the_timer
+			endif
 		endif
 
 		// Determine if we need to extend the stun.
-		if duration > TimerGetRemaining (the_timer) then
+		if Unit_Stun___Is_Stunned [index] and duration > TimerGetRemaining (the_timer) then
 			call TimerStart (the_timer, duration, false, function Unit_Stun___Expires)
 		endif
 	endif
