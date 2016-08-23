@@ -41,7 +41,12 @@ if objectexists ('ANdh') then
 		-- Data/Stats:
 		makechange (current, 'aare', 1, 0.00) -- Area of Effect
 		makechange (current, 'abuf', 1, 'UDDB') -- Buffs
-		makechange (current, 'Nsi1', 1, 3) -- Attacks Prevented (Both)
+
+		-- Setting this to zero first, then to the proper value seems to
+		-- workaround an issue where it is not properly changed.
+		makechange (current, 'Nsi1', 1, 0)
+		makechange (current, 'Nsi1', 1, 3) -- Attacks Prevented (Melee, Range)
+
 		makechange (current, 'Nsi2', 1, 0.00) -- Chance To Miss
 		makechange (current, 'Nsi3', 1, 0.00) -- Movement Speed Modifier
 
