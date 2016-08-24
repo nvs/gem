@@ -131,9 +131,9 @@ function Unit_Disarm___On_Leave takes nothing returns boolean
 	if index > 0 then
 		set the_timer = Unit_Disarm___Timers [index]
 
+		call Handle__Flush (the_timer)
 		call PauseTimer (the_timer)
 		call DestroyTimer (the_timer)
-		call Handle__Flush (the_timer)
 
 		set Unit_Disarm___Timers [index] = null
 		set Unit_Disarm___Is_Disarmed [index] = false

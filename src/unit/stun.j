@@ -134,9 +134,9 @@ function Unit_Stun___On_Leave takes nothing returns boolean
 	if index > 0 then
 		set the_timer = Unit_Stun___Timers [index]
 
+		call Handle__Flush (the_timer)
 		call PauseTimer (the_timer)
 		call DestroyTimer (the_timer)
-		call Handle__Flush (the_timer)
 
 		set Unit_Stun___Timers [index] = null
 		set Unit_Stun___Is_Stunned [index] = false
