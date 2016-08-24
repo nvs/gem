@@ -12,7 +12,7 @@
 // - `Unit_Indexer__Is_Indexed ()`
 // - `Unit_Indexer__Initialize ()`
 //
-// ## Notes:
+// ## Notes
 // - The system makes use of `GetUnitUserData ()` and `SetUnitUserData`, and
 //   assumes it has total control over such functionality.
 // - Calling `GetUnitUserData ()` with a `null` unit returns zero.
