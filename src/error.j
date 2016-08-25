@@ -5,5 +5,5 @@ globals
 endglobals
 
 function Error takes string header, string message returns nothing
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Error___X, Error___Y, Error___Duration, header + ": " + message)
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Error___X, Error___Y, Error___Duration, "Error: " + header + ": " + message)
 endfunction

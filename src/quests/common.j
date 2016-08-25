@@ -11,7 +11,7 @@ function Quests___Add takes string title, string icon, boolean is_information, s
 	endif
 
 	if length > String__MAXIMUM_LENGTH then
-		set text = title + ": String length exceeds `" + I2S (String__MAXIMUM_LENGTH) + "` characters: `" + I2S (length) + "`. Please report this error."
+		set text = title + ": String length exceeds `" + I2S (String__MAXIMUM_LENGTH) + "` characters: `" + I2S (length) + "`"
 
 		call Error (header, text)
 

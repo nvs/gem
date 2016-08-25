@@ -20,7 +20,7 @@ function ID__Allocate takes nothing returns integer
 	set ID___Index = ID___Index + 1
 
 	if ID___Index == 0 then
-		call Error ("ID__Allocate ():", "Maximum number of ID values reached. Please report this error.")
+		call Error ("ID__Allocate ():", "Maximum number of ID values reached.")
 	endif
 
 	return index
