@@ -31,8 +31,8 @@ function Handle__Load takes handle the_handle, integer key returns integer
 endfunction
 
 // Removes the value specified by key from the handle.
-function Handle__Remove takes handle the_handle, string key returns nothing
-	call RemoveSavedInteger (Handle, GetHandleId (the_handle), StringHash (key))
+function Handle__Remove takes handle the_handle, integer key returns nothing
+	call RemoveSavedInteger (Handle, GetHandleId (the_handle), key)
 endfunction
 
 // Removes all values and keys associated with the handle.
