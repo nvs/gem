@@ -14,6 +14,8 @@ return {
 		'id',
 		'handle',
 
+		'spawn',
+
 		'gem',
 		'player-color',
 		'character-width',
