@@ -12,6 +12,7 @@ return {
 		'error',
 
 		'id',
+		'table',
 		'handle',
 
 		'spawn',
