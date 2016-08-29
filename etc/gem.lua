@@ -16,6 +16,7 @@ return {
 		'handle',
 
 		'spawn',
+		'spawn-group',
 
 		'gem',
 		'player-color',
