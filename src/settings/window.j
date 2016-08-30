@@ -111,6 +111,11 @@ endfunction
 function Settings_Window___Menu_Event takes nothing returns boolean
 	local button the_button = GetClickedButton ()
 
+	// User control will be disabled if multiple button events are passed.
+	if GetLocalPlayer () == GetTriggerPlayer () then
+		call EnableUserControl (true)
+	endif
+
 	// Difficulty:
 	if Settings_Window___Menu_Buttons [0] == the_button then
 		call Settings_Difficulty__Next ()

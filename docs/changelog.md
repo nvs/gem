@@ -15,6 +15,9 @@ This file presents a list of changes from the perspective of the player.
 - Spamming 'Keep Slate', when offered multiple slates, could cause extra units
   to spawn. This made it possible to skip multiple rounds, assuming the units
   were killed. This has been fixed.
+- Spamming buttons on dialog windows (e.g. 'Extra Chance') could cause a
+  player's control to be disabled, essentially ending their game. This should
+  no longer happen.
 
 ## 1.2 - 2016-08-10
 

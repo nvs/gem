@@ -3345,6 +3345,10 @@ function Trig_Extra_Chance_2_Func002Func020001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Extra_Chance_2_Func002Func020001001(),Trig_Extra_Chance_2_Func002Func020001002())
 endfunction
 function Trig_Extra_Chance_2_Actions takes nothing returns nothing
+	// User control will be disabled if multiple button events are passed.
+	if GetLocalPlayer () == GetTriggerPlayer () then
+		call EnableUserControl (true)
+	endif
 	call DialogDisplayBJ(false,udg_ExtraChanceDIA,GetTriggerPlayer())
 	set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = false
 	set bj_forLoopAIndex=1
@@ -3954,6 +3958,10 @@ function Trig_Slate_Extra_Chance_2_Func002Func020002001001 takes nothing returns
 	return(GetTriggerPlayer()==GetFilterPlayer())
 endfunction
 function Trig_Slate_Extra_Chance_2_Actions takes nothing returns nothing
+	// User control will be disabled if multiple button events are passed.
+	if GetLocalPlayer () == GetTriggerPlayer () then
+		call EnableUserControl (true)
+	endif
 	call DialogDisplayBJ(false,udg_xExtraChanceDIA,GetTriggerPlayer())
 	set udg_ExtraChanceDialogDisplayed [GetPlayerId (GetTriggerPlayer ())] = false
 	set bj_forLoopAIndex=1
