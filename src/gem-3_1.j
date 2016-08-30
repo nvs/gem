@@ -1863,6 +1863,7 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 		if(Trig_Player_Leaves_Func001Func001C())then
 			call ForGroupBJ(GetUnitsOfPlayerAndTypeId(GetTriggerPlayer(),'h045'),function Trig_Player_Leaves_Func001Func001Func001002)
 			set udg_PlayerHERE[GetForLoopIndexA()]=false
+			call Gem_Spawn__Stop (GetForLoopIndexA () - 1)
 			call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(GetTriggerPlayer())+" is gone!!!|r")))
 			if(Trig_Player_Leaves_Func001Func001Func004001())then
 				call EnableTrigger(gg_trg_Slot_1_Enter)
@@ -9419,6 +9420,7 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		set udg_Lives[1]=0
 		call KillUnit(gg_unit_h01V_0011)
 		set udg_PlayerHERE[1]=false
+		call Gem_Spawn__Stop (0)
 		set udg_PlayerDie[1]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
@@ -14303,6 +14305,7 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		set udg_Lives[2]=0
 		call KillUnit(gg_unit_h01V_0012)
 		set udg_PlayerHERE[2]=false
+		call Gem_Spawn__Stop (1)
 		set udg_PlayerDie[2]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
@@ -19132,6 +19135,7 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		set udg_Lives[3]=0
 		call KillUnit(gg_unit_h01V_0013)
 		set udg_PlayerHERE[3]=false
+		call Gem_Spawn__Stop (2)
 		set udg_PlayerDie[3]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
@@ -23960,6 +23964,7 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		set udg_Lives[4]=0
 		call KillUnit(gg_unit_h01V_0014)
 		set udg_PlayerHERE[4]=false
+		call Gem_Spawn__Stop (3)
 		set udg_PlayerDie[4]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
@@ -28788,6 +28793,7 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		set udg_Lives[5]=0
 		call KillUnit(gg_unit_h01V_0016)
 		set udg_PlayerHERE[5]=false
+		call Gem_Spawn__Stop (4)
 		set udg_PlayerDie[5]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
@@ -33616,6 +33622,7 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		set udg_Lives[6]=0
 		call KillUnit(gg_unit_h01V_0015)
 		set udg_PlayerHERE[6]=false
+		call Gem_Spawn__Stop (5)
 		set udg_PlayerDie[6]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
@@ -38441,6 +38448,7 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		set udg_Lives[7]=0
 		call KillUnit(gg_unit_h01V_0017)
 		set udg_PlayerHERE[7]=false
+		call Gem_Spawn__Stop (6)
 		set udg_PlayerDie[7]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
@@ -43269,6 +43277,7 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		set udg_Lives[8]=0
 		call KillUnit(gg_unit_h01V_0018)
 		set udg_PlayerHERE[8]=false
+		call Gem_Spawn__Stop (7)
 		set udg_PlayerDie[8]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
@@ -56006,66 +56015,6 @@ endfunction
 function Trig_Finish_Build_Race_P1_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(0),true)
 endfunction
-function Trig_Finish_Build_Race_P1_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
-function Trig_Finish_Build_Race_P1_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
-endfunction
-function Trig_Finish_Build_Race_P1_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[1]))
-endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[1],function Trig_Finish_Build_Race_P1_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -56101,85 +56050,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P1)
-	if(Trig_Finish_Build_Race_P1_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P1_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[1]],Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[1]),function Trig_Finish_Build_Race_P1_Func057002)
+	call Gem_Spawn__Start (0, udg_RLevel [1])
 endfunction
 function InitTrig_Finish_Build_Race_P1 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P1=CreateTrigger()
@@ -56245,66 +56116,6 @@ endfunction
 function Trig_Finish_Build_Race_P2_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(1),true)
 endfunction
-function Trig_Finish_Build_Race_P2_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
-function Trig_Finish_Build_Race_P2_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
-endfunction
-function Trig_Finish_Build_Race_P2_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[2]))
-endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[2],function Trig_Finish_Build_Race_P2_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -56340,86 +56151,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P2)
-	if(Trig_Finish_Build_Race_P2_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P2_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[2]],Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[2]),function Trig_Finish_Build_Race_P2_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (1, udg_RLevel [2])
 endfunction
 function InitTrig_Finish_Build_Race_P2 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P2=CreateTrigger()
@@ -56485,66 +56217,6 @@ endfunction
 function Trig_Finish_Build_Race_P3_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(2),true)
 endfunction
-function Trig_Finish_Build_Race_P3_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
-function Trig_Finish_Build_Race_P3_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
-endfunction
-function Trig_Finish_Build_Race_P3_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[3]))
-endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[3],function Trig_Finish_Build_Race_P3_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -56580,86 +56252,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P3)
-	if(Trig_Finish_Build_Race_P3_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P3_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[3]],Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[3]),function Trig_Finish_Build_Race_P3_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (2, udg_RLevel [3])
 endfunction
 function InitTrig_Finish_Build_Race_P3 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P3=CreateTrigger()
@@ -56725,66 +56318,6 @@ endfunction
 function Trig_Finish_Build_Race_P4_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(3),true)
 endfunction
-function Trig_Finish_Build_Race_P4_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
-function Trig_Finish_Build_Race_P4_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
-endfunction
-function Trig_Finish_Build_Race_P4_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[4]))
-endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[4],function Trig_Finish_Build_Race_P4_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -56820,86 +56353,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P4)
-	if(Trig_Finish_Build_Race_P4_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P4_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[4]],Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[4]),function Trig_Finish_Build_Race_P4_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (3, udg_RLevel [4])
 endfunction
 function InitTrig_Finish_Build_Race_P4 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P4=CreateTrigger()
@@ -56965,66 +56419,6 @@ endfunction
 function Trig_Finish_Build_Race_P5_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(4),true)
 endfunction
-function Trig_Finish_Build_Race_P5_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
-function Trig_Finish_Build_Race_P5_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
-endfunction
-function Trig_Finish_Build_Race_P5_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[5]))
-endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[5],function Trig_Finish_Build_Race_P5_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -57060,86 +56454,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P5)
-	if(Trig_Finish_Build_Race_P5_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P5_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[5]],Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[5]),function Trig_Finish_Build_Race_P5_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (4, udg_RLevel [5])
 endfunction
 function InitTrig_Finish_Build_Race_P5 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P5=CreateTrigger()
@@ -57205,66 +56520,6 @@ endfunction
 function Trig_Finish_Build_Race_P6_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(5),true)
 endfunction
-function Trig_Finish_Build_Race_P6_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
-function Trig_Finish_Build_Race_P6_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
-endfunction
-function Trig_Finish_Build_Race_P6_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[6]))
-endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[6],function Trig_Finish_Build_Race_P6_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -57300,86 +56555,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P6)
-	if(Trig_Finish_Build_Race_P6_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P6_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[6]],Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[6]),function Trig_Finish_Build_Race_P6_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (5, udg_RLevel [6])
 endfunction
 function InitTrig_Finish_Build_Race_P6 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P6=CreateTrigger()
@@ -57445,66 +56621,6 @@ endfunction
 function Trig_Finish_Build_Race_P7_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(6),true)
 endfunction
-function Trig_Finish_Build_Race_P7_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
-function Trig_Finish_Build_Race_P7_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
-endfunction
-function Trig_Finish_Build_Race_P7_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[7]))
-endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[7],function Trig_Finish_Build_Race_P7_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -57540,86 +56656,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P7)
-	if(Trig_Finish_Build_Race_P7_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P7_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[7]],Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[7]),function Trig_Finish_Build_Race_P7_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (6, udg_RLevel [7])
 endfunction
 function InitTrig_Finish_Build_Race_P7 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P7=CreateTrigger()
@@ -57685,66 +56722,6 @@ endfunction
 function Trig_Finish_Build_Race_P8_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(7),true)
 endfunction
-function Trig_Finish_Build_Race_P8_Func029001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func030002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func032001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func033002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func035001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func036002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func038001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func039002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func041001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func042002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func044001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func045002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func047001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func048002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func050001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func051002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func053001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func054002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
-function Trig_Finish_Build_Race_P8_Func056001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
-endfunction
-function Trig_Finish_Build_Race_P8_Func057002 takes nothing returns nothing
-	call IssuePointOrderLocBJ(GetEnumUnit(),"move",GetRectCenter(udg_Move1st[8]))
-endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[8],function Trig_Finish_Build_Race_P8_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
@@ -57780,86 +56757,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
 	call TriggerExecute(gg_trg_Finding_Special_combinations_P8)
-	if(Trig_Finish_Build_Race_P8_Func029001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func030002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func032001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func033002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func035001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func036002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func038001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func039002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func041001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func042002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func044001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func045002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func047001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func048002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func050001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func051002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func053001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func054002)
-	call TriggerSleepAction(1.50)
-	if(Trig_Finish_Build_Race_P8_Func056001())then
-		call CreateNUnitsAtLoc(1,udg_SpawningUnit[udg_RLevel[8]],Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-	else
-		call DoNothing()
-	endif
-	call ForGroupBJ(GetUnitsInRectAll(udg_Spawn[8]),function Trig_Finish_Build_Race_P8_Func057002)
-	call TriggerSleepAction(1.50)
+	call Gem_Spawn__Start (7, udg_RLevel [8])
 endfunction
 function InitTrig_Finish_Build_Race_P8 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P8=CreateTrigger()
@@ -57986,6 +56884,7 @@ function Trig_New_Level_P1_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P1_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (0)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P1)
@@ -58182,6 +57081,7 @@ function Trig_New_Level_P2_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P2_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (1)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P2)
@@ -58378,6 +57278,7 @@ function Trig_New_Level_P3_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P3_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (2)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P3)
@@ -58574,6 +57475,7 @@ function Trig_New_Level_P4_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P4_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (3)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P4)
@@ -58770,6 +57672,7 @@ function Trig_New_Level_P5_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P5_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (4)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P5)
@@ -58966,6 +57869,7 @@ function Trig_New_Level_P6_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P6_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (5)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P6)
@@ -59162,6 +58066,7 @@ function Trig_New_Level_P7_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P7_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (6)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P7)
@@ -59358,11 +58263,11 @@ function Trig_New_Level_P8_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P8_Actions takes nothing returns nothing
+	call Gem_Spawn__Stop (7)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P8)
 	call SetPlayerStateBJ(udg_Player[8],PLAYER_STATE_RESOURCE_LUMBER,5)
-
 	set udg_GemNumber[8]=0
 	set udg_PlayerFinishBuild[8]=false
 	set udg_PlayerFinished[8]=false

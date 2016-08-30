@@ -297,4 +297,5 @@ function main takes nothing returns nothing
 
 	call ExecuteFunc ("Gem_Slate__Initialize")
 	call ExecuteFunc ("Gem_Special__Initialize")
+	call ExecuteFunc ("Gem_Spawn__Initialize")
 endfunction

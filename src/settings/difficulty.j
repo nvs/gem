@@ -83,6 +83,8 @@ function Settings__Difficulty_Setup takes nothing returns nothing
 		set udg_SpawningUnit [49] = 'h04O'
 		set udg_SpawningUnit [50] = 'h04P'
 
+		call Gem_Spawn__Update ()
+
 	// Hard:
 	elseif Settings_Difficulty___Option == 2 then
 		call UnitAddAbility (gg_unit_h027_0019, 'A01E')

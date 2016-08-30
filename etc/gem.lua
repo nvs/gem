@@ -38,6 +38,9 @@ return {
 		'unit.stun',
 
 		'gem-3_1-globals',
+
+		'gem.spawn',
+
 		'gem-3_1',
 
 		'settings.difficulty',
