@@ -6,7 +6,6 @@
 setobjecttype ('buffs')
 
 -- ## Disarm Buff
---
 if objectexists ('BNdh') then
 	createobject ('BNdh', 'UDDB')
 
@@ -42,9 +41,9 @@ if objectexists ('ANdh') then
 		makechange (current, 'aare', 1, 0.00) -- Area of Effect
 		makechange (current, 'abuf', 1, 'UDDB') -- Buffs
 
-		-- Setting this to zero first, then to the proper value seems to
+		-- Doing a reset first, then setting to the proper value seems to
 		-- workaround an issue where it is not properly changed.
-		makechange (current, 'Nsi1', 1, 0)
+		resetchange (current, 'Nsi1', 1)
 		makechange (current, 'Nsi1', 1, 3) -- Attacks Prevented (Melee, Range)
 
 		makechange (current, 'Nsi2', 1, 0.00) -- Chance To Miss
