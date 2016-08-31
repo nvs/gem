@@ -5,6 +5,7 @@ This file presents a list of changes from the perspective of the player.
 ## 1.3 - Unreleased
 
 ### Fixed
+- Creeps should no longer get stuck at the spawn point.
 - Addressed an issue where waits related to stuns (as well as the units that
   could stun) would not last their full duration as they were susceptible to
   lag and pauses.
