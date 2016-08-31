@@ -4,6 +4,12 @@ This file presents a list of changes from the perspective of the player.
 
 ## 1.3 - Unreleased
 
+### Changed
+- The '-debug' command no longer targets any specific bugs. Rather, it has
+  been updated to provide the user the ability to recover from a variety of
+  issues. The hope if that if this command resolves a problem, that the user
+  will report the bug they encountered, as it probably is not known.
+
 ### Fixed
 - Creeps should no longer get stuck at the spawn point.
 - Addressed an issue where waits related to stuns (as well as the units that
