@@ -7,6 +7,7 @@ return {
 
 	scripts_directory = 'src',
 	scripts = {
+		'array',
 		'string',
 		'color',
 		'error',

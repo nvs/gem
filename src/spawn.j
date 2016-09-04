@@ -20,6 +20,7 @@
 //
 // ## Depends
 //
+// - `Array`
 // - `ID`
 // - `Handle`
 //
@@ -65,10 +66,8 @@
 globals
 	integer Spawn___ID_INDEX = 0
 
-	// Due to the inability of using index `8191` to ensure save/load
-	// compatibility, the useable indices for the stack are `[0, 8190]`.
-	constant integer Spawn___STACK_MINIMUM_INDEX = 0
-	constant integer Spawn___STACK_MAXIMUM_INDEX = 8190
+	constant integer Spawn___STACK_MINIMUM_INDEX = Array__MINIMUM_INDEX
+	constant integer Spawn___STACK_MAXIMUM_INDEX = Array__MAXIMUM_INDEX
 
 	integer Spawn___Stack_Index = -1
 	integer array Spawn___Stack

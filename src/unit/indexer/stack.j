@@ -5,10 +5,8 @@
 // towards the size of the stack.
 
 globals
-	// Due to the inability of using index `8191` to ensure save/load
-	// compatibility, the useable indices for the stack are `[0, 8190]`.
-	constant integer Unit_Indexer___STACK_MINIMUM_INDEX = 0
-	constant integer Unit_Indexer___STACK_MAXIMUM_INDEX = 8190
+	constant integer Unit_Indexer___STACK_MINIMUM_INDEX = Array__MINIMUM_INDEX
+	constant integer Unit_Indexer___STACK_MAXIMUM_INDEX = Array__MAXIMUM_INDEX
 
 	integer Unit_Indexer___Stack_Index = Unit_Indexer___STACK_MAXIMUM_INDEX
 	integer array Unit_Indexer___Stack
