@@ -6,7 +6,12 @@ function Quests___Version_1_3_Part_1 takes nothing returns nothing
 	set text = ""
 
 	set text = text + Color__Gold ("Changed:") + "\n"
-	set text = text + "- The '-debug' command no longer targets any specific bugs. Rather, it has been updated to provide the user the ability to recover from a variety of issues. The hope if that if this command resolves a problem, that the user will report the bug they encountered, as it probably is not known."
+	set text = text + "- The '-debug' command no longer targets any specific bugs. Rather, it has been updated to provide the user the ability to recover from a variety of issues. The hope if that if this command resolves a problem, that the user will report the bug they encountered, as it probably is not known.\n\n"
+
+	set text = text + Color__Gold ("Fixed:") + "\n"
+	set text = text + "- The bug known as the 'glitch' has been removed.\n"
+	set text = text + "- Creeps should no longer get stuck at the spawn point.\n"
+	set text = text +"- Spawning creeps will no longer cluster during lag or pauses."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
@@ -18,9 +23,7 @@ function Quests___Version_1_3_Part_2 takes nothing returns nothing
 	set title = Gem__NAME + " 1.3 [2 of 2]"
 	set text = ""
 
-	set text = text + Color__Gold ("Fixed:") + "\n"
-	set text = text + "- The bug known as the 'glitch' has been removed.\n"
-	set text = text + "- Creeps should no longer get stuck at the spawn point.\n"
+	set text = text + Color__Gold ("Fixed: (cont.)") + "\n"
 	set text = text + "- Addressed an issue where waits related to stuns (as well as the units that could stun) would not last their full duration as they were susceptible to lag and pauses.\n"
 	set text = text + "- Certain types of damage (most notably area of effect) did not apply to units that were stunned. This has been resolved.\n"
 	set text = text + "- A slate could still retain the ability to move even after moving due to another slate movement bug.\n"

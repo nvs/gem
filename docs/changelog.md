@@ -13,6 +13,7 @@ This file presents a list of changes from the perspective of the player.
 ### Fixed
 - The bug known as the 'glitch' has been removed.
 - Creeps should no longer get stuck at the spawn point.
+- Spawning creeps will no longer cluster during lag or pauses. 
 - Addressed an issue where waits related to stuns (as well as the units that
   could stun) would not last their full duration as they were susceptible to
   lag and pauses.
