@@ -38,7 +38,6 @@ executables to function properly.
     etc/gem.lua`. This uses GrimEx (which is included in the repository).
 09. Load objects into the map with the following command: `bin/map objects
     etc/gem.lua`.
-    scripts inside the project: `bin/map objects etc/gem.lua`.
 10. Build the map's `war3map.j` file: `bin/map build etc/gem.lua`. This will
     create the map's script file from multiple sources that are spread out for
     organizational purposes. This makes use of pjass, which is included in the
@@ -48,7 +47,10 @@ executables to function properly.
     etc/gem.lua`.
 12. Using the World Editor, make the changes mentioned in the [Map File
     Changes] (map-file-changes.md) file.
-13. Use Vexorian's Optimizer (which is included in the repository) to process
+13. Test the map. It is possible that the 'Disarm' ability may not have been
+    created properly. If this occurs, then stuns will not work. The only known
+    workaround is to repeat step nine and test until they do work.
+14. Use Vexorian's Optimizer (which is included in the repository) to process
     the map. Simply invokve the build script: `bin/map optimize etc/gem.lua`.
     This will produce both an optimized map file `tmp/gem-optimized.w3x` and
     a script file `tmp/gem-optimized.w3x.j`. Rename the map file as needed to
