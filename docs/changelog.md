@@ -5,6 +5,8 @@ This file presents a list of changes from the perspective of the player.
 ## 1.3 - Unreleased
 
 ### Changed
+- It is now possible to move Hold and Ancient slates in the middle of their
+  stun.
 - The '-debug' command no longer targets any specific bugs. Rather, it has
   been updated to provide the user the ability to recover from a variety of
   issues. The hope if that if this command resolves a problem, that the user

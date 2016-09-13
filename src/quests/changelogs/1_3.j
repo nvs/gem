@@ -6,6 +6,7 @@ function Quests___Version_1_3_Part_1 takes nothing returns nothing
 	set text = ""
 
 	set text = text + Color__Gold ("Changed:") + "\n"
+	set text = text + "- It is now possible to move Hold and Ancient slates in the middle of their stun.\n"
 	set text = text + "- The '-debug' command no longer targets any specific bugs. Rather, it has been updated to provide the user the ability to recover from a variety of issues. The hope if that if this command resolves a problem, that the user will report the bug they encountered, as it probably is not known.\n\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
