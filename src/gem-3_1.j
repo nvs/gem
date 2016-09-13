@@ -5045,39 +5045,6 @@ function InitTrig_Buying_Lives takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Buying_Lives,Condition(function Trig_Buying_Lives_Conditions))
 	call TriggerAddAction(gg_trg_Buying_Lives,function Trig_Buying_Lives_Actions)
 endfunction
-function Trig_DownGrade_find_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_DownGrade_find_Func003003001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())==udg_DowngradeAbleGems[GetForLoopIndexA()])
-endfunction
-function Trig_DownGrade_find_Func003Func001001 takes nothing returns boolean
-	return(GetUnitTypeId(GetSpellAbilityUnit())==udg_DowngradeAbleGems[GetForLoopIndexA()])
-endfunction
-function Trig_DownGrade_find_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-	call TriggerSleepAction(0.15)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=32
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_DownGrade_find_Func003003001())then
-			call UnitAddAbilityBJ('A02G',GetSpellAbilityUnit())
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_DownGrade_find takes nothing returns nothing
-	set gg_trg_DownGrade_find=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_DownGrade_find,EVENT_PLAYER_UNIT_SPELL_CAST)
-	call TriggerAddCondition(gg_trg_DownGrade_find,Condition(function Trig_DownGrade_find_Conditions))
-	call TriggerAddAction(gg_trg_DownGrade_find,function Trig_DownGrade_find_Actions)
-endfunction
 function Trig_DownGrade_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A02G'))then
 		return false
@@ -12249,146 +12216,68 @@ function InitTrig_B_Reworked_Placing_gems_P1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P1,function Trig_B_Reworked_Placing_gems_P1_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P1_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[1]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P1_Func001Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P1_Func001C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P1_Func001Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P1_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[1]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func006001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced1[1])
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func007001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced1[2])
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func008001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced1[3])
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func009001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced1[4])
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func010001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced1[5])
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func021002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004Func022001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P1_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[1]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [1] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
-	if(Trig_B_Reworked_Mark_P1_Func001C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [1] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P1_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P1_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [1] = true
+	set udg_KeepingGem1 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced1 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced1 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[1]=true
-		call TriggerSleepAction(0.03)
-		if(Trig_B_Reworked_Mark_P1_Func004Func006001())then
-			call ReplaceUnitBJ(udg_GemPlaced1[1],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-		if(Trig_B_Reworked_Mark_P1_Func004Func007001())then
-			call ReplaceUnitBJ(udg_GemPlaced1[2],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Mark_P1_Func004Func008001())then
-			call ReplaceUnitBJ(udg_GemPlaced1[3],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Mark_P1_Func004Func009001())then
-			call ReplaceUnitBJ(udg_GemPlaced1[4],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-			call DoNothing()
-		endif
-		if(Trig_B_Reworked_Mark_P1_Func004Func010001())then
-			call ReplaceUnitBJ(udg_GemPlaced1[5],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-		else
-			call DoNothing()
-		endif
-		set udg_KeepingGem1[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem1[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem1[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem1[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem1[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(0)),function Trig_B_Reworked_Mark_P1_Func004Func021002)
-		if(Trig_B_Reworked_Mark_P1_Func004Func022001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P1)
-		else
-			call DoNothing()
-		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P1)
 endfunction
 function InitTrig_B_Reworked_Mark_P1 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P1=CreateTrigger()
@@ -17111,124 +17000,72 @@ function InitTrig_B_Reworked_Placing_gems_P2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P2,function Trig_B_Reworked_Placing_gems_P2_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P2_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[2]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P2_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P2_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P2_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P2_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P2_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced2[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P2_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P2_Func004Func018001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P2_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[2]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [2] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P2_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [2] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P2_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P2_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [2] = true
+	set udg_KeepingGem2 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced2 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced2 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[2]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P2_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced2[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem2[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(1)),function Trig_B_Reworked_Mark_P2_Func004Func010002)
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem2[udg_Level])
-		call UnitRemoveAbilityBJ('A03M',udg_KeepingGem2[udg_Level])
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P2_Func004Func018001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P2)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P2)
 endfunction
 function InitTrig_B_Reworked_Mark_P2 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P2=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_CAST)
+	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P2,Condition(function Trig_B_Reworked_Mark_P2_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P2,function Trig_B_Reworked_Mark_P2_Actions)
 endfunction
@@ -21943,119 +21780,68 @@ function InitTrig_B_Reworked_Placing_gems_P3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P3,function Trig_B_Reworked_Placing_gems_P3_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P3_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[3]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P3_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P3_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P3_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P3_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[3]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P3_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced3[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P3_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P3_Func004Func017001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P3_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[3]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [3] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P3_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [3] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P3_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P3_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [3] = true
+	set udg_KeepingGem3 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced3 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced3 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[3]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P3_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced3[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem3[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(2)),function Trig_B_Reworked_Mark_P3_Func004Func010002)
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P3_Func004Func017001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P3)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P3)
 endfunction
 function InitTrig_B_Reworked_Mark_P3 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P3=CreateTrigger()
@@ -26774,119 +26560,68 @@ function InitTrig_B_Reworked_Placing_gems_P4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P4,function Trig_B_Reworked_Placing_gems_P4_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P4_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[4]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P4_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P4_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P4_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P4_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[4]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P4_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced4[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P4_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P4_Func004Func017001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P4_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[4]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [4] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P4_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [4] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P4_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P4_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [4] = true
+	set udg_KeepingGem4 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced4 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced4 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[4]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P4_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced4[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem4[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(3)),function Trig_B_Reworked_Mark_P4_Func004Func010002)
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P4_Func004Func017001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P4)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P4)
 endfunction
 function InitTrig_B_Reworked_Mark_P4 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P4=CreateTrigger()
@@ -31605,119 +31340,68 @@ function InitTrig_B_Reworked_Placing_gems_P5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P5,function Trig_B_Reworked_Placing_gems_P5_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P5_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[5]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P5_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P5_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P5_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P5_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[5]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P5_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced5[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P5_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P5_Func004Func017001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P5_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[5]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [5] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P5_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [5] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P5_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P5_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [5] = true
+	set udg_KeepingGem5 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced5 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced5 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[5]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P5_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced5[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem5[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(4)),function Trig_B_Reworked_Mark_P5_Func004Func010002)
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem5[udg_Level])
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem5[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem5[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P5_Func004Func017001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P5)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P5)
 endfunction
 function InitTrig_B_Reworked_Mark_P5 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P5=CreateTrigger()
@@ -36436,116 +36120,68 @@ function InitTrig_B_Reworked_Placing_gems_P6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P6,function Trig_B_Reworked_Placing_gems_P6_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P6_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P6_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P6_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P6_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P6_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[6]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P6_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced6[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P6_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P6_Func004Func017001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P6_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[6]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [6] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P6_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [6] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P6_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P6_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [6] = true
+	set udg_KeepingGem6 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced6 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced6 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[6]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P6_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced6[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem6[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(5)),function Trig_B_Reworked_Mark_P6_Func004Func010002)
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem6[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem6[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem6[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P6_Func004Func017001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P6)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P6)
 endfunction
 function InitTrig_B_Reworked_Mark_P6 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P6=CreateTrigger()
@@ -41264,119 +40900,68 @@ function InitTrig_B_Reworked_Placing_gems_P7 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P7,function Trig_B_Reworked_Placing_gems_P7_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P7_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[7]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P7_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P7_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P7_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P7_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[7]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P7_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced7[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P7_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P7_Func004Func017001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P7_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[7]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [7] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P7_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [7] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P7_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P7_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [7] = true
+	set udg_KeepingGem7 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced7 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced7 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[7]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P7_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced7[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem7[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(6)),function Trig_B_Reworked_Mark_P7_Func004Func010002)
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem7[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem7[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem7[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P7_Func004Func017001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P7)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P7)
 endfunction
 function InitTrig_B_Reworked_Mark_P7 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P7=CreateTrigger()
@@ -46095,119 +45680,68 @@ function InitTrig_B_Reworked_Placing_gems_P8 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P8,function Trig_B_Reworked_Placing_gems_P8_Actions)
 endfunction
 function Trig_B_Reworked_Mark_P8_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A009'))then
-		return false
-	endif
-	if(not(udg_PlayerFinished[8]==false))then
-		return false
-	endif
-	if udg_Mode != 2 then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P8_Func002Func003C takes nothing returns boolean
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n000'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00C'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n002'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n004'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n008'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n00E'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n001'))then
-		return true
-	endif
-	if((GetUnitTypeId(GetSpellAbilityUnit())=='n009'))then
-		return true
-	endif
-	return false
-endfunction
-function Trig_B_Reworked_Mark_P8_Func002C takes nothing returns boolean
-	if(not Trig_B_Reworked_Mark_P8_Func002Func003C())then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P8_Func003C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[8]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_B_Reworked_Mark_P8_Func004Func006003001 takes nothing returns boolean
-	return(GetSpellAbilityUnit()!=udg_GemPlaced8[GetForLoopIndexA()])
-endfunction
-function Trig_B_Reworked_Mark_P8_Func004Func010002 takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A00R',GetEnumUnit())
-endfunction
-function Trig_B_Reworked_Mark_P8_Func004Func017001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_B_Reworked_Mark_P8_Func004C takes nothing returns boolean
-	if(not(udg_PlayerFinishBuild[8]==true))then
-		return false
-	endif
-	return true
+	return GetSpellAbilityId () == 'A009' and not udg_PlayerFinished [8] and udg_Mode == 2
 endfunction
 function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
-	call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-	if(Trig_B_Reworked_Mark_P8_Func002C())then
-		set udg_SlateStackUnit=GetSpellAbilityUnit()
-		call ConditionalTriggerExecute(gg_trg_Slate_Stack_Check)
-	else
+	local unit the_unit
+	local player the_player
+	local integer unit_type
+	local integer index
+
+	if not udg_PlayerFinishBuild [8] then
+		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		return
 	endif
-	if(Trig_B_Reworked_Mark_P8_Func003C())then
-		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff33ff33You need to place all your 5 gems down before you can mark.|r")
-	else
+
+	set the_player = GetTriggerPlayer ()
+	set the_unit = GetSpellAbilityUnit ()
+	set unit_type = GetUnitTypeId (the_unit)
+
+	if unit_type == 'n000' or unit_type == 'n00C' or unit_type == 'n002' or unit_type == 'n004' or unit_type == 'n008' or unit_type == 'n00E' or unit_type == 'n001' or unit_type == 'n009' then
+		set udg_SlateStackUnit = the_unit
+		call ConditionalTriggerExecute (gg_trg_Slate_Stack_Check)
 	endif
-	if(Trig_B_Reworked_Mark_P8_Func004C())then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (GetSpellAbilityUnit()), GetUnitY (GetSpellAbilityUnit())))
-		call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cff66ffff"+(GetUnitName(GetSpellAbilityUnit())+" has been chosen as your gem this round.|r")))
-		if GetLocalPlayer () == GetTriggerPlayer () then
-			call ClearSelection ()
-			call SelectUnit (GetSpellAbilityUnit (), true)
+
+	set udg_PlayerFinished [8] = true
+	set udg_KeepingGem8 [udg_Level] = the_unit
+
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff66ffff" + GetUnitName (the_unit) + " has been chosen as your gem this round.|r")
+
+	set index = 1
+	loop
+		if the_unit != udg_GemPlaced8 [index] then
+			call ReplaceUnitBJ (udg_GemPlaced8 [index], 'h00G', bj_UNIT_STATE_METHOD_MAXIMUM)
 		endif
-		set udg_PlayerFinished[8]=true
-		call TriggerSleepAction(0.03)
-		set bj_forLoopAIndex=1
-		set bj_forLoopAIndexEnd=5
-		loop
-			exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-			if(Trig_B_Reworked_Mark_P8_Func004Func006003001())then
-				call ReplaceUnitBJ(udg_GemPlaced8[GetForLoopIndexA()],'h00G',bj_UNIT_STATE_METHOD_MAXIMUM)
-			else
-				call DoNothing()
-			endif
-			set bj_forLoopAIndex=bj_forLoopAIndex+1
-		endloop
-		set udg_KeepingGem8[udg_Level]=GetSpellAbilityUnit()
-		call TriggerSleepAction(0.30)
-		call UnitRemoveAbilityBJ('A009',GetSpellAbilityUnit())
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(7)),function Trig_B_Reworked_Mark_P8_Func004Func010002)
-		call UnitRemoveAbilityBJ('A009',udg_KeepingGem8[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',udg_KeepingGem8[udg_Level])
-		call UnitRemoveAbilityBJ('A007',udg_KeepingGem8[udg_Level])
-		call UnitRemoveAbilityBJ('A00R',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A007',GetSpellAbilityUnit())
-		call UnitRemoveAbilityBJ('A03M',GetSpellAbilityUnit())
-		if(Trig_B_Reworked_Mark_P8_Func004Func017001())then
-			call ConditionalTriggerExecute(gg_trg_Finish_Build_Race_P8)
-		else
-			call DoNothing()
+
+		set index = index + 1
+		exitwhen index > 5
+	endloop
+
+	set index = 1
+	loop
+		if unit_type == udg_DowngradeAbleGems [index] then
+			call UnitAddAbility (the_unit, 'A02G')
 		endif
-	else
+
+		set index = index + 1
+		exitwhen index > 32
+	endloop
+
+	// Needed, or certain things (e.g. 'Downgrade') do not function properly.
+	call TriggerSleepAction (0.0)
+
+	call UnitRemoveAbility (the_unit, 'A009')
+	call UnitRemoveAbility (the_unit, 'A00R')
+	call UnitRemoveAbility (the_unit, 'A007')
+	call UnitRemoveAbility (the_unit, 'A03M')
+
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (the_unit, true)
 	endif
+
+	call ConditionalTriggerExecute (gg_trg_Finish_Build_Race_P8)
 endfunction
 function InitTrig_B_Reworked_Mark_P8 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P8=CreateTrigger()

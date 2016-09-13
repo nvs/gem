@@ -310,7 +310,6 @@ globals
 	trigger gg_trg_Maxed_out_quality_Upgrade=null
 	trigger gg_trg_Maxed_out_Extra_chance_upgrade=null
 	trigger gg_trg_Buying_Lives=null
-	trigger gg_trg_DownGrade_find=null
 	trigger gg_trg_DownGrade=null
 	trigger gg_trg_Create_Slates=null
 	trigger gg_trg_Find_spell_levels=null

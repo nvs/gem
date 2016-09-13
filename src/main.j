@@ -22,7 +22,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Maxed_out_quality_Upgrade ()
 	call InitTrig_Maxed_out_Extra_chance_upgrade ()
 	call InitTrig_Buying_Lives ()
-	call InitTrig_DownGrade_find ()
 	call InitTrig_DownGrade ()
 	call InitTrig_Create_Slates ()
 	call InitTrig_Find_spell_levels ()

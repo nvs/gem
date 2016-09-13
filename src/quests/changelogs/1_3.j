@@ -12,7 +12,8 @@ function Quests___Version_1_3_Part_1 takes nothing returns nothing
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- The bug known as the 'glitch' has been removed.\n"
 	set text = text + "- Creeps should no longer get stuck at the spawn point.\n"
-	set text = text +"- Spawning creeps will no longer cluster during lag or pauses."
+	set text = text +"- Spawning creeps will no longer cluster during lag or pauses.\n"
+	set text = text + "- A rare desync related to using 'Keep' has been resolved."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
