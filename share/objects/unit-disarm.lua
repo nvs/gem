@@ -41,10 +41,12 @@ if objectexists ('ANdh') then
 		makechange (current, 'aare', 1, 0.00) -- Area of Effect
 		makechange (current, 'abuf', 1, 'UDDB') -- Buffs
 
-		-- Doing a reset first, then setting to the proper value seems to
-		-- workaround an issue where it is not properly changed.
-		resetchange (current, 'Nsi1', 1)
-		makechange (current, 'Nsi1', 1, 3) -- Attacks Prevented (Melee, Range)
+		-- There is a good chance that this part of the ability will be bugged.
+		-- The easiest workaround is to open the map in the World Editor, find
+		-- the ability, set the value to 'None' then save. Then set the value
+		-- back to 'Melee, Ranged', and then save the map again. It should now
+		-- work properly.
+		makechange (current, 'Nsi1', 1, 3) -- Attacks Prevented (Melee, Ranged)
 
 		makechange (current, 'Nsi2', 1, 0.00) -- Chance To Miss
 		makechange (current, 'Nsi3', 1, 0.00) -- Movement Speed Modifier

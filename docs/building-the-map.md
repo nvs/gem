@@ -47,9 +47,11 @@ executables to function properly.
     etc/gem.lua`.
 12. Using the World Editor, make the changes mentioned in the [Map File
     Changes] (map-file-changes.md) file.
-13. Test the map. It is possible that the 'Disarm' ability may not have been
-    created properly. If this occurs, then stuns will not work. The only known
-    workaround is to repeat step nine and test until they do work.
+13. Also using the World Editor, go into the 'Abilities' tab of the Object
+    Editor. Find the Disarm ability, and looking for 'Data - Attacks
+    Prevented'. Set this field to 'None' and then save the map. Set it back to
+    'Melee, Ranged', and then save the map. This is a workaround for a known
+    bug that can occur during the build process.
 14. Use Vexorian's Optimizer (which is included in the repository) to process
     the map. Simply invokve the build script: `bin/map optimize etc/gem.lua`.
     This will produce both an optimized map file `tmp/gem-optimized.w3x` and
