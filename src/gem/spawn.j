@@ -155,6 +155,6 @@ function Gem_Spawn__Initialize takes nothing returns nothing
 		set round = round + 1
 		exitwhen round > 50
 
-		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, bj_UNIT_FACING, 0.00, 1.50)
+		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, bj_UNIT_FACING, 0.00, 1.61)
 	endloop
 endfunction
