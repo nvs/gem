@@ -2,12 +2,25 @@
 
 globals
 	group Gem_Slate___Ancient_Group = CreateGroup ()
+	unit Gem_Slate___Ancient_Unit = null
 
 	integer Gem_Slate___ID_ANCIENT_UNIT_INDEX
 endglobals
 
 function Gem_Slate___Ancient_Taunt takes nothing returns boolean
-	return GetOwningPlayer (GetFilterUnit ()) != Gem__PLAYER_CREEPS and GetUnitTypeId (GetFilterUnit ()) != 'u000'
+	local unit the_unit
+	local real x
+	local real y
+
+	set the_unit = GetFilterUnit ()
+
+	if GetOwningPlayer (the_unit) != Gem__PLAYER_CREEPS and GetUnitTypeId (the_unit) != 'u000' then
+		call IssueTargetOrder (the_unit, "attack", Gem_Slate___Ancient_Unit)
+	endif
+
+	set the_unit = null
+
+	return false
 endfunction
 
 function Gem_Slate___Ancient_Remove_Debuff takes nothing returns nothing
@@ -39,9 +52,9 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	if GetUnitTypeId (attacker) == 'n003' and not Unit_Stun__Is_Stunned (victim) then
 		set owner = GetOwningPlayer (attacker)
 
+		set Gem_Slate___Ancient_Unit = victim
 		call GroupEnumUnitsInRange (Gem_Slate___Ancient_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Ancient_Taunt))
-		call GroupTargetOrder (Gem_Slate___Ancient_Group, "attack", victim)
-		call GroupClear (Gem_Slate___Ancient_Group)
+		set Gem_Slate___Ancient_Unit = victim
 
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl", victim, "chest"))
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", GetUnitX (attacker), GetUnitY (attacker)))
