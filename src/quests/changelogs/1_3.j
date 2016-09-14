@@ -2,7 +2,7 @@ function Quests___Version_1_3_Part_1 takes nothing returns nothing
 	local string title
 	local string text
 
-	set title = Gem__NAME + " 1.3 [1 of 2"
+	set title = Gem__NAME + " 1.3 [1 of 2]"
 	set text = ""
 
 	set text = text + Color__Gold ("Changed:") + "\n"
