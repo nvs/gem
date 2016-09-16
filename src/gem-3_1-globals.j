@@ -321,7 +321,6 @@ globals
 	trigger gg_trg_Elder_Slate=null
 	trigger gg_trg_Air_Slate=null
 	trigger gg_trg_Slow_Slate=null
-	trigger gg_trg_Damage_Slate=null
 	trigger gg_trg_Poison_Slate=null
 	trigger gg_trg_Opal_Vein_SLate=null
 	trigger gg_trg_Race_Mid_Game_ReRunner_1=null
