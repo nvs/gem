@@ -25,8 +25,8 @@ function Gem_Slate___Damage takes nothing returns boolean
 
 		set tag = CreateTextTag ()
 		call SetTextTagText (tag, I2S (damage) + " Damage!", 0.023)
-		call SetTextTagPos (tag, x, y, 0.00)
-		call SetTextTagColor (tag, 0, GetRandomInt (0, 255), GetRandomInt (0, 255), GetRandomInt (0, 255))
+		call SetTextTagPos (tag, x - 75.00, y, 0.00)
+		call SetTextTagColor (tag, GetRandomInt (0, 255), GetRandomInt (0, 255), GetRandomInt (0, 255), 255)
 		call SetTextTagPermanent (tag, false)
 		call SetTextTagLifespan (tag, 1.50)
 		call SetTextTagFadepoint (tag, 1.00)
@@ -37,6 +37,7 @@ function Gem_Slate___Damage takes nothing returns boolean
 
 	set attacker = null
 	set victim = null
+	set owner = null
 	set tag = null
 
 	return false
