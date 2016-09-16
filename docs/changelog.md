@@ -26,6 +26,7 @@ This file presents a list of changes from the perspective of the player.
   that were stunned. This has been resolved.
 - A slate could still retain the ability to move even after moving due to
   another slate movement bug.
+- Slates will no longer be damaged when attacking the ReRunner.
 - Spamming 'Keep Slate', when offered multiple slates, could cause extra units
   to spawn. This made it possible to skip multiple rounds, assuming the units
   were killed. This has been fixed.

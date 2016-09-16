@@ -45,6 +45,8 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	local texttag tag
 	local integer damage
 	local timer the_timer
+	local real x
+	local real y
 
 	set attacker = GetAttacker ()
 	set victim = GetTriggerUnit ()
@@ -56,15 +58,18 @@ function Gem_Slate___Ancient takes nothing returns boolean
 		call GroupEnumUnitsInRange (Gem_Slate___Ancient_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Ancient_Taunt))
 		set Gem_Slate___Ancient_Unit = victim
 
+		set x = GetUnitX (attacker)
+		set y = GetUnitY (attacker)
+
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl", victim, "chest"))
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", GetUnitX (attacker), GetUnitY (attacker)))
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", x, y))
 
 		set damage = Unit_User_Data__Get (attacker) * GetRandomInt (5, 120) + udg_RLevel [GetPlayerId (owner) + 1] * 50
-		call UnitDamageTarget (attacker, victim, damage, true, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+		call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
 
 		set tag = CreateTextTag ()
 		call SetTextTagText (tag, I2S (damage) + " Damage!", 0.023)
-		call SetTextTagPos (tag, GetUnitX (attacker), GetUnitY (attacker), 0.00)
+		call SetTextTagPos (tag, x, y, 0.00)
 		call SetTextTagColor (tag, 255, 255, 0, 255)
 		call SetTextTagPermanent (tag, false)
 		call SetTextTagLifespan (tag, 3.00)

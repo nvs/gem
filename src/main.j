@@ -33,7 +33,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Elder_Slate ()
 	call InitTrig_Air_Slate ()
 	call InitTrig_Slow_Slate ()
-	call InitTrig_Damage_Slate ()
 	call InitTrig_Poison_Slate ()
 	call InitTrig_Opal_Vein_SLate ()
 	call InitTrig_Race_Mid_Game_ReRunner_1 ()
