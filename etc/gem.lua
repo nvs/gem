@@ -77,6 +77,7 @@ return {
 		'gem.slate.hold',
 		'gem.slate.ancient',
 		'gem.slate.damage',
+		'gem.slate.poison',
 		'gem.slate.initialize',
 
 		'gem.special.dark-emerald',
