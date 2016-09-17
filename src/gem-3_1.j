@@ -33288,10 +33288,10 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P6 takes nothing returns nothing
-       set gg_trg_Leak_and_lose_P6=CreateTrigger()
-       call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P6,gg_rct_Finish_6)
-       call TriggerAddCondition(gg_trg_Leak_and_lose_P6,Condition(function Trig_Leak_and_lose_P6_Conditions))
-       call TriggerAddAction(gg_trg_Leak_and_lose_P6,function Trig_Leak_and_lose_P6_Actions)
+	set gg_trg_Leak_and_lose_P6=CreateTrigger()
+	call TriggerRegisterEnterRectSimple(gg_trg_Leak_and_lose_P6,gg_rct_Finish_6)
+	call TriggerAddCondition(gg_trg_Leak_and_lose_P6,Condition(function Trig_Leak_and_lose_P6_Conditions))
+	call TriggerAddAction(gg_trg_Leak_and_lose_P6,function Trig_Leak_and_lose_P6_Actions)
 endfunction
 function Trig_Movement6_1_Func003001 takes nothing returns boolean
 	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
