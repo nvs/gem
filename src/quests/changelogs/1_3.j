@@ -27,7 +27,7 @@ function Quests___Version_1_3_Part_2 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Fixed: (cont.)") + "\n"
 	set text = text + "- Debuffs (e.g. armor reductions) will no longer have their durations unnaturally extended by stuns.\n"
-	set text = text + "- Addressed an issue where waits related to stuns (as well as the units that could stun) would not last their full duration as they were susceptible to lag and pauses.\n"
+	set text = text + "- A number of waits related to slates and stuns have been fixed, and will no longer be susceptible to lag and puases.\n"
 	set text = text + "- Certain types of damage (most notably area of effect) did not apply to units that were stunned. This has been resolved.\n"
 	set text = text + "- A slate could still retain the ability to move even after moving due to another slate movement bug.\n"
 	set text = text + "- Slates will no longer be damaged when attacking the ReRunner.\n"

@@ -19,9 +19,8 @@ This file presents a list of changes from the perspective of the player.
 - A rare desync related to using 'Keep' has been resolved.
 - Debuffs (e.g. armor reductions) will no longer have their durations
   unnaturally extended by stuns.
-- Addressed an issue where waits related to stuns (as well as the units that
-  could stun) would not last their full duration as they were susceptible to
-  lag and pauses.
+- A number of waits related to slates and stuns have been fixed, and will no
+  longer be susceptible to lag and puases.
 - Certain types of damage (most notably area of effect) did not apply to units
   that were stunned. This has been resolved.
 - A slate could still retain the ability to move even after moving due to
