@@ -5,16 +5,17 @@
 // ## Depends
 //
 // - `ID`
+// - `Handle
 // - `Spawn`
-// - `Gem 3.1`
+// - `Gem 3.1 Globals`
 // - `Gem`
 //
 // ## Index
 //
 // ### Functions
 //
-// - `Gem_Spawn__Begin ()`
-// - `Gem_Spawn__Finish ()`
+// - `Gem_Spawn__Start ()`
+// - `Gem_Spawn__Stop ()`
 // - `Gem_Spawn__Update ()`
 // - `Gem_Spawn__Initialize ()`
 //
@@ -77,6 +78,7 @@ endfunction
 function Gem_Spawn__Stop takes integer player_index returns nothing
 	if Spawn__Is_Allocated (Gem_Spawn___Index [player_index]) then
 		call Spawn__Destroy (Gem_Spawn___Index [player_index])
+		set Gem_Spawn___Index [player_index] = 0
 	endif
 endfunction
 
