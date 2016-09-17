@@ -12,6 +12,7 @@ function Gem_Slate___Poison takes nothing returns boolean
 	if GetUnitTypeId (attacker) == 'n008' then
 		set victim = GetTriggerUnit ()
 		set level = Unit_User_Data__Get (attacker) / 10 + 1
+		set level = IMinBJ (level, 11)
 		set x = GetUnitX (attacker)
 		set y = GetUnitY (attacker)
 
