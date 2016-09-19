@@ -1,12 +1,4 @@
 globals
-	integer array udg_GemPlacedType1
-	integer array udg_GemPlacedType2
-	integer array udg_GemPlacedType3
-	integer array udg_GemPlacedType4
-	integer array udg_GemPlacedType5
-	integer array udg_GemPlacedType6
-	integer array udg_GemPlacedType7
-	integer array udg_GemPlacedType8
 	integer array Detect_Placed_Gem_Death___Count
 	boolexpr filterUnitByIdAndNotSpecialAndNotKept = null
 	// It should be noted one-base indices are used to reference the players in

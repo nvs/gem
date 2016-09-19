@@ -10254,64 +10254,64 @@ function Trig_B_Reworked_Placing_gems_P1_Func031C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[1])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[1])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType1[4]==udg_GemPlacedType1[1])
+	return(GetUnitTypeId(udg_GemPlaced1[4])==GetUnitTypeId(udg_GemPlaced1[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType1[4]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[4])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType1[4]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[4])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType1[4]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[4])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[1])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func033C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[1]==true))then
@@ -10320,124 +10320,124 @@ function Trig_B_Reworked_Placing_gems_P1_Func033C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType1[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced1[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Func035C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[1]==true))then
@@ -10791,8 +10791,7 @@ function Trig_B_Reworked_Placing_gems_P1_Func059C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P1_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [1] + 1
-	set udg_GemNumber [1] = count
+	set udg_GemNumber[1]=(udg_GemNumber[1]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P1_Func004001())then
 		set udg_Random[1]=GetRandomInt(1,udg_ExtraChanceNo[1])
@@ -11259,7 +11258,6 @@ function Trig_B_Reworked_Placing_gems_P1_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType1 [count] = GetUnitTypeId (udg_GemPlaced1 [count])
 	if(Trig_B_Reworked_Placing_gems_P1_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -12147,13 +12145,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001002002())
@@ -12162,13 +12160,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001002002())
@@ -12177,13 +12175,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001002002())
@@ -12192,13 +12190,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType1[1]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[1])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[5])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001002002())
@@ -12207,13 +12205,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType1[5]==udg_GemPlacedType1[2])
+	return(GetUnitTypeId(udg_GemPlaced1[5])==GetUnitTypeId(udg_GemPlaced1[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType1[2]==udg_GemPlacedType1[3])
+	return(GetUnitTypeId(udg_GemPlaced1[2])==GetUnitTypeId(udg_GemPlaced1[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType1[3]==udg_GemPlacedType1[4])
+	return(GetUnitTypeId(udg_GemPlaced1[3])==GetUnitTypeId(udg_GemPlaced1[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func009001002002())
@@ -12534,6 +12532,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P1_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[0],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -12564,6 +12564,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 			set udg_QuadCombine[1]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced1 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [1] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P1_Func002Func011Func004001())then
@@ -15063,64 +15075,64 @@ function Trig_B_Reworked_Placing_gems_P2_Func030C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[1])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[1])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType2[4]==udg_GemPlacedType2[1])
+	return(GetUnitTypeId(udg_GemPlaced2[4])==GetUnitTypeId(udg_GemPlaced2[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType2[4]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[4])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType2[4]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[4])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType2[4]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[4])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[1])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func032C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[2]==true))then
@@ -15129,124 +15141,124 @@ function Trig_B_Reworked_Placing_gems_P2_Func032C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType2[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced2[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Func034C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[2]==true))then
@@ -15582,8 +15594,7 @@ function Trig_B_Reworked_Placing_gems_P2_Func057C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [2] + 1
-	set udg_GemNumber [2] = count
+	set udg_GemNumber[2]=(udg_GemNumber[2]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P2_Func003001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -16050,7 +16061,6 @@ function Trig_B_Reworked_Placing_gems_P2_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType2 [count] = GetUnitTypeId (udg_GemPlaced2 [count])
 	if(Trig_B_Reworked_Placing_gems_P2_Func032C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -16928,13 +16938,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001002002())
@@ -16943,13 +16953,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001002002())
@@ -16958,13 +16968,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001002002())
@@ -16973,13 +16983,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType2[1]==udg_GemPlacedType2[5])
+	return(GetUnitTypeId(udg_GemPlaced2[1])==GetUnitTypeId(udg_GemPlaced2[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001002002())
@@ -16988,13 +16998,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType2[5]==udg_GemPlacedType2[2])
+	return(GetUnitTypeId(udg_GemPlaced2[5])==GetUnitTypeId(udg_GemPlaced2[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType2[2]==udg_GemPlacedType2[3])
+	return(GetUnitTypeId(udg_GemPlaced2[2])==GetUnitTypeId(udg_GemPlaced2[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType2[3]==udg_GemPlacedType2[4])
+	return(GetUnitTypeId(udg_GemPlaced2[3])==GetUnitTypeId(udg_GemPlaced2[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func009001002002())
@@ -17315,6 +17325,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P2_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[1],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -17345,6 +17357,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns noth
 			set udg_QuadCombine[2]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced2 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [2] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P2_Func002Func011Func004001())then
@@ -19843,64 +19867,64 @@ function Trig_B_Reworked_Placing_gems_P3_Func032C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[5])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[5])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[5])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType3[4]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[4])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType3[4]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[4])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType3[4]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[4])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType3[4]==udg_GemPlacedType3[5])
+	return(GetUnitTypeId(udg_GemPlaced3[4])==GetUnitTypeId(udg_GemPlaced3[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func034C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[3]==true))then
@@ -19909,124 +19933,124 @@ function Trig_B_Reworked_Placing_gems_P3_Func034C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType3[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced3[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Func036C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[3]==true))then
@@ -20362,8 +20386,7 @@ function Trig_B_Reworked_Placing_gems_P3_Func059C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [3] + 1
-	set udg_GemNumber [3] = count
+	set udg_GemNumber[3]=(udg_GemNumber[3]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P3_Func005001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -20830,7 +20853,6 @@ function Trig_B_Reworked_Placing_gems_P3_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType3 [count] = GetUnitTypeId (udg_GemPlaced3 [count])
 	if(Trig_B_Reworked_Placing_gems_P3_Func034C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -21708,13 +21730,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001002002())
@@ -21723,13 +21745,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001002002())
@@ -21738,13 +21760,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001002002())
@@ -21753,13 +21775,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType3[5]==udg_GemPlacedType3[1])
+	return(GetUnitTypeId(udg_GemPlaced3[5])==GetUnitTypeId(udg_GemPlaced3[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001002002())
@@ -21768,13 +21790,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType3[1]==udg_GemPlacedType3[2])
+	return(GetUnitTypeId(udg_GemPlaced3[1])==GetUnitTypeId(udg_GemPlaced3[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType3[2]==udg_GemPlacedType3[3])
+	return(GetUnitTypeId(udg_GemPlaced3[2])==GetUnitTypeId(udg_GemPlaced3[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType3[3]==udg_GemPlacedType3[4])
+	return(GetUnitTypeId(udg_GemPlaced3[3])==GetUnitTypeId(udg_GemPlaced3[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func009001002002())
@@ -22095,6 +22117,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P3_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[2],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -22125,6 +22149,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns noth
 			set udg_QuadCombine[3]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced3 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [3] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P3_Func002Func011Func004001())then
@@ -24623,64 +24659,64 @@ function Trig_B_Reworked_Placing_gems_P4_Func031C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[5])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[5])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType4[3]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[3])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType4[3]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[3])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType4[3]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[3])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType4[3]==udg_GemPlacedType4[5])
+	return(GetUnitTypeId(udg_GemPlaced4[3])==GetUnitTypeId(udg_GemPlaced4[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType4[4]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[4])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType4[4]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[4])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType4[4]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[4])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType4[4]==udg_GemPlacedType4[5])
+	return(GetUnitTypeId(udg_GemPlaced4[4])==GetUnitTypeId(udg_GemPlaced4[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func033C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[4]==true))then
@@ -24689,124 +24725,124 @@ function Trig_B_Reworked_Placing_gems_P4_Func033C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType4[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced4[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Func035C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[4]==true))then
@@ -25142,8 +25178,7 @@ function Trig_B_Reworked_Placing_gems_P4_Func058C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [4] + 1
-	set udg_GemNumber [4] = count
+	set udg_GemNumber[4]=(udg_GemNumber[4]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P4_Func004001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -25610,7 +25645,6 @@ function Trig_B_Reworked_Placing_gems_P4_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType4 [count] = GetUnitTypeId (udg_GemPlaced4 [count])
 	if(Trig_B_Reworked_Placing_gems_P4_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -26488,13 +26522,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType4[3]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[3])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001002002())
@@ -26503,13 +26537,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType4[3]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[3])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001002002())
@@ -26518,13 +26552,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[4])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001002002())
@@ -26533,13 +26567,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType4[5]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[5])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001002002())
@@ -26548,13 +26582,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType4[4]==udg_GemPlacedType4[1])
+	return(GetUnitTypeId(udg_GemPlaced4[4])==GetUnitTypeId(udg_GemPlaced4[1]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType4[1]==udg_GemPlacedType4[2])
+	return(GetUnitTypeId(udg_GemPlaced4[1])==GetUnitTypeId(udg_GemPlaced4[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType4[2]==udg_GemPlacedType4[3])
+	return(GetUnitTypeId(udg_GemPlaced4[2])==GetUnitTypeId(udg_GemPlaced4[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func009001002002())
@@ -26875,6 +26909,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P4_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[3],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -26905,6 +26941,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns noth
 			set udg_QuadCombine[4]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced4 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [4] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P4_Func002Func011Func004001())then
@@ -29403,64 +29451,64 @@ function Trig_B_Reworked_Placing_gems_P5_Func031C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[1])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[1])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[1])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType5[5]==udg_GemPlacedType5[1])
+	return(GetUnitTypeId(udg_GemPlaced5[5])==GetUnitTypeId(udg_GemPlaced5[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType5[5]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[5])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType5[5]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[5])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType5[5]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[5])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func033C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[5]==true))then
@@ -29469,124 +29517,124 @@ function Trig_B_Reworked_Placing_gems_P5_Func033C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType5[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced5[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Func035C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[5]==true))then
@@ -29922,8 +29970,7 @@ function Trig_B_Reworked_Placing_gems_P5_Func058C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [5] + 1
-	set udg_GemNumber [5] = count
+	set udg_GemNumber[5]=(udg_GemNumber[5]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P5_Func004001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -30390,7 +30437,6 @@ function Trig_B_Reworked_Placing_gems_P5_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType5 [count] = GetUnitTypeId (udg_GemPlaced5 [count])
 	if(Trig_B_Reworked_Placing_gems_P5_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -31268,13 +31314,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001002002())
@@ -31283,13 +31329,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001002002())
@@ -31298,13 +31344,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType5[4]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[4])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001002002())
@@ -31313,13 +31359,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[5])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001002002())
@@ -31328,13 +31374,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType5[1]==udg_GemPlacedType5[2])
+	return(GetUnitTypeId(udg_GemPlaced5[1])==GetUnitTypeId(udg_GemPlaced5[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType5[2]==udg_GemPlacedType5[3])
+	return(GetUnitTypeId(udg_GemPlaced5[2])==GetUnitTypeId(udg_GemPlaced5[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType5[3]==udg_GemPlacedType5[4])
+	return(GetUnitTypeId(udg_GemPlaced5[3])==GetUnitTypeId(udg_GemPlaced5[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func009001002002())
@@ -31655,6 +31701,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P5_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[4],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -31685,6 +31733,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns noth
 			set udg_QuadCombine[5]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced5 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [5] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P5_Func002Func011Func004001())then
@@ -34183,64 +34243,64 @@ function Trig_B_Reworked_Placing_gems_P6_Func031C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[1])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[1])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[1])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType6[5]==udg_GemPlacedType6[1])
+	return(GetUnitTypeId(udg_GemPlaced6[5])==GetUnitTypeId(udg_GemPlaced6[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType6[5]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[5])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType6[5]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[5])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType6[5]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[5])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func033C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[6]==true))then
@@ -34249,124 +34309,124 @@ function Trig_B_Reworked_Placing_gems_P6_Func033C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType6[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced6[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Func035C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[6]==true))then
@@ -34702,8 +34762,7 @@ function Trig_B_Reworked_Placing_gems_P6_Func058C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [6] + 1
-	set udg_GemNumber [6] = count
+	set udg_GemNumber[6]=(udg_GemNumber[6]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P6_Func004001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -35170,7 +35229,6 @@ function Trig_B_Reworked_Placing_gems_P6_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType6 [count] = GetUnitTypeId (udg_GemPlaced6 [count])
 	if(Trig_B_Reworked_Placing_gems_P6_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -36048,13 +36106,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001002002())
@@ -36063,13 +36121,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001002002())
@@ -36078,13 +36136,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType6[4]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[4])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001002002())
@@ -36093,13 +36151,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[5])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001002002())
@@ -36108,13 +36166,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType6[1]==udg_GemPlacedType6[2])
+	return(GetUnitTypeId(udg_GemPlaced6[1])==GetUnitTypeId(udg_GemPlaced6[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType6[2]==udg_GemPlacedType6[3])
+	return(GetUnitTypeId(udg_GemPlaced6[2])==GetUnitTypeId(udg_GemPlaced6[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType6[3]==udg_GemPlacedType6[4])
+	return(GetUnitTypeId(udg_GemPlaced6[3])==GetUnitTypeId(udg_GemPlaced6[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func009001002002())
@@ -36435,6 +36493,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P6_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[5],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -36465,6 +36525,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns noth
 			set udg_QuadCombine[6]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced6 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [6] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P6_Func002Func011Func004001())then
@@ -38963,64 +39035,64 @@ function Trig_B_Reworked_Placing_gems_P7_Func031C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[1])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[1])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[1])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType7[5]==udg_GemPlacedType7[1])
+	return(GetUnitTypeId(udg_GemPlaced7[5])==GetUnitTypeId(udg_GemPlaced7[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType7[5]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[5])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType7[5]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[5])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType7[5]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[5])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func033C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[7]==true))then
@@ -39029,124 +39101,124 @@ function Trig_B_Reworked_Placing_gems_P7_Func033C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType7[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced7[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Func035C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[7]==true))then
@@ -39482,8 +39554,7 @@ function Trig_B_Reworked_Placing_gems_P7_Func058C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [7] + 1
-	set udg_GemNumber [7] = count
+	set udg_GemNumber[7]=(udg_GemNumber[7]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P7_Func004001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -39950,7 +40021,6 @@ function Trig_B_Reworked_Placing_gems_P7_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType7 [count] = GetUnitTypeId (udg_GemPlaced7 [count])
 	if(Trig_B_Reworked_Placing_gems_P7_Func033C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -40828,13 +40898,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001002002())
@@ -40843,13 +40913,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001002002())
@@ -40858,13 +40928,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType7[4]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[4])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001002002())
@@ -40873,13 +40943,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[5])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001002002())
@@ -40888,13 +40958,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType7[1]==udg_GemPlacedType7[2])
+	return(GetUnitTypeId(udg_GemPlaced7[1])==GetUnitTypeId(udg_GemPlaced7[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType7[2]==udg_GemPlacedType7[3])
+	return(GetUnitTypeId(udg_GemPlaced7[2])==GetUnitTypeId(udg_GemPlaced7[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType7[3]==udg_GemPlacedType7[4])
+	return(GetUnitTypeId(udg_GemPlaced7[3])==GetUnitTypeId(udg_GemPlaced7[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func009001002002())
@@ -41215,6 +41285,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P7_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[6],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -41245,6 +41317,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns noth
 			set udg_QuadCombine[7]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced7 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [7] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P7_Func002Func011Func004001())then
@@ -43743,64 +43827,64 @@ function Trig_B_Reworked_Placing_gems_P8_Func030C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func004001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func005001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func006001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func008001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[1])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func009001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func010001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func011001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func013001 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[1])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func014001 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func015001 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func016001 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func018001 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[1])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func019001 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func020001 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func021001 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func023001 takes nothing returns boolean
-	return(udg_GemPlacedType8[5]==udg_GemPlacedType8[1])
+	return(GetUnitTypeId(udg_GemPlaced8[5])==GetUnitTypeId(udg_GemPlaced8[1]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func024001 takes nothing returns boolean
-	return(udg_GemPlacedType8[5]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[5])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func025001 takes nothing returns boolean
-	return(udg_GemPlacedType8[5]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[5])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032Func026001 takes nothing returns boolean
-	return(udg_GemPlacedType8[5]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[5])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func032C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[8]==true))then
@@ -43809,124 +43893,124 @@ function Trig_B_Reworked_Placing_gems_P8_Func032C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func002003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00V')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func003003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00N')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00N')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func004003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h008')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h008')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func006003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00J')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00J')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func007003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00K')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00K')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func008003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00B')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00B')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func010003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00Y')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00Y')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func011003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='e002')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='e002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func012003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00I')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00I')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func014003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h004')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func015003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h005')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h005')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func016003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00C')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00C')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func018003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='e004')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='e004')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func019003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00A')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00A')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func020003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00L')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00L')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func022003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00W')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00W')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func023003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='e003')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='e003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func024003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00R')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func026003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='e000')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='e000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func027003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h000')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h000')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func028003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h001')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func030003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00X')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00X')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func031003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00O')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00O')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func032003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h009')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h009')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func034003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00T')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func035003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00P')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00P')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func036003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00H')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00H')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func038003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00U')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func039003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00Q')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00Q')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func040003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='e001')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='e001')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func042003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00S')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func043003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h00M')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h00M')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func044003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h007')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h007')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func046003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h002')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h002')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func047003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h003')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h003')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func048003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h03T')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h03T')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func049003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h03S')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h03S')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func050003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h03R')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h03R')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func051003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h03U')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h03U')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034Func052003001 takes nothing returns boolean
-	return(udg_GemPlacedType8[GetForLoopIndexA()]=='h03V')
+	return(GetUnitTypeId(udg_GemPlaced8[GetForLoopIndexA()])=='h03V')
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Func034C takes nothing returns boolean
 	if(not(udg_PlayerFinishBuild[8]==true))then
@@ -44262,8 +44346,7 @@ function Trig_B_Reworked_Placing_gems_P8_Func057C takes nothing returns boolean
 	return true
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Actions takes nothing returns nothing
-	local integer count = udg_GemNumber [8] + 1
-	set udg_GemNumber [8] = count
+	set udg_GemNumber[8]=(udg_GemNumber[8]+1)
 	set udg_Random[1]=GetRandomInt(1,80)
 	if(Trig_B_Reworked_Placing_gems_P8_Func003001())then
 		set udg_Random[1]=GetRandomInt(11,80)
@@ -44730,7 +44813,6 @@ function Trig_B_Reworked_Placing_gems_P8_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(0.05)
-	set udg_GemPlacedType8 [count] = GetUnitTypeId (udg_GemPlaced8 [count])
 	if(Trig_B_Reworked_Placing_gems_P8_Func032C())then
 		set bj_forLoopAIndex=1
 		set bj_forLoopAIndexEnd=5
@@ -45608,13 +45690,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Func001C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001002001 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001002002 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001002001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001002002())
@@ -45623,13 +45705,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func005001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001002001 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001002002 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001002001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001002002())
@@ -45638,13 +45720,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func006001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001002001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001002002 takes nothing returns boolean
-	return(udg_GemPlacedType8[4]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[4])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001002001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001002002())
@@ -45653,13 +45735,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func007001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001002001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001002002 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[5])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[5]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001002001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001002002())
@@ -45668,13 +45750,13 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001 takes nothing re
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func008001002())
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func009001001 takes nothing returns boolean
-	return(udg_GemPlacedType8[1]==udg_GemPlacedType8[2])
+	return(GetUnitTypeId(udg_GemPlaced8[1])==GetUnitTypeId(udg_GemPlaced8[2]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func009001002001 takes nothing returns boolean
-	return(udg_GemPlacedType8[2]==udg_GemPlacedType8[3])
+	return(GetUnitTypeId(udg_GemPlaced8[2])==GetUnitTypeId(udg_GemPlaced8[3]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func009001002002 takes nothing returns boolean
-	return(udg_GemPlacedType8[3]==udg_GemPlacedType8[4])
+	return(GetUnitTypeId(udg_GemPlaced8[3])==GetUnitTypeId(udg_GemPlaced8[4]))
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func009001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func009001002001(),Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func009001002002())
@@ -45995,6 +46077,8 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Func002C takes nothing returns boo
 	return true
 endfunction
 function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns nothing
+	local integer index
+	local integer count
 	if(Trig_B_Reworked_Comb_Special_Mark_P8_Func001C())then
 		call DisplayTextToForce(bj_FORCE_PLAYER[7],"|cff33ff33You need to place all your 5 gems down before you can Combine and Mark.|r")
 	else
@@ -46025,6 +46109,18 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns noth
 			set udg_QuadCombine[8]=true
 		else
 			call DoNothing()
+		endif
+		set count = 0
+		set index = 1
+		loop
+			if GetUnitTypeId (udg_GemPlaced8 [index]) == 0 then
+				set count = count + 1
+			endif
+			set index = index + 1
+			exitwhen index > 5
+		endloop
+		if count >= 4 then
+			set udg_QuadCombine [8] = false
 		endif
 		if(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func011C())then
 			if(Trig_B_Reworked_Comb_Special_Mark_P8_Func002Func011Func004001())then
