@@ -3,27 +3,29 @@
 function Gem_Slate___Poison takes nothing returns boolean
 	local unit attacker
 	local unit victim
-	local real x
-	local real y
 	local integer level
+	local boolean is_poisoned
 
 	set attacker = GetAttacker ()
 
 	if GetUnitTypeId (attacker) == 'n008' then
-		set victim = GetTriggerUnit ()
-		set level = Unit_User_Data__Get (attacker) / 10 + 1
-		set level = IMinBJ (level, 11)
-		set x = GetUnitX (attacker)
-		set y = GetUnitY (attacker)
+		set is_poisoned = false
 
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", x, y))
+		if GetUnitState (attacker, UNIT_STATE_MANA) >= 5.0 then
+			set victim = GetTriggerUnit ()
+			set level = IMinBJ (Unit_User_Data__Get (attacker) / 10 + 1, 11)
 
-		call UnitAddAbility (attacker, 'A05N')
-		call SetUnitAbilityLevel (attacker, 'A05N', level)
-		call IssueTargetOrder (attacker, "shadowstrike", victim)
-		call UnitRemoveAbility (attacker, 'A05N')
+			call UnitAddAbility (attacker, 'A05N')
+			call SetUnitAbilityLevel (attacker, 'A05N', level)
+			set is_poisoned = IssueTargetOrder (attacker, "shadowstrike", victim)
+			call UnitRemoveAbility (attacker, 'A05N')
+		endif
 
-		call Unit_Disarm__Apply (attacker, 0.30)
+		if is_poisoned then
+			call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", GetUnitX (attacker), GetUnitY (attacker)))
+		else
+			call IssueImmediateOrder (attacker, "stop")
+		endif
 	endif
 
 	set attacker = null
