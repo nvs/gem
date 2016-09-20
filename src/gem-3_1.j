@@ -16909,7 +16909,7 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P2 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P2=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_EFFECT)
+	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P2,Condition(function Trig_B_Reworked_Mark_P2_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P2,function Trig_B_Reworked_Mark_P2_Actions)
 endfunction
