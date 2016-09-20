@@ -5,7 +5,7 @@
 // ## Depends
 //
 // - `ID`
-// - `Handle
+// - `Handle`
 // - `Spawn`
 // - `Gem 3.1 Globals`
 // - `Gem`
