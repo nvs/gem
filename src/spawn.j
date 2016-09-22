@@ -64,7 +64,7 @@
 // ## Globals
 
 globals
-	integer Spawn___ID_INDEX = 0
+	integer Spawn___ID_INDEX = ID__NULL
 
 	constant integer Spawn___STACK_MINIMUM_INDEX = Array__MINIMUM_INDEX
 	constant integer Spawn___STACK_MAXIMUM_INDEX = Array__MAXIMUM_INDEX
@@ -449,7 +449,7 @@ endfunction
 function Spawn__Create takes player owner, integer unit_type, integer number, integer waves, real x, real y, real facing, real delay, real period returns integer
 	local integer index
 
-	if Spawn___ID_INDEX == 0 then
+	if Spawn___ID_INDEX == ID__NULL then
 		set Spawn___ID_INDEX = ID__Allocate ()
 	endif
 

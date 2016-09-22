@@ -34,7 +34,7 @@ globals
 	constant integer Unit_Stun___BUFF_ID = 'USSB'
 	constant integer Unit_Stun___ORDER_ID = 852231 // Firebolt
 
-	integer Unit_Stun___ID_UNIT_INDEX
+	integer Unit_Stun___ID_UNIT_INDEX = ID__NULL
 
 	timer array Unit_Stun___Timers
 	boolean array Unit_Stun___Is_Stunned

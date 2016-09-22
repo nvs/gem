@@ -29,7 +29,7 @@
 // ## Globals
 
 globals
-	integer Gem_Spawn___ID_PLAYER_INDEX = 0
+	integer Gem_Spawn___ID_PLAYER_INDEX = ID__NULL
 
 	real array Gem_Spawn___Movement_Rect_X
 	real array Gem_Spawn___Movement_Rect_Y

@@ -32,7 +32,7 @@ globals
 	constant integer Unit_Disarm___BUFF_ID = 'UDDB'
 	constant integer Unit_Disarm___ORDER_ID = 852585 // Drunken Haze
 
-	integer Unit_Disarm___ID_UNIT_INDEX
+	integer Unit_Disarm___ID_UNIT_INDEX = ID__NULL
 
 	timer array Unit_Disarm___Timers
 	boolean array Unit_Disarm___Is_Disarmed
