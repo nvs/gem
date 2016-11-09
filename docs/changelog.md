@@ -1,6 +1,7 @@
 # Changelog
 
-This file presents a list of changes from the perspective of the player.
+This file presents a list of changes from the perspective of the player. For a
+full list of changes to the project, please consult the commit log.
 
 ## 1.3 - 2016-11-08
 
