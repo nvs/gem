@@ -2,7 +2,7 @@
 
 This file presents a list of changes from the perspective of the player.
 
-## 1.3 - Unreleased
+## 1.3 - 2016-11-08
 
 ### Changed
 - It is now possible to move Hold and Ancient slates in the middle of their
