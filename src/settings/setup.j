@@ -101,6 +101,7 @@ function Settings__Setup takes nothing returns nothing
 	loop
 		if Settings___Miners [index] != null then
 			if GetLocalPlayer () == Player (index) then
+				call ClearSelection ()
 				call SelectUnit (Settings___Miners [index], true)
 				call SetCameraPosition (GetUnitX (Settings___Miners [index]), GetUnitY (Settings___Miners [index]))
 			endif
