@@ -56,6 +56,7 @@ return {
 		'quests.information.special-thanks',
 		'quests.information.random-information',
 
+		'quests.changelogs.1_3_1',
 		'quests.changelogs.1_3',
 		'quests.changelogs.1_2',
 		'quests.changelogs.1_1',
