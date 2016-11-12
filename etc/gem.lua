@@ -108,7 +108,8 @@ return {
 		'make-slates-repairable',
 		'dummy-caster',
 		'unit-disarm',
-		'unit-stun'
+		'unit-stun',
+		'kill-bonus-remove-brilliance-aura',
 	},
 
 	imports_directory = 'share/imports',
