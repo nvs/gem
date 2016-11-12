@@ -110,6 +110,7 @@ return {
 		'unit-disarm',
 		'unit-stun',
 		'kill-bonus-remove-brilliance-aura',
+		'kill-bonus-remove-spell-immunity'
 	},
 
 	imports_directory = 'share/imports',
