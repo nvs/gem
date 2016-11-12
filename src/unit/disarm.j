@@ -79,19 +79,19 @@ function Unit_Disarm__Apply takes unit the_unit, real duration returns nothing
 	set index = Unit_Indexer__Unit_Index (the_unit)
 
 	if index > 0 and duration > 0.00 then
+		set the_timer = Unit_Disarm___Timers [index]
+
+		if the_timer == null then
+			set the_timer = CreateTimer ()
+			call Handle__Save (the_timer, Unit_Disarm___ID_UNIT_INDEX, index)
+			set Unit_Disarm___Timers [index] = the_timer
+		endif
+
 		// A disarm lasts forever, technically. So we only need to disarm a unit
 		// if it has not actually been disarmed. Realize that a unit that is
 		// spell immune cannot be disarmed.
-		if not Unit_Disarm___Is_Disarmed [index] and Dummy_Caster__Cast_On_Target (null, Unit_Disarm___ABILITY_ID, 1, Unit_Disarm___ORDER_ID, the_unit) then
-			set Unit_Disarm___Is_Disarmed [index] = true
-
-			set the_timer = Unit_Disarm___Timers [index]
-
-			if the_timer == null then
-				set the_timer = CreateTimer ()
-				call Handle__Save (the_timer, Unit_Disarm___ID_UNIT_INDEX, index)
-				set Unit_Disarm___Timers [index] = the_timer
-			endif
+		if not Unit_Disarm___Is_Disarmed [index] then
+			set Unit_Disarm___Is_Disarmed [index] = Dummy_Caster__Cast_On_Target (null, Unit_Disarm___ABILITY_ID, 1, Unit_Disarm___ORDER_ID, the_unit)
 		endif
 
 		// Determine if we need to extend the disarm.
