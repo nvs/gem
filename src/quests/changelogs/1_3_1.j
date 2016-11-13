@@ -6,7 +6,7 @@ function Quests___Version_1_3_1 takes nothing returns nothing
 	set text = ""
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
-	set text = text + "- Damage, Hold, and Ancient Slates will no longer misbehave after gathering 70+ kills."
+	set text = text + "- Damage, Hold, and Ancient Slates will no longer misbehave after gathering 70+ kills.\n"
 	set text = text + "- Swapping is now possible on structures that accumulate 70+ kills as they will no longer become spell immune."
 
 	call Quests___Add_Changelog (title, text)
