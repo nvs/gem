@@ -3,7 +3,13 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## 1.3.1 - Unreleased
+## 1.3.1 - 2016-11-12
+
+### Fixed
+- Damage, Hold, and Ancient Slates will no longer misbehave after gathering
+  70+ kills.
+- Swapping is now possible on structures that accumulate 70+ kills as they
+  will no longer become spell immune.
 
 ## 1.3 - 2016-11-08
 
