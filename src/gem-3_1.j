@@ -12057,7 +12057,7 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [1] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -16853,7 +16853,7 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [2] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -21645,7 +21645,7 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [3] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -26437,7 +26437,7 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [4] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -31229,7 +31229,7 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [5] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -36021,7 +36021,7 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [6] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -40813,7 +40813,7 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [7] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
@@ -45605,7 +45605,7 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 	local integer index
 
 	if not udg_PlayerFinishBuild [8] then
-		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
+		call DisplayTextToPlayer (GetTriggerPlayer (), 0.0, 0.0, "|cff33ff33You need to place all your 5 gems down before you can mark.|r")
 		return
 	endif
 
