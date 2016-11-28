@@ -368,7 +368,7 @@ function Spawn_Group__Pause takes integer group_index returns nothing
 		return
 	endif
 
-	set Spawn_Group___Is_Paused [index] = true
+	set Spawn_Group___Is_Paused [group_index] = true
 	call Spawn_Group___Synchronize (group_index)
 
 	set index = 0
