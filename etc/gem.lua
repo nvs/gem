@@ -118,6 +118,8 @@ return {
 	prefix = 'wine',
 
 	pjass = 'lib/pjass/pjass.exe',
+	pjass_options = '-rb +shadow +filter -nosyntaxerror -nosemanticerror',
+
 	grimex = 'lib/grimex',
 
 	optimizer = 'lib/optimizer/VXJWTSOPT.exe',

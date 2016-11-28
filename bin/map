@@ -88,6 +88,7 @@ Configuration:
                        primarily intended to make use of Wine, but other uses
                        may exist. Set this to an emptry string if not needed.
   pjass                The command to invoke pjass.
+  pjass_options        Options to pass to pjass.
   grimex               The directory containing the entire set of GrimEx
                        tools. These tools should not be renamed. Note that if
                        another tool must be used to invoke these tools (e.g.
@@ -284,8 +285,9 @@ local function load_scripts (files)
 end
 
 local function check_scripts (files)
-	os.execute (string.format ('%s %s %s', configuration.prefix or '',
-		configuration.pjass, table.concat (files, ' ')))
+	os.execute (string.format ('%s %s %s %s', configuration.prefix or '',
+		configuration.pjass, configuration.pjass_options,
+		table.concat (files, ' ')))
 end
 
 local function initialize_temporary_map ()
