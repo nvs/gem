@@ -43,6 +43,7 @@ return {
 		'gem.spawn',
 
 		'gem-3_1',
+		'gem-3_1.buying-lives',
 
 		'settings.difficulty',
 		'settings.common',
