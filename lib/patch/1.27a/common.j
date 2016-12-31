@@ -156,7 +156,7 @@ constant native GetObjectName               takes integer objectId          retu
 globals
 
 //===================================================
-// Game Constants    
+// Game Constants
 //===================================================
 
     // pfff
@@ -272,7 +272,7 @@ globals
     constant pathingtype        PATHING_TYPE_AMPHIBIOUSPATHING  = ConvertPathingType(7)
 
 //===================================================
-// Map Setup Constants    
+// Map Setup Constants
 //===================================================
 
     constant racepreference     RACE_PREF_HUMAN                     = ConvertRacePref(1)
@@ -308,7 +308,7 @@ globals
     constant mapflag            MAP_OBSERVERS_ON_DEATH              = ConvertMapFlag(32)
 
     constant mapflag            MAP_FIXED_COLORS                    = ConvertMapFlag(128)
-    
+
     constant mapflag            MAP_LOCK_RESOURCE_TRADING           = ConvertMapFlag(256)
     constant mapflag            MAP_RESOURCE_TRADING_ALLIES_ONLY    = ConvertMapFlag(512)
 
@@ -328,7 +328,7 @@ globals
     constant placement          MAP_PLACEMENT_RANDOM                = ConvertPlacement(0)   // random among all slots
     constant placement          MAP_PLACEMENT_FIXED                 = ConvertPlacement(1)   // player 0 in start loc 0...
     constant placement          MAP_PLACEMENT_USE_MAP_SETTINGS      = ConvertPlacement(2)   // whatever was specified by the script
-    constant placement          MAP_PLACEMENT_TEAMS_TOGETHER        = ConvertPlacement(3)   // random with allies next to each other    
+    constant placement          MAP_PLACEMENT_TEAMS_TOGETHER        = ConvertPlacement(3)   // random with allies next to each other
 
     constant startlocprio       MAP_LOC_PRIO_LOW                    = ConvertStartLocPrio(0)
     constant startlocprio       MAP_LOC_PRIO_HIGH                   = ConvertStartLocPrio(1)
@@ -443,7 +443,7 @@ globals
     constant playerscore PLAYER_SCORE_HERO_TOTAL                = ConvertPlayerScore(22)
     constant playerscore PLAYER_SCORE_RESOURCE_TOTAL            = ConvertPlayerScore(23)
     constant playerscore PLAYER_SCORE_TOTAL                     = ConvertPlayerScore(24)
-        
+
 //===================================================
 // Game, Player and Unit Events
 //
@@ -460,14 +460,14 @@ globals
 //===================================================
 
     //===================================================
-    // For use with TriggerRegisterGameEvent    
-    //===================================================    
+    // For use with TriggerRegisterGameEvent
+    //===================================================
 
     constant gameevent EVENT_GAME_VICTORY                       = ConvertGameEvent(0)
     constant gameevent EVENT_GAME_END_LEVEL                     = ConvertGameEvent(1)
 
     constant gameevent EVENT_GAME_VARIABLE_LIMIT                = ConvertGameEvent(2)
-    constant gameevent EVENT_GAME_STATE_LIMIT                   = ConvertGameEvent(3)   
+    constant gameevent EVENT_GAME_STATE_LIMIT                   = ConvertGameEvent(3)
 
     constant gameevent EVENT_GAME_TIMER_EXPIRED                 = ConvertGameEvent(4)
 
@@ -477,7 +477,7 @@ globals
     constant gameevent EVENT_GAME_TRACKABLE_HIT                 = ConvertGameEvent(7)
     constant gameevent EVENT_GAME_TRACKABLE_TRACK               = ConvertGameEvent(8)
 
-    constant gameevent EVENT_GAME_SHOW_SKILL                    = ConvertGameEvent(9)    
+    constant gameevent EVENT_GAME_SHOW_SKILL                    = ConvertGameEvent(9)
     constant gameevent EVENT_GAME_BUILD_SUBMENU                 = ConvertGameEvent(10)
 
     //===================================================
@@ -542,7 +542,7 @@ globals
     constant playerunitevent EVENT_PLAYER_UNIT_USE_ITEM                 = ConvertPlayerUnitEvent(50)
 
     constant playerunitevent EVENT_PLAYER_UNIT_LOADED                   = ConvertPlayerUnitEvent(51)
-    
+
     //===================================================
     // For use with TriggerRegisterUnitEvent
     //===================================================
@@ -554,48 +554,48 @@ globals
     constant unitevent EVENT_UNIT_HIDDEN                                = ConvertUnitEvent(56)
     constant unitevent EVENT_UNIT_SELECTED                              = ConvertUnitEvent(57)
     constant unitevent EVENT_UNIT_DESELECTED                            = ConvertUnitEvent(58)
-                                                                        
-    constant unitevent EVENT_UNIT_STATE_LIMIT                           = ConvertUnitEvent(59)                                                                        
 
-    // Events which may have a filter for the "other unit"              
-    //                                                                  
+    constant unitevent EVENT_UNIT_STATE_LIMIT                           = ConvertUnitEvent(59)
+
+    // Events which may have a filter for the "other unit"
+    //
     constant unitevent EVENT_UNIT_ACQUIRED_TARGET                       = ConvertUnitEvent(60)
     constant unitevent EVENT_UNIT_TARGET_IN_RANGE                       = ConvertUnitEvent(61)
     constant unitevent EVENT_UNIT_ATTACKED                              = ConvertUnitEvent(62)
     constant unitevent EVENT_UNIT_RESCUED                               = ConvertUnitEvent(63)
-                                                                        
+
     constant unitevent EVENT_UNIT_CONSTRUCT_CANCEL                      = ConvertUnitEvent(64)
     constant unitevent EVENT_UNIT_CONSTRUCT_FINISH                      = ConvertUnitEvent(65)
-                                                                        
+
     constant unitevent EVENT_UNIT_UPGRADE_START                         = ConvertUnitEvent(66)
     constant unitevent EVENT_UNIT_UPGRADE_CANCEL                        = ConvertUnitEvent(67)
     constant unitevent EVENT_UNIT_UPGRADE_FINISH                        = ConvertUnitEvent(68)
-                                                                        
-    // Events which involve the specified unit performing               
-    // training of other units                                          
-    //                                                                  
+
+    // Events which involve the specified unit performing
+    // training of other units
+    //
     constant unitevent EVENT_UNIT_TRAIN_START                           = ConvertUnitEvent(69)
     constant unitevent EVENT_UNIT_TRAIN_CANCEL                          = ConvertUnitEvent(70)
     constant unitevent EVENT_UNIT_TRAIN_FINISH                          = ConvertUnitEvent(71)
-                                                                        
+
     constant unitevent EVENT_UNIT_RESEARCH_START                        = ConvertUnitEvent(72)
     constant unitevent EVENT_UNIT_RESEARCH_CANCEL                       = ConvertUnitEvent(73)
     constant unitevent EVENT_UNIT_RESEARCH_FINISH                       = ConvertUnitEvent(74)
-                                                                        
+
     constant unitevent EVENT_UNIT_ISSUED_ORDER                          = ConvertUnitEvent(75)
     constant unitevent EVENT_UNIT_ISSUED_POINT_ORDER                    = ConvertUnitEvent(76)
     constant unitevent EVENT_UNIT_ISSUED_TARGET_ORDER                   = ConvertUnitEvent(77)
-                                                                       
+
     constant unitevent EVENT_UNIT_HERO_LEVEL                            = ConvertUnitEvent(78)
     constant unitevent EVENT_UNIT_HERO_SKILL                            = ConvertUnitEvent(79)
-                                                                        
+
     constant unitevent EVENT_UNIT_HERO_REVIVABLE                        = ConvertUnitEvent(80)
     constant unitevent EVENT_UNIT_HERO_REVIVE_START                     = ConvertUnitEvent(81)
     constant unitevent EVENT_UNIT_HERO_REVIVE_CANCEL                    = ConvertUnitEvent(82)
     constant unitevent EVENT_UNIT_HERO_REVIVE_FINISH                    = ConvertUnitEvent(83)
-                                                                        
+
     constant unitevent EVENT_UNIT_SUMMON                                = ConvertUnitEvent(84)
-                                                                        
+
     constant unitevent EVENT_UNIT_DROP_ITEM                             = ConvertUnitEvent(85)
     constant unitevent EVENT_UNIT_PICKUP_ITEM                           = ConvertUnitEvent(86)
     constant unitevent EVENT_UNIT_USE_ITEM                              = ConvertUnitEvent(87)
@@ -613,8 +613,8 @@ globals
     //===================================================
 
     //===================================================
-    // For use with TriggerRegisterGameEvent    
-    //===================================================    
+    // For use with TriggerRegisterGameEvent
+    //===================================================
 
     constant gameevent          EVENT_GAME_LOADED                       = ConvertGameEvent(256)
     constant gameevent          EVENT_GAME_TOURNAMENT_FINISH_SOON       = ConvertGameEvent(257)
@@ -663,7 +663,7 @@ globals
     constant unitevent          EVENT_UNIT_PAWN_ITEM                    = ConvertUnitEvent(294)
 
     //===================================================
-    // Limit Event API constants    
+    // Limit Event API constants
     // variable, player state, game state, and unit state events
     // ( do NOT change the order of these... )
     //===================================================
@@ -701,9 +701,9 @@ globals
     constant unittype UNIT_TYPE_MECHANICAL                  = ConvertUnitType(15)
     constant unittype UNIT_TYPE_PEON                        = ConvertUnitType(16)
     constant unittype UNIT_TYPE_SAPPER                      = ConvertUnitType(17)
-    constant unittype UNIT_TYPE_TOWNHALL                    = ConvertUnitType(18)    
+    constant unittype UNIT_TYPE_TOWNHALL                    = ConvertUnitType(18)
     constant unittype UNIT_TYPE_ANCIENT                     = ConvertUnitType(19)
-    
+
     constant unittype UNIT_TYPE_TAUREN                      = ConvertUnitType(20)
     constant unittype UNIT_TYPE_POISONED                    = ConvertUnitType(21)
     constant unittype UNIT_TYPE_POLYMORPHED                 = ConvertUnitType(22)
@@ -748,7 +748,7 @@ globals
     constant blendmode   BLEND_MODE_ADDITIVE                = ConvertBlendMode(3)
     constant blendmode   BLEND_MODE_MODULATE                = ConvertBlendMode(4)
     constant blendmode   BLEND_MODE_MODULATE_2X             = ConvertBlendMode(5)
-    
+
     constant raritycontrol  RARITY_FREQUENT                 = ConvertRarityControl(0)
     constant raritycontrol  RARITY_RARE                     = ConvertRarityControl(1)
 
@@ -885,7 +885,7 @@ native SetPlayerStartLocation   takes player whichPlayer, integer startLocIndex 
 // which removes it from consideration for subsequently placed players
 // ( i.e. you can use this to put people in a fixed loc and then
 //   use random placement for any unplaced players etc )
-native ForcePlayerStartLocation takes player whichPlayer, integer startLocIndex returns nothing 
+native ForcePlayerStartLocation takes player whichPlayer, integer startLocIndex returns nothing
 native SetPlayerColor           takes player whichPlayer, playercolor color returns nothing
 native SetPlayerAlliance        takes player sourcePlayer, player otherPlayer, alliancetype whichAllianceSetting, boolean value returns nothing
 native SetPlayerTaxRate         takes player sourcePlayer, player otherPlayer, playerstate whichResource, integer rate returns nothing
@@ -1082,7 +1082,7 @@ native TriggerRegisterDialogButtonEvent takes trigger whichTrigger, button which
 constant native GetEventGameState takes nothing returns gamestate
 
 native TriggerRegisterGameEvent takes trigger whichTrigger, gameevent whichGameEvent returns event
-  
+
 // EVENT_GAME_VICTORY
 constant native GetWinningPlayer takes nothing returns player
 
@@ -1295,7 +1295,7 @@ constant native GetEventDamageSource takes nothing returns unit
 // EVENT_UNIT_DECAY
 // Use the GetDyingUnit and GetDecayingUnit funcs above
 
-// EVENT_UNIT_DETECTED 
+// EVENT_UNIT_DETECTED
 constant native GetEventDetectingPlayer takes nothing returns player
 
 native TriggerRegisterFilterUnitEvent takes trigger whichTrigger, unit whichUnit, unitevent whichEvent, boolexpr filter returns event
@@ -2039,7 +2039,7 @@ native QuestSetCompleted    takes quest whichQuest, boolean completed  returns n
 native QuestSetDiscovered   takes quest whichQuest, boolean discovered returns nothing
 native QuestSetFailed       takes quest whichQuest, boolean failed     returns nothing
 native QuestSetEnabled      takes quest whichQuest, boolean enabled    returns nothing
-    
+
 native IsQuestRequired     takes quest whichQuest returns boolean
 native IsQuestCompleted    takes quest whichQuest returns boolean
 native IsQuestDiscovered   takes quest whichQuest returns boolean
@@ -2245,7 +2245,7 @@ native SetSoundChannel              takes sound soundHandle, integer channel ret
 native SetSoundVolume               takes sound soundHandle, integer volume returns nothing
 native SetSoundPitch                takes sound soundHandle, real pitch returns nothing
 
-// the following method must be called immediately after calling "StartSound" 
+// the following method must be called immediately after calling "StartSound"
 native SetSoundPlayPosition         takes sound soundHandle, integer millisecs returns nothing
 
 // these calls are only valid if the sound was created with 3d enabled
