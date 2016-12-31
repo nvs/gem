@@ -38,7 +38,7 @@ return {
 		'unit.disarm',
 		'unit.stun',
 
-		'gem-3_1-globals',
+		'gem-3_1.globals',
 
 		'gem.spawn',
 
