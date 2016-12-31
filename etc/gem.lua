@@ -2,7 +2,7 @@ return {
 	name = 'gem',
 
 	map_directory = 'share/base',
-	patch_directory = 'lib/patch/1.27a',
+	patch_directory = 'lib/patch/1.27b',
 	output_directory = 'tmp',
 
 	scripts_directory = 'src',
