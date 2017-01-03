@@ -3,6 +3,12 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
+## 1.4 - Unreleased
+
+### Fixed
+- Upon reaching the maximum number of lives, gold will now be refunded instead
+  of being wasted.
+
 ## 1.3.1 - 2016-11-12
 
 ### Fixed
