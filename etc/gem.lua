@@ -112,7 +112,8 @@ return {
 		'unit-disarm',
 		'unit-stun',
 		'kill-bonus-remove-brilliance-aura',
-		'kill-bonus-remove-spell-immunity'
+		'kill-bonus-remove-spell-immunity',
+		'gold-mine-buttons'
 	},
 
 	imports_directory = 'share/imports',

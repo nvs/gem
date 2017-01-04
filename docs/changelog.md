@@ -5,9 +5,15 @@ full list of changes to the project, please consult the commit log.
 
 ## 1.4 - Unreleased
 
+### Changed
+- The second row on the Gold Mine now includes both permanent luck changing
+  buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').
+
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead
   of being wasted.
+- Gold Mine buttons will no longer shift upon activation. This should prevent
+  accidental button pressing (e.g. buying lives).
 
 ## 1.3.1 - 2016-11-12
 
