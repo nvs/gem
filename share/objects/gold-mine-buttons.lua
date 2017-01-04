@@ -40,18 +40,25 @@ setobjecttype ('units')
 -- Shift the following buttons left one. Or, put another way, simply have
 -- them begin displaying from the left edge.
 local buttons = {
-	'h01W', -- Buy Life
-	'h03Q', -- Extra Chance
-	'h042', -- Extra Chance Slate
+	{ id = 'h01W' }, -- Buy Life
+	{ id = 'h03Q' }, -- Extra Chance
+	{ -- Extra Chance Slate
+		id = 'h042',
+		icon = 'ReplaceableTextures\\CommandButtons\\BTNReplenishMana.blp'
+	}
 }
 
 for index, button in ipairs (buttons) do
-	if objectexists (button) then
-		modifyobject (button)
+	if objectexists (button.id) then
+		modifyobject (button.id)
 
-		if currentobject () == button then
+		if currentobject () == button.id then
 			-- Art:
 			makechange (current, 'ubpx', index - 1) -- Button Position (X)
+
+			if button.icon then
+				makechange (current, 'uico', button.icon) -- Icon - Normal
+			end
 		end
 	end
 end
