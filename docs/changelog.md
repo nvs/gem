@@ -8,6 +8,7 @@ full list of changes to the project, please consult the commit log.
 ### Changed
 - The second row on the Gold Mine now includes both permanent luck changing
   buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').
+- Added hotkey support (`T`) for slate teleporation.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead

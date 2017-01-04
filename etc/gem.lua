@@ -113,7 +113,8 @@ return {
 		'unit-stun',
 		'kill-bonus-remove-brilliance-aura',
 		'kill-bonus-remove-spell-immunity',
-		'gold-mine-buttons'
+		'gold-mine-buttons',
+		'slate-teleport'
 	},
 
 	imports_directory = 'share/imports',

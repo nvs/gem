@@ -6,7 +6,8 @@ function Quests___Version_1_4 takes nothing returns nothing
 	set text = ""
 
 	set text = text + Color__Gold ("Changed:") + "\n"
-	set text = text + "- The second row on the Gold Mine now includes both permanent luck changing buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').\n\n"
+	set text = text + "- The second row on the Gold Mine now includes both permanent luck changing buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').\n"
+	set text = text + "- Added hotkey support (`T`) for slate teleporation.\n\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Upon reaching the maximum number of lives, gold will now be refunded instead of being wasted.\n"
