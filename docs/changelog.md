@@ -14,6 +14,7 @@ full list of changes to the project, please consult the commit log.
   of being wasted.
 - Gold Mine buttons will no longer shift upon activation. This should prevent
   accidental button pressing (e.g. buying lives).
+- Maximized upgrade buttons will no longer look disabled and grey.
 
 ## 1.3.1 - 2016-11-12
 

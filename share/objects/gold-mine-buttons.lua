@@ -45,16 +45,51 @@ local buttons = {
 	'h042', -- Extra Chance Slate
 }
 
-local index = 0
-
-for _, button in ipairs (buttons) do
+for index, button in ipairs (buttons) do
 	if objectexists (button) then
 		modifyobject (button)
 
 		if currentobject () == button then
 			-- Art:
-			makechange (current, 'ubpx', index) -- Button Position (X)
-			index = index + 1
+			makechange (current, 'ubpx', index - 1) -- Button Position (X)
+		end
+	end
+end
+
+setobjecttype ('abilities')
+
+-- Once the upgrades are maximized, special versions of the buttons are used.
+-- However, due to both being based upon Moon Glaive, graphical issues are
+-- encountered. Basing them upon Evasion seems to work better.
+local buttons = {
+	-- Gem Quality
+	{
+		id = 'A00E',
+		icon = 'ReplaceableTextures\\PassiveButtons\\PASOrbOfDarkness.blp'
+	},
+
+	-- Extra Chance
+	{
+		id = 'A06X',
+		icon = 'ReplaceableTextures\\PassiveButtons\\PASStaffOfNegation.blp'
+	}
+}
+
+-- Deleting an object does not seem possible. However, it appears an object
+-- can be overwritten, preserving existing information. We switch to using
+-- Evasion as a base.
+if objectexists ('ACev') then
+	for index, button in ipairs (buttons) do
+		createobject ('ACev', button.id)
+
+		if currentobject () == button.id then
+			-- Art:
+			makechange (current, 'abpx', index - 1) -- Button Position (X)
+			makechange (current, 'abpy', 1) -- Button Position (Y)
+			makechange (current, 'aart', button.icon) -- Icon - Normal
+
+			-- Data/Stats:
+			makechange (current, 'Eev1', 1, 0) -- Chance to Evade
 		end
 	end
 end

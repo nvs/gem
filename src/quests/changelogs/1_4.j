@@ -10,7 +10,8 @@ function Quests___Version_1_4 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Upon reaching the maximum number of lives, gold will now be refunded instead of being wasted.\n"
-	set text = text + "- Gold Mine buttons will no longer shift upon activation. This should prevent accidental button pressing (e.g. buying lives)."
+	set text = text + "- Gold Mine buttons will no longer shift upon activation. This should prevent accidental button pressing (e.g. buying lives).\n"
+	set text = text + "- Maximized upgrade buttons will no longer look disabled and grey."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
