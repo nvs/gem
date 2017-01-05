@@ -98,7 +98,8 @@ return {
 		},
 
 		interface = {
-			'gem'
+			'gem',
+			'upkeep'
 		}
 	},
 
