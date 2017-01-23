@@ -53,6 +53,7 @@ return {
 
 			'gem-3.1.j',
 			'gem-3.1/buying-lives.j',
+			'gem-3.1/extra-chance-window.j',
 
 			'settings/difficulty.j',
 			'settings/common.j',
