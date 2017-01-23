@@ -62,9 +62,9 @@ function String__Remove_Color_Tags takes string text returns string
 				set index = index + 8
 				set current = SubString (text, index, index + 1)
 
-			// This is a closing color tag: `|r`. Ignore it.
+			// This is a closing color tag: `|r`.
 			elseif current == "r" or current == "R" then
-				set current = SubString (text, index, index + 1)
+				// Do nothing.
 
 			// Not a color tag. Include these characters.
 			else
