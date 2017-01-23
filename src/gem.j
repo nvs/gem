@@ -7,8 +7,6 @@ globals
 	constant string Gem__NAME_FULL = "Gem Tower Defense Plus"
 	constant string Gem__VERSION = "1.3.1"
 
-	constant string Gem__NAME_VERSION = Gem__NAME + " " + Gem__VERSION
-
 	constant string Gem__MAINTAINER = "NVS"
 
 	constant string Gem__WEBSITE_FORUM = "https://entgaming.net"
