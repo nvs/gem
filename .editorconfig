@@ -19,3 +19,6 @@ max_line_length = off
 [*.wts]
 end_of_line = crlf
 max_line_length = off
+
+[COMMIT_EDITMSG]
+max_line_length = 72
