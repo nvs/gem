@@ -1,159 +1,75 @@
 #!/usr/bin/env lua
 
-if not arg [1]
-	or arg [1] == 'help'
-	or (arg [1] ~= 'check'
-		and arg [1] ~= 'build'
-		and arg [1] ~= 'prepare'
-		and arg [1] ~= 'constants'
-		and arg [1] ~= 'objects'
-		and arg [1] ~= 'imports'
-		and arg [1] ~= 'optimize')
+local commands = {
+	check = true,
+	build = true,
+	prepare = true,
+	constants = true,
+	objects = true,
+	imports = true,
+	optimize = true
+}
+
+if not commands [arg [1]]
+	or arg [1] == '--help'
 	or not arg [2]
 then
-	print ([[
+	io.stdout:write ([[
 map - A Warcraft 3 map management tool
 
 Usage:
-  map <command> [configuration]
+  map [options]
+  map <command> <configuration>
 
-  All commands except `help` expect a configuration file to be specified. See
-  below (after the command listing) for the configuration file specification.
+Options:
+  --help        Displays this help message.
 
 Commands:
-  help          Displays this help message
-  check         Checks the scripts that form the project to ensure that they
-                are valid JASS.
-  build         Takes the scripts that form the project and builds a single
-                script, which is then checked afterwards. The process involves
-                gathering all global variable declarations into a single
-                block, then putting all other content after. The order
-                specified in the configuration file is maintained.
-  prepare       Uses the base map file to create a new working map file within
-                the output directory. This command will destructively
-                overwrite an existing working map file.
-  constants     Process the project's constants files, loading the data into
-                the working map file. Take care to keep gameplay constants and
-                interface settings in their respective directories, or this
-                command will fail.
-  objects       Processes the project's object files, loading the data into
-                the working map file.
-  imports       Takes all the files within the specified imports directory,
-                and places them into the map.
-  optimize      Optimizes the map, decreasing file size, improving run-time
-                performance, and doing other useful things. Creates both an
-                optimized map and script. The resulting files will reside in
-                the output directory, with '-optimized' in their file names.
-
-Configuration:
-  A configuration file is nothing more than a Lua file returning a table with
-  the following format. Note that relative paths are specified with respect to
-  the project's root directory.
-
-  When a list is expected, the formatting for the values use a similar style
-  to that of the `require` function in Lua (see `package.searchpath` in the
-  Lua Reference Manual). Specifically, that directories are represented by a
-  period, and that there is no need to specify the file extension. For
-  example, 'this.file.path' refers to './this/file/path.j' (when referring to
-  a JASS file). Please recognize that the order of a list is always respected.
-
-  name                 The name of the project, and the name used when
-                       refrencing and working with numerous files throughout
-                       the project.
-  map_directory        The directory containing the base map file. The value
-                       specified by `name` ('name.w3x') is the file used.
-  patch_directory      The directory that contains the script files (common.j
-                       and blizzard.j) for the specific patch being built
-                       against.
-  output_directory     The directory where the project work files will be
-                       placed. The value specified by `name` will be used,
-                       giving, for example, 'name.j' and 'name.w3x', depending
-                       on the commands used.
-  scripts_directory    The directory that points to the scripts location.
-  scripts              A list of JASS files ('*.j') that together represent
-                       the entire project.
-  objects_directory    The directory that points to the objects location.
-  objects              A list of Lua files containing object data to be loaded
-                       into the working map file.
-  constants_directory  The path that points to the constants location. Note
-                       that directory should contain two more directions:
-                       'gameplay' and 'interface'.
-  constants            A table containing two additional tables: 'gameplay'
-                       and 'interface.
-  constants.gameplay   A list of Lua files containing gameplay constant values
-                       that are to be loaded into the working map file.
-  constants.interface  A list of Lua files containing interface setting values
-                       that are to be loaded into the working map file.
-  prefix               A prefix to put before all commands. Note that this is
-                       primarily intended to make use of Wine, but other uses
-                       may exist. Set this to an emptry string if not needed.
-  pjass                The command to invoke pjass.
-  pjass_options        Options to pass to pjass.
-  grimex               The directory containing the entire set of GrimEx
-                       tools. These tools should not be renamed. Note that if
-                       another tool must be used to invoke these tools (e.g.
-                       Wine), then this should preceed the directory.
-  optimizer            The command to invoke Vexorian's Optimizer.
-  optimizer_tweaks     The path to the Optimizer tweaks file.]])
+  check         Determines whether all scripts are valid JASS syntax.
+  build         Combines all scripts into a single file, placing the result
+                in the output directory. The file syntax is then checked.
+  prepare       Prepares a new working map in the output directory,
+                destructively overwriting an existing working map.
+  constants     Loads all constant data into the working map.
+  objects       Loads all object data into the working map.
+  imports       Loads all imports into the working map, including the script
+                created with the 'build' command.
+  optimize      Optimizes the working map and places the resulting files
+                into the output directory.
+]])
 
 	os.exit (0)
 end
 
 local Posix = {
 	libgen = require ('posix.libgen'),
-	stdlib = require ('posix.stdlib'),
 	unistd = require ('posix.unistd')
 }
 
--- Attempt to load the [Lua function `package.searchpath ()`] [1]. This
--- function is available in Lua 5.2, Lua 5.3, and LuaJIT. If not found,
--- a compatible version is used.
---
--- [1]: https://www.lua.org/manual/5.3/manual.html#pdf-package.searchpath
-local search_path = package.searchpath
+-- Change into the project's root directory. The assumption is that the the
+-- specified configuration file resides in that location.
+do
+	local directory = Posix.libgen.dirname (arg [2])
+	local status, message = Posix.unistd.chdir (directory)
 
-if not search_path then
-
-	-- All magic characters are contained within the punctuation character
-	-- class, which needs to be escaped.
-	local function escape (input)
-		return input and tostring (input):gsub ('(%p)', '%%%1')
+	if not status then
+		io.stderr:write (message)
+		os.exit (1)
 	end
+end
 
-	-- Returns whether or not the specified path object is readable.
-	local function is_readable (path)
-		return Posix.unistd.access (path, 'r') == 0
-	end
+-- Returns a `string` where all provided `string` arguments have been joined
+-- together. Any other arguments are ignored.
+local function join (...)
+	local elements = { ... }
 
-	local module_separator = escape ('.')
-
-	local _, _, directory_separator, template_separator,
-		template_substitute = package.config:find ('^(.-)\n(.-)\n(.-)\n.*$')
-
-	directory_separator = escape (directory_separator)
-	template_substitute = escape (template_substitute)
-	template_separator = '[^' .. template_separator .. ']+'
-
-	-- Searches for the provided name in the given path templates.
-	function search_path (name, templates, separator, replacement)
-		separator = escape (separator) or module_separator
-		replacement = escape (replacement) or directory_separator
-		name = escape (name:gsub (separator, replacement))
-
-		local messages = {}
-
-		for template in templates:gmatch (template_separator) do
-			local path = template:gsub (template_substitute, name)
-
-			if is_readable (path) then
-				return path
-			end
-
-			messages [#messages + 1] = '\n\tno file \'' .. path .. '\''
+	for index, element in ipairs (elements) do
+		if type (element) ~= 'string' then
+			elements [index] = ''
 		end
-
-		return nil, table.concat (messages)
 	end
+
+	return table.concat (elements, '/')
 end
 
 local configuration
@@ -161,310 +77,572 @@ do
 	local chunk, message = loadfile (arg [2])
 
 	if not chunk then
-		print (message)
+		io.stderr:write (message, '\n')
 		os.exit (1)
 	end
 
 	configuration = chunk ()
-end
 
--- We change into the root directory of the project. This simplifies
--- organization, and outputs nicer paths in certain commands.
-do
-	local directory = Posix.libgen.dirname (Posix.libgen.dirname (arg [2]))
-	local result, message = Posix.unistd.chdir (directory)
-
-	if result ~= 0 then
-		print (message)
-		os.exit (1)
+	-- If prefix is an empty string, we set it to `nil`. This is necssary to
+	-- ensure the first command line argument is not an empty string.
+	if configuration.prefix == '' then
+		configuration.prefix = nil
 	end
+
+	-- Setup the output files.
+	configuration.output.map = join (
+		configuration.output.directory, configuration.name .. '.w3x')
+	configuration.output.script = join (
+		configuration.output.directory, configuration.name .. '.j')
+	configuration.output.globals = join (
+		configuration.output.directory, 'globals.lua')
+
+	-- Adds patch files to accompany the provided directory, making a 'pair'.
+	configuration.patch.files = {
+		'common.j',
+		'blizzard.j'
+	}
 end
 
--- Returns a `boolean` indicating whether or not the mentioned files within
--- the `check (table)` exist. The path to each file is added to the `files
--- (table)`. An error is displayed for each script that does not exist.
-local function do_files_exist (path, check, files)
-	local is_missing_file = false
+-- Returns a `string` where contents matching the specified pattern of
+-- `characters (string)` have been stripped from the end of `text (string)`.
+function strip_trailing (text, characters)
+	local pattern = '^[' .. characters .. ']'
 
-	for _, file in ipairs (check) do
-		local result, message = search_path (file, path)
+	for index = #text, 1, -1 do
+		if not text:find (pattern, index) then
+			return text:sub (1, index)
+		end
+	end
 
-		if result then
-			files [#files + 1] = string.format ('%q', result)
+	return ''
+end
+
+local is_windows = package.config:sub (1, 1) == '\\'
+
+-- Returns a `string` where the provided `argument (string)` has been
+-- escaped for use when passed to `os.execute ()` or `execute ()`.
+local function escape_argument (argument)
+	if is_windows then
+		if argument == '' then
+			argument = '""'
+		elseif argument:find ('[ \t\n\v"]') then
+			argument = '"' .. argument:gsub ('(\\*)"', '%1%1\\"') ..
+				(argument:match ('\\+$') or '') .. '"'
+		end
+
+		argument = argument:gsub ('[()%%!^"<>&|]', '^%0')
+	else
+		if argument == '' then
+			argument = '\'\''
 		else
-			if not is_missing_file then
-				is_missing_file = true
-				io.write ('Error:')
+			argument = '\'' .. argument:gsub ('\'', '\'\\\'\'') .. '\''
+		end
+	end
+
+	return argument
+end
+
+-- Takes the provided arguments (which can be any Lua value) and processes
+-- them in the following fashion:
+--
+-- - Any `string` arguments are escaped.
+-- - A `table` argument is examined and has its contents processed. Nesting of
+-- `table` elements is allowed.
+-- - Values which are not `string` or `table` are ignored.
+--
+-- Returns a `string` where all matching arguments have been joined together
+-- with a space as a delimiter. This value is safe to pass to `os.execute ()`
+-- or `execute ()`.
+local function escape_arguments (...)
+	local arguments
+
+	if select ('#', ...) == 1
+		and type (...) == 'table'
+	then
+		arguments = ...
+	else
+		arguments = { ... }
+	end
+
+	local output = {}
+
+	for _, argument in ipairs (arguments) do
+		if type (argument) == 'table' then
+			table.insert (output, escape_arguments (argument))
+		elseif type (argument) == 'string' then
+			table.insert (output, escape_argument (argument))
+		end
+	end
+
+	return table.concat (output, ' ')
+end
+
+-- Takes the provided `command (string)` and executes it in the same fashion
+-- as `os.execute ()`. Optionally, takes `stdout (string)` and `stderr
+-- (string)` (in that order) to allow redirection of those file descriptors to
+-- the provided locations.
+--
+-- Also, can take the above inputs as a single `table`, using named parameters
+-- instead.
+--
+-- Returns the same results that `os.execute ()` would give in Lua 5.2 or
+-- higher, regardless of the version used.
+local function execute (...)
+	local command, stdout, stderr
+
+	if type (...) == 'table' then
+		local arguments = ...
+
+		command = arguments.command
+		stdout = arguments.stdout
+		stderr = arguments.stderr
+	else
+		command, stdout, stderr = ...
+	end
+
+	if stdout then
+		command = command .. ' >' .. stdout
+	end
+
+	if stderr then
+		command = command .. ' 2>' .. stderr
+	end
+
+	-- We determine the version of Lua by examining the results of the
+	-- `os.execute ()` function.
+	local status_or_code, exit_or_signal, code = os.execute (command)
+
+	-- Lua 5.1 or LuaJIT without 5.2 compatibility:
+	if type (status_or_code) == 'number' then
+		if status_or_code == 0 then
+			return true, 'exit', status_or_code
+		else
+			if not is_windows then
+				-- This apparently is only correct on Linux/Posix...?
+				code = code / 256
 			end
 
-			io.write (message)
+			return nil, 'exit', status_or_code / 256
 		end
-	end
 
-	if is_missing_file then
-		io.write ('\n')
-		return false
+	-- Lua 5.2, Lua 5.3, or LuaJIT with 5.2 compatibility:
 	else
-		return true
+		return status_or_code, exit_or_signal, code
 	end
 end
 
--- Loads the 'common.j' and 'blizzard.j' into the provided `files (array)`.
--- Will exit if either is missing.
-local function load_patch_scripts (files)
-	local path = string.format ('%s/?.j', configuration.patch_directory)
-	local scripts = {
-		'common',
-		'blizzard'
+-- Processes the specified JASS `file (string)`, loading the contents into the
+-- provided `globals (table)` and `functions (table)`.
+local function parse_jass (file, globals, functions)
+	local in_globals
+
+	for line in io.lines (file) do
+		if line:match ('^%s*globals.*$') then
+			in_globals = true
+		elseif line:match ('^%s*endglobals.*$') then
+			in_globals = false
+		elseif in_globals then
+			if globals then
+				table.insert (globals, line)
+			end
+		else
+			if functions then
+				table.insert (functions, line)
+			end
+		end
+	end
+end
+
+-- Returns a `string` after processing `text (string)` that comes from a JASS
+-- global declaration line. Removes any comment that is present, and
+-- invalidates the text if it contains more than one JASS string.
+local function validate_and_strip_comment (text)
+	local current
+	local previous
+
+	local count = 0
+
+	for index = 1, #text do
+		previous = current
+		current = text:sub (index, index)
+
+		-- Unescaped double quotes.
+		if current == '"' and previous ~= '\\' then
+			count = count + 1
+
+			-- The presence of a second string on the line, albeit valid JASS,
+			-- strictly renders the global invalid for our purposes.
+			if count > 2 then
+				return ''
+			end
+
+		-- Comment does not start inside a string. Strip it and finish.
+		elseif current == '/' and previous == '/' and count ~= 1 then
+			return text:sub (1, index - 2)
+		end
+	end
+
+	return text
+end
+
+local global_patterns = {
+	boolean = {
+		'^(true)$',
+		'^(false)$'
+	},
+
+	string = {
+		'^"(.*)"$'
+	},
+
+	real = {
+		'^(%.%d+)$',
+		'^(%d+%.%d*)$'
+	},
+
+	integer = {
+		{ 'literal', '^(\'.\')$' },
+		{ 'code', '^(\'....\')$' },
+		{ 'hexadecimal', '^(%$%x+)$' },
+		{ 'hexadecimal', '^(0x%x+)$' },
+		{ 'octal', '^(0[0-7]+)$' },
+		{ 'decimal', '^(%d+)$' }
 	}
+}
 
-	if not do_files_exist (path, scripts, files) then
-		os.exit (1)
-	end
-end
+-- Take the specified `global (string)` line and determines if it fits the
+-- needed criteria to be loaded into the globals file. If so, returns the key,
+-- type, and value. Otherwise, returns `nil`.
+local function process_global (global)
+	local jass_type, key, value = global:match (
+		'^%s*constant%s+(%w+)%s+([%w_]+)%s*=%s*(.*)$')
 
--- GrimEx will attempt to place logs within a 'logs' directory. However, this
--- function moves the latest GrimEx log file to the output directory, and then
--- proceeds to clean things up. The log file is renamed to include the
--- provided `name (string)`.
-local function grimex_log (name)
-	local log = string.format ('%s/grimex-%s.txt',
-		configuration.output_directory, name)
+	for _, pattern in ipairs (global_patterns [jass_type] or {}) do
+		local jass_type = jass_type
 
-	os.remove (log)
-	os.rename ('logs/grimex.txt', log)
-	os.remove ('logs')
-end
+		value = validate_and_strip_comment (value)
+		value = strip_trailing (value, '%s')
 
--- Runs a GrimEx `command (string)`, using the provided `input`. This can
--- either be a `string`, typically representing a single directory. Or, it can
--- be a `table`, containing a list of paths to files. Returns the result
-local function grimex_command (command, input, name, text)
-	if type (input) == 'string' then
-		input = { input }
-	end
-
-	local command = string.format (
-		'%s %s/%s %s/%s.w3x lookuppaths %s 2>/dev/null',
-		configuration.prefix, configuration.grimex, command,
-		configuration.output_directory, configuration.name,
-		table.concat (input, ' '))
-	local process = io.popen (command, 'r')
-
-	if not process then
-		return nil
-	end
-
-	local result = process:read ()
-
-	if not process:close () then
-		return nil
-	end
-
-	return result
-end
-
-local function grimex_process (result, name, text)
-	grimex_log (name)
-
-	io.write (text)
-
-	if result then
-		print (': OK')
-	else
-		print (': Failure')
-	end
-end
-
-local function load_scripts (files)
-	local path = configuration.scripts_directory .. '/?.j'
-
-	if not do_files_exist (path, configuration.scripts, files) then
-		os.exit (1)
-	end
-end
-
-local function check_scripts (files)
-	os.execute (string.format ('%s %s %s %s', configuration.prefix or '',
-		configuration.pjass, configuration.pjass_options,
-		table.concat (files, ' ')))
-end
-
-local function initialize_temporary_map ()
-	local source_path = string.format ('%s/%s.w3x',
-		configuration.map_directory, configuration.name)
-	local destination_path = string.format ('%s/%s.w3x',
-		configuration.output_directory, configuration.name)
-
-	local source = io.open (source_path, 'rb')
-
-	if not source then
-		return nil
-	end
-
-	local destination = io.open (destination_path, 'w+b')
-
-	if not destination then
-		return nil
-	end
-
-	while true do
-		local bytes = source:read (512)
-
-		if not bytes then
-			break
+		if type (pattern) == 'table' then
+			jass_type = jass_type .. '.' .. pattern [1]
+			pattern = pattern [2]
 		end
 
-		destination:write (bytes)
+		local value = value:match (pattern)
+
+		if value then
+			return key, jass_type, value
+		end
+	end
+end
+
+-- Processes the provided `files (table)` and loads all globals that meet the
+-- needed criteria into the globals file.
+local function load_globals (files)
+	local globals_file = io.open (configuration.output.globals, 'wb')
+
+	globals_file:write ('globals = {', '\n')
+
+	for _, file in ipairs (files) do
+		local globals = {}
+
+		parse_jass (file, globals)
+
+		for _, global in ipairs (globals) do
+			local key, type, value = process_global (global)
+
+			if key then
+				globals_file:write (string.format ([=[
+	[%q] = {
+		type = %q,
+		value = %q
+	},
+]=], key, type, value))
+			end
+		end
 	end
 
-	if not source:close ()
-		or not destination:close ()
-	then
-		os.remove (destination_path)
-		return nil
+	globals_file:write ('}', '\n')
+	globals_file:close ()
+end
+
+-- Returns a `boolean` indicating whether or not the specified `path (string)`
+-- is readable.
+function is_readable (path)
+	local file = io.open (path, 'rb')
+
+	if not file then
+		return false
 	end
+
+	file:close ()
 
 	return true
 end
 
-if arg [1] == 'check' then
-	local files = {}
+-- Returns a `boolean` indicating whether or not all files in the
+-- `configuration (table)` pair were successfully loaded into the provided
+-- `files (table)`. A 'pair' is a `table` that contains a `directory (string)`
+-- and a list of `files (table)`.
+local function load_files (configuration, files)
+	local is_missing = false
 
-	load_patch_scripts (files)
-	load_scripts (files)
-	check_scripts (files)
+	for _, file in ipairs (configuration.files) do
+		file = join (configuration.directory, file)
 
-elseif arg [1] == 'build' then
-	local files = {}
-	local scripts = {}
-	local path = configuration.scripts_directory .. '/?.j'
-
-	load_patch_scripts (files)
-	load_scripts (scripts)
-
-	local globals = { 'globals\n' }
-	local content = {}
-
-	for _, script in ipairs (scripts) do
-		local file = io.open (script:gsub ('"', ''), 'r')
-		local in_globals = false
-
-		for line in file:lines () do
-			if line:match ('^%s*globals.*$') then
-				in_globals = true
-			elseif line:match ('^%s*endglobals.*$') then
-				in_globals = false
-			else
-				line = line .. '\n'
-
-				if in_globals then
-					globals [#globals + 1] = line
-				else
-					content [#content + 1] = line
-				end
+		if is_readable (file) then
+			files [#files + 1] = file
+		else
+			if not is_missing then
+				is_missing = true
+				io.stderr:write ('Error:')
 			end
-		end
 
-		file:close ()
+			io.stderr:write ('\n\tno file \'', file, '\'')
+		end
 	end
 
-	globals [#globals + 1] = 'endglobals\n'
-
-	local path = string.format ('%s/%s.j',
-		configuration.output_directory, configuration.name)
-	local file = io.open (path, 'w+')
-
-	if file then
-		for _, line in ipairs (globals) do
-			file:write (line)
-		end
-
-		file:write ('\n')
-
-		for _, line in ipairs (content) do
-			file:write (line)
-		end
-
-		file:close ()
-	end
-
-	files [#files + 1] = path
-
-	check_scripts (files)
-
-elseif arg[1] == 'prepare' then
-	io.write ('Prepare: ')
-
-	if initialize_temporary_map () then
-		print ('OK')
-	else
-		print ('Failure')
-	end
-
-elseif arg [1] == 'constants' then
-	local function grimex_constants (name, text)
-		local files = {}
-		local path = string.format ('%s/%s/?.lua',
-			configuration.constants_directory, name)
-
-		if not do_files_exist (path, configuration.constants [name], files) then
-			os.exit (1)
-		end
-
-		local result = grimex_command ('ConstantMerger.exe', files)
-		grimex_process (result, 'constants-' .. name, text)
-	end
-
-	grimex_constants ('gameplay', 'Gameplay Constants')
-	grimex_constants ('interface', 'Interface Settings')
-
-elseif arg [1] == 'objects' then
-	local files = {}
-	local path = string.format ('%s/?.lua',
-		configuration.objects_directory, name)
-
-	if not do_files_exist (path, configuration.objects, files) then
+	if is_missing then
+		io.stderr:write ('\n')
 		os.exit (1)
 	end
 
-	local result = grimex_command ('ObjectMerger.exe', files)
-	grimex_process (result, arg [1], 'Objects')
+	return not is_missing
+end
 
-elseif arg [1] == 'imports' then
-	-- FileImporter requires an absolute path to work properly.
-	local result = grimex_command ('FileImporter.exe',
-		Posix.stdlib.realpath (configuration.imports_directory))
-	grimex_process (result, arg [1], 'Imports')
+-- Returns a `boolean` indicating whether or not the provided `files (table)`
+-- successfully validate with PJass. Also returns the output `string` of the
+-- command.
+local function check_scripts (files)
+	local output_log_path = join (
+		configuration.output.directory, 'pjass.stdout')
 
-elseif arg [1] == 'optimize' then
-	local source_path = string.format ('%s/%s.w3x',
-		configuration.output_directory, configuration.name)
-	local destination_path = string.format ('%s/%s-optimized.w3x',
-		configuration.output_directory, configuration.name)
+	-- The pjass command outputs to 'stdout' regardless of its exit status.
+	local status = execute {
+		command = escape_arguments (configuration.prefix,
+			'lib/pjass/pjass.exe', configuration.pjass.options, files),
+		stdout = escape_argument (output_log_path)
+	}
 
-	-- Optimizer will fail if the destination already exists.
-	os.remove (destination_path)
-	os.remove (destination_path .. '.j')
+	local output = ''
+	local output_log = io.open (output_log_path, 'rb')
 
-	local result = os.execute (string.format ('%s %s %s --do %s --checkall '
-		.. '--tweak %s --exit', configuration.prefix or '',
-		configuration.optimizer, source_path, destination_path,
-		configuration.optimizer_tweaks))
+	if output_log then
+		output = output_log:read ('*a')
+		output_log:close ()
 
-	io.write ('Optimizer: ')
+		os.remove (output_log_path)
+	end
 
-	if result == true
-		or result == 0
-	then
-		print ('OK')
+	return status, output
+end
+
+function commands.check (run_silently)
+	local files = {}
+
+	load_files (configuration.patch, files)
+	load_files (configuration.scripts, files)
+
+	local status, output = check_scripts (files)
+
+	-- Upon failure, write to `io.stderr` regardless of noise level, then exit.
+	if not status then
+		io.stderr:write (output)
+		os.exit (1)
+	elseif not run_silently then
+		io.stdout:write (output)
+	end
+
+	return files
+end
+
+function commands.build ()
+	local scripts = {}
+	load_files (configuration.scripts, scripts)
+
+	local globals = { 'globals' }
+	local functions = {}
+
+	for _, script in ipairs (scripts) do
+		parse_jass (script, globals, functions)
+	end
+
+	table.insert (globals, 'endglobals')
+
+	local script = io.open (configuration.output.script, 'wb')
+
+	if script then
+		for _, line in ipairs (globals) do
+			script:write (line, '\n')
+		end
+
+		for _, line in ipairs (functions) do
+			script:write (line, '\n')
+		end
+
+		script:close ()
+	end
+
+	local files = {}
+	load_files (configuration.patch, files)
+	table.insert (files, configuration.output.script)
+
+	local status, output = check_scripts (files)
+
+	if status then
+		io.stdout:write (output)
 	else
-		print ('Failure')
-
-		-- No sense keeping the result if we encountered a failure.
-		os.remove (destination_path)
-		os.remove (destination_path .. '.j')
+		io.stderr:write (output)
 	end
 end
+
+local function display_status (status, command)
+	io.stdout:write (command, ': ')
+	io.stdout:write (status and 'OK' or 'Failure', '\n')
+end
+
+function commands.prepare ()
+	local status
+	local input = io.open (configuration.input.map, 'rb')
+
+	if input then
+		local output = io.open (configuration.output.map, 'wb')
+
+		if output then
+			output:write (input:read ('*a'))
+			output:close ()
+
+			status = true
+		end
+
+		input:close ()
+	end
+
+	display_status (status, 'Prepare')
+end
+
+local function grimex_log (output_log_path)
+	local output_log = io.open (output_log_path, 'a+b')
+
+	if not output_log then
+		return nil
+	end
+
+	output_log:write ('\n')
+
+	local input_log = io.open ('logs/grimex.txt', 'rb')
+
+	if input_log then
+		output_log:write (input_log:read ('*a'))
+		input_log:close ()
+	end
+
+	output_log:close ()
+
+	os.remove ('logs/grimex.txt')
+	os.remove ('logs')
+
+	return true
+end
+
+local function merge_constants (name)
+	local files = { configuration.output.globals }
+
+	load_files (configuration.constants [name], files)
+
+	local output_log_path = join (
+		configuration.output.directory, 'grimex-constants-' .. name .. '.txt')
+
+	-- Need to capture both 'stdout' and `stderr' when using Grimex commands.
+	local status = execute {
+		command = escape_arguments (configuration.prefix,
+			'lib/grimex/ConstantMerger.exe', configuration.output.map,
+			'lookuppaths', files),
+		stdout = escape_argument (output_log_path),
+		stderr = '&1'
+	}
+
+	grimex_log (output_log_path)
+	display_status (status, name:gsub ('^%l', string.upper) .. ' Settings')
+end
+
+function commands.constants ()
+	local scripts = commands.check (true)
+	load_globals (scripts)
+
+	merge_constants ('gameplay')
+	merge_constants ('interface')
+
+	os.remove (configuration.output.globals)
+end
+
+function commands.objects ()
+	local scripts = commands.check (true)
+	load_globals (scripts)
+
+	local files = { configuration.output.globals }
+	load_files (configuration.objects, files)
+
+	local output_log_path = join (
+		configuration.output.directory, 'grimex-objects.txt')
+
+	-- Need to capture both 'stdout' and `stderr' when using Grimex commands.
+	local status = execute {
+		command = escape_arguments (configuration.prefix,
+			'lib/grimex/ObjectMerger.exe', configuration.output.map,
+			'lookuppaths', files),
+		stdout = escape_argument (output_log_path),
+		stderr = '&1'
+	}
+
+	os.remove (configuration.output.globals)
+	grimex_log (output_log_path)
+	display_status (status, 'Objects')
+end
+
+function commands.imports ()
+	local output_log_path = join (
+		configuration.output.directory, 'grimex-imports.txt')
+
+	-- Need to capture both 'stdout' and `stderr' when using Grimex commands.
+	local status = execute {
+		command = escape_arguments (configuration.prefix,
+			'lib/grimex/FileImporter.exe', configuration.output.map,
+			'lookuppaths', configuration.imports.directory),
+		stdout = escape_argument (output_log_path),
+		stderr = '&1'
+	}
+
+	grimex_log (output_log_path)
+	display_status (status, 'Imports')
+end
+
+function commands.optimize ()
+	local optimized_path = join (configuration.output.directory,
+		configuration.name .. '-optimized.w3x')
+
+	-- Optimizer will fail if the destination already exists.
+	os.remove (optimized_path)
+	os.remove (optimized_path .. '.j')
+
+	-- The optimizer never writes to either 'stdout' or 'stderr'.
+	local status = execute {
+		command = escape_arguments (configuration.prefix,
+			'lib/optimizer/VXJWTSOPT.exe', configuration.output.map,
+			'--do', optimized_path, '--checkall', '--tweak',
+			configuration.optimizer.tweaks, '--exit')
+	}
+
+	-- No sense keeping the result if we encountered a failure.
+	if not status then
+		os.remove (output_path)
+		os.remove (output_path .. '.j')
+	end
+
+	display_status (status, 'Optimizer')
+end
+
+commands [arg [1]] ()
 
 os.exit (0)
