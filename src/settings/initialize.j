@@ -1,10 +1,17 @@
 function Settings__Initialize takes nothing returns nothing
 	local integer index
+	local player the_player
 
 	set index = 0
 	loop
-		if GetPlayerSlotState (Player (index)) == PLAYER_SLOT_STATE_PLAYING then
+		set the_player = Player (index)
+
+		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
 			set udg_PlayerHERE [index + 1] = true
+
+			// Deal with broken color tags that do not close. They can infect text
+			// that makes use of `GetPlayerName ()`.
+			call SetPlayerName (the_player, GetPlayerName (the_player) + Color__Reset ())
 		endif
 
 		set index = index + 1
@@ -27,4 +34,6 @@ function Settings__Initialize takes nothing returns nothing
 		set Settings___Timer = CreateTimer ()
 		call TimerStart (Settings___Timer, 0.00, false, function Settings__Setup)
 	endif
+
+	set the_player = null
 endfunction

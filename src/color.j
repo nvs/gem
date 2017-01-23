@@ -13,3 +13,7 @@ endfunction
 function Color__Link takes string text returns string
 	return "|cff40c0ff" + text + "|r"
 endfunction
+
+function Color__Reset takes nothing returns string
+	return "|cffffffff|r"
+endfunction

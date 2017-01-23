@@ -125,4 +125,5 @@ function Character_Width__Initialize takes nothing returns nothing
 	call Character_Width___Register (")", 2.508)
 	call Character_Width___Register ("[", 2.596)
 	call Character_Width___Register ("]", 2.541)
+	call Character_Width___Register ("|", 1.056)
 endfunction
