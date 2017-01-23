@@ -5,6 +5,9 @@ full list of changes to the project, please consult the commit log.
 
 ## Unreleased
 
+### Added
+- Hotkey support has been enabled on the Extra Chance windows.
+
 ### Changed
 - The second row on the Gold Mine now includes both permanent luck changing
   buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').
