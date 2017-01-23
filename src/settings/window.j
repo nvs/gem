@@ -147,9 +147,9 @@ function Settings_Window___Menu_Initialize takes nothing returns nothing
 	set Settings_Window___Menu_Labels [2] = Color__White ("P") + Color__Gold ("ass Turn")
 	set Settings_Window___Menu_Labels [3] = Color__White ("C") + Color__Gold ("onfirm")
 
-	set Settings_Window___Menu_Hotkeys [1] = 82
-	set Settings_Window___Menu_Hotkeys [2] = 80
-	set Settings_Window___Menu_Hotkeys [3] = 67
+	set Settings_Window___Menu_Hotkeys [1] = 'R'
+	set Settings_Window___Menu_Hotkeys [2] = 'P'
+	set Settings_Window___Menu_Hotkeys [3] = 'C'
 
 	set Settings_Window___Menu_Trigger = CreateTrigger ()
 	set Settings_Window___Menu_Condition = Condition (function Settings_Window___Menu_Event)
