@@ -66,7 +66,7 @@ return {
 			'quests/information/special-thanks.j',
 			'quests/information/random-information.j',
 
-			'quests/changelogs/1.4.j',
+			'quests/changelogs/unreleased.j',
 			'quests/changelogs/1.3.1.j',
 			'quests/changelogs/1.3.j',
 			'quests/changelogs/1.2.j',

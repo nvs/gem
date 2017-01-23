@@ -1,11 +1,15 @@
 -- # Upkeep
 
+local name_version = string.format ('%s %s',
+	globals.Gem__NAME.value, globals.Gem__VERSION.value)
+
 -- Text - General 'No Upkeep'
-setvalue ('FrameDef', 'UPKEEP_NONE', '|cfffed312Gem TD+ 1.4-alpha|r')
+setvalue ('FrameDef', 'UPKEEP_NONE', '|cfffed312' .. name_version .. '|r')
 
 -- Text - General 'Gold Income Rate:'
-setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE',
-	'|cffffffffMaintained by |r|cffff0000NVS|r|cffffffff —')
+setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE', string.format (
+	'|cffffffffMaintained by |r|cffff0000%s|r|cffffffff —',
+	globals.Gem__MAINTAINER.value))
 
 -- Text - General - 'Upkeep is determined...'
 setvalue ('FrameDef', 'RESOURCE_UBERTIP_UPKEEP',

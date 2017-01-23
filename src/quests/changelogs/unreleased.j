@@ -1,8 +1,8 @@
-function Quests___Version_1_4 takes nothing returns nothing
+function Quests___Version_Unreleased takes nothing returns nothing
 	local string title
 	local string text
 
-	set title = Gem__NAME + " 1.4"
+	set title = Gem__NAME + " " + Gem__VERSION
 	set text = ""
 
 	set text = text + Color__Gold ("Changed:") + "\n"

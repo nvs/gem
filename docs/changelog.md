@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## 1.4 - Unreleased
+## Unreleased
 
 ### Changed
 - The second row on the Gold Mine now includes both permanent luck changing
