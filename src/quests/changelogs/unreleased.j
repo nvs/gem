@@ -6,11 +6,11 @@ function Quests___Version_Unreleased takes nothing returns nothing
 	set text = ""
 
 	set text = text + Color__Gold ("Added:") + "\n"
-	set text = text + "- Hotkey support has been enabled on the Extra Chance windows.\n\n"
+	set text = text + "- Hotkey support has been enabled on the Extra Chance windows.\n"
+	set text = text + "- Added hotkey support (`T`) for slate teleporation.\n\n"
 
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- The second row on the Gold Mine now includes both permanent luck changing buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').\n"
-	set text = text + "- Added hotkey support (`T`) for slate teleporation.\n"
 	set text = text + "- Reduced cooldown on slate teleporation from `3.0` to `1.0` seconds.\n"
 	set text = text + "- Name spoofing can no longer infect other text.\n\n"
 
