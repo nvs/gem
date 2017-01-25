@@ -32,7 +32,7 @@ executables to function properly.
     gem.lua`. This will take the base version of the map
     (`share/base/gem.w3x` in the default case) and place a copy within the
     temporary directory: `tmp/gem.w3x`. This is the file that will be used to
-    build the map. Note that the `prepare` command is destructive and will
+    build the map. Note that the 'prepare' command is destructive and will
     overwrite an existing `tmp/gem.w3x` file.
 08. Load constants into the map with the following command: `bin/map constants
     gem.lua`. This uses GrimEx (which is included in the repository).
@@ -49,15 +49,15 @@ executables to function properly.
     Changes] (map-file-changes.md) file.
 13. Also using the World Editor, go into the 'Abilities' tab of the Object
     Editor. Find the Disarm ability, and looking for 'Data - Attacks
-    Prevented'. Set this field to 'None' and then save the map. Set it back to
-    'Melee, Ranged', and then save the map. This is a workaround for a known
+    Prevented'. Set this field to `None` and then save the map. Set it back to
+    `Melee, Ranged`, and then save the map. This is a workaround for a known
     bug that can occur during the build process.
-14. Use Vexorian's Optimizer (which is included in the repository) to process
-    the map. Simply invokve the build script: `bin/map optimize gem.lua`.
-    This will produce both an optimized map file `tmp/gem-optimized.w3x` and
-    a script file `tmp/gem-optimized.w3x.j`. Rename the map file as needed to
-    match the version being released. This step is only necessary if you wish
-    to have an optimized version of the map.
+14. _This step is optional and only necessary to have an optimized version of
+    the map._ Use Vexorian's Optimizer (which is included in the repository)
+    to process the map. Simply invokve the build script: `bin/map optimize
+    gem.lua`. This will produce both an optimized map file
+    `tmp/gem-optimized.w3x` and script file `tmp/gem-optimized.w3x.j`.
+15. Rename the map files as needed to match the version being released.
 
 ## Verifying the `war3map.j`
 
