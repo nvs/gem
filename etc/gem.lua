@@ -1,6 +1,10 @@
 return {
 	name = 'gem',
 
+	flags = {
+		debug = false
+	},
+
 	input = {
 		map = 'share/maps/gem.w3x'
 	},

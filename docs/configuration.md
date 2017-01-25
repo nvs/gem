@@ -5,11 +5,113 @@ A configuration file is nothing more than a valid Lua file that returns a
 must reside in the project's root directory, and relative paths are specified
 with this fact in mind.
 
-The only valid types within the configuration file are `string` and `table`.
-When listing files, please keep in mind that their order is respected. All
-paths are specified using a `string`, and expect the use of forwardslashes
-(i.e. `/`) when indicating directory separators. And be sure to include the
-file extension when specifying files.
+The only valid types within the configuration file are `boolean`, `string`,
+and `table`.  When listing files, please keep in mind that their order is
+respected. All paths are specified using a `string`, and expect the use of
+forwardslashes (i.e. `/`) when indicating directory separators. And be sure to
+include the file extension when specifying files.
+
+## Debugging
+
+The `debug` keyword can be used within JASS scripts to prefix certain
+statements. This is standard JASS notation. Warcraft 3 simply ignores these
+lines (although, it is not known if performance is affected). It can safely be
+used in conjunction with the following JASS statements:
+
+- `set`
+- `if ...`
+- `call`
+- `loop ...`
+
+For example:
+
+```
+function Debug_Example takes nothing returns nothing
+    local index = 0
+
+    // This line is ignored.
+    debug set index = 1
+
+    // This entire if-statement is ignored.
+    debug if index == 1 then
+    elseif index == 0 then
+    else
+        return
+    endif
+
+    // This call is ignored.
+    debug call BJDisplayMsg ("Hello world!")
+
+    // This infinite loop is ignored.
+    debug loop
+    endloop
+
+    call BJDisplayMsg (I2S (index)) // 0
+endfunction
+```
+
+The 'build' command extends upon this behavior without altering the standard
+JASS language syntax, making the `debug` keyword more useful. When the
+`options.debug` flag is set to `false`, debugging is essentially disabled.
+Functionally, this does not really change anything, given that `debug` is
+ignored by default. However, in an attempt to avoid potential side effects
+(such as code bloat after optimization), statements prefixed with `debug` are
+removed. With debugging disabled through the `options.debug` flag, the above
+becomes:
+
+```
+function Debug_Example takes nothing returns nothing
+    local index = 0
+
+    // This line is ignored.
+
+    // This entire if-statement is ignored.
+
+    // This call is ignored.
+
+    // This infinite loop is ignored.
+
+    call BJDisplayMsg (I2S (index)) // 0
+endfunction
+```
+
+Now, if debugging is enabled by setting `options.debug` flag to `true`, then
+all lines modified by the `debug` keyword are kept. The keyword itself is the
+only thing removed, and the rest of the code is left intact:
+
+```
+function Debug_Example takes nothing returns nothing
+    local index = 0
+
+    // This line is executed.
+    set index = 1
+
+    // This if-statement is not ignored.
+    if index == 1 then
+    elseif index == 0 then
+    else
+        return
+    endif
+
+    // This function is called.
+    call BJDisplayMsg ("Hello world!") // Hello world!
+
+    // This infinite loop is run, for better or worse.
+    loop
+    endloop
+
+    // Never reached.
+    call BJDisplayMsg (I2S (index))
+endfunction
+```
+
+As such, care should be taken when using the `debug` keyword. However, it does
+enable useful debugging functionality.
+
+There is a known issue with the included version of pjass. It does not
+complain about `debug` being used in conjunction with `exitwhen` or `return`.
+However, a map with such code will bug and not allow the player to enter the
+game lobby. Please avoid such uses of `debug`.
 
 ## Globals
 
@@ -102,7 +204,8 @@ As for the JASS types exposed to Lua, the follow names are used:
 
 All settings are required to exist, and behavior is not tested for situations
 where they are absent. If it is desired to remove or clear a setting, use an
-empty string (`''`) and/or an empty table (`{}`).
+empty string (`''`) and/or an empty table (`{}`). Flags (i.e. `boolean`
+values) must be set to either `true` or `false`.
 
 ### General Settings
 
@@ -110,6 +213,12 @@ empty string (`''`) and/or an empty table (`{}`).
 
 The name of the project, and the name used when referencing and working with
 numerous files throughout the project.
+
+#### `flags` _(`table`)_
+#### `flags.debug` _(`boolean`)_
+
+A flag to indicate whether to allow supported statements prefixed with the
+`debug` keyword to be built into the map.
 
 #### `input` _(`table`)_
 #### `input.map` _(`string`)_

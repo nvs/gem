@@ -479,8 +479,38 @@ function commands.build ()
 			script:write (line, '\n')
 		end
 
+		local debug = {}
+
 		for _, line in ipairs (functions) do
-			script:write (line, '\n')
+			if configuration.flags.debug then
+				local indentation, contents = line:match ('^(%s*)debug%s(.*)$')
+
+				if contents then
+					script:write (indentation, contents, '\n')
+				else
+					script:write (line, '\n')
+				end
+			else
+				local A, B = line:match ('^%s*(%a+)%s*(%a*).*$')
+
+				if debug.keyword then
+					if debug.keyword == A or debug.keyword == B then
+						debug.count = debug.count + 1
+					elseif 'end' .. debug.keyword == A then
+						debug.count = debug.count - 1
+					end
+
+					if debug.count == 0 then
+						debug.keyword = nil
+					end
+				elseif A == 'debug' and (B == 'if' or B == 'loop') then
+					debug.keyword = B
+					debug.count = 1
+				elseif A == 'debug' then
+				else
+					script:write (line, '\n')
+				end
+			end
 		end
 
 		script:close ()
