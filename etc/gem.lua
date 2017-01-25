@@ -6,7 +6,7 @@ return {
 	},
 
 	input = {
-		map = 'share/maps/Gem TD Plus Unreleased.w3x'
+		map = 'share/maps/Gem TD Plus.w3x'
 	},
 
 	output = {
