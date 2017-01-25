@@ -1,3 +1,7 @@
+globals
+	constant string Color__LINK = "ff00ff00"
+endglobals
+
 function Color__White takes string text returns string
 	return "|c00ffffff" + text + "|r"
 endfunction
@@ -11,7 +15,7 @@ function Color__Green takes string text returns string
 endfunction
 
 function Color__Link takes string text returns string
-	return "|cff40c0ff" + text + "|r"
+	return "|c" + Color__LINK + text + "|r"
 endfunction
 
 function Color__Reset takes nothing returns string

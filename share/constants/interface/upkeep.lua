@@ -3,6 +3,13 @@
 local name_version = string.format ('%s %s',
 	globals.Gem__NAME.value, globals.Gem__VERSION.value)
 
+local function color_link (text)
+	return '|c' .. globals.Color__LINK.value .. text .. '|r'
+end
+
+local forum = color_link (globals.Gem__WEBSITE_FORUM.value)
+local repository = color_link (globals.Gem__WEBSITE_REPOSITORY.value)
+
 -- Text - General 'No Upkeep'
 setvalue ('FrameDef', 'UPKEEP_NONE', '|cfffed312' .. name_version .. '|r')
 
@@ -13,8 +20,8 @@ setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE', string.format (
 
 -- Text - General - 'Upkeep is determined...'
 setvalue ('FrameDef', 'RESOURCE_UBERTIP_UPKEEP',
-	'Forum — |cff40c0ffhttps://entgaming.net|r|n' ..
-	'Repository — |cff40c0ffhttps://github.com/nvs/gem|r')
+	'Forum — ' .. forum .. '|n' ..
+	'Repository — ' .. repository)
 
 -- Text - General - '|n%d-%d Food...'
 --
