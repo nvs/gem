@@ -29,8 +29,8 @@ executables to function properly.
     likely want to set this to an empty string: `''`.
 06. Change into the project's root directory.
 07. Use the build script to initialize a working map file: `bin/map prepare
-    gem.lua`. This will take the base version of the map
-    (`share/base/gem.w3x` in the default case) and place a copy within the
+    gem.lua`. This will take the base version of the map (`share/maps/Gem TD
+    Plus Unreleased.w3x` in the default case) and place a copy within the
     temporary directory: `tmp/gem.w3x`. This is the file that will be used to
     build the map. Note that the 'prepare' command is destructive and will
     overwrite an existing `tmp/gem.w3x` file.
@@ -45,8 +45,12 @@ executables to function properly.
 11. Import all the files within the `share/imports` directory into the
     `tmp/gem.w3x` map file with the following command: `bin/map imports
     gem.lua`.
-12. Using the World Editor, make the changes mentioned in the [Map File
-    Changes] (map-file-changes.md) file.
+12. Using the World Editor, make the following changes to set the appropriate
+    version:
+    * Scenario - Map Description:
+        - Name: `|cfffed312Gem TD+ X.Y|r`
+    * Scenario - Map Loading Screen:
+        - Loading Screen Title: `|cfffed312Version X.Y|r`
 13. Also using the World Editor, go into the 'Abilities' tab of the Object
     Editor. Find the Disarm ability, and looking for 'Data - Attacks
     Prevented'. Set this field to `None` and then save the map. Set it back to
