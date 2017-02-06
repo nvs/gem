@@ -14,7 +14,11 @@ return {
 	},
 
 	patch = {
-		directory = 'lib/patch/1.27b'
+		directory = 'lib/patch/1.27b',
+		files = {
+			'common.j',
+			'blizzard.j'
+		}
 	},
 
 	scripts = {
