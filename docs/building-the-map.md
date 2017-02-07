@@ -10,7 +10,7 @@
 03. Checkout the version of the map in question. You may want to look at this
     file again as the build process, as well as its dependencies, may have
     changed between versions.
-04. Look at the configuration file (`gem.lua`) and make any necessary
+04. Look at the configuration file (`etc/gem.lua`) and make any necessary
     adjustments. For details, see the configuration documentation in the map
     tools repository, taking note of the repository version. Of particular
     note is the `prefix` setting, which by default is set to `'wine'`. Windows
@@ -18,11 +18,11 @@
 05. Change into the project's root directory. This is a requirement for proper
     functionality of the map tools. How to invoke the tools will vary
     depending on your setup.
-06. Prepare a new working map file: `map/prepare gem.lua`.
-07. Load constant data into the working map: `map/constants gem.lua`.
-08. Load object data into the working map: `map/objects: gem.lua`.
-09. Combine JASS scripts inot a single file: `map/build gem.lua`.
-10. Load imports into the working map: `map/imports gem.lua`.
+06. Prepare a new working map file: `map/prepare etc/gem.lua`.
+07. Load constant data into the working map: `map/constants etc/gem.lua`.
+08. Load object data into the working map: `map/objects: etc/gem.lua`.
+09. Combine JASS scripts inot a single file: `map/build etc/gem.lua`.
+10. Load imports into the working map: `map/imports etc/gem.lua`.
 11. Using the World Editor, make the following changes to set the appropriate
     version:
     * Scenario - Map Description:
@@ -35,7 +35,7 @@
     Ranged`, and then save the map. This is a workdaround for a known bug that
     can occur during the build process.
 13. _This step is optional._ Create an optimized version of the map:
-    `map/optimize gem.lua`.
+    `map/optimize etc/gem.lua`.
 14. Rename the map files as needed to match the version being released.
 
 ## Verifying the `war3map.j`
