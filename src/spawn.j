@@ -447,7 +447,7 @@ function Spawn__Create takes player owner, integer unit_type, integer number, in
 	local integer index
 
 	if Spawn___ID_INDEX == ID__NULL then
-		set Spawn___ID_INDEX = ID__Allocate ()
+		set Spawn___ID_INDEX = ID ()
 	endif
 
 	if Spawn___Stack_Is_Empty () then

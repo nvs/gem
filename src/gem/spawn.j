@@ -141,7 +141,7 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 	local integer round
 	local integer array unit_type
 
-	set Gem_Spawn___ID_PLAYER_INDEX = ID__Allocate ()
+	set Gem_Spawn___ID_PLAYER_INDEX = ID ()
 
 	set the_trigger = CreateTrigger ()
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Spawn___Movement))

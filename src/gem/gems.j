@@ -11,10 +11,10 @@
 // - ID
 
 globals
-	integer Gem_Gems___ID_TYPE = ID__NULL
-	integer Gem_Gems___ID_QUALITY = ID__NULL
+	integer Gem_Gems___TYPE = ID__NULL
+	integer Gem_Gems___QUALITY = ID__NULL
 
-	integer array Gem_Gems___ID_BY_TYPE
+	integer array Gem_Gems___BY_TYPE
 
 	constant integer Gem_Gems__AMETHYST_CHIPPED = 'h004'
 	constant integer Gem_Gems__AMETHYST_FLAWED = 'h007'
@@ -73,77 +73,77 @@ globals
 	constant integer Gem_Gems__TOPAZ_GREAT = 'e005'
 endglobals
 
-// Returns a `boolean `indicating whether the gem specified by `unit_type` is
+// Returns a `boolean `indicating whether the gem specified by `gem_type` is
 // registered.
-function Gem_Gems__Is_Gem takes integer unit_type returns boolean
-	return HaveSavedInteger (Table, Gem_Gems___ID_TYPE, unit_type)
+function Gem_Gems__Is_Gem takes integer gem_type returns boolean
+	return HaveSavedInteger (Table, Gem_Gems___TYPE, gem_type)
 endfunction
 
 // Returns the `integer` unit type for the gem specified by the combination of
-// `id__type` and `id__quality`. Returns `0` for invalid input.
-function Gem_Gems__Get_Unit_Type takes integer id__type, integer id__quality returns integer
-	local integer index__type
+// `type_id` and `quality_id`. Returns `0` for invalid input.
+function Gem_Gems__Get_Unit_Type takes integer type_id, integer quality_id returns integer
+	local integer type_index
 
-	if not Gem_Type__Is_Type (id__type) then
+	if not Gem_Type__Is_Type (type_id) then
 		return 0
 	endif
 
-	if not Gem_Quality__Is_Quality (id__quality) then
+	if not Gem_Quality__Is_Quality (quality_id) then
 		return 0
 	endif
 
-	set index__type = Gem_Type__Get_Index (id__type)
+	set type_index = Gem_Type__Get_Index (type_id)
 
-	return LoadInteger (Table, Gem_Gems___ID_BY_TYPE [index__type], id__quality)
+	return LoadInteger (Table, Gem_Gems___BY_TYPE [type_index], quality_id)
 endfunction
 
-// Returns the `integer` type ID for the gem specified by `unit_type`. Returns
+// Returns the `integer` type ID for the gem specified by `gem_type`. Returns
 // `0` for invalid input.
-function Gem_Gems__Get_ID_Type takes integer unit_type returns integer
-	return LoadInteger (Table, Gem_Gems___ID_TYPE, unit_type)
+function Gem_Gems__Get_ID_Type takes integer gem_type returns integer
+	return LoadInteger (Table, Gem_Gems___TYPE, gem_type)
 endfunction
 
-// Returns the `integer` quality ID for the gem specified by `unit_type`.
+// Returns the `integer` quality ID for the gem specified by `gem_type`.
 // Returns `0` for invalid input.
-function Gem_Gems__Get_ID_Quality takes integer unit_type returns integer
-	return LoadInteger (Table, Gem_Gems___ID_QUALITY, unit_type)
+function Gem_Gems__Get_ID_Quality takes integer gem_type returns integer
+	return LoadInteger (Table, Gem_Gems___QUALITY, gem_type)
 endfunction
 
-// Registers the gem specified by `unit_type` to the combination of `id__type`
-// and `id__quality`.
-function Gem_Gems___Register takes integer id__type, integer id__quality, integer unit_type returns nothing
-	local integer index__type
+// Registers the gem specified by `gem_type` to the combination of `type_id`
+// and `quality_id`.
+function Gem_Gems___Register takes integer type_id, integer quality_id, integer gem_type returns nothing
+	local integer type_index
 
-	if not Gem_Type__Is_Type (id__type) then
+	if not Gem_Type__Is_Type (type_id) then
 		return
 	endif
 
-	if not Gem_Quality__Is_Quality (id__quality) then
+	if not Gem_Quality__Is_Quality (quality_id) then
 		return
 	endif
 
-	set index__type = Gem_Type__Get_Index (id__type)
+	set type_index = Gem_Type__Get_Index (type_id)
 
-	call SaveInteger (Table, Gem_Gems___ID_TYPE, unit_type, id__type)
-	call SaveInteger (Table, Gem_Gems___ID_QUALITY, unit_type, id__quality)
-	call SaveInteger (Table, Gem_Gems___ID_BY_TYPE [index__type], id__quality, unit_type)
+	call SaveInteger (Table, Gem_Gems___TYPE, gem_type, type_id)
+	call SaveInteger (Table, Gem_Gems___QUALITY, gem_type, quality_id)
+	call SaveInteger (Table, Gem_Gems___BY_TYPE [type_index], quality_id, gem_type)
 endfunction
 
 function Gem_Gems__Initialize takes nothing returns boolean
-	local integer index__type
-	local integer count__type
+	local integer type_index
+	local integer type_count
 
-	set Gem_Gems___ID_TYPE = ID__Allocate ()
-	set Gem_Gems___ID_QUALITY = ID__Allocate ()
+	set Gem_Gems___TYPE = ID ()
+	set Gem_Gems___QUALITY = ID ()
 
-	set count__type = Gem_Type__Get_Count ()
+	set type_count = Gem_Type__Get_Count ()
 
-	set index__type = 0
+	set type_index = 0
 	loop
-		set Gem_Gems___ID_BY_TYPE [index__type] = ID__Allocate ()
+		set Gem_Gems___BY_TYPE [type_index] = ID ()
 
-		set index__type = index__type + 1
-		exitwhen index__type >= count__type
+		set type_index = type_index + 1
+		exitwhen type_index >= type_count
 	endloop
 
 	call Gem_Gems___Register (Gem_Type__AMETHYST, Gem_Quality__CHIPPED, Gem_Gems__AMETHYST_CHIPPED)

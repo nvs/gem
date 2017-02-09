@@ -14,7 +14,7 @@ globals
 	integer Gem_Type___ID = ID__NULL
 
 	integer Gem_Type___Count = 0
-	integer array Gem_Type___ID_Type
+	integer array Gem_Type___Type
 
 	integer Gem_Type__AMETHYST = ID__NULL
 	integer Gem_Type__AQUAMARINE = ID__NULL
@@ -26,10 +26,10 @@ globals
 	integer Gem_Type__TOPAZ = ID__NULL
 endglobals
 
-// Returns a `boolean` indicating whether the type specified by `id__type` is
+// Returns a `boolean` indicating whether the type specified by `type_id` is
 // registered.
-function Gem_Type__Is_Type takes integer id__type returns boolean
-	return HaveSavedInteger (Table, Gem_Type___ID, id__type)
+function Gem_Type__Is_Type takes integer type_id returns boolean
+	return HaveSavedInteger (Table, Gem_Type___ID, type_id)
 endfunction
 
 // Returns the `integer` count of the number of registered types.
@@ -37,35 +37,43 @@ function Gem_Type__Get_Count takes nothing returns integer
 	return Gem_Type___Count
 endfunction
 
-// Returns the `integer` ID for the specified `index__type`. Returns `ID__NULL`
+// Returns the `integer` ID for the specified `type_index`. Returns `ID__NULL`
 // for invalid input.
-function Gem_Type__Get_ID takes integer index__type returns integer
-	return Gem_Type___ID_Type [index__type]
+function Gem_Type__Get_ID takes integer type_index returns integer
+	local integer type_id
+
+	set type_id = Gem_Type___Type [type_index]
+
+	if type_id == 0 then
+		return ID__NULL
+	else
+		return type_id
+	endif
 endfunction
 
-// Returns the `integer` index for the specified `id__type`. Returns `0` for
+// Returns the `integer` index for the specified `type_id`. Returns `0` for
 // invalid input.
-function Gem_Type__Get_Index takes integer id__type returns integer
-	return LoadInteger (Table, Gem_Type___ID, id__type)
+function Gem_Type__Get_Index takes integer type_id returns integer
+	return LoadInteger (Table, Gem_Type___ID, type_id)
 endfunction
 
 // Returns an `integer` ID representing a newly allocated type.
 function Gem_Type___Allocate takes nothing returns integer
-	local integer index__type
-	local integer id__type
+	local integer type_index
+	local integer type_id
 
-	set index__type = Gem_Type___Count
-	set id__type = ID__Allocate ()
+	set type_index = Gem_Type___Count
+	set type_id = ID ()
 
-	set Gem_Type___Count = index__type + 1
-	call SaveInteger (Table, Gem_Type___ID, id__type, index__type)
-	set Gem_Type___ID_Type [index__type] = id__type
+	set Gem_Type___Count = type_index + 1
+	call SaveInteger (Table, Gem_Type___ID, type_id, type_index)
+	set Gem_Type___Type [type_index] = type_id
 
-	return id__type
+	return type_id
 endfunction
 
 function Gem_Type__Initialize takes nothing returns boolean
-	set Gem_Type___ID = ID__Allocate ()
+	set Gem_Type___ID = ID ()
 
 	set Gem_Type__AMETHYST = Gem_Type___Allocate ()
 	set Gem_Type__AQUAMARINE = Gem_Type___Allocate ()

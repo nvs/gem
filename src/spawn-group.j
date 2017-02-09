@@ -499,7 +499,7 @@ function Spawn_Group__Create takes player owner, real x, real y, real facing ret
 
 	if group_index > 0 then
 		if Spawn_Group___ID [group_index] == ID__NULL then
-			set Spawn_Group___ID [group_index] = ID__Allocate ()
+			set Spawn_Group___ID [group_index] = ID ()
 		endif
 
 		set Spawn_Group___Is_Allocated [group_index] = true
