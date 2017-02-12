@@ -857,7 +857,7 @@ function Trig_Inihilization_Func069002 takes nothing returns nothing
 	call CreateFogModifierRectBJ(true,GetEnumPlayer(),FOG_OF_WAR_VISIBLE,GetPlayableMapRect())
 endfunction
 function Trig_Inihilization_Func070002 takes nothing returns nothing
-	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,5)
+	call Gem_Placement__Start (GetEnumPlayer (), 5)
 endfunction
 function Trig_Inihilization_Func071002 takes nothing returns nothing
 	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_GOLD,10)
@@ -34183,8 +34183,8 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P1)
-	call SetPlayerStateBJ(udg_Player[1],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[1]=0
+	call Gem_Placement__Start (udg_Player [1], 5)
 	set udg_PlayerFinishBuild[1]=false
 	set udg_PlayerFinished[1]=false
 	set udg_SpecialONplace[1]=false
@@ -34380,8 +34380,8 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P2)
-	call SetPlayerStateBJ(udg_Player[2],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[2]=0
+	call Gem_Placement__Start (udg_Player [2], 5)
 	set udg_PlayerFinishBuild[2]=false
 	set udg_PlayerFinished[2]=false
 	set udg_SpecialONplace[2]=false
@@ -34577,8 +34577,8 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P3)
-	call SetPlayerStateBJ(udg_Player[3],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[3]=0
+	call Gem_Placement__Start (udg_Player [3], 5)
 	set udg_PlayerFinishBuild[3]=false
 	set udg_PlayerFinished[3]=false
 	set udg_SpecialONplace[3]=false
@@ -34774,8 +34774,8 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P4)
-	call SetPlayerStateBJ(udg_Player[4],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[4]=0
+	call Gem_Placement__Start (udg_Player [4], 5)
 	set udg_PlayerFinishBuild[4]=false
 	set udg_PlayerFinished[4]=false
 	set udg_SpecialONplace[4]=false
@@ -34971,8 +34971,8 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P5)
-	call SetPlayerStateBJ(udg_Player[5],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[5]=0
+	call Gem_Placement__Start (udg_Player [5], 5)
 	set udg_PlayerFinishBuild[5]=false
 	set udg_PlayerFinished[5]=false
 	set udg_SpecialONplace[5]=false
@@ -35168,8 +35168,8 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P6)
-	call SetPlayerStateBJ(udg_Player[6],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[6]=0
+	call Gem_Placement__Start (udg_Player [6], 5)
 	set udg_PlayerFinishBuild[6]=false
 	set udg_PlayerFinished[6]=false
 	set udg_SpecialONplace[6]=false
@@ -35365,8 +35365,8 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P7)
-	call SetPlayerStateBJ(udg_Player[7],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[7]=0
+	call Gem_Placement__Start (udg_Player [7], 5)
 	set udg_PlayerFinishBuild[7]=false
 	set udg_PlayerFinished[7]=false
 	set udg_SpecialONplace[7]=false
@@ -35562,8 +35562,8 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P8)
-	call SetPlayerStateBJ(udg_Player[8],PLAYER_STATE_RESOURCE_LUMBER,5)
 	set udg_GemNumber[8]=0
+	call Gem_Placement__Start (udg_Player [8], 5)
 	set udg_PlayerFinishBuild[8]=false
 	set udg_PlayerFinished[8]=false
 	set udg_SpecialONplace[8]=false
