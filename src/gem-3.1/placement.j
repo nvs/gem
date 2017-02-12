@@ -1,4 +1,5 @@
 function Trig_B_Reworked_Placing_gems_P1_Conditions takes nothing returns boolean
+	return false
 	if udg_Mode != 2 then
 		return false
 	endif
@@ -2585,6 +2586,7 @@ function InitTrig_B_Reworked_Placing_gems_P1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P1,function Trig_B_Reworked_Placing_gems_P1_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P2_Conditions takes nothing returns boolean
+	return false
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
 		return false
 	endif
@@ -5146,6 +5148,7 @@ function InitTrig_B_Reworked_Placing_gems_P2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P2,function Trig_B_Reworked_Placing_gems_P2_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P3_Conditions takes nothing returns boolean
+	return false
 	if udg_Mode != 2 then
 		return false
 	endif
@@ -7707,6 +7710,7 @@ function InitTrig_B_Reworked_Placing_gems_P3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P3,function Trig_B_Reworked_Placing_gems_P3_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P4_Conditions takes nothing returns boolean
+	return false
 	if udg_Mode != 2 then
 		return false
 	endif
@@ -10268,6 +10272,7 @@ function InitTrig_B_Reworked_Placing_gems_P4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P4,function Trig_B_Reworked_Placing_gems_P4_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P5_Conditions takes nothing returns boolean
+	return false
 	if udg_Mode != 2 then
 		return false
 	endif
@@ -12829,6 +12834,7 @@ function InitTrig_B_Reworked_Placing_gems_P5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P5,function Trig_B_Reworked_Placing_gems_P5_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P6_Conditions takes nothing returns boolean
+	return false
 	if udg_Mode != 2 then
 		return false
 	endif
@@ -15390,6 +15396,7 @@ function InitTrig_B_Reworked_Placing_gems_P6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P6,function Trig_B_Reworked_Placing_gems_P6_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P7_Conditions takes nothing returns boolean
+	return false
 	if udg_Mode != 2 then
 		return false
 	endif
@@ -17951,6 +17958,7 @@ function InitTrig_B_Reworked_Placing_gems_P7 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_B_Reworked_Placing_gems_P7,function Trig_B_Reworked_Placing_gems_P7_Actions)
 endfunction
 function Trig_B_Reworked_Placing_gems_P8_Conditions takes nothing returns boolean
+	return false
 	if(not(GetUnitTypeId(GetTriggerUnit())=='h006'))then
 		return false
 	endif
