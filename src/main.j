@@ -306,6 +306,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Type__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Gems__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Placement__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Chance__Initialize))
 
 	call TriggerEvaluate (initialize)
 	call DestroyTrigger (initialize)

@@ -67,6 +67,7 @@ return {
 		'src/gem/spawn.j',
 
 		'src/gem/placement.j',
+		'src/gem/chance.j',
 
 		'src/gem-3.1.j',
 		'src/gem-3.1/buying-lives.j',
