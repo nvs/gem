@@ -40,6 +40,8 @@ return {
 		'src/gem.j',
 		'src/gem/version.j',
 
+		'src/gem/player.j',
+
 		'src/player-color.j',
 
 		'src/unit/event.j',
