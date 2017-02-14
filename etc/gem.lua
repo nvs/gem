@@ -81,6 +81,8 @@ return {
 		'src/gem-3.1/placement.j',
 		'src/gem-3.1/selection.j',
 
+		'src/gem/selection.j',
+
 		'src/settings/difficulty.j',
 		'src/settings/common.j',
 
