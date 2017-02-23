@@ -86,7 +86,7 @@ function Board___Update takes nothing returns nothing
 endfunction
 
 function Board___Name_Width takes player the_player returns real
-	local string name = String__Remove_Color_Tags (GetPlayerName (the_player))
+	local string name = GetPlayerName (the_player)
 	local integer length = StringLength (name)
 	local real width = 0.00
 	local integer index = 0

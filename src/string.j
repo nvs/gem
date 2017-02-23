@@ -1,21 +1,7 @@
 // # String
-//
-// ## Index
-//
-// ### Globals
-//
-// - `String__MAXIMUM_LENGTH`
-//
-// ### Functions
-//
-// - `String__Remove_Color_Tags ()`
-
-// ## Globals
 
 globals
 
-	// ### `String__MAXIMUM_LENGTH`
-	//
 	// This is a string's maximum length before it will crash the game. The
 	// methods discussed below apply to a string greater than this limit.
 	//
@@ -31,11 +17,10 @@ globals
 
 endglobals
 
-// ### `String__Remove_Color_Tags ()`
-//
-// Returns a `string` where the color tags have been stripped from the provided
-// `text (string)`.
-function String__Remove_Color_Tags takes string text returns string
+// Returns a `string` where special tags (i.e. `|c`, `|r`, and `|n`) have been
+// removed from the provided `text`. In the case of color tags, the following
+// eight hexadecimal characters are removed as well.
+function String__Remove_Special_Tags takes string text returns string
 	local integer index
 	local string previous
 	local string current
@@ -50,7 +35,7 @@ function String__Remove_Color_Tags takes string text returns string
 		set previous = current
 		set current = SubString (text, index, index + 1)
 
-		// Could be the beginning of part of a color tag.
+		// Could be the beginning of part of a special tag.
 		if current == "|" then
 			// Do nothing.
 
@@ -66,12 +51,16 @@ function String__Remove_Color_Tags takes string text returns string
 			elseif current == "r" or current == "R" then
 				// Do nothing.
 
-			// Not a color tag. Include these characters.
+			// This is a line break tag: `|n`.
+			elseif current == "n" or current == "N" then
+				// Do nothing.
+
+			// Not a special tag. Include these characters.
 			else
 				set output = output + previous + current
 			endif
 
-		// Not a color tag. Include this character.
+		// Not a special tag. Include this character.
 		else
 			set output = output + current
 		endif
