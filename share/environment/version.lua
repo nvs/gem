@@ -43,7 +43,10 @@ then
 		local file = io.open (git_stdout, 'rb')
 
 		if file then
-			version = version .. '+' .. file:read ('*l')
+			metadata.jass_type = 'string'
+			metadata.value = file:read ('*l')
+
+			version = version .. '+' .. metadata.value
 			file:close ()
 		end
 	end
