@@ -17,7 +17,7 @@ function Quests___Version_Unreleased takes nothing returns nothing
 	set text = text + "- Upon reaching the maximum number of lives, gold will now be refunded instead of being wasted.\n"
 	set text = text + "- Gold Mine buttons will no longer shift upon activation. This should prevent accidental button pressing (e.g. buying lives).\n"
 	set text = text + "- Maximized upgrade buttons will no longer look disabled and grey.\n"
-	set text = text + "- Player names are now sanitized of special tags (i.e. `|c`, `|r`, and `|n`).\n"
+	set text = text + "- Player names are now sanitized of special tags.\n"
 	set text = text + "- Ruby damage versus Red armor was incorrect (280% instead of 180%). This only applied to actual attacks."
 
 	call Quests___Add_Changelog (title, text)
