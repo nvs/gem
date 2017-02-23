@@ -31,6 +31,8 @@ return {
 		'src/spawn-group.j',
 
 		'src/gem.j',
+		'src/gem/version.j',
+
 		'src/player-color.j',
 		'src/character-width.j',
 
