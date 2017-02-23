@@ -12,6 +12,10 @@ return {
 		name = 'Gem TD Plus'
 	},
 
+	environment = {
+		'share/environment/version.lua'
+	},
+
 	patch = {
 		'lib/patch/1.27b/common.j',
 		'lib/patch/1.27b/blizzard.j'
