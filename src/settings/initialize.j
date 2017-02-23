@@ -6,12 +6,10 @@ function Settings__Initialize takes nothing returns nothing
 	loop
 		set the_player = Player (index)
 
+		call SetPlayerName (the_player, String__Remove_Special_Tags (GetPlayerName (the_player)))
+
 		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
 			set udg_PlayerHERE [index + 1] = true
-
-			// Deal with broken color tags that do not close. They can infect text
-			// that makes use of `GetPlayerName ()`.
-			call SetPlayerName (the_player, GetPlayerName (the_player) + Color__Reset ())
 		endif
 
 		set index = index + 1

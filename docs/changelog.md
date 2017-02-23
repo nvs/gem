@@ -20,7 +20,7 @@ full list of changes to the project, please consult the commit log.
 - Gold Mine buttons will no longer shift upon activation. This should prevent
   accidental button pressing (e.g. buying lives).
 - Maximized upgrade buttons will no longer look disabled and grey.
-- Name spoofing can no longer infect other text.
+- Player names are now sanitized of special tags (i.e. `|c`, `|r`, and `|n`).
 - Ruby damage versus Red armor was incorrect (280% instead of 180%). This only
   applied to actual attacks.
 
