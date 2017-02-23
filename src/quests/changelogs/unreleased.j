@@ -2,7 +2,7 @@ function Quests___Version_Unreleased takes nothing returns nothing
 	local string title
 	local string text
 
-	set title = Gem__NAME + " " + Gem__VERSION
+	set title = Gem__NAME + " Unreleased"
 	set text = ""
 
 	set text = text + Color__Gold ("Added:") + "\n"

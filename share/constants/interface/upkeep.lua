@@ -1,7 +1,13 @@
 -- # Upkeep
 
-local name_version = string.format ('%s %s',
-	globals.Gem__NAME.value, globals.Gem__VERSION.value)
+local name_version = string.format ('%s %d.%d.%d%s',
+	globals.Gem__NAME.value, globals.Gem_Version__MAJOR.value,
+	globals.Gem_Version__MINOR.value, globals.Gem_Version__PATCH.value,
+	globals.Gem_Version__EXTRA.value)
+
+if globals.Gem_Version__METADATA.jass_type == 'string' then
+	name_version = name_version .. '+' .. globals.Gem_Version__METADATA.value
+end
 
 local function color_link (text)
 	return '|c' .. globals.Color__LINK.value .. text .. '|r'
