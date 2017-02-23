@@ -1,21 +1,7 @@
 // # String
-//
-// ## Index
-//
-// ### Globals
-//
-// - `String__MAXIMUM_LENGTH`
-//
-// ### Functions
-//
-// - `String__Remove_Color_Tags ()`
-
-// ## Globals
 
 globals
 
-	// ### `String__MAXIMUM_LENGTH`
-	//
 	// This is a string's maximum length before it will crash the game. The
 	// methods discussed below apply to a string greater than this limit.
 	//
@@ -31,8 +17,6 @@ globals
 
 endglobals
 
-// ### `String__Remove_Color_Tags ()`
-//
 // Returns a `string` where the color tags have been stripped from the provided
 // `text (string)`.
 function String__Remove_Color_Tags takes string text returns string
