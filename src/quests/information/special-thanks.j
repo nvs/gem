@@ -15,7 +15,7 @@ function Quests___Special_Thanks takes nothing returns nothing
 
 	set text = text + "The following people deserve recognition for their support in the making of Gem TD+:\n"
 	set text = text + "- bunnyjean\n"
-	set text = text + "- DMVPDemonMom\n"
+	set text = text + "- DMVPDemonMOM\n"
 	set text = text + "- Sesamia"
 
 	call Quests___Add_Information (title, icon, text)
