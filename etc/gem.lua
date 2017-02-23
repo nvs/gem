@@ -1,6 +1,4 @@
 return {
-	name = 'gem',
-
 	flags = {
 		debug = false
 	},
@@ -10,141 +8,128 @@ return {
 	},
 
 	output = {
-		directory = 'tmp'
+		directory = 'tmp',
+		name = 'Gem TD Plus'
 	},
 
 	patch = {
-		directory = 'lib/patch/1.27b',
-		files = {
-			'common.j',
-			'blizzard.j'
-		}
+		'lib/patch/1.27b/common.j',
+		'lib/patch/1.27b/blizzard.j'
 	},
 
 	scripts = {
-		directory = 'src',
-		files = {
-			'array.j',
-			'string.j',
-			'color.j',
-			'error.j',
+		'src/array.j',
+		'src/string.j',
+		'src/color.j',
+		'src/error.j',
 
-			'id.j',
-			'table.j',
-			'handle.j',
+		'src/id.j',
+		'src/table.j',
+		'src/handle.j',
 
-			'spawn.j',
-			'spawn-group.j',
+		'src/spawn.j',
+		'src/spawn-group.j',
 
-			'gem.j',
-			'player-color.j',
-			'character-width.j',
+		'src/gem.j',
+		'src/player-color.j',
+		'src/character-width.j',
 
-			'unit/event.j',
-			'unit/event/enters.j',
-			'unit/event/leaves.j',
-			'unit/event/death.j',
-			'unit/event/initialize.j',
+		'src/unit/event.j',
+		'src/unit/event/enters.j',
+		'src/unit/event/leaves.j',
+		'src/unit/event/death.j',
+		'src/unit/event/initialize.j',
 
-			'unit/indexer/stack.j',
-			'unit/indexer.j',
+		'src/unit/indexer/stack.j',
+		'src/unit/indexer.j',
 
-			'dummy-caster.j',
+		'src/dummy-caster.j',
 
-			'unit/user-data.j',
-			'unit/disarm.j',
-			'unit/stun.j',
+		'src/unit/user-data.j',
+		'src/unit/disarm.j',
+		'src/unit/stun.j',
 
-			'gem-3.1/globals.j',
+		'src/gem-3.1/globals.j',
 
-			'gem/spawn.j',
+		'src/gem/spawn.j',
 
-			'gem-3.1.j',
-			'gem-3.1/buying-lives.j',
-			'gem-3.1/extra-chance-window.j',
+		'src/gem-3.1.j',
+		'src/gem-3.1/buying-lives.j',
+		'src/gem-3.1/extra-chance-window.j',
 
-			'settings/difficulty.j',
-			'settings/common.j',
+		'src/settings/difficulty.j',
+		'src/settings/common.j',
 
-			'time.j',
-			'board.j',
+		'src/time.j',
+		'src/board.j',
 
-			'quests/common.j',
+		'src/quests/common.j',
 
-			'quests/information/what-is-gem-td-plus.j',
-			'quests/information/special-thanks.j',
-			'quests/information/random-information.j',
+		'src/quests/information/what-is-gem-td-plus.j',
+		'src/quests/information/special-thanks.j',
+		'src/quests/information/random-information.j',
 
-			'quests/changelogs/unreleased.j',
-			'quests/changelogs/1.3.1.j',
-			'quests/changelogs/1.3.j',
-			'quests/changelogs/1.2.j',
-			'quests/changelogs/1.1.j',
-			'quests/changelogs/1.0.j',
+		'src/quests/changelogs/unreleased.j',
+		'src/quests/changelogs/1.3.1.j',
+		'src/quests/changelogs/1.3.j',
+		'src/quests/changelogs/1.2.j',
+		'src/quests/changelogs/1.1.j',
+		'src/quests/changelogs/1.0.j',
 
-			'quests/initialize.j',
+		'src/quests/initialize.j',
 
-			'settings/setup.j',
-			'settings/hcl.j',
-			'settings/window.j',
-			'settings/initialize.j',
+		'src/settings/setup.j',
+		'src/settings/hcl.j',
+		'src/settings/window.j',
+		'src/settings/initialize.j',
 
-			'commands/debug.j',
-			'commands/zoom.j',
-			'commands.j',
+		'src/commands/debug.j',
+		'src/commands/zoom.j',
+		'src/commands.j',
 
-			'detect-placed-gem-death.j',
+		'src/detect-placed-gem-death.j',
 
-			'gem/slate/hold.j',
-			'gem/slate/ancient.j',
-			'gem/slate/damage.j',
-			'gem/slate/poison.j',
-			'gem/slate/initialize.j',
+		'src/gem/slate/hold.j',
+		'src/gem/slate/ancient.j',
+		'src/gem/slate/damage.j',
+		'src/gem/slate/poison.j',
+		'src/gem/slate/initialize.j',
 
-			'gem/special/dark-emerald.j',
-			'gem/special/jade.j',
-			'gem/special/initialize.j',
+		'src/gem/special/dark-emerald.j',
+		'src/gem/special/jade.j',
+		'src/gem/special/initialize.j',
 
-			'main.j',
-			'config.j'
-		}
+		'src/main.j',
+		'src/config.j'
 	},
 
 	imports = {
-		directory = 'share/imports'
+		'share/imports/import-directory.lua',
+		'share/imports/import-script.lua'
 	},
 
 	objects = {
-		directory = 'share/objects',
-		files = {
-			'unit-event.lua',
-			'update-map-information.lua',
-			'fix-lumber-costs.lua',
-			'make-slates-repairable.lua',
-			'dummy-caster.lua',
-			'unit-disarm.lua',
-			'unit-stun.lua',
-			'kill-bonus-remove-brilliance-aura.lua',
-			'kill-bonus-remove-spell-immunity.lua',
-			'gold-mine-buttons.lua',
-			'slate-teleport.lua'
-		},
+		'share/objects/unit-event.lua',
+		'share/objects/update-map-information.lua',
+		'share/objects/fix-lumber-costs.lua',
+		'share/objects/make-slates-repairable.lua',
+		'share/objects/dummy-caster.lua',
+		'share/objects/unit-disarm.lua',
+		'share/objects/unit-stun.lua',
+		'share/objects/kill-bonus-remove-brilliance-aura.lua',
+		'share/objects/kill-bonus-remove-spell-immunity.lua',
+		'share/objects/gold-mine-buttons.lua',
+		'share/objects/slate-teleport.lua'
 	},
 
 	constants = {
 		gameplay = {
-			directory = 'share/constants/gameplay',
-			files = {
-				'gem.lua'
-			}
+			'share/constants/gameplay/gem.lua'
 		},
 
 		interface = {
-			directory = 'share/constants/interface',
-			files = {
-				'gem.lua',
-				'upkeep.lua'
-			}
+			'share/constants/interface/gem.lua',
+			'share/constants/interface/upkeep.lua'
 		}
 	},
 
