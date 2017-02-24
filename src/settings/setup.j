@@ -93,7 +93,7 @@ function Settings__Setup takes nothing returns nothing
 	endif
 
 	call ClearTextMessages ()
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!") + "\nThe game will start when the countdown timer finishes.\nFeel free to chat and use commands such as `-zoom`\nduring this period.\n\nFor map information, including a list of\nchanges, see " + Color__Gold ("Information (F9)") + ".\n\nFor further information and discussion on the\nmap, or to report bugs and other issues, visit:\n- " + Color__Link (Gem__WEBSITE_FORUM) + "\n- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n\n\n\n")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!") + "\nThe game will start when the countdown timer finishes.\nFeel free to chat and use commands such as `-zoom`\nduring this period.\n\nFor map information, including a list of\nchanges, see " + Color__Gold ("Information (F9)") + ".\n\nFor further information and discussion on the\nmap, or to report bugs and other issues, visit:\n- " + Color__Link (Gem__WEBSITE_FORUM) + "\n- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n\n\n")
 
 	// Ensure that the unit selected is the Miner, and that the camera is
 	// focused on it initially.

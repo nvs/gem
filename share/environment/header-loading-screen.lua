@@ -15,14 +15,16 @@ end
 local maintainer = color_red (map.globals.Gem__MAINTAINER.value)
 
 local forum = color_link (map.globals.Gem__WEBSITE_FORUM.value)
+local discord = color_link (map.globals.Gem__WEBSITE_DISCORD.value)
 local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY.value)
 
 map.settings.map.description = string.format ([[
 %s by %s
 - %s
+- %s
 - %s]],
 	map.globals.Gem__NAME_FULL.value,
-	maintainer, forum, repository)
+	maintainer, forum, discord, repository)
 
 map.settings.map.loading.text = string.format ([[
 An updated version of Gem Tower Defense,
@@ -36,6 +38,7 @@ changes, see %s in game.
 For further information and discussion on the
 map, or to report bugs and other issues, visit:
 - %s
+- %s
 - %s]],
 	color_red ('Bryvx (Bryan K.)'), maintainer,
-	color_gold ('Information (F9)'), forum, repository)
+	color_gold ('Information (F9)'), forum, discord, repository)
