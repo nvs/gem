@@ -10,10 +10,11 @@ if globals.Gem_Version__METADATA.jass_type == 'string' then
 end
 
 local function color_link (text)
-	return '|c' .. globals.Color__LINK.value .. text .. '|r'
+	return '|cff' .. globals.Color__LINK.value .. text .. '|r'
 end
 
 local forum = color_link (globals.Gem__WEBSITE_FORUM.value)
+local discord = color_link (globals.Gem__WEBSITE_DISCORD.value)
 local repository = color_link (globals.Gem__WEBSITE_REPOSITORY.value)
 
 -- Text - General 'No Upkeep'
@@ -27,6 +28,7 @@ setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE', string.format (
 -- Text - General - 'Upkeep is determined...'
 setvalue ('FrameDef', 'RESOURCE_UBERTIP_UPKEEP',
 	'Forum — ' .. forum .. '|n' ..
+	'Discord — ' .. discord .. '|n' ..
 	'Repository — ' .. repository)
 
 -- Text - General - '|n%d-%d Food...'

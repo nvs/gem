@@ -1,23 +1,26 @@
 globals
-	constant string Color__LINK = "ff00ff00"
+	constant string Color__WHITE = "ffffff"
+	constant string Color__RED = "ff0000"
+	constant string Color__GOLD = "fed312"
+	constant string Color__LINK = "00ff00"
 endglobals
 
+function Color takes string color, string text returns string
+	return "|cff" + color + text + "|r"
+endfunction
+
 function Color__White takes string text returns string
-	return "|c00ffffff" + text + "|r"
+	return Color (Color__WHITE, text)
 endfunction
 
 function Color__Gold takes string text returns string
-	return "|c00fed312" + text + "|r"
-endfunction
-
-function Color__Green takes string text returns string
-	return "|c0000ff00" + text + "|r"
+	return Color (Color__GOLD, text)
 endfunction
 
 function Color__Link takes string text returns string
-	return "|c" + Color__LINK + text + "|r"
+	return Color (Color__LINK, text)
 endfunction
 
 function Color__Reset takes nothing returns string
-	return "|cffffffff|r"
+	return Color (Color__WHITE, "")
 endfunction
