@@ -13,7 +13,8 @@ return {
 	},
 
 	environment = {
-		'share/environment/version.lua'
+		'share/environment/version.lua',
+		'share/environment/header-loading-screen.lua'
 	},
 
 	patch = {
