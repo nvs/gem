@@ -10,7 +10,7 @@ if globals.Gem_Version__METADATA.jass_type == 'string' then
 end
 
 local function color_link (text)
-	return '|c' .. globals.Color__LINK.value .. text .. '|r'
+	return '|cff' .. globals.Color__LINK.value .. text .. '|r'
 end
 
 local forum = color_link (globals.Gem__WEBSITE_FORUM.value)
