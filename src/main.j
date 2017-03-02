@@ -259,12 +259,20 @@ function RunInitializationTriggers takes nothing returns nothing
 	call ConditionalTriggerExecute (gg_trg_Inihilization)
 endfunction
 function main takes nothing returns nothing
+	local trigger initialize
+
 	call SetCameraBounds (-9472.0 + GetCameraMargin (CAMERA_MARGIN_LEFT), -9728.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 9472.0 -GetCameraMargin (CAMERA_MARGIN_RIGHT), 9216.0 - GetCameraMargin(CAMERA_MARGIN_TOP), -9472.0 + GetCameraMargin (CAMERA_MARGIN_LEFT), 9216.0 - GetCameraMargin (CAMERA_MARGIN_TOP), 9472.0 - GetCameraMargin (CAMERA_MARGIN_RIGHT), -9728.0 + GetCameraMargin (CAMERA_MARGIN_BOTTOM))
 	call SetDayNightModels ("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl", "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl")
 	call NewSoundEnvironment ("Default")
 	call SetAmbientDaySound ("SunkenRuinsDay")
 	call SetAmbientNightSound ("SunkenRuinsNight")
 	call SetMapMusic ("Music", true, 0)
+
+	set initialize = CreateTrigger ()
+
+	call TriggerAddCondition (initialize, Condition (function Character__Initialize))
+
+	call TriggerEvaluate (initialize)
 
 	// Initialization of each system gets its own thread.  This will help in
 	// ensuring that the operation limit is not reached on map initialization.
@@ -295,4 +303,8 @@ function main takes nothing returns nothing
 	call ExecuteFunc ("Gem_Slate__Initialize")
 	call ExecuteFunc ("Gem_Special__Initialize")
 	call ExecuteFunc ("Gem_Spawn__Initialize")
+
+	call DestroyTrigger (initialize)
+
+	set initialize = null
 endfunction
