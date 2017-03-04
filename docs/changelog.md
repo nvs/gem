@@ -7,12 +7,12 @@ full list of changes to the project, please consult the commit log.
 
 ### Added
 - Hotkey support has been enabled on the Extra Chance windows.
-- Added hotkey support (`T`) for slate teleporation.
+- Added hotkey support for slate teleporation.
 
 ### Changed
-- The second row on the Gold Mine now includes both permanent luck changing
-  buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').
-- Reduced cooldown on slate teleporation from `3.0` to `1.0` seconds.
+- Gold Mine button placement has shifted, and the second row now includes both
+  permanent luck changing buttons.
+- Cooldown reduction on slate teleporation.
 - 'Melee' style slate attacks now have a standardized attack range.
 
 ### Fixed
@@ -21,9 +21,9 @@ full list of changes to the project, please consult the commit log.
 - Gold Mine buttons will no longer shift upon activation. This should prevent
   accidental button pressing (e.g. buying lives).
 - Maximized upgrade buttons will no longer look disabled and grey.
-- Player names are now sanitized of special tags (i.e. `|c`, `|r`, and `|n`).
-- Ruby damage versus Red armor was incorrect (280% instead of 180%). This only
-  applied to actual attacks.
+- Player names are now sanitized of special tags.
+- Ruby damage versus Red armor via attacks was incorrect.
+- Tower swapping no longer has a delay.
 
 ## 1.3.1 - 2016-11-12
 
