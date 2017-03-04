@@ -127,7 +127,8 @@ return {
 		'share/objects/kill-bonus-remove-brilliance-aura.lua',
 		'share/objects/kill-bonus-remove-spell-immunity.lua',
 		'share/objects/gold-mine-buttons.lua',
-		'share/objects/slate-teleport.lua'
+		'share/objects/slate-teleport.lua',
+		'share/objects/standardize-slate-range.lua'
 	},
 
 	constants = {
