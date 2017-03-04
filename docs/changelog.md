@@ -13,6 +13,7 @@ full list of changes to the project, please consult the commit log.
 - The second row on the Gold Mine now includes both permanent luck changing
   buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').
 - Reduced cooldown on slate teleporation from `3.0` to `1.0` seconds.
+- 'Melee' style slate attacks now have a standardized attack range.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead

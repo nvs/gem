@@ -12,6 +12,7 @@ function Quests___Version_Unreleased takes nothing returns nothing
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- The second row on the Gold Mine now includes both permanent luck changing buttons (i.e. 'Increase Gem Quality' and 'Increase Extra Chance').\n"
 	set text = text + "- Reduced cooldown on slate teleporation from `3.0` to `1.0` seconds.\n"
+	set text = text + "- 'Melee' style slate attacks now have a standardized attack range.\n\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Upon reaching the maximum number of lives, gold will now be refunded instead of being wasted.\n"
