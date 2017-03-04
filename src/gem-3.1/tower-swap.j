@@ -1,9 +1,3 @@
-globals
-	rect gg_rct_Spawn_Creator=null
-	location array udg_SwapUnitPosition
-	unit array udg_SwapUnit
-endglobals
-
 function Trig_Swap_Reworked_Conditions takes nothing returns boolean
 	if(not(GetSpellAbilityId()=='A05L'))then
 		return false
@@ -55,51 +49,56 @@ function Trig_Swap_Reworked_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Swap_Reworked_Func001Func002001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetSpellAbilityUnit())==GetFilterPlayer())
-endfunction
-function Trig_Swap_Reworked_Func001C takes nothing returns boolean
-	if(not(GetPlayerState(GetOwningPlayer(GetSpellAbilityUnit()),PLAYER_STATE_RESOURCE_GOLD)<200))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Swap_Reworked_Func002C takes nothing returns boolean
-	if(not(GetPlayerState(GetOwningPlayer(GetSpellAbilityUnit()),PLAYER_STATE_RESOURCE_GOLD)>=200))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Swap_Reworked_Actions takes nothing returns nothing
-	if(Trig_Swap_Reworked_Func001C())then
+	local player the_player
+	local integer index__player
+
+	local integer gold
+
+	// The caster:
+	local unit A
+	local real A_x
+	local real A_y
+
+	// The target:
+	local unit B
+	local real B_x
+	local real B_y
+
+	set the_player = GetTriggerPlayer ()
+	set index__player = GetPlayerId (the_player)
+
+	set gold = GetPlayerState (the_player, PLAYER_STATE_RESOURCE_GOLD)
+
+	if gold >= 200 then
+		call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_GOLD, gold - 200)
+
+		set A = GetSpellAbilityUnit ()
+		set A_x = GetUnitX (A)
+		set A_y = GetUnitY (A)
+
+		set B = GetSpellTargetUnit ()
+		set B_x = GetUnitX (B)
+		set B_y = GetUnitY (B)
+
+		// Hide the target, not the caster. Or selection circle will switch.
+		call ShowUnit (B, false)
+		call SetUnitPosition (A, B_x, B_y)
+		call SetUnitPosition (B, A_x, A_y)
+		call ShowUnit (B, true)
+
+		call UnitRemoveAbility (A, 'A05L')
 	else
-		call QuestMessage(GetPlayersMatching(Condition(function Trig_Swap_Reworked_Func001Func002001001)),bj_QUESTMESSAGE_UPDATED,"|cffff33ffYou need 200 Gold to swap|r")
+		call QuestMessage (bj_FORCE_PLAYER [index__player], bj_QUESTMESSAGE_UPDATED, "|cffff33ffYou need 200 Gold to swap|r")
 	endif
-	if(Trig_Swap_Reworked_Func002C())then
-		call DisableTrigger(GetTriggeringTrigger())
-		call SetPlayerStateBJ(GetOwningPlayer(GetSpellAbilityUnit()),PLAYER_STATE_RESOURCE_GOLD,(GetPlayerState(GetOwningPlayer(GetSpellAbilityUnit()),PLAYER_STATE_RESOURCE_GOLD)-200))
-		set udg_SwapUnit[1]=GetSpellAbilityUnit()
-		set udg_SwapUnit[2]=GetSpellTargetUnit()
-		set udg_SwapUnitPosition[1]=GetUnitLoc(udg_SwapUnit[1])
-		set udg_SwapUnitPosition[2]=GetUnitLoc(udg_SwapUnit[2])
-		call PolledWait(0.01)
-		call SetUnitPositionLoc(udg_SwapUnit[1],udg_SwapUnitPosition[3])
-		call PolledWait(0.01)
-		call SetUnitPositionLoc(udg_SwapUnit[2],udg_SwapUnitPosition[1])
-		call PolledWait(0.01)
-		call SetUnitPositionLoc(udg_SwapUnit[1],udg_SwapUnitPosition[2])
-		call UnitRemoveAbilityBJ('A05L',udg_SwapUnit[1])
-		call TriggerSleepAction(0.02)
-		call EnableTrigger(GetTriggeringTrigger())
-	else
-	endif
+
+	set the_player = null
+	set A = null
+	set B = null
 endfunction
 function InitTrig_Swap_Reworked takes nothing returns nothing
 	set gg_trg_Swap_Reworked=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Swap_Reworked,EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_Swap_Reworked,Condition(function Trig_Swap_Reworked_Conditions))
 	call TriggerAddAction(gg_trg_Swap_Reworked,function Trig_Swap_Reworked_Actions)
-
-	set gg_rct_Spawn_Creator=Rect(4896.0,4768.0,5024.0,4896.0)
-	set udg_SwapUnitPosition[3]=GetRectCenter(gg_rct_Spawn_Creator)
 endfunction
