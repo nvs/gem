@@ -127,7 +127,7 @@ endfunction
 // ### `Gem_Spawn__Initialize ()`
 //
 // Setup the system for use.
-function Gem_Spawn__Initialize takes nothing returns nothing
+function Gem_Spawn__Initialize takes nothing returns boolean
 	local region the_region
 	local trigger the_trigger
 	local integer player_index
@@ -159,4 +159,6 @@ function Gem_Spawn__Initialize takes nothing returns nothing
 
 		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, bj_UNIT_FACING, 0.00, 1.61)
 	endloop
+
+	return false
 endfunction

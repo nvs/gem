@@ -34,7 +34,7 @@ function Player_Color__Blue takes integer index returns integer
 	return Player_Color___Blue [index]
 endfunction
 
-function Player_Color__Initialize takes nothing returns nothing
+function Player_Color__Initialize takes nothing returns boolean
 	// Red:
 	set Player_Color___Words [0] = "Red"
 	set Player_Color___Codes [0] = "00ff0303"
@@ -90,4 +90,6 @@ function Player_Color__Initialize takes nothing returns nothing
 	set Player_Color___Red [7] = 229
 	set Player_Color___Green [7] = 91
 	set Player_Color___Blue [7] = 176
+
+	return false
 endfunction

@@ -1,4 +1,4 @@
-function Settings__Initialize takes nothing returns nothing
+function Settings__Initialize takes nothing returns boolean
 	local integer index
 	local player the_player
 
@@ -34,4 +34,6 @@ function Settings__Initialize takes nothing returns nothing
 	endif
 
 	set the_player = null
+
+	return false
 endfunction

@@ -147,9 +147,11 @@ function Unit_Stun___On_Leave takes nothing returns boolean
 	return false
 endfunction
 
-function Unit_Stun__Initialize takes nothing returns nothing
+function Unit_Stun__Initialize takes nothing returns boolean
 	set Unit_Stun___ID_UNIT_INDEX = ID__Allocate ()
 
 	call Unit_Event__On_Death (function Unit_Stun___On_Death)
 	call Unit_Event__On_Leave (function Unit_Stun___On_Leave)
+
+	return false
 endfunction

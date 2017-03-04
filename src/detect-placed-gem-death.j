@@ -217,7 +217,7 @@ function Detect_Placed_Gem_Death___Core takes nothing returns boolean
 	return false
 endfunction
 
-function Detect_Placed_Gem_Death__Initialize takes nothing returns nothing
+function Detect_Placed_Gem_Death__Initialize takes nothing returns boolean
 	local integer player_index
 	local trigger the_trigger
 
@@ -243,4 +243,6 @@ function Detect_Placed_Gem_Death__Initialize takes nothing returns nothing
 	call TriggerAddCondition (the_trigger, Condition (function Detect_Placed_Gem_Death___Core))
 
 	set the_trigger = null
+
+	return false
 endfunction

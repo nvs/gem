@@ -82,9 +82,11 @@ function Unit_Indexer___On_Leave takes nothing returns boolean
 	return false
 endfunction
 
-function Unit_Indexer__Initialize takes nothing returns nothing
+function Unit_Indexer__Initialize takes nothing returns boolean
 	call Unit_Indexer___Initialize_Stack ()
 
 	call Unit_Event__On_Enter (function Unit_Indexer___On_Enter)
 	call Unit_Event__On_Leave (function Unit_Indexer___On_Leave)
+
+	return false
 endfunction

@@ -34,6 +34,8 @@ function Unit_User_Data___On_Enter takes nothing returns boolean
 	return false
 endfunction
 
-function Unit_User_Data__Initialize takes nothing returns nothing
+function Unit_User_Data__Initialize takes nothing returns boolean
 	call Unit_Event__On_Enter (function Unit_User_Data___On_Enter)
+
+	return false
 endfunction

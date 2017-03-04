@@ -271,18 +271,16 @@ function main takes nothing returns nothing
 	set initialize = CreateTrigger ()
 
 	call TriggerAddCondition (initialize, Condition (function Character__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Player_Color__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Unit_Event__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Unit_Indexer__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Dummy_Caster__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Unit_User_Data__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Unit_Stun__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Unit_Disarm__Initialize))
 
 	call TriggerEvaluate (initialize)
-
-	// Initialization of each system gets its own thread.  This will help in
-	// ensuring that the operation limit is not reached on map initialization.
-	call ExecuteFunc ("Player_Color__Initialize")
-	call ExecuteFunc ("Unit_Event__Initialize")
-	call ExecuteFunc ("Unit_Indexer__Initialize")
-	call ExecuteFunc ("Dummy_Caster__Initialize")
-	call ExecuteFunc ("Unit_User_Data__Initialize")
-	call ExecuteFunc ("Unit_Stun__Initialize")
-	call ExecuteFunc ("Unit_Disarm__Initialize")
+	call TriggerClearConditions (initialize)
 
 	call InitSounds ()
 	call CreateRegions ()
@@ -294,15 +292,16 @@ function main takes nothing returns nothing
 	call RunInitializationTriggers ()
 
 	// Must occur after all Gem 3.1 initializations (for now).
-	call ExecuteFunc ("Settings__Initialize")
+	call TriggerAddCondition (initialize, Condition (function Settings__Initialize))
 
-	call ExecuteFunc ("Commands__Initialize")
-	call ExecuteFunc ("Detect_Placed_Gem_Death__Initialize")
+	call TriggerAddCondition (initialize, Condition (function Commands__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Detect_Placed_Gem_Death__Initialize))
 
-	call ExecuteFunc ("Gem_Slate__Initialize")
-	call ExecuteFunc ("Gem_Special__Initialize")
-	call ExecuteFunc ("Gem_Spawn__Initialize")
+	call TriggerAddCondition (initialize, Condition (function Gem_Slate__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Special__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Spawn__Initialize))
 
+	call TriggerEvaluate (initialize)
 	call DestroyTrigger (initialize)
 
 	set initialize = null

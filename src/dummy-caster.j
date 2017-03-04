@@ -100,7 +100,9 @@ function Dummy_Caster__Cast_On_Point_From takes player owner, integer ability_id
 	return result
 endfunction
 
-function Dummy_Caster__Initialize takes nothing returns nothing
+function Dummy_Caster__Initialize takes nothing returns boolean
 	set Dummy_Caster = CreateUnit (Dummy_Caster___OWNER, Dummy_Caster___UNIT_ID, 0.00, 0.00, 0.00)
 	call SetUnitPosition (Dummy_Caster, Dummy_Caster___X, Dummy_Caster___Y)
+
+	return false
 endfunction
