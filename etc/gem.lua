@@ -41,7 +41,6 @@ return {
 		'src/gem/version.j',
 
 		'src/player-color.j',
-		'src/character-width.j',
 
 		'src/unit/event.j',
 		'src/unit/event/enters.j',
