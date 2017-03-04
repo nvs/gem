@@ -24,6 +24,8 @@ return {
 
 	scripts = {
 		'src/array.j',
+
+		'src/character.j',
 		'src/string.j',
 		'src/color.j',
 		'src/error.j',
@@ -39,7 +41,6 @@ return {
 		'src/gem/version.j',
 
 		'src/player-color.j',
-		'src/character-width.j',
 
 		'src/unit/event.j',
 		'src/unit/event/enters.j',
