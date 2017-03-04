@@ -277,7 +277,6 @@ function main takes nothing returns nothing
 	// Initialization of each system gets its own thread.  This will help in
 	// ensuring that the operation limit is not reached on map initialization.
 	call ExecuteFunc ("Player_Color__Initialize")
-	call ExecuteFunc ("Character_Width__Initialize")
 	call ExecuteFunc ("Unit_Event__Initialize")
 	call ExecuteFunc ("Unit_Indexer__Initialize")
 	call ExecuteFunc ("Dummy_Caster__Initialize")
