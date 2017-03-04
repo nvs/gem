@@ -61,7 +61,7 @@ map.settings.output.name =
 -- The subtitle is the second line, and is larger. Gem uses that to display
 -- the full map name. The first, smaller line, is for the version.
 map.settings.map.loading.subtitle = map.globals.Gem__NAME_FULL.value
-map.settings.map.loading.title = version
+map.settings.map.loading.title = 'Version ' .. version
 
 if map.command == 'imports' then
 	local Settings = require ('map.settings')
