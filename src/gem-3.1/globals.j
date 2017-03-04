@@ -128,8 +128,8 @@ globals
 	integer array udg_CountExtraChanceMoney
 	integer array udg_ExtraChanceNo
 	integer udg_SpawnUnit=0
-	location array udg_SwapUnitPosition
-	unit array udg_SwapUnit
+	//location array udg_SwapUnitPosition
+	//unit array udg_SwapUnit
 	unit array udg_CombineSpecialUnit
 	group udg_AuraGroup=null
 	unit array udg_KillsSelectedUnit
@@ -237,7 +237,6 @@ globals
 	rect gg_rct_Build3=null
 	rect gg_rct_Build4=null
 	rect gg_rct_Build5=null
-	rect gg_rct_Spawn_Creator=null
 	rect gg_rct_Slot_Run_1=null
 	rect gg_rct_Slot_Run_2=null
 	rect gg_rct_Slot_Run_3=null
