@@ -22,5 +22,5 @@ function Color__Link takes string text returns string
 endfunction
 
 function Color__Reset takes nothing returns string
-	return Color (Color__WHITE, "")
+	return "|r"
 endfunction
