@@ -10,6 +10,7 @@
 //   Jenkins. Prior to hashing, the following modifications are made to the
 //   input string: forward slashes are converted to backslashes; and, lowercase
 //   characters are converted to uppercase.
+// - The font used by Warcraft 3 is Friz Quadrata.
 // - Inkscape is used to determine the width of each character (at size 10).
 
 globals
