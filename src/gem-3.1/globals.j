@@ -128,8 +128,6 @@ globals
 	integer array udg_CountExtraChanceMoney
 	integer array udg_ExtraChanceNo
 	integer udg_SpawnUnit=0
-	//location array udg_SwapUnitPosition
-	//unit array udg_SwapUnit
 	unit array udg_CombineSpecialUnit
 	group udg_AuraGroup=null
 	unit array udg_KillsSelectedUnit
