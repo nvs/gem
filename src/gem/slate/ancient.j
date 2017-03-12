@@ -54,6 +54,12 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	if GetUnitTypeId (attacker) == 'n003' and not Unit_Stun__Is_Stunned (victim) then
 		set owner = GetOwningPlayer (attacker)
 
+		call UnitAddAbility (victim, 'A02I')
+
+		set the_timer = CreateTimer ()
+		call Handle__Save (the_timer, Gem_Slate___ID_ANCIENT_UNIT_INDEX, Unit_Indexer__Unit_Index (victim))
+		call TimerStart (the_timer, 2.50, false, function Gem_Slate___Ancient_Remove_Debuff)
+
 		set Gem_Slate___Ancient_Unit = victim
 		call GroupEnumUnitsInRange (Gem_Slate___Ancient_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Ancient_Taunt))
 		set Gem_Slate___Ancient_Unit = victim
@@ -78,12 +84,6 @@ function Gem_Slate___Ancient takes nothing returns boolean
 
 		call Unit_Stun__Apply (victim, 2.50)
 		call Unit_Disarm__Apply (attacker, 5.00)
-
-		call UnitAddAbility (victim, 'A02I')
-
-		set the_timer = CreateTimer ()
-		call Handle__Save (the_timer, Gem_Slate___ID_ANCIENT_UNIT_INDEX, Unit_Indexer__Unit_Index (victim))
-		call TimerStart (the_timer, 2.50, false, function Gem_Slate___Ancient_Remove_Debuff)
 	endif
 
 	set attacker = null

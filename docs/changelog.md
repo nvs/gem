@@ -24,6 +24,7 @@ full list of changes to the project, please consult the commit log.
 - Player names are now sanitized of special tags.
 - Ruby damage versus Red armor via attacks was incorrect.
 - Tower swapping no longer has a delay.
+- Ensure armor reduction is applied before damage is dealt.
 
 ## 1.3.1 - 2016-11-12
 
