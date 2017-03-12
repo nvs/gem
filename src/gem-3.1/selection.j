@@ -1309,7 +1309,7 @@ function Trig_Create_Slates_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Create_Slates takes nothing returns nothing
 	set gg_trg_Create_Slates=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Create_Slates,EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterAnyUnitEventBJ(gg_trg_Create_Slates,EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_Create_Slates,Condition(function Trig_Create_Slates_Conditions))
 	call TriggerAddAction(gg_trg_Create_Slates,function Trig_Create_Slates_Actions)
 endfunction
@@ -1379,7 +1379,7 @@ function Trig_B_Reworked_Mark_P1_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P1 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P1=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P1,Player(0),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P1,Player(0),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P1,Condition(function Trig_B_Reworked_Mark_P1_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P1,function Trig_B_Reworked_Mark_P1_Actions)
 endfunction
@@ -2354,7 +2354,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P1_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P1 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P1=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P1,Player(0),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P1,Player(0),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P1,Condition(function Trig_B_Reworked_Comb_Special_Mark_P1_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P1,function Trig_B_Reworked_Comb_Special_Mark_P1_Actions)
 endfunction
@@ -3291,7 +3291,7 @@ function Trig_B_Reworked_Mark_P2_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P2 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P2=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P2,Condition(function Trig_B_Reworked_Mark_P2_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P2,function Trig_B_Reworked_Mark_P2_Actions)
 endfunction
@@ -4262,7 +4262,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P2_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P2 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P2=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P2,Player(1),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P2,Condition(function Trig_B_Reworked_Comb_Special_Mark_P2_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P2,function Trig_B_Reworked_Comb_Special_Mark_P2_Actions)
 endfunction
@@ -5199,7 +5199,7 @@ function Trig_B_Reworked_Mark_P3_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P3 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P3=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P3,Player(2),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P3,Player(2),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P3,Condition(function Trig_B_Reworked_Mark_P3_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P3,function Trig_B_Reworked_Mark_P3_Actions)
 endfunction
@@ -6170,7 +6170,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P3_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P3 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P3=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P3,Player(2),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P3,Player(2),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P3,Condition(function Trig_B_Reworked_Comb_Special_Mark_P3_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P3,function Trig_B_Reworked_Comb_Special_Mark_P3_Actions)
 endfunction
@@ -7107,7 +7107,7 @@ function Trig_B_Reworked_Mark_P4_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P4 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P4=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P4,Player(3),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P4,Player(3),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P4,Condition(function Trig_B_Reworked_Mark_P4_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P4,function Trig_B_Reworked_Mark_P4_Actions)
 endfunction
@@ -8078,7 +8078,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P4_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P4 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P4=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P4,Player(3),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P4,Player(3),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P4,Condition(function Trig_B_Reworked_Comb_Special_Mark_P4_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P4,function Trig_B_Reworked_Comb_Special_Mark_P4_Actions)
 endfunction
@@ -9015,7 +9015,7 @@ function Trig_B_Reworked_Mark_P5_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P5 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P5=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P5,Player(4),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P5,Player(4),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P5,Condition(function Trig_B_Reworked_Mark_P5_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P5,function Trig_B_Reworked_Mark_P5_Actions)
 endfunction
@@ -9986,7 +9986,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P5_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P5 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P5=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P5,Player(4),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P5,Player(4),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P5,Condition(function Trig_B_Reworked_Comb_Special_Mark_P5_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P5,function Trig_B_Reworked_Comb_Special_Mark_P5_Actions)
 endfunction
@@ -10923,7 +10923,7 @@ function Trig_B_Reworked_Mark_P6_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P6 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P6=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P6,Player(5),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P6,Player(5),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P6,Condition(function Trig_B_Reworked_Mark_P6_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P6,function Trig_B_Reworked_Mark_P6_Actions)
 endfunction
@@ -11894,7 +11894,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P6_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P6 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P6=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P6,Player(5),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P6,Player(5),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P6,Condition(function Trig_B_Reworked_Comb_Special_Mark_P6_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P6,function Trig_B_Reworked_Comb_Special_Mark_P6_Actions)
 endfunction
@@ -12831,7 +12831,7 @@ function Trig_B_Reworked_Mark_P7_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P7 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P7=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P7,Player(6),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P7,Player(6),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P7,Condition(function Trig_B_Reworked_Mark_P7_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P7,function Trig_B_Reworked_Mark_P7_Actions)
 endfunction
@@ -13802,7 +13802,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P7_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P7 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P7=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P7,Player(6),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P7,Player(6),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P7,Condition(function Trig_B_Reworked_Comb_Special_Mark_P7_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P7,function Trig_B_Reworked_Comb_Special_Mark_P7_Actions)
 endfunction
@@ -14739,7 +14739,7 @@ function Trig_B_Reworked_Mark_P8_Actions takes nothing returns nothing
 endfunction
 function InitTrig_B_Reworked_Mark_P8 takes nothing returns nothing
 	set gg_trg_B_Reworked_Mark_P8=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P8,Player(7),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Mark_P8,Player(7),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Mark_P8,Condition(function Trig_B_Reworked_Mark_P8_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Mark_P8,function Trig_B_Reworked_Mark_P8_Actions)
 endfunction
@@ -15710,7 +15710,7 @@ function Trig_B_Reworked_Comb_Special_Mark_P8_Actions takes nothing returns noth
 endfunction
 function InitTrig_B_Reworked_Comb_Special_Mark_P8 takes nothing returns nothing
 	set gg_trg_B_Reworked_Comb_Special_Mark_P8=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P8,Player(7),EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterPlayerUnitEventSimple(gg_trg_B_Reworked_Comb_Special_Mark_P8,Player(7),EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_B_Reworked_Comb_Special_Mark_P8,Condition(function Trig_B_Reworked_Comb_Special_Mark_P8_Conditions))
 	call TriggerAddAction(gg_trg_B_Reworked_Comb_Special_Mark_P8,function Trig_B_Reworked_Comb_Special_Mark_P8_Actions)
 endfunction
