@@ -37,6 +37,12 @@ globals
 	region array Gem_Spawn___Region
 	integer array Gem_Spawn___Round
 	integer array Gem_Spawn___Index
+	real array Gem_Spawn___Facing
+
+	constant real Gem_Spawn___FACING_LEFT = 180.00
+	constant real Gem_Spawn___FACING_RIGHT = 0.00
+	constant real Gem_Spawn___FACING_UP = 90.00
+	constant real Gem_Spawn___FACING_DOWN = 270.00
 endglobals
 
 // ## Functions
@@ -67,6 +73,7 @@ function Gem_Spawn__Start takes integer player_index, integer round returns noth
 
 	call Spawn__Set_X (Gem_Spawn___Index [player_index], GetRectCenterX (Gem_Spawn___Spawn_Rect (player_index)))
 	call Spawn__Set_Y (Gem_Spawn___Index [player_index], GetRectCenterY (Gem_Spawn___Spawn_Rect (player_index)))
+	call Spawn__Set_Facing (Gem_Spawn___Index [player_index], Gem_Spawn___Facing [player_index])
 
 	call Spawn__Start (Gem_Spawn___Index [player_index])
 endfunction
@@ -157,8 +164,17 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 		set round = round + 1
 		exitwhen round > 50
 
-		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, bj_UNIT_FACING, 0.00, 1.61)
+		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, Gem_Spawn___FACING_RIGHT, 0.00, 1.61)
 	endloop
+
+	set Gem_Spawn___Facing [0] = Gem_Spawn___FACING_RIGHT
+	set Gem_Spawn___Facing [1] = Gem_Spawn___FACING_LEFT
+	set Gem_Spawn___Facing [2] = Gem_Spawn___FACING_DOWN
+	set Gem_Spawn___Facing [3] = Gem_Spawn___FACING_UP
+	set Gem_Spawn___Facing [4] = Gem_Spawn___FACING_LEFT
+	set Gem_Spawn___Facing [5] = Gem_Spawn___FACING_RIGHT
+	set Gem_Spawn___Facing [6] = Gem_Spawn___FACING_UP
+	set Gem_Spawn___Facing [7] = Gem_Spawn___FACING_DOWN
 
 	return false
 endfunction

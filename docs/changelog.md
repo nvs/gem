@@ -14,6 +14,7 @@ full list of changes to the project, please consult the commit log.
   permanent luck changing buttons.
 - Cooldown reduction on slate teleporation.
 - 'Melee' style slate attacks now have a standardized attack range.
+- Monsters now spawn facing the first touchpoint for all players.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead
