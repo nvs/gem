@@ -48,7 +48,6 @@ return {
 		'src/unit/event/death.j',
 		'src/unit/event/initialize.j',
 
-		'src/unit/indexer/stack.j',
 		'src/unit/indexer.j',
 
 		'src/dummy-caster.j',
