@@ -66,10 +66,7 @@
 globals
 	integer Spawn___ID_INDEX = ID__NULL
 
-	constant integer Spawn___STACK_MINIMUM_INDEX = Array__MINIMUM_INDEX
-	constant integer Spawn___STACK_MAXIMUM_INDEX = Array__MAXIMUM_INDEX
-
-	integer Spawn___Stack_Index = -1
+	integer Spawn___Stack_Index = Array__MINIMUM_INDEX
 	integer array Spawn___Stack
 
 	boolean array Spawn___Is_Allocated
@@ -98,12 +95,12 @@ endglobals
 
 // Returns a `boolean` indicating whether or not the stack is empty.
 function Spawn___Stack_Is_Empty takes nothing returns boolean
-	return Spawn___Stack_Index < Spawn___STACK_MINIMUM_INDEX
+	return Spawn___Stack_Index <= Array__MINIMUM_INDEX
 endfunction
 
 // Returns a `boolean` indicating whether or not the stack is full.
 function Spawn___Stack_Is_Full takes nothing returns boolean
-	return Spawn___Stack_Index >= Spawn___STACK_MAXIMUM_INDEX
+	return Spawn___Stack_Index >= Array__MINIMUM_INDEX
 endfunction
 
 // Removes an unallocated spawn index from the top of the stack, and returns
