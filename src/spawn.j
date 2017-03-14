@@ -58,8 +58,8 @@
 // ## Notes
 //
 // - This system does not need to be initialized before use.
-// - The maximum number of supported spawn objects is `8191`.
-// - The possible range on spawn object indicies is `[1, 8191]`.
+// - The maximum number of supported spawn objects is `8190`.
+// - The possible range on spawn object indicies is `[1, 8190]`.
 
 // ## Globals
 

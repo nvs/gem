@@ -50,8 +50,8 @@
 // ## Notes
 //
 // - This system does not need to be initialized before use.
-// - The maximum number of supported spawn groups is `8191`.
-// - The possible range on spawn group indices is `[1, 8191]`.
+// - The maximum number of supported spawn groups is `8190`.
+// - The possible range on spawn group indices is `[1, 8190]`.
 
 // ## Globals
 
