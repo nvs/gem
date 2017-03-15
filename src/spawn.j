@@ -100,7 +100,7 @@ endfunction
 
 // Returns a `boolean` indicating whether or not the stack is full.
 function Spawn___Stack_Is_Full takes nothing returns boolean
-	return Spawn___Stack_Index >= Array__MINIMUM_INDEX
+	return Spawn___Stack_Index >= Array__MAXIMUM_INDEX
 endfunction
 
 // Removes an unallocated spawn index from the top of the stack, and returns
