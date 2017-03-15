@@ -1,6 +1,6 @@
 return {
 	flags = {
-		debug = false
+		debug = true
 	},
 
 	input = {
