@@ -271,6 +271,7 @@ function main takes nothing returns nothing
 	set initialize = CreateTrigger ()
 
 	call TriggerAddCondition (initialize, Condition (function Character__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Player__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Player_Color__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Event__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Indexer__Initialize))
