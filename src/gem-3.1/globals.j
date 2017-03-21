@@ -149,7 +149,6 @@ globals
 	rect gg_rct_1move5=null
 	rect gg_rct_1move6=null
 	rect gg_rct_1move7=null
-	rect gg_rct_1start=null
 	rect gg_rct_2move1=null
 	rect gg_rct_2move2=null
 	rect gg_rct_2move3=null
@@ -157,7 +156,6 @@ globals
 	rect gg_rct_2move5=null
 	rect gg_rct_2move6=null
 	rect gg_rct_2move7=null
-	rect gg_rct_2start=null
 	rect gg_rct_3move1=null
 	rect gg_rct_3move2=null
 	rect gg_rct_3move3=null
@@ -165,7 +163,6 @@ globals
 	rect gg_rct_3move5=null
 	rect gg_rct_3move6=null
 	rect gg_rct_3move7=null
-	rect gg_rct_3start=null
 	rect gg_rct_4move1=null
 	rect gg_rct_4move2=null
 	rect gg_rct_4move3=null
@@ -173,7 +170,6 @@ globals
 	rect gg_rct_4move5=null
 	rect gg_rct_4move6=null
 	rect gg_rct_4move7=null
-	rect gg_rct_4start=null
 	rect gg_rct_5move1=null
 	rect gg_rct_5move2=null
 	rect gg_rct_5move3=null
@@ -181,7 +177,6 @@ globals
 	rect gg_rct_5move5=null
 	rect gg_rct_5move6=null
 	rect gg_rct_5move7=null
-	rect gg_rct_5start=null
 	rect gg_rct_6move1=null
 	rect gg_rct_6move2=null
 	rect gg_rct_6move3=null
@@ -189,7 +184,6 @@ globals
 	rect gg_rct_6move5=null
 	rect gg_rct_6move6=null
 	rect gg_rct_6move7=null
-	rect gg_rct_6start=null
 	rect gg_rct_7move1=null
 	rect gg_rct_7move2=null
 	rect gg_rct_7move3=null
@@ -197,7 +191,6 @@ globals
 	rect gg_rct_7move5=null
 	rect gg_rct_7move6=null
 	rect gg_rct_7move7=null
-	rect gg_rct_7start=null
 	rect gg_rct_8move1=null
 	rect gg_rct_8move2=null
 	rect gg_rct_8move3=null
@@ -205,7 +198,6 @@ globals
 	rect gg_rct_8move5=null
 	rect gg_rct_8move6=null
 	rect gg_rct_8move7=null
-	rect gg_rct_8start=null
 	rect gg_rct_Finish_1=null
 	rect gg_rct_Finish_2=null
 	rect gg_rct_Finish_3=null

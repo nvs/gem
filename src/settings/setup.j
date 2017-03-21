@@ -13,41 +13,18 @@ function Settings___Setup_Mode takes nothing returns nothing
 endfunction
 
 function Settings___Create_Miners takes nothing returns nothing
-	local player the_player
 	local integer index
-
-	local real x
-	local real y
-
-	local rect array starts
-
-	set starts [0] = gg_rct_1start
-	set starts [1] = gg_rct_2start
-	set starts [2] = gg_rct_3start
-	set starts [3] = gg_rct_4start
-	set starts [4] = gg_rct_5start
-	set starts [5] = gg_rct_6start
-	set starts [6] = gg_rct_7start
-	set starts [7] = gg_rct_8start
 
 	set index = 0
 	loop
 		if udg_PlayerHERE [index + 1] then
-			set the_player = Player (index)
-
-			set x = GetRectCenterX (starts [index])
-			set y = GetRectCenterY (starts [index])
-
-			set Settings___Miners [index] = CreateUnit (the_player, 'u000', x, y, bj_UNIT_FACING)
+			set Settings___Miners [index] = CreateUnit (Player (index), 'u000', GetStartLocationX (index), GetStartLocationY (index), bj_UNIT_FACING)
 			call PauseUnit (Settings___Miners [index], true)
 		endif
-		set starts [index] = null
 
 		set index = index + 1
 		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
-
-	set the_player = null
 endfunction
 
 function Settings___Begin_Game takes nothing returns nothing
