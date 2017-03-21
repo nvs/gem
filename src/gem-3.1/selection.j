@@ -16872,7 +16872,7 @@ function Trig_DownGrade_Actions takes nothing returns nothing
 endfunction
 function InitTrig_DownGrade takes nothing returns nothing
 	set gg_trg_DownGrade=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_DownGrade,EVENT_PLAYER_UNIT_SPELL_CAST)
+	//call TriggerRegisterAnyUnitEventBJ(gg_trg_DownGrade,EVENT_PLAYER_UNIT_SPELL_CAST)
 	call TriggerAddCondition(gg_trg_DownGrade,Condition(function Trig_DownGrade_Conditions))
 	call TriggerAddAction(gg_trg_DownGrade,function Trig_DownGrade_Actions)
 endfunction
