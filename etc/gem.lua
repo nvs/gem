@@ -80,6 +80,7 @@ return {
 		'src/gem-3.1/extra-chance-window.j',
 		'src/gem-3.1/tower-swap.j',
 		'src/gem-3.1/selection.j',
+		'src/gem-3.1/combination.j',
 
 		'src/gem/selection.j',
 
