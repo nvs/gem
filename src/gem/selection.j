@@ -154,6 +154,11 @@ function Gem_Selection___On_Finish takes nothing returns boolean
 		// Keep:
 		call UnitAddAbility (the_unit, 'A009')
 
+		// Downgrade:
+		if Gem_Gems__Is_Gem (unit_type) and Gem_Gems__Get_ID_Quality (unit_type) != Gem_Quality__CHIPPED then
+			call UnitAddAbility (the_unit, 'A02G')
+		endif
+
 		// Combine:
 		if count > 1 then
 			// 2x:
@@ -310,11 +315,6 @@ function Gem_Selection___Keep takes nothing returns boolean
 
 		call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("66ffff", GetUnitName (the_unit) + " has been chosen as your gem this round."))
 
-		// Add 'Downgrade' to all qualities but Chipped.
-		if Gem_Gems__Get_ID_Quality (unit_type) != Gem_Quality__CHIPPED then
-			call UnitAddAbility (the_unit, 'A02G')
-		endif
-
 		// Needed as kept gems are not replaced.
 		call UnitRemoveAbility (the_unit, 'A009')
 		call UnitRemoveAbility (the_unit, 'A02G')
@@ -337,14 +337,55 @@ function Gem_Selection___Keep takes nothing returns boolean
 	return false
 endfunction
 
+function Gem_Selection___Downgrade takes nothing returns boolean
+	local player the_player
+	local integer index__player
+
+	local unit original
+	local unit replacement
+	local integer unit_type
+
+	local integer id__quality
+	local integer index__quality
+
+	local integer id__type
+
+	if GetSpellAbilityId () == 'A02G' then
+		set the_player = GetTriggerPlayer ()
+		set index__player = GetPlayerId (the_player)
+
+		set original = GetTriggerUnit ()
+		set unit_type = GetUnitTypeId (original)
+
+		set udg_PlayerFinished [index__player + 1] = true
+
+		set id__quality = Gem_Gems__Get_ID_Quality (unit_type)
+		set id__type = Gem_Gems__Get_ID_Type (unit_type)
+
+		set index__quality = Gem_Quality__Get_Index (id__quality) - 1
+		set id__quality = Gem_Quality__Get_ID (index__quality)
+		set unit_type = Gem_Gems__Get_Unit_Type (id__type, id__quality)
+
+		set replacement = ReplaceUnitBJ (original, unit_type, bj_UNIT_STATE_METHOD_MAXIMUM)
+
+		call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("33ff33", GetUnitName (replacement) + " has been created!!"))
+
+		call Gem_Selection___Cleanup (index__player, replacement, original)
+	endif
+
+	set original = null
+	set replacement = null
+	set the_player = null
+
+	return false
+endfunction
+
 function Gem_Selection___Combine takes nothing returns boolean
 	local player the_player
 	local integer index__player
 
 	local unit original
 	local unit replacement
-
-	local unit the_unit
 	local integer unit_type
 
 	local integer count
@@ -538,6 +579,7 @@ function Gem_Selection__Initialize takes nothing returns boolean
 	set selection = CreateTrigger ()
 
 	call TriggerAddAction (selection, function Gem_Selection___Keep)
+	call TriggerAddAction (selection, function Gem_Selection___Downgrade)
 	call TriggerAddAction (selection, function Gem_Selection___Combine)
 	call TriggerAddAction (selection, function Gem_Selection___Slate)
 	call TriggerAddAction (selection, function Gem_Selection___Special)
