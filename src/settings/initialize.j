@@ -18,7 +18,7 @@ function Settings__Initialize takes nothing returns boolean
 
 	call Settings_Difficulty__Initialize ()
 	call Settings_HCL__Initialize ()
-	call Settings___Create_Miners ()
+	call Settings___Pause_Miners ()
 
 	// An empty string is taken to mean that a player must specify the game
 	// settings, regardless of whether a host bot is involved.

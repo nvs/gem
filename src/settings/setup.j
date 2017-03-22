@@ -3,8 +3,6 @@ globals
 	timerdialog Settings___Countdown = null
 
 	constant real Settings___COUNTDOWN_TIME = 10.00
-
-	unit array Settings___Miners
 endglobals
 
 function Settings___Setup_Mode takes nothing returns nothing
@@ -12,23 +10,28 @@ function Settings___Setup_Mode takes nothing returns nothing
 	set udg_Level = 2
 endfunction
 
-function Settings___Create_Miners takes nothing returns nothing
-	local integer index
+function Settings___Pause_Miners takes nothing returns nothing
+	local integer index__player
+	local unit miner
 
-	set index = 0
+	set index__player = 0
 	loop
-		if udg_PlayerHERE [index + 1] then
-			set Settings___Miners [index] = CreateUnit (Player (index), 'u000', GetStartLocationX (index), GetStartLocationY (index), bj_UNIT_FACING)
-			call PauseUnit (Settings___Miners [index], true)
+		set miner = Gem_Player__Get_Miner (Player (index__player))
+
+		if miner != null then
+			call PauseUnit (miner, true)
 		endif
 
-		set index = index + 1
-		exitwhen index == Gem__MAXIMUM_PLAYERS
+		set index__player = index__player + 1
+		exitwhen index__player == Gem__MAXIMUM_PLAYERS
 	endloop
+
+	set miner = null
 endfunction
 
 function Settings___Begin_Game takes nothing returns nothing
 	local integer index
+	local unit miner
 
 	call TimerDialogDisplay (Settings___Countdown, false)
 	call DestroyTimerDialog (Settings___Countdown)
@@ -42,13 +45,17 @@ function Settings___Begin_Game takes nothing returns nothing
 
 	set index = 0
 	loop
-		if Settings___Miners [index] != null then
-			call PauseUnit (Settings___Miners [index], false)
+		set miner = Gem_Player__Get_Miner (Player (index))
+
+		if miner != null then
+			call PauseUnit (miner, false)
 		endif
 
 		set index = index + 1
 		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
+
+	set miner = null
 endfunction
 
 // This function is guaranteed to run after map initialization, and currently
@@ -56,6 +63,7 @@ endfunction
 // either directly or via an expired timer.
 function Settings__Setup takes nothing returns nothing
 	local integer index
+	local player the_player
 
 	call Settings___Setup_Mode ()
 	call Settings__Difficulty_Setup ()
@@ -76,12 +84,12 @@ function Settings__Setup takes nothing returns nothing
 	// focused on it initially.
 	set index = 0
 	loop
-		if Settings___Miners [index] != null then
-			if GetLocalPlayer () == Player (index) then
-				call ClearSelection ()
-				call SelectUnit (Settings___Miners [index], true)
-				call SetCameraPosition (GetStartLocationX (index), GetStartLocationY (index))
-			endif
+		set the_player = Player (index)
+
+		if GetLocalPlayer () == the_player then
+			call ClearSelection ()
+			call SelectUnit (Gem_Player__Get_Miner (the_player), true)
+			call SetCameraPosition (GetStartLocationX (index), GetStartLocationY (index))
 		endif
 
 		set index = index + 1
