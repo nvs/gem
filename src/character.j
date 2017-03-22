@@ -60,7 +60,7 @@ function Character__ASCII takes string character returns integer
 
 	set ascii = Character___ASCII [Character___Hash (character)]
 
-	// Due to Warcraft 3 hasing, forward slashes will have the wrong ASCII code
+	// Due to Warcraft 3 hashing, forward slashes will have the wrong ASCII code
 	// (that of backslashes) at this point.
 	if ascii == 92 and character == "/" then
 		set ascii = 47
