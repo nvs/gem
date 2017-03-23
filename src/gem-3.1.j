@@ -16381,30 +16381,13 @@ endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[1],function Trig_Finish_Build_Race_P1_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (0))
 	set udg_RaceBuildingPeriod[1]=false
+	// This wait is needed, otherwise the keeping gem will not be set properly.
+	// This will ultimately cause the old combination system to fail.
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem1[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Finish_Build_Race_P1_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem1[udg_Level]), GetUnitY (udg_KeepingGem1[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[1],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
@@ -16478,30 +16461,11 @@ endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[2],function Trig_Finish_Build_Race_P2_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (1))
 	set udg_RaceBuildingPeriod[2]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem2[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Finish_Build_Race_P2_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem2[udg_Level]), GetUnitY (udg_KeepingGem2[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[2],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
@@ -16575,30 +16539,11 @@ endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[3],function Trig_Finish_Build_Race_P3_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (2))
 	set udg_RaceBuildingPeriod[3]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem3[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Finish_Build_Race_P3_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem3[udg_Level]), GetUnitY (udg_KeepingGem3[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[3],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
@@ -16672,30 +16617,11 @@ endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[4],function Trig_Finish_Build_Race_P4_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (3))
 	set udg_RaceBuildingPeriod[4]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem4[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Finish_Build_Race_P4_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem4[udg_Level]), GetUnitY (udg_KeepingGem4[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[4],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
@@ -16769,30 +16695,11 @@ endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[5],function Trig_Finish_Build_Race_P5_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (4))
 	set udg_RaceBuildingPeriod[5]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem5[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Finish_Build_Race_P5_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem5[udg_Level]), GetUnitY (udg_KeepingGem5[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[5],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
@@ -16866,30 +16773,11 @@ endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[6],function Trig_Finish_Build_Race_P6_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (5))
 	set udg_RaceBuildingPeriod[6]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem6[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Finish_Build_Race_P6_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem6[udg_Level]), GetUnitY (udg_KeepingGem6[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[6],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
@@ -16963,30 +16851,11 @@ endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[7],function Trig_Finish_Build_Race_P7_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (6))
 	set udg_RaceBuildingPeriod[7]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem7[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Finish_Build_Race_P7_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem7[udg_Level]), GetUnitY (udg_KeepingGem7[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[7],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
@@ -17060,30 +16929,11 @@ endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[8],function Trig_Finish_Build_Race_P8_Func001002)
 	call DisableTrigger(GetTriggeringTrigger())
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100,0.00,0.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100,0.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),0.00,0.00,100.00,0)
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),0.00,100.00,100.00,0)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_SECRET,"
-
-	")
-	call TriggerSleepAction(1.00)
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),0.00,100.00,0.00,0)
-	call TriggerSleepAction(0.50)
+	call Miner_Flashing (Player (7))
 	set udg_RaceBuildingPeriod[8]=false
+	call TriggerSleepAction (0.00)
 	set udg_KeepingGem8[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Finish_Build_Race_P8_Func017002001002)))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", GetUnitX (udg_KeepingGem8[udg_Level]), GetUnitY (udg_KeepingGem8[udg_Level])))
-	call SetUnitVertexColorBJ(GroupPickRandomUnit(GetUnitsOfPlayerAndTypeId(udg_Player[8],'u000')),100.00,100.00,100.00,0)
 	call QuestMessage(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)

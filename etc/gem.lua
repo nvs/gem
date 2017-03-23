@@ -63,6 +63,7 @@ return {
 
 		'src/gem-3.1/globals.j',
 		'src/gem-3.1/common.j',
+		'src/gem-3.1/miner-flashing.j',
 
 		'src/gem/spawn.j',
 

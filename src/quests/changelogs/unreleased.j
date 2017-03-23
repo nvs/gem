@@ -1,8 +1,8 @@
-function Quests___Version_Unreleased takes nothing returns nothing
+function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
 	local string title
 	local string text
 
-	set title = Gem__NAME + " Unreleased"
+	set title = Gem__NAME + " Unreleased [1 of 2]"
 	set text = ""
 
 	set text = text + Color__Gold ("Added:") + "\n"
@@ -15,7 +15,17 @@ function Quests___Version_Unreleased takes nothing returns nothing
 	set text = text + "- Cooldown reduction on slate teleporation.\n"
 	set text = text + "- 'Melee' style slate attacks now have a standardized attack range.\n"
 	set text = text + "- Monsters now spawn facing the first touchpoint for all players.\n"
-	set text = text + "\n"
+	set text = text + "- The wait period use for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'."
+
+	call Quests___Add_Changelog (title, text)
+endfunction
+
+function Quests___Version_Unreleased_Part_2 takes nothing returns nothing
+	local string title
+	local string text
+
+	set title = Gem__NAME + " Unreleased [2 of 2]"
+	set text = ""
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Upon reaching the maximum number of lives, gold will now be refunded instead of being wasted.\n"
@@ -27,4 +37,9 @@ function Quests___Version_Unreleased takes nothing returns nothing
 	set text = text + "- Ensure armor reduction for Ancients is applied before damage is dealt."
 
 	call Quests___Add_Changelog (title, text)
+endfunction
+
+function Quests___Version_Unreleased takes nothing returns nothing
+	call Quests___Version_Unreleased_Part_1 ()
+	call Quests___Version_Unreleased_Part_2 ()
 endfunction
