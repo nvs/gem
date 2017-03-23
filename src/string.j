@@ -34,7 +34,7 @@ function String__Is_Hexadecimal takes string text returns boolean
 	loop
 		set character = SubString (text, index, index + 1)
 
-		exitwhen character == "" or character == null
+		exitwhen not is_hexadecimal or character == "" or character == null
 		set index = index + 1
 
 		set is_hexadecimal = is_hexadecimal and Character__Is_Hexadecimal (character)
