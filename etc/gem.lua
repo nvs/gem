@@ -70,7 +70,7 @@ return {
 		'src/settings/difficulty.j',
 		'src/settings/common.j',
 
-		'src/time.j',
+		'src/clock.j',
 		'src/board.j',
 
 		'src/quests/common.j',

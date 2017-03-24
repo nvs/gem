@@ -41,7 +41,7 @@ function Settings___Begin_Game takes nothing returns nothing
 	call DestroyTimer (Settings___Timer)
 	set Settings___Timer = null
 
-	call Time__Setup ()
+	call Clock__Start ()
 
 	set index = 0
 	loop

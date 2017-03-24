@@ -3,27 +3,15 @@
 // ## Depends
 //
 // - Character
+// - Clock
 // - Player Color
 // - String
-// - Time
 
 globals
 	multiboard Board = null
 
 	integer array Board___Players
 endglobals
-
-function Board___Format_Time takes integer value returns string
-	if value < 10 then
-		return "0" + I2S (value)
-	else
-		return I2S (value)
-	endif
-endfunction
-
-function Board___Time takes nothing returns string
-	return Board___Format_Time (Time__Hours ()) + ":" + Board___Format_Time (Time__Minutes ()) + ":" + Board___Format_Time (Time__Seconds ())
-endfunction
 
 function Board__Display takes nothing returns nothing
 	call MultiboardDisplay (Board, true)
@@ -58,7 +46,7 @@ function Board___Update takes nothing returns nothing
 
 			if row == row_count - 1 then
 				if column == 1 then
-					set value = Board___Time ()
+					set value = Clock__String (false)
 				endif
 			else
 				if column == 1 then
