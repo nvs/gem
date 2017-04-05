@@ -39,13 +39,13 @@ function Dummy_Caster___Teardown takes integer ability_id returns nothing
 endfunction
 
 // Move the dummy to the specified location and cast the ability.
-function Dummy_Caster__Cast_Immediate takes player owner, integer ability_id, integer ability_level, integer order, real x, real y returns boolean
+function Dummy_Caster__Cast_Immediate takes player owner, integer ability_id, integer ability_level, string order, real x, real y returns boolean
 	local boolean result
 
 	call Dummy_Caster___Setup (owner, ability_id, ability_level)
 	call SetUnitX (Dummy_Caster, x)
 	call SetUnitX (Dummy_Caster, y)
-	set result = IssueImmediateOrderById (Dummy_Caster, order)
+	set result = IssueImmediateOrder (Dummy_Caster, order)
 	call SetUnitPosition (Dummy_Caster, Dummy_Caster___X, Dummy_Caster___Y)
 	call Dummy_Caster___Teardown (ability_id)
 
@@ -54,18 +54,18 @@ endfunction
 
 // Cast a spell on the specified target. The dummy will not be moved in order
 // to cast this ability.
-function Dummy_Caster__Cast_On_Target takes player owner, integer ability_id, integer ability_level, integer order, widget target returns boolean
+function Dummy_Caster__Cast_On_Target takes player owner, integer ability_id, integer ability_level, string order, widget target returns boolean
 	local boolean result
 
 	call Dummy_Caster___Setup (owner, ability_id, ability_level)
-	set result = IssueTargetOrderById (Dummy_Caster, order, target)
+	set result = IssueTargetOrder (Dummy_Caster, order, target)
 	call Dummy_Caster___Teardown (ability_id)
 
 	return result
 endfunction
 
 // Move the dummy to the specified location, then cast the spell on the target.
-function Dummy_Caster__Cast_On_Target_From takes player owner, integer ability_id, integer ability_level, integer order, widget target, real x, real y returns boolean
+function Dummy_Caster__Cast_On_Target_From takes player owner, integer ability_id, integer ability_level, string order, widget target, real x, real y returns boolean
 	local boolean result
 
 	call SetUnitX (Dummy_Caster, x)
@@ -78,18 +78,18 @@ endfunction
 
 // Cast a spell on the specified point. The dummy will not be moved in order to
 // cast this ability.
-function Dummy_Caster__Cast_On_Point takes player owner, integer ability_id, integer ability_level, integer order, real x, real y returns boolean
+function Dummy_Caster__Cast_On_Point takes player owner, integer ability_id, integer ability_level, string order, real x, real y returns boolean
 	local boolean result
 
 	call Dummy_Caster___Setup (owner, ability_id, ability_level)
-	set result = IssuePointOrderById (Dummy_Caster, order, x, y)
+	set result = IssuePointOrder (Dummy_Caster, order, x, y)
 	call Dummy_Caster___Teardown (ability_id)
 
 	return result
 endfunction
 
 // Move the dummy to the specified location, then cast the spell on the point.
-function Dummy_Caster__Cast_On_Point_From takes player owner, integer ability_id, integer ability_level, integer order, real point_x, real point_y, real caster_x, real caster_y returns boolean
+function Dummy_Caster__Cast_On_Point_From takes player owner, integer ability_id, integer ability_level, string order, real point_x, real point_y, real caster_x, real caster_y returns boolean
 	local boolean result
 
 	call SetUnitX (Dummy_Caster, caster_x)

@@ -30,7 +30,7 @@
 globals
 	constant integer Unit_Disarm___ABILITY_ID = 'UDDA'
 	constant integer Unit_Disarm___BUFF_ID = 'UDDB'
-	constant integer Unit_Disarm___ORDER_ID = 852585 // Drunken Haze
+	constant string Unit_Disarm___ORDER = "drunkenhaze"
 
 	integer Unit_Disarm___ID_UNIT_INDEX
 
@@ -91,7 +91,7 @@ function Unit_Disarm__Apply takes unit the_unit, real duration returns nothing
 		// if it has not actually been disarmed. Realize that a unit that is
 		// spell immune cannot be disarmed.
 		if not Unit_Disarm___Is_Disarmed [index] then
-			set Unit_Disarm___Is_Disarmed [index] = Dummy_Caster__Cast_On_Target (null, Unit_Disarm___ABILITY_ID, 1, Unit_Disarm___ORDER_ID, the_unit)
+			set Unit_Disarm___Is_Disarmed [index] = Dummy_Caster__Cast_On_Target (null, Unit_Disarm___ABILITY_ID, 1, Unit_Disarm___ORDER, the_unit)
 		endif
 
 		// Determine if we need to extend the disarm.

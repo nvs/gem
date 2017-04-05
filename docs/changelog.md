@@ -3,6 +3,12 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
+## 1.3.2 - 2017-04-05
+
+### Fixed
+- Damage, Hold, and Ancient Slates were not being disarmed due to an
+  incompatible change in the 1.28 patch.
+
 ## 1.3.1 - 2016-11-12
 
 ### Fixed
