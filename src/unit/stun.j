@@ -32,7 +32,7 @@
 globals
 	constant integer Unit_Stun___ABILITY_ID = 'USSA'
 	constant integer Unit_Stun___BUFF_ID = 'USSB'
-	constant integer Unit_Stun___ORDER_ID = 852231 // Firebolt
+	constant string Unit_Stun___ORDER = "firebolt"
 
 	integer Unit_Stun___ID_UNIT_INDEX = ID__NULL
 
@@ -94,7 +94,7 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns nothing
 		// A stun lasts forever, technically. So we only need to stun a unit if
 		// it has not actually been stunned.
 		if not Unit_Stun___Is_Stunned [index] then
-			set Unit_Stun___Is_Stunned [index] = Dummy_Caster__Cast_On_Target (null, Unit_Stun___ABILITY_ID, 1, Unit_Stun___ORDER_ID, the_unit)
+			set Unit_Stun___Is_Stunned [index] = Dummy_Caster__Cast_On_Target (null, Unit_Stun___ABILITY_ID, 1, Unit_Stun___ORDER, the_unit)
 		endif
 
 		// Determine if we need to extend the stun.
