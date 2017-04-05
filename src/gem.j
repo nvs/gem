@@ -5,7 +5,7 @@
 globals
 	constant string Gem__NAME = "Gem TD+"
 	constant string Gem__NAME_FULL = "Gem Tower Defense Plus"
-	constant string Gem__VERSION = "1.3.1"
+	constant string Gem__VERSION = "1.3.2"
 
 	constant string Gem__NAME_VERSION = Gem__NAME + " " + Gem__VERSION
 
