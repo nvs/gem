@@ -114,7 +114,7 @@ full list of changes to the project, please consult the commit log.
 - A host bot can now specify the game mode via HCL and start the game without
   any player intervention. Note that if a HCL command is not specified, then
   the players will have the option to select the game settings. See the
-  documentation on [Gem TD+ Settings] (settings.md) for more information.
+  documentation on [Gem TD+ Settings](settings.md) for more information.
 - The `-zoom` command has been added. It did not exist in the last official
   version, but has become popular in unofficial versions.
 - Once game settings have been selected, a brief timer is displayed indicating
