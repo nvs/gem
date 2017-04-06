@@ -6844,7 +6844,7 @@ function Trig_Frenzy_not_on_yet_Actions takes nothing returns nothing
 	set udg_Random[10]=GetRandomInt(1,5)
 	if(Trig_Frenzy_not_on_yet_Func002C())then
 		call UnitAddAbilityBJ('A03O',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),"bloodlust",GetAttacker())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_BLOODLUST,GetAttacker())
 		call UnitRemoveAbilityBJ('A03O',GetAttacker())
 		call PlaySoundOnUnitBJ(gg_snd_BloodLustCry,100,GetAttacker())
 	else
@@ -6876,7 +6876,7 @@ function Trig_Tourmaline_Actions takes nothing returns nothing
 	set udg_Random[7]=GetRandomInt(1,5)
 	if(Trig_Tourmaline_Func002C())then
 		call UnitAddAbilityBJ('A03J',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),"frostnova",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A03J',GetAttacker())
 		call SetUnitManaBJ(GetAttacker(),(GetUnitStateSwap(UNIT_STATE_MANA,GetAttacker())-5.00))
 	else
@@ -6907,7 +6907,7 @@ function Trig_Tourmaline_Facet_Actions takes nothing returns nothing
 	set udg_Random[7]=GetRandomInt(1,5)
 	if(Trig_Tourmaline_Facet_Func002C())then
 		call UnitAddAbilityBJ('A03N',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),"frostnova",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A03N',GetAttacker())
 		call SetUnitManaBJ(GetAttacker(),(GetUnitStateSwap(UNIT_STATE_MANA,GetAttacker())-5.00))
 	else
@@ -7015,7 +7015,7 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueTargetOrderBJ(GetAttacker(),"forkedlightning",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A07A',GetAttacker())
 	else
 	endif
@@ -7090,31 +7090,31 @@ function Trig_Spell_Slate_Actions takes nothing returns nothing
 	set udg_Random[8]=GetRandomInt(1,100)
 	if(Trig_Spell_Slate_Func002C())then
 		call UnitAddAbilityBJ('A05R',GetAttacker())
-		call IssueImmediateOrderBJ(GetAttacker(),"fanofknives")
+		call IssueImmediateOrderBJ(GetAttacker(),ORDER_FANOFKNIVES)
 		call UnitRemoveAbilityBJ('A05R',GetAttacker())
 	else
 	endif
 	if(Trig_Spell_Slate_Func003C())then
 		call UnitAddAbilityBJ('A05S',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),"forkedlightning",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05S',GetAttacker())
 	else
 	endif
 	if(Trig_Spell_Slate_Func004C())then
 		call UnitAddAbilityBJ('A05Q',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),"frostnova",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05Q',GetAttacker())
 	else
 	endif
 	if(Trig_Spell_Slate_Func005C())then
 		call UnitAddAbilityBJ('A05U',GetAttacker())
-		call IssuePointOrderLocBJ(GetAttacker(),"carrionswarm",GetUnitLoc(GetAttackedUnitBJ()))
+		call IssuePointOrderLocBJ(GetAttacker(),ORDER_CARRIONSWARM,GetUnitLoc(GetAttackedUnitBJ()))
 		call UnitRemoveAbilityBJ('A05U',GetAttacker())
 	else
 	endif
 	if(Trig_Spell_Slate_Func006C())then
 		call UnitAddAbilityBJ('A05T',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),"frostarmor",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTARMOR,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05T',GetAttacker())
 	else
 	endif
@@ -7475,7 +7475,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueImmediateOrderBJ(GetAttacker(),"fanofknives")
+		call IssueImmediateOrderBJ(GetAttacker(),ORDER_FANOFKNIVES)
 		call UnitRemoveAbilityBJ('A05Z',GetAttacker())
 	else
 	endif
@@ -7532,7 +7532,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueTargetOrderBJ(GetAttacker(),"shadowstrike",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_SHADOWSTRIKE,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05Y',GetAttacker())
 	else
 	endif
@@ -7588,7 +7588,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueImmediateOrderBJ(GetAttacker(),"thunderclap")
+		call IssueImmediateOrderBJ(GetAttacker(),ORDER_THUNDERCLAP)
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call UnitRemoveAbilityBJ('A05X',GetAttacker())
 	else
@@ -7646,7 +7646,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueTargetOrderBJ(GetAttacker(),"frostarmor",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTARMOR,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05W',GetAttacker())
 	else
 	endif
@@ -7702,7 +7702,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueTargetOrderBJ(GetAttacker(),"frostnova",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A060',GetAttacker())
 	else
 	endif
@@ -7766,7 +7766,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssuePointOrderLocBJ(GetAttacker(),"shockwave",GetUnitLoc(GetAttackedUnitBJ()))
+		call IssuePointOrderLocBJ(GetAttacker(),ORDER_SHOCKWAVE,GetUnitLoc(GetAttackedUnitBJ()))
 		call UnitRemoveAbilityBJ('A062',GetAttacker())
 	else
 	endif
@@ -7822,7 +7822,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssueTargetOrderBJ(GetAttacker(),"forkedlightning",GetAttackedUnitBJ())
+		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A063',GetAttacker())
 	else
 	endif

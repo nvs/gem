@@ -17,7 +17,7 @@ function Gem_Slate___Poison takes nothing returns boolean
 
 			call UnitAddAbility (attacker, 'A05N')
 			call SetUnitAbilityLevel (attacker, 'A05N', level)
-			set is_poisoned = IssueTargetOrder (attacker, "shadowstrike", victim)
+			set is_poisoned = IssueTargetOrder (attacker, ORDER_SHADOWSTRIKE, victim)
 			call UnitRemoveAbility (attacker, 'A05N')
 		endif
 

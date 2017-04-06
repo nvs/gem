@@ -571,4 +571,15 @@ globals
 	destructable gg_dest_DTlv_0009=null
 	destructable gg_dest_DTlv_0010=null
 	destructable gg_dest_DTlv_0011=null
+	// Ensure that order strings are not converted to order ids during the
+	// optimization process. This ensures patch 1.28 compatibility.
+	constant string ORDER_BLOODLUST = "bloodlust"
+	constant string ORDER_FANOFKNIVES = "fanofknives"
+	constant string ORDER_FORKEDLIGHTNING = "forkedlightning"
+	constant string ORDER_FROSTNOVA = "frostnova"
+	constant string ORDER_FROSTARMOR = "frostarmor"
+	constant string ORDER_CARRIONSWARM = "carrionswarm"
+	constant string ORDER_SHADOWSTRIKE = "shadowstrike"
+	constant string ORDER_THUNDERCLAP = "thunderclap"
+	constant string ORDER_SHOCKWAVE = "shockwave"
 endglobals
