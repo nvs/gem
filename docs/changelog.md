@@ -27,6 +27,12 @@ full list of changes to the project, please consult the commit log.
 - Tower swapping no longer has a delay.
 - Ensure armor reduction for Ancients is applied before damage is dealt.
 
+## 1.3.3 - 2017-04-06
+
+### Fixed
+- More behavior broken by the 1.28 path has been fixed. This applies to
+  Poison Slate, Spell Slate, Elder Slate, and Bloodstone.
+
 ## 1.3.2 - 2017-04-05
 
 ### Fixed
