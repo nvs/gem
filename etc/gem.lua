@@ -18,8 +18,8 @@ return {
 	},
 
 	patch = {
-		'lib/patch/1.27b/common.j',
-		'lib/patch/1.27b/blizzard.j'
+		'lib/patch/1.28a/common.j',
+		'lib/patch/1.28a/blizzard.j'
 	},
 
 	scripts = {
