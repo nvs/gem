@@ -10,8 +10,8 @@ full list of changes to the project, please consult the commit log.
 - Added hotkey support for slate teleporation.
 
 ### Changed
-- Gold Mine button placement has shifted, and the second row now includes both
-  permanent luck changing buttons.
+- Gold Mine button placement has shifted, and the second row now includes all
+  extra chance related buttons.
 - Cooldown reduction on slate teleporation.
 - 'Melee' style slate attacks now have a standardized attack range.
 - Monsters now spawn facing the first touchpoint for all players.
