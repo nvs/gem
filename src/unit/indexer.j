@@ -125,8 +125,8 @@ function Unit_Indexer___On_Leave takes nothing returns boolean
 endfunction
 
 function Unit_Indexer__Initialize takes nothing returns boolean
-	call Unit_Event__On_Enter (function Unit_Indexer___On_Enter)
-	call Unit_Event__On_Leave (function Unit_Indexer___On_Leave)
+	call Unit_Event__On_Enter (Condition (function Unit_Indexer___On_Enter))
+	call Unit_Event__On_Leave (Condition (function Unit_Indexer___On_Leave))
 
 	return false
 endfunction
