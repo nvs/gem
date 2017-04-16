@@ -7,7 +7,7 @@ function Unit_Event___Death takes nothing returns boolean
 	local unit temporary_unit
 
 	set temporary_unit = Unit_Event___The_Unit
-	set Unit_Event___The_Unit = GetFilterUnit ()
+	set Unit_Event___The_Unit = GetTriggerUnit ()
 
 	// Iterate through the list of registered callbacks in registration
 	// order (FIFO).
@@ -41,7 +41,7 @@ function Unit_Event___Initialize_Death takes nothing returns nothing
 		exitwhen player_index >= bj_MAX_PLAYER_SLOTS
 	endloop
 
-	call TriggerAddCondition (the_trigger, Condition (function Unit_Event___Leaves))
+	call TriggerAddCondition (the_trigger, Condition (function Unit_Event___Death))
 
 	set the_trigger = null
 	set the_player = null
