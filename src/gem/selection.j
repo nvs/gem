@@ -280,6 +280,8 @@ function Gem_Selection___Cleanup takes integer index__player, unit current, unit
 	// automatically attack.
 	call IssueImmediateOrder (current, "stop")
 
+	call Gem_Combination__Register (current)
+
 	if index__player == 0 then
 		call Trig_Finish_Build_Race_P1_Actions ()
 	elseif index__player == 1 then

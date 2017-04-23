@@ -71,6 +71,8 @@ return {
 		'src/gem/special.j',
 		'src/gem/slate.j',
 
+		'src/gem/combination/marker.j',
+		'src/gem/combination.j',
 		'src/gem/placement.j',
 		'src/gem/chance.j',
 		'src/gem/extra-chance.j',
@@ -148,7 +150,8 @@ return {
 		'share/objects/kill-bonus-remove-spell-immunity.lua',
 		'share/objects/gold-mine-buttons.lua',
 		'share/objects/slate-teleport.lua',
-		'share/objects/standardize-slate-range.lua'
+		'share/objects/standardize-slate-range.lua',
+		'share/objects/combination-button.lua'
 	},
 
 	constants = {
