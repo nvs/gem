@@ -47,18 +47,6 @@ function InitGlobals takes nothing returns nothing
 	set i=0
 	loop
 		exitwhen(i>8)
-		set udg_QuadCombine[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_SpecialONplace[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
 		set udg_Damage[i]=0
 		set i=i+1
 	endloop
@@ -74,7 +62,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_SpecialsROUNDp1[i]=0
 		set i=i+1
 	endloop
-	set udg_UnitGroupSPECIAL=CreateGroup()
 	set i=0
 	loop
 		exitwhen(i>50)
@@ -945,25 +932,6 @@ endfunction
 function InitTrig_Inihilization takes nothing returns nothing
 	set gg_trg_Inihilization=CreateTrigger()
 	call TriggerAddAction(gg_trg_Inihilization,function Trig_Inihilization_Actions)
-endfunction
-function Trig_Special_Mark takes nothing returns nothing
-	local unit the_unit = GetEnumUnit ()
-	local effect sfx = AddSpecialEffect ("Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit))
-	call TriggerSleepAction (5.00)
-	call DestroyEffect (sfx)
-	set the_unit = null
-	set sfx = null
-endfunction
-function Trig_Special_Mark_Enum takes nothing returns nothing
-	call ExecuteFunc ("Trig_Special_Mark")
-endfunction
-function Trig_Special_Mark_Actions takes nothing returns nothing
-	call ForGroup (udg_UnitGroupSPECIAL, function Trig_Special_Mark_Enum)
-endfunction
-function InitTrig_Special_Mark takes nothing returns nothing
-	set gg_trg_Special_Mark=CreateTrigger()
-	call TriggerRegisterTimerEventPeriodic(gg_trg_Special_Mark,3.50)
-	call TriggerAddAction(gg_trg_Special_Mark,function Trig_Special_Mark_Actions)
 endfunction
 function Trig_Gem_Awards_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
@@ -15170,14 +15138,11 @@ function Trig_Finish_Build_Race_P1_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[1],function Trig_Finish_Build_Race_P1_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (0))
 	set udg_RaceBuildingPeriod[1]=false
-	set udg_KeepingGem1[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_Finish_Build_Race_P1_Func017002001002)))
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P1)
 	call Gem_Spawn__Start (0, udg_RLevel [1])
 endfunction
 function InitTrig_Finish_Build_Race_P1 takes nothing returns nothing
@@ -15246,14 +15211,11 @@ function Trig_Finish_Build_Race_P2_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[2],function Trig_Finish_Build_Race_P2_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (1))
 	set udg_RaceBuildingPeriod[2]=false
-	set udg_KeepingGem2[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_Finish_Build_Race_P2_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P2)
 	call Gem_Spawn__Start (1, udg_RLevel [2])
 endfunction
 function InitTrig_Finish_Build_Race_P2 takes nothing returns nothing
@@ -15322,14 +15284,11 @@ function Trig_Finish_Build_Race_P3_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[3],function Trig_Finish_Build_Race_P3_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (2))
 	set udg_RaceBuildingPeriod[3]=false
-	set udg_KeepingGem3[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_Finish_Build_Race_P3_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P3)
 	call Gem_Spawn__Start (2, udg_RLevel [3])
 endfunction
 function InitTrig_Finish_Build_Race_P3 takes nothing returns nothing
@@ -15398,14 +15357,11 @@ function Trig_Finish_Build_Race_P4_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[4],function Trig_Finish_Build_Race_P4_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (3))
 	set udg_RaceBuildingPeriod[4]=false
-	set udg_KeepingGem4[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_Finish_Build_Race_P4_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P4)
 	call Gem_Spawn__Start (3, udg_RLevel [4])
 endfunction
 function InitTrig_Finish_Build_Race_P4 takes nothing returns nothing
@@ -15474,14 +15430,11 @@ function Trig_Finish_Build_Race_P5_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[5],function Trig_Finish_Build_Race_P5_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (4))
 	set udg_RaceBuildingPeriod[5]=false
-	set udg_KeepingGem5[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_Finish_Build_Race_P5_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P5)
 	call Gem_Spawn__Start (4, udg_RLevel [5])
 endfunction
 function InitTrig_Finish_Build_Race_P5 takes nothing returns nothing
@@ -15550,14 +15503,11 @@ function Trig_Finish_Build_Race_P6_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[6],function Trig_Finish_Build_Race_P6_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (5))
 	set udg_RaceBuildingPeriod[6]=false
-	set udg_KeepingGem6[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_Finish_Build_Race_P6_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P6)
 	call Gem_Spawn__Start (5, udg_RLevel [6])
 endfunction
 function InitTrig_Finish_Build_Race_P6 takes nothing returns nothing
@@ -15626,14 +15576,11 @@ function Trig_Finish_Build_Race_P7_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[7],function Trig_Finish_Build_Race_P7_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (6))
 	set udg_RaceBuildingPeriod[7]=false
-	set udg_KeepingGem7[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_Finish_Build_Race_P7_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P7)
 	call Gem_Spawn__Start (6, udg_RLevel [7])
 endfunction
 function InitTrig_Finish_Build_Race_P7 takes nothing returns nothing
@@ -15702,14 +15649,11 @@ function Trig_Finish_Build_Race_P8_Func027002 takes nothing returns nothing
 endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_LocationGroup[8],function Trig_Finish_Build_Race_P8_Func001002)
-	call DisableTrigger(GetTriggeringTrigger())
 	call Miner_Flashing (Player (7))
 	set udg_RaceBuildingPeriod[8]=false
-	set udg_KeepingGem8[udg_Level]=GroupPickRandomUnit(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_Finish_Build_Race_P8_Func017002001002)))
 	call QuestMessage(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
-	call TriggerExecute(gg_trg_Finding_Special_combinations_P8)
 	call Gem_Spawn__Start (7, udg_RLevel [8])
 endfunction
 function InitTrig_Finish_Build_Race_P8 takes nothing returns nothing
@@ -15844,8 +15788,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [1], 5)
 	set udg_PlayerFinishBuild[1]=false
 	set udg_PlayerFinished[1]=false
-	set udg_SpecialONplace[1]=false
-	set udg_QuadCombine[1]=false
 	set udg_RaceModeKills[1]=0
 	set udg_RaceBuildingPeriod[1]=true
 	set bj_forLoopAIndex=1
@@ -16032,8 +15974,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [2], 5)
 	set udg_PlayerFinishBuild[2]=false
 	set udg_PlayerFinished[2]=false
-	set udg_SpecialONplace[2]=false
-	set udg_QuadCombine[2]=false
 	set udg_RaceModeKills[2]=0
 	set udg_RaceBuildingPeriod[2]=true
 	set bj_forLoopAIndex=1
@@ -16220,8 +16160,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [3], 5)
 	set udg_PlayerFinishBuild[3]=false
 	set udg_PlayerFinished[3]=false
-	set udg_SpecialONplace[3]=false
-	set udg_QuadCombine[3]=false
 	set udg_RaceModeKills[3]=0
 	set udg_RaceBuildingPeriod[3]=true
 	set bj_forLoopAIndex=1
@@ -16408,8 +16346,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [4], 5)
 	set udg_PlayerFinishBuild[4]=false
 	set udg_PlayerFinished[4]=false
-	set udg_SpecialONplace[4]=false
-	set udg_QuadCombine[4]=false
 	set udg_RaceModeKills[4]=0
 	set udg_RaceBuildingPeriod[4]=true
 	set bj_forLoopAIndex=1
@@ -16596,8 +16532,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [5], 5)
 	set udg_PlayerFinishBuild[5]=false
 	set udg_PlayerFinished[5]=false
-	set udg_SpecialONplace[5]=false
-	set udg_QuadCombine[5]=false
 	set udg_RaceModeKills[5]=0
 	set udg_RaceBuildingPeriod[5]=true
 	set bj_forLoopAIndex=1
@@ -16784,8 +16718,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [6], 5)
 	set udg_PlayerFinishBuild[6]=false
 	set udg_PlayerFinished[6]=false
-	set udg_SpecialONplace[6]=false
-	set udg_QuadCombine[6]=false
 	set udg_RaceModeKills[6]=0
 	set udg_RaceBuildingPeriod[6]=true
 	set bj_forLoopAIndex=1
@@ -16972,8 +16904,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [7], 5)
 	set udg_PlayerFinishBuild[7]=false
 	set udg_PlayerFinished[7]=false
-	set udg_SpecialONplace[7]=false
-	set udg_QuadCombine[7]=false
 	set udg_RaceModeKills[7]=0
 	set udg_RaceBuildingPeriod[7]=true
 	set bj_forLoopAIndex=1
@@ -17160,8 +17090,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [8], 5)
 	set udg_PlayerFinishBuild[8]=false
 	set udg_PlayerFinished[8]=false
-	set udg_SpecialONplace[8]=false
-	set udg_QuadCombine[8]=false
 	set udg_RaceModeKills[8]=0
 	set udg_RaceBuildingPeriod[8]=true
 	set bj_forLoopAIndex=1

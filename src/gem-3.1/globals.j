@@ -15,31 +15,19 @@ globals
 	boolean array udg_PlayerFinished
 	integer array udg_SpawningUnit
 	force udg_CombiningPlayer=null
-	integer array udg_SpecialTower
 	integer array udg_Lives
 	integer array udg_Kills
 	unit array udg_GemPlaced2
 	player array udg_Player
-	unit array udg_KeepingGem1
-	boolean array udg_QuadCombine
-	boolean array udg_SpecialONplace
-	unit array udg_KeepingGem2
 	unit array udg_GemPlaced3
-	unit array udg_KeepingGem3
 	unit array udg_GemPlaced4
-	unit array udg_KeepingGem4
 	unit array udg_GemPlaced5
 	unit array udg_GemPlaced6
 	unit array udg_GemPlaced7
 	unit array udg_GemPlaced8
-	unit array udg_KeepingGem5
-	unit array udg_KeepingGem6
-	unit array udg_KeepingGem7
-	unit array udg_KeepingGem8
 	integer array udg_Damage
 	boolean array udg_PlayerDie
 	integer array udg_SpecialsROUNDp1
-	group udg_UnitGroupSPECIAL=null
 	integer array udg_SpecialsROUNDp2
 	integer array udg_SpecialsROUNDp3
 	integer array udg_SpecialsROUNDp4
@@ -257,7 +245,6 @@ globals
 	sound gg_snd_BloodLustCry=null
 	trigger gg_trg_kills_and_remove_Corpse=null
 	trigger gg_trg_Inihilization=null
-	trigger gg_trg_Special_Mark=null
 	trigger gg_trg_Gem_Awards=null
 	trigger gg_trg_Gem_Awards_Upgrade_debug=null
 	trigger gg_trg_Player_Leaves=null
