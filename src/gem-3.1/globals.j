@@ -1,5 +1,4 @@
 globals
-	integer array Detect_Placed_Gem_Death___Count
 	boolexpr filterUnitByIdAndNotSpecialAndNotKept = null
 	// It should be noted one-base indices are used to reference the players in
 	// this array.

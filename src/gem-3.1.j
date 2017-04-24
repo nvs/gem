@@ -34191,7 +34191,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	set udg_QuadCombine[1]=false
 	set udg_RaceModeKills[1]=0
 	set udg_RaceBuildingPeriod[1]=true
-	set Detect_Placed_Gem_Death___Count [0] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -34388,7 +34387,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	set udg_QuadCombine[2]=false
 	set udg_RaceModeKills[2]=0
 	set udg_RaceBuildingPeriod[2]=true
-	set Detect_Placed_Gem_Death___Count [1] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -34585,7 +34583,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	set udg_QuadCombine[3]=false
 	set udg_RaceModeKills[3]=0
 	set udg_RaceBuildingPeriod[3]=true
-	set Detect_Placed_Gem_Death___Count [2] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -34782,7 +34779,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	set udg_QuadCombine[4]=false
 	set udg_RaceModeKills[4]=0
 	set udg_RaceBuildingPeriod[4]=true
-	set Detect_Placed_Gem_Death___Count [3] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -34979,7 +34975,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	set udg_QuadCombine[5]=false
 	set udg_RaceModeKills[5]=0
 	set udg_RaceBuildingPeriod[5]=true
-	set Detect_Placed_Gem_Death___Count [4] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -35176,7 +35171,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	set udg_QuadCombine[6]=false
 	set udg_RaceModeKills[6]=0
 	set udg_RaceBuildingPeriod[6]=true
-	set Detect_Placed_Gem_Death___Count [5] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -35373,7 +35367,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	set udg_QuadCombine[7]=false
 	set udg_RaceModeKills[7]=0
 	set udg_RaceBuildingPeriod[7]=true
-	set Detect_Placed_Gem_Death___Count [6] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
@@ -35570,7 +35563,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	set udg_QuadCombine[8]=false
 	set udg_RaceModeKills[8]=0
 	set udg_RaceBuildingPeriod[8]=true
-	set Detect_Placed_Gem_Death___Count [7] = 0
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=5
 	loop
