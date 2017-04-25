@@ -12,7 +12,6 @@ globals
 	group array udg_UnitGroup
 	unit array udg_GemPlaced1
 	boolean array udg_PlayerFinishBuild
-	boolean array udg_PlayerFinished
 	integer array udg_SpawningUnit
 	force udg_CombiningPlayer=null
 	integer array udg_Lives

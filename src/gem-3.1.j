@@ -25,12 +25,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_PlayerFinishBuild[i]=false
 		set i=i+1
 	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_PlayerFinished[i]=false
-		set i=i+1
-	endloop
 	set udg_CombiningPlayer=CreateForce()
 	set i=0
 	loop
@@ -15787,7 +15781,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P1)
 	call Gem_Placement__Start (udg_Player [1], 5)
 	set udg_PlayerFinishBuild[1]=false
-	set udg_PlayerFinished[1]=false
 	set udg_RaceModeKills[1]=0
 	set udg_RaceBuildingPeriod[1]=true
 	set bj_forLoopAIndex=1
@@ -15973,7 +15966,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P2)
 	call Gem_Placement__Start (udg_Player [2], 5)
 	set udg_PlayerFinishBuild[2]=false
-	set udg_PlayerFinished[2]=false
 	set udg_RaceModeKills[2]=0
 	set udg_RaceBuildingPeriod[2]=true
 	set bj_forLoopAIndex=1
@@ -16159,7 +16151,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P3)
 	call Gem_Placement__Start (udg_Player [3], 5)
 	set udg_PlayerFinishBuild[3]=false
-	set udg_PlayerFinished[3]=false
 	set udg_RaceModeKills[3]=0
 	set udg_RaceBuildingPeriod[3]=true
 	set bj_forLoopAIndex=1
@@ -16345,7 +16336,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P4)
 	call Gem_Placement__Start (udg_Player [4], 5)
 	set udg_PlayerFinishBuild[4]=false
-	set udg_PlayerFinished[4]=false
 	set udg_RaceModeKills[4]=0
 	set udg_RaceBuildingPeriod[4]=true
 	set bj_forLoopAIndex=1
@@ -16531,7 +16521,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P5)
 	call Gem_Placement__Start (udg_Player [5], 5)
 	set udg_PlayerFinishBuild[5]=false
-	set udg_PlayerFinished[5]=false
 	set udg_RaceModeKills[5]=0
 	set udg_RaceBuildingPeriod[5]=true
 	set bj_forLoopAIndex=1
@@ -16717,7 +16706,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P6)
 	call Gem_Placement__Start (udg_Player [6], 5)
 	set udg_PlayerFinishBuild[6]=false
-	set udg_PlayerFinished[6]=false
 	set udg_RaceModeKills[6]=0
 	set udg_RaceBuildingPeriod[6]=true
 	set bj_forLoopAIndex=1
@@ -16903,7 +16891,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P7)
 	call Gem_Placement__Start (udg_Player [7], 5)
 	set udg_PlayerFinishBuild[7]=false
-	set udg_PlayerFinished[7]=false
 	set udg_RaceModeKills[7]=0
 	set udg_RaceBuildingPeriod[7]=true
 	set bj_forLoopAIndex=1
@@ -17089,7 +17076,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call EnableTrigger(gg_trg_Finish_Build_Race_P8)
 	call Gem_Placement__Start (udg_Player [8], 5)
 	set udg_PlayerFinishBuild[8]=false
-	set udg_PlayerFinished[8]=false
 	set udg_RaceModeKills[8]=0
 	set udg_RaceBuildingPeriod[8]=true
 	set bj_forLoopAIndex=1

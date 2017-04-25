@@ -315,8 +315,6 @@ function Gem_Selection___Keep takes nothing returns boolean
 		set the_player = GetTriggerPlayer ()
 		set index__player = GetPlayerId (the_player)
 
-		set udg_PlayerFinished [index__player + 1] = true
-
 		call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("66ffff", GetUnitName (the_unit) + " has been chosen as your gem this round."))
 
 		// Needed as kept gems are not replaced.
@@ -360,8 +358,6 @@ function Gem_Selection___Downgrade takes nothing returns boolean
 
 		set original = GetTriggerUnit ()
 		set unit_type = GetUnitTypeId (original)
-
-		set udg_PlayerFinished [index__player + 1] = true
 
 		set id__quality = Gem_Gems__Get_ID_Quality (unit_type)
 		set id__type = Gem_Gems__Get_ID_Type (unit_type)
@@ -410,8 +406,6 @@ function Gem_Selection___Combine takes nothing returns boolean
 
 		set the_player = GetTriggerPlayer ()
 		set index__player = GetPlayerId (the_player)
-
-		set udg_PlayerFinished [index__player + 1] = true
 
 		set count = LoadInteger (Gem_Selection___TABLE, index__player, unit_type)
 
@@ -473,8 +467,6 @@ function Gem_Selection___Slate takes nothing returns boolean
 
 		set the_player = GetTriggerPlayer ()
 		set index__player = GetPlayerId (the_player)
-
-		set udg_PlayerFinished [index__player + 1] = true
 
 		if unit_type == Gem_Gems__AMETHYST_NORMAL then
 
@@ -548,12 +540,10 @@ function Gem_Selection___Special takes nothing returns boolean
 	set the_player = GetTriggerPlayer ()
 	set index__player = GetPlayerId (the_player)
 
-	if GetSpellAbilityId () == 'A00R' and not udg_PlayerFinished [index__player + 1] then
+	if GetSpellAbilityId () == 'A00R' then
 		set original = GetTriggerUnit ()
 		set unit_type = GetUnitTypeId (original)
 		set special__type = Gem_Recipe__Get_Combination (unit_type)
-
-		set udg_PlayerFinished [index__player + 1] = true
 
 		set replacement = ReplaceUnitBJ (original, special__type, bj_UNIT_STATE_METHOD_MAXIMUM)
 		set udg_CountSpecials [index__player + 1] = udg_CountSpecials [index__player + 1] + 1
