@@ -68,6 +68,7 @@ return {
 
 		'src/gem/recipe.j',
 		'src/gem/special.j',
+		'src/gem/slate.j',
 
 		'src/gem/placement.j',
 		'src/gem/chance.j',
