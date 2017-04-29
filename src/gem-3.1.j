@@ -16,12 +16,6 @@ function InitGlobals takes nothing returns nothing
 	set i=0
 	loop
 		exitwhen(i>8)
-		set udg_GemNumber[i]=0
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
 		set udg_UnitGroup[i]=CreateGroup()
 		set i=i+1
 	endloop
@@ -58,56 +52,8 @@ function InitGlobals takes nothing returns nothing
 	endloop
 	set i=0
 	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED1[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
 		exitwhen(i>8)
 		set udg_SpecialONplace[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED2[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED3[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED4[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED5[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED6[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED7[i]=false
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>40)
-		set udg_SpecialsPLACED8[i]=false
 		set i=i+1
 	endloop
 	set i=0
@@ -17600,7 +17546,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P1)
-	set udg_GemNumber[1]=0
 	call Gem_Placement__Start (udg_Player [1], 5)
 	set udg_PlayerFinishBuild[1]=false
 	set udg_PlayerFinished[1]=false
@@ -17613,13 +17558,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced1[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED1[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
@@ -17796,7 +17734,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P2)
-	set udg_GemNumber[2]=0
 	call Gem_Placement__Start (udg_Player [2], 5)
 	set udg_PlayerFinishBuild[2]=false
 	set udg_PlayerFinished[2]=false
@@ -17809,13 +17746,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced2[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED2[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
@@ -17992,7 +17922,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P3)
-	set udg_GemNumber[3]=0
 	call Gem_Placement__Start (udg_Player [3], 5)
 	set udg_PlayerFinishBuild[3]=false
 	set udg_PlayerFinished[3]=false
@@ -18005,13 +17934,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced3[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED3[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
@@ -18188,7 +18110,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P4)
-	set udg_GemNumber[4]=0
 	call Gem_Placement__Start (udg_Player [4], 5)
 	set udg_PlayerFinishBuild[4]=false
 	set udg_PlayerFinished[4]=false
@@ -18201,13 +18122,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced4[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED4[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
@@ -18384,7 +18298,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P5)
-	set udg_GemNumber[5]=0
 	call Gem_Placement__Start (udg_Player [5], 5)
 	set udg_PlayerFinishBuild[5]=false
 	set udg_PlayerFinished[5]=false
@@ -18397,13 +18310,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced5[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED5[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
@@ -18580,7 +18486,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P6)
-	set udg_GemNumber[6]=0
 	call Gem_Placement__Start (udg_Player [6], 5)
 	set udg_PlayerFinishBuild[6]=false
 	set udg_PlayerFinished[6]=false
@@ -18593,13 +18498,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced6[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED6[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
@@ -18776,7 +18674,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P7)
-	set udg_GemNumber[7]=0
 	call Gem_Placement__Start (udg_Player [7], 5)
 	set udg_PlayerFinishBuild[7]=false
 	set udg_PlayerFinished[7]=false
@@ -18789,13 +18686,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced7[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED7[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
@@ -18972,7 +18862,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P8)
-	set udg_GemNumber[8]=0
 	call Gem_Placement__Start (udg_Player [8], 5)
 	set udg_PlayerFinishBuild[8]=false
 	set udg_PlayerFinished[8]=false
@@ -18985,13 +18874,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 		set udg_GemPlaced8[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=40
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_SpecialsPLACED8[GetForLoopIndexA()]=false
 		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)

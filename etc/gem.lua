@@ -78,7 +78,6 @@ return {
 		'src/gem-3.1/buying-lives.j',
 		'src/gem-3.1/extra-chance-window.j',
 		'src/gem-3.1/tower-swap.j',
-		'src/gem-3.1/placement.j',
 		'src/gem-3.1/selection.j',
 
 		'src/gem/selection.j',

@@ -9,7 +9,6 @@ globals
 	integer udg_Level=0
 	boolean array udg_PlayerHERE
 	integer array udg_Random
-	integer array udg_GemNumber
 	group array udg_UnitGroup
 	unit array udg_GemPlaced1
 	boolean array udg_PlayerFinishBuild
@@ -23,16 +22,12 @@ globals
 	player array udg_Player
 	unit array udg_KeepingGem1
 	boolean array udg_QuadCombine
-	boolean array udg_SpecialsPLACED1
 	boolean array udg_SpecialONplace
 	unit array udg_KeepingGem2
-	boolean array udg_SpecialsPLACED2
-	boolean array udg_SpecialsPLACED3
 	unit array udg_GemPlaced3
 	unit array udg_KeepingGem3
 	unit array udg_GemPlaced4
 	unit array udg_KeepingGem4
-	boolean array udg_SpecialsPLACED4
 	unit array udg_GemPlaced5
 	unit array udg_GemPlaced6
 	unit array udg_GemPlaced7
@@ -41,10 +36,6 @@ globals
 	unit array udg_KeepingGem6
 	unit array udg_KeepingGem7
 	unit array udg_KeepingGem8
-	boolean array udg_SpecialsPLACED5
-	boolean array udg_SpecialsPLACED6
-	boolean array udg_SpecialsPLACED7
-	boolean array udg_SpecialsPLACED8
 	integer array udg_Damage
 	boolean array udg_PlayerDie
 	integer array udg_SpecialsROUNDp1
@@ -331,7 +322,6 @@ globals
 	trigger gg_trg_Movement1_5=null
 	trigger gg_trg_Movement1_6=null
 	trigger gg_trg_Movement1_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P1=null
 	trigger gg_trg_B_Reworked_Mark_P1=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P1=null
 	trigger gg_trg_Finding_Special_combinations_P1=null
@@ -343,7 +333,6 @@ globals
 	trigger gg_trg_Movement2_5=null
 	trigger gg_trg_Movement2_6=null
 	trigger gg_trg_Movement2_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P2=null
 	trigger gg_trg_B_Reworked_Mark_P2=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P2=null
 	trigger gg_trg_Finding_Special_combinations_P2=null
@@ -355,7 +344,6 @@ globals
 	trigger gg_trg_Movement3_5=null
 	trigger gg_trg_Movement3_6=null
 	trigger gg_trg_Movement3_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P3=null
 	trigger gg_trg_B_Reworked_Mark_P3=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P3=null
 	trigger gg_trg_Finding_Special_combinations_P3=null
@@ -367,7 +355,6 @@ globals
 	trigger gg_trg_Movement4_5=null
 	trigger gg_trg_Movement4_6=null
 	trigger gg_trg_Movement4_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P4=null
 	trigger gg_trg_B_Reworked_Mark_P4=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P4=null
 	trigger gg_trg_Finding_Special_combinations_P4=null
@@ -379,7 +366,6 @@ globals
 	trigger gg_trg_Movement5_5=null
 	trigger gg_trg_Movement5_6=null
 	trigger gg_trg_Movement5_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P5=null
 	trigger gg_trg_B_Reworked_Mark_P5=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P5=null
 	trigger gg_trg_Finding_Special_combinations_P5=null
@@ -391,7 +377,6 @@ globals
 	trigger gg_trg_Movement6_5=null
 	trigger gg_trg_Movement6_6=null
 	trigger gg_trg_Movement6_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P6=null
 	trigger gg_trg_B_Reworked_Mark_P6=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P6=null
 	trigger gg_trg_Finding_Special_combinations_P6=null
@@ -403,7 +388,6 @@ globals
 	trigger gg_trg_Movement7_5=null
 	trigger gg_trg_Movement7_6=null
 	trigger gg_trg_Movement7_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P7=null
 	trigger gg_trg_B_Reworked_Mark_P7=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P7=null
 	trigger gg_trg_Finding_Special_combinations_P7=null
@@ -415,7 +399,6 @@ globals
 	trigger gg_trg_Movement8_5=null
 	trigger gg_trg_Movement8_6=null
 	trigger gg_trg_Movement8_7=null
-	trigger gg_trg_B_Reworked_Placing_gems_P8=null
 	trigger gg_trg_B_Reworked_Mark_P8=null
 	trigger gg_trg_B_Reworked_Comb_Special_Mark_P8=null
 	trigger gg_trg_Finding_Special_combinations_P8=null
