@@ -19,12 +19,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_UnitGroup[i]=CreateGroup()
 		set i=i+1
 	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_PlayerFinishBuild[i]=false
-		set i=i+1
-	endloop
 	set udg_CombiningPlayer=CreateForce()
 	set i=0
 	loop
@@ -15780,16 +15774,8 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P1)
 	call Gem_Placement__Start (udg_Player [1], 5)
-	set udg_PlayerFinishBuild[1]=false
 	set udg_RaceModeKills[1]=0
 	set udg_RaceBuildingPeriod[1]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced1[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
@@ -15965,16 +15951,8 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P2)
 	call Gem_Placement__Start (udg_Player [2], 5)
-	set udg_PlayerFinishBuild[2]=false
 	set udg_RaceModeKills[2]=0
 	set udg_RaceBuildingPeriod[2]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced2[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
@@ -16150,16 +16128,8 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P3)
 	call Gem_Placement__Start (udg_Player [3], 5)
-	set udg_PlayerFinishBuild[3]=false
 	set udg_RaceModeKills[3]=0
 	set udg_RaceBuildingPeriod[3]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced3[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
@@ -16335,16 +16305,8 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P4)
 	call Gem_Placement__Start (udg_Player [4], 5)
-	set udg_PlayerFinishBuild[4]=false
 	set udg_RaceModeKills[4]=0
 	set udg_RaceBuildingPeriod[4]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced4[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
@@ -16520,16 +16482,8 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P5)
 	call Gem_Placement__Start (udg_Player [5], 5)
-	set udg_PlayerFinishBuild[5]=false
 	set udg_RaceModeKills[5]=0
 	set udg_RaceBuildingPeriod[5]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced5[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
@@ -16705,16 +16659,8 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P6)
 	call Gem_Placement__Start (udg_Player [6], 5)
-	set udg_PlayerFinishBuild[6]=false
 	set udg_RaceModeKills[6]=0
 	set udg_RaceBuildingPeriod[6]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced6[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
@@ -16890,16 +16836,8 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P7)
 	call Gem_Placement__Start (udg_Player [7], 5)
-	set udg_PlayerFinishBuild[7]=false
 	set udg_RaceModeKills[7]=0
 	set udg_RaceBuildingPeriod[7]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced7[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
@@ -17075,16 +17013,8 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
 	call EnableTrigger(gg_trg_Finish_Build_Race_P8)
 	call Gem_Placement__Start (udg_Player [8], 5)
-	set udg_PlayerFinishBuild[8]=false
 	set udg_RaceModeKills[8]=0
 	set udg_RaceBuildingPeriod[8]=true
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=5
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_GemPlaced8[GetForLoopIndexA()]=null
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)

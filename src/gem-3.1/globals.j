@@ -10,20 +10,11 @@ globals
 	boolean array udg_PlayerHERE
 	integer array udg_Random
 	group array udg_UnitGroup
-	unit array udg_GemPlaced1
-	boolean array udg_PlayerFinishBuild
 	integer array udg_SpawningUnit
 	force udg_CombiningPlayer=null
 	integer array udg_Lives
 	integer array udg_Kills
-	unit array udg_GemPlaced2
 	player array udg_Player
-	unit array udg_GemPlaced3
-	unit array udg_GemPlaced4
-	unit array udg_GemPlaced5
-	unit array udg_GemPlaced6
-	unit array udg_GemPlaced7
-	unit array udg_GemPlaced8
 	integer array udg_Damage
 	boolean array udg_PlayerDie
 	integer array udg_SpecialsROUNDp1
