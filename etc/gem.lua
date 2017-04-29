@@ -83,6 +83,12 @@ return {
 		'src/gem-3.1/tower-swap.j',
 
 		'src/gem/selection.j',
+		'src/gem/selection/downgrade.j',
+		'src/gem/selection/combine.j',
+		'src/gem/selection/slate.j',
+		'src/gem/selection/special.j',
+		'src/gem/selection/keep.j',
+		'src/gem/selection/initialize.j',
 
 		'src/settings/difficulty.j',
 		'src/settings/common.j',
