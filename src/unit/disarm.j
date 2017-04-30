@@ -145,7 +145,7 @@ function Unit_Disarm___On_Leave takes nothing returns boolean
 endfunction
 
 function Unit_Disarm__Initialize takes nothing returns boolean
-	set Unit_Disarm___ID_UNIT_INDEX = ID__Allocate ()
+	set Unit_Disarm___ID_UNIT_INDEX = ID ()
 
 	call Unit_Event__On_Death (Condition (function Unit_Disarm___On_Death))
 	call Unit_Event__On_Leave (Condition (function Unit_Disarm___On_Leave))

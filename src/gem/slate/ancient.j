@@ -97,7 +97,7 @@ endfunction
 function Gem_Slate___Initialize_Ancient takes nothing returns nothing
 	local trigger the_trigger
 
-	set Gem_Slate___ID_ANCIENT_UNIT_INDEX = ID__Allocate ()
+	set Gem_Slate___ID_ANCIENT_UNIT_INDEX = ID ()
 
 	set the_trigger = CreateTrigger ()
 

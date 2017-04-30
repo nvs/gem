@@ -40,6 +40,9 @@ return {
 		'src/gem.j',
 		'src/gem/version.j',
 
+		'src/gem/type.j',
+		'src/gem/quality.j',
+		'src/gem/gems.j',
 		'src/gem/player.j',
 
 		'src/player-color.j',
@@ -59,13 +62,33 @@ return {
 		'src/unit/stun.j',
 
 		'src/gem-3.1/globals.j',
+		'src/gem-3.1/common.j',
+		'src/gem-3.1/miner-flashing.j',
 
 		'src/gem/spawn.j',
+
+		'src/gem/recipe.j',
+		'src/gem/special.j',
+		'src/gem/slate.j',
+
+		'src/gem/combination/marker.j',
+		'src/gem/combination.j',
+		'src/gem/placement.j',
+		'src/gem/chance.j',
+		'src/gem/extra-chance.j',
 
 		'src/gem-3.1.j',
 		'src/gem-3.1/buying-lives.j',
 		'src/gem-3.1/extra-chance-window.j',
 		'src/gem-3.1/tower-swap.j',
+
+		'src/gem/selection.j',
+		'src/gem/selection/downgrade.j',
+		'src/gem/selection/combine.j',
+		'src/gem/selection/slate.j',
+		'src/gem/selection/special.j',
+		'src/gem/selection/keep.j',
+		'src/gem/selection/initialize.j',
 
 		'src/settings/difficulty.j',
 		'src/settings/common.j',
@@ -132,7 +155,8 @@ return {
 		'share/objects/kill-bonus-remove-spell-immunity.lua',
 		'share/objects/gold-mine-buttons.lua',
 		'share/objects/slate-teleport.lua',
-		'share/objects/standardize-slate-range.lua'
+		'share/objects/standardize-slate-range.lua',
+		'share/objects/combination-button.lua'
 	},
 
 	constants = {

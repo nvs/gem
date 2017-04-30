@@ -15,6 +15,8 @@ full list of changes to the project, please consult the commit log.
 - Cooldown reduction on slate teleporation.
 - 'Melee' style slate attacks now have a standardized attack range.
 - Monsters now spawn facing the first touchpoint for all players.
+- The wait period use for dowgrading has been removed. The 'Downgrade' action
+  has been moved alongside others such as 'Keep' and 'Combine'.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead

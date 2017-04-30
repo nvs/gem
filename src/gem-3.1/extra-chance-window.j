@@ -548,11 +548,6 @@ function Trig_Extra_Chance_2_Actions takes nothing returns nothing
 	set bj_forLoopAIndexEnd=8
 	loop
 		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Extra_Chance_2_Func002Func001001())then
-			set udg_ExtraChanceON[GetForLoopIndexA()]=true
-		else
-			call DoNothing()
-		endif
 		if(Trig_Extra_Chance_2_Func002Func002001())then
 			set udg_CountExtraChanceMoney[GetForLoopIndexA()]=(udg_CountExtraChanceMoney[GetForLoopIndexA()]+175)
 		else
@@ -645,6 +640,11 @@ function Trig_Extra_Chance_2_Actions takes nothing returns nothing
 		endif
 		if(Trig_Extra_Chance_2_Func002Func020001())then
 			call AdjustPlayerStateBJ(175,GetTriggerPlayer(),PLAYER_STATE_RESOURCE_GOLD)
+		else
+			call DoNothing()
+		endif
+		if(Trig_Extra_Chance_2_Func002Func001001())then
+			call Gem_Extra_Chance__Enable (GetTriggerPlayer (), udg_ExtraChanceUnit [bj_forLoopAIndex])
 		else
 			call DoNothing()
 		endif
@@ -1166,11 +1166,6 @@ function Trig_Slate_Extra_Chance_2_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		if(Trig_Slate_Extra_Chance_2_Func002Func002001())then
-			set udg_ExtraChanceON[GetForLoopIndexA()]=true
-		else
-			call DoNothing()
-		endif
 		if(Trig_Slate_Extra_Chance_2_Func002Func003001())then
 			call DisplayTextToForce(GetPlayersMatching(Condition(function Trig_Slate_Extra_Chance_2_Func002Func003002001001)),"|cffff00ffCanceled - 125 Gold has been Restored.|r")
 		else
@@ -1258,6 +1253,11 @@ function Trig_Slate_Extra_Chance_2_Actions takes nothing returns nothing
 		endif
 		if(Trig_Slate_Extra_Chance_2_Func002Func020001())then
 			call DisplayTextToForce(GetPlayersMatching(Condition(function Trig_Slate_Extra_Chance_2_Func002Func020002001001)),"|cffff00ffRange Slate has been Extra Chanced!|r")
+		else
+			call DoNothing()
+		endif
+		if(Trig_Slate_Extra_Chance_2_Func002Func002001())then
+			call Gem_Extra_Chance__Enable (GetTriggerPlayer (), udg_ExtraChanceUnit [bj_forLoopAIndex])
 		else
 			call DoNothing()
 		endif

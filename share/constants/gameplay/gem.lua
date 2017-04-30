@@ -3,7 +3,11 @@ setvalue ('Misc', 'TradingIncLarge', 0) -- Control Click
 setvalue ('Misc', 'TradingIncSmall', 0) -- Normal Click
 
 -- Cancel Refund Factor:
-setvalue ('Misc', 'ConstructionRefundRate', 1.0) -- Building Construction
+
+-- This is handled by 'Gem Placement'. No other structure is actually built
+-- using resources.
+setvalue ('Misc', 'ConstructionRefundRate', 0.0) -- Building Construction
+
 setvalue ('Misc', 'UpgradeRefundRate', 1.0) -- Building Upgrade
 
 -- Combat - Damage Bonus Table:
