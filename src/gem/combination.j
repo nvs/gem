@@ -198,15 +198,13 @@ function Gem_Combination___Recipe takes nothing returns boolean
 			if the_part != null then
 				set kills = kills + Unit_User_Data__Get (the_part)
 
+				// Slates do not get replaced by rocks.
 				if Gem_Gems__Is_Gem (the_part_type) then
 					call ShowUnit (the_part, false)
-					set replacement = CreateUnit (the_player, 'h00G', GetUnitX (the_part), GetUnitY (the_part), GetUnitFacing (the_part))
-					call RemoveUnit (the_part)
-
-				// Slates do not get replaced by rocks.
-				else
-					call RemoveUnit (the_part)
+					call CreateUnit (the_player, 'h00G', GetUnitX (the_part), GetUnitY (the_part), GetUnitFacing (the_part))
 				endif
+
+				call RemoveUnit (the_part)
 			endif
 		endif
 
