@@ -136,12 +136,6 @@ function Gem_Selection___On_Finish takes nothing returns boolean
 	set the_player = Gem_Placement__The_Player ()
 	set index__player = GetPlayerId (the_player)
 
-	// TODO: Compatibility. Remove this later.
-	if Gem_Selection___SPECIAL [index__player] > 0 then
-		set udg_SpecialONplace [index__player + 1] = true
-		set udg_SpecialTower [index__player + 1] = Gem_Selection___SPECIAL [index__player]
-	endif
-
 	set index = 1
 	loop
 		exitwhen not HaveSavedHandle (Gem_Selection___TABLE, index__player, index)
@@ -246,6 +240,9 @@ function Gem_Selection___Cleanup takes integer index__player, unit current, unit
 	local integer index
 	local unit check
 
+	local real x
+	local real y
+
 	// This function expects the `previous` unit to be replaced by the `current`
 	// unit. However, this is not always the case.
 	if previous == null then
@@ -272,8 +269,13 @@ function Gem_Selection___Cleanup takes integer index__player, unit current, unit
 		call SelectUnit (current, true)
 	endif
 
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", GetUnitX (current), GetUnitY (current)))
+	set x = GetUnitX (current)
+	set y = GetUnitY (current)
 
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", x, y))
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", x, y))
+
+	// TODO: Verify if this is still accurate.
 	// For some reason the unit needs to be given an order or it may not
 	// automatically attack.
 	call IssueImmediateOrder (current, "stop")
@@ -539,6 +541,7 @@ function Gem_Selection___Special takes nothing returns boolean
 	local unit replacement
 
 	local integer unit_type
+	local integer special__type
 
 	set the_player = GetTriggerPlayer ()
 	set index__player = GetPlayerId (the_player)
@@ -546,10 +549,11 @@ function Gem_Selection___Special takes nothing returns boolean
 	if GetSpellAbilityId () == 'A00R' and not udg_PlayerFinished [index__player + 1] then
 		set original = GetTriggerUnit ()
 		set unit_type = GetUnitTypeId (original)
+		set special__type = Gem_Recipe__Get_Combination (unit_type)
 
 		set udg_PlayerFinished [index__player + 1] = true
 
-		set replacement = ReplaceUnitBJ (original, udg_SpecialTower [index__player + 1], bj_UNIT_STATE_METHOD_MAXIMUM)
+		set replacement = ReplaceUnitBJ (original, special__type, bj_UNIT_STATE_METHOD_MAXIMUM)
 		set udg_CountSpecials [index__player + 1] = udg_CountSpecials [index__player + 1] + 1
 
 		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_UPDATED, Color ("00ffff", GetPlayerName (the_player) + " has created " + GetUnitName (replacement) + Color ("00ffff", " in one-hit!")))
