@@ -45,10 +45,10 @@ function Gem_Type__Get_ID takes integer type_index returns integer
 	set type_id = Gem_Type___Type [type_index]
 
 	if type_id == 0 then
-		return ID__NULL
-	else
-		return type_id
+		set type_id = ID__NULL
 	endif
+
+	return type_id
 endfunction
 
 // Returns the `integer` index for the specified `type_id`. Returns `0` for
