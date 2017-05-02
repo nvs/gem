@@ -52,50 +52,8 @@ setvalue ('FrameDef', 'KEY_QUESTS', 'Information (|c00fed312F9|r)')
 setvalue ('FrameDef', 'QUESTS', 'Information')
 setvalue ('FrameDef', 'UPPER_BUTTON_QUEST_UBER', 'This dialog displays information related to |c00fed312Gem TD+|r.')
 
-
 -- Icon - Attack Type Chaos (Topaz):
-setvalue ('CustomSkin', 'InfoPanelIconDamageChaos',
-	'ReplaceableTextures\\CommandButtons\\BTNBearBlink.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamageChaosNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNBearBlink.blp')
 
--- Icon - Attack Type Hero (Ruby):
-setvalue ('CustomSkin', 'InfoPanelIconDamageHero',
-	'ReplaceableTextures\\CommandButtons\\BTNDeathPact.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamageHeroNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNDeathPact.blp')
-
--- Icon - Attack Type Magic (Water - Aquamarine / Opal):
-setvalue ('CustomSkin', 'InfoPanelIconDamageMagic',
-	'ReplaceableTextures\\CommandButtons\\BTNCrushingWave.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamageMagicNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNCrushingWave.blp')
-
--- Icon - Attack Type Melee (Diamond):
-setvalue ('CustomSkin', 'InfoPanelIconDamageMelee',
-	'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamageMeleeNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp')
-
--- Icon - Attack Type Normal (Sapphire):
-setvalue ('CustomSkin', 'InfoPanelIconDamageNormal',
-	'ReplaceableTextures\\CommandButtons\\BTNFrostBolt.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamageNormalNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNFrostBolt.blp')
-
--- Icon - Attack Type Pierce (Amethyst):
-setvalue ('CustomSkin', 'InfoPanelIconDamagePierce',
-	'ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamagePierceNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp')
-
--- Icon - Attack Type Siege (Emerald):
-setvalue ('CustomSkin', 'InfoPanelIconDamageSiege',
-	'ReplaceableTextures\\CommandButtons\\BTNAntiMagicShell.blp')
-setvalue ('CustomSkin', 'InfoPanelIconDamageSiegeNeutral',
-	'ReplaceableTextures\\CommandButtons\\BTNAntiMagicShell.blp')
-
--- Icon - Attack Type Chaos (Topaz):
 setvalue ('CustomSkin', 'InfoPanelIconDamageChaos',
 	'ReplaceableTextures\\CommandButtons\\BTNBearBlink.blp')
 setvalue ('CustomSkin', 'InfoPanelIconDamageChaosNeutral',
