@@ -36,7 +36,6 @@ if objectexists ('A06Z') then
 			'See |c00fed312Information (F9)|r for latest changelog.|n|n' ..
 			'|c00fed312Commands:|r|n' ..
 			'|c00ff33ff-air|r Displays air rounds.|n' ..
-			'|c00ff33ff-aura on/off|r Show or hide aura when placing gems.|n' ..
 			'|c00ff33ff-debug|r Attempt to recover from a variety of issues.|n' ..
 			'|c00ff33ff-zoom value|r Sets the camera to the specified value. ' ..
 			'The default Warcraft 3 zoom is `1650`.')

@@ -343,19 +343,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_ExtraChanceNo[i]=83
 		set i=i+1
 	endloop
-	set udg_AuraGroup=CreateGroup()
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_LocationGroup[i]=CreateGroup()
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_LocationOn[i]=true
-		set i=i+1
-	endloop
 	set i=0
 	loop
 		exitwhen(i>8)
@@ -5577,119 +5564,6 @@ function InitTrig_P8_Dmg_test takes nothing returns nothing
 	call TriggerRegisterEnterRectSimple(gg_trg_P8_Dmg_test,gg_rct_Finish_8)
 	call TriggerAddCondition(gg_trg_P8_Dmg_test,Condition(function Trig_P8_Dmg_test_Conditions))
 	call TriggerAddAction(gg_trg_P8_Dmg_test,function Trig_P8_Dmg_test_Actions)
-endfunction
-function Trig_Type_aura_on_Func001003001001 takes nothing returns boolean
-	return(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Type_aura_on_Func001003001002 takes nothing returns boolean
-	return(udg_LocationOn[GetForLoopIndexA()]==false)
-endfunction
-function Trig_Type_aura_on_Func001003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Type_aura_on_Func001003001001(),Trig_Type_aura_on_Func001003001002())
-endfunction
-function Trig_Type_aura_on_Func002003001 takes nothing returns boolean
-	return(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Type_aura_on_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Type_aura_on_Func001003001())then
-			call DisplayTextToForce(udg_PlayerGroup[GetForLoopIndexA()],"|cffffff00Gem placing aura on|r")
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Type_aura_on_Func002003001())then
-			set udg_LocationOn[GetForLoopIndexA()]=true
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Type_aura_on takes nothing returns nothing
-	set gg_trg_Type_aura_on=CreateTrigger()
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(0),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(1),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(2),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(3),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(4),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(5),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(6),"-aura on",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_on,Player(7),"-aura on",true)
-	call TriggerAddAction(gg_trg_Type_aura_on,function Trig_Type_aura_on_Actions)
-endfunction
-function Trig_Type_aura_off_Func001003001001 takes nothing returns boolean
-	return(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Type_aura_off_Func001003001002 takes nothing returns boolean
-	return(udg_LocationOn[GetForLoopIndexA()]==true)
-endfunction
-function Trig_Type_aura_off_Func001003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Type_aura_off_Func001003001001(),Trig_Type_aura_off_Func001003001002())
-endfunction
-function Trig_Type_aura_off_Func002003001 takes nothing returns boolean
-	return(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Type_aura_off_Func003003001 takes nothing returns boolean
-	return(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Type_aura_off_Func003003002002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Type_aura_off_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Type_aura_off_Func001003001())then
-			call DisplayTextToForce(udg_PlayerGroup[GetForLoopIndexA()],"|cffffff00Gem placing aura off|r")
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Type_aura_off_Func002003001())then
-			set udg_LocationOn[GetForLoopIndexA()]=false
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Type_aura_off_Func003003001())then
-			call ForGroupBJ(udg_LocationGroup[GetForLoopIndexA()],function Trig_Type_aura_off_Func003003002002)
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Type_aura_off takes nothing returns nothing
-	set gg_trg_Type_aura_off=CreateTrigger()
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(0),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(1),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(2),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(3),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(4),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(5),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(6),"-aura off",true)
-	call TriggerRegisterPlayerChatEvent(gg_trg_Type_aura_off,Player(7),"-aura off",true)
-	call TriggerAddAction(gg_trg_Type_aura_off,function Trig_Type_aura_off_Actions)
 endfunction
 function Trig_Players_attacking_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetAttackedUnitBJ())!=Player(11)))then
@@ -15125,7 +14999,6 @@ function Trig_Finish_Build_Race_P1_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(0),true)
 endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[1],function Trig_Finish_Build_Race_P1_Func001002)
 	call Miner_Flashing (Player (0))
 	set udg_RaceBuildingPeriod[1]=false
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
@@ -15198,7 +15071,6 @@ function Trig_Finish_Build_Race_P2_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(1),true)
 endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[2],function Trig_Finish_Build_Race_P2_Func001002)
 	call Miner_Flashing (Player (1))
 	set udg_RaceBuildingPeriod[2]=false
 	call QuestMessage(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
@@ -15271,7 +15143,6 @@ function Trig_Finish_Build_Race_P3_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(2),true)
 endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[3],function Trig_Finish_Build_Race_P3_Func001002)
 	call Miner_Flashing (Player (2))
 	set udg_RaceBuildingPeriod[3]=false
 	call QuestMessage(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
@@ -15344,7 +15215,6 @@ function Trig_Finish_Build_Race_P4_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(3),true)
 endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[4],function Trig_Finish_Build_Race_P4_Func001002)
 	call Miner_Flashing (Player (3))
 	set udg_RaceBuildingPeriod[4]=false
 	call QuestMessage(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
@@ -15417,7 +15287,6 @@ function Trig_Finish_Build_Race_P5_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(4),true)
 endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[5],function Trig_Finish_Build_Race_P5_Func001002)
 	call Miner_Flashing (Player (4))
 	set udg_RaceBuildingPeriod[5]=false
 	call QuestMessage(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
@@ -15490,7 +15359,6 @@ function Trig_Finish_Build_Race_P6_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(5),true)
 endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[6],function Trig_Finish_Build_Race_P6_Func001002)
 	call Miner_Flashing (Player (5))
 	set udg_RaceBuildingPeriod[6]=false
 	call QuestMessage(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
@@ -15563,7 +15431,6 @@ function Trig_Finish_Build_Race_P7_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(6),true)
 endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[7],function Trig_Finish_Build_Race_P7_Func001002)
 	call Miner_Flashing (Player (6))
 	set udg_RaceBuildingPeriod[7]=false
 	call QuestMessage(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
@@ -15636,7 +15503,6 @@ function Trig_Finish_Build_Race_P8_Func027002 takes nothing returns nothing
 	call SetUnitOwner(GetEnumUnit(),Player(7),true)
 endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
-	call ForGroupBJ(udg_LocationGroup[8],function Trig_Finish_Build_Race_P8_Func001002)
 	call Miner_Flashing (Player (7))
 	set udg_RaceBuildingPeriod[8]=false
 	call QuestMessage(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))

@@ -82,6 +82,7 @@ return {
 		'src/gem-3.1/extra-chance-window.j',
 		'src/gem-3.1/tower-swap.j',
 
+		'src/gem/selection/marker.j',
 		'src/gem/selection.j',
 		'src/gem/selection/downgrade.j',
 		'src/gem/selection/combine.j',

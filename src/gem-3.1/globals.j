@@ -99,8 +99,6 @@ globals
 	unit array udg_CombineSpecialUnit
 	group udg_AuraGroup=null
 	unit array udg_KillsSelectedUnit
-	group array udg_LocationGroup
-	boolean array udg_LocationOn
 	unit udg_CheckSpelllvlUNIT=null
 	integer udg_CheckLvlSpell=0
 	integer array udg_CountWastedGems
