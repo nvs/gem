@@ -31,6 +31,7 @@ full list of changes to the project, please consult the commit log.
 - Ruby damage versus Red armor via attacks was incorrect.
 - Tower swapping no longer has a delay.
 - Ensure armor reduction for Ancients is applied before damage is dealt.
+- Placement auras move if necessary, and are removed when a player leaves.
 
 ## 1.3.3 - 2017-04-06
 

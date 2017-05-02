@@ -84,6 +84,8 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 	set count = Gem_Selection__Get_Count (the_player, the_unit_type) + 1
 	call Gem_Selection__Set_Count (the_player, the_unit_type, count)
 
+	call Gem_Selection_Marker__Add (the_unit)
+
 	set the_player = null
 	set the_unit = null
 
@@ -120,6 +122,10 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 	// ever made. Handle that case.
 	if previous == null then
 		set previous = current
+
+		// If no replacement was done, then we need to remove the selection
+		// location marker. All other markers are removed automatically.
+		call Gem_Selection_Marker__Remove (current)
 	endif
 
 	set the_player = GetOwningPlayer (current)

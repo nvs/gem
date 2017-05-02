@@ -38,7 +38,8 @@ function Quests___Version_Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "- Player names are now sanitized of special tags.\n"
 	set text = text + "- Ruby damage versus Red armor via attacks was incorrect.\n"
 	set text = text + "- Tower swapping no longer has a delay.\n"
-	set text = text + "- Ensure armor reduction for Ancients is applied before damage is dealt."
+	set text = text + "- Ensure armor reduction for Ancients is applied before damage is dealt.\n"
+	set text = text + "- Placement auras move if necessary, and are removed when a player leaves."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
