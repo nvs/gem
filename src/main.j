@@ -49,8 +49,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_P6_Dmg_test ()
 	call InitTrig_P7_Dmg_test ()
 	call InitTrig_P8_Dmg_test ()
-	call InitTrig_Type_aura_on ()
-	call InitTrig_Type_aura_off ()
 	call InitTrig_Players_attacking ()
 	call InitTrig_Miner_Leaves_area ()
 	call InitTrig_Leak_and_lose_P1 ()

@@ -84,10 +84,6 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 	set count = Gem_Selection__Get_Count (the_player, the_unit_type) + 1
 	call Gem_Selection__Set_Count (the_player, the_unit_type, count)
 
-	if udg_LocationOn [the_player_index + 1] then
-		call GroupAddUnit (udg_LocationGroup [the_player_index + 1], CreateUnit (Player (PLAYER_NEUTRAL_PASSIVE), 'n00B', GetUnitX (the_unit), GetUnitY (the_unit), bj_UNIT_FACING))
-	endif
-
 	set the_player = null
 	set the_unit = null
 

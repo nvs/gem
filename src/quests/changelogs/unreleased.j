@@ -10,6 +10,10 @@ function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
 	set text = text + "- Added hotkey support for slate teleporation.\n"
 	set text = text + "\n"
 
+	set text = text + Color__Gold ("Removed:") + "\n"
+	set text = text + "- The `-aura` command has been removed.\n"
+	set text = text + "\n"
+
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Gold Mine button placement has shifted, and the second row now includes all extra chance related buttons.\n"
 	set text = text + "- Cooldown reduction on slate teleporation.\n"

@@ -9,6 +9,9 @@ full list of changes to the project, please consult the commit log.
 - Hotkey support has been enabled on the Extra Chance windows.
 - Added hotkey support for slate teleporation.
 
+### Removed
+- The `-aura` command has been removed.
+
 ### Changed
 - Gold Mine button placement has shifted, and the second row now includes all
   extra chance related buttons.
