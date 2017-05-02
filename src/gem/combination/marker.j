@@ -12,10 +12,8 @@
 // - Unit Event
 
 globals
-	group Gem_Combination_Marker___Group = CreateGroup ()
-
-	integer Gem_Combination_Marker___ID_EFFECT = ID__NULL
-	integer Gem_Combination_Marker___ID_UNIT = ID__NULL
+	integer Gem_Combination_Marker___EFFECT = ID__NULL
+	integer Gem_Combination_Marker___UNIT = ID__NULL
 
 	timer array Gem_Combination_Marker___Timer
 endglobals
@@ -29,10 +27,10 @@ function Gem_Combination_Marker___Effect takes nothing returns nothing
 
 	set the_timer = GetExpiredTimer ()
 	set the_timer_id = GetHandleId (the_timer)
-	set the_unit = LoadUnitHandle (Table, the_timer_id, Gem_Combination_Marker___ID_UNIT)
+	set the_unit = LoadUnitHandle (Table, the_timer_id, Gem_Combination_Marker___UNIT)
 
-	call DestroyEffect (LoadEffectHandle (Table, the_timer_id, Gem_Combination_Marker___ID_EFFECT))
-	call SaveEffectHandle (Table, the_timer_id, Gem_Combination_Marker___ID_EFFECT, AddSpecialEffect ("Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
+	call DestroyEffect (LoadEffectHandle (Table, the_timer_id, Gem_Combination_Marker___EFFECT))
+	call SaveEffectHandle (Table, the_timer_id, Gem_Combination_Marker___EFFECT, AddSpecialEffect ("Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
 
 	call TimerStart (the_timer, 2.00, false, function Gem_Combination_Marker___Effect)
 
@@ -57,7 +55,7 @@ function Gem_Combination_Marker__Add takes unit the_unit returns nothing
 	set Gem_Combination_Marker___Timer [index] = the_timer
 	set the_timer_id = GetHandleId (the_timer)
 
-	call SaveUnitHandle (Table, the_timer_id, Gem_Combination_Marker___ID_UNIT, the_unit)
+	call SaveUnitHandle (Table, the_timer_id, Gem_Combination_Marker___UNIT, the_unit)
 
 	// This initial wait is necessary to avoid having too much special effect
 	// clutter immediately after keeping a gem.
@@ -74,16 +72,16 @@ function Gem_Combination_Marker__Remove takes unit the_unit returns nothing
 	local integer the_timer_id
 
 	set index = Unit_Indexer__Unit_Index (the_unit)
+	set the_timer = Gem_Combination_Marker___Timer [index]
 
-	if Gem_Combination_Marker___Timer [index] == null then
+	if the_timer == null then
 		return
 	endif
 
-	set the_timer = Gem_Combination_Marker___Timer [index]
 	set Gem_Combination_Marker___Timer [index] = null
 	set the_timer_id = GetHandleId (the_timer)
 
-	call DestroyEffect (LoadEffectHandle (Table, the_timer_id, Gem_Combination_Marker___ID_EFFECT))
+	call DestroyEffect (LoadEffectHandle (Table, the_timer_id, Gem_Combination_Marker___EFFECT))
 	call FlushChildHashtable (Table, the_timer_id)
 
 	call PauseTimer (the_timer)
@@ -92,8 +90,8 @@ function Gem_Combination_Marker__Remove takes unit the_unit returns nothing
 	set the_timer = null
 endfunction
 
-// A unit must be removed from the group upon leaving the map, otherwise a
-// `null` unit will remain within the gruop.
+// Unmarks a unit when it leaves the map, causing the special effect to no
+// longer display.
 function Gem_Combination_Marker___On_Leave takes nothing returns boolean
 	call Gem_Combination_Marker__Remove (Unit_Event__The_Unit ())
 
@@ -109,8 +107,8 @@ function Gem_Combination_Marker___On_Death takes nothing returns boolean
 endfunction
 
 function Gem_Combination_Marker__Initialize takes nothing returns boolean
-	set Gem_Combination_Marker___ID_EFFECT = ID ()
-	set Gem_Combination_Marker___ID_UNIT = ID ()
+	set Gem_Combination_Marker___EFFECT = ID ()
+	set Gem_Combination_Marker___UNIT = ID ()
 
 	call Unit_Event__On_Leave (Condition (function Gem_Combination_Marker___On_Leave))
 	call Unit_Event__On_Death (Condition (function Gem_Combination_Marker___On_Death))
