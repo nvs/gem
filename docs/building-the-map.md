@@ -29,14 +29,9 @@
         - Name: `|cfffed312Gem TD+ X.Y|r`
     * Scenario - Map Loading Screen:
         - Loading Screen Title: `|cfffed312Version X.Y|r`
-12. Using the World Editor, go into the 'Abilities' tab of the Object Editor.
-    Find the 'Disarm' ability, and look for 'Data - Attacks Prevented'. Set
-    this field to `None`, and then save the map. Set it back to `Melee,
-    Ranged`, and then save the map. This is a workdaround for a known bug that
-    can occur during the build process.
-13. _This step is optional._ Create an optimized version of the map:
+12. _This step is optional._ Create an optimized version of the map:
     `map/optimize etc/gem.lua`.
-14. Rename the map files as needed to match the version being released.
+13. Rename the map files as needed to match the version being released.
 
 ## Verifying the `war3map.j`
 

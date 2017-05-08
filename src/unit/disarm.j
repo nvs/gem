@@ -12,7 +12,6 @@
 // - `ID`
 // - `Handle`
 // - `Unit Indexer`
-// - `Dummy Caster`
 //
 // ## Public
 // - `Unit_Disarm__Is_Disarmed ()`
@@ -23,14 +22,13 @@
 //
 // ## Notes
 // - Only an indexed unit can be disarmed.
-// - A spell immune unit cannot be disarmed.
 // - If a unit is disarmed, the timer that is used to track disarm duration
 //   remains until the unit leaves the map.
 
 globals
 	constant integer Unit_Disarm___ABILITY_ID = 'UDDA'
+	constant integer Unit_Disarm___TEMPORARY_ID = 'UDDT'
 	constant integer Unit_Disarm___BUFF_ID = 'UDDB'
-	constant string Unit_Disarm___ORDER = "drunkenhaze"
 
 	integer Unit_Disarm___ID_UNIT_INDEX = ID__NULL
 
@@ -45,12 +43,19 @@ endfunction
 
 function Unit_Disarm___Expires takes nothing returns nothing
 	local integer index
+	local unit the_unit
 
 	set index = Handle__Load (GetExpiredTimer (), Unit_Disarm___ID_UNIT_INDEX)
 
 	if index > 0 then
+		set the_unit = Unit_Indexer__Unit_By_Index (index)
+
 		set Unit_Disarm___Is_Disarmed [index] = false
-		call UnitRemoveAbility (Unit_Indexer__Unit_By_Index (index), Unit_Disarm___BUFF_ID)
+		call UnitRemoveAbility (the_unit, Unit_Disarm___ABILITY_ID)
+		call UnitRemoveAbility (the_unit, Unit_Disarm___TEMPORARY_ID)
+		call UnitRemoveAbility (the_unit, Unit_Disarm___BUFF_ID)
+
+		set the_unit = null
 	endif
 endfunction
 
@@ -91,7 +96,10 @@ function Unit_Disarm__Apply takes unit the_unit, real duration returns nothing
 		// if it has not actually been disarmed. Realize that a unit that is
 		// spell immune cannot be disarmed.
 		if not Unit_Disarm___Is_Disarmed [index] then
-			set Unit_Disarm___Is_Disarmed [index] = Dummy_Caster__Cast_On_Target (null, Unit_Disarm___ABILITY_ID, 1, Unit_Disarm___ORDER, the_unit)
+			set Unit_Disarm___Is_Disarmed [index] = true
+			call UnitAddAbility (the_unit, Unit_Disarm___ABILITY_ID)
+			call UnitAddAbility (the_unit, Unit_Disarm___TEMPORARY_ID)
+			call UnitMakeAbilityPermanent (the_unit, true, Unit_Disarm___TEMPORARY_ID)
 		endif
 
 		// Determine if we need to extend the disarm.
@@ -111,6 +119,8 @@ function Unit_Disarm__Remove takes unit the_unit returns nothing
 
 	if index > 0 and Unit_Disarm___Is_Disarmed [index] then
 		set Unit_Disarm___Is_Disarmed [index] = false
+		call UnitRemoveAbility (the_unit, Unit_Disarm___ABILITY_ID)
+		call UnitRemoveAbility (the_unit, Unit_Disarm___TEMPORARY_ID)
 		call UnitRemoveAbility (the_unit, Unit_Disarm___BUFF_ID)
 		call PauseTimer (Unit_Disarm___Timers [index])
 	endif
