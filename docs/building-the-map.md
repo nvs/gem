@@ -14,7 +14,7 @@
     adjustments. For details, see the configuration documentation in the map
     tools repository, taking note of the repository version. Of particular
     note is the `prefix` setting, which by default is set to `'wine'`. Windows
-    users will most likely want to set this to an empty string: `''`.
+    users will want to set this to `nil`.
 05. Change into the project's root directory. This is a requirement for proper
     functionality of the map tools. How to invoke the tools will vary
     depending on your setup.
