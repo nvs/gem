@@ -30,7 +30,7 @@ if metadata
 	and metadata.jass_type == 'boolean'
 	and metadata.value == 'true'
 then
-	local git_stdout = os.tmpname ()
+	local git_stdout = '.' .. os.tmpname ()
 
 	local status = Shell.execute {
 		command = Shell.escape_arguments (
