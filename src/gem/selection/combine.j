@@ -97,7 +97,7 @@ function Gem_Selection_Combine___Event takes nothing returns boolean
 	call RemoveUnit (original)
 
 	if type_id == Gem_Type__OPAL then
-		call SetUnitAbilityLevelSwapped ('S008', replacement, quality_index + 1)
+		call SetUnitAbilityLevel (replacement, 'S008', quality_index + 1)
 	endif
 
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("33ff33", GetUnitName (replacement) + " has been created!!"))

@@ -59,6 +59,9 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 	local unit the_unit
 	local integer the_unit_type
 
+	local integer quality_id
+	local integer quality_index
+
 	local integer index
 	local integer count
 
@@ -76,6 +79,13 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 		set the_player = null
 
 		return false
+	endif
+
+	if Gem_Type__OPAL == Gem_Gems__Get_ID_Type (the_unit_type) then
+		set quality_id = Gem_Gems__Get_ID_Quality (the_unit_type)
+		set quality_index = Gem_Quality__Get_Index (quality_id)
+
+		call SetUnitAbilityLevel (the_unit, 'S008', quality_index + 1)
 	endif
 
 	set index = Gem_Placement__Placed (the_player)

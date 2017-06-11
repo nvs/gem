@@ -85,6 +85,10 @@ function Gem_Selection_Downgrade___Event takes nothing returns boolean
 	set replacement = CreateUnit (the_player, replacement_type, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
 	call RemoveUnit (original)
 
+	if type_id == Gem_Type__OPAL then
+		call SetUnitAbilityLevel (replacement, 'S008', quality_index + 1)
+	endif
+
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("33ff33", GetUnitName (replacement) + " has been created!!"))
 
 	call Gem_Selection__Finalize (replacement, original)
