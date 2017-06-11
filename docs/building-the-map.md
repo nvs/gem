@@ -7,8 +7,8 @@
 02. Ensure your setup satisfies the requirements of the [map tools][2] 
     collection. They are required to build the map.
 03. Checkout the version of the map in question. You may want to look at this
-    file again as the build process, as well as the porject dependencies, may
-    have changed between versions.
+    file again as the build process, as well as project dependencies, may have
+    changed between versions.
 04. Look at the configuration file (`etc/gem.lua`) and make any necessary
     adjustments. For details, see the configuration documentation in the map
     tools repository, taking note of the repository version. Of particular
