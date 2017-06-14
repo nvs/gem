@@ -374,7 +374,7 @@ globals
 	constant integer   bj_GAMECACHE_REAL                    = 2
 	constant integer   bj_GAMECACHE_UNIT                    = 3
 	constant integer   bj_GAMECACHE_STRING                  = 4
-
+	
 	// Hashtable value types
 	constant integer   bj_HASHTABLE_BOOLEAN                 = 0
 	constant integer   bj_HASHTABLE_INTEGER                 = 1
@@ -1632,8 +1632,8 @@ endfunction
 //
 function SubStringBJ takes string source, integer start, integer end returns string
     return SubString(source, start-1, end)
-endfunction
-
+endfunction  
+  
 function GetHandleIdBJ takes handle h returns integer
     return GetHandleId(h)
 endfunction
@@ -2613,7 +2613,7 @@ endfunction
 function UnitAddItemByIdSwapped takes integer itemId, unit whichHero returns item
     // Create the item at the hero's feet first, and then give it to him.
     // This is to ensure that the item will be left at the hero's feet if
-    // his inventory is full.
+    // his inventory is full. 
     set bj_lastCreatedItem = CreateItem(itemId, GetUnitX(whichHero), GetUnitY(whichHero))
     call UnitAddItem(whichHero, bj_lastCreatedItem)
     return bj_lastCreatedItem
@@ -2991,7 +2991,7 @@ endfunction
 //===========================================================================
 function String2OrderIdBJ takes string orderIdString returns integer
     local integer orderId
-
+    
     // Check to see if it's a generic order.
     set orderId = OrderId(orderIdString)
     if (orderId != 0) then
@@ -3556,7 +3556,7 @@ function PauseAllUnitsBJEnum takes nothing returns nothing
 endfunction
 
 //===========================================================================
-// Pause all units
+// Pause all units 
 function PauseAllUnitsBJ takes boolean pause returns nothing
     local integer index
     local player  indexPlayer
@@ -4945,7 +4945,7 @@ function PlayersAreCoAllied takes player playerA, player playerB returns boolean
 endfunction
 
 //===========================================================================
-// Force (whichPlayer) AI player to share vision and advanced unit control
+// Force (whichPlayer) AI player to share vision and advanced unit control 
 // with all AI players of its allies.
 //
 function ShareEverythingWithTeamAI takes player whichPlayer returns nothing
@@ -4993,7 +4993,7 @@ endfunction
 //===========================================================================
 // Creates a 'Neutral Victim' player slot.  This slot is passive towards all
 // other players, but all other players are aggressive towards him/her.
-//
+// 
 function ConfigureNeutralVictim takes nothing returns nothing
     local integer index
     local player indexPlayer
@@ -6268,7 +6268,7 @@ function PingMinimapForForceEx takes force whichForce, real x, real y, real dura
         else
             // Unrecognized ping style - ignore the request.
         endif
-
+        
         //call StartSound(bj_pingMinimapSound)
     endif
 endfunction
@@ -8087,7 +8087,7 @@ endfunction
 //===========================================================================
 function MeleeClearNearbyUnits takes real x, real y, real range returns nothing
     local group nearbyUnits
-
+    
     set nearbyUnits = CreateGroup()
     call GroupEnumUnitsInRange(nearbyUnits, x, y, range, null)
     call ForGroup(nearbyUnits, function MeleeClearExcessUnit)
@@ -8249,7 +8249,7 @@ function MeleeStartingUnitsHuman takes player whichPlayer, location startLoc, bo
     if (nearestMine != null) then
         // Spawn Town Hall at the start location.
         set townHall = CreateUnitAtLoc(whichPlayer, 'htow', startLoc, bj_UNIT_FACING)
-
+        
         // Spawn Peasants near the mine.
         set nearMineLoc = MeleeGetProjectedLoc(GetUnitLoc(nearestMine), startLoc, 320, 0)
         set peonX = GetLocationX(nearMineLoc)
@@ -8265,7 +8265,7 @@ function MeleeStartingUnitsHuman takes player whichPlayer, location startLoc, bo
     else
         // Spawn Town Hall at the start location.
         set townHall = CreateUnitAtLoc(whichPlayer, 'htow', startLoc, bj_UNIT_FACING)
-
+        
         // Spawn Peasants directly south of the town hall.
         set peonX = GetLocationX(startLoc)
         set peonY = GetLocationY(startLoc) - 224.00
@@ -8323,7 +8323,7 @@ function MeleeStartingUnitsOrc takes player whichPlayer, location startLoc, bool
     if (nearestMine != null) then
         // Spawn Great Hall at the start location.
         call CreateUnitAtLoc(whichPlayer, 'ogre', startLoc, bj_UNIT_FACING)
-
+        
         // Spawn Peons near the mine.
         set nearMineLoc = MeleeGetProjectedLoc(GetUnitLoc(nearestMine), startLoc, 320, 0)
         set peonX = GetLocationX(nearMineLoc)
@@ -8339,7 +8339,7 @@ function MeleeStartingUnitsOrc takes player whichPlayer, location startLoc, bool
     else
         // Spawn Great Hall at the start location.
         call CreateUnitAtLoc(whichPlayer, 'ogre', startLoc, bj_UNIT_FACING)
-
+        
         // Spawn Peons directly south of the town hall.
         set peonX = GetLocationX(startLoc)
         set peonY = GetLocationY(startLoc) - 224.00
@@ -8398,7 +8398,7 @@ function MeleeStartingUnitsUndead takes player whichPlayer, location startLoc, b
     if (nearestMine != null) then
         // Spawn Necropolis at the start location.
         call CreateUnitAtLoc(whichPlayer, 'unpl', startLoc, bj_UNIT_FACING)
-
+        
         // Replace the nearest gold mine with a blighted version.
         set nearestMine = BlightGoldMineForPlayerBJ(nearestMine, whichPlayer)
 
@@ -8424,7 +8424,7 @@ function MeleeStartingUnitsUndead takes player whichPlayer, location startLoc, b
     else
         // Spawn Necropolis at the start location.
         call CreateUnitAtLoc(whichPlayer, 'unpl', startLoc, bj_UNIT_FACING)
-
+        
         // Spawn Acolytes and Ghoul directly south of the Necropolis.
         set peonX = GetLocationX(startLoc)
         set peonY = GetLocationY(startLoc) - 224.00
@@ -8598,7 +8598,7 @@ function MeleeStartingUnits takes nothing returns nothing
         set index = index + 1
         exitwhen index == bj_MAX_PLAYERS
     endloop
-
+    
 endfunction
 
 //===========================================================================
@@ -8752,7 +8752,7 @@ function MeleeGetAllyStructureCount takes player whichPlayer returns integer
         if (PlayersAreCoAllied(whichPlayer, indexPlayer)) then
             set buildingCount = buildingCount + GetPlayerStructureCount(indexPlayer, true)
         endif
-
+            
         set playerIndex = playerIndex + 1
         exitwhen playerIndex == bj_MAX_PLAYERS
     endloop
@@ -8806,7 +8806,7 @@ function MeleeGetAllyKeyStructureCount takes player whichPlayer returns integer
             set keyStructs = keyStructs + GetPlayerTypedUnitCount(indexPlayer, "treeoflife", true, true)
             set keyStructs = keyStructs + GetPlayerTypedUnitCount(indexPlayer, "necropolis", true, true)
         endif
-
+            
         set playerIndex = playerIndex + 1
         exitwhen playerIndex == bj_MAX_PLAYERS
     endloop
@@ -8872,7 +8872,7 @@ endfunction
 
 //===========================================================================
 // Remove all observers
-//
+// 
 function MeleeRemoveObservers takes nothing returns nothing
     local integer    playerIndex
     local player     indexPlayer
@@ -8976,7 +8976,7 @@ function MeleeCheckForLosersAndVictors takes nothing returns nothing
                 set bj_meleeDefeated[playerIndex] = true
             endif
         endif
-
+            
         set playerIndex = playerIndex + 1
         exitwhen playerIndex == bj_MAX_PLAYERS
     endloop
@@ -9212,7 +9212,7 @@ function MeleeCheckForCrippledPlayers takes nothing returns nothing
             call MeleeExposePlayer(indexPlayer, false)
 
         endif
-
+            
         set playerIndex = playerIndex + 1
         exitwhen playerIndex == bj_MAX_PLAYERS
     endloop
@@ -9299,7 +9299,7 @@ function MeleeTriggerActionPlayerLeft takes nothing returns nothing
 
     call CachePlayerHeroData(thePlayer)
 
-    // This is the same as defeat except the player generates the message
+    // This is the same as defeat except the player generates the message 
     // "player left the game" as opposed to "player was defeated".
 
     if (MeleeGetAllyCount(thePlayer) > 0) then
@@ -10101,7 +10101,7 @@ endfunction
 //*
 //*  - RandomDistChoose will use the current distribution list to choose
 //*    one of the objects randomly based on the chance distribution
-//*
+//*  
 //*  Note that the chances are effectively normalized by their sum,
 //*  so only the relative values of each chance are important
 //*
