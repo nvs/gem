@@ -52,6 +52,10 @@ function Gem_Selection_Special___On_Placement takes nothing returns boolean
 		return false
 	endif
 
+	if Gem_Placement__Placed (the_player) == 1 then
+		set Gem_Selection_Special___COMBINATION [the_player_index] = 0
+	endif
+
 	// Only increment the special count if this is the first of this unit type.
 	// The current guarantee that a part is used for only one special makes this
 	// simple check possible.
@@ -98,8 +102,6 @@ function Gem_Selection_Special___On_Finish takes nothing returns boolean
 		set index = index + 1
 	endloop
 
-	set Gem_Selection_Special___COMBINATION [the_player_index] = 0
-
 	set the_player = null
 	set the_unit = null
 
@@ -128,7 +130,7 @@ function Gem_Selection_Special___Event takes nothing returns boolean
 	set original = GetTriggerUnit ()
 	set original_type = GetUnitTypeId (original)
 
-	set replacement_type = Gem_Recipe__Get_Combination (original_type)
+	set replacement_type = Gem_Selection_Special___COMBINATION [the_player_index]
 
 	call ShowUnit (original, false)
 	set replacement = CreateUnit (the_player, replacement_type, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
