@@ -2421,10 +2421,13 @@ function Trig_AntiStuck_Func001C takes nothing returns boolean
 	return true
 endfunction
 function Trig_AntiStuck_Actions takes nothing returns nothing
+	local unit u
 	if(Trig_AntiStuck_Func001C())then
-		call SetUnitPathing(GetSpellTargetUnit(),false)
+		set u = GetSpellTargetUnit()
+		call SetUnitPathing(u,false)
 		call TriggerSleepAction(1.00)
-		call SetUnitPathing(GetSpellTargetUnit(),true)
+		call SetUnitPathing(u,true)
+		set u = null
 	else
 	endif
 endfunction

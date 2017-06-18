@@ -35,6 +35,7 @@ full list of changes to the project, please consult the commit log.
 - Tower swapping no longer has a delay.
 - Ensure armor reduction for Ancients is applied before damage is dealt.
 - Placement auras move if necessary, and are removed when a player leaves.
+- Anti-stuck removes unit pathing temporarily instead of permanently.
 
 ## 1.3.3 - 2017-04-06
 
