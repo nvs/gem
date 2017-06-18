@@ -22,7 +22,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Maxed_out_Extra_chance_upgrade ()
 	call InitTrig_Buying_Lives ()
 	call InitTrig_Find_spell_levels ()
-	call InitTrig_Frenzy_not_on_yet ()
 	call InitTrig_Tourmaline ()
 	call InitTrig_Tourmaline_Facet ()
 	call InitTrig_Ancient_Bloodstone ()

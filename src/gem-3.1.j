@@ -3025,35 +3025,6 @@ function InitTrig_Find_spell_levels takes nothing returns nothing
 	set gg_trg_Find_spell_levels=CreateTrigger()
 	call TriggerAddAction(gg_trg_Find_spell_levels,function Trig_Find_spell_levels_Actions)
 endfunction
-function Trig_Frenzy_not_on_yet_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttacker())=='n001'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Frenzy_not_on_yet_Func002C takes nothing returns boolean
-	if(not(udg_Random[10]==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Frenzy_not_on_yet_Actions takes nothing returns nothing
-	set udg_Random[10]=GetRandomInt(1,5)
-	if(Trig_Frenzy_not_on_yet_Func002C())then
-		call UnitAddAbilityBJ('A03O',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_BLOODLUST,GetAttacker())
-		call UnitRemoveAbilityBJ('A03O',GetAttacker())
-		call PlaySoundOnUnitBJ(gg_snd_BloodLustCry,100,GetAttacker())
-	else
-	endif
-endfunction
-function InitTrig_Frenzy_not_on_yet takes nothing returns nothing
-	set gg_trg_Frenzy_not_on_yet=CreateTrigger()
-	call DisableTrigger(gg_trg_Frenzy_not_on_yet)
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Frenzy_not_on_yet,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Frenzy_not_on_yet,Condition(function Trig_Frenzy_not_on_yet_Conditions))
-	call TriggerAddAction(gg_trg_Frenzy_not_on_yet,function Trig_Frenzy_not_on_yet_Actions)
-endfunction
 function Trig_Tourmaline_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='h040'))then
 		return false

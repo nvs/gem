@@ -197,7 +197,6 @@ globals
 	trigger gg_trg_Maxed_out_quality_Upgrade=null
 	trigger gg_trg_Maxed_out_Extra_chance_upgrade=null
 	trigger gg_trg_Find_spell_levels=null
-	trigger gg_trg_Frenzy_not_on_yet=null
 	trigger gg_trg_Tourmaline=null
 	trigger gg_trg_Tourmaline_Facet=null
 	trigger gg_trg_Ancient_Bloodstone=null
