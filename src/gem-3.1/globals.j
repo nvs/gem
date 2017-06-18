@@ -165,21 +165,12 @@ globals
 	rect gg_rct_Build4=null
 	rect gg_rct_Build5=null
 	sound gg_snd_SpellShieldImpact1=null
-	sound gg_snd_GoodJob=null
 	sound gg_snd_Avatar=null
 	sound gg_snd_QuestNew=null
-	sound gg_snd_EtherealHeavyHit2=null
-	sound gg_snd_HolyBolt=null
-	string gg_snd_Credits
 	sound gg_snd_Gold3sym=null
 	sound gg_snd_Race25cry1=null
 	sound gg_snd_Race25cry2=null
 	sound gg_snd_Race25cry3=null
-	sound gg_snd_BansheeGhostWhat1=null
-	sound gg_snd_BansheeGhostYes1=null
-	sound gg_snd_BansheeGhostYes2=null
-	sound gg_snd_BansheeGhostYesAttack1=null
-	sound gg_snd_BansheeGhostYesAttack2=null
 	sound gg_snd_BloodLustCry=null
 	trigger gg_trg_kills_and_remove_Corpse=null
 	trigger gg_trg_Inihilization=null
