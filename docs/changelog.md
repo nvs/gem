@@ -12,6 +12,7 @@ full list of changes to the project, please consult the commit log.
 ### Removed
 - The `-aura` command has been removed.
 - The gamblers have been removed.
+- The ReRunner has been removed.
 
 ### Changed
 - Gold Mine button placement has shifted, and the second row now includes all
