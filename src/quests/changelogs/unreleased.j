@@ -13,6 +13,7 @@ function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
 	set text = text + Color__Gold ("Removed:") + "\n"
 	set text = text + "- The `-aura` command has been removed.\n"
 	set text = text + "- The gamblers have been removed.\n"
+	set text = text + "- The ReRunner has been removed.\n"
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Changed:") + "\n"
