@@ -5,12 +5,6 @@ function Trig_Swap_Reworked_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h01V'))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h043'))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h047'))then
-		return false
-	endif
 	if(not(GetUnitTypeId(GetSpellTargetUnit())!='h00E'))then
 		return false
 	endif
