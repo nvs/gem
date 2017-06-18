@@ -2,6 +2,9 @@
 setvalue ('Misc', 'TradingIncLarge', 0) -- Control Click
 setvalue ('Misc', 'TradingIncSmall', 0) -- Normal Click
 
+-- Build Status Display:
+setvalue ('Misc', 'DisplayBuildingStatus', 1)
+
 -- Cancel Refund Factor:
 
 -- This is handled by 'Gem Placement'. No other structure is actually built

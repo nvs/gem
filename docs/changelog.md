@@ -22,6 +22,7 @@ full list of changes to the project, please consult the commit log.
 - Monsters now spawn facing the first touchpoint for all players.
 - The wait period use for dowgrading has been removed. The 'Downgrade' action
   has been moved alongside others such as 'Keep' and 'Combine'.
+- Aura buffs now display on gems and rocks.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead

@@ -21,7 +21,8 @@ function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
 	set text = text + "- Cooldown reduction on slate teleporation.\n"
 	set text = text + "- 'Melee' style slate attacks now have a standardized attack range.\n"
 	set text = text + "- Monsters now spawn facing the first touchpoint for all players.\n"
-	set text = text + "- The wait period use for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'."
+	set text = text + "- The wait period use for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'.\n"
+	set text = text + "- Aura buffs now display on gems and rocks."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
