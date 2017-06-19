@@ -103,6 +103,7 @@ return {
 		'src/quests/information/special-thanks.j',
 		'src/quests/information/random-information.j',
 
+		'src/quests/changelogs/unreleased.j',
 		'src/quests/changelogs/1.4.0.j',
 		'src/quests/changelogs/1.3.3.j',
 		'src/quests/changelogs/1.3.2.j',
