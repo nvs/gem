@@ -17,7 +17,7 @@ full list of changes to the project, please consult the commit log.
 ### Changed
 - Gold Mine button placement has shifted, and the second row now includes all
   extra chance related buttons.
-- Cooldown reduction on slate teleporation.
+- Cooldown reduction on slate teleporation has been lowered.
 - 'Melee' style slate attacks now have a standardized attack range.
 - Monsters now spawn facing the first touchpoint for all players.
 - The wait period use for dowgrading has been removed. The 'Downgrade' action

@@ -18,7 +18,7 @@ function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Gold Mine button placement has shifted, and the second row now includes all extra chance related buttons.\n"
-	set text = text + "- Cooldown reduction on slate teleporation.\n"
+	set text = text + "- Cooldown reduction on slate teleporation has been lowered.\n"
 	set text = text + "- 'Melee' style slate attacks now have a standardized attack range.\n"
 	set text = text + "- Monsters now spawn facing the first touchpoint for all players.\n"
 	set text = text + "- The wait period use for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'.\n"
