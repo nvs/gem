@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## Unreleased
+## 1.4.0 - Unreleased
 
 ### Added
 - Hotkey support has been enabled on the Extra Chance windows.
