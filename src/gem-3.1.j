@@ -8401,9 +8401,6 @@ endfunction
 function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P1_Func020001 takes nothing returns boolean
-	return(udg_RLevel[1]==25)
-endfunction
 function Trig_New_Level_P1_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[1]==10)
 endfunction
@@ -8470,11 +8467,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P1_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P1_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -8563,9 +8555,6 @@ endfunction
 function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P2_Func020001 takes nothing returns boolean
-	return(udg_RLevel[2]==25)
-endfunction
 function Trig_New_Level_P2_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[2]==10)
 endfunction
@@ -8632,11 +8621,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P2_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P2_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -8725,9 +8709,6 @@ endfunction
 function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P3_Func020001 takes nothing returns boolean
-	return(udg_RLevel[3]==25)
-endfunction
 function Trig_New_Level_P3_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[3]==10)
 endfunction
@@ -8794,11 +8775,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P3_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P3_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -8887,9 +8863,6 @@ endfunction
 function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P4_Func020001 takes nothing returns boolean
-	return(udg_RLevel[4]==25)
-endfunction
 function Trig_New_Level_P4_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[4]==10)
 endfunction
@@ -8956,11 +8929,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P4_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P4_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9049,9 +9017,6 @@ endfunction
 function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P5_Func020001 takes nothing returns boolean
-	return(udg_RLevel[5]==25)
-endfunction
 function Trig_New_Level_P5_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[5]==10)
 endfunction
@@ -9118,11 +9083,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P5_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P5_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9211,9 +9171,6 @@ endfunction
 function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P6_Func020001 takes nothing returns boolean
-	return(udg_RLevel[6]==25)
-endfunction
 function Trig_New_Level_P6_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[6]==10)
 endfunction
@@ -9280,11 +9237,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P6_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P6_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9373,9 +9325,6 @@ endfunction
 function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P7_Func020001 takes nothing returns boolean
-	return(udg_RLevel[7]==25)
-endfunction
 function Trig_New_Level_P7_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[7]==10)
 endfunction
@@ -9442,11 +9391,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P7_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P7_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9535,9 +9479,6 @@ endfunction
 function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P8_Func020001 takes nothing returns boolean
-	return(udg_RLevel[8]==25)
-endfunction
 function Trig_New_Level_P8_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[8]==10)
 endfunction
@@ -9604,11 +9545,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P8_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P8_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))
 	else
