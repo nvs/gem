@@ -1,4 +1,5 @@
 globals
+	integer array udg_ElderDebuffLevel
 	boolexpr filterUnitByIdAndNotSpecialAndNotKept = null
 	// It should be noted one-base indices are used to reference the players in
 	// this array.
