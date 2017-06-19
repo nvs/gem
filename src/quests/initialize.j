@@ -9,7 +9,7 @@ function Quests__Initialize takes nothing returns nothing
 	call Quests___Random_Information ()
 
 	// Changelogs:
-	call Quests___Version_Unreleased ()
+	call Quests___Version_1_4_0 ()
 	call Quests___Version_1_3_3 ()
 	call Quests___Version_1_3_2 ()
 	call Quests___Version_1_3_1 ()

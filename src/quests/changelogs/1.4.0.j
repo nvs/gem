@@ -1,8 +1,8 @@
-function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
+function Quests___Version_1_4_0_Part_1 takes nothing returns nothing
 	local string title
 	local string text
 
-	set title = Gem__NAME + " Unreleased [1 of 2]"
+	set title = Gem__NAME + " 1.4.0 [1 of 2]"
 	set text = ""
 
 	set text = text + Color__Gold ("Added:") + "\n"
@@ -27,11 +27,11 @@ function Quests___Version_Unreleased_Part_1 takes nothing returns nothing
 	call Quests___Add_Changelog (title, text)
 endfunction
 
-function Quests___Version_Unreleased_Part_2 takes nothing returns nothing
+function Quests___Version_1_4_0_Part_2 takes nothing returns nothing
 	local string title
 	local string text
 
-	set title = Gem__NAME + " Unreleased [2 of 2]"
+	set title = Gem__NAME + " 1.4.0 [2 of 2]"
 	set text = ""
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
@@ -49,7 +49,7 @@ function Quests___Version_Unreleased_Part_2 takes nothing returns nothing
 	call Quests___Add_Changelog (title, text)
 endfunction
 
-function Quests___Version_Unreleased takes nothing returns nothing
-	call Quests___Version_Unreleased_Part_1 ()
-	call Quests___Version_Unreleased_Part_2 ()
+function Quests___Version_1_4_0 takes nothing returns nothing
+	call Quests___Version_1_4_0_Part_1 ()
+	call Quests___Version_1_4_0_Part_2 ()
 endfunction
