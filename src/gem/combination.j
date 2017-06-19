@@ -4,6 +4,7 @@
 // Depends
 // -------
 //
+// - Gem 3.1
 // - Gem Combination Marker
 // - Gem Gems
 // - Gem Player
@@ -215,6 +216,11 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, "- " + GetUnitName (replacement) + Color ("ffff00", " has been created with ") + I2S (kills) + Color ("ffff00", " kills saved from its combined gems."))
 
 	call Unit_User_Data__Set (replacement, kills)
+
+	set udg_CheckSpelllvlUNIT = replacement
+	if combination == Gem_Special__STAR_RUBY_1 or combination == Gem_Slate__ELDER or combination == Gem_Slate__VIPER then
+		call TriggerExecute (gg_trg_Find_spell_levels)
+	endif
 
 	if kills < 10 then
 	elseif kills < 20 then
