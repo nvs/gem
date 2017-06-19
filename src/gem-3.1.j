@@ -3255,6 +3255,11 @@ function Trig_Spell_Slate_Func007C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Spell_Slate_Actions takes nothing returns nothing
+	local unit attacker
+	local unit target
+	local integer target_index
+	local integer debuff_level
+	local boolean has_elder_debuff
 	set udg_Random[8]=GetRandomInt(1,100)
 	if(Trig_Spell_Slate_Func002C())then
 		call UnitAddAbilityBJ('A05R',GetAttacker())
@@ -3280,10 +3285,28 @@ function Trig_Spell_Slate_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A05U',GetAttacker())
 	else
 	endif
-	if(Trig_Spell_Slate_Func006C())then
-		call UnitAddAbilityBJ('A05T',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTARMOR,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A05T',GetAttacker())
+	if(Trig_Spell_Slate_Func006C() and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0)then
+		set attacker = GetAttacker ()
+		set target = GetTriggerUnit ()
+
+		set has_elder_debuff = GetUnitAbilityLevel (target, 'B00L') > 0
+
+		if has_elder_debuff then
+			set target_index = Unit_Indexer__Unit_Index (target)
+			set debuff_level = udg_ElderDebuffLevel [target_index]
+
+			call UnitAddAbility (attacker, 'A05W')
+			call SetUnitAbilityLevel (attacker, 'A05W', debuff_level + 1)
+			call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
+			call UnitRemoveAbility (attacker, 'A05W')
+		else
+			call UnitAddAbility (attacker, 'A05T')
+			call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
+			call UnitRemoveAbility (attacker, 'A05T')
+		endif
+
+		set attacker = null
+		set target = null
 	else
 	endif
 	if(Trig_Spell_Slate_Func007C())then
@@ -3590,6 +3613,13 @@ function Trig_Elder_Slate_Func009C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Elder_Slate_Actions takes nothing returns nothing
+	local unit attacker
+	local integer attacker_kills
+	local unit target
+	local integer target_index
+	local integer debuff_level
+	local boolean has_spell_debuff
+	local boolean has_elder_debuff
 	set udg_Random[7]=GetRandomInt(1,100)
 	if(Trig_Elder_Slate_Func002C())then
 		call UnitAddAbilityBJ('A05Z',GetAttacker())
@@ -3761,61 +3791,38 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A05X',GetAttacker())
 	else
 	endif
-	if(Trig_Elder_Slate_Func005C())then
+	if Trig_Elder_Slate_Func005C () and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
-		call UnitAddAbilityBJ('A05W',GetAttacker())
-		if(Trig_Elder_Slate_Func005Func005001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
+
+		set attacker = GetAttacker ()
+		set attacker_kills = Unit_User_Data__Get (attacker)
+
+		set target = GetTriggerUnit ()
+		set target_index = Unit_Indexer__Unit_Index (target)
+
+		set has_spell_debuff = GetUnitAbilityLevel (target, 'B00K') > 0
+		set has_elder_debuff = GetUnitAbilityLevel (target, 'B00L') > 0
+
+		if has_spell_debuff then
+			call UnitRemoveAbility (target, 'B00K')
 		endif
-		if(Trig_Elder_Slate_Func005Func006001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
+
+		set debuff_level = attacker_kills / 10
+
+		if has_elder_debuff then
+			call UnitRemoveAbility (target, 'B00L')
+			set debuff_level = IMaxBJ (debuff_level, udg_ElderDebuffLevel [target_index])
 		endif
-		if(Trig_Elder_Slate_Func005Func007001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func008001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func009001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func010001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func011001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func012001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func013001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func005Func014001())then
-			call IncUnitAbilityLevelSwapped('A05W',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTARMOR,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A05W',GetAttacker())
+
+		set udg_ElderDebuffLevel [target_index] = debuff_level
+
+		call UnitAddAbility (attacker, 'A05W')
+		call SetUnitAbilityLevel (attacker, 'A05W', debuff_level + 1)
+		call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
+		call UnitRemoveAbility (attacker, 'A05W')
+
+		set attacker = null
+		set target = null
 	else
 	endif
 	if(Trig_Elder_Slate_Func006C())then

@@ -43,7 +43,8 @@ function Quests___Version_Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "- Tower swapping no longer has a delay.\n"
 	set text = text + "- Ensure armor reduction for Ancients is applied before damage is dealt.\n"
 	set text = text + "- Placement auras move if necessary, and are removed when a player leaves.\n"
-	set text = text + "- Anti-stuck removes unit pathing temporarily instead of permanently."
+	set text = text + "- Anti-stuck removes unit pathing temporarily instead of permanently.\n"
+	set text = text + "- Spell/Elder armor reduction stacks properly. That is, the highest armor reduction is either applied or renewed."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
