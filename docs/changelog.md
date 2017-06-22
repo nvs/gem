@@ -23,6 +23,9 @@ full list of changes to the project, please consult the commit log.
 - The wait period use for dowgrading has been removed. The 'Downgrade' action
   has been moved alongside others such as 'Keep' and 'Combine'.
 - Aura buffs now display on gems and rocks.
+- Spell/Elder armor debuff behavior has been modified. A stronger debuff will
+  overwrite a weaker one, and any debuff application will renew an existing
+  debuff's duration.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead
@@ -36,8 +39,6 @@ full list of changes to the project, please consult the commit log.
 - Ensure armor reduction for Ancients is applied before damage is dealt.
 - Placement auras move if necessary, and are removed when a player leaves.
 - Anti-stuck removes unit pathing temporarily instead of permanently.
-- Spell/Elder armor reduction stacks properly. That is, the highest armor
-  reduction is either applied or renewed.
 
 ## 1.3.3 - 2017-04-06
 

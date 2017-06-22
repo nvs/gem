@@ -22,7 +22,8 @@ function Quests___Version_1_4_0_Part_1 takes nothing returns nothing
 	set text = text + "- 'Melee' style slate attacks now have a standardized attack range.\n"
 	set text = text + "- Monsters now spawn facing the first touchpoint for all players.\n"
 	set text = text + "- The wait period use for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'.\n"
-	set text = text + "- Aura buffs now display on gems and rocks."
+	set text = text + "- Aura buffs now display on gems and rocks.\n"
+	set text = text + "- Spell/Elder armor debuff behavior has been modified. A stronger debuff will overwrite a weaker one, and any debuff application will renew an existing debuff's duration."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
@@ -43,8 +44,7 @@ function Quests___Version_1_4_0_Part_2 takes nothing returns nothing
 	set text = text + "- Tower swapping no longer has a delay.\n"
 	set text = text + "- Ensure armor reduction for Ancients is applied before damage is dealt.\n"
 	set text = text + "- Placement auras move if necessary, and are removed when a player leaves.\n"
-	set text = text + "- Anti-stuck removes unit pathing temporarily instead of permanently.\n"
-	set text = text + "- Spell/Elder armor reduction stacks properly. That is, the highest armor reduction is either applied or renewed."
+	set text = text + "- Anti-stuck removes unit pathing temporarily instead of permanently."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
