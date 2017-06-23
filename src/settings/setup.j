@@ -78,7 +78,19 @@ function Settings__Setup takes nothing returns nothing
 	endif
 
 	call ClearTextMessages ()
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!") + "\nThe game will start when the countdown timer finishes.\nFeel free to chat and use commands such as `-zoom`\nduring this period.\n\nFor map information, including a list of\nchanges, see " + Color__Gold ("Information (F9)") + ".\n\nFor further information and discussion on the\nmap, or to report bugs and other issues, visit:\n- " + Color__Link (Gem__WEBSITE_FORUM) + "\n- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n\n\n")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!"))
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "For map information, including a list of")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "changes, see " + Color__Gold ("Information (F9)") + ".")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "\n")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "For further information and discussion on the")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "map, or to report bugs and other issues, visit:")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_FORUM))
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_DISCORD))
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_REPOSITORY))
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "\n")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "Note: Downgrade has been moved alongside the")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "other selection options, and both the ReRunner and")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "the gamblers have been removed.")
 
 	// Ensure that the unit selected is the Miner, and that the camera is
 	// focused on it initially.
