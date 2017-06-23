@@ -157,7 +157,8 @@ return {
 		'share/objects/gold-mine-buttons.lua',
 		'share/objects/slate-teleport.lua',
 		'share/objects/standardize-slate-range.lua',
-		'share/objects/combination-button.lua'
+		'share/objects/combination-button.lua',
+		'share/objects/anti-stuck-cooldown.lua'
 	},
 
 	constants = {

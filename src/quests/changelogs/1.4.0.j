@@ -23,7 +23,8 @@ function Quests___Version_1_4_0_Part_1 takes nothing returns nothing
 	set text = text + "- Monsters now spawn facing the first touchpoint for all players.\n"
 	set text = text + "- The wait period use for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'.\n"
 	set text = text + "- Aura buffs now display on gems and rocks.\n"
-	set text = text + "- Spell/Elder armor debuff behavior has been modified. A stronger debuff will overwrite a weaker one, and any debuff application will renew an existing debuff's duration."
+	set text = text + "- Spell/Elder armor debuff behavior has been modified. A stronger debuff will overwrite a weaker one, and any debuff application will renew an existing debuff's duration.\n"
+	set text = text + "- Reduced cooldown on the anti-stuck ability."
 
 	call Quests___Add_Changelog (title, text)
 endfunction

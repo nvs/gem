@@ -26,6 +26,7 @@ full list of changes to the project, please consult the commit log.
 - Spell/Elder armor debuff behavior has been modified. A stronger debuff will
   overwrite a weaker one, and any debuff application will renew an existing
   debuff's duration.
+- Reduced cooldown on the anti-stuck ability.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead
