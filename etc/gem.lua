@@ -159,7 +159,8 @@ return {
 		'share/objects/standardize-slate-range.lua',
 		'share/objects/combination-button.lua',
 		'share/objects/anti-stuck-cooldown.lua',
-		'share/objects/switch-info-button-location.lua'
+		'share/objects/switch-info-button-location.lua',
+		'share/objects/downgrade-button.lua'
 	},
 
 	constants = {
