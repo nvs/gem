@@ -14,21 +14,21 @@ if major and major.jass_type == 'integer.decimal'
 then
 	version = string.format ('%d.%d.%d',
 		major.value, minor.value, patch.value)
+
+	-- Create a private global variable. This obviously will not be in the
+	-- scope of the JASS scripts. However, it will be in scope for Grimex.
+	map.globals.Gem_Version___STRING = {
+		jass_type = 'string',
+		value = version
+	}
 else
 	return
 end
 
-local extra = map.globals.Gem_Version__EXTRA
+local pre_release = map.globals.Gem_Version__PRE_RELEASE
 
-if extra and extra.jass_type == 'string' then
-	version = version .. extra.value
-end
-
-local metadata = map.globals.Gem_Version__METADATA
-
-if metadata
-	and metadata.jass_type == 'boolean'
-	and metadata.value == 'true'
+if pre_release
+	and pre_release.jass_type == 'string'
 then
 	local git_stdout = Path.temporary_name ()
 
@@ -43,10 +43,11 @@ then
 		local file = io.open (git_stdout, 'rb')
 
 		if file then
-			metadata.jass_type = 'string'
-			metadata.value = file:read ('*l')
+			pre_release.value = pre_release.value .. '+' .. file:read ('*l')
 
-			version = version .. '+' .. metadata.value
+			version = version .. '-' .. pre_release.value
+			map.globals.Gem_Version___STRING.value = version
+
 			file:close ()
 		end
 	end
