@@ -20,7 +20,7 @@ full list of changes to the project, please consult the commit log.
 - Cooldown on slate teleporation has been lowered.
 - 'Melee' style slate attacks now have a standardized attack range.
 - Monsters now spawn facing the first touchpoint for all players.
-- The wait period use for dowgrading has been removed. The 'Downgrade' action
+- The wait period used for dowgrading has been removed. The 'Downgrade' action
   has been moved alongside others such as 'Keep' and 'Combine'.
 - Aura buffs now display on gems and rocks.
 - Spell/Elder armor debuff behavior has been modified. A stronger debuff will
