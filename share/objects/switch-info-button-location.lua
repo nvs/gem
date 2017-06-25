@@ -82,7 +82,7 @@ local abilities = {
 	--'A075', -- Viper Slate 2
 	--'A076', -- Viper Slate 3
 
-	-- S'pecials:
+	-- Specials:
 	'A03D', -- Malachite
 	'A03E', -- Vivid Malachite
 	'A03F', -- Mighty Malachite
@@ -96,7 +96,6 @@ local abilities = {
 	'A00J', -- Jade
 	'A014', -- China Jade
 	'A00P', -- Lucky China Jade
-
 
 	'A00V', -- Red Crystal
 	'A012', -- Red Facet
