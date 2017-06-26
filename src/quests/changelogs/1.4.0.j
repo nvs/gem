@@ -14,6 +14,7 @@ function Quests___Version_1_4_0_Part_1 takes nothing returns nothing
 	set text = text + "- The `-aura` command has been removed.\n"
 	set text = text + "- The gamblers have been removed.\n"
 	set text = text + "- The ReRunner has been removed.\n"
+	set text = text + "- Automatic selection of a unit after events such as 'Downgrade' and 'Combine' has been disabled.\n"
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Changed:") + "\n"
@@ -22,9 +23,7 @@ function Quests___Version_1_4_0_Part_1 takes nothing returns nothing
 	set text = text + "- 'Melee' style slate attacks now have a standardized attack range.\n"
 	set text = text + "- Monsters now spawn facing the first touchpoint for all players.\n"
 	set text = text + "- The wait period used for dowgrading has been removed. The 'Downgrade' action has been moved alongside others such as 'Keep' and 'Combine'.\n"
-	set text = text + "- Aura buffs now display on gems and rocks.\n"
-	set text = text + "- Spell/Elder armor debuff behavior has been modified. A stronger debuff will overwrite a weaker one, and any debuff application will renew an existing debuff's duration.\n"
-	set text = text + "- Reduced cooldown on the anti-stuck ability."
+	set text = text + "- Aura buffs now display on gems and rocks."
 
 	call Quests___Add_Changelog (title, text)
 endfunction
@@ -35,6 +34,11 @@ function Quests___Version_1_4_0_Part_2 takes nothing returns nothing
 
 	set title = Gem__NAME + " 1.4.0 [2 of 2]"
 	set text = ""
+
+	set text = text + Color__Gold ("Changed: (cont.)") + "\n"
+	set text = text + "- Spell/Elder armor debuff behavior has been modified. A stronger debuff will overwrite a weaker one, and any debuff application will renew an existing debuff's duration.\n"
+	set text = text + "- Reduced cooldown on the anti-stuck ability.\n"
+	set text = text + "\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Upon reaching the maximum number of lives, gold will now be refunded instead of being wasted.\n"

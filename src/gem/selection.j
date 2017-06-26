@@ -157,11 +157,6 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 
 	call Gem_Selection__Flush (the_player)
 
-	if GetLocalPlayer () == the_player then
-		call ClearSelection ()
-		call SelectUnit (current, true)
-	endif
-
 	set x = GetUnitX (current)
 	set y = GetUnitY (current)
 
