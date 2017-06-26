@@ -4,6 +4,7 @@
 function Gem_Selection__Initialize takes nothing returns boolean
 	local integer the_player_index
 
+	call Gem_Placement__On_Start (Condition (function Gem_Selection___On_Start))
 	call Gem_Placement__On_Placement (Condition (function Gem_Selection___On_Placement))
 
 	call Gem_Selection_Keep__Initialize ()
