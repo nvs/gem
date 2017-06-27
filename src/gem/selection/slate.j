@@ -181,7 +181,7 @@ function Gem_Selection_Slate___Event takes nothing returns boolean
 	call Gem_Selection__Finalize (replacement, original)
 
 	set udg_SlateStackUnit = replacement
-	call TriggerExecute (gg_trg_Slate_Stack_Check)
+	call Trig_Slate_Stack_Check_Actions ()
 
 	set the_player = null
 	set original = null
