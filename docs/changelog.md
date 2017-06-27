@@ -13,8 +13,6 @@ full list of changes to the project, please consult the commit log.
 - The `-aura` command has been removed.
 - The gamblers have been removed.
 - The ReRunner has been removed.
-- Automatic selection of a unit after events such as 'Downgrade' and
-  'Combine' has been disabled.
 
 ### Changed
 - Gold Mine button placement has shifted, and the second row now includes all

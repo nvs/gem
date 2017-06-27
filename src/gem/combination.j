@@ -262,6 +262,11 @@ function Gem_Combination___Recipe takes nothing returns boolean
 		call UnitAddAbility (replacement, 'A02D')
 	endif
 
+	if GetLocalPlayer () == the_player then
+		call ClearSelection ()
+		call SelectUnit (replacement, true)
+	endif
+
 	set the_player = null
 	set original = null
 	set replacement = null
