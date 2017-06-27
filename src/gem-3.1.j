@@ -2368,7 +2368,7 @@ function Trig_Slate_Stack_Check_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 		call SetUnitPositionLoc(udg_SlateStackUnit,PolarProjectionBJ(udg_SlateStackDestination,400.00,GetRandomReal(0,359.00)))
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
-		call TriggerExecute(GetTriggeringTrigger())
+		call Trig_Slate_Stack_Check_Actions ()
 	else
 	endif
 endfunction
