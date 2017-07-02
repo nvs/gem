@@ -8261,6 +8261,12 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
+	if Gem_Reminders__Is_Active (Player (0)) then
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P1_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
@@ -8415,6 +8421,12 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
+	if Gem_Reminders__Is_Active (Player (1)) then
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P2_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
@@ -8569,6 +8581,12 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
+	if Gem_Reminders__Is_Active (Player (2)) then
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P3_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
@@ -8723,6 +8741,12 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
+	if Gem_Reminders__Is_Active (Player (3)) then
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P4_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
@@ -8877,6 +8901,12 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
+	if Gem_Reminders__Is_Active (Player (4)) then
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P5_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
@@ -9031,6 +9061,12 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
+	if Gem_Reminders__Is_Active (Player (5)) then
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P6_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
@@ -9185,6 +9221,12 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
+	if Gem_Reminders__Is_Active (Player (6)) then
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P7_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
@@ -9339,6 +9381,12 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
+	if Gem_Reminders__Is_Active (Player (7)) then
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P8_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))
