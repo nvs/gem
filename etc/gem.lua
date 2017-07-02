@@ -121,6 +121,7 @@ return {
 		'src/settings/window.j',
 		'src/settings/initialize.j',
 
+		'src/gem/command/reminders.j',
 		'src/commands/debug.j',
 		'src/commands/zoom.j',
 		'src/commands.j',
