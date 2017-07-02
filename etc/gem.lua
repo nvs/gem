@@ -39,6 +39,7 @@ return {
 
 		'src/gem.j',
 		'src/gem/version.j',
+		'src/gem/reminders.j',
 
 		'src/gem/type.j',
 		'src/gem/quality.j',

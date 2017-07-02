@@ -155,6 +155,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Unit_User_Data__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Stun__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Disarm__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Reminders__Initialize))
 
 	call TriggerEvaluate (initialize)
 	call TriggerClearConditions (initialize)
