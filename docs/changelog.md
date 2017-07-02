@@ -8,6 +8,8 @@ full list of changes to the project, please consult the commit log.
 ### Added
 - Hotkey support has been enabled on the Extra Chance windows.
 - Added hotkey support for slate teleporation.
+- A `-reminders` command to toggle built-in reminder messages. By default,
+  reminders are enabled.
 
 ### Removed
 - The `-aura` command has been removed.
