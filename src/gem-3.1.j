@@ -7741,6 +7741,14 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (0))
 	set udg_RaceBuildingPeriod[1]=false
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (0)) and udg_RLevel [1] <= 25 and (ModuloInteger (udg_RLevel [1], 5) == 0 or udg_RLevel [1] > 20) then
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
 	call Gem_Spawn__Start (0, udg_RLevel [1])
@@ -7798,6 +7806,14 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (1))
 	set udg_RaceBuildingPeriod[2]=false
 	call QuestMessage(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (1)) and udg_RLevel [2] <= 25 and (ModuloInteger (udg_RLevel [2], 5) == 0 or udg_RLevel [2] > 20) then
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
 	call Gem_Spawn__Start (1, udg_RLevel [2])
@@ -7855,6 +7871,14 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (2))
 	set udg_RaceBuildingPeriod[3]=false
 	call QuestMessage(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (2)) and udg_RLevel [3] <= 25 and (ModuloInteger (udg_RLevel [3], 5) == 0 or udg_RLevel [3] > 20) then
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
 	call Gem_Spawn__Start (2, udg_RLevel [3])
@@ -7912,6 +7936,14 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (3))
 	set udg_RaceBuildingPeriod[4]=false
 	call QuestMessage(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (3)) and udg_RLevel [4] <= 25 and (ModuloInteger (udg_RLevel [4], 5) == 0 or udg_RLevel [4] > 20) then
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
 	call Gem_Spawn__Start (3, udg_RLevel [4])
@@ -7969,6 +8001,14 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (4))
 	set udg_RaceBuildingPeriod[5]=false
 	call QuestMessage(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (4)) and udg_RLevel [5] <= 25 and (ModuloInteger (udg_RLevel [5], 5) == 0 or udg_RLevel [5] > 20) then
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
 	call Gem_Spawn__Start (4, udg_RLevel [5])
@@ -8026,6 +8066,14 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (5))
 	set udg_RaceBuildingPeriod[6]=false
 	call QuestMessage(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (5)) and udg_RLevel [6] <= 25 and (ModuloInteger (udg_RLevel [6], 5) == 0 or udg_RLevel [6] > 20) then
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
 	call Gem_Spawn__Start (5, udg_RLevel [6])
@@ -8083,6 +8131,14 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (6))
 	set udg_RaceBuildingPeriod[7]=false
 	call QuestMessage(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (6)) and udg_RLevel [7] <= 25 and (ModuloInteger (udg_RLevel [7], 5) == 0 or udg_RLevel [7] > 20) then
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
 	call Gem_Spawn__Start (6, udg_RLevel [7])
@@ -8140,6 +8196,14 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (7))
 	set udg_RaceBuildingPeriod[8]=false
 	call QuestMessage(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (7)) and udg_RLevel [8] <= 25 and (ModuloInteger (udg_RLevel [8], 5) == 0 or udg_RLevel [8] > 20) then
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable reminder messages, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
 	call Gem_Spawn__Start (7, udg_RLevel [8])
