@@ -35,7 +35,7 @@ if objectexists ('ANcl') and objectexists ('A02J') then
 		makechange (current, 'anam', 'Slate Teleport') -- Name
 		makechange (current, 'atp1', 1, '|c00ffcc00T|releport') -- Tip
 		makechange (current, 'aub1', 1, 'Teleports the slate to the targeted ' ..
-			'point. Slates cannot be stacked upon similar or like slates.|n' ..
+			'point. Slates cannot be stacked upon similar or like slates.|n|n' ..
 			'Can only be used once per slate.')
 	end
 end
