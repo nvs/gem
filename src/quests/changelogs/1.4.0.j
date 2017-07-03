@@ -38,6 +38,7 @@ function Quests___Version_1_4_0_Part_2 takes nothing returns nothing
 	set text = text + Color__Gold ("Changed: (cont.)") + "\n"
 	set text = text + "- Spell/Elder armor debuff behavior has been modified. A stronger debuff will overwrite a weaker one, and any debuff application will renew an existing debuff's duration.\n"
 	set text = text + "- Reduced cooldown on the anti-stuck ability.\n"
+	set text = text + "- Tower swapping no longer has a delay.\n"
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
@@ -46,7 +47,6 @@ function Quests___Version_1_4_0_Part_2 takes nothing returns nothing
 	set text = text + "- Maximized upgrade buttons will no longer look disabled and grey.\n"
 	set text = text + "- Player names are now sanitized of special tags.\n"
 	set text = text + "- Ruby damage versus Red armor via attacks was incorrect.\n"
-	set text = text + "- Tower swapping no longer has a delay.\n"
 	set text = text + "- Ensure armor reduction for Ancients is applied before damage is dealt.\n"
 	set text = text + "- Placement auras move if necessary, and are removed when a player leaves.\n"
 	set text = text + "- Anti-stuck removes unit pathing temporarily instead of permanently."

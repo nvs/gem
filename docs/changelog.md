@@ -29,6 +29,7 @@ full list of changes to the project, please consult the commit log.
   overwrite a weaker one, and any debuff application will renew an existing
   debuff's duration.
 - Reduced cooldown on the anti-stuck ability.
+- Tower swapping no longer has a delay.
 
 ### Fixed
 - Upon reaching the maximum number of lives, gold will now be refunded instead
@@ -38,7 +39,6 @@ full list of changes to the project, please consult the commit log.
 - Maximized upgrade buttons will no longer look disabled and grey.
 - Player names are now sanitized of special tags.
 - Ruby damage versus Red armor via attacks was incorrect.
-- Tower swapping no longer has a delay.
 - Ensure armor reduction for Ancients is applied before damage is dealt.
 - Placement auras move if necessary, and are removed when a player leaves.
 - Anti-stuck removes unit pathing temporarily instead of permanently.
