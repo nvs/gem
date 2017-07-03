@@ -34,6 +34,8 @@ return {
 		'src/table.j',
 		'src/handle.j',
 
+		'src/w3mmd-lite.j',
+
 		'src/spawn.j',
 		'src/spawn-group.j',
 
