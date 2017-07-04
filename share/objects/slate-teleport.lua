@@ -9,7 +9,7 @@ if objectexists ('ANcl') and objectexists ('A02J') then
 	if currentobject () == 'A02J' then
 		-- Art:
 		makechange (current, 'abpx', 0) -- Button Position (X)
-		makechange (current, 'abpy', 1) -- Button Position (Y)
+		makechange (current, 'abpy', 2) -- Button Position (Y)
 		makechange (current, 'acat', '') -- Caster
 		makechange (current, 'acap', '') -- Caster Attachment Point 1
 		makechange (current, 'aeat', '') -- Effect
