@@ -7742,7 +7742,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	set udg_RaceBuildingPeriod[1]=false
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
 
-	if Gem_Reminders__Is_Active (Player (0)) and udg_RLevel [1] <= 25 and (ModuloInteger (udg_RLevel [1], 5) == 0 then
+	if Gem_Reminders__Is_Active (Player (0)) and udg_RLevel [1] <= 25 and (ModuloInteger (udg_RLevel [1], 5) == 0) then
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
