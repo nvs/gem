@@ -1,9 +1,8 @@
--- Downgrade Button Location
--- =========================
+-- # Combine Button
 
 setobjecttype ('abilities')
 
-local ability = 'A02G' -- Downgrade Quality
+local ability = 'A007'
 
 if objectexists (ability) then
 	modifyobject (ability)

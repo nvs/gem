@@ -163,7 +163,7 @@ return {
 		'share/objects/combine-special-button.lua',
 		'share/objects/anti-stuck-cooldown.lua',
 		'share/objects/switch-info-button-location.lua',
-		'share/objects/downgrade-button.lua',
+		'share/objects/combine-button.lua',
 		'share/objects/change-topaz-base.lua'
 	},
 
