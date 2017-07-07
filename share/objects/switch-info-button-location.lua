@@ -41,7 +41,7 @@ local abilities = {
 
 	'S008', -- Opal
 
-	'A065', -- Ruby Chipped
+	'A06S', -- Ruby Chipped
 	'A06R', -- Ruby Flawed
 	'A004', -- Ruby Normal
 	'A06P', -- Ruby Flawless
