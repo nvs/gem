@@ -6947,6 +6947,7 @@ function Trig_Fin_P1_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[1]==true)
 endfunction
 function Trig_Fin_P1_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (0))
 	set udg_CountWastedGems[1]=0
 	set udg_RmodeFinished[1]=true
 	call TriggerSleepAction(2)
@@ -7008,6 +7009,7 @@ function Trig_Fin_P2_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[2]==true)
 endfunction
 function Trig_Fin_P2_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (1))
 	set udg_CountWastedGems[2]=0
 	set udg_RmodeFinished[2]=true
 	call TriggerSleepAction(2)
@@ -7069,6 +7071,7 @@ function Trig_Fin_P3_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[3]==true)
 endfunction
 function Trig_Fin_P3_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (2))
 	set udg_CountWastedGems[3]=0
 	set udg_RmodeFinished[3]=true
 	call TriggerSleepAction(2)
@@ -7130,6 +7133,7 @@ function Trig_Fin_P4_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[4]==true)
 endfunction
 function Trig_Fin_P4_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (3))
 	set udg_CountWastedGems[4]=0
 	set udg_RmodeFinished[4]=true
 	call TriggerSleepAction(2)
@@ -7191,6 +7195,7 @@ function Trig_Fin_P5_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[5]==true)
 endfunction
 function Trig_Fin_P5_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (4))
 	set udg_CountWastedGems[5]=0
 	set udg_RmodeFinished[5]=true
 	call TriggerSleepAction(2)
@@ -7252,6 +7257,7 @@ function Trig_Fin_P6_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[6]==true)
 endfunction
 function Trig_Fin_P6_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (5))
 	set udg_CountWastedGems[6]=0
 	set udg_RmodeFinished[6]=true
 	call TriggerSleepAction(2)
@@ -7313,6 +7319,7 @@ function Trig_Fin_P7_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[7]==true)
 endfunction
 function Trig_Fin_P7_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (7))
 	set udg_CountWastedGems[7]=0
 	set udg_RmodeFinished[7]=true
 	call TriggerSleepAction(2)
@@ -7374,6 +7381,7 @@ function Trig_Fin_P8_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[8]==true)
 endfunction
 function Trig_Fin_P8_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (7))
 	set udg_CountWastedGems[8]=0
 	set udg_RmodeFinished[8]=true
 	call TriggerSleepAction(2)
@@ -8307,6 +8315,7 @@ function Trig_New_Level_P1_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P1_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (0))
 	call Gem_Spawn__Stop (0)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
@@ -8467,6 +8476,7 @@ function Trig_New_Level_P2_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (1))
 	call Gem_Spawn__Stop (1)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
@@ -8627,6 +8637,7 @@ function Trig_New_Level_P3_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P3_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (2))
 	call Gem_Spawn__Stop (2)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
@@ -8787,6 +8798,7 @@ function Trig_New_Level_P4_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P4_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (3))
 	call Gem_Spawn__Stop (3)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
@@ -8947,6 +8959,7 @@ function Trig_New_Level_P5_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P5_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (4))
 	call Gem_Spawn__Stop (4)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
@@ -9107,6 +9120,7 @@ function Trig_New_Level_P6_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P6_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (5))
 	call Gem_Spawn__Stop (5)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
@@ -9267,6 +9281,7 @@ function Trig_New_Level_P7_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P7_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (6))
 	call Gem_Spawn__Stop (6)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
@@ -9427,6 +9442,7 @@ function Trig_New_Level_P8_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P8_Actions takes nothing returns nothing
+	call Gem_Rank__Clear_Level (Player (7))
 	call Gem_Spawn__Stop (7)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)

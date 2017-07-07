@@ -123,6 +123,8 @@ function Gem_Spawn___Movement takes nothing returns boolean
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (the_unit)] = player_index + 1
+
+		call Gem_Rank__Register_Unit (the_unit)
 	endif
 
 	set the_unit = null
