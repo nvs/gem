@@ -8325,7 +8325,7 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
-	if Gem_Reminders__Is_Active (Player (0)) then
+	if Gem_Reminders__Is_Active (Player (0)) and (ModuloInteger (udg_RLevel [1] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
@@ -8485,7 +8485,7 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
-	if Gem_Reminders__Is_Active (Player (1)) then
+	if Gem_Reminders__Is_Active (Player (1)) and (ModuloInteger (udg_RLevel [2] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
@@ -8645,7 +8645,7 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
-	if Gem_Reminders__Is_Active (Player (2)) then
+	if Gem_Reminders__Is_Active (Player (2)) and (ModuloInteger (udg_RLevel [3] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
@@ -8805,7 +8805,7 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
-	if Gem_Reminders__Is_Active (Player (3)) then
+	if Gem_Reminders__Is_Active (Player (3)) and (ModuloInteger (udg_RLevel [4] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
@@ -8965,7 +8965,7 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
-	if Gem_Reminders__Is_Active (Player (4)) then
+	if Gem_Reminders__Is_Active (Player (4)) and (ModuloInteger (udg_RLevel [5] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
@@ -9125,7 +9125,7 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
-	if Gem_Reminders__Is_Active (Player (5)) then
+	if Gem_Reminders__Is_Active (Player (5)) and (ModuloInteger (udg_RLevel [6] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
@@ -9285,7 +9285,7 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
-	if Gem_Reminders__Is_Active (Player (6)) then
+	if Gem_Reminders__Is_Active (Player (6)) and (ModuloInteger (udg_RLevel [7] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
@@ -9445,7 +9445,7 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
-	if Gem_Reminders__Is_Active (Player (7)) then
+	if Gem_Reminders__Is_Active (Player (7)) and (ModuloInteger (udg_RLevel [8] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
