@@ -34,10 +34,11 @@ The following columns are used:
 - `Needs Testing`: These topics are ready to be tested.
 - `Finished`: Work on these topics has concluded.
 
-## Workflow Labels
+## Status Labels
 
 These labels help describe the flow of issues, from creation to closure. When
-a label is opened it is new and needs review.
+a label is opened it is new and needs review. All labels here fall under the
+`Status` category.
 
 ### Inbox
 
@@ -45,11 +46,12 @@ A new issue has no milestone. It has no assignee. At this point is has to be
 reviewed. It may need to be verified. More information may be requested. But
 one thing is common: the issue is not ready.
 
+- `Needs Discussion`: This issue needs further elaboration or consideration.
 - `Needs Clarification`: Waiting for more information from the reporter.
 - `Cannot Reproduce`: An attempt was made to reproduce the bug, but failed.
 - `Stuck`: The issue cannot be reviewed further for some reason or another.
 
-### Status
+### On Deck
 
 Issues with these labels are ready to be allocated into a milestone. However,
 they could be at various stages in their life cycle. Some are brand new, while
@@ -63,7 +65,7 @@ have milestones for some reason or another.
 
 ### Closed
 
-When closed an issue must have a special label applied. This is to help
+When closed an issue must have a status label applied. This is to help
 document its progress.
 
 - `Finished`: The performed work was tested and indeed functions as intended.
@@ -76,11 +78,11 @@ document its progress.
 
 ## Documentative Labels
 
-For the most part, these labels simply help document the nature of an issue.
-What it hopes to achieve. What it affects. As an issue is better understood,
-these types of labels may be added or removed.
+For the most part, these labels simply help document the nature of an issue:
+what it hopes to achieve; what it affects; and so on. As an issue is better
+understood, these types of labels may be added or removed.
 
-### Category
+### Type
 
 An attempt is made to label an issue with a category that describes its
 nature. Generally, this is added once the issue is reviewed.
@@ -90,8 +92,6 @@ nature. Generally, this is added once the issue is reviewed.
 - `Task`: Internal task (e.g. code cleanup, refactoring, etc.) with no in-game
   user-facing impact.
 - `Question`: An inquiry regarding the project.
-- `Discussion`: A fairly broad category, used for talking about a generalized,
-  less focused concept or topic.
 
 ### Scope
 
@@ -104,6 +104,8 @@ identify what set of skills may be needed to accomplish the work involved.
 - `Map`: Relates to map issues that are not included in the above.
 - `Build`: Deals with the build process.
 - `Documentation`: Project documentation.
-- `Website`: Relates to the repository and/or forum.
+- `External`: Relates to something outside the primary project itself. This
+  includes, but is not limited to, the repository itself, the website, the
+  forum, etc.
 - `Balance`: Deals with game balance. Generally, this scope will be included
   with another.
