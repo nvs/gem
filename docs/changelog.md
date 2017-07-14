@@ -12,35 +12,46 @@ full list of changes to the project, please consult the commit log.
   reminders are enabled.
 
 ### Removed
+- The wait period used for dowgrading has been removed.
+- The ReRunner has been removed.
 - The `-aura` command has been removed.
 - The gamblers have been removed.
-- The ReRunner has been removed.
 
 ### Changed
-- Gold Mine button placement has shifted, and the second row now includes all
-  extra chance related buttons.
-- Cooldown on slate teleporation has been lowered.
-- 'Melee' style slate attacks now have a standardized attack range.
+- The 'Downgrade' action has been moved alongside others such as 'Keep' and
+  'Combine'.
+- Slate teleporation now has a cooldown of `1.0` seconds, down from `3.0`.
+- Slates with a melee attack now share a standardized attack range of `128.0`.
+  For reference, here are the old values:
+    - Hold: `115.0`
+    - Air: `130.0`
+    - Ancient: `130.0`
+    - Spell: `110.0`
+    - Poison: `100.0`
+    - Elder: `115.0`
+    - Slow: `130.0`
+    - Opal Vein: `130.0`
+    - Wraith: `130.0`
+    - Damage: `120.0`
+- Anti-stuck now has a cooldown of `5.0` seconds, down from `300.0`.
+- Gold Mine button placement has shifted.
 - Monsters now spawn facing the first touchpoint for all players.
-- The wait period used for dowgrading has been removed. The 'Downgrade' action
-  has been moved alongside others such as 'Keep' and 'Combine'.
 - Aura buffs now display on gems and rocks.
-- Spell/Elder armor debuff behavior has been modified. A stronger debuff will
-  overwrite a weaker one, and any debuff application will renew an existing
-  debuff's duration.
-- Reduced cooldown on the anti-stuck ability.
+- Spell/Elder armor debuff behavior has been modified. A stronger deuff will
+  now overwrite a weaker one.
 - Tower swapping no longer has a delay.
 
 ### Fixed
-- Upon reaching the maximum number of lives, gold will now be refunded instead
-  of being wasted.
-- Gold Mine buttons will no longer shift upon activation. This should prevent
-  accidental button pressing (e.g. buying lives).
-- Maximized upgrade buttons will no longer look disabled and grey.
-- Player names are now sanitized of special tags.
-- Ruby damage versus Red armor via attacks was incorrect.
-- Ensure armor reduction for Ancients is applied before damage is dealt.
-- Placement auras move if necessary, and are removed when a player leaves.
+- Lives bought when a player has already reached the maximum will no longer
+  waste gold.
+- Gold Mine buttons will no longer shift upon activation.
+- Player names are now sanitized of special tags (i.e. `|cAARRGGBB`, `|r`, and
+  `|n`).
+- Ruby damage versus Red armor via attacks was incorrect and has been set to a
+  multiplier of `1.8`, down from `2.8`.
+- The armor reduction of Ancient Slates is now properly applied before damage
+  is dealt.
+- Placement auras now move if necessary, and are removed when a player leaves.
 - Anti-stuck removes unit pathing temporarily instead of permanently.
 
 ## 1.3.3 - 2017-04-06
