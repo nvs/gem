@@ -39,7 +39,6 @@ globals
 	integer array udg_ExtraChanceUnit
 	boolean array udg_ExtraChanceON
 	unit array udg_Boulders
-	integer array udg_DowngradeAbleGems
 	dialog udg_xExtraChanceDIA=null
 	button array udg_xExtraChanceBTN
 	integer array udg_FirstKillNo

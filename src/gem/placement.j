@@ -53,6 +53,7 @@ globals
 	// A provided `function` is simply added onto these triggers. The required
 	// FIFO ordering is simple to implement given that is how triggers
 	// execute/evaluate.
+	constant trigger Gem_Placement___ON_START = CreateTrigger ()
 	constant trigger Gem_Placement___ON_PLACEMENT = CreateTrigger ()
 	constant trigger Gem_Placement___ON_FINISH = CreateTrigger ()
 endglobals
@@ -74,6 +75,13 @@ endfunction
 // - 'On_Placement'
 function Gem_Placement__The_Unit takes nothing returns unit
 	return Gem_Placement___The_Unit
+endfunction
+
+// Registers the provided `callback` to fire after a placement phase is
+// started. This is known as the 'On_Start' event. Note that registered
+// functions are executed in registration order (FIFO).
+function Gem_Placement__On_Start takes boolexpr callback returns nothing
+	call TriggerAddCondition (Gem_Placement___ON_START, callback)
 endfunction
 
 // Registers the provided `callback` to fire after a placement structure is
@@ -110,6 +118,10 @@ function Gem_Placement__Start takes player the_player, integer count returns not
 	set Gem_Placement___Placed [index__player] = 0
 
 	call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, count)
+
+	set Gem_Placement___The_Player = the_player
+	call TriggerEvaluate (Gem_Placement___ON_START)
+	set Gem_Placement___The_Player = null
 endfunction
 
 // Ends the placement phase for `the_player`, preventing further placement of

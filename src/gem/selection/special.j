@@ -17,6 +17,24 @@ globals
 	integer array Gem_Selection_Special___COMBINATION
 endglobals
 
+function Gem_Selection_Special___On_Start takes nothing returns boolean
+	local player the_player
+	local integer the_player_index
+
+	set the_player = Gem_Placement__The_Player ()
+	set the_player_index = GetPlayerId (the_player)
+
+	if the_player == null then
+		return false
+	endif
+
+	set Gem_Selection_Special___COMBINATION [the_player_index] = 0
+
+	set the_player = null
+
+	return false
+endfunction
+
 function Gem_Selection_Special___On_Placement takes nothing returns boolean
 	local player the_player
 	local integer the_player_index
@@ -50,10 +68,6 @@ function Gem_Selection_Special___On_Placement takes nothing returns boolean
 		set the_unit = null
 
 		return false
-	endif
-
-	if Gem_Placement__Placed (the_player) == 1 then
-		set Gem_Selection_Special___COMBINATION [the_player_index] = 0
 	endif
 
 	// Only increment the special count if this is the first of this unit type.
@@ -131,6 +145,7 @@ function Gem_Selection_Special___Event takes nothing returns boolean
 	set original_type = GetUnitTypeId (original)
 
 	set replacement_type = Gem_Selection_Special___COMBINATION [the_player_index]
+	set Gem_Selection_Special___COMBINATION [the_player_index] = 0
 
 	call ShowUnit (original, false)
 	set replacement = CreateUnit (the_player, replacement_type, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
@@ -155,6 +170,7 @@ function Gem_Selection_Special___Event takes nothing returns boolean
 endfunction
 
 function Gem_Selection_Special__Initialize takes nothing returns boolean
+	call Gem_Placement__On_Start (Condition (function Gem_Selection_Special___On_Start))
 	call Gem_Placement__On_Placement (Condition (function Gem_Selection_Special___On_Placement))
 	call Gem_Placement__On_Finish (Condition (function Gem_Selection_Special___On_Finish))
 	call Gem_Selection__Register_Event (Condition (function Gem_Selection_Special___Event))

@@ -618,38 +618,6 @@ function Trig_Inihilization_Actions takes nothing returns nothing
 	set udg_Move1st[8]=gg_rct_8move1
 	set udg_SpawnUnit=udg_SpawningUnit[1]
 	call TriggerSleepAction(0.50)
-	set udg_DowngradeAbleGems[1]='h007'
-	set udg_DowngradeAbleGems[2]='h03S'
-	set udg_DowngradeAbleGems[3]='h008'
-	set udg_DowngradeAbleGems[4]='h009'
-	set udg_DowngradeAbleGems[5]='h00A'
-	set udg_DowngradeAbleGems[6]='h00B'
-	set udg_DowngradeAbleGems[7]='h00C'
-	set udg_DowngradeAbleGems[8]='e001'
-	set udg_DowngradeAbleGems[9]='h00H'
-	set udg_DowngradeAbleGems[10]='h03R'
-	set udg_DowngradeAbleGems[11]='h00I'
-	set udg_DowngradeAbleGems[12]='h00J'
-	set udg_DowngradeAbleGems[13]='h00K'
-	set udg_DowngradeAbleGems[14]='h00L'
-	set udg_DowngradeAbleGems[15]='h00M'
-	set udg_DowngradeAbleGems[16]='e002'
-	set udg_DowngradeAbleGems[17]='h00N'
-	set udg_DowngradeAbleGems[18]='h03U'
-	set udg_DowngradeAbleGems[19]='h00O'
-	set udg_DowngradeAbleGems[20]='h00S'
-	set udg_DowngradeAbleGems[21]='h00P'
-	set udg_DowngradeAbleGems[22]='h00Q'
-	set udg_DowngradeAbleGems[23]='h00R'
-	set udg_DowngradeAbleGems[24]='e003'
-	set udg_DowngradeAbleGems[25]='h00V'
-	set udg_DowngradeAbleGems[26]='h03V'
-	set udg_DowngradeAbleGems[27]='h00Y'
-	set udg_DowngradeAbleGems[28]='h00U'
-	set udg_DowngradeAbleGems[29]='h00X'
-	set udg_DowngradeAbleGems[30]='h00W'
-	set udg_DowngradeAbleGems[31]='h00T'
-	set udg_DowngradeAbleGems[32]='e004'
 	set udg_GA[1]=gg_rct_GA1
 	set udg_GA[2]=gg_rct_GA2
 	set udg_GA[3]=gg_rct_GA3
@@ -2400,7 +2368,7 @@ function Trig_Slate_Stack_Check_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
 		call SetUnitPositionLoc(udg_SlateStackUnit,PolarProjectionBJ(udg_SlateStackDestination,400.00,GetRandomReal(0,359.00)))
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
-		call TriggerExecute(GetTriggeringTrigger())
+		call Trig_Slate_Stack_Check_Actions ()
 	else
 	endif
 endfunction
@@ -2851,179 +2819,6 @@ function InitTrig_Maxed_out_Extra_chance_upgrade takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Maxed_out_Extra_chance_upgrade,EVENT_PLAYER_UNIT_RESEARCH_FINISH)
 	call TriggerAddCondition(gg_trg_Maxed_out_Extra_chance_upgrade,Condition(function Trig_Maxed_out_Extra_chance_upgrade_Conditions))
 	call TriggerAddAction(gg_trg_Maxed_out_Extra_chance_upgrade,function Trig_Maxed_out_Extra_chance_upgrade_Actions)
-endfunction
-function Trig_Find_spell_levels_Func001001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CheckSpelllvlUNIT)=='h016')
-endfunction
-function Trig_Find_spell_levels_Func002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CheckSpelllvlUNIT)=='n00A')
-endfunction
-function Trig_Find_spell_levels_Func003001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CheckSpelllvlUNIT)=='n00F')
-endfunction
-function Trig_Find_spell_levels_Func004001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CheckSpelllvlUNIT)=='h02M')
-endfunction
-function Trig_Find_spell_levels_Func005001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_CheckSpelllvlUNIT)=='h02U')
-endfunction
-function Trig_Find_spell_levels_Func006C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=10))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<20))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func007C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=20))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<30))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func008C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=30))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<40))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func009C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=40))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<50))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func010C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=50))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<60))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func011C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=60))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<70))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func012C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=70))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<80))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func013C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=80))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<90))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func014C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=90))then
-		return false
-	endif
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)<100))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Func015C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(udg_CheckSpelllvlUNIT)>=100))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Find_spell_levels_Actions takes nothing returns nothing
-	if(Trig_Find_spell_levels_Func001001())then
-		set udg_CheckLvlSpell='A00H'
-	else
-		call DoNothing()
-	endif
-	if(Trig_Find_spell_levels_Func002001())then
-		set udg_CheckLvlSpell='A061'
-	else
-		call DoNothing()
-	endif
-	if(Trig_Find_spell_levels_Func003001())then
-		set udg_CheckLvlSpell='A076'
-	else
-		call DoNothing()
-	endif
-	if(Trig_Find_spell_levels_Func004001())then
-		set udg_CheckLvlSpell='A015'
-	else
-		call DoNothing()
-	endif
-	if(Trig_Find_spell_levels_Func005001())then
-		set udg_CheckLvlSpell='A019'
-	else
-		call DoNothing()
-	endif
-	if(Trig_Find_spell_levels_Func006C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,2)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func007C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,3)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func008C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,4)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func009C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,5)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func010C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,6)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func011C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,7)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func012C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,8)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func013C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,9)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func014C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,10)
-	else
-	endif
-	if(Trig_Find_spell_levels_Func015C())then
-		call SetUnitAbilityLevelSwapped(udg_CheckLvlSpell,udg_CheckSpelllvlUNIT,11)
-	else
-	endif
-endfunction
-function InitTrig_Find_spell_levels takes nothing returns nothing
-	set gg_trg_Find_spell_levels=CreateTrigger()
-	call TriggerAddAction(gg_trg_Find_spell_levels,function Trig_Find_spell_levels_Actions)
 endfunction
 function Trig_Tourmaline_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='h040'))then
@@ -7946,6 +7741,14 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (0))
 	set udg_RaceBuildingPeriod[1]=false
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[1])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (0)) and udg_RLevel [1] <= 25 and (ModuloInteger (udg_RLevel [1], 5) == 0) then
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
 	call Gem_Spawn__Start (0, udg_RLevel [1])
@@ -8003,6 +7806,14 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (1))
 	set udg_RaceBuildingPeriod[2]=false
 	call QuestMessage(udg_PlayerGroup[2],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[2])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (1)) and udg_RLevel [2] <= 25 and (ModuloInteger (udg_RLevel [2], 5) == 0 or udg_RLevel [2] > 20) then
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
 	call Gem_Spawn__Start (1, udg_RLevel [2])
@@ -8060,6 +7871,14 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (2))
 	set udg_RaceBuildingPeriod[3]=false
 	call QuestMessage(udg_PlayerGroup[3],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[3])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (2)) and udg_RLevel [3] <= 25 and (ModuloInteger (udg_RLevel [3], 5) == 0 or udg_RLevel [3] > 20) then
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
 	call Gem_Spawn__Start (2, udg_RLevel [3])
@@ -8117,6 +7936,14 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (3))
 	set udg_RaceBuildingPeriod[4]=false
 	call QuestMessage(udg_PlayerGroup[4],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[4])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (3)) and udg_RLevel [4] <= 25 and (ModuloInteger (udg_RLevel [4], 5) == 0 or udg_RLevel [4] > 20) then
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
 	call Gem_Spawn__Start (3, udg_RLevel [4])
@@ -8174,6 +8001,14 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (4))
 	set udg_RaceBuildingPeriod[5]=false
 	call QuestMessage(udg_PlayerGroup[5],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[5])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (4)) and udg_RLevel [5] <= 25 and (ModuloInteger (udg_RLevel [5], 5) == 0 or udg_RLevel [5] > 20) then
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
 	call Gem_Spawn__Start (4, udg_RLevel [5])
@@ -8231,6 +8066,14 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (5))
 	set udg_RaceBuildingPeriod[6]=false
 	call QuestMessage(udg_PlayerGroup[6],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[6])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (5)) and udg_RLevel [6] <= 25 and (ModuloInteger (udg_RLevel [6], 5) == 0 or udg_RLevel [6] > 20) then
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
 	call Gem_Spawn__Start (5, udg_RLevel [6])
@@ -8288,6 +8131,14 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (6))
 	set udg_RaceBuildingPeriod[7]=false
 	call QuestMessage(udg_PlayerGroup[7],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[7])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (6)) and udg_RLevel [7] <= 25 and (ModuloInteger (udg_RLevel [7], 5) == 0 or udg_RLevel [7] > 20) then
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
 	call Gem_Spawn__Start (6, udg_RLevel [7])
@@ -8345,6 +8196,14 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (7))
 	set udg_RaceBuildingPeriod[8]=false
 	call QuestMessage(udg_PlayerGroup[8],bj_QUESTMESSAGE_DISCOVERED,("|cffffff00Level "+(I2S(udg_RLevel[8])+"|r")))
+
+	if Gem_Reminders__Is_Active (Player (7)) and udg_RLevel [8] <= 25 and (ModuloInteger (udg_RLevel [8], 5) == 0 or udg_RLevel [8] > 20) then
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+	endif
+
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
 	call Gem_Spawn__Start (7, udg_RLevel [8])
@@ -8400,9 +8259,6 @@ function Trig_New_Level_P1_Func017002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
-function Trig_New_Level_P1_Func020001 takes nothing returns boolean
-	return(udg_RLevel[1]==25)
 endfunction
 function Trig_New_Level_P1_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[1]==10)
@@ -8469,12 +8325,13 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P1_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (0)) and (ModuloInteger (udg_RLevel [1] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P1_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -8563,9 +8420,6 @@ endfunction
 function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P2_Func020001 takes nothing returns boolean
-	return(udg_RLevel[2]==25)
-endfunction
 function Trig_New_Level_P2_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[2]==10)
 endfunction
@@ -8631,12 +8485,13 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P2_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (1)) and (ModuloInteger (udg_RLevel [2] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P2_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -8725,9 +8580,6 @@ endfunction
 function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P3_Func020001 takes nothing returns boolean
-	return(udg_RLevel[3]==25)
-endfunction
 function Trig_New_Level_P3_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[3]==10)
 endfunction
@@ -8793,12 +8645,13 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P3_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (2)) and (ModuloInteger (udg_RLevel [3] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P3_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -8887,9 +8740,6 @@ endfunction
 function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P4_Func020001 takes nothing returns boolean
-	return(udg_RLevel[4]==25)
-endfunction
 function Trig_New_Level_P4_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[4]==10)
 endfunction
@@ -8955,12 +8805,13 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P4_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (3)) and (ModuloInteger (udg_RLevel [4] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P4_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9049,9 +8900,6 @@ endfunction
 function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P5_Func020001 takes nothing returns boolean
-	return(udg_RLevel[5]==25)
-endfunction
 function Trig_New_Level_P5_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[5]==10)
 endfunction
@@ -9117,12 +8965,13 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P5_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (4)) and (ModuloInteger (udg_RLevel [5] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P5_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9211,9 +9060,6 @@ endfunction
 function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P6_Func020001 takes nothing returns boolean
-	return(udg_RLevel[6]==25)
-endfunction
 function Trig_New_Level_P6_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[6]==10)
 endfunction
@@ -9279,12 +9125,13 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P6_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (5)) and (ModuloInteger (udg_RLevel [6] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P6_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9373,9 +9220,6 @@ endfunction
 function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P7_Func020001 takes nothing returns boolean
-	return(udg_RLevel[7]==25)
-endfunction
 function Trig_New_Level_P7_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[7]==10)
 endfunction
@@ -9441,12 +9285,13 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P7_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (6)) and (ModuloInteger (udg_RLevel [7] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P7_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
 	else
@@ -9535,9 +9380,6 @@ endfunction
 function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P8_Func020001 takes nothing returns boolean
-	return(udg_RLevel[8]==25)
-endfunction
 function Trig_New_Level_P8_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[8]==10)
 endfunction
@@ -9603,12 +9445,13 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P8_Func020001())then
-		call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_ALWAYSHINT,"|cffff0000At the end of this level there will be a Re-Runner Boss|r")
-	else
-		call DoNothing()
+	if Gem_Reminders__Is_Active (Player (7)) and (ModuloInteger (udg_RLevel [8] + 1, 3) == 0) then
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
 	endif
+	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P8_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))
 	else

@@ -52,6 +52,24 @@ function Gem_Selection__Set_Count takes player the_player, integer the_unit_type
 	call SaveInteger (Gem_Selection___TABLE, GetPlayerId (the_player), the_unit_type, count)
 endfunction
 
+function Gem_Selection___On_Start takes nothing returns boolean
+	local player the_player
+	local integer the_player_index
+
+	set the_player = Gem_Placement__The_Player ()
+	set the_player_index = GetPlayerId (the_player)
+
+	if the_player == null then
+		return false
+	endif
+
+	call Gem_Selection__Flush (the_player)
+
+	set the_player = null
+
+	return false
+endfunction
+
 function Gem_Selection___On_Placement takes nothing returns boolean
 	local player the_player
 	local integer the_player_index
@@ -155,8 +173,6 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 		set index = index + 1
 	endloop
 
-	call Gem_Selection__Flush (the_player)
-
 	if GetLocalPlayer () == the_player then
 		call ClearSelection ()
 		call SelectUnit (current, true)
@@ -167,11 +183,6 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", x, y))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", x, y))
-
-	// TODO: Verify if this is still accurate.
-	// For some reason the unit needs to be given an order or it may not
-	// automatically attack.
-	call IssueImmediateOrder (current, "stop")
 
 	call Gem_Combination__Register (current)
 

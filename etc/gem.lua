@@ -41,6 +41,7 @@ return {
 
 		'src/gem.j',
 		'src/gem/version.j',
+		'src/gem/reminders.j',
 
 		'src/gem/type.j',
 		'src/gem/quality.j',
@@ -66,6 +67,7 @@ return {
 		'src/gem-3.1/globals.j',
 		'src/gem-3.1/common.j',
 		'src/gem-3.1/miner-flashing.j',
+		'src/gem-3.1/find-ability-levels.j',
 
 		'src/gem/spawn.j',
 
@@ -122,6 +124,7 @@ return {
 		'src/settings/window.j',
 		'src/settings/initialize.j',
 
+		'src/gem/command/reminders.j',
 		'src/commands/debug.j',
 		'src/commands/zoom.j',
 		'src/commands.j',
@@ -160,7 +163,11 @@ return {
 		'share/objects/gold-mine-buttons.lua',
 		'share/objects/slate-teleport.lua',
 		'share/objects/standardize-slate-range.lua',
-		'share/objects/combination-button.lua'
+		'share/objects/combine-special-button.lua',
+		'share/objects/anti-stuck-cooldown.lua',
+		'share/objects/switch-info-button-location.lua',
+		'share/objects/combine-button.lua',
+		'share/objects/change-topaz-base.lua'
 	},
 
 	constants = {

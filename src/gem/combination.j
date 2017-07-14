@@ -217,9 +217,9 @@ function Gem_Combination___Recipe takes nothing returns boolean
 
 	call Unit_User_Data__Set (replacement, kills)
 
-	set udg_CheckSpelllvlUNIT = replacement
-	if combination == Gem_Special__STAR_RUBY_1 or combination == Gem_Slate__ELDER or combination == Gem_Slate__VIPER then
-		call TriggerExecute (gg_trg_Find_spell_levels)
+	if combination == Gem_Special__STAR_RUBY_1 or combination == Gem_Special__STAR_RUBY_2 or combination == Gem_Special__BLOODSTONE_2 or combination == Gem_Slate__ELDER or combination == Gem_Slate__VIPER then
+		set udg_CheckSpelllvlUNIT = replacement
+		call Trig_Find_spell_levels_Actions ()
 	endif
 
 	if kills < 10 then
@@ -255,11 +255,16 @@ function Gem_Combination___Recipe takes nothing returns boolean
 		call UnitAddAbility (replacement, 'A020')
 		call UnitAddAbility (replacement, 'A029')
 		call UnitAddAbility (replacement, 'A02C')
-	else
+	elseif kills < 120 then
 		call UnitAddAbility (replacement, 'A01X')
 		call UnitAddAbility (replacement, 'A01Y')
 		call UnitAddAbility (replacement, 'A02A')
 		call UnitAddAbility (replacement, 'A02D')
+	else
+		call UnitAddAbility (replacement, 'A01Q')
+		call UnitAddAbility (replacement, 'A025')
+		call UnitAddAbility (replacement, 'A02B')
+		call UnitAddAbility (replacement, 'A02E')
 	endif
 
 	if GetLocalPlayer () == the_player then
