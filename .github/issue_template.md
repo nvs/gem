@@ -7,7 +7,7 @@ information.
 - Gem TD+ version;
 - Warcraft III version;
 - Replay(s);
-- Description of issue, including players affected and time of occurence.
+- Description of issue, including players affected and time of occurrence.
 
 Try to be both accurate and clear. When referencing a replay, provide either a
 link to the game played on a bot, or attach it directly as part of a ZIP
