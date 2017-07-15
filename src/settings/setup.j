@@ -48,6 +48,8 @@ function Settings___Begin_Game takes nothing returns nothing
 		set miner = Gem_Player__Get_Miner (Player (index))
 
 		if miner != null then
+			call Gem_Placement__Start (Player (index), 5)
+			call SetPlayerState (Player (index), PLAYER_STATE_RESOURCE_GOLD, 10)
 			call PauseUnit (miner, false)
 		endif
 

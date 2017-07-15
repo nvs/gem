@@ -519,12 +519,6 @@ endfunction
 function Trig_Inihilization_Func069002 takes nothing returns nothing
 	call CreateFogModifierRectBJ(true,GetEnumPlayer(),FOG_OF_WAR_VISIBLE,GetPlayableMapRect())
 endfunction
-function Trig_Inihilization_Func070002 takes nothing returns nothing
-	call Gem_Placement__Start (GetEnumPlayer (), 5)
-endfunction
-function Trig_Inihilization_Func071002 takes nothing returns nothing
-	call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_GOLD,10)
-endfunction
 function Trig_Inihilization_Actions takes nothing returns nothing
 	set udg_Player[1]=Player(0)
 	set udg_Player[2]=Player(1)
@@ -595,8 +589,6 @@ function Trig_Inihilization_Actions takes nothing returns nothing
 	call UseTimeOfDayBJ(false)
 	call SetTimeOfDay(12)
 	call ForForce(GetPlayersAll(),function Trig_Inihilization_Func069002)
-	call ForForce(GetPlayersAll(),function Trig_Inihilization_Func070002)
-	call ForForce(GetPlayersAll(),function Trig_Inihilization_Func071002)
 	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(11))
 	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(10))
 	set udg_Level=1
