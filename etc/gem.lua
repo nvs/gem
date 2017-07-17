@@ -37,6 +37,7 @@ return {
 		'src/handle.j',
 
 		'src/w3mmd-lite.j',
+		'src/clock.j',
 
 		'src/spawn.j',
 		'src/spawn-group.j',
@@ -100,7 +101,6 @@ return {
 		'src/settings/difficulty.j',
 		'src/settings/common.j',
 
-		'src/clock.j',
 		'src/board.j',
 
 		'src/quests/common.j',
