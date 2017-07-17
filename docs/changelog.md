@@ -14,7 +14,7 @@ full list of changes to the project, please consult the commit log.
   reminders are enabled.
 
 ### Removed
-- The wait period used for dowgrading has been removed.
+- The wait period used for downgrading has been removed.
 - The ReRunner has been removed.
 - The `-aura` command has been removed.
 - The gamblers have been removed.

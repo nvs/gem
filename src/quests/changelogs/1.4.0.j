@@ -12,7 +12,7 @@ function Quests___Version_1_4_0_Part_1 takes nothing returns nothing
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Removed:") + "\n"
-	set text = text + "- The wait period used for dowgrading has been removed.\n"
+	set text = text + "- The wait period used for downgrading has been removed.\n"
 	set text = text + "- The ReRunner has been removed.\n"
 	set text = text + "- The `-aura` command has been removed.\n"
 	set text = text + "- The gamblers have been removed.\n"
