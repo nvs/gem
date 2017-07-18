@@ -23,6 +23,8 @@ return {
 	},
 
 	scripts = {
+		'src/natives.j',
+
 		'src/array.j',
 
 		'src/character.j',
