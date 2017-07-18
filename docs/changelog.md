@@ -3,13 +3,13 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## Unreleased
+## [Unreleased]
 
-## 1.4.0 - 2017-07-13
+## [1.4.0] - 2017-07-13
 
 ### Added
 - Hotkey support has been enabled on the Extra Chance windows.
-- Added hotkey support for slate teleporation.
+- Added hotkey support for slate teleportation.
 - A `-reminders` command to toggle built-in reminder messages. By default,
   reminders are enabled.
 
@@ -20,9 +20,9 @@ full list of changes to the project, please consult the commit log.
 - The gamblers have been removed.
 
 ### Changed
-- The 'Downgrade' action has been moved alongside others such as 'Keep' and
-  'Combine'.
-- Slate teleporation now has a cooldown of `1.0` seconds, down from `3.0`.
+- The Downgrade action has been moved alongside others such as Keep and
+  Combine.
+- Slate teleportation now has a cooldown of `1.0` seconds, down from `3.0`.
 - Slates with a melee attack now share a standardized attack range of `128.0`.
   For reference, here are the old values:
     - Hold: `115.0`
@@ -39,7 +39,7 @@ full list of changes to the project, please consult the commit log.
 - Gold Mine button placement has shifted.
 - Monsters now spawn facing the first touchpoint for all players.
 - Aura buffs now display on gems and rocks.
-- Spell/Elder armor debuff behavior has been modified. A stronger deuff will
+- Spell/Elder armor debuff behavior has been modified. A stronger debuff will
   now overwrite a weaker one.
 - Tower swapping no longer has a delay.
 
@@ -51,164 +51,148 @@ full list of changes to the project, please consult the commit log.
   `|n`).
 - Ruby damage versus Red armor via attacks was incorrect and has been set to a
   multiplier of `1.8`, down from `2.8`.
-- The armor reduction of Ancient Slates is now properly applied before damage
+- The armor reduction of Ancient Slate is now properly applied before damage
   is dealt.
 - Placement auras now move if necessary, and are removed when a player leaves.
 - Anti-stuck removes unit pathing temporarily instead of permanently.
 
-## 1.3.3 - 2017-04-06
+## [1.3.3] - 2017-04-06
 
 ### Fixed
-- More behavior broken by the 1.28 path has been fixed. This applies to
-  Poison Slate, Spell Slate, Elder Slate, and Bloodstone.
+- An incompatible change in the 1.28.0 patch broke behavior for the following:
+    - Poison Slate
+    - Spell Slate
+    - Elder Slate
+    - Bloodstone
 
-## 1.3.2 - 2017-04-05
-
-### Fixed
-- Damage, Hold, and Ancient Slates were not being disarmed due to an
-  incompatible change in the 1.28 patch.
-
-## 1.3.1 - 2016-11-12
+## [1.3.2] - 2017-04-05
 
 ### Fixed
-- Damage, Hold, and Ancient Slates will no longer misbehave after gathering
-  70+ kills.
-- Swapping is now possible on structures that accumulate 70+ kills as they
-  will no longer become spell immune.
+- An incompatible change in the 1.28.0 patch broke behavior for the following:
+    - Damage Slate
+    - Hold Slate
+    - Ancient Slate
 
-## 1.3 - 2016-11-08
+## [1.3.1] - 2016-11-12
+
+### Fixed
+- Structures that accumulated 70+ kills were becoming spell immune. This broke
+  the following functionality:
+    - Disarming for Damage Slate, Hold Slate, and Ancient Slate;
+    - The ability to swap.
+
+## [1.3.0] - 2016-11-08
 
 ### Changed
-- It is now possible to move Hold and Ancient slates in the middle of their
-  stun.
-- The '-debug' command no longer targets any specific bugs. Rather, it has
-  been updated to provide the user the ability to recover from a variety of
-  issues. The hope if that if this command resolves a problem, that the user
-  will report the bug they encountered, as it probably is not known.
+- Hold Slate and Ancient Slate can now be moved in the middle of their stun.
+- The `-debug` command has been reworked. It no longer targets any known bugs.
+  Instead, it provides the ability to recover from a variety of issues (e.g.
+  user interface and control issues). In short, if this command resolves a
+  problem, then a bug report should be created.
 
 ### Fixed
 - The bug known as the 'glitch' has been removed.
 - Creeps should no longer get stuck at the spawn point.
 - Spawning creeps will no longer cluster during lag or pauses.
-- A rare desync related to using 'Keep' has been resolved.
+- A rare desync related to using Keep has been resolved.
 - Debuffs (e.g. armor reductions) will no longer have their durations
   unnaturally extended by stuns.
-- A number of waits related to slates and stuns have been fixed, and will no
-  longer be susceptible to lag and pauses.
+- The duration of stuns and certain slate abilities will no longer be
+  susceptible to lag and pauses.
 - Certain types of damage (most notably area of effect) did not apply to units
-  that were stunned. This has been resolved.
+  that were stunned.
 - A slate could still retain the ability to move even after moving due to
   another slate movement bug.
 - Slates will no longer be damaged when attacking the ReRunner.
-- Spamming 'Keep Slate', when offered multiple slates, could cause extra units
+- Spamming Keep Slate, when offered multiple slates, could cause extra units
   to spawn. This made it possible to skip multiple rounds, assuming the units
-  were killed. This has been fixed.
-- Spamming buttons on dialog windows (e.g. 'Extra Chance') could cause a
-  player's control to be disabled, essentially ending their game. This should
-  no longer happen.
+  were killed.
+- Spamming buttons on dialog windows (e.g. Extra Chance) could cause a
+  player's control to be disabled, essentially ending their game.
 
-## 1.2 - 2016-08-10
+## [1.2.0] - 2016-08-10
 
 ### Changed
 - Slates can now be repaired.
-- Previously, the player's selection would only remain on the result when
-  keeping a gem. Now this behavior extends to other various actions (e.g.
-  combining, one-hits, keeping slates, fulfilling recipes, downgrading, etc.),
-  and the resulting structure will be automatically selected for the player.
-- In older versions, a slate could not move close to its original location, as
-  the game believed it would stack with itself. This behavior has been
-  changed, and now a slate can move anywhere in range, so long as it will not
-  stack with another slate.
+- The result of a selection or combination action (e.g. Combine, Downgrade,
+  etc.) will now automatically be selected for the player. Previously, only
+  the result of Keep exhibited this behavior.
+- A slate now ignores itself when performing slate stacking checks.
 
 ### Fixed
 - Resolved issues that broke save/load compatibility.
-- Issuing multiple 'Combine' orders simultaneously (e.g. spamming the ability)
-  could cause the code to behave improperly. Instead of receiving the combined
-  gem, a rock would appear, for a total of five rocks. This has been resolved.
-- If a player opted to destroy all five of their placed gems, the round would
-  not continue and their game would effectively end. This has been fixed.
-- Slate movement was inconsistent, and the ability to move could be missing
-  from a new slate, or could remain on a recently moved slate.
-- Slates could stack on rare occasions. This has been fixed.
-- It is no longer possible for 'Combine' to appear if multiple of the same
-  slate has been extra chanced.
+- Issuing multiple Combine orders too quickly could cause a rock to appear
+  instead of the intended result, for a total of five rocks.
+- Destroying all five placed gems would prevent the player from progressing.
+- New slates could occasionally be missing the ability to move.
+- Recently moved slates could retain their ability to move.
+- Slates could stack on rare occasions.
+- When multiple of the same slate appears due to Extra Chance, the ability to
+  Combine will no longer appear.
 
-## 1.1 - 2016-07-19
+## [1.1.0] - 2016-07-19
 
 ### Changed
 - Cancelling an upgrade previously returned only a partial refund. Now the
-  full amount is returned, which is the behavior many players expect.
+  full amount is returned.
 
 ### Fixed
 - Leaks related to special effects have been resolved. This will increase FPS
   and responsiveness for many players throughout the game.
 
-## 1.0 - 2016-07-09
+## 1.0.0 - 2016-07-09
 
 ### Added
-- A host bot can now specify the game mode via HCL and start the game without
-  any player intervention. Note that if a HCL command is not specified, then
-  the players will have the option to select the game settings. See the
-  documentation on [Gem TD+ Settings](settings.md) for more information.
-- The `-zoom` command has been added. It did not exist in the last official
-  version, but has become popular in unofficial versions.
-- Once game settings have been selected, a brief timer is displayed indicating
-  the time before the game starts. Players have full control during this
-  period over everything but their Miner, which is paused and unmovable until
-  the game officially begins.
+- A host bot can now specify the game mode via HCL, thus bypassing the need
+  for players to select game settings.
+- The `-zoom` command has been added.
+- A countdown has been introduced that begins after settings have been
+  selected, marking the start of the game.
 
 ### Removed
-- All cheat commands and ban lists have been removed from the map.
-- Classic mode has been removed entirely and not simply disabled. As a result
-  Race mode is now the only supported mode.
-- The introduction has been removed in favor of improving in-game information
-  to help guide newer players. This will be an ongoing process.
-- The leaderboard that appeared briefly before the multiboard appears is
-  now gone.
+- All cheat commands and ban lists have been removed.
+- Classic mode has been removed.
+- The introduction has been removed.
 
 ### Changed
-- Player control is no longer disabled during game settings selection.
+- Player control is no longer disabled during settings selection.
+- No one is required to be Red anymore.
 - There is now a default difficulty: Extreme.
-- Red can be absent and the game will start properly.
-- When hosted without a HCL command specified the players (in lobby order)
-  will be offered the ability to select game settings. However, if too much
-  time elapses it will pass to the next player. If all players pass, then the
-  default settings are used.
-- Game settings selection has been reworked, and requires cycling through
-  choices which must be confirmed, or they will not apply.
-- Players are no longer pinged when an allied structure is attacked.
-- The game timer no longer runs during game settings selection. It only
-  begins when the game truly starts.
-- Player colors on the board have been modified to more accurately reflect
-  in-game colors, as specified by Warcraft 3 itself.
-- Adjusted board layout and contents. The game clock has been shifted, and
-  the current game settings are now displayed.
-- Board width changes upon player name length, dependent on individual
-  character size.
+- When hosted without HCL, players (in lobby order) will be asked to select
+  game settings. If too much elapses, selection will pass to the next player.
+  If all players pass, then the default settings are used.
+- The game timer no longer runs during game settings selection.
+- Board player colors now match Warcraft 3 in-game colors.
+- The board's width changes according to player name length. This is only
+  accurate for widescreen (i.e. `16:9` aspect ratio).
 - The `-debug` command no longer checks Opal aura levels.
-- A complete rework of the Quests tabs, which will henceforth be labeled
-  Information. The old changelogs are no longer available.
+- The Quests tab is now labeled Information and has been reworked.
 
 ### Fixed
-- The game no longer freezes if settings are not selected, previously
-  requiring the player to close Warcraft 3 or wait for Red to return.
-- It was possible for a round to not start because a piece of a recipe landed
-  a killing blow at the exact moment a player combined. The result was the
-  game essentially ending for that player. This has been fixed.
-- It was also possible for a round to not start because another player landed
-  the killing blow, thus stealing the kill. The result was the game
-  essentially ending for the first player. Additionally, the game would bug
-  for the second, as their rounds would end early, allowing unexpected
-  behavior to occur. This too has been fixed.
-- When collecting multiple parts of the same recipe it was possible for
-  combining to break and leave parts unusable. This issue has been resolved.
-- The board no longer disappears if too much time passes during game settings
+- The game no longer remains frozen if settings are not selected.
+- Landing a killing blow at the moment a recipe was combined could cause the
+  kill to not be registered. This would prevent the player from progressing
+  further.
+- Taking another player's kill no longer prevents that player from progressing
+  further. Also, the player that stole the kill will no longer experience
+  unexpected behavior.
+- Collecting multiple pieces of the same recipe will no longer leave some of
+  those pieces unusable.
+- The board no longer disappears if too much time passes during settings
   selection.
 - Absent players no longer occupy a row in the board.
-- It is no longer possible to lose gold when attempting to extra chance
-  multiple times in a single round.
-- Downgraded Opals now have proper aura levels.
-- An issue with the board randomly appearing either maximized or minimized has
-  been resolved. The game now always starts with the board maximized.
+- Using Extra Chance when already applied will no longer cause the player to
+  lose gold.
+- The aura level when downgrading Opals is now correct.
+- The board will appear maximized on game start.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
+
+[Unreleased]: https://github.com/nvs/gem/compare/v1.4.0...develop
+[1.4.0]: https://github.com/nvs/gem/compare/v1.3.3...v1.4.0
+[1.3.3]: https://github.com/nvs/gem/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/nvs/gem/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/nvs/gem/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/nvs/gem/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/nvs/gem/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/nvs/gem/compare/v1.0.0...v1.1.0
