@@ -3,7 +3,7 @@
 ## Releasing Gem TD+
 
 01. Clone the [Gem TD+][1] repository. Note that the repository makes use of
-    submodules, so ensure that you initialize and udpate them accordingly.
+    submodules, so ensure that you initialize and update them accordingly.
 02. Ensure your setup satisfies the requirements of the [map tools][2] 
     collection. They are required to build the map.
 03. Checkout the version of the map in question. You may want to look at this
@@ -13,7 +13,7 @@
     adjustments. For details, see the configuration documentation in the map
     tools repository, taking note of the repository version. Of particular
     note is the `prefix` setting, which by default is set to `'wine'`. Windows
-    users will most likely want to change ths value.
+    users will most likely want to change this value.
 05. Change into the project's root directory. This is a requirement for proper
     functionality of the map tools. How to invoke the tools will vary
     depending on your setup.
@@ -34,7 +34,7 @@
 ## Verifying the `war3map.j`
 
 When given the same input and settings, the optimization process will
-obsfucate the code in the exact same fashion. This fact makes it possible to
+obfuscate the code in the exact same fashion. This fact makes it possible to
 verify the `war3map.j` inside a released version of Gem TD+.
 
 01. Locate the optimized version of the map you would like to verify.
@@ -45,4 +45,4 @@ verify the `war3map.j` inside a released version of Gem TD+.
     step for optimizing.
 04. Ensure that the line breaks from the exported `war3map.j` and the
     optimized script are consistent.
-05. Compare the two obsfucated files (e.g. using `diff`).
+05. Compare the two obfuscated files (e.g. using `diff`).
