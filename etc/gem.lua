@@ -46,6 +46,26 @@ return {
 		'src/gem/version.j',
 		'src/gem/reminders.j',
 
+		'src/quest.j',
+
+		'src/gem/information.j',
+		'src/gem/information/what-is-gem-td-plus.j',
+		'src/gem/information/special-thanks.j',
+		'src/gem/information/random-information.j',
+		'src/gem/information/initialize.j',
+
+		'src/gem/changelog.j',
+		'src/gem/changelog/unreleased.j',
+		'src/gem/changelog/1.4.0.j',
+		'src/gem/changelog/1.3.3.j',
+		'src/gem/changelog/1.3.2.j',
+		'src/gem/changelog/1.3.1.j',
+		'src/gem/changelog/1.3.0.j',
+		'src/gem/changelog/1.2.0.j',
+		'src/gem/changelog/1.1.0.j',
+		'src/gem/changelog/1.0.0.j',
+		'src/gem/changelog/initialize.j',
+
 		'src/gem/type.j',
 		'src/gem/quality.j',
 		'src/gem/gems.j',
@@ -102,24 +122,6 @@ return {
 		'src/settings/common.j',
 
 		'src/board.j',
-
-		'src/quests/common.j',
-
-		'src/quests/information/what-is-gem-td-plus.j',
-		'src/quests/information/special-thanks.j',
-		'src/quests/information/random-information.j',
-
-		'src/quests/changelogs/unreleased.j',
-		'src/quests/changelogs/1.4.0.j',
-		'src/quests/changelogs/1.3.3.j',
-		'src/quests/changelogs/1.3.2.j',
-		'src/quests/changelogs/1.3.1.j',
-		'src/quests/changelogs/1.3.j',
-		'src/quests/changelogs/1.2.j',
-		'src/quests/changelogs/1.1.j',
-		'src/quests/changelogs/1.0.j',
-
-		'src/quests/initialize.j',
 
 		'src/settings/setup.j',
 		'src/settings/hcl.j',

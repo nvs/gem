@@ -70,7 +70,6 @@ function Settings__Setup takes nothing returns nothing
 	call Settings___Setup_Mode ()
 	call Settings__Difficulty_Setup ()
 
-	call Quests__Initialize ()
 	call Board__Setup ()
 
 	if Settings___Timer == null then

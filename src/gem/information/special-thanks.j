@@ -1,9 +1,14 @@
-function Quests___Special_Thanks takes nothing returns nothing
-	local string title = "Special Thanks"
-	local string icon = "ReplaceableTextures\\CommandButtons\\BTNScrollOfTownPortal.blp"
-	local string text = ""
+// # Gem Information - Special Thanks
 
-	set text = text + "First of all, a big thank you to everyone who has played Gem TD over the years and helped it continue to thrive as a map we all love and enjoy.\n\n"
+function Gem_Information___Special_Thanks takes nothing returns nothing
+	local string title
+	local string icon
+	local string text
+
+	set title = "Special Thanks"
+	set icon = "ReplaceableTextures\\CommandButtons\\BTNScrollOfTownPortal.blp"
+
+	set text = "First of all, a big thank you to everyone who has played Gem TD over the years and helped it continue to thrive as a map we all love and enjoy.\n\n"
 
 	set text = text + "The following people deserve recognition for their support in the making of Gem TD+:\n"
 	set text = text + "- bunnyjean\n"
@@ -18,5 +23,5 @@ function Quests___Special_Thanks takes nothing returns nothing
 	set text = text + "- Vinxu\n"
 	set text = text + "- Spiriax"
 
-	call Quests___Add_Information (title, icon, text)
+	call Gem_Information__Setup (CreateQuest (), title, icon, text)
 endfunction
