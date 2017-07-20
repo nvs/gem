@@ -13,6 +13,10 @@ function Color__White takes string text returns string
 	return Color (Color__WHITE, text)
 endfunction
 
+function Color__Red takes string text returns string
+	return Color (Color__RED, text)
+endfunction
+
 function Color__Gold takes string text returns string
 	return Color (Color__GOLD, text)
 endfunction
