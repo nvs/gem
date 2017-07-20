@@ -1,9 +1,5 @@
-globals
-	constant real Error___X = 0.00
-	constant real Error___Y = 0.00
-	constant real Error___Duration = 60.00
-endglobals
+// # Error
 
 function Error takes string header, string message returns nothing
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Error___X, Error___Y, Error___Duration, "Error: " + header + ": " + message)
+	call BJDebugMsg ("Error: " + header + ": " + message)
 endfunction
