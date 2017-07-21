@@ -7738,7 +7738,7 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
@@ -7803,7 +7803,7 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
@@ -7868,7 +7868,7 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
@@ -7933,7 +7933,7 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
@@ -7998,7 +7998,7 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
@@ -8063,7 +8063,7 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
@@ -8128,7 +8128,7 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
@@ -8193,7 +8193,7 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: The ReRunner has been removed.")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
@@ -8321,7 +8321,7 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P1_Func021001())then
@@ -8481,7 +8481,7 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P2_Func021001())then
@@ -8641,7 +8641,7 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P3_Func021001())then
@@ -8801,7 +8801,7 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P4_Func021001())then
@@ -8961,7 +8961,7 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P5_Func021001())then
@@ -9121,7 +9121,7 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P6_Func021001())then
@@ -9281,7 +9281,7 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P7_Func021001())then
@@ -9441,7 +9441,7 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, " ")
-		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messagess, use `-reminders off`.")
+		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P8_Func021001())then
