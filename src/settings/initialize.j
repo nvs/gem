@@ -1,3 +1,21 @@
+function Settings__Process_HCL takes nothing returns nothing
+	local integer index
+	local string character
+	local integer value
+	local string command
+
+	set command = HCL__Command ()
+
+	// Process the difficulty:
+	if StringLength (command) > 0 then
+		set index = 0
+		set character = SubString (command, index, index + 1)
+		set value = S2I (character)
+
+		call Settings_Difficulty__Set (value)
+	endif
+endfunction
+
 function Settings__Initialize takes nothing returns boolean
 	local integer index
 	local player the_player
@@ -17,15 +35,14 @@ function Settings__Initialize takes nothing returns boolean
 	endloop
 
 	call Settings_Difficulty__Initialize ()
-	call Settings_HCL__Initialize ()
 	call Settings___Pause_Miners ()
 
 	// An empty string is taken to mean that a player must specify the game
 	// settings, regardless of whether a host bot is involved.
-	if Settings_HCL__Command () == "" then
+	if HCL__Command () == "" then
 		call Settings_Window__Initialize ()
 	else
-		call Settings_HCL__Process ()
+		call Settings__Process_HCL ()
 
 		// Certain Gem 3.1 initializations (boards) must be done once the map is
 		// loaded, or they will not function properly.

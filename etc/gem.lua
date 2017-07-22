@@ -35,6 +35,7 @@ return {
 		'src/table.j',
 		'src/handle.j',
 
+		'src/hcl.j',
 		'src/w3mmd-lite.j',
 		'src/clock.j',
 
@@ -123,7 +124,6 @@ return {
 		'src/board.j',
 
 		'src/settings/setup.j',
-		'src/settings/hcl.j',
 		'src/settings/window.j',
 		'src/settings/initialize.j',
 
