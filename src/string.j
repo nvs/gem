@@ -2,7 +2,8 @@
 //
 // ## Notes
 //
-// - Only printable ASCII characters (i.e. codes `[32-126]`) are supported.
+// - In functions that deal with ASCII code points, only the ASCII printable
+//   characters (i.e. codes `[32-126]`) are supported.
 // - The hashing function (e.g. `StringHash ()`) used interally by Warcraft
 //   III is lookup2 by Bob Jenkins. Prior to hashing, the following
 //   modifications are made to the input string: forward slashes are converted
@@ -47,7 +48,7 @@ endfunction
 
 // Returns a `string` representation for the provided `ascii` value. This value
 // is typically either one or four bytes in length (e.g. `'A'` or `'A000'`).
-// Characters not within the ASCII printable range will not be included in the
+// Characters outside the ASCII printable range will not be included in the
 // result.
 function String__From_ASCII takes integer ascii returns string
 	local string output
@@ -97,9 +98,9 @@ function String___Character_To_ASCII takes string character returns integer
 	return ascii
 endfunction
 
-// Returns  the `integer` ASCII code for the provided `text` (e.g. `"Z"`
-// becomes `Z` and `"A000"` becomes `'A000'`). Characters not within the ASCII
-// printable range will be ignored. Returns `0`
+// Returns the `integer` ASCII code for the provided `text` (e.g. `"Z"`
+// becomes `Z` and `"A000"` becomes `'A000'`). Characters outside the ASCII
+// printable range will be ignored.
 function String__To_ASCII takes string text returns integer
 	local integer length
 	local integer ascii
