@@ -273,6 +273,48 @@ function String__Sanitize takes string text returns string
 	return output
 endfunction
 
+// Returns the `integer` index of the first match of `needle` in `text`,
+// starting form the specified `offset`. If no match is found, or invalid
+// arguments are passed, then `-1` is returned.
+function String__Find_From takes string text, string needle, integer offset returns integer
+	local integer length
+	local integer size
+
+	if text == null or needle == null then
+		return -1
+	endif
+
+	set length = StringLength (text)
+
+	if offset < 0 or offset > length then
+		return -1
+	endif
+
+	if needle == "" then
+		return 0
+	endif
+
+	set size = StringLength (needle)
+
+	loop
+		exitwhen offset + size > length
+
+		if SubString (text, offset, offset + size) == needle then
+			return offset
+		endif
+
+		set offset = offset + 1
+	endloop
+
+	return -1
+endfunction
+
+// Returns the `integer` index of the first match of `needle` in `text`. If no
+// match is found, or invalid arguments are passed, then `-1` is returned.
+function String__Find takes string text, string needle returns integer
+	return String__Find_From (text, needle, 0)
+endfunction
+
 function String___Register_Character takes integer ascii, string character, real width, boolean is_hexadecimal returns nothing
 	set String___ASCII [String___Hash (character)] = ascii
 	set String___CHARACTER [ascii] = character
