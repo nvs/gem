@@ -98,7 +98,7 @@ function Board__Setup takes nothing returns nothing
 
 	local multiboarditem board_item
 
-	set name_buffer =  0.015 - Character__Width ("W")
+	set name_buffer =  0.015 - String__Width ("W")
 
 	// Header (by column):
 	set header [0] = "Players"
@@ -108,7 +108,7 @@ function Board__Setup takes nothing returns nothing
 	set header [4] = "Level"
 
 	// Width (by column):
-	set width [0] = name_buffer + Character__Width ("W") * 5
+	set width [0] = name_buffer + String__Width ("W") * 5
 	set width [1] = 0.035
 	set width [2] = 0.035
 	set width [3] = 0.035

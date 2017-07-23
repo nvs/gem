@@ -27,7 +27,6 @@ return {
 
 		'src/array.j',
 
-		'src/character.j',
 		'src/string.j',
 		'src/color.j',
 		'src/error.j',

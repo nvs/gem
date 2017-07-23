@@ -146,7 +146,7 @@ function main takes nothing returns nothing
 
 	set initialize = CreateTrigger ()
 
-	call TriggerAddCondition (initialize, Condition (function Character__Initialize))
+	call TriggerAddCondition (initialize, Condition (function String__Initialize))
 	call TriggerAddCondition (initialize, Condition (function W3MMD_Lite__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Player__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Player_Color__Initialize))
