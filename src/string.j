@@ -4,6 +4,8 @@
 //
 // - In functions that deal with ASCII code points, only the ASCII printable
 //   characters (i.e. codes `[32-126]`) are supported.
+// - Specifying `\` or `'` directly as a literal in the script will cause the
+//   map to not load.
 // - The hashing function (e.g. `StringHash ()`) used interally by Warcraft
 //   III is lookup2 by Bob Jenkins. Prior to hashing, the following
 //   modifications are made to the input string: forward slashes are converted
@@ -212,7 +214,7 @@ endfunction
 // Returns a `string` where various characters and sequences have been removed.
 // At the moment, this includes the following:
 //
-// - Special tags (i.e. `|cAARRGGBB`, `|r`, and `|n`.
+// - Special tags (i.e. `|cAARRGGBB`, `|r`, and `|n`).
 //
 // At a minimum, an empty string will be returned regardless of the input.
 function String__Sanitize takes string text returns string
