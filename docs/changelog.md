@@ -5,6 +5,20 @@ full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
+## Changed
+- Elder Slate:
+    - Armor gain on the debuff is now `1` per slate level, down from `2`. This
+      puts the range at `[-7, -17]` instead of `[-7, -27]`.
+    - The duration of the armor debuff is now a contant `25.0` seconds. It no
+      longer gains `1.0` seconds per slate level.
+    - The gold reward is now a constant `5` gold. It no longer gains `1.0`
+      gold per slate level.
+- Spell Slate:
+    - The gold reward is now `3` gold, down from `5`.
+- Poison Slate:
+    - The duration of the damage over time is now a constant `20.0` seconds.
+      It no longer gains `2.0` seconds per slate level.
+
 ## [1.4.0] - 2017-07-13
 
 ### Added
