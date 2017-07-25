@@ -13,12 +13,6 @@ function InitGlobals takes nothing returns nothing
 		set udg_Random[i]=0
 		set i=i+1
 	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_UnitGroup[i]=CreateGroup()
-		set i=i+1
-	endloop
 	set udg_CombiningPlayer=CreateForce()
 	set i=0
 	loop
@@ -1256,9 +1250,6 @@ endfunction
 function Trig_Player_Leaves_Func001Func001Func027002 takes nothing returns nothing
 	call RemoveUnit(GetEnumUnit())
 endfunction
-function Trig_Player_Leaves_Func001Func001Func028002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Player_Leaves_Func001Func001Func029002 takes nothing returns nothing
 	call RemoveUnit(GetEnumUnit())
 endfunction
@@ -1281,7 +1272,6 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 			set udg_Kills[GetForLoopIndexA()]=0
 			call SetPlayerStateBJ(udg_Player[GetForLoopIndexA()],PLAYER_STATE_RESOURCE_GOLD,0)
 			call ForGroupBJ(GetUnitsOfPlayerAll(GetTriggerPlayer()),function Trig_Player_Leaves_Func001Func001Func027002)
-			call ForGroupBJ(udg_UnitGroup[GetForLoopIndexA()],function Trig_Player_Leaves_Func001Func001Func028002)
 			call ForGroupBJ(GetUnitsInRectOfPlayer(udg_GA[GetForLoopIndexA()],Player(11)),function Trig_Player_Leaves_Func001Func001Func029002)
 		else
 		endif
@@ -7723,12 +7713,6 @@ endfunction
 function Trig_Finish_Build_Race_P1_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P1_Func017002001002001(),Trig_Finish_Build_Race_P1_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P1_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P1_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(0),true)
-endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (0))
 	set udg_RaceBuildingPeriod[1]=false
@@ -7741,8 +7725,6 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
 	call Gem_Spawn__Start (0, udg_RLevel [1])
 endfunction
 function InitTrig_Finish_Build_Race_P1 takes nothing returns nothing
@@ -7788,12 +7770,6 @@ endfunction
 function Trig_Finish_Build_Race_P2_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P2_Func017002001002001(),Trig_Finish_Build_Race_P2_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P2_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P2_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(1),true)
-endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (1))
 	set udg_RaceBuildingPeriod[2]=false
@@ -7806,8 +7782,6 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
 	call Gem_Spawn__Start (1, udg_RLevel [2])
 endfunction
 function InitTrig_Finish_Build_Race_P2 takes nothing returns nothing
@@ -7853,12 +7827,6 @@ endfunction
 function Trig_Finish_Build_Race_P3_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P3_Func017002001002001(),Trig_Finish_Build_Race_P3_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P3_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P3_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(2),true)
-endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (2))
 	set udg_RaceBuildingPeriod[3]=false
@@ -7871,8 +7839,6 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
 	call Gem_Spawn__Start (2, udg_RLevel [3])
 endfunction
 function InitTrig_Finish_Build_Race_P3 takes nothing returns nothing
@@ -7918,12 +7884,6 @@ endfunction
 function Trig_Finish_Build_Race_P4_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P4_Func017002001002001(),Trig_Finish_Build_Race_P4_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P4_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P4_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(3),true)
-endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (3))
 	set udg_RaceBuildingPeriod[4]=false
@@ -7936,8 +7896,6 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
 	call Gem_Spawn__Start (3, udg_RLevel [4])
 endfunction
 function InitTrig_Finish_Build_Race_P4 takes nothing returns nothing
@@ -7983,12 +7941,6 @@ endfunction
 function Trig_Finish_Build_Race_P5_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P5_Func017002001002001(),Trig_Finish_Build_Race_P5_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P5_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P5_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(4),true)
-endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (4))
 	set udg_RaceBuildingPeriod[5]=false
@@ -8001,8 +7953,6 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
 	call Gem_Spawn__Start (4, udg_RLevel [5])
 endfunction
 function InitTrig_Finish_Build_Race_P5 takes nothing returns nothing
@@ -8048,12 +7998,6 @@ endfunction
 function Trig_Finish_Build_Race_P6_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P6_Func017002001002001(),Trig_Finish_Build_Race_P6_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P6_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P6_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(5),true)
-endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (5))
 	set udg_RaceBuildingPeriod[6]=false
@@ -8066,8 +8010,6 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
 	call Gem_Spawn__Start (5, udg_RLevel [6])
 endfunction
 function InitTrig_Finish_Build_Race_P6 takes nothing returns nothing
@@ -8113,12 +8055,6 @@ endfunction
 function Trig_Finish_Build_Race_P7_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P7_Func017002001002001(),Trig_Finish_Build_Race_P7_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P7_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P7_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(6),true)
-endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (6))
 	set udg_RaceBuildingPeriod[7]=false
@@ -8131,8 +8067,6 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
 	call Gem_Spawn__Start (6, udg_RLevel [7])
 endfunction
 function InitTrig_Finish_Build_Race_P7 takes nothing returns nothing
@@ -8178,12 +8112,6 @@ endfunction
 function Trig_Finish_Build_Race_P8_Func017002001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Finish_Build_Race_P8_Func017002001002001(),Trig_Finish_Build_Race_P8_Func017002001002002())
 endfunction
-function Trig_Finish_Build_Race_P8_Func026002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),false)
-endfunction
-function Trig_Finish_Build_Race_P8_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(7),true)
-endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (7))
 	set udg_RaceBuildingPeriod[8]=false
@@ -8196,8 +8124,6 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "To disable these messages, use `-reminders off`.")
 	endif
 
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
 	call Gem_Spawn__Start (7, udg_RLevel [8])
 endfunction
 function InitTrig_Finish_Build_Race_P8 takes nothing returns nothing
@@ -8242,15 +8168,6 @@ function Trig_New_Level_P1_Func016001002002 takes nothing returns boolean
 endfunction
 function Trig_New_Level_P1_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P1_Func016001002001(),Trig_New_Level_P1_Func016001002002())
-endfunction
-function Trig_New_Level_P1_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[1])
-endfunction
-function Trig_New_Level_P1_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P1_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
 function Trig_New_Level_P1_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[1]==10)
@@ -8314,9 +8231,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [1], 5)
 	set udg_RaceModeKills[1]=0
 	set udg_RaceBuildingPeriod[1]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
 	if Gem_Reminders__Is_Active (Player (0)) and (ModuloInteger (udg_RLevel [1] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (0), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -8403,15 +8317,6 @@ endfunction
 function Trig_New_Level_P2_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P2_Func016001002001(),Trig_New_Level_P2_Func016001002002())
 endfunction
-function Trig_New_Level_P2_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[2])
-endfunction
-function Trig_New_Level_P2_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P2_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P2_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[2]==10)
 endfunction
@@ -8474,9 +8379,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [2], 5)
 	set udg_RaceModeKills[2]=0
 	set udg_RaceBuildingPeriod[2]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
 	if Gem_Reminders__Is_Active (Player (1)) and (ModuloInteger (udg_RLevel [2] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (1), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -8563,15 +8465,6 @@ endfunction
 function Trig_New_Level_P3_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P3_Func016001002001(),Trig_New_Level_P3_Func016001002002())
 endfunction
-function Trig_New_Level_P3_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[3])
-endfunction
-function Trig_New_Level_P3_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P3_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P3_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[3]==10)
 endfunction
@@ -8634,9 +8527,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [3], 5)
 	set udg_RaceModeKills[3]=0
 	set udg_RaceBuildingPeriod[3]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
 	if Gem_Reminders__Is_Active (Player (2)) and (ModuloInteger (udg_RLevel [3] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (2), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -8723,15 +8613,6 @@ endfunction
 function Trig_New_Level_P4_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P4_Func016001002001(),Trig_New_Level_P4_Func016001002002())
 endfunction
-function Trig_New_Level_P4_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[4])
-endfunction
-function Trig_New_Level_P4_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P4_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P4_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[4]==10)
 endfunction
@@ -8794,9 +8675,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [4], 5)
 	set udg_RaceModeKills[4]=0
 	set udg_RaceBuildingPeriod[4]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
 	if Gem_Reminders__Is_Active (Player (3)) and (ModuloInteger (udg_RLevel [4] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (3), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -8883,15 +8761,6 @@ endfunction
 function Trig_New_Level_P5_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P5_Func016001002001(),Trig_New_Level_P5_Func016001002002())
 endfunction
-function Trig_New_Level_P5_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[5])
-endfunction
-function Trig_New_Level_P5_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P5_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P5_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[5]==10)
 endfunction
@@ -8954,9 +8823,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [5], 5)
 	set udg_RaceModeKills[5]=0
 	set udg_RaceBuildingPeriod[5]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
 	if Gem_Reminders__Is_Active (Player (4)) and (ModuloInteger (udg_RLevel [5] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (4), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -9043,15 +8909,6 @@ endfunction
 function Trig_New_Level_P6_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P6_Func016001002001(),Trig_New_Level_P6_Func016001002002())
 endfunction
-function Trig_New_Level_P6_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[6])
-endfunction
-function Trig_New_Level_P6_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P6_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P6_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[6]==10)
 endfunction
@@ -9114,9 +8971,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [6], 5)
 	set udg_RaceModeKills[6]=0
 	set udg_RaceBuildingPeriod[6]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
 	if Gem_Reminders__Is_Active (Player (5)) and (ModuloInteger (udg_RLevel [6] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (5), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -9203,15 +9057,6 @@ endfunction
 function Trig_New_Level_P7_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P7_Func016001002001(),Trig_New_Level_P7_Func016001002002())
 endfunction
-function Trig_New_Level_P7_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[7])
-endfunction
-function Trig_New_Level_P7_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P7_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P7_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[7]==10)
 endfunction
@@ -9274,9 +9119,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [7], 5)
 	set udg_RaceModeKills[7]=0
 	set udg_RaceBuildingPeriod[7]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
 	if Gem_Reminders__Is_Active (Player (6)) and (ModuloInteger (udg_RLevel [7] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (6), 0.00, 0.00, "other selection actions. It is no longer after Keep.")
@@ -9363,15 +9205,6 @@ endfunction
 function Trig_New_Level_P8_Func016001002 takes nothing returns boolean
 	return GetBooleanAnd(Trig_New_Level_P8_Func016001002001(),Trig_New_Level_P8_Func016001002002())
 endfunction
-function Trig_New_Level_P8_Func016002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[8])
-endfunction
-function Trig_New_Level_P8_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
-endfunction
-function Trig_New_Level_P8_Func018002 takes nothing returns nothing
-	call SetUnitInvulnerable(GetEnumUnit(),true)
-endfunction
 function Trig_New_Level_P8_Func021001001 takes nothing returns boolean
 	return(udg_RLevel[8]==10)
 endfunction
@@ -9434,9 +9267,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call Gem_Placement__Start (udg_Player [8], 5)
 	set udg_RaceModeKills[8]=0
 	set udg_RaceBuildingPeriod[8]=true
-	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
 	if Gem_Reminders__Is_Active (Player (7)) and (ModuloInteger (udg_RLevel [8] + 1, 3) == 0) then
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "Reminder: Downgrade has been moved alongside the")
 		call DisplayTextToPlayer (Player (7), 0.00, 0.00, "other selection actions. It is no longer after Keep.")

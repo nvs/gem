@@ -5,6 +5,10 @@ full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
+### Changed
+- Structures are no longer removed from player control during the placement
+  and selection phase.
+
 ## [1.4.0] - 2017-07-13
 
 ### Added

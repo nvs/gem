@@ -7,7 +7,9 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 
 	set title = "Unreleased"
 	set date = "N/A"
-	set text = "\n"
+
+	set text = Color__Gold ("Changed:") + "\n"
+	set text = text + "- Structures are no longer removed from player control during the placement and selection phase."
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction

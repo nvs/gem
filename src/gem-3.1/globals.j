@@ -9,7 +9,6 @@ globals
 	integer udg_Level=0
 	boolean array udg_PlayerHERE
 	integer array udg_Random
-	group array udg_UnitGroup
 	integer array udg_SpawningUnit
 	force udg_CombiningPlayer=null
 	integer array udg_Lives
