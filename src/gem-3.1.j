@@ -3670,10 +3670,10 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 	endif
 	if(Trig_Elder_Slate_Func007C())then
 		call PlaySoundAtPointBJ(gg_snd_Gold3sym,100,GetUnitLoc(GetAttacker()),0)
-		call CreateTextTagLocBJ((I2S((5+(Unit_User_Data__Get(GetAttacker())/ 10)))+" Gold!"),GetUnitLoc(GetAttacker()),0,9.00,100,100,0.00,0)
+		call CreateTextTagLocBJ("5 Gold!",GetUnitLoc(GetAttacker()),0,9.00,100,100,0.00,0)
 		call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 		call SetTextTagLifespanBJ(GetLastCreatedTextTag(),2.00)
-		call AdjustPlayerStateBJ((5+(Unit_User_Data__Get(GetAttacker())/ 10)),GetOwningPlayer(GetAttacker()),PLAYER_STATE_RESOURCE_GOLD)
+		call AdjustPlayerStateBJ(5,GetOwningPlayer(GetAttacker()),PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_Elder_Slate_Func008C())then
