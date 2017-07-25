@@ -13,8 +13,6 @@ full list of changes to the project, please consult the commit log.
       longer gains `1.0` seconds per slate level.
     - The gold reward is now a constant `5` gold. It no longer gains `1.0`
       gold per slate level.
-- Spell Slate:
-    - The gold reward is now `3` gold, down from `5`.
 - Poison Slate:
     - The duration of the damage over time is now a constant `20.0` seconds.
       It no longer gains `2.0` seconds per slate level.
