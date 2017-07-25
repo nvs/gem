@@ -170,7 +170,8 @@ return {
 		'share/objects/anti-stuck-cooldown.lua',
 		'share/objects/switch-info-button-location.lua',
 		'share/objects/combine-button.lua',
-		'share/objects/change-topaz-base.lua'
+		'share/objects/change-topaz-base.lua',
+		'share/objects/elder-slate.lua'
 	},
 
 	constants = {
