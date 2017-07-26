@@ -6,7 +6,7 @@ function config takes nothing returns nothing
 	local player p
 
 	call SetTeams (2)
-	call SetPlayers (9)
+	call SetPlayers (12)
 
 	call SetGamePlacement(MAP_PLACEMENT_FIXED)
 	call DefineStartLocation(0,-2304.0,7424.0)
@@ -19,6 +19,7 @@ function config takes nothing returns nothing
 	call DefineStartLocation(7,-7680.0,2048.0)
 	call DefineStartLocation(8,0.0,-256.0)
 	call DefineStartLocation(9,0.0,-256.0)
+	call DefineStartLocation(10,0.0,-256.0)
 	call DefineStartLocation(11,0.0,-256.0)
 
 	set i = 0
@@ -31,16 +32,7 @@ function config takes nothing returns nothing
 		call SetPlayerRaceSelectable (p, false)
 		call SetPlayerState(p, PLAYER_STATE_ALLIED_VICTORY, 1)
 		call SetPlayerTeam (p, 0)
-
-		// Neutrals, specifically the gamblers in the middle.
-		if i == 8 then
-			call SetPlayerController(p, MAP_CONTROL_NEUTRAL)
-		// Used to temporary hold the player's units while placing gems.
-		elseif i == 9 then
-			call SetPlayerController(p, MAP_CONTROL_RESCUABLE)
-		else
-			call SetPlayerController (p, MAP_CONTROL_USER)
-		endif
+		call SetPlayerController (p, MAP_CONTROL_USER)
 
 		set j = i + 1
 		loop
@@ -66,13 +58,16 @@ function config takes nothing returns nothing
 		exitwhen i > 8
 	endloop
 
-	set p = Player (11)
-	call SetPlayerColor (p, ConvertPlayerColor (11))
-	call SetPlayerRacePreference (p, RACE_PREF_UNDEAD)
-	call SetPlayerRaceSelectable (p, false)
-	call SetPlayerController (p, MAP_CONTROL_COMPUTER)
-	call SetPlayerTeam (p, 1)
+	set i = 8
+	loop
+		set p = Player (i)
+		call SetPlayerColor (p, ConvertPlayerColor (i))
+		call SetPlayerRacePreference (p, RACE_PREF_UNDEAD)
+		call SetPlayerRaceSelectable (p, false)
+		call SetPlayerController (p, MAP_CONTROL_COMPUTER)
+		call SetPlayerTeam (p, 1)
 
-	set o = null
-	set p = null
+		set i = i + 1
+		exitwhen i > 11
+	endloop
 endfunction
