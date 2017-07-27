@@ -271,29 +271,6 @@ function String__To_Integer takes string input, integer base returns integer
 	return result
 endfunction
 
-// Returns a `boolean` indicating whether the provided `text` contains only
-// hexadecimal characters (i.e. `[0-9][a-f][A-F]`). Note that `false` is
-// returned if provided an empty string or `null`.
-function String__Is_Hexadecimal takes string text returns boolean
-	local integer index
-	local string character
-	local boolean is_hexadecimal
-
-	set is_hexadecimal = not (text == null or text == "")
-
-	set index = 0
-	loop
-		set character = SubString (text, index, index + 1)
-
-		exitwhen not is_hexadecimal or character == "" or character == null
-		set index = index + 1
-
-		set is_hexadecimal = is_hexadecimal and String___IS_HEXADECIMAL [String___Character_To_ASCII (character)]
-	endloop
-
-	return is_hexadecimal
-endfunction
-
 // Returns the `real` screen width that the provided `text` approximately
 // occupies. Returns `0.00` for invalid input. Unregistered characters will be
 // assumed to have the width of the `W` character.
@@ -390,7 +367,7 @@ function String__Sanitize takes string text returns string
 			if current == "c" or current == "C" then
 				set color = SubString (text, index, index + 8)
 
-				if StringLength (color) == 8 and String__Is_Hexadecimal (color) then
+				if StringLength (color) == 8 and String__Is_Base (color, 16) then
 					set index = index + 8
 				else
 					set output = output + previous + current
