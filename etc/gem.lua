@@ -26,8 +26,9 @@ return {
 		'src/natives.j',
 
 		'src/array.j',
-
+		'src/integer.j',
 		'src/string.j',
+
 		'src/color.j',
 		'src/error.j',
 

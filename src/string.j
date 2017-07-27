@@ -128,6 +128,149 @@ function String__To_ASCII takes string text returns integer
 	return ascii
 endfunction
 
+function String___Character_To_Base takes string character, integer base returns integer
+	local integer ascii
+
+	if StringLength (character) != 1 then
+		return -1
+	endif
+
+	if base < 2 or base > 36 then
+		return -1
+	endif
+
+	set ascii = String___Character_To_ASCII (character)
+
+	if ascii >= '0' and ascii <= '9' then
+		set ascii = ascii - '0'
+	elseif ascii >= 'a' and ascii <= 'z' then
+		set ascii = ascii - 'a' + 10
+	elseif ascii >= 'A' and ascii <= 'Z' then
+		set ascii = ascii - 'A' + 10
+	else
+		set ascii = -1
+	endif
+
+	return ascii
+endfunction
+
+// Returns a `boolean` indicating whether `input` contains characters only
+// present within the given `base`.
+//
+// The supported characters for `input` are of the ranges `[0, 9]`, `[a, z]`,
+// and `[A, Z]`. It should be noted that `input` is treated as case
+// insensitive. Additionally, an optional `-` sign can be present as the first
+// character of `input` to indicate it is negative. The supported range for
+// `base` is `[2, 36]`.
+function String__Is_Base takes string input, integer base returns boolean
+	local boolean negative
+	local integer index
+	local string character
+	local integer value
+
+	if input == null or input == "" then
+		return false
+	endif
+
+	if base < 2 or base > 36 then
+		return false
+	endif
+
+	if SubString (input, 0, 1) == "-" then
+		set index = 1
+	else
+		set index = 0
+	endif
+
+	loop
+		set character = SubString (input, index, index + 1)
+		exitwhen character == "" or character == null
+
+		set value = String___Character_To_Base (character, base)
+
+		if value == -1 or value >= base then
+			return false
+		endif
+
+		set index = index + 1
+	endloop
+
+	return true
+endfunction
+
+// Returns the `integer` representation of `input` in the given `base`.
+//
+// The supported characters for `input` are of the ranges `[0, 9]`, `[a, z]`,
+// and `[A, Z]`. It should be noted that `input` is treated as case
+// insensitive. Additionally, an optional `-` sign can be present as the
+// first character of `input` to indicate it is negative. The supported range
+// for `base` is `[2, 36]`.
+//
+// Returns `0` for invalid inputs. Returns `Integer__MAXIMUM` for overflows.
+function String__To_Integer takes string input, integer base returns integer
+	local boolean negative
+	local integer index
+	local integer cutoff
+	local integer result
+	local string character
+	local integer value
+
+	if input == null or input == "" then
+		return 0
+	endif
+
+	if base < 2 or base > 36 then
+		return 0
+	endif
+
+	if base == 10 then
+		return S2I (input)
+	endif
+
+	set cutoff = Integer__MAXIMUM / base + 1
+
+	if SubString (input, 0, 1) == "-" then
+		set input = SubString (input, 1, -1)
+		set negative = true
+	else
+		set negative = false
+	endif
+
+	set result = 0
+	set index = 0
+	loop
+		set character = SubString (input, index, index + 1)
+		exitwhen character == "" or character == null
+
+		set value = String___Character_To_Base (character, base)
+
+		// Ignore errors.
+		if value == -1 or value >= base then
+			set value = 0
+		endif
+
+		if result >= cutoff then
+			set result = Integer__MAXIMUM
+			exitwhen true
+		endif
+
+		set result = result * R2I (Pow (base, index)) + value
+
+		if result < 0 then
+			set result = Integer__MAXIMUM
+			exitwhen true
+		endif
+
+		set index = index + 1
+	endloop
+
+	if negative then
+		set result = -result
+	endif
+
+	return result
+endfunction
+
 // Returns a `boolean` indicating whether the provided `text` contains only
 // hexadecimal characters (i.e. `[0-9][a-f][A-F]`). Note that `false` is
 // returned if provided an empty string or `null`.
