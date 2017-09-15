@@ -173,7 +173,8 @@ return {
 		'share/objects/switch-info-button-location.lua',
 		'share/objects/combine-button.lua',
 		'share/objects/change-topaz-base.lua',
-		'share/objects/unit-state.lua'
+		'share/objects/unit-state.lua',
+		'share/objects/difficulty-armor-changes.lua'
 	},
 
 	constants = {
