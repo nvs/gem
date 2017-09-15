@@ -16,15 +16,12 @@
 //
 // - `Gem_Spawn__Start ()`
 // - `Gem_Spawn__Stop ()`
-// - `Gem_Spawn__Update ()`
 // - `Gem_Spawn__Initialize ()`
 //
 // ## Notes
 //
 // - This cannot be initialized before `Gem 3.1`, otherwise the unit types for
 //   each round will not be set.
-// - The function `Gem_Spawn__Update ()` must be called after the difficulty
-//   is set, or the unit types will not match.
 
 // ## Globals
 
@@ -87,25 +84,6 @@ function Gem_Spawn__Stop takes integer player_index returns nothing
 		call Spawn__Destroy (Gem_Spawn___Index [player_index])
 		set Gem_Spawn___Index [player_index] = 0
 	endif
-endfunction
-
-// ### `Gem_Spawn__Update ()`
-//
-// Updates the registered spawn objects, ensuring that their stored unit types
-// are up to date. This is only really necessary if the difficulty is set to
-// 'Extreme'.
-function Gem_Spawn__Update takes nothing returns nothing
-	local integer round
-
-	set round = 0
-	loop
-		set round = round + 1
-		exitwhen round > 50
-
-		if Spawn__Get_Type (Gem_Spawn___Round [round]) != Gem_Spawn___Unit_Type (round) then
-			call Spawn__Set_Type (Gem_Spawn___Round [round], Gem_Spawn___Unit_Type (round))
-		endif
-	endloop
 endfunction
 
 // Handles freshly spawned units, issuing an order for them to mvoe to the

@@ -546,40 +546,40 @@ function Trig_Inihilization_Actions takes nothing returns nothing
 	set udg_SpawningUnit[14]='h01J'
 	set udg_SpawningUnit[15]='h01K'
 	set udg_SpawningUnit[16]='h01L'
-	set udg_SpawningUnit[17]='h01M'
-	set udg_SpawningUnit[18]='h01P'
-	set udg_SpawningUnit[19]='h01Q'
+	set udg_SpawningUnit[17]='h02I'
+	set udg_SpawningUnit[18]='h037'
+	set udg_SpawningUnit[19]='h038'
 	set udg_SpawningUnit[20]='h01R'
-	set udg_SpawningUnit[21]='h01S'
-	set udg_SpawningUnit[22]='h01T'
-	set udg_SpawningUnit[23]='h01U'
+	set udg_SpawningUnit[21]='h039'
+	set udg_SpawningUnit[22]='h03A'
+	set udg_SpawningUnit[23]='h03B'
 	set udg_SpawningUnit[24]='h01X'
-	set udg_SpawningUnit[25]='h01Y'
-	set udg_SpawningUnit[26]='h01Z'
-	set udg_SpawningUnit[27]='h020'
+	set udg_SpawningUnit[25]='h03C'
+	set udg_SpawningUnit[26]='h03D'
+	set udg_SpawningUnit[27]='h03E'
 	set udg_SpawningUnit[28]='h021'
-	set udg_SpawningUnit[29]='h022'
-	set udg_SpawningUnit[30]='h023'
-	set udg_SpawningUnit[31]='h024'
+	set udg_SpawningUnit[29]='h03F'
+	set udg_SpawningUnit[30]='h03G'
+	set udg_SpawningUnit[31]='h03H'
 	set udg_SpawningUnit[32]='h025'
-	set udg_SpawningUnit[33]='h026'
-	set udg_SpawningUnit[34]='h028'
-	set udg_SpawningUnit[35]='h02A'
+	set udg_SpawningUnit[33]='h03I'
+	set udg_SpawningUnit[34]='h03J'
+	set udg_SpawningUnit[35]='h03K'
 	set udg_SpawningUnit[36]='h02B'
-	set udg_SpawningUnit[37]='h02C'
-	set udg_SpawningUnit[38]='h02D'
-	set udg_SpawningUnit[39]='h02E'
+	set udg_SpawningUnit[37]='h03L'
+	set udg_SpawningUnit[38]='h03M'
+	set udg_SpawningUnit[39]='h03N'
 	set udg_SpawningUnit[40]='h02F'
-	set udg_SpawningUnit[41]='h02G'
-	set udg_SpawningUnit[42]='h02H'
-	set udg_SpawningUnit[43]='h04C'
+	set udg_SpawningUnit[41]='h03O'
+	set udg_SpawningUnit[42]='h03P'
+	set udg_SpawningUnit[43]='h04K'
 	set udg_SpawningUnit[44]='h04I'
-	set udg_SpawningUnit[45]='h04D'
-	set udg_SpawningUnit[46]='h04E'
-	set udg_SpawningUnit[47]='h04F'
+	set udg_SpawningUnit[45]='h04L'
+	set udg_SpawningUnit[46]='h04M'
+	set udg_SpawningUnit[47]='h04N'
 	set udg_SpawningUnit[48]='h04J'
-	set udg_SpawningUnit[49]='h04G'
-	set udg_SpawningUnit[50]='h04H'
+	set udg_SpawningUnit[49]='h04O'
+	set udg_SpawningUnit[50]='h04P'
 	call UseTimeOfDayBJ(false)
 	call SetTimeOfDay(12)
 	call ForForce(GetPlayersAll(),function Trig_Inihilization_Func069002)
@@ -8248,25 +8248,18 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P1_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P1_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P1_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P1_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
@@ -8396,25 +8389,18 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P2_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P2_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P2_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P2_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
@@ -8544,25 +8530,18 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P3_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P3_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P3_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P3_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
@@ -8692,25 +8671,18 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P4_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P4_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P4_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P4_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
@@ -8840,25 +8812,18 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P5_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P5_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P5_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P5_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
@@ -8988,25 +8953,18 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P6_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P6_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P6_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P6_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
@@ -9136,25 +9094,18 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P7_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P7_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P7_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P7_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
@@ -9284,25 +9235,18 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
-	if(Trig_New_Level_P8_Func023001())then
-		call UnitAddAbilityBJ('A06U',gg_unit_h027_0019)
-	else
-		call DoNothing()
-	endif
 	if(Trig_New_Level_P8_Func024001())then
 		set udg_Rbonus[1]=true
 	else
 		call DoNothing()
 	endif
 	if(Trig_New_Level_P8_Func025C())then
-		call UnitAddAbilityBJ('A06V',gg_unit_h027_0019)
 		set udg_Rbonus[2]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 20, adding 50 Gold.|r"))
 		call AdjustPlayerStateBJ(50,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 	if(Trig_New_Level_P8_Func026C())then
-		call UnitAddAbilityBJ('A06W',gg_unit_h027_0019)
 		set udg_Rbonus[3]=true
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 30, adding 75 Gold.|r"))
 		call AdjustPlayerStateBJ(75,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
