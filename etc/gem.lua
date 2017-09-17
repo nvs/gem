@@ -24,6 +24,7 @@ return {
 
 	scripts = {
 		'src/natives.j',
+		'src/preload.j',
 
 		'src/array.j',
 
