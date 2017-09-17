@@ -53,17 +53,19 @@ function Settings__Difficulty_Setup takes nothing returns nothing
 
 	// Extreme:
 	if Settings_Difficulty___Option == 1 then
-		set udg_DiffLevel = 4
+		set udg_DiffFactor = 1.00
 
 	// Hard:
 	elseif Settings_Difficulty___Option == 2 then
-		set udg_DiffLevel = 3
+		set udg_DiffFactor = 0.90
 
 	// Normal:
 	elseif Settings_Difficulty___Option == 3 then
+		set udg_DiffFactor = 0.75
 
 	// Easy:
 	elseif Settings_Difficulty___Option == 4 then
+		set udg_DiffFactor = 0.55
 	endif
 endfunction
 

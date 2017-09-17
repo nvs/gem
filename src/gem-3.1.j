@@ -90,7 +90,6 @@ function InitGlobals takes nothing returns nothing
 	set udg_DebugPointvalue=0
 	set udg_SlateStackNo=0
 	set udg_SlateStackGROUP=CreateGroup()
-	set udg_DiffLevel=0
 	set udg_ExtraChanceDIA=DialogCreate()
 	set i=0
 	loop
