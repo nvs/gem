@@ -16,15 +16,12 @@
 //
 // - `Gem_Spawn__Start ()`
 // - `Gem_Spawn__Stop ()`
-// - `Gem_Spawn__Update ()`
 // - `Gem_Spawn__Initialize ()`
 //
 // ## Notes
 //
 // - This cannot be initialized before `Gem 3.1`, otherwise the unit types for
 //   each round will not be set.
-// - The function `Gem_Spawn__Update ()` must be called after the difficulty
-//   is set, or the unit types will not match.
 
 // ## Globals
 
@@ -39,6 +36,8 @@ globals
 	integer array Gem_Spawn___Index
 	real array Gem_Spawn___Facing
 
+	boolean array Gem_Spawn___Is_Adjusted
+
 	constant real Gem_Spawn___FACING_LEFT = 180.00
 	constant real Gem_Spawn___FACING_RIGHT = 0.00
 	constant real Gem_Spawn___FACING_UP = 90.00
@@ -46,6 +45,12 @@ globals
 endglobals
 
 // ## Functions
+
+function Gem_Spawn___Reset_Index takes nothing returns boolean
+	set Gem_Spawn___Is_Adjusted [Unit_Indexer__The_Index ()] = false
+
+	return false
+endfunction
 
 // Returns the spawn `rect` for the player specified by `player_index
 // (integer)`.
@@ -89,33 +94,17 @@ function Gem_Spawn__Stop takes integer player_index returns nothing
 	endif
 endfunction
 
-// ### `Gem_Spawn__Update ()`
-//
-// Updates the registered spawn objects, ensuring that their stored unit types
-// are up to date. This is only really necessary if the difficulty is set to
-// 'Extreme'.
-function Gem_Spawn__Update takes nothing returns nothing
-	local integer round
-
-	set round = 0
-	loop
-		set round = round + 1
-		exitwhen round > 50
-
-		if Spawn__Get_Type (Gem_Spawn___Round [round]) != Gem_Spawn___Unit_Type (round) then
-			call Spawn__Set_Type (Gem_Spawn___Round [round], Gem_Spawn___Unit_Type (round))
-		endif
-	endloop
-endfunction
-
 // Handles freshly spawned units, issuing an order for them to mvoe to the
 // first touch point.
 function Gem_Spawn___Movement takes nothing returns boolean
 	local integer player_index
 	local unit the_unit
+	local integer the_unit_index
+	local real life
 	local player owner
 
 	set the_unit = GetTriggerUnit ()
+	set the_unit_index = Unit_Indexer__Unit_Index (the_unit)
 	set owner = GetOwningPlayer (the_unit)
 
 	if owner == Gem__PLAYER_CREEPS then
@@ -123,6 +112,14 @@ function Gem_Spawn___Movement takes nothing returns boolean
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (the_unit)] = player_index + 1
+
+		// Ensure we do not adjust for difficulty multiple times.
+		if not Gem_Spawn___Is_Adjusted [the_unit_index] then
+			set Gem_Spawn___Is_Adjusted [the_unit_index] = true
+
+			set life = Unit_State__Get (the_unit, UNIT_STATE_MAX_LIFE)
+			call Unit_State__Set (the_unit, UNIT_STATE_MAX_LIFE, life * udg_DiffFactor)
+		endif
 	endif
 
 	set the_unit = null
@@ -166,6 +163,8 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 
 		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, Gem_Spawn___FACING_RIGHT, 0.00, 1.61)
 	endloop
+
+	call Unit_Event__On_Leave (Condition (function Gem_Spawn___Reset_Index))
 
 	set Gem_Spawn___Facing [0] = Gem_Spawn___FACING_RIGHT
 	set Gem_Spawn___Facing [1] = Gem_Spawn___FACING_LEFT

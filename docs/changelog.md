@@ -8,6 +8,7 @@ full list of changes to the project, please consult the commit log.
 ### Changed
 - Structures are no longer removed from player control during the placement
   and selection phase.
+- Difficulty is now scaled by life rather than armor. 
 
 ## [1.4.0] - 2017-07-13
 

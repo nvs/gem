@@ -31,7 +31,7 @@ globals
 	group udg_SlateStackGROUP=null
 	location udg_SlateStackPoint=null
 	unit udg_SlateStackUnit=null
-	integer udg_DiffLevel=0
+	real udg_DiffFactor=1.00
 	dialog udg_ExtraChanceDIA=null
 	button array udg_ExtraChanceBTN
 	integer array udg_ExtraChanceUnit

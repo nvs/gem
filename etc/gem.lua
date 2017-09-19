@@ -24,6 +24,7 @@ return {
 
 	scripts = {
 		'src/natives.j',
+		'src/preload.j',
 
 		'src/array.j',
 
@@ -78,6 +79,7 @@ return {
 		'src/unit/event/death.j',
 		'src/unit/event/initialize.j',
 
+		'src/unit/state.j',
 		'src/unit/indexer.j',
 
 		'src/dummy-caster.j',
@@ -170,7 +172,9 @@ return {
 		'share/objects/anti-stuck-cooldown.lua',
 		'share/objects/switch-info-button-location.lua',
 		'share/objects/combine-button.lua',
-		'share/objects/change-topaz-base.lua'
+		'share/objects/change-topaz-base.lua',
+		'share/objects/unit-state.lua',
+		'share/objects/difficulty-armor-changes.lua'
 	},
 
 	constants = {
