@@ -6,5 +6,5 @@
 // Returns a `boolean` indicating whether the unit specified by `id` is alive.
 //
 // Exists in the `common.ai`. It seems to perform better than alternative
-// methods (e.g. `GetWidgetLife ()`, `IsUnitType ()`, and `GetUnitTypeId ()`.
+// methods (e.g. `GetWidgetLife ()`, `IsUnitType ()`, and `GetUnitTypeId ()`).
 native UnitAlive takes unit id returns boolean
