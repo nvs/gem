@@ -26,3 +26,5 @@ max_line_length = off
 
 [COMMIT_EDITMSG]
 max_line_length = 72
+indent_style = space
+indent_size = 4
