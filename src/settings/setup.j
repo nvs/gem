@@ -61,9 +61,8 @@ function Settings___Begin_Game takes nothing returns nothing
 endfunction
 
 // This function is guaranteed to run after map initialization, and currently
-// handles setting up the game start.  Note that this is expected to be called
-// either directly or via an expired timer.
-function Settings__Setup takes nothing returns nothing
+// handles setting up the game start.
+function Settings__Setup takes nothing returns boolean
 	local integer index
 	local player the_player
 
@@ -74,8 +73,6 @@ function Settings__Setup takes nothing returns nothing
 
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()
-	else
-		call PauseTimer (Settings___Timer)
 	endif
 
 	call ClearTextMessages ()
@@ -116,4 +113,6 @@ function Settings__Setup takes nothing returns nothing
 	call TimerDialogSetTitleColor (Settings___Countdown, 255, 255, 255, 0)
 	call TimerDialogSetTimeColor (Settings___Countdown, 255, 255, 255, 0)
 	call TimerDialogDisplay (Settings___Countdown, true)
+
+	return false
 endfunction

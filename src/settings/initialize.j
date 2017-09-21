@@ -26,11 +26,7 @@ function Settings__Initialize takes nothing returns boolean
 		call Settings_Window__Initialize ()
 	else
 		call Settings_HCL__Process ()
-
-		// Certain Gem 3.1 initializations (boards) must be done once the map is
-		// loaded, or they will not function properly.
-		set Settings___Timer = CreateTimer ()
-		call TimerStart (Settings___Timer, 0.00, false, function Settings__Setup)
+		call Game__On_Start (Condition (function Settings__Setup))
 	endif
 
 	set the_player = null

@@ -76,7 +76,7 @@ function Settings_Window___Menu_Display takes nothing returns nothing
 	set the_player = null
 endfunction
 
-function Settings_Window___Core takes nothing returns nothing
+function Settings_Window___Core takes nothing returns boolean
 	call DialogDisplay (GetLocalPlayer (), Settings_Window___Menu_Dialog, false)
 
 	if not Settings_Window___Displayed_Information then
@@ -119,6 +119,8 @@ function Settings_Window___Core takes nothing returns nothing
 		call TimerDialogSetTimeColor (Settings_Window___Timer_Dialog, 255, 255, 255, 0)
 		call TimerDialogDisplay (Settings_Window___Timer_Dialog, true)
 	endif
+
+	return false
 endfunction
 
 function Settings_Window___Menu_Event takes nothing returns boolean
@@ -177,5 +179,5 @@ function Settings_Window__Initialize takes nothing returns nothing
 	set Settings_Window___Timer = CreateTimer ()
 	set Settings_Window___Timer_Dialog = CreateTimerDialog (Settings_Window___Timer)
 
-	call TimerStart (Settings_Window___Timer, 0.00, false, function Settings_Window___Core)
+	call Game__On_Start (Condition (function Settings_Window___Core))
 endfunction
