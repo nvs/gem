@@ -158,7 +158,6 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Unit_User_Data__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Stun__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Disarm__Initialize))
-	call TriggerAddCondition (initialize, Condition (function Gem_Reminders__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Gem_Information__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Changelog__Initialize))
@@ -178,7 +177,6 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Settings__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Commands__Initialize))
-	call TriggerAddCondition (initialize, Condition (function Gem_Command_Reminders__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Detect_Placed_Gem_Death__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Gem_Slate__Initialize))

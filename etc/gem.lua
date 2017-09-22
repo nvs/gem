@@ -45,7 +45,6 @@ return {
 
 		'src/gem.j',
 		'src/gem/version.j',
-		'src/gem/reminders.j',
 
 		'src/quest.j',
 
@@ -130,7 +129,6 @@ return {
 		'src/settings/window.j',
 		'src/settings/initialize.j',
 
-		'src/gem/command/reminders.j',
 		'src/commands/debug.j',
 		'src/commands/zoom.j',
 		'src/commands.j',
