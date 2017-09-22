@@ -1,11 +1,11 @@
-// # Gem Changelog - Unreleased
+// # Gem Changelog - 1.4.1
 
-function Gem_Changelog___Unreleased takes nothing returns nothing
+function Gem_Changelog___1_4_1 takes nothing returns nothing
 	local string title
 	local string date
 	local string text
 
-	set title = "Unreleased"
+	set title = Gem_Changelog__Title ("1.4.1")
 	set date = "N/A"
 
 	set text = Color__Gold ("Changed:") + "\n"
