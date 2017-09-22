@@ -36,7 +36,7 @@ function Gem_Changelog___1_3_0_Part_2 takes nothing returns nothing
 	set text = text + "- A slate could still retain the ability to move even after moving due to another slate movement bug.\n"
 	set text = text + "- Slates will no longer be damaged when attacking the ReRunner.\n"
 	set text = text + "- Spamming Keep Slate, when offered multiple slates, could cause extra units to spawn. This made it possible to skip multiple rounds, assuming the units were killed.\n"
-	set text = text + "- Spamming buttons on dialog windows (e.g. Extra Chance) could cause a player's control to be disabled, essentially ending their game."
+	set text = text + "- A Warcraft 3 bug could cause button spamming on dialog windows (e.g. Extra Chance) to disable a player's control, essentially ending their game."
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction

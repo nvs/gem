@@ -112,8 +112,8 @@ full list of changes to the project, please consult the commit log.
 - Spamming Keep Slate, when offered multiple slates, could cause extra units
   to spawn. This made it possible to skip multiple rounds, assuming the units
   were killed.
-- Spamming buttons on dialog windows (e.g. Extra Chance) could cause a
-  player's control to be disabled, essentially ending their game.
+- A Warcraft 3 bug could cause button spamming on dialog windows (e.g. Extra
+  Chance) to disable a player's control, essentially ending their game.
 
 ## [1.2.0] - 2016-08-10
 
