@@ -7,12 +7,14 @@ endglobals
 
 function Gem_Slate___Hold_Taunt takes nothing returns boolean
 	local unit the_unit
+	local integer the_unit_type
 	local real x
 	local real y
 
 	set the_unit = GetFilterUnit ()
+	set the_unit_type = GetUnitTypeId (the_unit)
 
-	if GetOwningPlayer (the_unit) != Gem__PLAYER_CREEPS and GetUnitTypeId (the_unit) != 'u000' then
+	if GetOwningPlayer (the_unit) != Gem__PLAYER_CREEPS and the_unit_type != 'u000' and the_unit_type != Gem_Slate__HOLD and the_unit_type != Gem_Slate__ANCIENT then
 		call IssueTargetOrder (the_unit, "attack", Gem_Slate___Hold_Unit)
 	endif
 
