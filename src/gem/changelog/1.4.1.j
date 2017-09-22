@@ -9,7 +9,8 @@ function Gem_Changelog___1_4_1 takes nothing returns nothing
 	set date = "N/A"
 
 	set text = Color__Gold ("Removed:") + "\n"
-	set text = text + "- The `-reminders` command has been removed.\n\n"
+	set text = text + "- The `-reminders` command has been removed.\n"
+	set text = text + "\n"
 
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Structures are no longer removed from player control during the placement and selection phase.\n"
