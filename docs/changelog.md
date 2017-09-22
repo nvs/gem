@@ -13,6 +13,9 @@ full list of changes to the project, please consult the commit log.
   and selection phase.
 - Difficulty is now scaled by life rather than armor. 
 
+### Fixed
+- Units kept after selection or combination occasionally would not attack.
+
 ## [1.4.0] - 2017-07-13
 
 ### Added

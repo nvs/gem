@@ -184,6 +184,8 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl", x, y))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", x, y))
 
+	call IssueImmediateOrder (current, "stop")
+
 	call Gem_Combination__Register (current)
 
 	if the_player_index == 0 then

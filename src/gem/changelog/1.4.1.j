@@ -13,7 +13,11 @@ function Gem_Changelog___1_4_1 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Structures are no longer removed from player control during the placement and selection phase.\n"
-	set text = text + "- Difficulty is now scaled by life rather than armor."
+	set text = text + "- Difficulty is now scaled by life rather than armor.\n"
+	set text = text + "\n"
+
+	set text = text + Color__Gold ("Fixed:") + "\n"
+	set text = text + "- Units kept after selection or combination occasionally would not attack."
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
