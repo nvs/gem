@@ -27,6 +27,8 @@ return {
 		'src/game.j',
 		'src/preload.j',
 
+		'src/fix/stuck-tooltip.j',
+
 		'src/array.j',
 
 		'src/string.j',
