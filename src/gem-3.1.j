@@ -2373,9 +2373,9 @@ function Trig_AntiStuck_Actions takes nothing returns nothing
 	local unit u
 	if(Trig_AntiStuck_Func001C())then
 		set u = GetSpellTargetUnit()
-		call SetUnitPathing(u,false)
+		call UnitAddAbility (u, 'Aeth')
 		call TriggerSleepAction(1.00)
-		call SetUnitPathing(u,true)
+		call UnitRemoveAbility (u, 'Aeth')
 		set u = null
 	else
 	endif

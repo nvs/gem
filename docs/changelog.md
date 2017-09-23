@@ -16,6 +16,7 @@ full list of changes to the project, please consult the commit log.
 ### Fixed
 - Units kept after selection or combination occasionally would not attack.
 - Hold/Ancient taunts will no longer target other Hold and Ancient Slates.
+- Anti-stuck will no longer cause units to path through towers.
 
 ## [1.4.0] - 2017-07-13
 
