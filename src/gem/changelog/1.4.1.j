@@ -19,7 +19,6 @@ function Gem_Changelog___1_4_1 takes nothing returns nothing
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
-	set text = text + "- Units kept after selection or combination occasionally would not attack.\n"
 	set text = text + "- Hold/Ancient taunts will no longer target other Hold and Ancient Slates.\n"
 	set text = text + "- Anti-stuck will no longer cause units to path through towers."
 

@@ -9,8 +9,6 @@ full list of changes to the project, please consult the commit log.
 - The `-reminders` command has been removed.
 
 ### Changed
-- Structures are no longer removed from player control during the placement
-  and selection phase.
 - Difficulty is now scaled by life rather than armor. All difficulties will
   use the armor levels from Extreme.
 - Bonus armor is applied directly to the units, and will no longer be applied
