@@ -13,12 +13,12 @@ function Gem_Changelog___1_4_1 takes nothing returns nothing
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Changed:") + "\n"
-	set text = text + "- Structures are no longer removed from player control during the placement and selection phase.\n"
 	set text = text + "- Difficulty is now scaled by life rather than armor. All difficulties will use the armor levels from Extreme.\n"
 	set text = text + "- Bonus armor is applied directly to the units, and will no longer be applied via global auras.\n"
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
+	set text = text + "- Units kept after selection or combination occasionally would not attack.\n"
 	set text = text + "- Hold/Ancient taunts will no longer target other Hold and Ancient Slates.\n"
 	set text = text + "- Anti-stuck will no longer cause units to path through towers."
 
