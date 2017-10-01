@@ -6,7 +6,7 @@ function Gem_Changelog___1_4_1 takes nothing returns nothing
 	local string text
 
 	set title = Gem_Changelog__Title ("1.4.1")
-	set date = "N/A"
+	set date = "2017-10-01"
 
 	set text = Color__Gold ("Removed:") + "\n"
 	set text = text + "- The `-reminders` command has been removed.\n"

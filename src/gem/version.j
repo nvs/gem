@@ -8,5 +8,5 @@ globals
 	// This flag does nothing within the JASS scripts. It specifies that
 	// behavior specific to a pre-release version should be followed upon build.
 	// To disable this, set to `null`.
-	constant string Gem_Version__PRE_RELEASE = "beta"
+	constant string Gem_Version__PRE_RELEASE = null
 endglobals
