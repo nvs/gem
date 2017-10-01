@@ -36,9 +36,9 @@ setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE',
 
 -- Text - General - 'Upkeep is determined...'
 setvalue ('FrameDef', 'RESOURCE_UBERTIP_UPKEEP',
-	'- ' .. forum .. '|n' ..
+	'- ' .. repository .. '|n' ..
 	'- ' .. discord .. '|n' ..
-	'- ' .. repository)
+	'- ' .. forum)
 
 -- Text - General - '|n%d-%d Food...'
 --

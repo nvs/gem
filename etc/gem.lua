@@ -27,6 +27,8 @@ return {
 		'src/game.j',
 		'src/preload.j',
 
+		'src/fix/stuck-tooltip.j',
+
 		'src/array.j',
 
 		'src/string.j',
@@ -45,7 +47,6 @@ return {
 
 		'src/gem.j',
 		'src/gem/version.j',
-		'src/gem/reminders.j',
 
 		'src/quest.j',
 
@@ -56,7 +57,7 @@ return {
 		'src/gem/information/initialize.j',
 
 		'src/gem/changelog.j',
-		'src/gem/changelog/unreleased.j',
+		'src/gem/changelog/1.4.1.j',
 		'src/gem/changelog/1.4.0.j',
 		'src/gem/changelog/1.3.3.j',
 		'src/gem/changelog/1.3.2.j',
@@ -130,7 +131,6 @@ return {
 		'src/settings/window.j',
 		'src/settings/initialize.j',
 
-		'src/gem/command/reminders.j',
 		'src/commands/debug.j',
 		'src/commands/zoom.j',
 		'src/commands.j',

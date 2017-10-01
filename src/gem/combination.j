@@ -272,6 +272,8 @@ function Gem_Combination___Recipe takes nothing returns boolean
 		call SelectUnit (replacement, true)
 	endif
 
+	call IssueImmediateOrder (replacement, "stop")
+
 	set the_player = null
 	set original = null
 	set replacement = null

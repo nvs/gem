@@ -3,12 +3,22 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [Unreleased]
+## [1.4.1] - Unreleased
+
+### Removed
+- The `-reminders` command has been removed.
 
 ### Changed
-- Structures are no longer removed from player control during the placement
-  and selection phase.
-- Difficulty is now scaled by life rather than armor. 
+- Difficulty is now scaled by life rather than armor. All difficulties will
+  use the armor levels from Extreme.
+- Bonus armor is applied directly to the units, and will no longer be applied
+  via global auras.
+- Level progression bonus armor no longer applies to other players.
+
+### Fixed
+- Units kept after selecting or combining would not always attack.
+- Hold/Ancient taunts will no longer target other Hold and Ancient Slates.
+- Anti-stuck will no longer cause units to path through towers.
 
 ## [1.4.0] - 2017-07-13
 
@@ -193,7 +203,7 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.4.0...develop
+[1.4.1]: https://github.com/nvs/gem/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/nvs/gem/compare/v1.3.3...v1.4.0
 [1.3.3]: https://github.com/nvs/gem/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/nvs/gem/compare/v1.3.1...v1.3.2

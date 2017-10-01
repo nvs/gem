@@ -24,7 +24,7 @@ map.settings.map.description = string.format ([[
 - %s
 - %s]],
 	map.globals.Gem__NAME_FULL.value,
-	maintainer, forum, discord, repository)
+	maintainer, repository, discord, forum)
 
 map.settings.map.loading.text = string.format ([[
 An updated version of Gem Tower Defense,
@@ -41,4 +41,4 @@ map, or to report bugs and other issues, visit:
 - %s
 - %s]],
 	color_red ('Bryvx (Bryan K.)'), maintainer,
-	color_gold ('Information (F9)'), forum, discord, repository)
+	color_gold ('Information (F9)'), repository, discord, forum)

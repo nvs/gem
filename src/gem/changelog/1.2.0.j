@@ -5,7 +5,7 @@ function Gem_Changelog___1_2_0_Part_1 takes nothing returns nothing
 	local string date
 	local string text
 
-	set title = Gem__NAME + " 1.2.0 - 1 of 2"
+	set title = Gem_Changelog__Title ("1.2.0") + " - 1 of 2"
 	set date = "2016-08-10"
 
 	set text = Color__Gold ("Changed:") + "\n"
@@ -21,7 +21,7 @@ function Gem_Changelog___1_2_0_Part_2 takes nothing returns nothing
 	local string date
 	local string text
 
-	set title = Gem__NAME + " 1.2.0 - 1 of 2"
+	set title = Gem_Changelog__Title ("1.2.0") + " - 2 of 2"
 	set date = "2016-08-10"
 
 	set text = Color__Gold ("Fixed:") + "\n"
