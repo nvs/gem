@@ -13,9 +13,10 @@ full list of changes to the project, please consult the commit log.
   use the armor levels from Extreme.
 - Bonus armor is applied directly to the units, and will no longer be applied
   via global auras.
+- Level progression bonus armor no longer applies to other players.
 
 ### Fixed
-- Units kept after selecting or combining occasionally would not attack.
+- Units kept after selecting or combining would not always attack.
 - Hold/Ancient taunts will no longer target other Hold and Ancient Slates.
 - Anti-stuck will no longer cause units to path through towers.
 
