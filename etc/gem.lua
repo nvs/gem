@@ -57,6 +57,7 @@ return {
 		'src/gem/information/initialize.j',
 
 		'src/gem/changelog.j',
+		'src/gem/changelog/unreleased.j',
 		'src/gem/changelog/1.4.1.j',
 		'src/gem/changelog/1.4.0.j',
 		'src/gem/changelog/1.3.3.j',
