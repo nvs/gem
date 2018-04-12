@@ -28,7 +28,14 @@ local function color_gold (text)
 end
 
 -- Text - General 'No Upkeep'
-setvalue ('FrameDef', 'UPKEEP_NONE', color_gold (name_version))
+--
+-- We need to split this, or we cannot see build metadata in `1.29.0`.
+local index = name_version:find ('-')
+
+setvalue ('FrameDef', 'UPKEEP_NONE', color_gold (
+	-- We add a tab character as this will not be rendered for players to see,
+	-- but will be considered when breaking text over multiple lines.
+	name_version:gsub ('-', '\t-')))
 
 -- Text - General 'Gold Income Rate:'
 setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE',
