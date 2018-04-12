@@ -33,10 +33,8 @@ a map originally created by %s.
 Maintained by %s.
 
 For map information, including a list of
-changes, see %s in game.
+changes, see %s in game or visit:
 
-For further information and discussion on the
-map, or to report bugs and other issues, visit:
 - %s
 - %s
 - %s]],
