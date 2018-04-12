@@ -46,7 +46,6 @@ return {
 		'src/spawn-group.j',
 
 		'src/gem.j',
-		'src/gem/version.j',
 
 		'src/quest.j',
 
