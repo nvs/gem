@@ -200,9 +200,5 @@ return {
 			'-nosyntaxerror',
 			'-nosemanticerror'
 		}
-	},
-
-	optimizer = {
-		tweaks = 'etc/gem.vxtweak',
 	}
 }

@@ -5,6 +5,10 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.4.2] - Unreleased
 
+### Fixed
+- The following issues caused by patch 1.29.0 have been resolved:
+    - Broken stuns.
+
 ## [1.4.1] - 2017-10-01
 
 ### Removed
