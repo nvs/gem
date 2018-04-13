@@ -41,6 +41,7 @@ function Settings___Begin_Game takes nothing returns nothing
 	call DestroyTimer (Settings___Timer)
 	set Settings___Timer = null
 
+	call Board__Setup ()
 	call Clock__Start ()
 
 	set index = 0
@@ -68,8 +69,6 @@ function Settings__Setup takes nothing returns boolean
 
 	call Settings___Setup_Mode ()
 	call Settings__Difficulty_Setup ()
-
-	call Board__Setup ()
 
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()
