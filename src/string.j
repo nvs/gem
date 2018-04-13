@@ -28,8 +28,9 @@ globals
 	//   used in this manner is not known.
 	constant integer String__MAXIMUM_LENGTH = 1023
 
-	// The width of the screen that the `W` character approximately takes.
-	constant real String___SCREEN_WIDTH = 13.13 / 1500.00
+	// The width of the screen that the `W` character approximately takes
+	// (non-stretched resolution).  For stretched, divide by `1500`.
+	constant real String___SCREEN_WIDTH = 13.13 / 1125
 
 	// The width (in pixels) used by the `W` character. All character widths are
 	// relative to this value.
