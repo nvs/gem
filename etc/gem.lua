@@ -18,8 +18,8 @@ return {
 	},
 
 	patch = {
-		'lib/patch/1.28.5/common.j',
-		'lib/patch/1.28.5/blizzard.j'
+		'lib/patch/1.29.0/common.j',
+		'lib/patch/1.29.0/blizzard.j'
 	},
 
 	scripts = {
@@ -46,7 +46,6 @@ return {
 		'src/spawn-group.j',
 
 		'src/gem.j',
-		'src/gem/version.j',
 
 		'src/quest.j',
 
@@ -58,6 +57,7 @@ return {
 
 		'src/gem/changelog.j',
 		'src/gem/changelog/unreleased.j',
+		'src/gem/changelog/1.4.2.j',
 		'src/gem/changelog/1.4.1.j',
 		'src/gem/changelog/1.4.0.j',
 		'src/gem/changelog/1.3.3.j',
@@ -200,9 +200,5 @@ return {
 			'-nosyntaxerror',
 			'-nosemanticerror'
 		}
-	},
-
-	optimizer = {
-		tweaks = 'etc/gem.vxtweak',
 	}
 }

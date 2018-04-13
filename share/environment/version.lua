@@ -3,59 +3,40 @@ local Shell = require ('map.shell')
 
 local map = ...
 
-local version
-local major = map.globals.Gem_Version__MAJOR
-local minor = map.globals.Gem_Version__MINOR
-local patch = map.globals.Gem_Version__PATCH
+local version = ''
+local git_stdout = Path.temporary_name ()
 
-if major and major.jass_type == 'integer.decimal'
-	and minor and minor.jass_type == 'integer.decimal'
-	and patch and patch.jass_type == 'integer.decimal'
-then
-	version = string.format ('%d.%d.%d',
-		major.value, minor.value, patch.value)
+local status = Shell.execute {
+	command = Shell.escape_arguments ('git', 'describe'),
+	stdout = Shell.escape_argument (git_stdout),
+	stderr = '&1'
+}
 
-	-- Create a private global variable. This obviously will not be in the
-	-- scope of the JASS scripts. However, it will be in scope for Grimex.
-	map.globals.Gem_Version___STRING = {
-		jass_type = 'string',
-		value = version
-	}
-else
-	return
-end
+if status then
+	local file = io.open (git_stdout, 'rb')
 
-local pre_release = map.globals.Gem_Version__PRE_RELEASE
+	if file then
+		version = file:read ():sub (2):gsub ('%-g', '+g', 1)
 
-if pre_release
-	and pre_release.jass_type == 'string'
-then
-	local git_stdout = Path.temporary_name ()
+		-- Create a global variable.  This will obviously not be in the
+		-- scope of the Jass scripts.  However, Grimex will see it.
+		map.globals.Gem_Version___STRING = {
+			jass_type = 'string',
+			value = version
+		}
 
-	local status = Shell.execute {
-		command = Shell.escape_arguments (
-			'git', 'rev-parse', '--short', 'HEAD'),
-		stdout = Shell.escape_argument (git_stdout),
-		stderr = '&1'
-	}
-
-	if status then
-		local file = io.open (git_stdout, 'rb')
-
-		if file then
-			pre_release.value = pre_release.value .. '+' .. file:read ('*l')
-
-			version = version .. '-' .. pre_release.value
-			map.globals.Gem_Version___STRING.value = version
-
-			file:close ()
-		end
+		file:close ()
 	end
-
-	os.remove (git_stdout)
+else
+	return false
 end
+
+os.remove (git_stdout)
 
 map.settings.map.name = map.globals.Gem__NAME.value .. ' ' .. version
+
+-- It is necessary to replace the '+' character in the file name as it will
+-- cause the map to not load into the lobby.
 map.settings.output.name =
 	map.settings.output.name .. ' ' .. version:gsub ('%+', '_')
 

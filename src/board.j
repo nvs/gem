@@ -93,12 +93,12 @@ function Board__Setup takes nothing returns nothing
 	local real array width
 	local string array header
 
+	local real space
+	local real initial
+	local real maximum
 	local real name_width
-	local real name_buffer
 
 	local multiboarditem board_item
-
-	set name_buffer =  0.015 - String__Width ("W")
 
 	// Header (by column):
 	set header [0] = "Players"
@@ -108,21 +108,25 @@ function Board__Setup takes nothing returns nothing
 	set header [4] = "Level"
 
 	// Width (by column):
-	set width [0] = name_buffer + String__Width ("W") * 5
-	set width [1] = 0.035
-	set width [2] = 0.035
-	set width [3] = 0.035
-	set width [4] = 0.035
+	set space = String__Width (" ")
+	// The longest possible valid name is 15 `W` characters.
+	set maximum = space * 2 + String__Width ("W") * 15
+	set initial = space * 2 + String__Width ("W") * 6
+	set width [0] = initial
+	set width [1] = String__Width ("Kills") + space * 3
+	set width [2] = String__Width ("Lives") + space * 3
+	set width [3] = String__Width ("Gold") + space * 5
+	set width [4] = String__Width ("Level")
 
 	set player_index = 0
 	set count = 0
 	loop
 		if udg_PlayerHERE [player_index + 1] then
 			set Board___Players [count] = player_index
-			set name_width = name_buffer + String__Width (GetPlayerName (Player (player_index)))
+			set name_width = space * 2 + String__Width (GetPlayerName (Player (player_index)))
 
 			if name_width > width [0] then
-				set width [0] = name_width
+				set width [0] = RMinBJ (name_width, maximum)
 			endif
 
 			set count = count + 1
@@ -161,18 +165,20 @@ function Board__Setup takes nothing returns nothing
 				if column == 0 then
 					call MultiboardSetItemValue (board_item, "Game Time:")
 					call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
-					call MultiboardSetItemWidth (board_item, 0.049)
+					call MultiboardSetItemWidth (board_item, String__Width ("Game Time:  "))
 				elseif column == 1 then
-					call MultiboardSetItemWidth (board_item, 0.066)
+					call MultiboardSetItemWidth (board_item, String__Width ("44:44:44"))
 				elseif column == 2 then
+					// Grow the separator dynamically.  Without the division, it
+					// would align to the right margin.
+					call MultiboardSetItemWidth (board_item, space + (width [0] - initial) / 2)
+				elseif column == 3 then
 					call MultiboardSetItemValue (board_item, "Settings:")
 					call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
-					call MultiboardSetItemWidth (board_item, 0.037)
-				elseif column == 3 then
+					call MultiboardSetItemWidth (board_item, String__Width ("Settings:  "))
+				elseif column == 4 then
 					call MultiboardSetItemValue (board_item, Settings__String ())
-					call MultiboardSetItemWidth (board_item, width [0] + 0.012)
-				else
-					call MultiboardSetItemWidth (board_item, 0.00)
+					call MultiboardSetItemWidth (board_item, String__Width (Settings__String () + "   "))
 				endif
 			elseif column == 0 then
 				call MultiboardSetItemValue (board_item, GetPlayerName (Player (player_index)))

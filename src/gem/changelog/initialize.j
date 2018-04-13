@@ -6,6 +6,7 @@
 
 function Gem_Changelog___On_Start takes nothing returns boolean
 	call Gem_Changelog___Unreleased ()
+	call Gem_Changelog___1_4_2 ()
 	call Gem_Changelog___1_4_1 ()
 	call Gem_Changelog___1_4_0 ()
 	call Gem_Changelog___1_3_3 ()
