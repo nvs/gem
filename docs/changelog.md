@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [1.4.2] - Unreleased
+## [1.4.2] - 2018-04-12
 
 ### Fixed
 - The following issues caused by patch 1.29.0 have been resolved:
