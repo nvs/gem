@@ -9,7 +9,7 @@ function Gem_Special___Dark_Emerald takes nothing returns boolean
 	set victim = GetTriggerUnit ()
 	set attacker_id = GetUnitTypeId (attacker)
 
-	if attacker_id == 'h02V' or attacker_id == 'h01N' and GetRandomInt (1, 8) == 1 and not Unit_Stun__Is_Stunned (victim) then
+	if (attacker_id == 'h02V' or attacker_id == 'h01N') and GetRandomInt (1, 8) == 1 and not Unit_Stun__Is_Stunned (victim) then
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", victim, "chest"))
 		call Unit_Stun__Apply (victim, 1.50)
 	endif
