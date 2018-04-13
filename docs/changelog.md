@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [1.4.3] - Unreleased
+## [1.4.3] - 2018-04-13
 
 ### Fixed
 - Enchanted Emerald was applying stun on every hit.

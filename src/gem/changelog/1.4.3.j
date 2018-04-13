@@ -6,7 +6,7 @@ function Gem_Changelog___1_4_3 takes nothing returns nothing
 	local string text
 
 	set title = Gem_Changelog__Title ("1.4.3")
-	set date = "N/A"
+	set date = "2018-04-13"
 
 	set text = Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Enchanted Emerald was applying stun on every hit."
