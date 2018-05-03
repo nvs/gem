@@ -1,8 +1,10 @@
+local map = ...
+local objects = map.objects
+
 -- Combination Button
 -- ==================
 
-setobjecttype ('abilities')
-
-if objectexists ('A00R') then
-	createobject ('A00R', 'A10R')
-end
+objects ['A10R'] = {
+	type = 'ability',
+	base = 'A00R'
+}

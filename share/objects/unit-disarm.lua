@@ -1,62 +1,142 @@
+local map = ...
+local objects = map.objects
+
 -- # Unit Disarm
 --
 -- This system makes use of Cargo Hold (`'Abun'`) to disable a unit's attack.
 
-setobjecttype ('buffs')
-
 -- ## Disarm Buff
-if objectexists ('Basl') then
-	createobject ('Basl', 'UDDB')
+objects ['UDDB'] = {
+	type = 'buff',
+	base = 'Basl',
 
-	if currentobject () == 'UDDB' then
-		-- Art:
-		makechange (current, 'fart', -- Icon
-			'ReplaceableTextures\\CommandButtons\\BTNBattleStations.blp')
-		makechange (current, 'ftat', '') -- Target
-		makechange (current, 'fta0', '') -- Target Attachment Point 1
+	-- ### Art
 
-		-- Text:
-		makechange (current, 'fnsf', '(Unit Disarm)') -- Editor Suffix
-		makechange (current, 'fnam', 'Disarm Buff') -- Name (Editor Only)
-		makechange (current, 'ftip', 'Disarmed') -- Tooltip
-		makechange (current, 'fube', -- Tooltip - Extended
-			'This unit is disarmed: it cannot attack.')
-	end
-end
+	-- Icon
+	fart = {
+		type = 'string',
+		value = 'ReplaceableTextures\\CommandButtons\\BTNBattleStations.blp'
+	},
 
-setobjecttype ('abilities')
+	-- Target
+	ftat = {
+		type = 'string',
+		value = ''
+	},
+
+	-- Target Attachment Point 1
+	fta0 = {
+		type = 'string',
+		value = ''
+	},
+
+	-- ### Text
+
+	-- Editor Suffix
+	fnsf = {
+		type = 'string',
+		value = '(Unit Disarm)'
+	},
+
+	-- Name (Editor Only)
+	fnam = {
+		type = 'string',
+		value = 'Disarm Buff'
+	},
+
+	-- Tooltip
+	ftip = {
+		type = 'string',
+		value = 'Disarmed'
+	},
+
+	-- Tooltip - Extended
+	fube = {
+		type = 'string',
+		value = 'This unit is disarmed: it cannot attack.'
+	}
+}
 
 -- ## Disarm Temporary
-if objectexists ('Aasl') then
-	createobject ('Aasl', 'UDDT')
+objects ['UDDT'] = {
+	type = 'ability',
+	base = 'Aasl',
 
-	if currentobject () == 'UDDT' then
+	-- ### Data/Stats
 
-		-- Data/Stats:
-		makechange (current, 'aare', 1, 0.00) -- Area of Effect
-		makechange (current, 'abuf', 1, 'UDDB') -- Buffs
-		makechange (current, 'Slo1', 1, 0.00) -- Movement Speed Factor
-		makechange (current, 'atar', 1, 'self') -- Targets Allowed
+	-- Area of Effect
+	aare = {
+		type = 'unreal',
+		values = {
+			[1] = 0
+		}
+	},
 
-		-- Text:
-		makechange (current, 'ansf', '(Unit Disarm)') -- Editor Suffix
-		makechange (current, 'anam', 'Disarm Temporary') -- Name
-	end
-end
+	-- Buffs
+	abuf = {
+		type = 'string',
+		values = {
+			[1] = 'UDDB'
+		}
+	},
+
+	-- Movement Speed Factor
+	Slo1 = {
+		type = 'unreal',
+		values = {
+			[1] = 0
+		}
+	},
+
+	-- Targets Allowed
+	atar = {
+		type = 'string',
+		values = {
+			[1] = 'self'
+		}
+	},
+
+	-- ### Text
+
+	-- Editor Suffix
+	ansf = {
+		type = 'string',
+		value = '(Unit Disarm)'
+	},
+
+	-- Name
+	anam = {
+		type = 'string',
+		value = 'Disarm Temporary'
+	}
+}
 
 -- ## Disarm Ability
-if objectexists ('Abun') then
-	createobject ('Abun', 'UDDA')
+objects ['UDDA'] = {
+	type = 'ability',
+	base = 'Abun',
 
-	if currentobject () == 'UDDA' then
+	-- ### Data/Stats
 
-		-- Data/Stats:
-		makechange (current, 'Car1', 1, 0) -- Cargo Capacity
+	-- Cargo Capacity
+	Car1 = {
+		type = 'integer',
+		values = {
+			[1] = 0
+		}
+	},
 
-		-- Text:
-		makechange (current, 'ansf', '(Unit Disarm)') -- Editor Suffix
-		makechange (current, 'anam', 'Disarm Ability') -- Name
-	end
-end
+	-- ### Text
 
---
+	-- Editor Suffix
+	ansf = {
+		type = 'string',
+		value = '(Unit Disarm)'
+	},
+
+	-- Name
+	anam = {
+		type = 'string',
+		value = 'Disarm Ability'
+	}
+}

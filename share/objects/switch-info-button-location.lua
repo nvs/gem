@@ -1,10 +1,11 @@
+local map = ...
+local objects = map.objects
+
 -- # Switch Information Button Location
 --
 -- Need to shift the information button (i.e. the gold plus) to the right for
--- all structures. This is primarily a concern during to gem selection, as the
--- Downgrade button needs to be placed next to Combine.
-
-setobjecttype ('abilities')
+-- all structures. This is primarily a concern during to gem selection, as
+-- the Downgrade button needs to be placed next to Combine.
 
 -- All uncommented abilities need their button position shifted to the right.
 -- Commented abilities need no change.
@@ -131,25 +132,27 @@ local abilities = {
 	'A068' -- Stone of Bryvx
 }
 
-for _, ability in ipairs (abilities) do
-	if objectexists (ability) then
-		modifyobject (ability)
+for _, id in ipairs (abilities) do
+	local ability = objects [id]
 
-		if currentobject () == ability then
-			-- Art:
-			makechange (current, 'abpx', 3) -- Button Position (X)
-		end
+	if ability then
+		-- Art: Button Position (X)
+		ability.abpx = {
+			type = 'integer',
+			value = 3
+		}
 	end
 end
 
-local ability = 'A02X' -- Lucky Charm
-
+-- Lucky Charm
+--
 -- Shift this button to the left.
-if objectexists (ability) then
-	modifyobject (ability)
+if objects ['A02X'] then
+	local ability = objects ['A02X']
 
-	if currentobject () == ability then
-		-- Art:
-		makechange (current, 'abpx', 2) -- Button Position (X)
-	end
+	-- Art: Button Position (X)
+	ability.abpx = {
+		type = 'integer',
+		value = 2
+	}
 end

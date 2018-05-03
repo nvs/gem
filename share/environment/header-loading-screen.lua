@@ -1,32 +1,32 @@
 local map = ...
 
 local function color_red (text)
-	return '|cff' .. map.globals.Color__RED.value .. text .. '|r'
+	return '|cff' .. map.globals.Color__RED .. text .. '|r'
 end
 
 local function color_gold (text)
-	return '|cff' .. map.globals.Color__GOLD.value .. text .. '|r'
+	return '|cff' .. map.globals.Color__GOLD .. text .. '|r'
 end
 
 local function color_link (text)
-	return '|cff' .. map.globals.Color__LINK.value .. text .. '|r'
+	return '|cff' .. map.globals.Color__LINK .. text .. '|r'
 end
 
-local maintainer = color_red (map.globals.Gem__MAINTAINER.value)
+local maintainer = color_red (map.globals.Gem__MAINTAINER)
 
-local forum = color_link (map.globals.Gem__WEBSITE_FORUM.value)
-local discord = color_link (map.globals.Gem__WEBSITE_DISCORD.value)
-local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY.value)
+local forum = color_link (map.globals.Gem__WEBSITE_FORUM)
+local discord = color_link (map.globals.Gem__WEBSITE_DISCORD)
+local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY)
 
-map.settings.map.description = string.format ([[
+map.information.map.description = string.format ([[
 %s by %s
 - %s
 - %s
 - %s]],
-	map.globals.Gem__NAME_FULL.value,
+	map.globals.Gem__NAME_FULL,
 	maintainer, repository, discord, forum)
 
-map.settings.map.loading.text = string.format ([[
+map.information.loading.text = string.format ([[
 An updated version of Gem Tower Defense,
 a map originally created by %s.
 

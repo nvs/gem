@@ -1,6 +1,7 @@
--- # Difficulty Armor Changes
+local map = ...
+local objects = map.objects
 
-setobjecttype ('units')
+-- # Difficulty Armor Changes
 
 local units = {
 	[1] = { 'h00D', 12 },
@@ -56,16 +57,17 @@ local units = {
 	[51] = { 'H04B', 40 }
 }
 
-for level, pair in ipairs (units) do
-	local unit = pair [1]
+for _, pair in ipairs (units) do
+	local id = pair [1]
 	local armor = pair [2]
 
-	if objectexists (unit) then
-		modifyobject (unit)
+	local unit = objects [id]
 
-		if currentobject () == unit then
-			-- Combat:
-			makechange (current, 'udef', armor) -- Defense Base:
-		end
+	if unit then
+		-- Combat: Defense Base
+		unit.udef = {
+			type = 'integer',
+			value = armor
+		}
 	end
 end

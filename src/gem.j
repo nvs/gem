@@ -4,6 +4,7 @@
 // to be referenced elsewhere.
 globals
 	constant string Gem__NAME = "Gem TD+"
+	constant string Gem__NAME_PATH = "Gem TD Plus"
 	constant string Gem__NAME_FULL = "Gem Tower Defense Plus"
 
 	constant string Gem__MAINTAINER = "NVS"

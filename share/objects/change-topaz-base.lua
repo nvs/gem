@@ -1,6 +1,7 @@
--- # Change Topaz Base
+local map = ...
+local objects = map.objects
 
-setobjecttype ('units')
+-- # Change Topaz Base
 
 local topazes = {
 	'e000', -- Chipped
@@ -11,36 +12,72 @@ local topazes = {
 	'e005'  -- Great
 }
 
-if objectexists ('hgtw') then
-	for index, topaz in ipairs (topazes) do
-		if objectexists (topaz) then
-			createobject ('hgtw', topaz)
-			modifyobject (topaz)
+for index, id in ipairs (topazes) do
+	local topaz = {
+		type = 'unit',
+		base = 'hgtw'
+	}
 
-			if currentobject () == topaz then
-				-- Art:
-				makechange (current, 'uimz', 60.00) -- Projectile Impact - Z
-				makechange (current, 'ulpz', 60.00) -- Projectile Launch - Z
+	objects [id] = topaz
 
-				-- Combat:
+	-- ## Art
 
-				local range = 500.00
+	-- Projectile Impact - Z
+	topaz.uimz = {
+		type = 'unreal',
+		value = 60
+	}
 
-				if index == 5 then -- Perfect
-					range = 600.00
-				elseif index == 6 then -- Great
-					range = 700.00
-				end
+	-- Projectile Launch - Z
+	topaz.ulpz = {
+		type = 'unreal',
+		value = 60
+	}
 
-				makechange (current, 'uacq', range) -- Acquisition Range
+	-- ## Combat
+	local range = 500
 
-				-- Combat - Attack 1:
-				makechange (current, 'ubs1', 0.540) -- Animation Backswing Point
-				makechange (current, 'udp1', 0.460) -- Animation Damage Point
-				makechange (current, 'uma1', 0.10) -- Projectile Arc
-				makechange (current, 'ua1z', 900.00) -- Projectile Speed
-				makechange (current, 'ua1r', range) -- Range
-			end
-		end
+	if index == 5 then -- Perfect
+		range = 600
+	elseif index == 6 then -- Great
+		range = 700
 	end
+
+	-- Acquisition Range
+	topaz.uacq = {
+		type = 'unreal',
+		value = range
+	}
+
+	-- ### Combat - Attack 1
+
+	-- Animation Backswing Point
+	topaz.ubs1 = {
+		type = 'unreal',
+		value = 0.54
+	}
+
+	-- Animation Damage Point
+	topaz.udp1 = {
+		type = 'unreal',
+		value = 0.46
+	}
+
+	-- Projectile Arc
+	topaz.uma1 = {
+		type = 'unreal',
+		value = 0.1
+	}
+
+	-- Projectile Speed
+	topaz.ua1z = {
+		type = 'unreal',
+		value = 900
+	}
+
+	-- Rarnge
+	topaz.ua1r = {
+		type = 'unreal',
+		value = range
+	}
 end

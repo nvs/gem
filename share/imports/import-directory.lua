@@ -1,1 +1,3 @@
-importdirectory ('share/imports/map')
+local map = ...
+
+map.imports ['share/imports/map'] = true

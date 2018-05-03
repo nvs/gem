@@ -1,55 +1,54 @@
+local map = ...
+local globals = map.globals
+
 -- # Upkeep
 
-local name_version = string.format ('%s %s',
-	globals.Gem__NAME.value, globals.Gem_Version___STRING.value)
+local FrameDef = map.constants.interface.FrameDef or {}
+map.constants.interface.FrameDef = FrameDef
 
 local function color_link (text)
-	return '|cff' .. globals.Color__LINK.value .. text .. '|r'
+	return '|cff' .. globals.Color__LINK .. text .. '|r'
 end
 
-local forum = color_link (globals.Gem__WEBSITE_FORUM.value)
-local discord = color_link (globals.Gem__WEBSITE_DISCORD.value)
-local repository = color_link (globals.Gem__WEBSITE_REPOSITORY.value)
-
-local white = '|cff' .. globals.Color__WHITE.value
+local white = '|cff' .. globals.Color__WHITE
 
 local function color_white (text)
 	return white .. text .. '|r'
 end
 
 local function color_red (text)
-	return '|cff' .. globals.Color__RED.value .. text .. '|r'
+	return '|cff' .. globals.Color__RED .. text .. '|r'
 end
-
-local maintainer = color_red (globals.Gem__MAINTAINER.value)
 
 local function color_gold (text)
-	return '|cff' .. globals.Color__GOLD.value .. text .. '|r'
+	return '|cff' .. globals.Color__GOLD .. text .. '|r'
 end
+
+local forum = color_link (globals.Gem__WEBSITE_FORUM)
+local discord = color_link (globals.Gem__WEBSITE_DISCORD)
+local repository = color_link (globals.Gem__WEBSITE_REPOSITORY)
+local maintainer = color_red (globals.Gem__MAINTAINER)
 
 -- Text - General 'No Upkeep'
 --
--- We need to split this, or we cannot see build metadata in `1.29.0`.
-local index = name_version:find ('-')
-
-setvalue ('FrameDef', 'UPKEEP_NONE', color_gold (
-	-- We add a tab character as this will not be rendered for players to see,
-	-- but will be considered when breaking text over multiple lines.
-	name_version:gsub ('-', '\t-')))
+-- We need to split this, or we cannot see build metadata in `1.29.0`.  A tab
+-- character will not be rendered for players to see, but will be considered
+-- when breaking text over multiple lines.
+FrameDef.UPKEEP_NONE = color_gold (map.header.name:gsub ('-', '\t-'))
 
 -- Text - General 'Gold Income Rate:'
-setvalue ('FrameDef', 'COLON_GOLD_INCOME_RATE',
-	color_white ('Maintained by ') .. maintainer .. white .. ' —')
+FrameDef.COLON_GOLD_INCOME_RATE =
+	color_white ('Maintained by ') .. maintainer .. white .. ' —'
 
 -- Text - General - 'Upkeep is determined...'
-setvalue ('FrameDef', 'RESOURCE_UBERTIP_UPKEEP',
+FrameDef.RESOURCE_UBERTIP_UPKEEP =
 	'- ' .. repository .. '|n' ..
 	'- ' .. discord .. '|n' ..
-	'- ' .. forum)
+	'- ' .. forum
 
 -- Text - General - '|n%d-%d Food...'
 --
 -- An empty string does not work here. This ensures that nothing is displayed
 -- by this field, which typically lists food ranges and associated income
 -- values.
-setvalue ('FrameDef', 'RESOURCE_UBERTIP_UPKEEP_INFO', '|r')
+FrameDef.RESOURCE_UBERTIP_UPKEEP_INFO = '|r'

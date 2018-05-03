@@ -1,20 +1,13 @@
 return {
-	flags = {
-		debug = true
-	},
-
-	input = {
-		map = 'share/maps/Gem TD Plus.w3x'
-	},
+	input = 'share/maps/Gem TD Plus.w3x',
 
 	output = {
 		directory = 'tmp',
-		name = 'Gem TD Plus'
+		name = 'Gem TD Plus.w3x'
 	},
 
-	environment = {
-		'share/environment/version.lua',
-		'share/environment/header-loading-screen.lua'
+	flags = {
+		debug = true
 	},
 
 	patch = {
@@ -152,12 +145,26 @@ return {
 		'src/config.j'
 	},
 
-	imports = {
-		'share/imports/import-directory.lua',
-		'share/imports/import-script.lua'
+	pjass = {
+		'pjass',
+
+		'-rb',
+		'+shadow',
+		'+filter',
+		'-nosyntaxerror',
+		'-nosemanticerror'
 	},
 
-	objects = {
+	build = {
+		'share/environment/version.lua',
+		'share/environment/header-loading-screen.lua',
+
+		'share/imports/import-directory.lua',
+
+		'share/constants/gameplay/gem.lua',
+		'share/constants/interface/gem.lua',
+		'share/constants/interface/upkeep.lua',
+
 		'share/objects/unit-event.lua',
 		'share/objects/update-map-information.lua',
 		'share/objects/fix-lumber-costs.lua',
@@ -177,28 +184,5 @@ return {
 		'share/objects/change-topaz-base.lua',
 		'share/objects/unit-state.lua',
 		'share/objects/difficulty-armor-changes.lua'
-	},
-
-	constants = {
-		gameplay = {
-			'share/constants/gameplay/gem.lua'
-		},
-
-		interface = {
-			'share/constants/interface/gem.lua',
-			'share/constants/interface/upkeep.lua'
-		}
-	},
-
-	prefix = 'wine',
-
-	pjass = {
-		options = {
-			'-rb',
-			'+shadow',
-			'+filter',
-			'-nosyntaxerror',
-			'-nosemanticerror'
-		}
 	}
 }

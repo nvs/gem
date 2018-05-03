@@ -1,14 +1,14 @@
+local map = ...
+local objects = map.objects
+
 -- # Combine Button
 
-setobjecttype ('abilities')
+local ability = objects ['A007']
 
-local ability = 'A007'
-
-if objectexists (ability) then
-	modifyobject (ability)
-
-	if currentobject () == ability then
-		-- Art:
-		makechange (current, 'abpx', 2) -- Button Position (X)
-	end
+if ability then
+	-- Art: Button Position (X)
+	ability.abpx = {
+		type = 'integer',
+		value = 2
+	}
 end

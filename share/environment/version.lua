@@ -3,73 +3,34 @@ local Shell = require ('map.shell')
 
 local map = ...
 
-local version = ''
-local git_stdout = Path.temporary_name ()
+local version
 
-local status = Shell.execute {
-	command = Shell.escape_arguments ('git', 'describe'),
-	stdout = Shell.escape_argument (git_stdout),
-	stderr = '&1'
-}
+do
+	local stdout = Path.temporary_path ()
 
-if status then
-	local file = io.open (git_stdout, 'rb')
+	local status = Shell.execute {
+		command = Shell.escape ('git', 'describe'),
+		stdout = Shell.escape (stdout),
+		stderr = '&1'
+	}
 
-	if file then
-		version = file:read ():sub (2):gsub ('%-g', '+g', 1)
+	assert (status)
 
-		-- Create a global variable.  This will obviously not be in the
-		-- scope of the Jass scripts.  However, Grimex will see it.
-		map.globals.Gem_Version___STRING = {
-			jass_type = 'string',
-			value = version
-		}
+	local file = assert (io.open (stdout, 'rb'))
+	version = file:read ():sub (2):gsub ('%-g', '+g', 1)
+	file:close ()
 
-		file:close ()
-	end
-else
-	return false
+	os.remove (stdout)
 end
 
-os.remove (git_stdout)
-
-map.settings.map.name = map.globals.Gem__NAME.value .. ' ' .. version
+map.settings.version = version
+map.header.name = map.globals.Gem__NAME .. ' ' .. version
+map.information.map.name = map.header.name
 
 -- It is necessary to replace the '+' character in the file name as it will
 -- cause the map to not load into the lobby.
-map.settings.output.name =
-	map.settings.output.name .. ' ' .. version:gsub ('%+', '_')
+map.settings.output.name = string.format ('%s %s.w3x',
+	map.globals.Gem__NAME_PATH, version:gsub ('%+', '_'))
 
--- The subtitle is the second line, and is larger. Gem uses that to display
--- the full map name. The first, smaller line, is for the version.
-map.settings.map.loading.subtitle = map.globals.Gem__NAME_FULL.value
-map.settings.map.loading.title = 'Version ' .. version
-
-if map.command == 'imports' then
-	local Settings = require ('map.settings')
-
-	-- Need to force this behavior sooner in order to have access to the output
-	-- script path.
-	Settings.finalize (map.settings)
-
-	local import_path = Path.join (
-		map.settings.output.directory, 'import-script-version.lua')
-	local import = io.open (import_path, 'wb')
-
-	if import then
-		import:write (string.format ('importfile (%q, %q)',
-			map.settings.output.script, 'war3map.j'))
-		import:close ()
-
-		-- Ensure cleanup.
-		table.insert (map.cleanup, import_path)
-
-		-- Replace the existing script import file.
-		for index, file in ipairs (map.settings.imports) do
-			if file == 'share/imports/import-script.lua' then
-				map.settings.imports [index] = import_path
-				break
-			end
-		end
-	end
-end
+map.information.loading.subtitle = map.globals.Gem__NAME_FULL
+map.information.loading.title = 'Version ' .. version
