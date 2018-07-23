@@ -1,64 +1,177 @@
+local map = ...
+local objects = map.objects
+
 -- # Unit Stun
 
-setobjecttype ('buffs')
-
 -- ## Stun Buff
-if objectexists ('BSTN') then
-	createobject ('BSTN', 'USSB')
+objects ['USSB'] = {
+	type = 'buff',
+	base = 'BSTN',
 
-	if currentobject () == 'USSB' then
-		-- Art:
-		makechange (current, 'ftat', '') -- Target
-		makechange (current, 'fta0', '') -- Target Attachment Point 1
+	-- ### ART
 
-		-- Text:
-		makechange (current, 'fnsf', '(Unit Stun)') -- Editor Suffix
-		makechange (current, 'fnam', 'Stun Buff') -- Name (Editor Only)
-		makechange (current, 'ftip', 'Stunned') -- Tooltip
-		makechange (current, 'fube', -- Tooltip - Extended
-			'This unit is stunned: it cannot move or perform actions.')
-	end
-end
+	-- Target
+	ftat = {
+		type = 'string',
+		value = ''
+	},
 
-setobjecttype ('abilities')
+	-- Target Attachment Point 1
+	fta0 = {
+		type = 'string',
+		value = ''
+	},
+
+	-- ### Text
+
+	-- Editor Suffix
+	fnsf = {
+		type = 'string',
+		value = '(Unit Stun)'
+	},
+
+	-- Name (Editor Only)
+	fnam = {
+		type = 'string',
+		value = 'Stun Buff'
+	},
+
+	-- Tooltip
+	ftip = {
+		type = 'string',
+		value = 'Stunned'
+	},
+
+	-- Tooltip - Extended
+	fube = {
+		type = 'string',
+		value = 'This unit is stunned: it cannot move or perform actions.'
+	}
+}
 
 -- ## Stun Ability
 --
 -- Seems like a good choice. Alternatives include Storm Bolt or Bash, but
 -- Firebolt seems to be more common.
-if objectexists ('ACfb') then
-	createobject ('ACfb', 'USSA')
+objects ['USSA'] = {
+	type = 'ability',
+	base = 'ACfb',
 
-	if currentobject () == 'USSA' then
-		-- Art:
-		makechange (current, 'amat', '') -- Missile Art
-		makechange (current, 'amsp', 0) -- Missile Speed
+	-- ## Art
 
-		-- Data/Stats:
-		makechange (current, 'abuf', 1, 'USSB') -- Buffs
+	-- Missile Art
+	amat = {
+		type = 'string',
+		value = ''
+	},
 
-		-- So Nestharus claims this is the maximum range. No clue if this is
-		-- true, but let's go with it. The alternative being the diagnol of the
-		-- maximum map size (480 x 480).
-		makechange (current, 'aran', 1, 92083) -- Cast Range
-		makechange (current, 'acdn', 1, 0.00) -- Cooldown
-		makechange (current, 'Htb1', 1, 0) -- Damage
-		makechange (current, 'adur', 1, 0.00) -- Duration (Normal)
-		makechange (current, 'ahdu', 1, 0.00) -- Duration (Hero)
-		makechange (current, 'alev', 1) -- Levels
-		makechange (current, 'amcs', 1, 0) -- Mana Cost
-		makechange (current, 'arac', 0) -- Race
+	-- Missile Speed
+	amsp = {
+		type = 'integer',
+		value = 0
+	},
 
-		-- This is needed to be able to stun units with spell immunity.
-		makechange (current, 'arlv', 6) -- Required Level
+	-- ### Data/Stats
 
-		-- This is needed to stun all types of units.
-		makechange (current, 'atar', 1, -- Targets Allowed
-			'invulnerable,vulnerable')
+	-- Buffs
+	abuf = {
+		type = 'string',
+		values = {
+			[1] = 'USSB'
+		}
+	},
 
-		-- Text:
-		makechange (current, 'ansf', '(Unit Stun)') -- Editor Suffix
-		makechange (current, 'anam', 'Stun Ability') -- Name
-		makechange (current, 'aord', 'firebolt') -- Order String - Use/Turn On
-	end
-end
+	-- Cast Range
+	--
+	-- So Nestharus claims this is the maximum range. No clue if this is true,
+	-- but let's go with it. The alternative being the diagnol of the maximum
+	-- map size (480 x 480).
+	aran = {
+		type = 'unreal',
+		values = {
+			[1] = 92083
+		}
+	},
+
+	-- Cooldown
+	acdn = {
+		type = 'unreal',
+		values = {
+			[1] = 0
+		}
+	},
+
+	-- Duration (Normal)
+	adur = {
+		type = 'unreal',
+		values = {
+			[1] = 0
+		}
+	},
+
+	-- Duration (Hero)
+	ahdu = {
+		type = 'unreal',
+		values = {
+			[1] = 0
+		}
+	},
+
+	-- Levels
+	alev = {
+		type = 'integer',
+		value = 1
+	},
+
+	-- Mana Cost
+	amcs = {
+		type = 'integer',
+		values = {
+			[1] = 0
+		}
+	},
+
+	-- Race
+	arac = {
+		type = 'string',
+		values = {
+			[1] = 'commoner'
+		}
+	},
+
+	-- Required Level
+	--
+	-- This is needed to be able to stun units with spell immunity.
+	arlv = {
+		type = 'integer',
+		value = 6
+	},
+
+	-- Targets Allowed
+	--
+	-- This is needed to stun all types of units.
+	atar = {
+		type = 'string',
+		value = 'invulnerable,vulnerable'
+	},
+
+	-- ### Text
+
+	-- Editor Suffix
+	ansf = {
+		type = 'string',
+		value = '(Unit Stun)'
+	},
+
+	-- Name
+	anam = {
+		type = 'string',
+		value = 'Stun Ability'
+	},
+
+	-- Order String - Use/Turn On
+	aord = {
+		type = 'string',
+		value = 'firebolt'
+	}
+}

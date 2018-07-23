@@ -1,3 +1,6 @@
+local map = ...
+local objects = map.objects
+
 -- Gold Mine Buttons
 -- =================
 --
@@ -7,8 +10,6 @@
 --
 -- The solution is to push all the extra chance related buttons onto the
 -- middle row. All other buttons remain in the existing positions.
-
-setobjecttype ('units')
 
 -- Shift the following buttons left one. Or, put another way, simply have
 -- them begin displaying from the left edge.
@@ -36,28 +37,38 @@ local buttons = {
 	}
 }
 
-for index, button in ipairs (buttons) do
-	if objectexists (button.id) then
-		modifyobject (button.id)
+for _, button in ipairs (buttons) do
+	local unit = objects [button.id]
 
-		if currentobject () == button.id then
-			-- Art:
-			makechange (current, 'ubpx', button.x) -- Button Position (X)
-			makechange (current, 'ubpy', button.y) -- Button Position (Y)
+	if unit then
+		-- # Art
 
-			if button.icon then
-				makechange (current, 'uico', button.icon) -- Icon - Normal
-			end
+		-- Button Position (X)
+		unit.ubpx = {
+			type = 'integer',
+			value = button.x
+		}
+
+		-- Button Position (Y)
+		unit.ubpy = {
+			type = 'integer',
+			value = button.y
+		}
+
+		if button.icon then
+			-- Icon - Normal
+			unit.uico = {
+				type = 'string',
+				value = button.icon
+			}
 		end
 	end
 end
 
-setobjecttype ('abilities')
-
 -- Once the upgrades are maximized, special versions of the buttons are used.
 -- However, due to both being based upon Moon Glaive, graphical issues are
 -- encountered. Basing them upon Evasion seems to work better.
-local buttons = {
+buttons = {
 	-- Gem Quality
 	{
 		id = 'A00E',
@@ -74,16 +85,28 @@ local buttons = {
 -- Deleting an object does not seem possible. However, it appears an object
 -- can be overwritten, preserving existing information. We switch to using
 -- Evasion as a base.
-if objectexists ('ACev') then
-	for index, button in ipairs (buttons) do
-		createobject ('ACev', button.id)
+for _, button in ipairs (buttons) do
+	local ability = objects [button.id]
 
-		if currentobject () == button.id then
-			-- Art:
-			makechange (current, 'aart', button.icon) -- Icon - Normal
+	if ability then
+		ability.base = 'ACev'
 
-			-- Data/Stats:
-			makechange (current, 'Eev1', 1, 0) -- Chance to Evade
-		end
+		-- # Art
+
+		-- Icon - Normal
+		ability.aart = {
+			type = 'string',
+			value = button.icon
+		}
+
+		-- # Data/Stats
+
+		-- Chance to Evade
+		ability.Eev1 = {
+			type = 'unreal',
+			values = {
+				[1] = 0
+			}
+		}
 	end
 end

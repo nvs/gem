@@ -1,9 +1,10 @@
+local map = ...
+local objects = map.objects
+
 -- # Slate Attack Range (Melee)
 --
 -- Make all slates have the same attack range for the 'melee' style attack.
 -- For slates with a 'melee' attack, it is always the first attack type.
-
-setobjecttype ('units')
 
 local slates = {
 	'n000', -- Air
@@ -21,13 +22,14 @@ local slates = {
 	'n00C'  -- Damage
 }
 
-for _, slate in ipairs (slates) do
-	if objectexists (slate) then
-		modifyobject (slate)
+for _, id in ipairs (slates) do
+	local slate = objects [id]
 
-		if currentobject () == slate then
-			-- Combat:
-			makechange (current, 'ua1r', '128') -- Attack 1 - Range
-		end
+	if slate then
+		-- Combat: Attack 1 - Range
+		slate.ua1r = {
+			type = 'integer',
+			value = 128
+		}
 	end
 end

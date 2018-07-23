@@ -1,6 +1,7 @@
--- # Make Slates Repairable
+local map = ...
+local objects = map.objects
 
-setobjecttype ('units')
+-- # Make Slates Repairable
 
 local slates = {
 	'n000', -- Air
@@ -20,12 +21,13 @@ local slates = {
 	'n00F'  -- Viper
 }
 
-for _, slate in ipairs (slates) do
-	if objectexists (slate) then
-		modifyobject (slate)
+for _, id in ipairs (slates) do
+	local unit = objects [id]
 
-		if currentobject () == slate then
-			makechange (current, 'utyp', 'mechanical,standon')
-		end
+	if unit then
+		unit.utyp = {
+			type = 'string',
+			value = 'mechanical,standon'
+		}
 	end
 end

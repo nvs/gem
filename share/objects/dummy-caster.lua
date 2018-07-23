@@ -1,41 +1,126 @@
+local map = ...
+local objects = map.objects
+
 -- # Dummy Caster
 
-setobjecttype ('units')
-
 -- This base object is used by both Wurst and Nestharus.
-if objectexists ('nfr2') then
-	createobject ('nfr2', 'DUCA')
+objects ['DUCA'] = {
+	type = 'unit',
+	base = 'nfr2',
 
-	if currentobject () == 'DUCA' then
-		-- Abilities:
-		makechange (current, 'uabi', 'Aloc,Avul') -- Normal
+	-- ## Abilities
 
-		-- Art:
-		makechange (current, 'uble', 0.00) -- Animation - Blend Time
-		makechange (current, 'ucbs', 0.00) -- Animation - Cast Backswing
-		makechange (current, 'ucpt', 0.00) -- Animation - Cast Point
-		makechange (current, 'uubs', '') -- Ground Texture
-		makechange (current, 'umxp', 0.00) -- Maximum Pitch Angle (Degress)
-		makechange (current, 'umxr', 0.00) -- Minimum Pitch Angel (Degrees)
-		makechange (current, 'usca', 0.01) -- Scaling Value
-		makechange (current, 'ushb', '') -- Shadow Texture (Building)
+	-- Normal
+	uabi = {
+		type = 'string',
+		value = 'Aloc,Avul'
+	},
 
-		-- Editor:
-		makechange (current, 'uine', 0) -- Placeable In Editor
+	-- ## Art
 
-		-- Pathing:
-		makechange (current, 'ucol', 0.00) -- Collision Size
-		makechange (current, 'upat', '') -- Pathing Map
+	-- Animation - Blend Time
+	uble = {
+		type = 'real',
+		value = 0
+	},
 
-		-- Sound:
-		makechange (current, 'usnd', '') -- Unit Sound Set
+	-- Animation - Cast Backswing
+	ubcs = {
+		type = 'unreal',
+		value = 0
+	},
 
-		-- Stats:
-		makechange (current, 'ufoo', 0) -- Food Cost
-		makechange (current, 'uhom', 1) -- Hide Minimap Display
+	-- Animation - Cast Point
+	ucpt = {
+		type = 'unreal',
+		value = 0
+	},
 
-		-- Text:
-		makechange (current, 'unsf', '') -- Editor Suffix
-		makechange (current, 'unam', 'Dummy Caster') -- Name
-	end
-end
+	-- Ground Texture
+	uubs = {
+		type = 'string',
+		value = ''
+	},
+
+	-- Maximum Pitch Angle (Degrees)
+	umxp = {
+		type = 'real',
+		value = 0
+	},
+
+	-- Minimum Pitch Angle (Degrees)
+	umxr = {
+		type = 'real',
+		value = 0
+	},
+
+	-- Scaling Value
+	usca = {
+		type = 'real',
+		value = 0.01
+	},
+
+	-- Shadow Texture (Building)
+	ushb = {
+		type = 'string',
+		value = ''
+	},
+
+	-- ## Editor
+
+	-- Placeable In Editor
+	uine = {
+		type = 'integer',
+		value = 0
+	},
+
+	-- ## Pathing
+
+	-- Collision Size
+	ucol = {
+		type = 'unreal',
+		value = 0
+	},
+
+	-- Pathing Map
+	upat = {
+		type = 'string',
+		value = ''
+	},
+
+	-- ## Sound
+
+	-- Unit Sound Set
+	usnd = {
+		type = 'string',
+		value = ''
+	},
+
+	-- ## Stats
+
+	-- Food Cost
+	ufoo = {
+		type = 'integer',
+		value = 0
+	},
+
+	-- Hide Minimap Display
+	uhom = {
+		type = 'integer',
+		value = 1
+	},
+
+	-- ## Text
+
+	-- Editor Suffix
+	unsf = {
+		type = 'string',
+		value = ''
+	},
+
+	-- Name
+	unam = {
+		type = 'string',
+		value = 'Dummy Caster'
+	}
+}

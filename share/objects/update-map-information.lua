@@ -1,37 +1,40 @@
--- # Update Map Name
---
--- This is needed to maintain the current map name for objects in the map that
--- make use of it.
+local map = ...
+local objects = map.objects
 
-local name_version = string.format ('%s %s',
-	globals.Gem__NAME.value, globals.Gem_Version___STRING.value)
+-- Middle fountain.
+if objects ['h027'] then
+	local unit = objects ['h027']
 
-setobjecttype ('units')
-
--- ## Middle Fountain
-if objectexists ('h027') then
-	modifyobject ('h027')
-
-	if currentobject () == 'h027' then
-		makechange (current, 'unam', string.format ('|cfffed312%s by %s|r',
-			name_version, globals.Gem__MAINTAINER.value))
-	end
+	unit.unam = {
+		type = 'string',
+		value = string.format ('|cfffed312%s by %s|r',
+			map.header.name, map.globals.Gem__MAINTAINER)
+	}
 end
 
-setobjecttype ('abilities')
+-- Miner information.
+if objects ['A06Z'] then
+	local ability = objects ['A06Z']
 
--- ## Miner Information
-if objectexists ('A06Z') then
-	modifyobject ('A06Z')
+	-- Tip
+	ability.atp1 = {
+		type = 'string',
+		values = {
+			[1] = '|cfffed312' .. map.header.name .. '|r'
+		}
+	}
 
-	if currentobject () == 'A06Z' then
-		makechange (current, 'atp1', 1, '|cfffed312' .. name_version .. '|r')
-		makechange (current, 'aub1', 1,
-			'See |c00fed312Information (F9)|r for latest changelog.|n|n' ..
-			'|c00fed312Commands:|r|n' ..
-			'|c00ff33ff-air|r Displays air rounds.|n' ..
-			'|c00ff33ff-debug|r Attempt to recover from a variety of issues.|n' ..
-			'|c00ff33ff-zoom value|r Sets the camera to the specified value. ' ..
-			'The default Warcraft 3 zoom is `1650`.')
-	end
+	-- Ubertip
+	ability.aub1 = {
+		type = 'string',
+		values = {
+			[1] = 'See |c00fed312Information (F9)|r for latest changelog.|n|n'
+				.. '|c00fed312Commands:|r|n'
+				.. '|c00ff33ff-air|r Displays air rounds.|n'
+				.. '|c00ff33ff-debug|r Attempt to recover'
+					..' from a variety of issues.|n'
+				.. '|c00ff33ff-zoom value|r Sets the camera to the specified '
+					.. 'value. The default Warcraft 3 zoom is `1650`.'
+		}
+	}
 end

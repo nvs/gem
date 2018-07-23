@@ -1,12 +1,16 @@
+local map = ...
+local objects = map.objects
+
 -- # Anti-Stuck Cooldown
 
-setobjecttype ('abilities')
+if objects ['A02Y'] then
+	local ability = objects ['A02Y']
 
-if objectexists ('A02Y') then
-	modifyobject ('A02Y')
-
-	if currentobject () == 'A02Y' then
-		-- Data/Stats:
-		makechange (current, 'acdn', 1, 5.0) -- Cooldown
-	end
+	-- Data/Stats: Cooldown
+	ability.acdn = {
+		type = 'unreal',
+		values = {
+			[1] = 5.0
+		}
+	}
 end

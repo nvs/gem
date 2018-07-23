@@ -1,14 +1,20 @@
+local map = ...
+local globals = map.globals
+local objects = map.objects
+
 -- # Unit State
 --
 -- Provides abilities to assist in setting `UNIT_STATE_MAX_LIFE` and
 -- `UNIT_STATE_MAX_MANA`. For more details, see the Unit State source file.
 
-setobjecttype ('abilities')
+local function to_code (value)
+	return string.pack ('>I4', value)
+end
 
-local life = globals.Unit_State___MAXIMUM_LIFE.value:sub (2, -2)
-local mana = globals.Unit_State___MAXIMUM_MANA.value:sub (2, -2)
+local life = to_code (globals.Unit_State___MAXIMUM_LIFE)
+local mana = to_code (globals.Unit_State___MAXIMUM_MANA)
 
-local powers = tonumber (globals.Unit_State___MAXIMUM_POWER.value)
+local powers = globals.Unit_State___MAXIMUM_POWER
 local levels = 2 * powers + 3
 
 local abilities = {
@@ -25,29 +31,55 @@ local abilities = {
 	}
 }
 
-for ability, info in pairs (abilities) do
-	if objectexists (info.base) then
-		createobject (info.base, ability)
+for id, info in pairs (abilities) do
+	local ability = {
+		type = 'ability',
+		base = info.base
+	}
 
-		if currentobject () == ability then
-			-- Stats:
-			makechange (current, 'aite', 0) -- Item Ability
-			makechange (current, 'alev', levels) -- Levels
+	objects [id] = ability
 
-			-- Data:
-			makechange (current, info.field, 1, 0)
+	-- ## Stats
 
-			for power = 0, powers do
-				local value = math.pow (2, power)
-				local level = power + 2
+	-- Item Ability
+	ability.aite = {
+		type = 'integer',
+		value = 0
+	}
 
-				makechange (current, info.field, level, value)
-				makechange (current, info.field, powers + level + 1, -value)
-			end
+	-- Levels
+	ability.alev = {
+		type = 'integer',
+		value = levels
+	}
 
-			-- Text:
-			makechange (current, 'ansf', '') -- Editor Suffix
-			makechange (current, 'anam', info.name) -- Name
-		end
+	-- ## Data
+	ability [info.field] = {
+		type = 'integer',
+		values = {
+			[1] = 0
+		}
+	}
+
+	for power = 0, powers do
+		local value = math.pow (2, power)
+		local level = power + 2
+
+		ability [info.field].values [level] = value
+		ability [info.field].values [powers + level + 1] = -value
 	end
+
+	-- ## Text
+
+	-- Editor Suffix
+	ability.ansf = {
+		type = 'string',
+		value = ''
+	}
+
+	-- Name
+	ability.anam = {
+		type = 'string',
+		value = info.name
+	}
 end

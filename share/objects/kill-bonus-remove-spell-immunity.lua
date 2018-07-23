@@ -1,10 +1,11 @@
+local map = ...
+local objects = map.objects
+
 -- # Kill Bonus: Remove Spell Immunity
 --
 -- The third tier of kill bonuses is based upon Spell Immunity. This presents
 -- issues with the disarm system, as well as being able to swap. Other issues
 -- may exist that are not recognized.
-
-setobjecttype ('abilities')
 
 local abilities = {
 	{ 'A026', 7, 'Honored', 1},
@@ -16,27 +17,63 @@ local abilities = {
 }
 
 for _, ability in ipairs (abilities) do
-	if objectexists ('ACac') then
-		createobject ('ACac', ability [1])
+	objects [ability [1]] = {
+		type = 'ability',
+		base = 'ACac',
 
-		if currentobject () == ability [1] then
-			-- Art:
-			makechange (current, 'aart', -- Icon - Normal
-				'ReplaceableTextures\\CommandButtons\\BTN3M' ..
-				ability [4] .. '.blp')
-			makechange (current, 'abpx', 2) -- Button Position - Normal (X)
-			makechange (current, 'abpy', 1) -- Button Position - Normal (Y)
+		-- # Art
 
-			-- Data/Stats:
-			makechange (current, 'atar', 1, -- Targets Allowed
-				'none')
+		-- Icon - Normal
+		aart = {
+			type = 'string',
+			value = 'ReplaceableTextures\\CommandButtons\\BTN3M'
+				.. ability [4] .. '.blp'
+		},
 
-			-- Text:
-			makechange (current, 'anam',
-				'Award ' .. ability [2] .. ' xx')
-			makechange (current, 'atp1', 1, -- Tooltip - Normal
-				'|cffff00ff' .. ability [3] .. '|r')
-			makechange (current, 'aub1', 1, '') -- Toolip - Normal - Extended
-		end
-	end
+		-- Button Position - Normal (X)
+		abpx = {
+			type = 'integer',
+			value = 2
+		},
+
+		-- Button Position - Normal (Y)
+		abpy = {
+			type = 'integer',
+			value = 1
+		},
+
+		-- # Data/Stats
+
+		-- Targets Allowed
+		atar = {
+			type = 'string',
+			values = {
+				[1] = 'none'
+			}
+		},
+
+		-- # Text
+
+		-- Name
+		anam = {
+			type = 'string',
+			value = 'Award ' .. ability [2] .. ' xx'
+		},
+
+		-- Tooltip - Normal
+		atp1 = {
+			type = 'string',
+			values = {
+				[1] = '|cffff00ff' .. ability [3] .. '|r'
+			}
+		},
+
+		-- Tooltip - Normal - Extended
+		aub1 = {
+			type = 'string',
+			values = {
+				[1] = ''
+			}
+		}
+	}
 end

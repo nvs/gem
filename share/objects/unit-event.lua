@@ -1,16 +1,33 @@
--- # Unit Event
+local map = ...
+local objects = map.objects
 
-setobjecttype ('abilities')
+-- Unit Event: Detect Leave.
+objects ['UEDL'] = {
+	type = 'ability',
+	base = 'Adef',
 
--- ## Detect Leave
-if objectexists ('Adef') then
-	createobject ('Adef', 'UEDL')
+	anam = {
+		type = 'string',
+		value = 'Detect Leave'
+	},
 
-	if currentobject () == 'UEDL' then
-		makechange (current, 'anam', 'Detect Leave')
-		makechange (current, 'ansf', '(Unit Event)')
-		makechange (current, 'aart', '')
-		makechange (current, 'auar', '')
-		makechange (current, 'arac', 'Other')
-	end
-end
+	ansf = {
+		type = 'string',
+		value = '(Unit Event)'
+	},
+
+	aart = {
+		type = 'string',
+		value = ''
+	},
+
+	auar = {
+		type = 'string',
+		value = ''
+	},
+
+	arac = {
+		type = 'string',
+		value = 'Other'
+	}
+}
