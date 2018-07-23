@@ -103,6 +103,7 @@ for _, button in ipairs (buttons) do
 
 		-- Chance to Evade
 		ability.Eev1 = {
+			data = 1,
 			type = 'unreal',
 			values = {
 				[1] = 0

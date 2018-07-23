@@ -82,6 +82,7 @@ objects ['UDDT'] = {
 
 	-- Movement Speed Factor
 	Slo1 = {
+		data = 1,
 		type = 'unreal',
 		values = {
 			[1] = 0
@@ -120,6 +121,7 @@ objects ['UDDA'] = {
 
 	-- Cargo Capacity
 	Car1 = {
+		data = 1,
 		type = 'integer',
 		values = {
 			[1] = 0

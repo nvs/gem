@@ -8,6 +8,12 @@ objects ['A02J'] = {
 
 	-- ## Art:
 
+	-- Icon - Normal
+	aart = {
+		type = 'string',
+		value = 'ReplaceableTextures\\CommandButtons\\BTNWirtsOtherLeg.blp',
+	},
+
 	-- Button Position (X)
 	abpx = {
 		type = 'integer',
@@ -68,6 +74,7 @@ objects ['A02J'] = {
 
 	-- Art Duration
 	Ncl4 = {
+		data = 4,
 		type = 'unreal',
 		values = {
 			[1] = 0
@@ -76,6 +83,7 @@ objects ['A02J'] = {
 
 	-- Disable Other Abilities
 	Ncl5 = {
+		data = 5,
 		type = 'integer',
 		values = {
 			[1] = 0
@@ -84,6 +92,7 @@ objects ['A02J'] = {
 
 	-- Folow Through Time
 	Ncl1 = {
+		data = 1,
 		type = 'unreal',
 		values = {
 			[1] = 1.0
@@ -92,6 +101,7 @@ objects ['A02J'] = {
 
 	-- Options
 	Ncl3 = {
+		data = 3,
 		type = 'integer',
 		values = {
 			[1] = 1
@@ -100,6 +110,7 @@ objects ['A02J'] = {
 
 	-- Target Type
 	Ncl2 = {
+		data = 2,
 		type = 'integer',
 		values = {
 			[1] = 2
@@ -128,6 +139,32 @@ objects ['A02J'] = {
 		values = {
 			[1] = 0
 		}
+	},
+
+	-- ## Stats
+
+	-- Cast Range
+	aran = {
+		type = 'unreal',
+		values = {
+			[1] = 2500
+		}
+	},
+
+	-- Effects
+	aeff = {
+		type = 'string',
+		values = {
+			[1] = ''
+		}
+	},
+
+	-- ## Techtree
+
+	-- Requires
+	areq = {
+		type = 'string',
+		value = ''
 	},
 
 	-- ## Text

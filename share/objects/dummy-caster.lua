@@ -25,7 +25,7 @@ objects ['DUCA'] = {
 	},
 
 	-- Animation - Cast Backswing
-	ubcs = {
+	ucbs = {
 		type = 'unreal',
 		value = 0
 	},

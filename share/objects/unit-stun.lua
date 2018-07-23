@@ -101,6 +101,15 @@ objects ['USSA'] = {
 		}
 	},
 
+	-- Damage
+	Htb1 = {
+		data = 1,
+		type = "unreal",
+		values = {
+			0.0
+		}
+	},
+
 	-- Duration (Normal)
 	adur = {
 		type = 'unreal',
@@ -134,9 +143,7 @@ objects ['USSA'] = {
 	-- Race
 	arac = {
 		type = 'string',
-		values = {
-			[1] = 'commoner'
-		}
+		value = 'commoner'
 	},
 
 	-- Required Level
@@ -152,7 +159,9 @@ objects ['USSA'] = {
 	-- This is needed to stun all types of units.
 	atar = {
 		type = 'string',
-		value = 'invulnerable,vulnerable'
+		values = {
+			[1] = 'invulnerable,vulnerable'
+		}
 	},
 
 	-- ### Text

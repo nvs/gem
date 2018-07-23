@@ -55,6 +55,7 @@ for id, info in pairs (abilities) do
 
 	-- ## Data
 	ability [info.field] = {
+		data = 1,
 		type = 'integer',
 		values = {
 			[1] = 0

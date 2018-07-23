@@ -1,10 +1,6 @@
 local map = ...
 local objects = map.objects
 
--- Combination Button
--- ==================
+-- # Combination Button
 
-objects ['A10R'] = {
-	type = 'ability',
-	base = 'A00R'
-}
+objects.A10R = objects.A00R
