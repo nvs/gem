@@ -3,8 +3,7 @@ local globals = map.globals
 
 -- # Upkeep
 
-local FrameDef = map.constants.interface.FrameDef or {}
-map.constants.interface.FrameDef = FrameDef
+local FrameDef = map.constants.interface.FrameDef
 
 local function color_link (text)
 	return '|cff' .. globals.Color__LINK .. text .. '|r'

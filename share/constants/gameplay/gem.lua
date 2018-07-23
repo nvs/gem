@@ -1,7 +1,6 @@
 local map = ...
 
-local Misc = map.constants.gameplay.Misc or {}
-map.constants.gameplay.Misc = Misc
+local Misc = map.constants.gameplay.Misc
 
 -- Ally Trading Increment:
 Misc.TradingIncLarge = 0 -- Control Click
