@@ -28,6 +28,6 @@ objects ['UEDL'] = {
 
 	arac = {
 		type = 'string',
-		value = 'Other'
+		value = 'other'
 	}
 }

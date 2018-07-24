@@ -13,12 +13,11 @@ local topazes = {
 }
 
 for index, id in ipairs (topazes) do
-	local topaz = {
-		type = 'unit',
-		base = 'hgtw'
-	}
+	local topaz = objects [id]
 
-	objects [id] = topaz
+	-- Ensure that the unit base is Guard Tower.  The old Naisha base (i.e.
+	-- `ensh`) could crash the game in certain instances.
+	topaz.base = 'hgtw'
 
 	-- ## Art
 
@@ -71,13 +70,13 @@ for index, id in ipairs (topazes) do
 
 	-- Projectile Speed
 	topaz.ua1z = {
-		type = 'unreal',
+		type = 'integer',
 		value = 900
 	}
 
 	-- Rarnge
 	topaz.ua1r = {
-		type = 'unreal',
+		type = 'integer',
 		value = range
 	}
 end
