@@ -33,6 +33,11 @@ for index, id in ipairs (topazes) do
 		value = 60
 	}
 
+	topaz.ushb = {
+		type = 'string',
+		value = ''
+	}
+
 	-- ## Combat
 	local range = 500
 
