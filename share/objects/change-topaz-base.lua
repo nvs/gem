@@ -74,7 +74,7 @@ for index, id in ipairs (topazes) do
 		value = 900
 	}
 
-	-- Rarnge
+	-- Range
 	topaz.ua1r = {
 		type = 'integer',
 		value = range

@@ -104,7 +104,7 @@ objects ['USSA'] = {
 	-- Damage
 	Htb1 = {
 		data = 1,
-		type = "unreal",
+		type = 'unreal',
 		values = {
 			0.0
 		}
