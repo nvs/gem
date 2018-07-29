@@ -6,10 +6,6 @@ return {
 		name = 'Gem TD Plus.w3x'
 	},
 
-	flags = {
-		debug = true
-	},
-
 	patch = {
 		'lib/patch/1.29.2/common.j',
 		'lib/patch/1.29.2/blizzard.j'
