@@ -14,10 +14,6 @@ globals
 	constant integer Gem_Selection_Slate__ABILITY = 'A03M'
 endglobals
 
-function Gem_Selection_Slate___Has takes player the_player, integer N, integer A, integer B, integer C returns boolean
-	return Gem_Selection__Get_Count (the_player, N) > 0 and (Gem_Selection__Get_Count (the_player, A) > 0 or Gem_Selection__Get_Count (the_player, B) > 0 or Gem_Selection__Get_Count (the_player, C) > 0)
-endfunction
-
 function Gem_Selection_Slate___Tag takes unit the_unit, string text, integer red, integer green, integer blue returns nothing
 	local texttag tag
 
@@ -34,6 +30,35 @@ function Gem_Selection_Slate___Tag takes unit the_unit, string text, integer red
 	call SetTextTagVisibility (tag, true)
 
 	set tag = null
+endfunction
+
+function Gem_Selection_Slate__Has takes player whom, integer slate returns boolean
+	local integer N
+	local integer A
+	local integer B
+	local integer C
+
+	set N = Gem_Slate__Get_Normal (slate)
+	if Gem_Selection__Get_Count (whom, N) <= 0 then
+		return false
+	endif
+
+	set A = Gem_Slate__Get_Flawed_A (slate)
+	if Gem_Selection__Get_Count (whom, A) > 0 then
+		return true
+	endif
+
+	set B = Gem_Slate__Get_Flawed_B (slate)
+	if Gem_Selection__Get_Count (whom, B) > 0 then
+		return true
+	endif
+
+	set C = Gem_Slate__Get_Flawed_C (slate)
+	if Gem_Selection__Get_Count (whom, C) > 0 then
+		return true
+	endif
+
+	return false
 endfunction
 
 function Gem_Selection_Slate___On_Finish takes nothing returns boolean
@@ -57,56 +82,56 @@ function Gem_Selection_Slate___On_Finish takes nothing returns boolean
 			if the_unit_type == Gem_Gems__AMETHYST_NORMAL then
 
 				// Air Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__AMETHYST_NORMAL, Gem_Gems__EMERALD_FLAWED, Gem_Gems__OPAL_FLAWED, Gem_Gems__RUBY_FLAWED) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__AIR) then
 					call Gem_Selection_Slate___Tag (the_unit, "Air Slate", 0, 255, 255)
 				endif
 
 			elseif the_unit_type == Gem_Gems__AQUAMARINE_NORMAL then
 
 				// Spell Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__AQUAMARINE_NORMAL, Gem_Gems__AMETHYST_FLAWED, Gem_Gems__DIAMOND_FLAWED, 0) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__SPELL) then
 					call Gem_Selection_Slate___Tag (the_unit, "Spell Slate", 255, 0, 255)
 				endif
 
 			elseif the_unit_type == Gem_Gems__DIAMOND_NORMAL then
 
 				// Damage Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__DIAMOND_NORMAL, Gem_Gems__OPAL_FLAWED, Gem_Gems__SAPPHIRE_FLAWED, 0) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__DAMAGE) then
 					call Gem_Selection_Slate___Tag (the_unit, "Damage Slate", 0, 255, 255)
 				endif
 
 			elseif the_unit_type == Gem_Gems__EMERALD_NORMAL then
 
 				// Poison Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__EMERALD_NORMAL, Gem_Gems__AQUAMARINE_FLAWED, Gem_Gems__OPAL_FLAWED, Gem_Gems__TOPAZ_FLAWED) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__POISON) then
 					call Gem_Selection_Slate___Tag (the_unit, "Poison Slate", 0, 255, 0)
 				endif
 
 			elseif the_unit_type == Gem_Gems__OPAL_NORMAL then
 
 				// Opal Vein Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__OPAL_NORMAL, Gem_Gems__RUBY_FLAWED, Gem_Gems__TOPAZ_FLAWED, 0) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__OPAL_VEIN) then
 					call Gem_Selection_Slate___Tag (the_unit, "Opal Vein Slate", 0, 255, 255)
 				endif
 
 			elseif the_unit_type == Gem_Gems__RUBY_NORMAL then
 
 				// Range Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__RUBY_NORMAL, Gem_Gems__AMETHYST_FLAWED, Gem_Gems__RUBY_FLAWED, Gem_Gems__TOPAZ_FLAWED) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__RANGE) then
 					call Gem_Selection_Slate___Tag (the_unit, "Range Slate", 255, 127, 0)
 				endif
 
 			elseif the_unit_type == Gem_Gems__SAPPHIRE_NORMAL then
 
 				// Slow Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__SAPPHIRE_NORMAL, Gem_Gems__AQUAMARINE_FLAWED, Gem_Gems__DIAMOND_FLAWED, Gem_Gems__EMERALD_FLAWED) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__SLOW) then
 					call Gem_Selection_Slate___Tag (the_unit, "Slow Slate", 0, 0, 255)
 				endif
 
 			elseif the_unit_type == Gem_Gems__TOPAZ_NORMAL then
 
 				// Hold Slate:
-				if Gem_Selection_Slate___Has (the_player, Gem_Gems__TOPAZ_NORMAL, Gem_Gems__AMETHYST_FLAWED, Gem_Gems__SAPPHIRE_FLAWED, 0) then
+				if Gem_Selection_Slate__Has (the_player, Gem_Slate__HOLD) then
 					call Gem_Selection_Slate___Tag (the_unit, "Hold Slate", 0, 0, 255)
 				endif
 
