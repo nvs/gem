@@ -93,7 +93,7 @@ function Spawn_Group___Stack_Pop takes nothing returns integer
 	local integer group_index
 
 	if Spawn_Group___Stack_Is_Empty () then
-		call Error ("Spawn_Group___Stack_Pop ()", "Underflow.")
+		call BJDebugMsg ("Error: Spawn_Group___Stack_Pop (): Underflow.")
 		return 0
 	endif
 
@@ -106,7 +106,7 @@ endfunction
 // Pushes the `group_index (integer)` onto the top of the stack.
 function Spawn_Group___Stack_Push takes integer group_index returns nothing
 	if Spawn_Group___Stack_Is_Full () then
-		call Error ("Spawn_Group___Stack_Push ()", "Overflow.")
+		call BJDebugMsg ("Error: Spawn_Group___Stack_Push (): Overflow.")
 		return
 	endif
 
@@ -156,7 +156,7 @@ function Spawn_Group__Set_Owner takes integer group_index, player owner returns 
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Set_Owner ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Set_Owner (): Nonexistent instance.")
 		return
 	endif
 
@@ -183,7 +183,7 @@ function Spawn_Group__Set_X takes integer group_index, real x returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Set_X ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Set_X (): Nonexistent instance.")
 		return
 	endif
 
@@ -210,7 +210,7 @@ function Spawn_Group__Set_Y takes integer group_index, real y returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Set_Y ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Set_Y (): Nonexistent instance.")
 		return
 	endif
 
@@ -237,7 +237,7 @@ function Spawn_Group__Set_Facing takes integer group_index, real facing returns 
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Set_Facing ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Set_Facing (): Nonexistent instance.")
 		return
 	endif
 
@@ -284,12 +284,12 @@ function Spawn_Group__Start takes integer group_index returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Start ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Start (): Nonexistent instance.")
 		return
 	endif
 
 	if Spawn_Group__Is_Active (group_index) then
-		call Error ("Spawn_Group__Start ()", "Group already active.")
+		call BJDebugMsg ("Error: Spawn_Group__Start (): Group already active.")
 		return
 	endif
 
@@ -315,17 +315,17 @@ function Spawn_Group__Resume takes integer group_index returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Start ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Start (): Nonexistent instance.")
 		return
 	endif
 
 	if not Spawn_Group__Is_Active (group_index) then
-		call Error ("Spawn_Group__Resume ()", "Group is inactive.")
+		call BJDebugMsg ("Error: Spawn_Group__Resume (): Group is inactive.")
 		return
 	endif
 
 	if not Spawn_Group__Is_Paused (group_index) then
-		call Error ("Spawn_Group__Resume ()", "Group is not paused.")
+		call BJDebugMsg ("Error: Spawn_Group__Resume (): Group is not paused.")
 		return
 	endif
 
@@ -351,17 +351,17 @@ function Spawn_Group__Pause takes integer group_index returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Pause ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Pause (): Nonexistent instance.")
 		return
 	endif
 
 	if not Spawn_Group__Is_Active (group_index) then
-		call Error ("Spawn_Group__Pause ()", "Group is inactive.")
+		call BJDebugMsg ("Error: Spawn_Group__Pause (): Group is inactive.")
 		return
 	endif
 
 	if Spawn_Group__Is_Paused (group_index) then
-		call Error ("Spawn_Group__Pause ()", "Group is paused.")
+		call BJDebugMsg ("Error: Spawn_Group__Pause (): Group is paused.")
 		return
 	endif
 
@@ -386,12 +386,12 @@ function Spawn_Group__Stop takes integer group_index returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Stop ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Stop (): Nonexistent instance.")
 		return
 	endif
 
 	if not Spawn_Group__Is_Active (group_index) then
-		call Error ("Spawn_Group__Stop ()", "Group is inactive.")
+		call BJDebugMsg ("Error: Spawn_Group__Stop (): Group is inactive.")
 		return
 	endif
 
@@ -434,7 +434,7 @@ function Spawn_Group__Add takes integer group_index, integer unit_type, integer 
 	local integer spawn_index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Add ()", "Nonexistent instance")
+		call BJDebugMsg ("Error: Spawn_Group__Add (): Nonexistent instance")
 		return false
 	endif
 
@@ -456,7 +456,7 @@ function Spawn_Group__Flush takes integer group_index returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Flush ()", "Nonexistent instance")
+		call BJDebugMsg ("Error: Spawn_Group__Flush (): Nonexistent instance")
 		return
 	endif
 
@@ -528,7 +528,7 @@ function Spawn_Group__Clone takes integer source returns integer
 	local integer destination
 
 	if not Spawn_Group___Is_Allocated [source] then
-		call Error ("Spawn_Group__Clone ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Clone (): Nonexistent instance.")
 		return 0
 	endif
 
@@ -555,7 +555,7 @@ function Spawn_Group__Destroy takes integer group_index returns nothing
 	local integer index
 
 	if not Spawn_Group__Is_Allocated (group_index) then
-		call Error ("Spawn_Group__Destroy ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn_Group__Destroy (): Nonexistent instance.")
 		return
 	endif
 
