@@ -51,7 +51,6 @@ function Gem_Extra_Chance__Enable takes player the_player, integer unit_type ret
 	set the_player_index = GetPlayerId (the_player)
 
 	set Gem_Extra_Chance___Unit_Type [the_player_index] = unit_type
-	set udg_ExtraChanceON [the_player_index + 1] = true
 endfunction
 
 function Gem_Extra_Chance__Disable takes player the_player returns nothing
@@ -70,7 +69,6 @@ function Gem_Extra_Chance__Disable takes player the_player returns nothing
 	set the_player_index = GetPlayerId (the_player)
 
 	set Gem_Extra_Chance___Unit_Type [the_player_index] = 0
-	set udg_ExtraChanceON [the_player_index + 1] = false
 endfunction
 
 function Gem_Extra_Chance___On_Placement takes nothing returns boolean

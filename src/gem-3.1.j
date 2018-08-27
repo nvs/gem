@@ -96,14 +96,6 @@ function InitGlobals takes nothing returns nothing
 	set udg_DebugPointvalue=0
 	set udg_SlateStackNo=0
 	set udg_SlateStackGROUP=CreateGroup()
-	set udg_ExtraChanceDIA=DialogCreate()
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_ExtraChanceON[i]=false
-		set i=i+1
-	endloop
-	set udg_xExtraChanceDIA=DialogCreate()
 	set i=0
 	loop
 		exitwhen(i>8)
@@ -208,12 +200,6 @@ function InitGlobals takes nothing returns nothing
 	loop
 		exitwhen(i>8)
 		set udg_CountExtraChanceMoney[i]=0
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_ExtraChanceNo[i]=83
 		set i=i+1
 	endloop
 	set i=0
@@ -2124,34 +2110,6 @@ function InitTrig_Type_Air takes nothing returns nothing
 	call TriggerRegisterPlayerChatEvent(gg_trg_Type_Air,Player(7),"-air",true)
 	call TriggerAddAction(gg_trg_Type_Air,function Trig_Type_Air_Actions)
 endfunction
-function Trig_Increased_Extra_Chance_Conditions takes nothing returns boolean
-	if(not(GetResearched()=='R001'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Increased_Extra_Chance_Func001003001 takes nothing returns boolean
-	return(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_Increased_Extra_Chance_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Increased_Extra_Chance_Func001003001())then
-			set udg_ExtraChanceNo[GetForLoopIndexA()]=(udg_ExtraChanceNo[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-endfunction
-function InitTrig_Increased_Extra_Chance takes nothing returns nothing
-	set gg_trg_Increased_Extra_Chance=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Increased_Extra_Chance,EVENT_PLAYER_UNIT_RESEARCH_FINISH)
-	call TriggerAddCondition(gg_trg_Increased_Extra_Chance,Condition(function Trig_Increased_Extra_Chance_Conditions))
-	call TriggerAddAction(gg_trg_Increased_Extra_Chance,function Trig_Increased_Extra_Chance_Actions)
-endfunction
 function Trig_Slate_Stack_Check_Func004001003 takes nothing returns boolean
 	return(GetUnitTypeId(GetFilterUnit())==GetUnitTypeId(udg_SlateStackUnit))
 endfunction
@@ -2789,27 +2747,6 @@ function InitTrig_Maxed_out_quality_Upgrade takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Maxed_out_quality_Upgrade,EVENT_PLAYER_UNIT_RESEARCH_FINISH)
 	call TriggerAddCondition(gg_trg_Maxed_out_quality_Upgrade,Condition(function Trig_Maxed_out_quality_Upgrade_Conditions))
 	call TriggerAddAction(gg_trg_Maxed_out_quality_Upgrade,function Trig_Maxed_out_quality_Upgrade_Actions)
-endfunction
-function Trig_Maxed_out_Extra_chance_upgrade_Conditions takes nothing returns boolean
-	if(not(GetPlayerTechCountSimple('R001',GetTriggerPlayer())==5))then
-		return false
-	endif
-	if(not(GetResearched()=='R001'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Maxed_out_Extra_chance_upgrade_Func001002 takes nothing returns nothing
-	call UnitAddAbilityBJ('A06X',GetEnumUnit())
-endfunction
-function Trig_Maxed_out_Extra_chance_upgrade_Actions takes nothing returns nothing
-	call ForGroupBJ(GetUnitsOfPlayerAndTypeId(GetTriggerPlayer(),'h01V'),function Trig_Maxed_out_Extra_chance_upgrade_Func001002)
-endfunction
-function InitTrig_Maxed_out_Extra_chance_upgrade takes nothing returns nothing
-	set gg_trg_Maxed_out_Extra_chance_upgrade=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Maxed_out_Extra_chance_upgrade,EVENT_PLAYER_UNIT_RESEARCH_FINISH)
-	call TriggerAddCondition(gg_trg_Maxed_out_Extra_chance_upgrade,Condition(function Trig_Maxed_out_Extra_chance_upgrade_Conditions))
-	call TriggerAddAction(gg_trg_Maxed_out_Extra_chance_upgrade,function Trig_Maxed_out_Extra_chance_upgrade_Actions)
 endfunction
 function Trig_Tourmaline_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='h040'))then
