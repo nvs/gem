@@ -3,6 +3,20 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
+## [Unreleased]
+
+### Changed
+- Extra Chance has been reworked:
+    - Extra Chance is now active the entire round.
+    - Upgrading of Extra Chance has been removed.
+    - A bonus will increase when failing to hit a target over consecutive
+      rounds. Changing targets decreases the bonus. Skipping a round clears
+      the bonus.
+    - Extra Chance for Perfects increases chances for the entire type and not
+      just the target Perfect.
+    - Extra Chance for Slates increases chances for the components of a Slate,
+      rather than giving the target Slate directly.
+
 ## [1.4.3] - 2018-04-13
 
 ### Fixed
@@ -215,6 +229,7 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
+[Unreleased]: https://github.com/nvs/gem/compare/v1.4.3...develop
 [1.4.3]: https://github.com/nvs/gem/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/nvs/gem/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/nvs/gem/compare/v1.4.0...v1.4.1
