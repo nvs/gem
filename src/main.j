@@ -6,12 +6,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Player_Leaves ()
 	call InitTrig_Creeps_attacking ()
 	call InitTrig_Type_Air ()
-	call InitTrig_Setting_Extra_Chances ()
-	call InitTrig_Extra_Chance_1 ()
-	call InitTrig_Extra_Chance_2 ()
-	call InitTrig_Slate_Extra_Chance_1 ()
-	call InitTrig_Slate_Extra_Chance_2 ()
-	call InitTrig_Increased_Extra_Chance ()
 	call InitTrig_Swap_Reworked ()
 	call InitTrig_Slate_Stack_Check ()
 	call InitTrig_AntiStuck ()
@@ -173,6 +167,8 @@ function main takes nothing returns nothing
 	call InitCustomTriggers ()
 	call RunInitializationTriggers ()
 
+	call TriggerAddCondition (initialize, Condition (function Gem_Mine__Initialize))
+
 	// Must occur after all Gem 3.1 initializations (for now).
 	call TriggerAddCondition (initialize, Condition (function Settings__Initialize))
 
@@ -188,9 +184,9 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Gems__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Placement__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Chance__Initialize))
-	call TriggerAddCondition (initialize, Condition (function Gem_Extra_Chance__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Selection_Marker__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Selection__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Extra_Chance__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Combination_Marker__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Combination__Initialize))
 

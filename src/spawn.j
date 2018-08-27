@@ -109,7 +109,7 @@ function Spawn___Stack_Pop takes nothing returns integer
 	local integer spawn_index
 
 	if Spawn___Stack_Is_Empty () then
-		call Error ("Spawn___Stack_Pop ()", "Underflow.")
+		call BJDebugMsg ("Error: Spawn___Stack_Pop (): Underflow.")
 		return 0
 	endif
 
@@ -122,7 +122,7 @@ endfunction
 // Pushes the `spawn_index (integer)` onto the top of the stack.
 function Spawn___Stack_Push takes integer spawn_index returns nothing
 	if Spawn___Stack_Is_Full () then
-		call Error ("Spawn___Stack_Push ()", "Overflow.")
+		call BJDebugMsg ("Error: Spawn___Stack_Push (): Overflow.")
 		return
 	endif
 
@@ -307,17 +307,17 @@ endfunction
 // remembered. Note that this function will only work on a paused spawn.
 function Spawn__Resume takes integer index returns nothing
 	if not Spawn__Is_Allocated (index) then
-		call Error ("Spawn__Resume ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn__Resume (): Nonexistent instance.")
 		return
 	endif
 
 	if not Spawn__Is_Active (index) then
-		call Error ("Spawn__Resume ()", "Instance is inactive.")
+		call BJDebugMsg ("Error: Spawn__Resume (): Instance is inactive.")
 		return
 	endif
 
 	if not Spawn__Is_Paused (index) then
-		call Error ("Spawn__Resume ()", "Instance is not paused.")
+		call BJDebugMsg ("Error: Spawn__Resume (): Instance is not paused.")
 		return
 	endif
 
@@ -332,17 +332,17 @@ endfunction
 // work on an already paused spawn.
 function Spawn__Pause takes integer index returns nothing
 	if not Spawn__Is_Allocated (index) then
-		call Error ("Spawn__Pause ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn__Pause (): Nonexistent instance.")
 		return
 	endif
 
 	if not Spawn__Is_Active (index) then
-		call Error ("Spawn__Pause ()", "Instance is inactive.")
+		call BJDebugMsg ("Error: Spawn__Pause (): Instance is inactive.")
 		return
 	endif
 
 	if Spawn__Is_Paused (index) then
-		call Error ("Spawn__Pause ()", "Instance is paused.")
+		call BJDebugMsg ("Error: Spawn__Pause (): Instance is paused.")
 		return
 	endif
 
@@ -356,12 +356,12 @@ endfunction
 // used on an active spawn regardless of whether it is paused or not.
 function Spawn__Stop takes integer index returns nothing
 	if not Spawn__Is_Allocated (index) then
-		call Error ("Spawn__Stop ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn__Stop (): Nonexistent instance.")
 		return
 	endif
 
 	if not Spawn__Is_Active (index) then
-		call Error ("Spawn__Stop ()", "Instance is inactive.")
+		call BJDebugMsg ("Error: Spawn__Stop (): Instance is inactive.")
 		return
 	endif
 
@@ -408,12 +408,12 @@ endfunction
 // paused, or is stopped. This function has no effect on a paused spawn.
 function Spawn__Start takes integer index returns nothing
 	if not Spawn__Is_Allocated (index) then
-		call Error ("Spawn__Start ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn__Start (): Nonexistent instance.")
 		return
 	endif
 
 	if Spawn__Is_Active (index) then
-		call Error ("Spawn__Start ()", "Instance already active.")
+		call BJDebugMsg ("Error: Spawn__Start (): Instance already active.")
 		return
 	endif
 
@@ -485,7 +485,7 @@ endfunction
 // returned if an error is encountered during cloning.
 function Spawn__Clone takes integer index returns integer
 	if not Spawn__Is_Allocated (index) then
-		call Error ("Spawn__Clone ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn__Clone (): Nonexistent instance.")
 		return 0
 	endif
 
@@ -497,7 +497,7 @@ endfunction
 // Destroys an existing spawn object specified by `index (integer)`.
 function Spawn__Destroy takes integer index returns nothing
 	if not Spawn__Is_Allocated (index) then
-		call Error ("Spawn__Destroy ()", "Nonexistent instance.")
+		call BJDebugMsg ("Error: Spawn__Destroy (): Nonexistent instance.")
 		return
 	endif
 

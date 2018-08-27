@@ -28,7 +28,7 @@ function ID takes nothing returns integer
 	// Realistically, this should never happen. But if it does, we stop
 	// decrementing the ID index.
 	if ID___Index >= 0 then
-		call Error ("ID ()", "Maximum number of ID values reached")
+		call BJDebugMsg ("Error: ID (): Maximum number of ID values reached")
 
 		return ID__NULL
 	endif

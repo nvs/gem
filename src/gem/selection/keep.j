@@ -66,12 +66,6 @@ function Gem_Selection_Keep___Event takes nothing returns boolean
 	call UnitRemoveAbility (the_unit, Gem_Selection_Slate__ABILITY)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Special__ABILITY)
 
-	// TODO: Remove after extra chance updates.
-	if the_unit_type == Gem_Slate__HOLD or the_unit_type == Gem_Slate__AIR or the_unit_type == Gem_Slate__OPAL_VEIN or the_unit_type == Gem_Slate__SLOW or the_unit_type == Gem_Slate__SPELL or the_unit_type == Gem_Slate__POISON or the_unit_type == Gem_Slate__DAMAGE or the_unit_type == Gem_Slate__RANGE then
-		set udg_SlateStackUnit = the_unit
-		call Trig_Slate_Stack_Check_Actions ()
-	endif
-
 	call Gem_Selection__Finalize (the_unit, null)
 
 	set the_player = null

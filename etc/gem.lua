@@ -7,7 +7,7 @@ return {
 	},
 
 	scripts = {
-		'lib/patch/1.29.2',
+		'lib/patch/1.30.0',
 		'src'
 	},
 

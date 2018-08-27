@@ -3,7 +3,6 @@ globals
 	// It should be noted one-base indices are used to reference the players in
 	// this array.
 	integer array udg_CreepOwner
-	boolean array udg_ExtraChanceDialogDisplayed
 	rect array udg_Spawn
 	rect array udg_Move1st
 	integer udg_Level=0
@@ -33,13 +32,7 @@ globals
 	location udg_SlateStackPoint=null
 	unit udg_SlateStackUnit=null
 	real udg_DiffFactor=1.00
-	dialog udg_ExtraChanceDIA=null
-	button array udg_ExtraChanceBTN
-	integer array udg_ExtraChanceUnit
-	boolean array udg_ExtraChanceON
 	unit array udg_Boulders
-	dialog udg_xExtraChanceDIA=null
-	button array udg_xExtraChanceBTN
 	integer array udg_FirstKillNo
 	integer udg_Mode=0
 	integer array udg_RaceModeKills
@@ -64,7 +57,6 @@ globals
 	boolean array udg_RmodeFinished
 	integer array udg_CountExtrachance
 	integer array udg_CountExtraChanceMoney
-	integer array udg_ExtraChanceNo
 	integer udg_SpawnUnit=0
 	unit array udg_CombineSpecialUnit
 	group udg_AuraGroup=null
@@ -181,12 +173,6 @@ globals
 	trigger gg_trg_Debug=null
 	trigger gg_trg_Type_Air=null
 	trigger gg_trg_Cancels_Building_idiot_proofing=null
-	trigger gg_trg_Setting_Extra_Chances=null
-	trigger gg_trg_Extra_Chance_1=null
-	trigger gg_trg_Extra_Chance_2=null
-	trigger gg_trg_Slate_Extra_Chance_1=null
-	trigger gg_trg_Slate_Extra_Chance_2=null
-	trigger gg_trg_Increased_Extra_Chance=null
 	trigger gg_trg_Swap_Reworked=null
 	trigger gg_trg_Slate_Stack_Check=null
 	trigger gg_trg_AntiStuck=null
@@ -194,7 +180,6 @@ globals
 	trigger gg_trg_Range_Check=null
 	trigger gg_trg_Remove_rocks=null
 	trigger gg_trg_Maxed_out_quality_Upgrade=null
-	trigger gg_trg_Maxed_out_Extra_chance_upgrade=null
 	trigger gg_trg_Find_spell_levels=null
 	trigger gg_trg_Tourmaline=null
 	trigger gg_trg_Tourmaline_Facet=null

@@ -37,7 +37,7 @@ endfunction
 
 function Unit_Indexer___Stack_Push takes integer unit_index returns nothing
 	if Unit_Indexer___Stack_Is_Full () then
-		call Error ("Unit_Indexer___Stack_Push ()", "Overflow.")
+		call BJDebugMsg ("Error: Unit_Indexer___Stack_Push (): Overflow")
 		return
 	endif
 
@@ -49,7 +49,7 @@ function Unit_Indexer___Stack_Pop takes nothing returns integer
 	local integer unit_index
 
 	if Unit_Indexer___Stack_Is_Empty () then
-		call Error ("Unit_Indexer___Stack_Pop ()", "Underflow.")
+		call BJDebugMsg ("Error: Unit_Indexer___Stack_Pop (): Underflow")
 		return 0
 	endif
 
