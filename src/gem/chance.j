@@ -22,6 +22,50 @@ globals
 	constant integer Gem_Chance___RESEARCH = 'R000'
 endglobals
 
+function Gem_Chance___Set takes player the_player, real chipped, real flawed, real normal, real flawless, real perfect, real great returns nothing
+	local real array weight
+
+	local integer type_id
+	local integer type_index
+	local integer type_count
+
+	local integer quality_id
+	local integer quality_index
+	local integer quality_count
+
+	local integer gem_id
+	local integer gem_type
+
+	set weight [0] = chipped
+	set weight [1] = flawed
+	set weight [2] = normal
+	set weight [3] = flawless
+	set weight [4] = perfect
+	set weight [5] = great
+
+	set type_count = Gem_Type__Get_Count ()
+	set quality_count = Gem_Quality__Get_Count ()
+
+	set type_index = 0
+	loop
+		set type_id = Gem_Type__Get_ID (type_index)
+
+		set quality_index = 0
+		loop
+			set quality_id = Gem_Quality__Get_ID (quality_index)
+			set gem_type = Gem_Gems__Get_Unit_Type (type_id, quality_id)
+
+			call Gem_Placement__Set_Weight (the_player, gem_type, weight [quality_index])
+
+			set quality_index = quality_index + 1
+			exitwhen quality_index >= quality_count
+		endloop
+
+		set type_index = type_index + 1
+		exitwhen type_index >= type_count
+	endloop
+endfunction
+
 function Gem_Chance___Update takes player the_player returns nothing
 	local integer level
 	local real array weight
@@ -115,27 +159,20 @@ function Gem_Chance___Update takes player the_player returns nothing
 		return
 	endif
 
-	set type_count = Gem_Type__Get_Count ()
-	set quality_count = Gem_Quality__Get_Count ()
+	call Gem_Chance___Set (the_player, weight [0], weight [1], weight [2], weight [3], weight [4], weight [5])
+endfunction
 
-	set type_index = 0
-	loop
-		set type_id = Gem_Type__Get_ID (type_index)
+// Resets chances to the current quality investment for the player represented
+// by `whom`.
+function Gem_Chance__Reset takes player whom returns nothing
+	call Gem_Chance___Update (whom)
+endfunction
 
-		set quality_index = 0
-		loop
-			set quality_id = Gem_Quality__Get_ID (quality_index)
-			set gem_type = Gem_Gems__Get_Unit_Type (type_id, quality_id)
-
-			call Gem_Placement__Set_Weight (the_player, gem_type, weight [quality_index])
-
-			set quality_index = quality_index + 1
-			exitwhen quality_index >= quality_count
-		endloop
-
-		set type_index = type_index + 1
-		exitwhen type_index >= type_count
-	endloop
+// Wipes all chances for the player represented by `whom`.  All types in the
+// placement table will have a weight of `0.0`.  Leaving the table in this
+// state will yield undefined behavior.
+function Gem_Chance__Clear takes player whom returns nothing
+	call Gem_Chance___Set (whom, 0, 0, 0, 0, 0, 0)
 endfunction
 
 // When the upgrade is researched, we update the gem chances for that player.
