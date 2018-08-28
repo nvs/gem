@@ -12,7 +12,9 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 	set text = text + "    - Extra Chance for Slates increases chances for the components of a Slate, rather than giving the target Slate directly.\n"
 	set text = text + "- Elder Slate:\n"
 	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
-	set text = text + "    - No longer rewards gold."
+	set text = text + "    - No longer rewards gold.\n"
+	set text = text + "- Spell Slate:\n"
+	set text = text + "    - No longer reward gold."
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction

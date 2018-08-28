@@ -2968,15 +2968,6 @@ function Trig_Spell_Slate_Func006C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Spell_Slate_Func007C takes nothing returns boolean
-	if(not(udg_Random[8]>=26))then
-		return false
-	endif
-	if(not(udg_Random[8]<=30))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Spell_Slate_Actions takes nothing returns nothing
 	local unit attacker
 	local unit target
@@ -3030,14 +3021,6 @@ function Trig_Spell_Slate_Actions takes nothing returns nothing
 
 		set attacker = null
 		set target = null
-	else
-	endif
-	if(Trig_Spell_Slate_Func007C())then
-		call PlaySoundAtPointBJ(gg_snd_Gold3sym,100,GetUnitLoc(GetAttacker()),0)
-		call CreateTextTagLocBJ(("3"+" Gold!"),GetUnitLoc(GetAttacker()),0,9.00,100,100,0.00,0)
-		call SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
-		call SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.75)
-		call AdjustPlayerStateBJ(3,GetOwningPlayer(GetAttacker()),PLAYER_STATE_RESOURCE_GOLD)
 	else
 	endif
 endfunction
