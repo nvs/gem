@@ -2,9 +2,7 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local function id (value)
-	return string.pack ('>I4', value)
-end
+local id = require ('lib.gem.id')
 
 local life = id (globals.Gem_Mine_Life___ID)
 
