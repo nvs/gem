@@ -181,7 +181,7 @@ objects [life] = {
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'E'
+		value = 'L'
 	},
 
 	-- Name
@@ -194,7 +194,7 @@ objects [life] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Buy Lif|cffffcc00e|r'
+			[1] = 'Buy |cffffcc00L|rife'
 		}
 	},
 
