@@ -16,6 +16,8 @@ full list of changes to the project, please consult the commit log.
       just the target Perfect.
     - Extra Chance for Slates increases chances for the components of a Slate,
       rather than giving the target Slate directly.
+- Elder Slate:
+    - Armor debuff duration no longer increases with levels.
 
 ## [1.4.3] - 2018-04-13
 
