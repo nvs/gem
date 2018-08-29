@@ -1,19 +1,3 @@
-// Gem Selection Keep
-// ==================
-//
-// Depends
-// -------
-//
-// - Color
-// - Gem 3.1
-// - Gem Placement
-// - Gem Selection
-// - Gem Selection Downgrade
-// - Gem Selection Combine
-// - Gem Selection Slate
-// - Gem Selection Special
-// - Gem Slate
-
 globals
 	constant integer Gem_Selection_Keep__ABILITY = 'A009'
 endglobals
@@ -62,7 +46,9 @@ function Gem_Selection_Keep___Event takes nothing returns boolean
 
 	call UnitRemoveAbility (the_unit, Gem_Selection_Keep__ABILITY)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Downgrade__ABILITY)
-	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__ABILITY)
+	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__X2_ID)
+	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__X3_ID)
+	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__X4_ID)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Slate__ABILITY)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Special__ABILITY)
 
