@@ -1,119 +1,132 @@
-// Gem Selection: Combine
-// ======================
-//
-// Depends
-// -------
-//
-// - Color
-// - Gem Gems
-// - Gem Placement
-// - Gem Quality
-// - Gem Selection
-// - Gem Type
-
 globals
-	constant integer Gem_Selection_Combine__ABILITY = 'A007'
+	constant integer Gem_Selection_Combine__X2_ID = 'GSC2'
+	constant string Gem_Selection_Combine___X2_ORDER = "neutralspell"
+	constant integer Gem_Selection_Combine___X2_ORDER_ID = OrderId (Gem_Selection_Combine___X2_ORDER)
+
+	constant integer Gem_Selection_Combine__X3_ID = 'GSC3'
+	constant string Gem_Selection_Combine___X3_ORDER = "voodoo"
+	constant integer Gem_Selection_Combine___X3_ORDER_ID = OrderId (Gem_Selection_Combine___X3_ORDER)
+
+	constant integer Gem_Selection_Combine__X4_ID = 'GSC4'
+	constant string Gem_Selection_Combine___X4_ORDER = "starfall"
+	constant integer Gem_Selection_Combine___X4_ORDER_ID = OrderId (Gem_Selection_Combine___X4_ORDER)
 endglobals
 
 function Gem_Selection_Combine___On_Finish takes nothing returns boolean
-	local player the_player
+	local player whom = Gem_Placement__The_Player ()
+	local unit which = null
+	local integer which_id = 0
+	local integer count = 0
+	local integer index = 0
 
-	local unit the_unit
-	local integer the_unit_type
-
-	local integer index
-
-	set the_player = Gem_Placement__The_Player ()
-
-	set index = 1
 	loop
-		exitwhen not Gem_Selection__Has (the_player, index)
-
-		set the_unit = Gem_Selection__Get (the_player, index)
-		set the_unit_type = GetUnitTypeId (the_unit)
-
-		if Gem_Selection__Get_Count (the_player, the_unit_type) > 1 then
-			call UnitAddAbility (the_unit, Gem_Selection_Combine__ABILITY)
-		endif
-
 		set index = index + 1
+		exitwhen not Gem_Selection__Has (whom, index)
+
+		set which = Gem_Selection__Get (whom, index)
+		set which_id = GetUnitTypeId (which)
+		set count = Gem_Selection__Get_Count (whom, which_id)
+
+		if count >= 2 then
+			call UnitAddAbility (which, Gem_Selection_Combine__X2_ID)
+
+			if count >= 4 then
+				call UnitAddAbility (which, Gem_Selection_Combine__X4_ID)
+			elseif count == 3 then
+				call UnitAddAbility (which, Gem_Selection_Combine__X3_ID)
+			endif
+		endif
 	endloop
 
-	set the_player = null
-	set the_unit = null
+	set whom = null
+	set which = null
 
 	return false
 endfunction
 
-function Gem_Selection_Combine___Event takes nothing returns boolean
-	local player the_player
-	local integer the_player_index
+function Gem_Selection_Combine___Button takes nothing returns boolean
+	local player whom = null
+	local integer whom_id = 0
 
-	local unit original
-	local integer original_type
+	local integer order_id = 0
+	local integer count = 0
 
-	local unit replacement
-	local integer replacement_type
+	local unit old = GetTriggerUnit ()
+	local integer old_id = GetUnitTypeId (old)
+	local unit new = null
+	local integer new_id = 0
 
-	local integer quality_id
-	local integer quality_index
+	local integer type_id = ID__NULL
+	local integer quality_id = ID__NULL
+	local integer quality_index = 0
 
-	local integer type_id
-
-	if GetSpellAbilityId () != Gem_Selection_Combine__ABILITY then
-		return false
+	if not Gem_Gems__Is_Gem (old_id) then
+		set old = null
+		return true
 	endif
 
-	set the_player = GetTriggerPlayer ()
-	set the_player_index = GetPlayerId (the_player)
+	set order_id = GetIssuedOrderId ()
 
-	set original = GetTriggerUnit ()
-	set original_type = GetUnitTypeId (original)
+	if order_id == Gem_Selection_Combine___X2_ORDER_ID then
+		set count = 2
+	elseif order_id == Gem_Selection_Combine___X3_ORDER_ID then
+		set count = 3
+	elseif order_id == Gem_Selection_Combine___X4_ORDER_ID then
+		set count = 4
+	else
+		set old = null
+		return true
+	endif
 
-	set quality_id = Gem_Gems__Get_ID_Quality (original_type)
-	set type_id = Gem_Gems__Get_ID_Type (original_type)
+	set whom = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (whom)
 
-	set quality_index = Gem_Quality__Get_Index (quality_id) + 1
+	set type_id = Gem_Gems__Get_ID_Type (old_id)
+	set quality_id = Gem_Gems__Get_ID_Quality (old_id)
+	set quality_index = Gem_Quality__Get_Index (quality_id)
 
-	// Skip a quality with four of a kind.
-	if Gem_Selection__Get_Count (the_player, original_type) >= 4 then
+	if count == 2 then
 		set quality_index = quality_index + 1
+	else
+		set quality_index = quality_index + 2
 	endif
 
 	// Stone of Bryvx:
 	if quality_index > Gem_Quality__Get_Index (Gem_Quality__GREAT) then
-		set quality_id = ID__NULL
 		set type_id = ID__NULL
-		set replacement_type = 'h04A'
+		set quality_id = ID__NULL
+		set new_id = 'h04A'
 
-	// Normal combination:
+	// Default:
 	else
 		set quality_id = Gem_Quality__Get_ID (quality_index)
-		set replacement_type = Gem_Gems__Get_Unit_Type (type_id, quality_id)
+		set new_id = Gem_Gems__Get_Unit_Type (type_id, quality_id)
 	endif
 
-	call ShowUnit (original, false)
-	set replacement = CreateUnit (the_player, replacement_type, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
-	call RemoveUnit (original)
+	call ShowUnit (old, false)
+	set new = CreateUnit (whom, new_id, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
+	call RemoveUnit (old)
 
 	if type_id == Gem_Type__OPAL then
-		call SetUnitAbilityLevel (replacement, 'S008', quality_index + 1)
+		call SetUnitAbilityLevel (new, 'S008', quality_index + 1)
 	endif
 
-	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("33ff33", GetUnitName (replacement) + " has been created!!"))
+	call DisplayTextToPlayer (whom, 0, 0, Color ("33ff33", GetUnitName (new) + " has been created!!"))
+	call Gem_Selection__Finalize (new, old)
 
-	call Gem_Selection__Finalize (replacement, original)
+	set whom = null
+	set old = null
+	set new = null
 
-	set the_player = null
-	set original = null
-	set replacement = null
-
-	return false
+	return true
 endfunction
 
-function Gem_Selection_Combine__Initialize takes nothing returns boolean
+function Gem_Selection_Combine__Initialize takes trigger rule returns boolean
+	local code task = function Gem_Selection_Combine___Button
+	local string label = "Gem_Selection_Combine___Button ()"
+
+	call Rule__Add_Code (rule, task, label)
 	call Gem_Placement__On_Finish (Condition (function Gem_Selection_Combine___On_Finish))
-	call Gem_Selection__Register_Event (Condition (function Gem_Selection_Combine___Event))
 
 	return false
 endfunction

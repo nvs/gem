@@ -6,6 +6,11 @@ full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Changed
+- Combine has been reworked:
+    - Existing functionality has been split into distinct Combine (2x) and
+      Combine (4x) buttons.
+    - Combine (3x) has been added, allowing three of a kind to skip a gem
+      quality.
 - Extra Chance has been reworked:
     - Extra Chance is now active the entire round.
     - Upgrading of Extra Chance has been removed.
