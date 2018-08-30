@@ -25,7 +25,7 @@ full list of changes to the project, please consult the commit log.
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
 - Spell Slate:
-    - No longer reward gold.
+    - No longer rewards gold.
 
 ## [1.4.3] - 2018-04-13
 
