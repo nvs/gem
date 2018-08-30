@@ -1,158 +1,163 @@
 local map = ...
 local objects = map.objects
 
--- # Switch Information Button Location
+-- We want all information buttons on the second row of the command card,
+-- aligned right the right margin.  Currently, all structures with a single
+-- information button are located at `(2, 2)` (of the form `(X, Y)`).  We need
+-- them to be in `[3, 1]`.  Any structure with multiple information buttons is
+-- already right aligned (and thus is marked `false` below).
 --
--- Need to shift the information button (i.e. the gold plus) to the right for
--- all structures. This is primarily a concern during to gem selection, as
--- the Downgrade button needs to be placed next to Combine.
-
--- All uncommented abilities need their button position shifted to the right.
--- Commented abilities need no change.
+-- In the case of Lucky Charm (for Lucky China Jade), it needs to be swapped
+-- with the information button.
 local abilities = {
 	-- Gems:
-	'A06D', -- Amethyst Chipped
-	'A06E', -- Amethyst Flawed
-	'A06G', -- Amethyst Normal
-	'A06F', -- Amethyst Flawless
-	'A005', -- Amethyst Perfect
-	--'A01I', -- Amethyst Great
-	--'A03Q', -- Amethyst Great 2
+	['A06D'] = true, -- Amethyst Chipped
+	['A06E'] = true, -- Amethyst Flawed
+	['A06G'] = true, -- Amethyst Normal
+	['A06F'] = true, -- Amethyst Flawless
+	['A005'] = true, -- Amethyst Perfect
+	['A01I'] = false, -- Amethyst Great (Does nothing)
+	['A03Q'] = false, -- Amethyst Great 2 (Minus armor)
 
-	'A06N', -- Aquamarine Chipped
-	'A03C', -- Aquamarine Flawed
-	'A06M', -- Aquamarine Normal
-	'A06L', -- Aquamarine Flawless
-	'A06O', -- Aquamarine Perfect
-	'S000', -- Aquamarine Great
+	['A06N'] = true, -- Aquamarine Chipped
+	['A03C'] = true, -- Aquamarine Flawed
+	['A06M'] = true, -- Aquamarine Normal
+	['A06L'] = true, -- Aquamarine Flawless
+	['A06O'] = true, -- Aquamarine Perfect
+	['S000'] = true, -- Aquamarine Great
 
-	'A06H', -- Diamond Chipped
-	'A001', -- Diamond Flawed
-	'A06K', -- Diamond Normal
-	'A06J', -- Diamond Flawless
-	'A06I', -- Diamond Perfect
-	'A01G', -- Diamond Great
+	['A06H'] = true, -- Diamond Chipped
+	['A001'] = true, -- Diamond Flawed
+	['A06K'] = true, -- Diamond Normal
+	['A06J'] = true, -- Diamond Flawless
+	['A06I'] = true, -- Diamond Perfect
+	['A01G'] = true, -- Diamond Great
 
-	'A002', -- Emerald Chipped
-	'A003', -- Emerald Flawed
-	'A00B', -- Emerald Normal
-	'A00C', -- Emerald Flawless
-	'A00D', -- Emerald Perfect
-	'A01J', -- Emerald Great
+	['A002'] = true, -- Emerald Chipped
+	['A003'] = true, -- Emerald Flawed
+	['A00B'] = true, -- Emerald Normal
+	['A00C'] = true, -- Emerald Flawless
+	['A00D'] = true, -- Emerald Perfect
+	['A01J'] = true, -- Emerald Great
 
-	'S008', -- Opal
+	['S008'] = true, -- Opal
 
-	'A06S', -- Ruby Chipped
-	'A06R', -- Ruby Flawed
-	'A004', -- Ruby Normal
-	'A06P', -- Ruby Flawless
-	'A06Q', -- Ruby Perfect
-	'A06Y', -- Ruby Great
+	['A06S'] = true, -- Ruby Chipped
+	['A06R'] = true, -- Ruby Flawed
+	['A004'] = true, -- Ruby Normal
+	['A06P'] = true, -- Ruby Flawless
+	['A06Q'] = true, -- Ruby Perfect
+	['A06Y'] = true, -- Ruby Great
 
-	'A06A', -- Sapphire Chipped
-	'A06B', -- Sapphire Flawed
-	'A06C', -- Sapphire Normal
-	'A069', -- Sapphire Flawless
-	'A000', -- Sapphire Perfect
-	'A01K', -- Sapphire Great
+	['A06A'] = true, -- Sapphire Chipped
+	['A06B'] = true, -- Sapphire Flawed
+	['A06C'] = true, -- Sapphire Normal
+	['A069'] = true, -- Sapphire Flawless
+	['A000'] = true, -- Sapphire Perfect
+	['A01K'] = true, -- Sapphire Great
 
-	'A00X', -- Topaz Chipped
-	'A00Y', -- Topaz Flawed
-	'A00Z', -- Topaz Normal
-	'A010', -- Topaz Flawless
-	'A011', -- Topaz Perfect
-	'A01F', -- Topaz Great
+	['A00X'] = true, -- Topaz Chipped
+	['A00Y'] = true, -- Topaz Flawed
+	['A00Z'] = true, -- Topaz Normal
+	['A010'] = true, -- Topaz Flawless
+	['A011'] = true, -- Topaz Perfect
+	['A01F'] = true, -- Topaz Great
 
 	-- Slates:
-	'A02P', -- Hold Slate
-	'A02H', -- Air Slate
-	'A02R', -- Ancient Slate
+	['A02P'] = true, -- Hold Slate
+	['A02H'] = true, -- Air Slate
+	['A02R'] = true, -- Ancient Slate
 
-	'S006', -- Opal Vein Slate
-	'A02N', -- Slow Slate
-	--'A02V', -- Wraith Slate
-	--'S007', -- Wraith Slate 2
+	['S006'] = true, -- Opal Vein Slate
+	['A02N'] = true, -- Slow Slate
+	['A02V'] = false, -- Wraith Slate (Incinerate)
+	['S007'] = false, -- Wraith Slate 2 (Speed Aura)
 
-	'A05P', -- Spell Slate
-	'A05M', -- Poison Slate
-	'A061', -- Elder Slate
+	['A05P'] = true, -- Spell Slate
+	['A05M'] = true, -- Poison Slate
+	['A061'] = true, -- Elder Slate
 
-	'A072', -- Damage Slate
-	'A073', -- Range Slate
-	--'A074', -- Viper Slate 1
-	--'A075', -- Viper Slate 2
-	--'A076', -- Viper Slate 3
+	['A072'] = true, -- Damage Slate
+	['A073'] = true, -- Range Slate
+	['A074'] = false, -- Viper Slate 1
+	['A075'] = false, -- Viper Slate 2
+	['A076'] = false, -- Viper Slate 3
 
 	-- Specials:
-	'A03D', -- Malachite
-	'A03E', -- Vivid Malachite
-	'A03F', -- Mighty Malachite
+	['A03D'] = true, -- Malachite
+	['A03E'] = true, -- Vivid Malachite
+	['A03F'] = true, -- Mighty Malachite
 
-	'A00L', -- Silver
+	['A00L'] = true, -- Silver
 
-	'A00H', -- Star Ruby
-	'A015', -- Blood Star
-	'A02F', -- Fire Star
+	['A00H'] = true, -- Star Ruby
+	['A015'] = true, -- Blood Star
+	['A02F'] = true, -- Fire Star
 
-	'A00J', -- Jade
-	'A014', -- China Jade
-	'A00P', -- Lucky China Jade
+	['A00J'] = true, -- Jade
+	['A014'] = true, -- China Jade
+	['A00P'] = true, -- Lucky China Jade
+	['A02X'] = false, -- Lucky Charm
 
-	'A00V', -- Red Crystal
-	'A012', -- Red Facet
-	--'A018', -- Rose Quartz Crystal
-	--'A01H', -- Rose Quartz Crystal 2
+	['A00V'] = true, -- Red Crystal
+	['A012'] = true, -- Red Facet
+	['A018'] = false, -- Rose Quartz Crystal
+	['A01H'] = false, -- Rose Quartz Crystal 2
 
-	'A00O', -- Dark Emerald
-	'A01A', -- Enchanted Emerald
+	['A00O'] = true, -- Dark Emerald
+	['A01A'] = true, -- Enchanted Emerald
 
-	'A00N', -- Gold
-	'A01D', -- Egyptian Gold
+	['A00N'] = true, -- Gold
+	['A01D'] = true, -- Egyptian Gold
 
-	--'A00W', -- Uranium
-	--'A016', -- Uranium 235
-	--'A00K', -- Uranium Burn
+	['A00W'] = false, -- Uranium
+	['A016'] = false, -- Uranium 235
+	['A00K'] = false, -- Uranium Burn
 
-	'A00I', -- Pink Diamond
-	'A017', -- Great Pink Diamond
+	['A00I'] = true, -- Pink Diamond
+	['A017'] = true, -- Great Pink Diamond
 
-	'A03H', -- Paraiba Tourmaline
-	'A03L', -- Paraiba Tourmaline Facet
+	['A03H'] = true, -- Paraiba Tourmaline
+	['A03L'] = true, -- Paraiba Tourmaline Facet
 
-	'A00G', -- Black Opal
-	'A013', -- Mystic Black Opal
+	['A00G'] = true, -- Black Opal
+	['A013'] = true, -- Mystic Black Opal
 
-	'A00Q', -- Bloodstone
-	'A019', -- Ancient Bloodstone
+	['A00Q'] = true, -- Bloodstone
+	['A019'] = true, -- Ancient Bloodstone
 
-	'A00F', -- Yellow Sapphire
-	--'A01B', -- Star Yellow Sapphire
-	--'A06T', -- Star Yellow Sapphire 2
+	['A00F'] = true, -- Yellow Sapphire
+	['A01B'] = false, -- Star Yellow Sapphire
+	['A06T'] = false, -- Star Yellow Sapphire 2
 
-	'A068' -- Stone of Bryvx
+	['A068'] = true -- Stone of Bryvx
 }
 
-for _, id in ipairs (abilities) do
-	local ability = objects [id]
+local column = {
+	type = 'integer',
+	value = 3
+}
 
-	if ability then
-		-- Art: Button Position (X)
-		ability.abpx = {
-			type = 'integer',
-			value = 3
-		}
+-- Shift to the last column.
+for id, update in pairs (abilities) do
+	if update then
+		-- Art - Button Position - Normal (X)
+		objects [id].abpx = column
 	end
 end
 
 -- Lucky Charm
 --
--- Shift this button to the left.
-if objects ['A02X'] then
-	local ability = objects ['A02X']
+-- Art - Button Position - Normal (X)
+objects ['A02X'].abpx.value = 2
 
-	-- Art: Button Position (X)
-	ability.abpx = {
-		type = 'integer',
-		value = 2
-	}
+local row = {
+	type = 'integer',
+	value = 1
+}
+
+-- Shift to the middle row.
+for id in pairs (abilities) do
+	-- Art - Button Position - Normal (Y)
+	objects [id].abpy = row
 end
