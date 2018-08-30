@@ -8,7 +8,7 @@ Buttonpos=3,0
 
 [CmdAttackGround]
 Art=CommandAttackGround
-Buttonpos=3,1
+Buttonpos=2,0
 
 [CmdBuild]
 Art=CommandBasicStruct
