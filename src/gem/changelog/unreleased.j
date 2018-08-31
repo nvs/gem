@@ -3,6 +3,9 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 	local string date = "N/A"
 	local string text = ""
 
+	set text = text + Color__Gold ("Fixed:\n")
+	set text = text + "- Dead gems are no longer replaced by rocks upon using action buttons (e.g. Keep or Combine).\n\n"
+
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Combine has been reworked:\n"
 	set text = text + "    - Existing functionality has been split into distinct Combine (2x) and Combine (4x) buttons.\n"

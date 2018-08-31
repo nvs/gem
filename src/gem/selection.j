@@ -164,7 +164,7 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 		exitwhen not Gem_Selection__Has (the_player, index)
 		set the_unit = Gem_Selection__Get (the_player, index)
 
-		if the_unit != previous and the_unit != null then
+		if the_unit != previous and the_unit != null and UnitAlive (the_unit) then
 			call ShowUnit (the_unit, false)
 			call CreateUnit (the_player, 'h00G', GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit))
 			call RemoveUnit (the_unit)
