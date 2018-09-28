@@ -16,6 +16,6 @@ return {
 		'share/constants',
 		'share/objects',
 
-		'share/imports/import-directory.lua',
+		'share/imports/import-directory.lua'
 	}
 }
