@@ -6,9 +6,11 @@ return {
 		name = 'Gem TD Plus.w3x'
 	},
 
-	scripts = {
-		'lib/patch/1.30.0',
-		'src'
+	source = {
+		directory = 'src',
+		include = {
+			'lib/patch/1.30.0'
+		}
 	},
 
 	build = {
