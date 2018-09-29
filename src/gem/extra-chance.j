@@ -187,6 +187,11 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	local integer bonus = 0
 	local integer target = 0
 	local boolean has_target = false
+	local boolean is_slate = false
+	local integer index = 0
+	local unit placed = null
+	local texttag tag = null
+	local real tag_y = 0
 
 	if not Gem_Extra_Chance__Is_Active (whom) then
 		set whom = null
@@ -201,6 +206,7 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 		set has_target = Gem_Selection__Get_Count (whom, target) > 0
 	else
 		set has_target = Gem_Selection_Slate__Has (whom, target)
+		set is_slate = true
 	endif
 
 	call Gem_Chance__Reset (whom)
@@ -218,7 +224,36 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
 	set udg_CountExtrachance [whom_id + 1] = udg_CountExtrachance [whom_id + 1] + 1
 
+	// For slates, switch the target to the normal component.  Also, the 'Extra
+	// Chanced!' text must be one line higher.
+	if is_slate then
+		set target = Gem_Slate__Get_Normal (target)
+		set tag_y = 38
+	endif
+
+	set index = 1
+	loop
+		exitwhen not Gem_Selection__Has (whom, index)
+		set placed = Gem_Selection__Get (whom, index)
+
+		if GetUnitTypeId (placed) == target then
+			set tag = CreateTextTag ()
+
+			call SetTextTagText (tag, "Extra Chanced!", 0.023)
+			call SetTextTagPos (tag, GetUnitX (placed), GetUnitY (placed) + tag_y, 0.0)
+			call SetTextTagColor (tag, 255, 255, 0, 255)
+			call SetTextTagPermanent (tag, false)
+			call SetTextTagLifespan (tag, 3.0)
+			call SetTextTagFadepoint (tag, 2.5)
+			call SetTextTagVisibility (tag, true)
+		endif
+
+		set index = index + 1
+	endloop
+
 	set whom = null
+	set placed = null
+	set tag = null
 
 	return false
 endfunction
