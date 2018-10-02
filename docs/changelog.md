@@ -34,6 +34,7 @@ full list of changes to the project, please consult the commit log.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
+- Buying lives no longer has a cooldown.
 
 ## [1.4.3] - 2018-04-13
 

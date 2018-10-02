@@ -32,7 +32,8 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
 	set text = text + "    - No longer rewards gold.\n"
 	set text = text + "- Spell Slate:\n"
-	set text = text + "    - No longer rewards gold."
+	set text = text + "    - No longer rewards gold.\n"
+	set text = text + "- Buying lives no longer has a cooldown."
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
