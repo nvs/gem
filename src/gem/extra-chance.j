@@ -52,7 +52,7 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	endif
 
 	set is_gem = Gem_Gems__Is_Gem (target)
-	set is_slate = Gem_Slate__Get_Normal (target) > 0
+	set is_slate = Gem_Slate__Is_Slate (target)
 
 	if not (is_gem or is_slate) then
 		call Error (ERROR__NOT_TYPE_OR_SLATE, null)

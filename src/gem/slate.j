@@ -18,6 +18,7 @@ globals
 	constant integer Gem_Slate__RANGE = 'n00E'
 	constant integer Gem_Slate__VIPER = 'n00F'
 
+	boolean array Gem_Slate___Is_Slate
 	integer array Gem_Slate___Normal
 	integer array Gem_Slate___Flawed_A
 	integer array Gem_Slate___Flawed_B
@@ -28,6 +29,10 @@ endglobals
 // `integer` ID usable within an array (i.e. of the range `[0, 15]`).
 function Gem_Slate___ID takes integer slate returns integer
 	return slate - 'n000'
+endfunction
+
+function Gem_Slate__Is_Slate takes integer slate returns boolean
+	return Gem_Slate___Is_Slate [Gem_Slate___ID (slate)]
 endfunction
 
 function Gem_Slate__Get_Normal takes integer slate returns integer
