@@ -2355,243 +2355,38 @@ function InitTrig_AntiStuck takes nothing returns nothing
 	call TriggerAddAction(gg_trg_AntiStuck,function Trig_AntiStuck_Actions)
 endfunction
 function Trig_Slate_move_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A02J'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Slate_move_Func006001003 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())==GetUnitTypeId(udg_SlateStackUnit))
-endfunction
-function Trig_Slate_move_Func006002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
-endfunction
-function Trig_Slate_move_Func008Func001001003001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())==GetUnitTypeId(udg_SlateStackUnit))
-endfunction
-function Trig_Slate_move_Func008Func001001003002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n000')
-endfunction
-function Trig_Slate_move_Func008Func001001003002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n002')
-endfunction
-function Trig_Slate_move_Func008Func001001003002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n003')
-endfunction
-function Trig_Slate_move_Func008Func001001003002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func008Func001001003002002001(),Trig_Slate_move_Func008Func001001003002002002())
-endfunction
-function Trig_Slate_move_Func008Func001001003002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func008Func001001003002001(),Trig_Slate_move_Func008Func001001003002002())
-endfunction
-function Trig_Slate_move_Func008Func001001003 takes nothing returns boolean
-	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func008Func001001003001(),Trig_Slate_move_Func008Func001001003002())
-endfunction
-function Trig_Slate_move_Func008Func001002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
-endfunction
-function Trig_Slate_move_Func008Func002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n000')
-endfunction
-function Trig_Slate_move_Func008Func002002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n002')
-endfunction
-function Trig_Slate_move_Func008Func002002002 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n003')
-endfunction
-function Trig_Slate_move_Func008Func002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func008Func002002001(),Trig_Slate_move_Func008Func002002002())
-endfunction
-function Trig_Slate_move_Func008C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Slate_move_Func008Func002001(),Trig_Slate_move_Func008Func002002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Slate_move_Func009Func001001003001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())==GetUnitTypeId(udg_SlateStackUnit))
-endfunction
-function Trig_Slate_move_Func009Func001001003002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n004')
-endfunction
-function Trig_Slate_move_Func009Func001001003002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n001')
-endfunction
-function Trig_Slate_move_Func009Func001001003002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n005')
-endfunction
-function Trig_Slate_move_Func009Func001001003002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func009Func001001003002002001(),Trig_Slate_move_Func009Func001001003002002002())
-endfunction
-function Trig_Slate_move_Func009Func001001003002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func009Func001001003002001(),Trig_Slate_move_Func009Func001001003002002())
-endfunction
-function Trig_Slate_move_Func009Func001001003 takes nothing returns boolean
-	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func009Func001001003001(),Trig_Slate_move_Func009Func001001003002())
-endfunction
-function Trig_Slate_move_Func009Func001002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
-endfunction
-function Trig_Slate_move_Func009Func002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n004')
-endfunction
-function Trig_Slate_move_Func009Func002002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n001')
-endfunction
-function Trig_Slate_move_Func009Func002002002 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n005')
-endfunction
-function Trig_Slate_move_Func009Func002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func009Func002002001(),Trig_Slate_move_Func009Func002002002())
-endfunction
-function Trig_Slate_move_Func009C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Slate_move_Func009Func002001(),Trig_Slate_move_Func009Func002002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Slate_move_Func010Func001001003001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())==GetUnitTypeId(udg_SlateStackUnit))
-endfunction
-function Trig_Slate_move_Func010Func001001003002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n008')
-endfunction
-function Trig_Slate_move_Func010Func001001003002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n009')
-endfunction
-function Trig_Slate_move_Func010Func001001003002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n00A')
-endfunction
-function Trig_Slate_move_Func010Func001001003002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func010Func001001003002002001(),Trig_Slate_move_Func010Func001001003002002002())
-endfunction
-function Trig_Slate_move_Func010Func001001003002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func010Func001001003002001(),Trig_Slate_move_Func010Func001001003002002())
-endfunction
-function Trig_Slate_move_Func010Func001001003 takes nothing returns boolean
-	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func010Func001001003001(),Trig_Slate_move_Func010Func001001003002())
-endfunction
-function Trig_Slate_move_Func010Func001002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
-endfunction
-function Trig_Slate_move_Func010Func002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n008')
-endfunction
-function Trig_Slate_move_Func010Func002002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n009')
-endfunction
-function Trig_Slate_move_Func010Func002002002 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n00A')
-endfunction
-function Trig_Slate_move_Func010Func002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func010Func002002001(),Trig_Slate_move_Func010Func002002002())
-endfunction
-function Trig_Slate_move_Func010C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Slate_move_Func010Func002001(),Trig_Slate_move_Func010Func002002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Slate_move_Func011Func001001003001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())==GetUnitTypeId(udg_SlateStackUnit))
-endfunction
-function Trig_Slate_move_Func011Func001001003002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n00C')
-endfunction
-function Trig_Slate_move_Func011Func001001003002002001 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n00E')
-endfunction
-function Trig_Slate_move_Func011Func001001003002002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetFilterUnit())=='n00F')
-endfunction
-function Trig_Slate_move_Func011Func001001003002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func011Func001001003002002001(),Trig_Slate_move_Func011Func001001003002002002())
-endfunction
-function Trig_Slate_move_Func011Func001001003002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func011Func001001003002001(),Trig_Slate_move_Func011Func001001003002002())
-endfunction
-function Trig_Slate_move_Func011Func001001003 takes nothing returns boolean
-	return GetFilterUnit () != udg_SlateStackUnit and GetBooleanOr(Trig_Slate_move_Func011Func001001003001(),Trig_Slate_move_Func011Func001001003002())
-endfunction
-function Trig_Slate_move_Func011Func001002 takes nothing returns nothing
-	call GroupAddUnitSimple(GetEnumUnit(),udg_SlateStackGROUP)
-endfunction
-function Trig_Slate_move_Func011Func002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n00C')
-endfunction
-function Trig_Slate_move_Func011Func002002001 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n00E')
-endfunction
-function Trig_Slate_move_Func011Func002002002 takes nothing returns boolean
-	return(GetUnitTypeId(udg_SlateStackUnit)=='n00F')
-endfunction
-function Trig_Slate_move_Func011Func002002 takes nothing returns boolean
-	return GetBooleanOr(Trig_Slate_move_Func011Func002002001(),Trig_Slate_move_Func011Func002002002())
-endfunction
-function Trig_Slate_move_Func011C takes nothing returns boolean
-	if(not GetBooleanOr(Trig_Slate_move_Func011Func002001(),Trig_Slate_move_Func011Func002002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Slate_move_Func014C takes nothing returns boolean
-	if(not(udg_SlateStackNo==0))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Slate_move_Func016001 takes nothing returns boolean
-	return(udg_SlateStackNo>=1)
-endfunction
-function Trig_Slate_move_Func019001 takes nothing returns boolean
-	return(udg_SlateStackNo>=1)
+	return GetSpellAbilityId () == 'A02J'
 endfunction
 function Trig_Slate_move_Func019002002 takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetEnumUnit()), GetUnitY (GetEnumUnit())))
 endfunction
 function Trig_Slate_move_Actions takes nothing returns nothing
-	local unit the_unit
-	call GroupClear(udg_SlateStackGROUP)
-	set udg_SlateStackUnit=GetSpellAbilityUnit()
-	set udg_SlateStackPoint=GetUnitLoc(udg_SlateStackUnit)
-	set udg_SlateStackDestination=GetSpellTargetLoc()
-	if(Trig_Slate_move_Func008C())then
-		call ForGroupBJ(GetUnitsInRangeOfLocMatching(220.00,GetSpellTargetLoc(),Condition(function Trig_Slate_move_Func008Func001001003)),function Trig_Slate_move_Func008Func001002)
-	else
-	endif
-	if(Trig_Slate_move_Func009C())then
-		call ForGroupBJ(GetUnitsInRangeOfLocMatching(220.00,GetSpellTargetLoc(),Condition(function Trig_Slate_move_Func009Func001001003)),function Trig_Slate_move_Func009Func001002)
-	else
-	endif
-	if(Trig_Slate_move_Func010C())then
-		call ForGroupBJ(GetUnitsInRangeOfLocMatching(220.00,GetSpellTargetLoc(),Condition(function Trig_Slate_move_Func010Func001001003)),function Trig_Slate_move_Func010Func001002)
-	else
-	endif
-	if(Trig_Slate_move_Func011C())then
-		call ForGroupBJ(GetUnitsInRangeOfLocMatching(220.00,GetSpellTargetLoc(),Condition(function Trig_Slate_move_Func011Func001001003)),function Trig_Slate_move_Func011Func001002)
-	else
-	endif
-	set udg_SlateStackNo=CountUnitsInGroup(udg_SlateStackGROUP)
+	local unit slate = GetSpellAbilityUnit ()
+	local real x = GetUnitX (slate)
+	local real y = GetUnitY (slate)
+	local group slates = null
+	local boolean is_stacking = false
 
-	if(Trig_Slate_move_Func016001())then
-		call DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_SlateStackUnit)),"|cffffff00You cannot stack the same slates or its combinations ontop of each other|r")
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", x, y))
+
+	set x = GetSpellTargetX ()
+	set y = GetSpellTargetY ()
+
+	set slates = Gem_Slate_Stacking__Get_Stacking_At (slate, x, y)
+	set is_stacking = CountUnitsInGroup (slates) > 0
+
+	if is_stacking then
+		call ForGroup (slates, function Trig_Slate_move_Func019002002)
+		call DisplayTextToPlayer (GetOwningPlayer (slate), 0, 0, Color ("ffff00", "Moving to that location would cause Slate Stacking!"))
 	else
-		call DoNothing()
+		call SetUnitPosition (slate, x, y)
+		call UnitRemoveAbility (slate, 'A02J')
 	endif
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (udg_SlateStackUnit), GetUnitY (udg_SlateStackUnit)))
-	if(Trig_Slate_move_Func019001())then
-		call ForGroupBJ(udg_SlateStackGROUP,function Trig_Slate_move_Func019002002)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Slate_move_Func014C())then
-		call SetUnitPositionLoc(udg_SlateStackUnit,udg_SlateStackDestination)
-		set the_unit = udg_SlateStackUnit
-		// Needed, or moving and then immediately combining will crash the game.
-		call TriggerSleepAction (0.00)
-		call UnitRemoveAbility (the_unit, 'A02J')
-		set the_unit = null
-	endif
+
+	call DestroyGroup (slates)
+
+	set slate = null
+	set slates = null
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing
 	set gg_trg_Slate_move=CreateTrigger()
