@@ -267,6 +267,10 @@ function Gem_Combination___Recipe takes nothing returns boolean
 		call UnitAddAbility (replacement, 'A02E')
 	endif
 
+	if Gem_Slate__Is_Slate (combination) and Gem_Slate_Stacking__Is_Stacking (replacement) then
+		call Gem_Slate_Stacking__Move (replacement)
+	endif
+
 	if GetLocalPlayer () == the_player then
 		call ClearSelection ()
 		call SelectUnit (replacement, true)
