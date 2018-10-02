@@ -10,6 +10,10 @@ full list of changes to the project, please consult the commit log.
   Keep or Combine).
 
 ### Changed
+- Slate stacking has been reworked:
+    - A base slate can now stack upon any other base slate, except those of
+      the same type. For example, a Range can now stack on a Damage but not
+      another Range.
 - Combine has been reworked:
     - Existing functionality has been split into distinct Combine (2x) and
       Combine (4x) buttons.
