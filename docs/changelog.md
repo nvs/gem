@@ -5,7 +5,7 @@ full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
-## Fixed
+### Fixed
 - Dead gems are no longer replaced by rocks upon using action buttons (e.g.
   Keep or Combine).
 
