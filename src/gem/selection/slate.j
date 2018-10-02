@@ -203,10 +203,11 @@ function Gem_Selection_Slate___Event takes nothing returns boolean
 
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("66ffff", "Slate Created!"))
 
-	call Gem_Selection__Finalize (replacement, original)
+	if Gem_Slate_Stacking__Is_Stacking (replacement) then
+		call Gem_Slate_Stacking__Move (replacement)
+	endif
 
-	set udg_SlateStackUnit = replacement
-	call Trig_Slate_Stack_Check_Actions ()
+	call Gem_Selection__Finalize (replacement, original)
 
 	set the_player = null
 	set original = null
