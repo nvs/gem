@@ -44,3 +44,7 @@ function Gem_Slate___Initialize_Poison takes nothing returns nothing
 
 	set the_trigger = null
 endfunction
+
+function Gem_Slate_Poison__Initialize takes nothing returns nothing
+	call Preload__Ability ('A05N') // Shadow Strike
+endfunction

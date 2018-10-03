@@ -11,6 +11,11 @@ function Gem_Slate__Initialize takes nothing returns boolean
 	call Gem_Slate___Initialize_Damage ()
 	call Gem_Slate___Initialize_Poison ()
 
+	// Preload abilities:
+	call Gem_Slate_Spell__Initialize ()
+	call Gem_Slate_Poison__Initialize ()
+	call Gem_Slate_Elder__Initialize ()
+
 	// Ancient:
 	set id = Gem_Slate___ID (Gem_Slate__ANCIENT)
 	set Gem_Slate___Is_Slate [id] = true
