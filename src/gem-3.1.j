@@ -94,8 +94,6 @@ function InitGlobals takes nothing returns nothing
 	endloop
 	set udg_KillsNUMBER=0
 	set udg_DebugPointvalue=0
-	set udg_SlateStackNo=0
-	set udg_SlateStackGROUP=CreateGroup()
 	set i=0
 	loop
 		exitwhen(i>8)

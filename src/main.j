@@ -7,7 +7,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Creeps_attacking ()
 	call InitTrig_Type_Air ()
 	call InitTrig_Swap_Reworked ()
-	call InitTrig_Slate_Stack_Check ()
 	call InitTrig_AntiStuck ()
 	call InitTrig_Slate_move ()
 	call InitTrig_Range_Check ()
