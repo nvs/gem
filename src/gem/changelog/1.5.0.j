@@ -1,5 +1,5 @@
-function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 1 of 2"
+function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("1.5.0") + " - 1 of 2"
 	local string date = "N/A"
 	local string text = ""
 
@@ -16,8 +16,8 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
 
-function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 2 of 2"
+function Gem_Changelog___1_5_0_Part_2 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("1.5.0") + " - 2 of 2"
 	local string date = "N/A"
 	local string text = ""
 
@@ -38,7 +38,7 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
 
-function Gem_Changelog___Unreleased takes nothing returns nothing
-	call Gem_Changelog___Unreleased_Part_1 ()
-	call Gem_Changelog___Unreleased_Part_2 ()
+function Gem_Changelog___1_5_0 takes nothing returns nothing
+	call Gem_Changelog___1_5_0_Part_1 ()
+	call Gem_Changelog___1_5_0_Part_2 ()
 endfunction

@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [Unreleased]
+## [1.5.0] - N/A
 
 ### Fixed
 - Dead gems are no longer replaced by rocks upon using action buttons (e.g.
@@ -248,7 +248,7 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.4.3...develop
+[1.5.0]: https://github.com/nvs/gem/compare/v1.4.3...release/1.5.0
 [1.4.3]: https://github.com/nvs/gem/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/nvs/gem/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/nvs/gem/compare/v1.4.0...v1.4.1
