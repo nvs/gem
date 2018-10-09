@@ -68,7 +68,6 @@ function Settings__Setup takes nothing returns boolean
 	local player the_player
 
 	call Settings___Setup_Mode ()
-	call Settings__Difficulty_Setup ()
 
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()

@@ -16,18 +16,8 @@ function Settings__Initialize takes nothing returns boolean
 		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 
-	call Settings_Difficulty__Initialize ()
-	call Settings_HCL__Initialize ()
 	call Settings___Pause_Miners ()
-
-	// An empty string is taken to mean that a player must specify the game
-	// settings, regardless of whether a host bot is involved.
-	if Settings_HCL__Command () == "" then
-		call Settings_Window__Initialize ()
-	else
-		call Settings_HCL__Process ()
-		call Game__On_Start (Condition (function Settings__Setup))
-	endif
+	call Game__On_Start (Condition (function Settings__Setup))
 
 	set the_player = null
 

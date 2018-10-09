@@ -172,13 +172,6 @@ function Board__Setup takes nothing returns nothing
 					// Grow the separator dynamically.  Without the division, it
 					// would align to the right margin.
 					call MultiboardSetItemWidth (board_item, space + (width [0] - initial) / 2)
-				elseif column == 3 then
-					call MultiboardSetItemValue (board_item, "Settings:")
-					call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
-					call MultiboardSetItemWidth (board_item, String__Width ("Settings:") + space * 2)
-				elseif column == 4 then
-					call MultiboardSetItemValue (board_item, Settings__String ())
-					call MultiboardSetItemWidth (board_item, String__Width (Settings__String ()))
 				endif
 			elseif column == 0 then
 				call MultiboardSetItemValue (board_item, GetPlayerName (Player (player_index)))
