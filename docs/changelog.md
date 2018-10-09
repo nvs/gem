@@ -9,6 +9,10 @@ full list of changes to the project, please consult the commit log.
 - Dead gems are no longer replaced by rocks upon using action buttons (e.g.
   Keep or Combine).
 
+### Removed
+- Settings have been removed. As such, the default difficulty (i.e. Extreme)
+  is now the only difficulty.
+
 ### Changed
 - Slate stacking has been reworked:
     - A base slate can now stack upon any other base slate, except those of

@@ -6,6 +6,9 @@ function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
 	set text = text + Color__Gold ("Fixed:\n")
 	set text = text + "- Dead gems are no longer replaced by rocks upon using action buttons (e.g. Keep or Combine).\n\n"
 
+	set text = text + Color__Gold ("Removed:\n")
+	set text = text + "- Settings have been removed. As such, the default difficulty (i.e. Extreme) is now the only difficulty.\n\n"
+
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Slate stacking has been reworked:\n"
 	set text = text + "    - A base slate can now stack upon any other base slate, except those of the same type. For example, a Range can now stack on a Damage but not another Range.\n"
