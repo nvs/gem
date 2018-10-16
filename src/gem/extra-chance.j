@@ -246,17 +246,15 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	call Gem_Chance__Reset (whom)
 	set Gem_Extra_Chance___Current_Target [whom_id] = 0
 	set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
-	set Gem_Extra_Chance___Previous_Target [whom_id] = target
-	set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
 
-	if not has_target then
-		set whom = null
-		return false
+	if has_target then
+		set Gem_Extra_Chance___Previous_Target [whom_id] = 0
+		set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
+		set udg_CountExtrachance [whom_id + 1] = udg_CountExtrachance [whom_id + 1] + 1
+	else
+		set Gem_Extra_Chance___Previous_Target [whom_id] = target
+		set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
 	endif
-
-	set Gem_Extra_Chance___Previous_Target [whom_id] = 0
-	set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
-	set udg_CountExtrachance [whom_id + 1] = udg_CountExtrachance [whom_id + 1] + 1
 
 	set whom = null
 
