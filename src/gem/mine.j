@@ -62,8 +62,8 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	set Gem_Mine___Mines [1] = gg_unit_h01V_0012
 	set Gem_Mine___Mines [2] = gg_unit_h01V_0013
 	set Gem_Mine___Mines [3] = gg_unit_h01V_0014
-	set Gem_Mine___Mines [4] = gg_unit_h01V_0015
-	set Gem_Mine___Mines [5] = gg_unit_h01V_0016
+	set Gem_Mine___Mines [4] = gg_unit_h01V_0016
+	set Gem_Mine___Mines [5] = gg_unit_h01V_0015
 	set Gem_Mine___Mines [6] = gg_unit_h01V_0017
 	set Gem_Mine___Mines [7] = gg_unit_h01V_0018
 
