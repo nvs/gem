@@ -16,6 +16,8 @@ globals
 	constant integer ERROR__NOT_GEM_PLAYER = ID ()
 	constant integer ERROR__PLACEMENT_HAS_STARTED = ID ()
 	constant integer ERROR__NOT_TYPE_OR_SLATE = ID ()
+
+	constant string Gem_Extra_Chance__MESSAGE = Color ("ffff00", "Extra Chanced!")
 endglobals
 
 function Gem_Extra_Chance__Is_Active takes player whom returns boolean
@@ -24,6 +26,10 @@ endfunction
 
 function Gem_Extra_Chance__Bonus takes player whom returns integer
 	return Gem_Extra_Chance___Current_Bonus [GetPlayerId (whom)]
+endfunction
+
+function Gem_Extra_Chance__Target takes player whom returns integer
+	return Gem_Extra_Chance___Current_Target [GetPlayerId (whom)]
 endfunction
 
 function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
@@ -157,19 +163,50 @@ function Gem_Extra_Chance__Clear takes player whom returns nothing
 	set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
 endfunction
 
+function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing
+	local texttag tag = null
+	local real x = 0
+	local real y = 0
+
+	if placed == null then
+		return
+	endif
+
+	set tag = CreateTextTag ()
+	set x = GetUnitX (placed)
+	set y = GetUnitY (placed)
+
+	call SetTextTagText (tag, Gem_Extra_Chance__MESSAGE, 0.023)
+	call SetTextTagPos (tag, x, y, 0.0)
+	call SetTextTagPermanent (tag, false)
+	call SetTextTagLifespan (tag, 3.0)
+	call SetTextTagFadepoint (tag, 2.5)
+	call SetTextTagVisibility (tag, true)
+
+	set tag = null
+endfunction
+
 // Unless Extra Chance is active for the placement round we reset the previous
 // bonus and target.
 function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 	local player whom = Gem_Placement__The_Player ()
-	local integer whom_id = 0
+	local integer whom_id = GetPlayerId (whom)
+	local unit placed = null
+	local integer target = 0
 
 	if Gem_Extra_Chance__Is_Active (whom) then
-		set whom = null
-		return false
-	endif
+		set placed = Gem_Placement__The_Unit ()
+		set target = Gem_Extra_Chance___Current_Target [whom_id]
 
-	if Gem_Placement__Placed (whom) == 1 then
-		set whom_id = GetPlayerId (whom)
+		if GetUnitTypeId (placed) == target then
+			call Gem_Extra_Chance___Extra_Chanced (placed)
+		endif
+
+		set placed = null
+
+	// No active Extra Chance and the first gem has been placed?  It is too late
+	// to enable Extra Chance so we reset the previous bonus and target.
+	elseif Gem_Placement__Placed (whom) == 1 then
 		set Gem_Extra_Chance___Current_Target [whom_id] = 0
 		set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
 		set Gem_Extra_Chance___Previous_Target [whom_id] = 0
@@ -189,9 +226,6 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	local boolean has_target = false
 	local boolean is_slate = false
 	local integer index = 0
-	local unit placed = null
-	local texttag tag = null
-	local real tag_y = 0
 
 	if not Gem_Extra_Chance__Is_Active (whom) then
 		set whom = null
@@ -224,36 +258,7 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
 	set udg_CountExtrachance [whom_id + 1] = udg_CountExtrachance [whom_id + 1] + 1
 
-	// For slates, switch the target to the normal component.  Also, the 'Extra
-	// Chanced!' text must be one line higher.
-	if is_slate then
-		set target = Gem_Slate__Get_Normal (target)
-		set tag_y = 38
-	endif
-
-	set index = 1
-	loop
-		exitwhen not Gem_Selection__Has (whom, index)
-		set placed = Gem_Selection__Get (whom, index)
-
-		if GetUnitTypeId (placed) == target then
-			set tag = CreateTextTag ()
-
-			call SetTextTagText (tag, "Extra Chanced!", 0.023)
-			call SetTextTagPos (tag, GetUnitX (placed), GetUnitY (placed) + tag_y, 0.0)
-			call SetTextTagColor (tag, 255, 255, 0, 255)
-			call SetTextTagPermanent (tag, false)
-			call SetTextTagLifespan (tag, 3.0)
-			call SetTextTagFadepoint (tag, 2.5)
-			call SetTextTagVisibility (tag, true)
-		endif
-
-		set index = index + 1
-	endloop
-
 	set whom = null
-	set placed = null
-	set tag = null
 
 	return false
 endfunction
