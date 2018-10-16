@@ -71,7 +71,7 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	if Gem_Extra_Chance___Current_Target [whom_id] == target then
 		return true
 
-	// No target during previous round.
+	// No target during previous round or the bonus reset.
 	elseif Gem_Extra_Chance___Previous_Target [whom_id] == 0 then
 		set bonus = 0
 
@@ -193,6 +193,7 @@ function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 	local integer whom_id = GetPlayerId (whom)
 	local unit placed = null
 	local integer target = 0
+	local integer bonus = 0
 
 	if Gem_Extra_Chance__Is_Active (whom) then
 		set placed = Gem_Placement__The_Unit ()
@@ -205,12 +206,17 @@ function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 		set placed = null
 
 	// No active Extra Chance and the first gem has been placed?  It is too late
-	// to enable Extra Chance so we reset the previous bonus and target.
+	// to enable, so decay the previous bonus and adjust accordingly.
 	elseif Gem_Placement__Placed (whom) == 1 then
 		set Gem_Extra_Chance___Current_Target [whom_id] = 0
 		set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
-		set Gem_Extra_Chance___Previous_Target [whom_id] = 0
-		set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
+
+		set bonus = IMaxBJ (Gem_Extra_Chance___Previous_Bonus [whom_id] - 1, 0)
+		set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
+
+		if bonus == 0 then
+			set Gem_Extra_Chance___Previous_Target [whom_id] = 0
+		endif
 	endif
 
 	set whom = null
