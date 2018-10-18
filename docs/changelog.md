@@ -27,8 +27,7 @@ full list of changes to the project, please consult the commit log.
     - Extra Chance is now active the entire round.
     - Upgrading of Extra Chance has been removed.
     - A bonus will increase when failing to hit a target over consecutive
-      rounds. Changing targets decreases the bonus. Skipping a round clears
-      the bonus.
+      rounds. Changing targets or skipping a round decreases the bonus.
     - Extra Chance for Perfects increases chances for the entire type and not
       just the target Perfect.
     - Extra Chance for Slates increases chances for the components of a Slate,

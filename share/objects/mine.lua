@@ -375,8 +375,8 @@ objects [perfect.active] = {
 				.. 'well as all qualities of the chosen type.|n|n'
 
 				.. 'Failing to hit the target and selecting it in consecutive '
-				.. 'rounds will increase a bonus. Changing targets decreases the '
-				.. 'bonus. Skipping a round clears the bonus.'
+				.. 'rounds will increase a bonus. Changing targets or skipping '
+				.. 'a round will cause the bonus to decrease.'
 		}
 	}
 }
@@ -466,8 +466,8 @@ objects [slate.active] = {
 				.. 'pieces.|n|n'
 
 				.. 'Failing to hit the target and selecting it in consecutive '
-				.. 'rounds will increase a bonus. Changing targets decreases the '
-				.. 'bonus. Skipping a round clears the bonus.'
+				.. 'rounds will increase a bonus. Changing targets or skipping '
+				.. 'a round will cause the bonus to decrease.'
 		}
 	}
 }
