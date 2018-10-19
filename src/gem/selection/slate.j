@@ -30,8 +30,6 @@ function Gem_Selection_Slate___Tag takes unit which, string text, string color r
 
 	call UnitAddAbility (which, Gem_Selection_Slate__ABILITY)
 
-	set tag = CreateTextTag ()
-
 	call SetTextTagText (tag, prefix + Color (color, text), 0.023)
 	call SetTextTagPos (tag, GetUnitX (which), GetUnitY (which), 0.0)
 	call SetTextTagPermanent (tag, false)
