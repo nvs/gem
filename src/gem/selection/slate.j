@@ -24,7 +24,7 @@ function Gem_Selection_Slate___Tag takes unit which, string text, string color r
 		set target = Gem_Extra_Chance__Target (whom)
 
 		if Gem_Slate__Get_Normal (target) == GetUnitTypeId (which) then
-			set prefix = Gem_Extra_Chance__MESSAGE + "|n"
+			set prefix = Gem_Extra_Chance__MESSAGE + "\n"
 		endif
 	endif
 
