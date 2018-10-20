@@ -19,6 +19,7 @@ globals
 	constant integer Gem_Slate__VIPER = 'n00F'
 
 	boolean array Gem_Slate___Is_Slate
+	string array Gem_Slate___Name
 	integer array Gem_Slate___Normal
 	integer array Gem_Slate___Flawed_A
 	integer array Gem_Slate___Flawed_B
@@ -33,6 +34,10 @@ endfunction
 
 function Gem_Slate__Is_Slate takes integer slate returns boolean
 	return Gem_Slate___Is_Slate [Gem_Slate___ID (slate)]
+endfunction
+
+function Gem_Slate__Name takes integer slate returns string
+	return Gem_Slate___Name [Gem_Slate___ID (slate)]
 endfunction
 
 function Gem_Slate__Get_Normal takes integer slate returns integer
