@@ -4,7 +4,8 @@ function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Fixed:\n")
-	set text = text + "- Dead gems are no longer replaced by rocks upon using action buttons (e.g. Keep or Combine).\n\n"
+	set text = text + "- Dead gems are no longer replaced by rocks upon using action buttons (e.g. Keep or Combine).\n"
+	set text = text + "- A combination slate can no longer shift upon creation.\n\n"
 
 	set text = text + Color__Gold ("Removed:\n")
 	set text = text + "- Settings have been removed. As such, the default difficulty (i.e. Extreme) is now the only difficulty.\n\n"
