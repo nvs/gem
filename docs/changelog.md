@@ -31,8 +31,12 @@ full list of changes to the project, please consult the commit log.
       rounds. Changing targets or skipping a round decreases the bonus.
     - Extra Chance for Perfects increases chances for the entire type and not
       just the target Perfect.
-    - Extra Chance for Slates increases chances for the components of a Slate,
-      rather than giving the target Slate directly.
+    - Extra Chance for Slates no longer gives slates directly. Rather, it
+      increases the chances for the gem components that make the target
+      slates.
+    - Extra Chance for Slates increases the chances for both base slates used
+      in a combination.  However, only the targetted base slate can fulfill
+      the Extra Chance.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
