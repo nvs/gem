@@ -64,7 +64,7 @@ objects [combine.x2] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Selection)'
 	},
 
 	-- Hotkey - Normal
@@ -147,7 +147,7 @@ objects [combine.x3] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Selection)'
 	},
 
 	-- Hotkey - Normal
@@ -230,7 +230,7 @@ objects [combine.x4] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Selection)'
 	},
 
 	-- Hotkey - Normal
