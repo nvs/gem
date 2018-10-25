@@ -176,7 +176,7 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 
 	// A weight less than zero implies that we need to clear the entire
 	// placement table first.  Essentially, this makes it impossible to get
-	// anything but the targets.
+	// anything but gems related to the target.
 	if weight < 0 then
 		call Gem_Chance__Clear (whom)
 
@@ -246,8 +246,6 @@ function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing
 	set tag = null
 endfunction
 
-// Unless Extra Chance is active for the placement round we reset the previous
-// bonus and target.
 function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 	local player whom = Gem_Placement__The_Player ()
 	local integer whom_id = GetPlayerId (whom)
