@@ -13,6 +13,13 @@ globals
 	real array Gem_Extra_Chance___Slate_Two_Weights
 	real array Gem_Extra_Chance___Slate_Three_Weights
 
+	// Target: Perfect gem.
+	constant real Gem_Extra_Chance___Type_Perfect = 5.25
+	constant real Gem_Extra_Chance___Type_Flawless = 7.5
+	constant real Gem_Extra_Chance___Type_Normal = 7.5
+	constant real Gem_Extra_Chance___Type_Flawed = 7.5
+	constant real Gem_Extra_Chance___Type_Chipped = 2.5
+
 	constant integer ERROR__NOT_GEM_PLAYER = ID ()
 	constant integer ERROR__PLACEMENT_HAS_STARTED = ID ()
 	constant integer ERROR__NOT_TYPE_OR_SLATE = ID ()
@@ -42,10 +49,10 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	local integer cost = 0
 
 	local integer array gems
+	local real array weights
 	local integer index = 0
 
 	local integer type_id = 0
-	local integer type_index = 0
 
 	if not Gem_Player__Is_Player (whom) then
 		call Error (ERROR__NOT_GEM_PLAYER, null)
@@ -91,9 +98,16 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 		set gems [1] = Gem_Gems__Get_Unit_Type (type_id, Gem_Quality__FLAWLESS)
 		set gems [2] = Gem_Gems__Get_Unit_Type (type_id, Gem_Quality__NORMAL)
 		set gems [3] = Gem_Gems__Get_Unit_Type (type_id, Gem_Quality__FLAWED)
+		set gems [4] = Gem_Gems__Get_Unit_Type (type_id, Gem_Quality__CHIPPED)
 
 		set weight = Gem_Extra_Chance___Type_Weights [bonus]
 		set cost = Gem_Extra_Chance__TYPE_COST
+
+		set weights [0] = weight * Gem_Extra_Chance___Type_Perfect
+		set weights [1] = weight * Gem_Extra_Chance___Type_Flawless
+		set weights [2] = weight * Gem_Extra_Chance___Type_Normal
+		set weights [3] = weight * Gem_Extra_Chance___Type_Flawed
+		set weights [4] = weight * Gem_Extra_Chance___Type_Chipped
 	else
 		set gems [0] = Gem_Slate__Get_Normal (target)
 		set gems [1] = Gem_Slate__Get_Flawed_A (target)
@@ -107,6 +121,11 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 		endif
 
 		set cost = Gem_Extra_Chance__SLATE_COST
+
+		set weights [0] = weight
+		set weights [1] = weight
+		set weights [2] = weight
+		set weights [3] = weight
 	endif
 
 	if not Gem_Extra_Chance__Is_Active (whom) then
@@ -118,7 +137,6 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	// anything but the targets.
 	if weight < 0 then
 		call Gem_Chance__Clear (whom)
-		set weight = -weight
 
 	// We only need to reset the placement table if we are changing targets in
 	// the current round.
@@ -128,7 +146,7 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 
 	set index = 0
 	loop
-		call Gem_Placement__Set_Weight (whom, gems [index], weight)
+		call Gem_Placement__Set_Weight (whom, gems [index], RAbsBJ (weights [index]))
 		set index = index + 1
 		exitwhen gems [index] == 0
 	endloop
@@ -267,17 +285,33 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	return false
 endfunction
 
+function Gem_Extra_Chance___Weight takes real total, integer bonus returns real
+	return 3500 / (total - 80) / (bonus - 5) - 3500 / total / (bonus - 5) - 700 / total
+endfunction
+
+function Gem_Extra_Chance___Initialize_Type_Weights takes nothing returns nothing
+	local real total = 0
+
+	set total = total + Gem_Extra_Chance___Type_Perfect
+	set total = total + Gem_Extra_Chance___Type_Flawless
+	set total = total + Gem_Extra_Chance___Type_Normal
+	set total = total + Gem_Extra_Chance___Type_Flawed
+	set total = total + Gem_Extra_Chance___Type_Chipped
+
+	set Gem_Extra_Chance___Type_Weights [0] = Gem_Extra_Chance___Weight (total, 0)
+	set Gem_Extra_Chance___Type_Weights [1] = Gem_Extra_Chance___Weight (total, 1)
+	set Gem_Extra_Chance___Type_Weights [2] = Gem_Extra_Chance___Weight (total, 2)
+	set Gem_Extra_Chance___Type_Weights [3] = Gem_Extra_Chance___Weight (total, 3)
+	set Gem_Extra_Chance___Type_Weights [4] = Gem_Extra_Chance___Weight (total, 4)
+	set Gem_Extra_Chance___Type_Weights [5] = -1 // Must zero the table.
+endfunction
+
 function Gem_Extra_Chance__Initialize takes nothing returns boolean
 	call Game__On_Start (Condition (function Gem_Extra_Chance_Menu__Initialize))
 	call Gem_Placement__On_Placement (Condition (function Gem_Extra_Chance___On_Placement))
 	call Gem_Placement__On_Finish (Condition (function Gem_Extra_Chance___On_Finish))
 
-	set Gem_Extra_Chance___Type_Weights [0] = 75
-	set Gem_Extra_Chance___Type_Weights [1] = 275 / 2
-	set Gem_Extra_Chance___Type_Weights [2] = 725 / 3
-	set Gem_Extra_Chance___Type_Weights [3] = 450
-	set Gem_Extra_Chance___Type_Weights [4] = 1075
-	set Gem_Extra_Chance___Type_Weights [5] = -1 // Must zero the table.
+	call Gem_Extra_Chance___Initialize_Type_Weights ()
 
 	set Gem_Extra_Chance___Slate_Two_Weights [0] = 2130 / 31
 	set Gem_Extra_Chance___Slate_Two_Weights [1] = 7810 / 67
