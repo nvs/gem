@@ -40,6 +40,14 @@ function Gem_Slate__Name takes integer slate returns string
 	return Gem_Slate___Name [Gem_Slate___ID (slate)]
 endfunction
 
+function Gem_Slate__Size takes integer slate returns integer
+	if Gem_Slate__Get_Flawed_C (slate) == 0 then
+		return 2
+	else
+		return 3
+	endif
+endfunction
+
 function Gem_Slate__Get_Normal takes integer slate returns integer
 	return Gem_Slate___Normal [Gem_Slate___ID (slate)]
 endfunction
