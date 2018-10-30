@@ -5,44 +5,42 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.5.0] - N/A
 
-### Fixed
-- Dead gems are no longer replaced by rocks upon using action buttons (e.g.
-  Keep or Combine).
-- A combination slate can no longer shift upon creation.
+### Added
+- Combine (3x) has been added, allowing three of a kind to skip a gem quality.
+- It now possible to perform a one-hit combination slate move (e.g. you can
+  create Ancient if you can also create both Hold and Air in a single round).
 
 ### Removed
 - Settings have been removed. As such, the default difficulty (i.e. Extreme)
   is now the only difficulty.
 
 ### Changed
-- Slate stacking has been reworked:
-    - A base slate can now stack upon any other base slate, except those of
-      the same type. For example, a Range can now stack on a Damage but not
-      another Range.
-- Combine has been reworked:
-    - Existing functionality has been split into distinct Combine (2x) and
-      Combine (4x) buttons.
-    - Combine (3x) has been added, allowing three of a kind to skip a gem
-      quality.
-- Extra Chance has been reworked:
-    - Extra Chance is now active the entire round.
-    - Upgrading of Extra Chance has been removed.
-    - A bonus will increase when failing to hit a target over consecutive
-      rounds. Changing targets or skipping a round decreases the bonus.
-    - Extra Chance for Perfects increases chances for the entire type and not
-      just the target Perfect.
-    - Extra Chance for Slates no longer gives slates directly. Rather, it
-      increases the chances for the gem components that make the target
-      slates.
-    - Extra Chance for Slates increases the chances for both base slates used
-      in a combination.  However, only the targetted base slate can fulfill
-      the Extra Chance.
+- Combine has been split into distinct Combine (2x) and Combine (4x) buttons.
+- A base slate can not stack upon any other base slate, except those of the
+  same type. For example, a Range can stack on a Damage but not another Range.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
 - Buying lives no longer has a cooldown.
+- Extra Chance:
+    - It is now active the entire round and no longer needs to be upgraded.
+    - A bonus will increase when failing to hit a target over consecutive
+      rounds. Changing targets or skipping a round decreases the bonus.
+    - Extra Chance for Perfects increases chances for all qualities of a type
+      instead of just the target perfect.
+    - Extra Chance for Slates no longer gives slates directly. Rather, it
+      increases the chances for the gem components that make the target
+      slates.
+    - Extra Chance for Slates increases the chances for both base slates used
+      in a combination. However, only the targetted base slate can fulfill
+      the Extra Chance.
+
+### Fixed
+- Dead gems are no longer replaced by rocks upon using action buttons (e.g.
+  Keep or Combine).
+- A combination slate can no longer shift upon creation.
 
 ## [1.4.3] - 2018-04-13
 
