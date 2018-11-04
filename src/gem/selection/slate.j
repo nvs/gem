@@ -29,7 +29,7 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 	local integer other = Gem_Selection_Slate___Get_Other_Part (slate)
 
 	if Gem_Extra_Chance__Is_Active (whom) then
-		set target = Gem_Extra_Chance__Target (whom)
+		set target = Gem_Extra_Chance__Current_Target (whom)
 
 		if Gem_Slate__Get_Normal (target) == GetUnitTypeId (which) then
 			set prefix = Gem_Extra_Chance__MESSAGE + "\n"

@@ -51,12 +51,20 @@ function Gem_Extra_Chance__Is_Active takes player whom returns boolean
 	return Gem_Extra_Chance___Current_Target [GetPlayerId (whom)] > 0
 endfunction
 
-function Gem_Extra_Chance__Bonus takes player whom returns integer
+function Gem_Extra_Chance__Current_Target takes player whom returns integer
+	return Gem_Extra_Chance___Current_Target [GetPlayerId (whom)]
+endfunction
+
+function Gem_Extra_Chance__Current_Bonus takes player whom returns integer
 	return Gem_Extra_Chance___Current_Bonus [GetPlayerId (whom)]
 endfunction
 
-function Gem_Extra_Chance__Target takes player whom returns integer
-	return Gem_Extra_Chance___Current_Target [GetPlayerId (whom)]
+function Gem_Extra_Chance__Previous_Target takes player whom returns integer
+	return Gem_Extra_Chance___Previous_Target [GetPlayerId (whom)]
+endfunction
+
+function Gem_Extra_Chance__Previous_Bonus takes player whom returns integer
+	return Gem_Extra_Chance___Previous_Bonus [GetPlayerId (whom)]
 endfunction
 
 function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
