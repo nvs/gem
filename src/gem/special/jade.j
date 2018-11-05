@@ -23,7 +23,6 @@ function Gem_Special___Jade takes nothing returns boolean
 	local unit attacker
 	local unit victim
 	local player owner
-	local texttag tag
 	local integer player_index
 	local integer roll
 	local integer gold
@@ -34,13 +33,6 @@ function Gem_Special___Jade takes nothing returns boolean
 	if GetUnitTypeId (attacker) == 'h035' then
 		set owner = GetOwningPlayer (attacker)
 		set roll = GetRandomInt (1, 100)
-
-		set tag = CreateTextTag ()
-		call SetTextTagPos (tag, GetUnitX (attacker), GetUnitY (attacker), 0.00)
-		call SetTextTagPermanent (tag, false)
-		call SetTextTagLifespan (tag, 2.00)
-		call SetTextTagFadepoint (tag, 1.50)
-		call SetTextTagVisibility (tag, true)
 
 		// Gold:
 		if roll == 1 then
@@ -63,7 +55,6 @@ function Gem_Special___Jade takes nothing returns boolean
 	set attacker = null
 	set victim = null
 	set owner = null
-	set tag = null
 
 	return false
 endfunction
