@@ -147,10 +147,10 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 			set weights [0] = weight * Gem_Extra_Chance___Slate_Two_A0
 			set weights [1] = weight * Gem_Extra_Chance___Slate_Two_A1
 			set weights [2] = weight * Gem_Extra_Chance___Slate_Two_A2
-			set weights [4] = weight * Gem_Extra_Chance___Slate_Two_B0
-			set weights [5] = weight * Gem_Extra_Chance___Slate_Two_B1
-			set weights [6] = weight * Gem_Extra_Chance___Slate_Two_B2
-			set weights [3] = weight * Gem_Extra_Chance___Slate_Two_B3
+			set weights [3] = weight * Gem_Extra_Chance___Slate_Two_B0
+			set weights [4] = weight * Gem_Extra_Chance___Slate_Two_B1
+			set weights [5] = weight * Gem_Extra_Chance___Slate_Two_B2
+			set weights [6] = weight * Gem_Extra_Chance___Slate_Two_B3
 
 			set A = target
 			set B = Gem_Selection_Slate___Get_Other_Part (target)
@@ -160,10 +160,10 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 			set weights [0] = weight * Gem_Extra_Chance___Slate_Three_A0
 			set weights [1] = weight * Gem_Extra_Chance___Slate_Three_A1
 			set weights [2] = weight * Gem_Extra_Chance___Slate_Three_A2
-			set weights [4] = weight * Gem_Extra_Chance___Slate_Three_B0
-			set weights [5] = weight * Gem_Extra_Chance___Slate_Three_B1
-			set weights [6] = weight * Gem_Extra_Chance___Slate_Three_B2
-			set weights [3] = weight * Gem_Extra_Chance___Slate_Three_B3
+			set weights [3] = weight * Gem_Extra_Chance___Slate_Three_B0
+			set weights [4] = weight * Gem_Extra_Chance___Slate_Three_B1
+			set weights [5] = weight * Gem_Extra_Chance___Slate_Three_B2
+			set weights [6] = weight * Gem_Extra_Chance___Slate_Three_B3
 
 			set A = Gem_Selection_Slate___Get_Other_Part (target)
 			set B = target
