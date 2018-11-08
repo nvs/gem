@@ -3,16 +3,14 @@ root = true
 [*]
 end_of_line = lf
 charset = utf-8
-max_line_length = 78
+max_line_length = 76
 indent_style = tab
-indent_size = 3
+indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{md,markdown}]
+[*.md]
 indent_style = space
-indent_size = 4
-trim_trailing_whitespace = false
 
 [*.j]
 max_line_length = off
@@ -24,4 +22,3 @@ max_line_length = off
 [COMMIT_EDITMSG]
 max_line_length = 72
 indent_style = space
-indent_size = 4
