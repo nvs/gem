@@ -1,0 +1,363 @@
+// # Gem Rank
+
+globals
+	// Level 50 is the official last level.  However, we internally consider
+	// the Damage Test to be Level 51.  As such, the maximum number of
+	// levels is 52.
+	constant integer Gem_Rank___LEVELS = 52
+
+	// The rate at which damage dealt to register units is updated.
+	constant integer Gem_Rank___FREQUENCY = 4
+	constant real Gem_Rank___PERIOD = 1. / I2R (Gem_Rank___FREQUENCY)
+
+	real array Gem_Rank___Temporary_Damage
+	real array Gem_Rank___Damage
+
+	integer array Gem_Rank___Start
+	integer array Gem_Rank___Stop
+
+	// Keeps track of the creeps 'owned' by a player.  That is, the units
+	// that they are tasked to defend against.
+	group array Gem_Rank___Group
+
+	integer array Gem_Rank___Level
+	player array Gem_Rank___Sorted
+	integer array Gem_Rank___Rank
+
+	integer Gem_Rank___Count = 0
+	group Gem_Rank___Temporary_Group = CreateGroup ()
+endglobals
+
+function Gem_Rank__Is_Player_Registered takes player whom returns boolean
+	return Gem_Rank___Level [GetPlayerId (whom)] > 0
+endfunction
+
+function Gem_Rank__Register_Player takes player whom returns nothing
+	local integer whom_id = 0
+
+	if not Gem_Player__Is_Player (whom) then
+		return
+	endif
+
+	set whom_id = GetPlayerId (whom)
+
+	set Gem_Rank___Rank [whom_id] = 1
+	set Gem_Rank___Level [whom_id] = 1
+	set Gem_Rank___Count = Gem_Rank___Count + 1
+	set Gem_Rank___Sorted [Gem_Rank___Count] = whom
+	set Gem_Rank___Group [whom_id] = CreateGroup ()
+endfunction
+
+function Gem_Rank__Get_Sorted takes integer index returns player
+	return Gem_Rank___Sorted [index]
+endfunction
+
+function Gem_Rank__Get_Rank takes player whom returns integer
+	return Gem_Rank___Rank [GetPlayerId (whom)]
+endfunction
+
+function Gem_Rank___Index takes integer whom_id, integer level returns integer
+	return whom_id * Gem_Rank___LEVELS + level
+endfunction
+
+function Gem_Rank__Get_Level takes integer whom_id returns integer
+	return Gem_Rank___Level [whom_id]
+endfunction
+
+function Gem_Rank___Set_Damage takes integer whom_id, integer level, real damage returns nothing
+	set Gem_Rank___Damage [Gem_Rank___Index (whom_id, level)] = damage
+endfunction
+
+function Gem_Rank__Get_Damage takes integer whom_id, integer level returns real
+	return Gem_Rank___Damage [Gem_Rank___Index (whom_id, level)]
+endfunction
+
+function Gem_Rank___Set_Start takes integer whom_id, integer level, integer time returns nothing
+	set Gem_Rank___Start [Gem_Rank___Index (whom_id, level)] = time
+endfunction
+
+function Gem_Rank__Get_Start takes integer whom_id, integer level returns integer
+	return Gem_Rank___Start [Gem_Rank___Index (whom_id, level)]
+endfunction
+
+function Gem_Rank___Set_Stop takes integer whom_id, integer level, integer time returns nothing
+	set Gem_Rank___Stop [Gem_Rank___Index (whom_id, level)] = time
+endfunction
+
+function Gem_Rank__Get_Stop takes integer whom_id, integer level returns integer
+	return Gem_Rank___Stop [Gem_Rank___Index (whom_id, level)]
+endfunction
+
+function Gem_Rank__Get_DPS takes integer whom_id, integer level returns real
+	local integer index = Gem_Rank___Index (whom_id, level)
+	local real damage = Gem_Rank___Damage [index]
+	local integer start = Gem_Rank___Start [index]
+	local integer stop = Gem_Rank___Stop [index]
+	local integer time = 0
+
+	if stop == 0 then
+		set stop = Time__Total ()
+	endif
+
+	set time = stop - start
+
+	if time == 0 then
+		return 0.
+	endif
+
+	return damage * 1000. / I2R (time)
+endfunction
+
+function Gem_Rank___Is_Creep takes unit which returns boolean
+	local boolean is_indexed = Unit_Indexer__Is_Indexed (which)
+	local boolean is_creep = GetOwningPlayer (which) == Gem__PLAYER_CREEPS
+
+	return is_indexed and is_creep
+endfunction
+
+function Gem_Rank__Register_Unit takes unit which returns nothing
+	local integer index = 0
+	local integer whom_id = 0
+	local integer level = 0
+
+	if not Gem_Rank___Is_Creep (which) then
+		return
+	endif
+
+	set index = Unit_Indexer__Unit_Index (which)
+	set whom_id = udg_CreepOwner [index] - 1
+	set level = udg_RLevel [whom_id + 1]
+
+	call GroupAddUnit (Gem_Rank___Group [whom_id], which)
+
+	if Gem_Rank__Get_Start (whom_id, level) == 0 then
+		call Gem_Rank___Set_Start (whom_id, level, Time__Total ())
+	endif
+endfunction
+
+// Returns an `integer` indicating which player, `A` or `B`, has further
+// progress.  A value of `-1` means that `A` has progressed further.
+// A value of `1` means that `B` has progress fruther.  A value of `0`
+// implies that they have equal progression.
+function Gem_Rank___Compare takes integer A, integer B returns integer
+	local integer A_level = Gem_Rank___Level [A]
+	local integer B_level = Gem_Rank___Level [B]
+
+	local integer A_time = 0
+	local integer B_time = 0
+
+	local real A_damage = 0
+	local real B_damage = 0
+
+	// Being on a level implies that one has cleared all previous levels.
+	if A_level > B_level then
+		return -1
+	elseif A_level < B_level then
+		return 1
+	endif
+
+	// Check damage dealt on the current level.
+	set A_damage = Gem_Rank__Get_Damage (A, A_level)
+	set B_damage = Gem_Rank__Get_Damage (B, B_level)
+
+	if A_damage > B_damage then
+		return -1
+	elseif A_damage < B_damage then
+		return 1
+	endif
+
+	// Look at finish time for the previous level.
+	set A_time = Gem_Rank__Get_Stop (A, A_level - 1)
+	set B_time = Gem_Rank__Get_Stop (B, B_level - 1)
+
+	if A_time < B_time then
+		return -1
+	elseif A_time > B_time then
+		return 1
+	endif
+
+	return 0
+endfunction
+
+// Sort using `Gem_Rank___Compare ()` as the comparator.  It should be noted
+// that players will either be sorted or nearly sorted most of the time.  As
+// such, we use insertion sort and set the ranks for the players as we go.
+// In the event of a tie, the same rank is used and subsequent ranks are
+// accordingly skipped.
+function Gem_Rank___Sort takes nothing returns nothing
+	local integer i = 0
+	local integer j = 0
+	local player A_player = null
+	local player B_player = null
+	local integer A = 0
+	local integer B = 0
+	local integer comparison = 0
+
+	set i = 2
+	loop
+		exitwhen i > Gem_Rank___Count
+
+		set A_player = Gem_Rank___Sorted [i]
+		set A = GetPlayerId (A_player)
+
+		set j = i - 1
+		loop
+			set B_player = Gem_Rank___Sorted [j]
+			set B = GetPlayerId (B_player)
+
+			set comparison = Gem_Rank___Compare (A, B)
+			exitwhen comparison >= 0
+
+			set Gem_Rank___Sorted [j + 1] = B_player
+			set Gem_Rank___Rank [B] = Gem_Rank___Rank [B] + 1
+
+			set j = j - 1
+			exitwhen j <= 0
+		endloop
+
+		set Gem_Rank___Sorted [j + 1] = A_player
+
+		if comparison == 0 then
+			set Gem_Rank___Rank [A] = Gem_Rank___Rank [B]
+		else
+			set Gem_Rank___Rank [A] = j + 2
+		endif
+
+		set i = i + 1
+	endloop
+
+	set A_player = null
+	set B_player = null
+endfunction
+
+function Gem_Rank___Update_Damage takes integer whom_id returns nothing
+	local integer level = Gem_Rank___Level [whom_id]
+	local real damage = Gem_Rank___Temporary_Damage [whom_id]
+
+	local unit which = null
+	local group temporary = Gem_Rank___Temporary_Group
+
+	loop
+		set which = FirstOfGroup (Gem_Rank___Group [whom_id])
+		exitwhen which == null
+
+		call GroupRemoveUnit (Gem_Rank___Group [whom_id], which)
+		call GroupAddUnit (temporary, which)
+
+		set damage = damage + GetUnitState (which, UNIT_STATE_MAX_LIFE)
+		set damage = damage - GetWidgetLife (which)
+	endloop
+
+	set Gem_Rank___Temporary_Group = Gem_Rank___Group [whom_id]
+	call GroupClear (Gem_Rank___Temporary_Group)
+
+	set Gem_Rank___Group [whom_id] = temporary
+	set temporary = null
+
+	call Gem_Rank___Set_Damage (whom_id, level, damage)
+endfunction
+
+function Gem_Rank___Damage_Timer takes nothing returns nothing
+	local integer whom_id = 0
+
+	loop
+		if Gem_Rank__Is_Player_Registered (Player (whom_id)) then
+			call Gem_Rank___Update_Damage (whom_id)
+		endif
+
+		set whom_id = whom_id + 1
+		exitwhen whom_id >= Gem__MAXIMUM_PLAYERS
+	endloop
+
+	call Gem_Rank___Sort ()
+endfunction
+
+function Gem_Rank__Fail takes player whom returns nothing
+	local integer whom_id = 0
+	local integer level = 0
+
+	if not Gem_Rank__Is_Player_Registered (whom) then
+		return
+	endif
+
+	set whom_id = GetPlayerId (whom)
+	set level = Gem_Rank___Level [whom_id]
+
+	call Gem_Rank___Update_Damage (whom_id)
+	call Gem_Rank___Set_Stop (whom_id, level, Time__Total ())
+
+	set Gem_Rank___Temporary_Damage [whom_id] = 0.
+endfunction
+
+function Gem_Rank__Clear takes player whom returns nothing
+	local integer whom_id = 0
+	local integer level = 0
+
+	if not Gem_Rank__Is_Player_Registered (whom) then
+		return
+	endif
+
+	set whom_id = GetPlayerId (whom)
+	set level = Gem_Rank___Level [whom_id]
+
+	call Gem_Rank___Update_Damage (whom_id)
+	call Gem_Rank___Set_Stop (whom_id, level, Time__Total ())
+
+	set Gem_Rank___Level [whom_id] = level + 1
+	set Gem_Rank___Temporary_Damage [whom_id] = 0.
+endfunction
+
+function Gem_Rank___On_Unit_Removal takes unit which returns nothing
+	local integer index = Unit_Indexer__Unit_Index (which)
+	local integer whom_id = udg_CreepOwner [index] - 1
+	local real damage = Gem_Rank___Temporary_Damage [whom_id]
+	local integer level = 0
+
+	set damage = damage + GetUnitState (which, UNIT_STATE_MAX_LIFE)
+
+	if UnitAlive (which) then
+		set damage = damage - GetWidgetLife (which)
+	endif
+
+	set Gem_Rank___Temporary_Damage [whom_id] = damage
+
+	// Removing the unit when it dies or leaves the map ensures that no
+	// `ghost` units will exist in the group.  This will allow proper
+	// traversal via `FirstOfGroup ()`.
+	call GroupRemoveUnit (Gem_Rank___Group [whom_id], which)
+endfunction
+
+function Gem_Rank___On_Leave takes nothing returns boolean
+	local unit which = Unit_Event__The_Unit ()
+
+	// Dead units have already been handled by the `On Death` event.  So we
+	// need to ensure that the unit is alive or it will be dealt with twice.
+	if Gem_Rank___Is_Creep (which) and UnitAlive (which) then
+		call Gem_Rank___On_Unit_Removal (which)
+	endif
+
+	set which = null
+
+	return false
+endfunction
+
+function Gem_Rank___On_Death takes nothing returns boolean
+	local unit which = Unit_Event__The_Unit ()
+
+	if Gem_Rank___Is_Creep (which) then
+		call Gem_Rank___On_Unit_Removal (which)
+	endif
+
+	set which = null
+
+	return false
+endfunction
+
+function Gem_Rank__Initialize takes nothing returns boolean
+	call TimerStart (CreateTimer (), Gem_Rank___PERIOD, true, function Gem_Rank___Damage_Timer)
+
+	call Unit_Event__On_Leave (Condition (function Gem_Rank___On_Leave))
+	call Unit_Event__On_Death (Condition (function Gem_Rank___On_Death))
+
+	return false
+endfunction

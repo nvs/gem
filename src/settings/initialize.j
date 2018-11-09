@@ -10,6 +10,7 @@ function Settings__Initialize takes nothing returns boolean
 
 		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
 			set udg_PlayerHERE [index + 1] = true
+			call Gem_Rank__Register_Player (the_player)
 		endif
 
 		set index = index + 1

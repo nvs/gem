@@ -177,6 +177,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Slate__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Special__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Spawn__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Rank__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Gem_Quality__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Type__Initialize))

@@ -3353,6 +3353,8 @@ function Trig_End_game_dmg_test_RACE_kills_Actions takes nothing returns nothing
 		set udg_Damage [owner_id] = 2000000
 	endif
 
+	call Gem_Rank__Clear (owner)
+
 	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(owner)+" has killed their damage test!!!! Dealing 2,000,000 DAMAGE!|r")))
 
 	if udg_Mode == 2 then
@@ -3422,6 +3424,7 @@ function Trig_P1_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cffff0000Your maze has done "+(I2S(udg_Damage[1])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P1_Dmg_test_Func007001())then
+		call Gem_Rank__Fail (Player (0))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+(" has done "+(I2S(udg_Damage[1])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3497,6 +3500,7 @@ function Trig_P2_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cffff0000Your maze has done "+(I2S(udg_Damage[2])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P2_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (1))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+(" has done "+(I2S(udg_Damage[2])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3572,6 +3576,7 @@ function Trig_P3_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cffff0000Your maze has done "+(I2S(udg_Damage[3])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P3_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (2))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+(" has done "+(I2S(udg_Damage[3])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3647,6 +3652,7 @@ function Trig_P4_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cffff0000Your maze has done "+(I2S(udg_Damage[4])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P4_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (3))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+(" has done "+(I2S(udg_Damage[4])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3722,6 +3728,7 @@ function Trig_P5_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cffff0000Your maze has done "+(I2S(udg_Damage[5])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P5_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (4))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+(" has done "+(I2S(udg_Damage[5])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3797,6 +3804,7 @@ function Trig_P6_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cffff0000Your maze has done "+(I2S(udg_Damage[6])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P6_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (5))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+(" has done "+(I2S(udg_Damage[6])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3872,6 +3880,7 @@ function Trig_P7_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cffff0000Your maze has done "+(I2S(udg_Damage[7])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P7_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (6))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+(" has done "+(I2S(udg_Damage[7])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3947,6 +3956,7 @@ function Trig_P8_Dmg_test_Actions takes nothing returns nothing
 	call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cffff0000Your maze has done "+(I2S(udg_Damage[8])+" damage!!!|r")))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P8_Dmg_test_Func008001())then
+		call Gem_Rank__Fail (Player (7))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+(" has done "+(I2S(udg_Damage[8])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -4091,6 +4101,7 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0011)
 		set udg_PlayerHERE[1]=false
 		call Gem_Spawn__Stop (0)
+		call Gem_Rank__Fail (Player (0))
 		set udg_PlayerDie[1]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
@@ -4391,6 +4402,7 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0012)
 		set udg_PlayerHERE[2]=false
 		call Gem_Spawn__Stop (1)
+		call Gem_Rank__Fail (Player (1))
 		set udg_PlayerDie[2]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
@@ -4691,6 +4703,7 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0013)
 		set udg_PlayerHERE[3]=false
 		call Gem_Spawn__Stop (2)
+		call Gem_Rank__Fail (Player (2))
 		set udg_PlayerDie[3]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
@@ -4991,6 +5004,7 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0014)
 		set udg_PlayerHERE[4]=false
 		call Gem_Spawn__Stop (3)
+		call Gem_Rank__Fail (Player (3))
 		set udg_PlayerDie[4]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
@@ -5291,6 +5305,7 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0016)
 		set udg_PlayerHERE[5]=false
 		call Gem_Spawn__Stop (4)
+		call Gem_Rank__Fail (Player (4))
 		set udg_PlayerDie[5]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
@@ -5591,6 +5606,7 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0015)
 		set udg_PlayerHERE[6]=false
 		call Gem_Spawn__Stop (5)
+		call Gem_Rank__Fail (Player (5))
 		set udg_PlayerDie[6]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
@@ -5891,6 +5907,7 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0017)
 		set udg_PlayerHERE[7]=false
 		call Gem_Spawn__Stop (6)
+		call Gem_Rank__Fail (Player (6))
 		set udg_PlayerDie[7]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
@@ -6191,6 +6208,7 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		call KillUnit(gg_unit_h01V_0018)
 		set udg_PlayerHERE[8]=false
 		call Gem_Spawn__Stop (7)
+		call Gem_Rank__Fail (Player (7))
 		set udg_PlayerDie[8]=true
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
@@ -6427,6 +6445,7 @@ function Trig_Fin_P1_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[1]==true)
 endfunction
 function Trig_Fin_P1_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (0))
 	set udg_CountWastedGems[1]=0
 	set udg_RmodeFinished[1]=true
 	call TriggerSleepAction(2)
@@ -6434,6 +6453,7 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P1_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [1]), GetRectCenterY (udg_Move1st [1]))
 	endif
@@ -6488,6 +6508,7 @@ function Trig_Fin_P2_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[2]==true)
 endfunction
 function Trig_Fin_P2_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (1))
 	set udg_CountWastedGems[2]=0
 	set udg_RmodeFinished[2]=true
 	call TriggerSleepAction(2)
@@ -6495,6 +6516,7 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P2_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [2]), GetRectCenterY (udg_Move1st [2]))
 	endif
@@ -6549,6 +6571,7 @@ function Trig_Fin_P3_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[3]==true)
 endfunction
 function Trig_Fin_P3_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (2))
 	set udg_CountWastedGems[3]=0
 	set udg_RmodeFinished[3]=true
 	call TriggerSleepAction(2)
@@ -6556,6 +6579,7 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P3_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [3]), GetRectCenterY (udg_Move1st [3]))
 	endif
@@ -6610,6 +6634,7 @@ function Trig_Fin_P4_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[4]==true)
 endfunction
 function Trig_Fin_P4_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (3))
 	set udg_CountWastedGems[4]=0
 	set udg_RmodeFinished[4]=true
 	call TriggerSleepAction(2)
@@ -6617,6 +6642,7 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P4_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [4]), GetRectCenterY (udg_Move1st [4]))
 	endif
@@ -6671,6 +6697,7 @@ function Trig_Fin_P5_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[5]==true)
 endfunction
 function Trig_Fin_P5_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (4))
 	set udg_CountWastedGems[5]=0
 	set udg_RmodeFinished[5]=true
 	call TriggerSleepAction(2)
@@ -6678,6 +6705,7 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P5_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [5]), GetRectCenterY (udg_Move1st [5]))
 	endif
@@ -6732,6 +6760,7 @@ function Trig_Fin_P6_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[6]==true)
 endfunction
 function Trig_Fin_P6_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (5))
 	set udg_CountWastedGems[6]=0
 	set udg_RmodeFinished[6]=true
 	call TriggerSleepAction(2)
@@ -6739,6 +6768,7 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P6_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [6]), GetRectCenterY (udg_Move1st [6]))
 	endif
@@ -6793,6 +6823,7 @@ function Trig_Fin_P7_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[7]==true)
 endfunction
 function Trig_Fin_P7_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (7))
 	set udg_CountWastedGems[7]=0
 	set udg_RmodeFinished[7]=true
 	call TriggerSleepAction(2)
@@ -6800,6 +6831,7 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P7_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [7]), GetRectCenterY (udg_Move1st [7]))
 	endif
@@ -6854,6 +6886,7 @@ function Trig_Fin_P8_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[8]==true)
 endfunction
 function Trig_Fin_P8_2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (7))
 	set udg_CountWastedGems[8]=0
 	set udg_RmodeFinished[8]=true
 	call TriggerSleepAction(2)
@@ -6861,6 +6894,7 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 	if(Trig_Fin_P8_2_Func006001())then
 		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
 		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
+		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
 		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
 		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [8]), GetRectCenterY (udg_Move1st [8]))
 	endif
@@ -7723,6 +7757,7 @@ function Trig_New_Level_P1_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P1_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (0))
 	call Gem_Spawn__Stop (0)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
@@ -7870,6 +7905,7 @@ function Trig_New_Level_P2_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P2_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (1))
 	call Gem_Spawn__Stop (1)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
@@ -8017,6 +8053,7 @@ function Trig_New_Level_P3_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P3_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (2))
 	call Gem_Spawn__Stop (2)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
@@ -8164,6 +8201,7 @@ function Trig_New_Level_P4_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P4_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (3))
 	call Gem_Spawn__Stop (3)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
@@ -8311,6 +8349,7 @@ function Trig_New_Level_P5_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P5_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (4))
 	call Gem_Spawn__Stop (4)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
@@ -8458,6 +8497,7 @@ function Trig_New_Level_P6_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P6_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (5))
 	call Gem_Spawn__Stop (5)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
@@ -8605,6 +8645,7 @@ function Trig_New_Level_P7_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P7_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (6))
 	call Gem_Spawn__Stop (6)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
@@ -8752,6 +8793,7 @@ function Trig_New_Level_P8_Func026C takes nothing returns boolean
 	return true
 endfunction
 function Trig_New_Level_P8_Actions takes nothing returns nothing
+	call Gem_Rank__Clear (Player (7))
 	call Gem_Spawn__Stop (7)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
