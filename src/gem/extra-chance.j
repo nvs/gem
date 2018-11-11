@@ -118,7 +118,7 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 
 	// Different target than previous round.
 	else
-		set bonus = IMaxBJ (Gem_Extra_Chance___Previous_Bonus [whom_id] - 1, 0)
+		set bonus = bonus
 	endif
 
 	if Gem_Gems__Is_Gem (target) then
