@@ -132,7 +132,7 @@ function Board___Add_Test_Column takes nothing returns nothing
 			call MultiboardSetItemValue (object, "Test")
 			call MultiboardSetItemValueColor (object, 254, 211, 18, 255)
 		else
-			call MultiboardSetItemValue (object, "N/A")
+			call MultiboardSetItemValue (object, "")
 		endif
 
 		call MultiboardReleaseItem (object)
@@ -164,7 +164,7 @@ function Board___Update takes nothing returns nothing
 		set whom_id = GetPlayerId (whom)
 		set level = Gem_Rank__Get_Level (whom_id)
 
-		if not Board___On_Test and level > 1 then
+		if not Board___On_Test and level > 50 then
 			call Board___Add_Test_Column ()
 			call Board___Update ()
 			exitwhen true
@@ -203,14 +203,14 @@ function Board___Update takes nothing returns nothing
 					set value = I2S (R2I (dps))
 				endif
 			elseif Board___On_Test and column == 6 then
-				if level == 3 then
-					set time = Gem_Rank__Get_Stop (whom_id, 2)
+				if level == 52 then
+					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
-				elseif level == 2 then
-					set damage = Gem_Rank__Get_Damage (whom_id, 2)
+				elseif level == 51 then
+					set damage = Gem_Rank__Get_Damage (whom_id, 51)
 					set value = I2S (R2I (damage))
 				else
-					set value = "N/A"
+					set value = ""
 				endif
 			endif
 
