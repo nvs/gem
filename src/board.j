@@ -155,6 +155,7 @@ function Board___Update takes nothing returns nothing
 	local integer time = 0
 	local string value = null
 	local multiboarditem board_item = null
+	local string color = null
 
 	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 
@@ -191,17 +192,13 @@ function Board___Update takes nothing returns nothing
 				// has not started (i.e. in placement phase).
 				if Gem_Rank__Get_Start (whom_id, level) == 0 then
 					set dps = Gem_Rank__Get_DPS (whom_id, level - 1)
+					set color = Board___PREVIOUS_COLOR
 				else
 					set dps = Gem_Rank__Get_DPS (whom_id, level)
+					set color = Color__WHITE
 				endif
 
-				if dps < 100 then
-					set value = R2SW (dps, 2, 2)
-				elseif dps < 1000 then
-					set value = R2SW (dps, 1, 1)
-				else
-					set value = I2S (R2I (dps))
-				endif
+				set value = Color (color, I2S (R2I (dps)))
 			elseif Board___On_Test and column == 6 then
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
