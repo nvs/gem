@@ -8,9 +8,18 @@
 // - String
 
 globals
+	constant string Board___PREVIOUS_COLOR = "808080"
+
 	multiboard Board = null
 
 	integer array Board___Players
+	string array Board___Ranks
+
+	boolean Board___On_Test = false
+
+	constant integer Board___HOUR = 60 * 60 * 1000
+	constant integer Board___MINUTE = 60 * 1000
+	constant integer Board___SECOND = 1000
 endglobals
 
 function Board__Display takes nothing returns nothing
@@ -21,44 +30,187 @@ function Board__Hide takes nothing returns nothing
 	call MultiboardDisplay (Board, false)
 endfunction
 
+function Board___Format takes integer value returns string
+	if value < 10 then
+		return "0" + I2S (value)
+	else
+		return I2S (value)
+	endif
+endfunction
+
+function Board___Time takes integer time returns string
+	local integer hours = 0
+	local integer minutes = 0
+	local integer seconds = 0
+	local integer milliseconds = 0
+
+	if time >= Board___HOUR then
+		set hours = time / Board___HOUR
+		set time = time - hours * Board___HOUR
+	endif
+
+	if time >= Board___MINUTE then
+		set minutes = time / Board___MINUTE
+		set time = time - minutes * Board___MINUTE
+	endif
+
+	if time >= Board___SECOND then
+		set seconds = time / Board___SECOND
+		set time = time - seconds * Board___SECOND
+	endif
+
+	set milliseconds = time
+
+	return Board___Format (hours) + ":" + Board___Format (minutes) + ":" + Board___Format (seconds)
+endfunction
+
+function Board___Title takes player whom returns string
+	local integer whom_id = GetPlayerId (whom)
+
+	local string rank = Color__White (Board___Ranks [Gem_Rank__Get_Rank (GetLocalPlayer ())])
+	local string level = Color__White (I2S (udg_RLevel [whom_id + 1]))
+	local string lives = Color__White (I2S (udg_Lives [whom_id + 1]))
+
+	local integer current = Gem_Extra_Chance__Current_Target (whom)
+	local integer previous = Gem_Extra_Chance__Previous_Target (whom)
+
+	local string extra_chance = null
+	local string color = null
+	local integer target = 0
+	local integer bonus = 0
+	local string name = null
+	local integer type_id = ID__NULL
+
+	if current > 0 or previous > 0 then
+		if current > 0 then
+			set color = Color__WHITE
+			set target = current
+			set bonus = Gem_Extra_Chance__Current_Bonus (whom)
+		else
+			set color = "808080"
+			set target = previous
+			set bonus = Gem_Extra_Chance__Previous_Bonus (whom)
+		endif
+
+		if Gem_Gems__Is_Gem (target) then
+			set type_id = Gem_Gems__Get_ID_Type (target)
+			set name = Gem_Type__Get_Name (type_id)
+		else
+			set name = Gem_Slate__Name (target)
+		endif
+
+		set extra_chance = Color (color, name + " (" + I2S (bonus) + "x)")
+	else
+		set extra_chance = Color__White ("N/A")
+	endif
+
+	return "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
+endfunction
+
+function Board___Add_Test_Column takes nothing returns nothing
+	local real space = String__Width (" ")
+	local real dps_width = String__Width ("DPS") + space * 7
+	local real test_width = String__Width ("44:44:44")
+	local multiboarditem object = null
+	local integer rows = MultiboardGetRowCount (Board)
+	local integer row = 0
+
+	set Board___On_Test = true
+
+	call MultiboardSetColumnCount (Board, 7)
+
+	loop
+		set object = MultiboardGetItem (Board, row, 5)
+		call MultiboardSetItemWidth (object, dps_width)
+		call MultiboardReleaseItem (object)
+
+		set object = MultiboardGetItem (Board, row, 6)
+		call MultiboardSetItemStyle (object, true, false)
+		call MultiboardSetItemWidth (object, test_width)
+
+		if row == 0 then
+			call MultiboardSetItemValue (object, "Test")
+			call MultiboardSetItemValueColor (object, 254, 211, 18, 255)
+		else
+			call MultiboardSetItemValue (object, "N/A")
+		endif
+
+		call MultiboardReleaseItem (object)
+
+		set row = row + 1
+		exitwhen row >= rows
+	endloop
+endfunction
+
 function Board___Update takes nothing returns nothing
-	local integer player_index
+	local player whom = null
+	local integer whom_id = 0
+	local integer row = 1
+	local integer row_count = MultiboardGetRowCount (Board)
+	local integer column = 1
+	local integer column_count = MultiboardGetColumnCount (Board)
+	local integer level = 0
+	local real dps = 0.
+	local real damage = 0.
+	local integer time = 0
+	local string value = null
+	local multiboarditem board_item = null
 
-	local integer row
-	local integer row_count
-
-	local integer column
-	local integer column_count
-
-	local string value
-	local multiboarditem board_item
+	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 
 	set row = 1
-	set row_count = MultiboardGetRowCount (Board)
-	set column_count = MultiboardGetColumnCount (Board)
 	loop
-		set player_index = Board___Players [row - 1]
+		set whom = Gem_Rank__Get_Sorted (row)
+		set whom_id = GetPlayerId (whom)
+		set level = Gem_Rank__Get_Level (whom_id)
 
-		set column = 1
+		if not Board___On_Test and level > 1 then
+			call Board___Add_Test_Column ()
+			call Board___Update ()
+			exitwhen true
+		endif
+
+		set column = 0
 		loop
 			set value = null
 			set board_item = MultiboardGetItem (Board, row, column)
 
-			if row == row_count - 1 then
-				if column == 1 then
-					set value = Clock__String (false)
+			if column == 0 then
+				set value = GetPlayerName (whom)
+				call MultiboardSetItemValueColor (board_item, Player_Color__Red (whom_id), Player_Color__Green (whom_id), Player_Color__Blue (whom_id), 255)
+			elseif column == 1 then
+				set value = I2S (udg_RLevel [whom_id + 1])
+			elseif column == 2 then
+				set value = I2S (udg_Lives [whom_id + 1])
+			elseif column == 3 then
+				set value = I2S (GetPlayerState (whom, PLAYER_STATE_RESOURCE_GOLD))
+			elseif column == 4 then
+				set value = I2S (udg_Kills [whom_id + 1])
+			elseif column == 5 then
+				// Display previous round's DPS if the next round's spawn
+				// has not started (i.e. in placement phase).
+				if Gem_Rank__Get_Start (whom_id, level) == 0 then
+					set dps = Gem_Rank__Get_DPS (whom_id, level - 1)
+				else
+					set dps = Gem_Rank__Get_DPS (whom_id, level)
 				endif
-			else
-				if column == 1 then
-					set value = I2S (udg_Kills [player_index + 1])
-				elseif column == 2 then
-					set value = I2S (udg_Lives [player_index + 1])
-				elseif column == 3 then
-					set value = I2S (GetPlayerState (Player (player_index), PLAYER_STATE_RESOURCE_GOLD))
-				elseif column == 4 then
-					if udg_Mode == 2 then
-						set value = I2S (udg_RLevel [player_index + 1])
-					endif
+
+				if dps < 100 then
+					set value = R2SW (dps, 2, 2)
+				elseif dps < 1000 then
+					set value = R2SW (dps, 1, 1)
+				else
+					set value = I2S (R2I (dps))
+				endif
+			elseif Board___On_Test and column == 6 then
+				if level == 3 then
+					set time = Gem_Rank__Get_Stop (whom_id, 2)
+					set value = Board___Time (time)
+				elseif level == 2 then
+					set damage = Gem_Rank__Get_Damage (whom_id, 2)
+					set value = I2S (R2I (damage))
+				else
+					set value = "N/A"
 				endif
 			endif
 
@@ -100,12 +252,23 @@ function Board__Setup takes nothing returns nothing
 
 	local multiboarditem board_item
 
+	set Board___Ranks [0] = "???"
+	set Board___Ranks [1] = "1st"
+	set Board___Ranks [2] = "2nd"
+	set Board___Ranks [3] = "3rd"
+	set Board___Ranks [4] = "4th"
+	set Board___Ranks [5] = "5th"
+	set Board___Ranks [6] = "6th"
+	set Board___Ranks [7] = "7th"
+	set Board___Ranks [8] = "8th"
+
 	// Header (by column):
 	set header [0] = "Players"
-	set header [1] = "Kills"
+	set header [1] = "Level"
 	set header [2] = "Lives"
 	set header [3] = "Gold"
-	set header [4] = "Level"
+	set header [4] = "Kills"
+	set header [5] = "DPS"
 
 	// Width (by column):
 	set space = String__Width (" ")
@@ -113,10 +276,11 @@ function Board__Setup takes nothing returns nothing
 	set maximum = space * 2 + String__Width ("W") * 15
 	set initial = space * 2 + String__Width ("W") * 6
 	set width [0] = initial
-	set width [1] = String__Width ("Kills") + space * 3
+	set width [1] = String__Width ("Level") + space * 3
 	set width [2] = String__Width ("Lives") + space * 3
 	set width [3] = String__Width ("Gold") + space * 5
-	set width [4] = String__Width ("Level")
+	set width [4] = String__Width ("Kills") + space * 3
+	set width [5] = String__Width ("DPS") + space * 5
 
 	set player_index = 0
 	set count = 0
@@ -138,9 +302,9 @@ function Board__Setup takes nothing returns nothing
 
 	set Board = CreateMultiboard ()
 
-	call MultiboardSetRowCount (Board, count + 2)
-	call MultiboardSetColumnCount (Board, 5)
-	call MultiboardSetTitleText (Board, Gem__NAME)
+	call MultiboardSetRowCount (Board, count + 1)
+	call MultiboardSetColumnCount (Board, 6)
+	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 	call MultiboardSetTitleTextColor (Board, 254, 211, 18, 255)
 
 	set row = 0
@@ -161,18 +325,6 @@ function Board__Setup takes nothing returns nothing
 			if row == 0 then
 				call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
 				call MultiboardSetItemValue (board_item, header [column])
-			elseif row == row_count - 1 then
-				if column == 0 then
-					call MultiboardSetItemValue (board_item, "Game Time:")
-					call MultiboardSetItemValueColor (board_item, 254, 211, 18, 255)
-					call MultiboardSetItemWidth (board_item, String__Width ("Game Time:") + space * 2)
-				elseif column == 1 then
-					call MultiboardSetItemWidth (board_item, String__Width ("44:44:44"))
-				elseif column == 2 then
-					// Grow the separator dynamically.  Without the division, it
-					// would align to the right margin.
-					call MultiboardSetItemWidth (board_item, space + (width [0] - initial) / 2)
-				endif
 			elseif column == 0 then
 				call MultiboardSetItemValue (board_item, GetPlayerName (Player (player_index)))
 				call MultiboardSetItemValueColor (board_item, Player_Color__Red (player_index), Player_Color__Green (player_index), Player_Color__Blue (player_index), 255)
