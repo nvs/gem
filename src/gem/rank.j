@@ -126,7 +126,7 @@ function Gem_Rank__Register_Unit takes unit which returns nothing
 
 	set index = Unit_Indexer__Unit_Index (which)
 	set whom_id = udg_CreepOwner [index] - 1
-	set level = udg_RLevel [whom_id + 1]
+	set level = Gem_Rank___Level [whom_id]
 
 	call GroupAddUnit (Gem_Rank___Group [whom_id], which)
 
@@ -185,45 +185,48 @@ endfunction
 // In the event of a tie, the same rank is used and subsequent ranks are
 // accordingly skipped.
 function Gem_Rank___Sort takes nothing returns nothing
+	local player A_player = null
+	local integer A = 0
+
+	local player B_player = null
+	local integer B = 0
+
+	local integer comparison = 0
 	local integer i = 0
 	local integer j = 0
-	local player A_player = null
-	local player B_player = null
-	local integer A = 0
-	local integer B = 0
-	local integer comparison = 0
 
-	set i = 2
 	loop
+		set i = i + 1
 		exitwhen i > Gem_Rank___Count
 
-		set A_player = Gem_Rank___Sorted [i]
-		set A = GetPlayerId (A_player)
+		set B_player = Gem_Rank___Sorted [i]
+		set B = GetPlayerId (B_player)
 
-		set j = i - 1
+		set Gem_Rank___Rank [B] = i
+
+		set j = i
 		loop
-			set B_player = Gem_Rank___Sorted [j]
-			set B = GetPlayerId (B_player)
-
-			set comparison = Gem_Rank___Compare (A, B)
-			exitwhen comparison >= 0
-
-			set Gem_Rank___Sorted [j + 1] = B_player
-			set Gem_Rank___Rank [B] = Gem_Rank___Rank [B] + 1
-
 			set j = j - 1
 			exitwhen j <= 0
+
+			set A_player = Gem_Rank___Sorted [j]
+			set A = GetPlayerId (A_player)
+
+			set comparison = Gem_Rank___Compare (A, B)
+			exitwhen comparison <= 0
+
+			set Gem_Rank___Sorted [j] = B_player
+			set Gem_Rank___Sorted [j + 1] = A_player
+
+			set Gem_Rank___Rank [B] = Gem_Rank___Rank [A]
+			set Gem_Rank___Rank [A] = Gem_Rank___Rank [A] + 1
 		endloop
 
-		set Gem_Rank___Sorted [j + 1] = A_player
-
-		if comparison == 0 then
-			set Gem_Rank___Rank [A] = Gem_Rank___Rank [B]
-		else
-			set Gem_Rank___Rank [A] = j + 2
+		if i > 1 and comparison == 0 then
+			set Gem_Rank___Rank [B] = Gem_Rank___Rank [A]
 		endif
 
-		set i = i + 1
+		set Gem_Rank___Sorted [j + 1] = B_player
 	endloop
 
 	set A_player = null
