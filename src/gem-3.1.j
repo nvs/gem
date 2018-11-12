@@ -1259,6 +1259,7 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 		if(Trig_Player_Leaves_Func001Func001C())then
 			set udg_PlayerHERE[GetForLoopIndexA()]=false
 			call Gem_Spawn__Stop (GetForLoopIndexA () - 1)
+			call Gem_Rank__Fail (GetTriggerPlayer ())
 			call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(GetTriggerPlayer())+" is gone!!!|r")))
 			set udg_Lives[GetForLoopIndexA()]=0
 			set udg_Kills[GetForLoopIndexA()]=0
