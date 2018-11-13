@@ -9,6 +9,8 @@ full list of changes to the project, please consult the commit log.
 - Combine (3x) has been added, allowing three of a kind to skip a gem quality.
 - It now possible to perform a one-hit combination slate move (e.g. you can
   create Ancient if you can also create both Hold and Air in a single round).
+- The board has gained a DPS meter, Extra Chance indicator, and rank
+  support.
 
 ### Removed
 - Settings have been removed. As such, the default difficulty (i.e. Extreme)
