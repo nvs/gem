@@ -14,15 +14,15 @@ do
 	-- ## Data
 
 	-- Armor Duration
-	debuff.Ufa1.value = duration
+	debuff.Ufa1.values = duration
 
 	-- ## Stats
 
 	-- Duration - Hero
-	debuff.ahdu.value = duration
+	debuff.ahdu.values = duration
 
 	-- Duration - Normal
-	debuff.adur.value = duration
+	debuff.adur.values = duration
 end
 
 -- # Elder Information
