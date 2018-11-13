@@ -32,6 +32,12 @@ full list of changes to the project, please consult the commit log.
     - Increased area of effect from `250` to `350`.
     - Increased damage from `150` to `187`.
     - Reduced upgrade cost from `290` to `190`.
+- Yellow Sapphire:
+    - Increased area of effect from `400` to `500`.
+    - Reduced attack cooldown from `1.0` to `0.8`, the same as Star Yellow
+      Sapphire.
+- Star Yellow Sapphire:
+    - Increased damage from `180` to `220`.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.

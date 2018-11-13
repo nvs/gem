@@ -38,12 +38,16 @@ function Gem_Changelog___1_5_0_Part_2 takes nothing returns nothing
 	set text = text + "    - Increased area of effect from `250` to `350`.\n"
 	set text = text + "    - Increased damage from `150` to `187`.\n"
 	set text = text + "    - Reduced upgrade cost from `290` to `190`.\n"
+	set text = text + "- Yellow Sapphire:\n"
+	set text = text + "    - Increased area of effect from `400` to `500`.\n"
+	set text = text + "    - Reduced attack cooldown from `1.0` to `0.8`, the same as Star Yellow Sapphire.\n"
+	set text = text + "- Star Yellow Sapphire:\n"
+	set text = text + "    - Increased damage from `180` to `220`.\n"
 	set text = text + "- Elder Slate:\n"
 	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
 	set text = text + "    - No longer rewards gold.\n"
 	set text = text + "- Spell Slate:\n"
 	set text = text + "    - No longer rewards gold.\n"
-	set text = text + "- Buying lives no longer has a cooldown.\n"
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
@@ -54,6 +58,7 @@ function Gem_Changelog___1_5_0_Part_3 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "\n"
+	set text = text + "- Buying lives no longer has a cooldown.\n"
 	set text = text + "- Extra Chance:\n"
 	set text = text + "    - It is now active the entire round and no longer needs to be upgraded.\n"
 	set text = text + "    - A bonus will increase when failing to hit a target over consecutive rounds. Changing targets or skipping a round decreases the bonus.\n"
@@ -64,7 +69,7 @@ function Gem_Changelog___1_5_0_Part_3 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Fixed:\n")
 	set text = text + "- Dead gems are no longer replaced by rocks upon using action buttons (e.g. Keep or Combine).\n"
-	set text = text + "- A combination slate can no longer shift upon creation."
+	set text = text + "- A combination slate can no longer shift upon creation.\n"
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
