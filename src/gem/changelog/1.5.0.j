@@ -13,6 +13,8 @@ function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- Combine has been split into distinct Combine (2x) and Combine (4x) buttons.\n"
 	set text = text + "- A base slate can not stack upon any other base slate, except those of the same type. For example, a Range can stack on a Damage but not another Range.\n"
+	set text = text + "- Mighty Malachite:\n"
+	set text = text + "    - Reduced upgrade cost from `280` to `180`.\n"
 	set text = text + "- Elder Slate:\n"
 	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
 	set text = text + "    - No longer rewards gold.\n"

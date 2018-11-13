@@ -18,6 +18,8 @@ full list of changes to the project, please consult the commit log.
 - Combine has been split into distinct Combine (2x) and Combine (4x) buttons.
 - A base slate can not stack upon any other base slate, except those of the
   same type. For example, a Range can stack on a Damage but not another Range.
+- Mighty Malachite:
+    - Reduced upgrade cost from `280` to `180`.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
