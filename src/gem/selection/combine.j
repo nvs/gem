@@ -59,6 +59,7 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	local integer type_id = ID__NULL
 	local integer quality_id = ID__NULL
 	local integer quality_index = 0
+	local integer great_index = 0
 
 	if not Gem_Gems__Is_Gem (old_id) then
 		set old = null
@@ -84,6 +85,7 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	set type_id = Gem_Gems__Get_ID_Type (old_id)
 	set quality_id = Gem_Gems__Get_ID_Quality (old_id)
 	set quality_index = Gem_Quality__Get_Index (quality_id)
+	set great_index = Gem_Quality__Get_Index (Gem_Quality__GREAT)
 
 	if count == 2 then
 		set quality_index = quality_index + 1
@@ -92,7 +94,7 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	endif
 
 	// Stone of Bryvx:
-	if quality_index > Gem_Quality__Get_Index (Gem_Quality__GREAT) then
+	if quality_index > great_index then
 		set type_id = ID__NULL
 		set quality_id = ID__NULL
 		set new_id = 'h04A'
@@ -109,6 +111,11 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 
 	if type_id == Gem_Type__OPAL then
 		call SetUnitAbilityLevel (new, 'S008', quality_index + 1)
+	endif
+
+	// Display one-hit style message for Great and higher.
+	if quality_index >= great_index then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_UPDATED,  Color ("00ffff", GetPlayerName (whom) + " has created " + GetUnitName (new) + Color ("00ffff", "!")))
 	endif
 
 	call DisplayTextToPlayer (whom, 0, 0, Color ("33ff33", GetUnitName (new) + " has been created!!"))
