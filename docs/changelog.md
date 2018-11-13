@@ -22,6 +22,16 @@ full list of changes to the project, please consult the commit log.
     - Reduced upgrade cost from `280` to `180`.
 - Fire Star:
     - Reduced upgrade cost from `290` to `190`.
+- Silver:
+    - Increased area of effect from `250` to `350`.
+    - Increased damage from `20` to `25`.
+- Sterling Silver:
+    - Increased area of effect from `250` to `350`.
+    - Increased damage from `40` to `50`.
+- Silver Knight:
+    - Increased area of effect from `250` to `350`.
+    - Increased damage from `150` to `187`.
+    - Reduced upgrade cost from `290` to `190`.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
