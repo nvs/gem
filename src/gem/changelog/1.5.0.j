@@ -15,6 +15,8 @@ function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
 	set text = text + "- A base slate can not stack upon any other base slate, except those of the same type. For example, a Range can stack on a Damage but not another Range.\n"
 	set text = text + "- Mighty Malachite:\n"
 	set text = text + "    - Reduced upgrade cost from `280` to `180`.\n"
+	set text = text + "- Fire Star:\n"
+	set text = text + "    - Reduced upgrade cost from `290` to `190`.\n"
 	set text = text + "- Elder Slate:\n"
 	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
 	set text = text + "    - No longer rewards gold.\n"

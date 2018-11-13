@@ -20,6 +20,8 @@ full list of changes to the project, please consult the commit log.
   same type. For example, a Range can stack on a Damage but not another Range.
 - Mighty Malachite:
     - Reduced upgrade cost from `280` to `180`.
+- Fire Star:
+    - Reduced upgrade cost from `290` to `190`.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
