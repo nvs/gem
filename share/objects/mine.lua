@@ -4,8 +4,6 @@ local globals = map.globals
 
 local id = require ('lib.gem.id')
 
-local life = id (globals.Gem_Mine_Life___ID)
-
 local cancel = {
 	active = id (globals.Gem_Mine_Cancel___BUTTON_ID),
 	placeholder = id (globals.Gem_Mine_Cancel___PLACEHOLDER_ID)
@@ -100,7 +98,6 @@ do
 	-- Normal
 	local abilities = {
 		'',
-		life,
 		cancel.placeholder,
 		perfect.placeholder,
 		slate.placeholder
@@ -114,98 +111,32 @@ do
 	mine.ures.value = 'R000'
 
 	-- Units Trained
-	mine.utra.value = ''
+	mine.utra.value = 'h01W'
 end
 
 -- # Remove Objects
 objects ['R001'] = nil
-objects ['h01W'] = nil
 objects ['h03Q'] = nil
 objects ['h042'] = nil
 
 -- # Mine Life
-objects [life] = {
-	type = 'ability',
-	base = 'AAns',
-
-	-- ## Art
-
-	-- Button Position - Normal (X)
-	abpx = {
-		type = 'integer',
-		value = 1
-	},
-
-	-- Button Position - Normal (Y)
-	abpy = {
-		type = 'integer',
-		value = 2
-	},
-
-	-- Icon - Normal
-	aart = {
-		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNSnazzyPotion.blp'
-	},
-
-	-- ## Data
-
-	-- Base Order ID
-	Ans5 = {
-		data = 5,
-		type = 'string',
-		values = {
-			[1] = globals.Gem_Mine_Life___ORDER
-		}
-	},
-
-	-- Gold Cost
-	Ndt1 = {
-		data = 1,
-		type = 'integer',
-		values = {
-			[1] = globals.Gem_Mine_Life___COST
-		}
-	},
+do
+	local unit = objects ['h01W']
 
 	-- ## Text
+	do
+		-- Hotkey - Normal
+		unit.uhot.value = 'L'
 
-	-- Editor Suffix
-	ansf = {
-		type = 'string',
-		value = '(Mine)'
-	},
+		-- Tooltip - Normal
+		unit.utip.value = 'Buy |cffffcc00L|rife'
 
-	-- Hotkey - Normal
-	ahky = {
-		type = 'string',
-		value = 'L'
-	},
-
-	-- Name
-	anam = {
-		type = 'string',
-		value = 'Buy Life'
-	},
-
-	-- Tooltip - Normal
-	atp1 = {
-		type = 'string',
-		values = {
-			[1] = 'Buy |cffffcc00L|rife'
-		}
-	},
-
-	-- Tooltip - Normal - Extended
-	aub1 = {
-		type = 'string',
-		values = {
-			[1] = 'Adds one life to your Mine.|n|n'
-				.. 'Creeps that reach your Mine remove lives equal to their '
-				.. 'gold value.'
-		}
-	}
-}
+		-- Tooltip - Normal - Extended
+		unit.utub.value = 'Adds one life to your Mine.|n|n'
+			.. 'Creeps that reach your Mine remove lives equal to their '
+			.. 'gold value.'
+	end
+end
 
 -- # Mine Cancel (Active)
 objects [cancel.active] = {

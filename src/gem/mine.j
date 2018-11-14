@@ -94,7 +94,6 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	call Gem_Mine_Cancel__Initialize (rule)
 	call Gem_Mine_Type__Initialize (rule)
 	call Gem_Mine_Slate__Initialize (rule)
-	call Gem_Mine_Life__Initialize (rule)
 
 	set rule = null
 	set whom = null

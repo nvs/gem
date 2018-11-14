@@ -60,7 +60,6 @@ function Gem_Changelog___1_5_0_Part_3 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "\n"
-	set text = text + "- Buying lives no longer has a cooldown.\n"
 	set text = text + "- Extra Chance:\n"
 	set text = text + "    - It is now active the entire round and no longer needs to be upgraded.\n"
 	set text = text + "    - A bonus will increase when failing to hit a target over consecutive rounds. Changing targets or skipping a round decreases the bonus.\n"

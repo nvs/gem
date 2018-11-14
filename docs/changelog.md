@@ -45,7 +45,6 @@ full list of changes to the project, please consult the commit log.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
-- Buying lives no longer has a cooldown.
 - Extra Chance:
     - It is now active the entire round and no longer needs to be upgraded.
     - A bonus will increase when failing to hit a target over consecutive
