@@ -5,8 +5,9 @@ function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Added:\n")
 	set text = text + "- Combine (3x) has been added, allowing three of a kind to skip a gem quality.\n"
-	set text = text + "- It now possible to perform a one-hit combination slate move (e.g. you can create Ancient if you can also create both Hold and Air in a single round).\n\n"
-	set text = text = "- The board has gained a DPS meter, Extra Chance indicator, and rank support.\n"
+	set text = text + "- It now possible to perform a one-hit combination slate move (e.g. you can create Ancient if you can also create both Hold and Air in a single round).\n"
+	set text = text + "- The board has gained a DPS meter, Extra Chance indicator, and rank support.\n"
+	set text = text + "\n"
 
 	set text = text + Color__Gold ("Removed:\n")
 	set text = text + "- Settings have been removed. As such, the default difficulty (i.e. Extreme) is now the only difficulty.\n"
