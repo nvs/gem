@@ -1236,41 +1236,37 @@ function InitTrig_Gem_Awards_Upgrade_debug takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Gem_Awards_Upgrade_debug,EVENT_PLAYER_UNIT_UPGRADE_FINISH)
 	call TriggerAddAction(gg_trg_Gem_Awards_Upgrade_debug,function Trig_Gem_Awards_Upgrade_debug_Actions)
 endfunction
-function Trig_Player_Leaves_Func001Func001Func027002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Player_Leaves_Func001Func001Func028002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Player_Leaves_Func001Func001Func029002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
-function Trig_Player_Leaves_Func001Func001C takes nothing returns boolean
-	if(not(GetTriggerPlayer()==udg_Player[GetForLoopIndexA()]))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Player_Leaves_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
+	local player whom = GetTriggerPlayer ()
+	local integer whom_id = GetPlayerId (whom)
+	local group units = CreateGroup ()
+	local unit which = null
+	local integer index = 0
+	local integer owner_id = 0
+
+	set udg_PlayerHERE [whom_id + 1] = false
+	call Gem_Spawn__Stop (whom_id)
+	call Gem_Rank__Fail (whom)
+
+	call DisplayTextToForce (GetPlayersAll (), Color ("33ff33", GetPlayerName (whom) + " is gone!!!"))
+
+	// Remove all creeps 'owned' by the leaving player.
+	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
 	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Player_Leaves_Func001Func001C())then
-			set udg_PlayerHERE[GetForLoopIndexA()]=false
-			call Gem_Spawn__Stop (GetForLoopIndexA () - 1)
-			call Gem_Rank__Fail (GetTriggerPlayer ())
-			call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(GetTriggerPlayer())+" is gone!!!|r")))
-			set udg_Lives[GetForLoopIndexA()]=0
-			set udg_Kills[GetForLoopIndexA()]=0
-			call SetPlayerStateBJ(udg_Player[GetForLoopIndexA()],PLAYER_STATE_RESOURCE_GOLD,0)
-			call ForGroupBJ(GetUnitsOfPlayerAll(GetTriggerPlayer()),function Trig_Player_Leaves_Func001Func001Func027002)
-			call ForGroupBJ(udg_UnitGroup[GetForLoopIndexA()],function Trig_Player_Leaves_Func001Func001Func028002)
-			call ForGroupBJ(GetUnitsInRectOfPlayer(udg_GA[GetForLoopIndexA()],Player(11)),function Trig_Player_Leaves_Func001Func001Func029002)
-		else
+		set which = FirstOfGroup (units)
+		exitwhen which == null
+		call GroupRemoveUnit (units, which)
+
+		set index = Unit_Indexer__Unit_Index (which)
+		set owner_id = udg_CreepOwner [index] - 1
+
+		if whom_id == owner_id then
+			call RemoveUnit (which)
 		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
 	endloop
+
+	call DestroyGroup (units)
+	set units = null
 endfunction
 function InitTrig_Player_Leaves takes nothing returns nothing
 	set gg_trg_Player_Leaves=CreateTrigger()
