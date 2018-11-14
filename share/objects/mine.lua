@@ -284,7 +284,8 @@ objects [cancel.active] = {
 	aub1 = {
 		type = 'string',
 		values = {
-			[1] = 'Cancels Extra Chance, clearing the currently set target.|n|n'
+			[1] = 'Cancels Extra Chance, clearing the currently '
+				.. 'set target.|n|n'
 				.. 'The gold cost of Extra Chance will be refunded.'
 		}
 	}
@@ -370,13 +371,14 @@ objects [perfect.active] = {
 	aub1 = {
 		type = 'string',
 		values = {
-			[1] = 'Sets the Extra Chance target to the Perfect of the chosen '
-				.. 'type. This will increase the chances to get the target as '
-				.. 'well as all qualities of the chosen type.|n|n'
+			[1] = 'Sets the Extra Chance target to the Perfect of the '
+				.. 'chosen type. This will increase the chances to get the '
+				.. 'target as well as all qualities of the chosen type.|n|n'
 
-				.. 'Failing to hit the target and selecting it in consecutive '
-				.. 'rounds will increase a bonus. Changing targets or skipping '
-				.. 'a round will cause the bonus to decrease.'
+				.. 'Failing to hit the target and selecting it in '
+				.. 'consecutive rounds will increase a bonus. Skipping a '
+				.. 'round will cause the bonus to decrease. Switching '
+				.. 'targets will not affect the bonus.'
 		}
 	}
 }
@@ -461,13 +463,15 @@ objects [slate.active] = {
 	aub1 = {
 		type = 'string',
 		values = {
-			[1] = 'Sets the Extra Chance target to the chosen Slate. This will '
-				.. 'increase the chances to get the target\'s component '
-				.. 'pieces.|n|n'
+			[1] = 'Sets the Extra Chance target to the chosen base slate. '
+				.. 'This will increase the odds to get that target\'s '
+				.. 'component Normal and Flawed pieces, as well as those '
+				.. 'of the other base slate used in their combination.|n|n'
 
-				.. 'Failing to hit the target and selecting it in consecutive '
-				.. 'rounds will increase a bonus. Changing targets or skipping '
-				.. 'a round will cause the bonus to decrease.'
+				.. 'Failing to hit the target and selecting it in '
+				.. 'consecutive rounds will increase a bonus. Skipping a '
+				.. 'round will cause the bonus to decrease. Switching '
+				.. 'targets will not affect the bonus.'
 		}
 	}
 }
