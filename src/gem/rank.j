@@ -261,11 +261,16 @@ function Gem_Rank___Update_Damage takes integer whom_id returns nothing
 endfunction
 
 function Gem_Rank___Damage_Timer takes nothing returns nothing
+	local player whom = null
 	local integer whom_id = 0
 
 	loop
-		if Gem_Rank__Is_Player_Registered (Player (whom_id)) then
-			call Gem_Rank___Update_Damage (whom_id)
+		set whom = Player (whom_id)
+
+		if Gem_Rank__Is_Player_Registered (whom) then
+			if GetPlayerSlotState (whom) == PLAYER_SLOT_STATE_PLAYING then
+				call Gem_Rank___Update_Damage (whom_id)
+			endif
 		endif
 
 		set whom_id = whom_id + 1
@@ -273,6 +278,8 @@ function Gem_Rank___Damage_Timer takes nothing returns nothing
 	endloop
 
 	call Gem_Rank___Sort ()
+
+	set whom = null
 endfunction
 
 function Gem_Rank__Fail takes player whom returns nothing
