@@ -40,6 +40,8 @@ full list of changes to the project, please consult the commit log.
       Sapphire.
 - Star Yellow Sapphire:
     - Increased damage from `180` to `220`.
+- Ancient Blood Stone:
+    - Increased chance to cast Blood Lightning from `10%` to `40%`.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.

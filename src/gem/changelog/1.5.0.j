@@ -45,6 +45,8 @@ function Gem_Changelog___1_5_0_Part_2 takes nothing returns nothing
 	set text = text + "    - Reduced attack cooldown from `1.0` to `0.8`, the same as Star Yellow Sapphire.\n"
 	set text = text + "- Star Yellow Sapphire:\n"
 	set text = text + "    - Increased damage from `180` to `220`.\n"
+	set text = text + "- Ancient Blood Stone:\n"
+	set text = text + "    - Increased chance to cast Blood Lightning from `10%` to `40%`.\n"
 	set text = text + "- Elder Slate:\n"
 	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
 	set text = text + "    - No longer rewards gold.\n"

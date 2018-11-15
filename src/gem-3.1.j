@@ -2422,7 +2422,7 @@ function Trig_Ancient_Bloodstone_Func002Func012001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
 function Trig_Ancient_Bloodstone_Func002C takes nothing returns boolean
-	if(not(udg_Random[6]==2))then
+	if(not(udg_Random[6]<=4))then
 		return false
 	endif
 	return true
