@@ -17,7 +17,15 @@ endglobals
 // Returns a `boolean` indicating whether `the_player` is a valid gem player.
 // Note that this does not indicate presence in the game.
 function Gem_Player__Is_Player takes player the_player returns boolean
-	return the_player != null and GetPlayerId (the_player) < Gem__MAXIMUM_PLAYERS
+	if the_player == null then
+		return false
+	endif
+
+	if GetPlayerId (the_player) >= Gem__MAXIMUM_PLAYERS then
+		return false
+	endif
+
+	return GetPlayerController (the_player) == MAP_CONTROL_USER
 endfunction
 
 // Returns the miner `unit` for `the_player`. Returns `null` for an invalid
