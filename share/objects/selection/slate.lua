@@ -116,7 +116,7 @@ objects [slate.combine] = {
 	-- Icon - Normal
 	aart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNLifeDrain.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNReplenishMana.blp'
 	},
 
 	-- ## Data
