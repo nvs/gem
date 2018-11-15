@@ -73,7 +73,7 @@ function Gem_Changelog___1_5_0_Part_3 takes nothing returns nothing
 	set text = text + Color__Gold ("Fixed:\n")
 	set text = text + "- Dead gems are no longer replaced by rocks upon using action buttons (e.g. Keep or Combine).\n"
 	set text = text + "- A combination slate can no longer shift upon creation.\n"
-	set text = text + "- A playing leaving no longer removes their maze or statistics.\n"
+	set text = text + "- Leaving no longer removes a player's maze or statistics.\n"
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
