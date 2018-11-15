@@ -28,6 +28,38 @@ function Gem_Player__Is_Player takes player the_player returns boolean
 	return GetPlayerController (the_player) == MAP_CONTROL_USER
 endfunction
 
+function Gem_Player__Remove_Creeps takes player whom returns nothing
+	local integer whom_id = 0
+	local group units = null
+	local unit which = null
+	local integer index = 0
+	local integer owner_id = 0
+
+	if not Gem_Player__Is_Player (whom) then
+		return
+	endif
+
+	set whom_id = GetPlayerId (whom)
+	set units = CreateGroup ()
+	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
+
+	loop
+		set which = FirstOfGroup (units)
+		exitwhen which == null
+		call GroupRemoveUnit (units, which)
+
+		set index = Unit_Indexer__Unit_Index (which)
+		set owner_id = udg_CreepOwner [index] - 1
+
+		if whom_id == owner_id then
+			call RemoveUnit (which)
+		endif
+	endloop
+
+	call DestroyGroup (units)
+	set units = null
+endfunction
+
 // Returns the miner `unit` for `the_player`. Returns `null` for an invalid
 // player.
 function Gem_Player__Get_Miner takes player the_player returns unit

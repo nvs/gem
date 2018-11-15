@@ -4042,9 +4042,6 @@ function Trig_Leak_and_lose_P1_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P1_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P1_Func008C takes nothing returns boolean
 	if(not(udg_Lives[1]<=0))then
 		return false
@@ -4100,9 +4097,9 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (0)
 		call Gem_Rank__Fail (Player (0))
 		set udg_PlayerDie[1]=true
+		call Gem_Player__Remove_Creeps (Player (0))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(0)),function Trig_Leak_and_lose_P1_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P1_Func009001())then
@@ -4343,9 +4340,6 @@ function Trig_Leak_and_lose_P2_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P2_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P2_Func008C takes nothing returns boolean
 	if(not(udg_Lives[2]<=0))then
 		return false
@@ -4401,9 +4395,9 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (1)
 		call Gem_Rank__Fail (Player (1))
 		set udg_PlayerDie[2]=true
+		call Gem_Player__Remove_Creeps (Player (1))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(1)),function Trig_Leak_and_lose_P2_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P2_Func009001())then
@@ -4644,9 +4638,6 @@ function Trig_Leak_and_lose_P3_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P3_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P3_Func008C takes nothing returns boolean
 	if(not(udg_PlayerDie[3]==false))then
 		return false
@@ -4702,9 +4693,9 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (2)
 		call Gem_Rank__Fail (Player (2))
 		set udg_PlayerDie[3]=true
+		call Gem_Player__Remove_Creeps (Player (2))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(2)),function Trig_Leak_and_lose_P3_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P3_Func009001())then
@@ -4945,9 +4936,6 @@ function Trig_Leak_and_lose_P4_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P4_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P4_Func008C takes nothing returns boolean
 	if(not(udg_PlayerDie[4]==false))then
 		return false
@@ -5003,9 +4991,9 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (3)
 		call Gem_Rank__Fail (Player (3))
 		set udg_PlayerDie[4]=true
+		call Gem_Player__Remove_Creeps (Player (3))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(3)),function Trig_Leak_and_lose_P4_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P4_Func009001())then
@@ -5246,9 +5234,6 @@ function Trig_Leak_and_lose_P5_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P5_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P5_Func008C takes nothing returns boolean
 	if(not(udg_Lives[5]<=0))then
 		return false
@@ -5304,9 +5289,9 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (4)
 		call Gem_Rank__Fail (Player (4))
 		set udg_PlayerDie[5]=true
+		call Gem_Player__Remove_Creeps (Player (4))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(4)),function Trig_Leak_and_lose_P5_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P5_Func009001())then
@@ -5547,9 +5532,6 @@ function Trig_Leak_and_lose_P6_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P6_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P6_Func008C takes nothing returns boolean
 	if(not(udg_Lives[6]<=0))then
 		return false
@@ -5605,9 +5587,9 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (5)
 		call Gem_Rank__Fail (Player (5))
 		set udg_PlayerDie[6]=true
+		call Gem_Player__Remove_Creeps (Player (5))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(5)),function Trig_Leak_and_lose_P6_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P6_Func009001())then
@@ -5848,9 +5830,6 @@ function Trig_Leak_and_lose_P7_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P7_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P7_Func008C takes nothing returns boolean
 	if(not(udg_PlayerDie[7]==false))then
 		return false
@@ -5906,9 +5885,9 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (6)
 		call Gem_Rank__Fail (Player (6))
 		set udg_PlayerDie[7]=true
+		call Gem_Player__Remove_Creeps (Player (6))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(6)),function Trig_Leak_and_lose_P7_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P7_Func009001())then
@@ -6149,9 +6128,6 @@ function Trig_Leak_and_lose_P8_Func007C takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P8_Func008Func009002 takes nothing returns nothing
-	call RemoveUnit(GetEnumUnit())
-endfunction
 function Trig_Leak_and_lose_P8_Func008C takes nothing returns boolean
 	if(not(udg_Lives[8]<=0))then
 		return false
@@ -6207,9 +6183,9 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		call Gem_Spawn__Stop (7)
 		call Gem_Rank__Fail (Player (7))
 		set udg_PlayerDie[8]=true
+		call Gem_Player__Remove_Creeps (Player (7))
 		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
-		call ForGroupBJ(GetUnitsOfPlayerAll(Player(7)),function Trig_Leak_and_lose_P8_Func008Func009002)
 	else
 	endif
 	if(Trig_Leak_and_lose_P8_Func009001())then
