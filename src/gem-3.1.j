@@ -1250,7 +1250,7 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 
 	call DisplayTextToForce (GetPlayersAll (), Color ("33ff33", GetPlayerName (whom) + " is gone!!!"))
 
-	// Remove all creeps 'owned' by the leaving player.
+	// Freeze all creeps 'owned' by the leaving player.
 	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
 	loop
 		set which = FirstOfGroup (units)
@@ -1261,7 +1261,8 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 		set owner_id = udg_CreepOwner [index] - 1
 
 		if whom_id == owner_id then
-			call RemoveUnit (which)
+			call PauseUnit (which, true)
+			call SetUnitInvulnerable (which, true)
 		endif
 	endloop
 
