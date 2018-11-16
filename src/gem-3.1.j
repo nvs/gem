@@ -4074,7 +4074,7 @@ function Trig_Leak_and_lose_P1_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P1_Func012001001(),Trig_Leak_and_lose_P1_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
-	set udg_CountLivesLost[1]=(udg_CountLivesLost[1]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[1]=(udg_CountLivesLost[1]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -4373,7 +4373,7 @@ function Trig_Leak_and_lose_P2_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P2_Func012001001(),Trig_Leak_and_lose_P2_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
-	set udg_CountLivesLost[2]=(udg_CountLivesLost[2]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[2]=(udg_CountLivesLost[2]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -4672,7 +4672,7 @@ function Trig_Leak_and_lose_P3_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P3_Func012001001(),Trig_Leak_and_lose_P3_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
-	set udg_CountLivesLost[3]=(udg_CountLivesLost[3]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[3]=(udg_CountLivesLost[3]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -4971,7 +4971,7 @@ function Trig_Leak_and_lose_P4_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P4_Func012001001(),Trig_Leak_and_lose_P4_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
-	set udg_CountLivesLost[4]=(udg_CountLivesLost[4]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[4]=(udg_CountLivesLost[4]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -5270,7 +5270,7 @@ function Trig_Leak_and_lose_P5_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P5_Func012001001(),Trig_Leak_and_lose_P5_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
-	set udg_CountLivesLost[5]=(udg_CountLivesLost[5]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[5]=(udg_CountLivesLost[5]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -5569,7 +5569,7 @@ function Trig_Leak_and_lose_P6_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P6_Func012001001(),Trig_Leak_and_lose_P6_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
-	set udg_CountLivesLost[6]=(udg_CountLivesLost[6]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[6]=(udg_CountLivesLost[6]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -5868,7 +5868,7 @@ function Trig_Leak_and_lose_P7_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P7_Func012001001(),Trig_Leak_and_lose_P7_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
-	set udg_CountLivesLost[7]=(udg_CountLivesLost[7]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[7]=(udg_CountLivesLost[7]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -6167,7 +6167,7 @@ function Trig_Leak_and_lose_P8_Func012001 takes nothing returns boolean
 	return GetBooleanAnd(Trig_Leak_and_lose_P8_Func012001001(),Trig_Leak_and_lose_P8_Func012001002())
 endfunction
 function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
-	set udg_CountLivesLost[8]=(udg_CountLivesLost[8]-GetUnitPointValue(GetTriggerUnit()))
+	set udg_CountLivesLost[8]=(udg_CountLivesLost[8]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
