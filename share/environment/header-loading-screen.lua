@@ -37,6 +37,8 @@ For map information, including a list of
 changes, see %s in game or visit:
 
 - %s
-- %s]],
+- %s
+
+Please report any bugs or issues encountered.]],
 	color_red ('Bryvx (Bryan K.)'), maintainer,
 	color_gold ('Information (F9)'), repository, discord)
