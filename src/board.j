@@ -8,8 +8,6 @@
 // - String
 
 globals
-	constant string Board___PREVIOUS_COLOR = "808080"
-
 	multiboard Board = null
 
 	integer array Board___Players
@@ -145,6 +143,7 @@ endfunction
 function Board___Update takes nothing returns nothing
 	local player whom = null
 	local integer whom_id = 0
+	local boolean has_left = false
 	local integer row = 1
 	local integer row_count = MultiboardGetRowCount (Board)
 	local integer column = 1
@@ -155,7 +154,7 @@ function Board___Update takes nothing returns nothing
 	local integer time = 0
 	local string value = null
 	local multiboarditem board_item = null
-	local string color = null
+	local boolean is_grey = false
 
 	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 
@@ -163,6 +162,7 @@ function Board___Update takes nothing returns nothing
 	loop
 		set whom = Gem_Rank__Get_Sorted (row)
 		set whom_id = GetPlayerId (whom)
+		set has_left = GetPlayerSlotState (whom) == PLAYER_SLOT_STATE_LEFT
 		set level = Gem_Rank__Get_Level (whom_id)
 
 		if not Board___On_Test and level > 50 then
@@ -175,10 +175,10 @@ function Board___Update takes nothing returns nothing
 		loop
 			set value = null
 			set board_item = MultiboardGetItem (Board, row, column)
+			set is_grey = false
 
 			if column == 0 then
 				set value = GetPlayerName (whom)
-				call MultiboardSetItemValueColor (board_item, Player_Color__Red (whom_id), Player_Color__Green (whom_id), Player_Color__Blue (whom_id), 255)
 			elseif column == 1 then
 				set value = I2S (udg_RLevel [whom_id + 1])
 			elseif column == 2 then
@@ -192,13 +192,12 @@ function Board___Update takes nothing returns nothing
 				// has not started (i.e. in placement phase).
 				if Gem_Rank__Get_Start (whom_id, level) == 0 then
 					set dps = Gem_Rank__Get_DPS (whom_id, level - 1)
-					set color = Board___PREVIOUS_COLOR
+					set is_grey = true
 				else
 					set dps = Gem_Rank__Get_DPS (whom_id, level)
-					set color = Color__WHITE
 				endif
 
-				set value = Color (color, I2S (R2I (dps)))
+				set value = I2S (R2I (dps))
 			elseif Board___On_Test and column == 6 then
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
@@ -209,6 +208,14 @@ function Board___Update takes nothing returns nothing
 				else
 					set value = ""
 				endif
+			endif
+
+			if column == 0 then
+				call MultiboardSetItemValueColor (board_item, Player_Color__Red (whom_id), Player_Color__Green (whom_id), Player_Color__Blue (whom_id), 255)
+			elseif has_left or is_grey then
+				call MultiboardSetItemValueColor (board_item, 128, 128, 128, 255)
+			else
+				call MultiboardSetItemValueColor (board_item, 255, 255, 255, 255)
 			endif
 
 			if value != null then
