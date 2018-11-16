@@ -6,9 +6,11 @@ full list of changes to the project, please consult the commit log.
 ## [1.5.0] - N/A
 
 ### Added
-- Combine (3x) has been added, allowing three of a kind to skip a gem quality.
+- Combine (3x) has been added, allowing three of a kind to skip a gem
+  quality.
 - It now possible to perform a one-hit combination slate move (e.g. you can
-  create Ancient if you can also create both Hold and Air in a single round).
+  create Ancient if you can also create both Hold and Air in a single
+  round).
 - The board has gained a DPS meter, Extra Chance indicator, and rank
   support.
 
@@ -17,9 +19,22 @@ full list of changes to the project, please consult the commit log.
   is now the only difficulty.
 
 ### Changed
-- Combine has been split into distinct Combine (2x) and Combine (4x) buttons.
+- Extra Chance:
+    - It is now active the entire round and no longer needs to be upgraded.
+    - Failing to hit the target and selecting it in consecutive rounds will
+      increase a bonus that has a maximum value of 5x.
+    - Skipping a round will cause the bonus to decrease.
+    - Extra Chance for Perfects sets the target to the selected Perfect,
+      increasing chances to get all qualities of the chosen type.
+    - Extra Chance for Slates no longer gives slates directly. Rather, it
+      sets the target to the chosen base slate, increasing chances to get
+      the component Normal and Flawed pieces of both base slates that make
+      a combintion.
+- Combine has been split into distinct Combine (2x) and Combine (4x)
+  buttons.
 - A base slate can now stack upon any other base slate, except those of the
-  same type. For example, a Range can stack on a Damage but not another Range.
+  same type. For example, a Range can stack on a Damage but not another
+  Range. Stacking rules for combination slates remain the same.
 - Maximum number of lives reduced from `50` to `30`.
 - Mighty Malachite:
     - Reduced upgrade cost from `280` to `180`.
@@ -48,18 +63,7 @@ full list of changes to the project, please consult the commit log.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
-- Extra Chance:
-    - It is now active the entire round and no longer needs to be upgraded.
-    - A bonus will increase when failing to hit a target over consecutive
-      rounds. Changing targets or skipping a round decreases the bonus.
-    - Extra Chance for Perfects increases chances for all qualities of a type
-      instead of just the target perfect.
-    - Extra Chance for Slates no longer gives slates directly. Rather, it
-      increases the chances for the gem components that make the target
-      slates.
-    - Extra Chance for Slates increases the chances for both base slates used
-      in a combination. However, only the targetted base slate can fulfill
-      the Extra Chance.
+
 
 ### Fixed
 - Dead gems are no longer replaced by rocks upon using action buttons (e.g.
