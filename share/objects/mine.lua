@@ -225,6 +225,7 @@ objects [cancel.active] = {
 				.. 'set target and refunding gold.|n|n'
 
 				.. '|cffffcc00Extra Chance Details:|r|n'
+				.. '- The maximum bonus is 5x.|n'
 				.. '- Failing to hit the target and selecting it in '
 				.. 'consecutive rounds will increase a bonus.|n'
 				.. '- Skipping a round will cause the bonus to decrease.'
