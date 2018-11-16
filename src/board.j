@@ -197,14 +197,14 @@ function Board___Update takes nothing returns nothing
 					set dps = Gem_Rank__Get_DPS (whom_id, level)
 				endif
 
-				set value = I2S (R2I (dps))
+				set value = I2S (R2I (dps + 0.5))
 			elseif Board___On_Test and column == 6 then
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
 				elseif level == 51 then
 					set damage = Gem_Rank__Get_Damage (whom_id, 51)
-					set value = I2S (R2I (damage))
+					set value = I2S (R2I (damage + 0.5))
 				else
 					set value = ""
 				endif
