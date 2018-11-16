@@ -1,4 +1,9 @@
 // # Gem Rank
+//
+// ## Notes
+//
+// - If using `RemoveUnit ()` on an alive unit, ensure that the unit is
+//   deregistered first or some damage may not be recorded.
 
 globals
 	// Level 50 is the official last level.  However, we internally consider
@@ -263,13 +268,20 @@ endfunction
 function Gem_Rank___Damage_Timer takes nothing returns nothing
 	local player whom = null
 	local integer whom_id = 0
+	local integer level = 0
 
 	loop
 		set whom = Player (whom_id)
 
 		if Gem_Rank__Is_Player_Registered (whom) then
 			if GetPlayerSlotState (whom) == PLAYER_SLOT_STATE_PLAYING then
-				call Gem_Rank___Update_Damage (whom_id)
+				set level = Gem_Rank__Get_Level (whom_id)
+
+				// If a player's current level has already 'stopped' that
+				// means they have lost.  Stop recording damage.
+				if Gem_Rank__Get_Stop (whom_id, level) == 0 then
+					call Gem_Rank___Update_Damage (whom_id)
+				endif
 			endif
 		endif
 
@@ -317,12 +329,29 @@ function Gem_Rank__Clear takes player whom returns nothing
 	set Gem_Rank___Temporary_Damage [whom_id] = 0.
 endfunction
 
-function Gem_Rank___On_Unit_Removal takes unit which returns nothing
-	local integer index = Unit_Indexer__Unit_Index (which)
-	local integer whom_id = udg_CreepOwner [index] - 1
-	local real damage = Gem_Rank___Temporary_Damage [whom_id]
+function Gem_Rank__Deregister_Unit takes unit which returns nothing
+	local integer index = 0
+	local integer whom_id = 0
+	local real damage = 0.
 	local integer level = 0
 
+	if not Gem_Rank___Is_Creep (which) then
+		return
+	endif
+
+	set index = Unit_Indexer__Unit_Index (which)
+	set whom_id = udg_CreepOwner [index] - 1
+
+	if not IsUnitInGroup (which, Gem_Rank___Group [whom_id]) then
+		return
+	endif
+
+	// Removing the unit when it dies or leaves the map ensures that no
+	// `ghost` units will exist in the group.  This will allow proper
+	// traversal via `FirstOfGroup ()`.
+	call GroupRemoveUnit (Gem_Rank___Group [whom_id], which)
+
+	set damage = Gem_Rank___Temporary_Damage [whom_id]
 	set damage = damage + GetUnitState (which, UNIT_STATE_MAX_LIFE)
 
 	if UnitAlive (which) then
@@ -330,35 +359,16 @@ function Gem_Rank___On_Unit_Removal takes unit which returns nothing
 	endif
 
 	set Gem_Rank___Temporary_Damage [whom_id] = damage
-
-	// Removing the unit when it dies or leaves the map ensures that no
-	// `ghost` units will exist in the group.  This will allow proper
-	// traversal via `FirstOfGroup ()`.
-	call GroupRemoveUnit (Gem_Rank___Group [whom_id], which)
 endfunction
 
 function Gem_Rank___On_Leave takes nothing returns boolean
-	local unit which = Unit_Event__The_Unit ()
-
-	// Dead units have already been handled by the `On Death` event.  So we
-	// need to ensure that the unit is alive or it will be dealt with twice.
-	if Gem_Rank___Is_Creep (which) and UnitAlive (which) then
-		call Gem_Rank___On_Unit_Removal (which)
-	endif
-
-	set which = null
+	call Gem_Rank__Deregister_Unit (Unit_Event__The_Unit ())
 
 	return false
 endfunction
 
 function Gem_Rank___On_Death takes nothing returns boolean
-	local unit which = Unit_Event__The_Unit ()
-
-	if Gem_Rank___Is_Creep (which) then
-		call Gem_Rank___On_Unit_Removal (which)
-	endif
-
-	set which = null
+	call Gem_Rank__Deregister_Unit (Unit_Event__The_Unit ())
 
 	return false
 endfunction

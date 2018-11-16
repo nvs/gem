@@ -3420,9 +3420,9 @@ function Trig_P1_Dmg_test_Actions takes nothing returns nothing
 		set udg_Damage[1]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cffff0000Your maze has done "+(I2S(udg_Damage[1])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (0))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P1_Dmg_test_Func007001())then
-		call Gem_Rank__Fail (Player (0))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+(" has done "+(I2S(udg_Damage[1])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3496,9 +3496,9 @@ function Trig_P2_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cffff0000Your maze has done "+(I2S(udg_Damage[2])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (1))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P2_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (1))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+(" has done "+(I2S(udg_Damage[2])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3572,9 +3572,9 @@ function Trig_P3_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cffff0000Your maze has done "+(I2S(udg_Damage[3])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (2))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P3_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (2))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+(" has done "+(I2S(udg_Damage[3])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3648,9 +3648,9 @@ function Trig_P4_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cffff0000Your maze has done "+(I2S(udg_Damage[4])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (3))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P4_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (3))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+(" has done "+(I2S(udg_Damage[4])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3724,9 +3724,9 @@ function Trig_P5_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cffff0000Your maze has done "+(I2S(udg_Damage[5])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (4))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P5_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (4))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+(" has done "+(I2S(udg_Damage[5])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3800,9 +3800,9 @@ function Trig_P6_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cffff0000Your maze has done "+(I2S(udg_Damage[6])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (5))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P6_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (5))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+(" has done "+(I2S(udg_Damage[6])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3876,9 +3876,9 @@ function Trig_P7_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cffff0000Your maze has done "+(I2S(udg_Damage[7])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (6))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P7_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (6))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+(" has done "+(I2S(udg_Damage[7])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -3952,9 +3952,9 @@ function Trig_P8_Dmg_test_Actions takes nothing returns nothing
 	else
 	endif
 	call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cffff0000Your maze has done "+(I2S(udg_Damage[8])+" damage!!!|r")))
+	call Gem_Rank__Fail (Player (7))
 	call RemoveUnit(GetTriggerUnit())
 	if(Trig_P8_Dmg_test_Func008001())then
-		call Gem_Rank__Fail (Player (7))
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+(" has done "+(I2S(udg_Damage[8])+" damage!|r"))))
 	else
 		call DoNothing()
@@ -4075,6 +4075,7 @@ function Trig_Leak_and_lose_P1_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 	set udg_CountLivesLost[1]=(udg_CountLivesLost[1]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[1]=(udg_Lives[1]-GetUnitPointValue(GetTriggerUnit()))
@@ -4373,6 +4374,7 @@ function Trig_Leak_and_lose_P2_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 	set udg_CountLivesLost[2]=(udg_CountLivesLost[2]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[2]=(udg_Lives[2]-GetUnitPointValue(GetTriggerUnit()))
@@ -4671,6 +4673,7 @@ function Trig_Leak_and_lose_P3_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 	set udg_CountLivesLost[3]=(udg_CountLivesLost[3]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[3]=(udg_Lives[3]-GetUnitPointValue(GetTriggerUnit()))
@@ -4969,6 +4972,7 @@ function Trig_Leak_and_lose_P4_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 	set udg_CountLivesLost[4]=(udg_CountLivesLost[4]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[4]=(udg_Lives[4]-GetUnitPointValue(GetTriggerUnit()))
@@ -5267,6 +5271,7 @@ function Trig_Leak_and_lose_P5_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 	set udg_CountLivesLost[5]=(udg_CountLivesLost[5]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[5]=(udg_Lives[5]-GetUnitPointValue(GetTriggerUnit()))
@@ -5565,6 +5570,7 @@ function Trig_Leak_and_lose_P6_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 	set udg_CountLivesLost[6]=(udg_CountLivesLost[6]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[6]=(udg_Lives[6]-GetUnitPointValue(GetTriggerUnit()))
@@ -5863,6 +5869,7 @@ function Trig_Leak_and_lose_P7_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 	set udg_CountLivesLost[7]=(udg_CountLivesLost[7]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[7]=(udg_Lives[7]-GetUnitPointValue(GetTriggerUnit()))
@@ -6161,6 +6168,7 @@ function Trig_Leak_and_lose_P8_Func012001 takes nothing returns boolean
 endfunction
 function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 	set udg_CountLivesLost[8]=(udg_CountLivesLost[8]-GetUnitPointValue(GetTriggerUnit()))
+	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
 	set udg_Lives[8]=(udg_Lives[8]-GetUnitPointValue(GetTriggerUnit()))
