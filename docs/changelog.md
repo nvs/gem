@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [1.5.0] - N/A
+## [1.5.0] - 2018-11-16
 
 ### Added
 - Combine (3x) has been added, allowing three of a kind to skip a gem

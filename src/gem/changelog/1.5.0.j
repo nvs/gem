@@ -1,6 +1,6 @@
 function Gem_Changelog___1_5_0_Part_1 takes nothing returns nothing
 	local string title = Gem_Changelog__Title ("1.5.0") + " - 1 of 3"
-	local string date = "N/A"
+	local string date = "2018-11-16"
 	local string text = ""
 
 	set text = text + Color__Gold ("Added:\n")
@@ -22,7 +22,7 @@ endfunction
 
 function Gem_Changelog___1_5_0_Part_2 takes nothing returns nothing
 	local string title = Gem_Changelog__Title ("1.5.0") + " - 2 of 3"
-	local string date = "N/A"
+	local string date = "2018-11-16"
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "\n"
@@ -49,7 +49,7 @@ endfunction
 
 function Gem_Changelog___1_5_0_Part_3 takes nothing returns nothing
 	local string title = Gem_Changelog__Title ("1.5.0") + " - 3 of 3"
-	local string date = "N/A"
+	local string date = "2018-11-16"
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "\n"
