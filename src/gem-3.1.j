@@ -278,7 +278,7 @@ function CreateBuildingsForPlayer0 takes nothing returns nothing
 	set u=CreateUnit(p,'h00E',-640.0,4160.0,270.000)
 	set gg_unit_h01V_0011=CreateUnit(p,'h01V',-256.0,4160.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0011,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0011,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0011,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h034',-640.0,3776.0,270.000)
 endfunction
 function CreateBuildingsForPlayer1 takes nothing returns nothing
@@ -289,7 +289,7 @@ function CreateBuildingsForPlayer1 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0012=CreateUnit(p,'h01V',256.0,4160.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0012,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0012,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0012,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',640.0,4160.0,270.000)
 	set u=CreateUnit(p,'h034',640.0,3776.0,270.000)
 endfunction
@@ -301,7 +301,7 @@ function CreateBuildingsForPlayer2 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0013=CreateUnit(p,'h01V',4416.0,0.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0013,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0013,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0013,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',4416.0,384.0,270.000)
 	set u=CreateUnit(p,'h034',4032.0,384.0,270.000)
 endfunction
@@ -313,7 +313,7 @@ function CreateBuildingsForPlayer3 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0014=CreateUnit(p,'h01V',4416.0,-512.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0014,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0014,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0014,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',4416.0,-896.0,270.000)
 	set u=CreateUnit(p,'h034',4032.0,-896.0,270.000)
 endfunction
@@ -325,7 +325,7 @@ function CreateBuildingsForPlayer4 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0016=CreateUnit(p,'h01V',256.0,-4672.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0016,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0016,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0016,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',640.0,-4672.0,270.000)
 	set u=CreateUnit(p,'h034',640.0,-4288.0,270.000)
 endfunction
@@ -337,7 +337,7 @@ function CreateBuildingsForPlayer5 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0015=CreateUnit(p,'h01V',-256.0,-4672.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0015,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0015,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0015,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',-640.0,-4672.0,270.000)
 	set u=CreateUnit(p,'h034',-640.0,-4288.0,270.000)
 endfunction
@@ -349,7 +349,7 @@ function CreateBuildingsForPlayer6 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0017=CreateUnit(p,'h01V',-4416.0,-512.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0017,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0017,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0017,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',-4416.0,-896.0,270.000)
 	set u=CreateUnit(p,'h034',-4032.0,-896.0,270.000)
 endfunction
@@ -361,7 +361,7 @@ function CreateBuildingsForPlayer7 takes nothing returns nothing
 	local real life
 	set gg_unit_h01V_0018=CreateUnit(p,'h01V',-4416.0,0.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0018,UNIT_STATE_LIFE)
-	call SetUnitState(gg_unit_h01V_0018,UNIT_STATE_LIFE,0.30*life)
+	call SetUnitState(gg_unit_h01V_0018,UNIT_STATE_LIFE,0.50*life)
 	set u=CreateUnit(p,'h00E',-4416.0,384.0,270.000)
 	set u=CreateUnit(p,'h034',-4032.0,384.0,270.000)
 endfunction

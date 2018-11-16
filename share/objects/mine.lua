@@ -103,6 +103,12 @@ do
 		slate.placeholder
 	}
 
+	-- ## Stats
+	do
+		-- Hit Points Maximum (Base)
+		mine.uhpm.value = 30
+	end
+
 	mine.uabi.value = mine.uabi.value .. table.concat (abilities, ',')
 
 	-- ## Techtree
