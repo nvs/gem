@@ -8,14 +8,13 @@ do
 	-- ## Text
 
 	-- Tooltip - Normal - Extended
-	info.aub1.value = {
-		type = 'string',
-		value = 'Chance to cast per attack:|n'
-			.. '- Fan of Knives|n'
-			.. '- Forked Lightning|n'
-			.. '- Armor Reduction|n'
-			.. '- Carrion Swarm|n'
-			.. '- Frost Nova'
+	info.aub1.values = {
+		[1] = 'Chance to cast per attack:|n'
+			.. '- 5% Frost Nova (100)|n'
+			.. '- 5% Fan of Knives (80)|n'
+			.. '- 5% Lightning (85)|n'
+			.. '- 5% Carrion Swarm (125)|n'
+			.. '- 5% Armor Reduction (5)'
 	}
 end
 

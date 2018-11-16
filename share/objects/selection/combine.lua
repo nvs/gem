@@ -64,13 +64,13 @@ objects [combine.x2] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Selection)'
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = ' '
+		value = 'C'
 	},
 
 	-- Name
@@ -83,7 +83,7 @@ objects [combine.x2] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x2)'
+			[1] = 'Combine (x2) [|cffffcc00C|r]'
 		}
 	},
 
@@ -147,13 +147,13 @@ objects [combine.x3] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Selection)'
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = ' '
+		value = 'V'
 	},
 
 	-- Name
@@ -166,7 +166,7 @@ objects [combine.x3] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x3)'
+			[1] = 'Combine (x3) [|cffffcc00V|r]'
 		}
 	},
 
@@ -230,13 +230,13 @@ objects [combine.x4] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Selection)'
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = ''
+		value = 'V'
 	},
 
 	-- Name
@@ -249,7 +249,7 @@ objects [combine.x4] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x4)'
+			[1] = 'Combine (x4) [|cffffcc00V|r]'
 		}
 	},
 

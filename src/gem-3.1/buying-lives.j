@@ -13,7 +13,7 @@ function Trig_Buying_Lives_Actions takes nothing returns nothing
 	set the_player = GetTriggerPlayer ()
 	set player_index = GetPlayerId (the_player)
 
-	if udg_Lives [player_index + 1] >= 50 then
+	if udg_Lives [player_index + 1] >= 30 then
 		call DisplayTextToPlayer (the_player, 0.0, 0.0, "|cffff00ffMaximum number of lives reached. Refunding gold.|r")
 		call AdjustPlayerStateBJ (10, the_player, PLAYER_STATE_RESOURCE_GOLD)
 	else

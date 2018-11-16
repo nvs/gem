@@ -5,36 +5,74 @@ full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
-### Fixed
-- Dead gems are no longer replaced by rocks upon using action buttons (e.g.
-  Keep or Combine).
+- N/A
+
+## [1.5.0] - 2018-11-16
+
+### Added
+- Combine (3x) has been added, allowing three of a kind to skip a gem
+  quality.
+- It now possible to perform a one-hit combination slate move (e.g. you can
+  create Ancient if you can also create both Hold and Air in a single
+  round).
+- The board has gained a DPS meter, Extra Chance indicator, and rank
+  support.
 
 ### Changed
-- Slate stacking has been reworked:
-    - A base slate can now stack upon any other base slate, except those of
-      the same type. For example, a Range can now stack on a Damage but not
-      another Range.
-- Combine has been reworked:
-    - Existing functionality has been split into distinct Combine (2x) and
-      Combine (4x) buttons.
-    - Combine (3x) has been added, allowing three of a kind to skip a gem
-      quality.
-- Extra Chance has been reworked:
-    - Extra Chance is now active the entire round.
-    - Upgrading of Extra Chance has been removed.
-    - A bonus will increase when failing to hit a target over consecutive
-      rounds. Changing targets decreases the bonus. Skipping a round clears
-      the bonus.
-    - Extra Chance for Perfects increases chances for the entire type and not
-      just the target Perfect.
-    - Extra Chance for Slates increases chances for the components of a Slate,
-      rather than giving the target Slate directly.
+- Extra Chance:
+    - It is now active the entire round and no longer needs to be upgraded.
+    - Failing to hit the target and selecting it in consecutive rounds will
+      increase a bonus that has a maximum value of 5x.
+    - Skipping a round will cause the bonus to decrease.
+    - Extra Chance for Perfects sets the target to the selected Perfect,
+      increasing chances to get all qualities of the chosen type.
+    - Extra Chance for Slates no longer gives slates directly. Rather, it
+      sets the target to the chosen base slate, increasing chances to get
+      the component Normal and Flawed pieces of both base slates that make
+      a combintion.
+- Combine has been split into distinct Combine (2x) and Combine (4x)
+  buttons.
+- A base slate can now stack upon any other base slate, except those of the
+  same type. For example, a Range can stack on a Damage but not another
+  Range. Stacking rules for combination slates remain the same.
+- Maximum number of lives reduced from `50` to `30`.
+- Mighty Malachite:
+    - Reduced upgrade cost from `280` to `180`.
+- Fire Star:
+    - Reduced upgrade cost from `290` to `190`.
+- Silver:
+    - Increased area of effect from `250` to `350`.
+    - Increased damage from `20` to `25`.
+- Sterling Silver:
+    - Increased area of effect from `250` to `350`.
+    - Increased damage from `40` to `50`.
+- Silver Knight:
+    - Increased area of effect from `250` to `350`.
+    - Increased damage from `150` to `187`.
+    - Reduced upgrade cost from `290` to `190`.
+- Yellow Sapphire:
+    - Increased area of effect from `400` to `500`.
+    - Reduced attack cooldown from `1.0` to `0.8`, the same as Star Yellow
+      Sapphire.
+- Star Yellow Sapphire:
+    - Increased damage from `180` to `220`.
+- Ancient Blood Stone:
+    - Increased chance to cast Blood Lightning from `10%` to `40%`.
 - Elder Slate:
     - Armor debuff duration no longer increases with levels.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
-- Buying lives no longer has a cooldown.
+
+### Removed
+- Settings have been removed. As such, the default difficulty (i.e. Extreme)
+  is now the only difficulty.
+
+### Fixed
+- Dead gems are no longer replaced by rocks upon using action buttons (e.g.
+  Keep or Combine).
+- A combination slate can no longer shift upon creation.
+- Leaving no longer removes a player's maze or statistics.
 
 ## [1.4.3] - 2018-04-13
 
@@ -248,7 +286,8 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.4.3...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.5.0...master
+[1.5.0]: https://github.com/nvs/gem/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/nvs/gem/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/nvs/gem/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/nvs/gem/compare/v1.4.0...v1.4.1

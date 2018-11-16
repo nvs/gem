@@ -1,5 +1,7 @@
 local map = ...
 
+map.settings.date = map.settings.date or require ('lib.gem.date')
+
 local function color_red (text)
 	return '|cff' .. map.globals.Color__RED .. text .. '|r'
 end
@@ -13,8 +15,6 @@ local function color_link (text)
 end
 
 local maintainer = color_red (map.globals.Gem__MAINTAINER)
-
-local forum = color_link (map.globals.Gem__WEBSITE_FORUM)
 local discord = color_link (map.globals.Gem__WEBSITE_DISCORD)
 local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY)
 
@@ -22,9 +22,10 @@ map.information.map.description = string.format ([[
 %s by %s
 - %s
 - %s
-- %s]],
-	map.globals.Gem__NAME_FULL,
-	maintainer, repository, discord, forum)
+
+Released: %s]],
+	map.globals.Gem__NAME_FULL, maintainer,
+	repository, discord, map.settings.date)
 
 map.information.loading.text = string.format ([[
 An updated version of Gem Tower Defense,
@@ -37,6 +38,7 @@ changes, see %s in game or visit:
 
 - %s
 - %s
-- %s]],
-	color_red ('Bryvx (Bryan K.)'), maintainer,
-	color_gold ('Information (F9)'), repository, discord, forum)
+
+Please report any bugs or issues encountered.]],
+	color_red ('Bryvx'), maintainer,
+	color_gold ('Information (F9)'), repository, discord)

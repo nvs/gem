@@ -186,6 +186,10 @@ function Gem_Combination___Recipe takes nothing returns boolean
 
 	call ShowUnit (original, false)
 	set replacement = CreateUnit (the_player, combination, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
+	// Ensure that the new and old units share the exact position.  Otherwise,
+	// the new unit will be aligned to `0.250` boundaries.  This matters mostly
+	// for slates, which can be positioned anywhere.
+	call SetUnitPosition (replacement, GetUnitX (original), GetUnitY (original))
 	call RemoveUnit (original)
 
 	set index = 0

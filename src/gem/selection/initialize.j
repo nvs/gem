@@ -11,7 +11,7 @@ function Gem_Selection__Initialize takes nothing returns boolean
 	call Gem_Selection_Keep__Initialize ()
 	call Gem_Selection_Downgrade__Initialize ()
 	call Gem_Selection_Combine__Initialize (rule)
-	call Gem_Selection_Slate__Initialize ()
+	call Gem_Selection_Slate__Initialize (rule)
 	call Gem_Selection_Special__Initialize ()
 
 	call Gem_Placement__On_Finish (Condition (function Gem_Selection___On_Finish))

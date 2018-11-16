@@ -120,6 +120,8 @@ function Gem_Spawn___Movement takes nothing returns boolean
 			set life = Unit_State__Get (the_unit, UNIT_STATE_MAX_LIFE)
 			call Unit_State__Set (the_unit, UNIT_STATE_MAX_LIFE, life * udg_DiffFactor)
 		endif
+
+		call Gem_Rank__Register_Unit (the_unit)
 	endif
 
 	set the_unit = null

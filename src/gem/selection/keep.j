@@ -49,7 +49,8 @@ function Gem_Selection_Keep___Event takes nothing returns boolean
 	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__X2_ID)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__X3_ID)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Combine__X4_ID)
-	call UnitRemoveAbility (the_unit, Gem_Selection_Slate__ABILITY)
+	call UnitRemoveAbility (the_unit, Gem_Selection_Slate__KEEP_ID)
+	call UnitRemoveAbility (the_unit, Gem_Selection_Slate__COMBINE_ID)
 	call UnitRemoveAbility (the_unit, Gem_Selection_Special__ABILITY)
 
 	call Gem_Selection__Finalize (the_unit, null)

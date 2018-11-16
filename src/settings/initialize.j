@@ -10,24 +10,15 @@ function Settings__Initialize takes nothing returns boolean
 
 		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
 			set udg_PlayerHERE [index + 1] = true
+			call Gem_Rank__Register_Player (the_player)
 		endif
 
 		set index = index + 1
 		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 
-	call Settings_Difficulty__Initialize ()
-	call Settings_HCL__Initialize ()
 	call Settings___Pause_Miners ()
-
-	// An empty string is taken to mean that a player must specify the game
-	// settings, regardless of whether a host bot is involved.
-	if Settings_HCL__Command () == "" then
-		call Settings_Window__Initialize ()
-	else
-		call Settings_HCL__Process ()
-		call Game__On_Start (Condition (function Settings__Setup))
-	endif
+	call Game__On_Start (Condition (function Settings__Setup))
 
 	set the_player = null
 

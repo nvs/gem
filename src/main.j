@@ -7,7 +7,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Creeps_attacking ()
 	call InitTrig_Type_Air ()
 	call InitTrig_Swap_Reworked ()
-	call InitTrig_Slate_Stack_Check ()
 	call InitTrig_AntiStuck ()
 	call InitTrig_Slate_move ()
 	call InitTrig_Range_Check ()
@@ -142,7 +141,7 @@ function main takes nothing returns nothing
 
 	call TriggerAddCondition (initialize, Condition (function Preload__Initialize))
 	call TriggerAddCondition (initialize, Condition (function String__Initialize))
-	call TriggerAddCondition (initialize, Condition (function W3MMD_Lite__Initialize))
+	call TriggerAddCondition (initialize, Condition (function HCL__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Player__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Player_Color__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Event__Initialize))
@@ -178,6 +177,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Slate__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Special__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Spawn__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Rank__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Gem_Quality__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Type__Initialize))

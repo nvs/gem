@@ -62,8 +62,8 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	set Gem_Mine___Mines [1] = gg_unit_h01V_0012
 	set Gem_Mine___Mines [2] = gg_unit_h01V_0013
 	set Gem_Mine___Mines [3] = gg_unit_h01V_0014
-	set Gem_Mine___Mines [4] = gg_unit_h01V_0015
-	set Gem_Mine___Mines [5] = gg_unit_h01V_0016
+	set Gem_Mine___Mines [4] = gg_unit_h01V_0016
+	set Gem_Mine___Mines [5] = gg_unit_h01V_0015
 	set Gem_Mine___Mines [6] = gg_unit_h01V_0017
 	set Gem_Mine___Mines [7] = gg_unit_h01V_0018
 
@@ -83,6 +83,8 @@ function Gem_Mine__Initialize takes nothing returns boolean
 		set whom = Player (whom_id)
 		set mine = Gem_Mine___Mines [whom_id]
 
+		call UnitRemoveAbility (mine, 'ARal')
+
 		if mine != null then
 			call TriggerRegisterUnitEvent (rule, mine, EVENT_UNIT_ISSUED_ORDER)
 		endif
@@ -94,7 +96,6 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	call Gem_Mine_Cancel__Initialize (rule)
 	call Gem_Mine_Type__Initialize (rule)
 	call Gem_Mine_Slate__Initialize (rule)
-	call Gem_Mine_Life__Initialize (rule)
 
 	set rule = null
 	set whom = null

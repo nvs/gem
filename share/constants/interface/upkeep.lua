@@ -1,6 +1,8 @@
 local map = ...
 local globals = map.globals
 
+map.settings.date = map.settings.date or require ('lib.gem.date')
+
 -- # Upkeep
 
 local FrameDef = map.constants.interface.FrameDef
@@ -23,7 +25,6 @@ local function color_gold (text)
 	return '|cff' .. globals.Color__GOLD .. text .. '|r'
 end
 
-local forum = color_link (globals.Gem__WEBSITE_FORUM)
 local discord = color_link (globals.Gem__WEBSITE_DISCORD)
 local repository = color_link (globals.Gem__WEBSITE_REPOSITORY)
 local maintainer = color_red (globals.Gem__MAINTAINER)
@@ -42,8 +43,8 @@ FrameDef.COLON_GOLD_INCOME_RATE =
 -- Text - General - 'Upkeep is determined...'
 FrameDef.RESOURCE_UBERTIP_UPKEEP =
 	'- ' .. repository .. '|n' ..
-	'- ' .. discord .. '|n' ..
-	'- ' .. forum
+	'- ' .. discord .. '|n|n' ..
+	'Released: ' .. map.settings.date
 
 -- Text - General - '|n%d-%d Food...'
 --

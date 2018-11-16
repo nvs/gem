@@ -1,34 +1,55 @@
-// Gem Selection Slate
-// ===================
-//
-// Depends
-// -------
-//
-// - Color
-// - Gem 3.1
-// - Gem Gems
-// - Gem Placement
-// - Gem Selection
-
 globals
-	constant integer Gem_Selection_Slate__ABILITY = 'A03M'
+	constant integer Gem_Selection_Slate__KEEP_ID = 'GSSK'
+	constant string Gem_Selection_Slate___KEEP_ORDER = "roar"
+	constant integer Gem_Selection_Slate___KEEP_ORDER_ID = OrderId (Gem_Selection_Slate___KEEP_ORDER)
+
+	constant integer Gem_Selection_Slate__COMBINE_ID = 'GSSC'
+	constant string Gem_Selection_Slate___COMBINE_ORDER = "scout"
+	constant integer Gem_Selection_Slate___COMBINE_ORDER_ID = OrderId (Gem_Selection_Slate___COMBINE_ORDER)
 endglobals
 
-function Gem_Selection_Slate___Tag takes unit the_unit, string text, integer red, integer green, integer blue returns nothing
-	local texttag tag
+function Gem_Selection_Slate___Get_Other_Part takes integer part returns integer
+	local integer combination = Gem_Recipe__Get_Combination (part)
+	local integer other = Gem_Recipe__Get_Part (combination, 0)
 
-	call UnitAddAbility (the_unit, Gem_Selection_Slate__ABILITY)
+	if other == part then
+		return Gem_Recipe__Get_Part (combination, 1)
+	endif
 
-	set tag = CreateTextTag ()
+	return other
+endfunction
 
-	call SetTextTagText (tag, text, 0.023)
-	call SetTextTagPos (tag, GetUnitX (the_unit), GetUnitY (the_unit), 0.0)
-	call SetTextTagColor (tag, red, green, blue, 255)
+function Gem_Selection_Slate___Tag takes unit which, integer slate, string color returns nothing
+	local player whom = GetOwningPlayer (which)
+	local texttag tag = CreateTextTag ()
+	local integer target = 0
+	local string prefix = ""
+	local integer which_id = GetUnitTypeId (which)
+	local integer combination = Gem_Recipe__Get_Combination (slate)
+	local integer other = Gem_Selection_Slate___Get_Other_Part (slate)
+
+	if Gem_Extra_Chance__Is_Active (whom) then
+		set target = Gem_Extra_Chance__Current_Target (whom)
+
+		if Gem_Slate__Get_Normal (target) == GetUnitTypeId (which) then
+			set prefix = Gem_Extra_Chance__MESSAGE + "\n"
+		endif
+	endif
+
+	call UnitAddAbility (which, Gem_Selection_Slate__KEEP_ID)
+
+	if other > 0 and Gem_Selection_Slate__Has (whom, other) then
+		call UnitAddAbility (which, Gem_Selection_Slate__COMBINE_ID)
+	endif
+
+	call SetTextTagText (tag, prefix + Color (color, Gem_Slate__Name (slate) + " Slate"), 0.023)
+	call SetTextTagPos (tag, GetUnitX (which), GetUnitY (which), 0.0)
 	call SetTextTagPermanent (tag, false)
 	call SetTextTagLifespan (tag, 3.0)
 	call SetTextTagFadepoint (tag, 2.5)
 	call SetTextTagVisibility (tag, true)
 
+	set whom = null
 	set tag = null
 endfunction
 
@@ -83,56 +104,56 @@ function Gem_Selection_Slate___On_Finish takes nothing returns boolean
 
 				// Air Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__AIR) then
-					call Gem_Selection_Slate___Tag (the_unit, "Air Slate", 0, 255, 255)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__AIR, "00ffff")
 				endif
 
 			elseif the_unit_type == Gem_Gems__AQUAMARINE_NORMAL then
 
 				// Spell Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__SPELL) then
-					call Gem_Selection_Slate___Tag (the_unit, "Spell Slate", 255, 0, 255)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__SPELL, "ff00ff")
 				endif
 
 			elseif the_unit_type == Gem_Gems__DIAMOND_NORMAL then
 
 				// Damage Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__DAMAGE) then
-					call Gem_Selection_Slate___Tag (the_unit, "Damage Slate", 0, 255, 255)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__DAMAGE, "00ffff")
 				endif
 
 			elseif the_unit_type == Gem_Gems__EMERALD_NORMAL then
 
 				// Poison Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__POISON) then
-					call Gem_Selection_Slate___Tag (the_unit, "Poison Slate", 0, 255, 0)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__POISON, "00ff00")
 				endif
 
 			elseif the_unit_type == Gem_Gems__OPAL_NORMAL then
 
 				// Opal Vein Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__OPAL_VEIN) then
-					call Gem_Selection_Slate___Tag (the_unit, "Opal Vein Slate", 0, 255, 255)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__OPAL_VEIN, "00ffff")
 				endif
 
 			elseif the_unit_type == Gem_Gems__RUBY_NORMAL then
 
 				// Range Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__RANGE) then
-					call Gem_Selection_Slate___Tag (the_unit, "Range Slate", 255, 127, 0)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__RANGE, "ff7f00")
 				endif
 
 			elseif the_unit_type == Gem_Gems__SAPPHIRE_NORMAL then
 
 				// Slow Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__SLOW) then
-					call Gem_Selection_Slate___Tag (the_unit, "Slow Slate", 0, 0, 255)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__SLOW, "0000ff")
 				endif
 
 			elseif the_unit_type == Gem_Gems__TOPAZ_NORMAL then
 
 				// Hold Slate:
 				if Gem_Selection_Slate__Has (the_player, Gem_Slate__HOLD) then
-					call Gem_Selection_Slate___Tag (the_unit, "Hold Slate", 0, 0, 255)
+					call Gem_Selection_Slate___Tag (the_unit, Gem_Slate__HOLD, "0000ff")
 				endif
 
 			endif
@@ -147,78 +168,116 @@ function Gem_Selection_Slate___On_Finish takes nothing returns boolean
 	return false
 endfunction
 
-function Gem_Selection_Slate___Event takes nothing returns boolean
-	local player the_player
-	local integer the_player_index
+function Gem_Selection_Slate___Button takes nothing returns boolean
+	local player whom = null
+	local integer whom_id = 0
 
-	local unit original
-	local integer original_type
+	local integer order_id = 0
+	local boolean is_combination = false
 
-	local unit replacement
-	local integer replacement_type
+	local unit old = GetTriggerUnit ()
+	local integer old_id = GetUnitTypeId (old)
+	local unit new = null
+	local integer new_id = 0
 
-	local integer quality_id
-	local integer quality_index
-
-	local integer type_id
-
-	if GetSpellAbilityId () != Gem_Selection_Slate__ABILITY then
-		return false
+	if not Gem_Gems__Is_Gem (old_id) then
+		set old = null
+		return true
 	endif
 
-	set the_player = GetTriggerPlayer ()
-	set the_player_index = GetPlayerId (the_player)
+	set order_id = GetIssuedOrderId ()
 
-	set original = GetTriggerUnit ()
-	set original_type = GetUnitTypeId (original)
-
-	if original_type == Gem_Gems__AMETHYST_NORMAL then
-		set replacement_type = Gem_Slate__AIR
-
-	elseif original_type == Gem_Gems__AQUAMARINE_NORMAL then
-		set replacement_type = Gem_Slate__SPELL
-
-	elseif original_type == Gem_Gems__DIAMOND_NORMAL then
-		set replacement_type = Gem_Slate__DAMAGE
-
-	elseif original_type == Gem_Gems__EMERALD_NORMAL then
-		set replacement_type = Gem_Slate__POISON
-
-	elseif original_type == Gem_Gems__OPAL_NORMAL then
-		set replacement_type = Gem_Slate__OPAL_VEIN
-
-	elseif original_type == Gem_Gems__RUBY_NORMAL then
-		set replacement_type = Gem_Slate__RANGE
-
-	elseif original_type == Gem_Gems__SAPPHIRE_NORMAL then
-		set replacement_type = Gem_Slate__SLOW
-
-	elseif original_type == Gem_Gems__TOPAZ_NORMAL then
-		set replacement_type = Gem_Slate__HOLD
+	if order_id == Gem_Selection_Slate___KEEP_ORDER_ID then
+		set is_combination = false
+	elseif order_id == Gem_Selection_Slate___COMBINE_ORDER_ID then
+		set is_combination = true
+	else
+		set old = null
+		return true
 	endif
 
-	call ShowUnit (original, false)
-	set replacement = CreateUnit (the_player, replacement_type, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
-	call RemoveUnit (original)
+	set whom = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (whom)
 
-	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("66ffff", "Slate Created!"))
-
-	if Gem_Slate_Stacking__Is_Stacking (replacement) then
-		call Gem_Slate_Stacking__Move (replacement)
+	if old_id == Gem_Gems__AMETHYST_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__ANCIENT
+		else
+			set new_id = Gem_Slate__AIR
+		endif
+	elseif old_id == Gem_Gems__AQUAMARINE_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__ELDER
+		else
+			set new_id = Gem_Slate__SPELL
+		endif
+	elseif old_id == Gem_Gems__DIAMOND_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__VIPER
+		else
+			set new_id = Gem_Slate__DAMAGE
+		endif
+	elseif old_id == Gem_Gems__EMERALD_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__ELDER
+		else
+			set new_id = Gem_Slate__POISON
+		endif
+	elseif old_id == Gem_Gems__OPAL_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__WRAITH
+		else
+			set new_id = Gem_Slate__OPAL_VEIN
+		endif
+	elseif old_id == Gem_Gems__RUBY_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__VIPER
+		else
+			set new_id = Gem_Slate__RANGE
+		endif
+	elseif old_id == Gem_Gems__SAPPHIRE_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__WRAITH
+		else
+			set new_id = Gem_Slate__SLOW
+		endif
+	elseif old_id == Gem_Gems__TOPAZ_NORMAL then
+		if is_combination then
+			set new_id = Gem_Slate__ANCIENT
+		else
+			set new_id = Gem_Slate__HOLD
+		endif
 	endif
 
-	call Gem_Selection__Finalize (replacement, original)
+	call ShowUnit (old, false)
+	set new = CreateUnit (whom, new_id, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
+	call RemoveUnit (old)
 
-	set the_player = null
-	set original = null
-	set replacement = null
+	call DisplayTextToPlayer (whom, 0, 0, Color ("66ffff", "Slate Create!"))
 
-	return false
+	if is_combination then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_UPDATED,  Color ("00ffff", GetPlayerName (whom) + " has created " + GetUnitName (new) + Color ("00ffff", " in one-hit!")))
+	endif
+
+	if Gem_Slate_Stacking__Is_Stacking (new) then
+		call Gem_Slate_Stacking__Move (new)
+	endif
+
+	call Gem_Selection__Finalize (new, old)
+
+	set whom = null
+	set old = null
+	set new = null
+
+	return true
 endfunction
 
-function Gem_Selection_Slate__Initialize takes nothing returns boolean
+function Gem_Selection_Slate__Initialize takes trigger rule returns boolean
+	local code task = function Gem_Selection_Slate___Button
+	local string label = "Gem_Selection_Slate___Button"
+
+	call Rule__Add_Code (rule, task, label)
 	call Gem_Placement__On_Finish (Condition (function Gem_Selection_Slate___On_Finish))
-	call Gem_Selection__Register_Event (Condition (function Gem_Selection_Slate___Event))
 
 	return false
 endfunction

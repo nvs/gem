@@ -28,6 +28,8 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 	local string name = LoadStr (Table, pane_id, Gem_Extra_Chance_Menu___NAME)
 	local boolean is_active = Gem_Extra_Chance__Is_Active (whom)
 	local string message = null
+	local integer previous = 0
+	local integer current = 0
 	local integer bonus = 0
 
 	call Fix__Dialog_User_Control (whom)
@@ -41,13 +43,16 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 			call DisplayTextToPlayer (whom, 0, 0, "Extra Chance cannot be set during placement")
 		endif
 	else
-		if is_active then
+		set previous = Gem_Extra_Chance__Previous_Target (whom)
+		set current = Gem_Extra_Chance__Current_Target (whom)
+
+		if is_active and previous != current then
 			set message = "Switching"
 		else
 			set message = "Setting"
 		endif
 
-		set bonus = Gem_Extra_Chance__Bonus (whom)
+		set bonus = Gem_Extra_Chance__Current_Bonus (whom)
 		call DisplayTextToPlayer (whom, 0, 0, message + " Extra Chance to " + name + " (" + I2S (bonus) + "x)")
 	endif
 

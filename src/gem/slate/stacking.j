@@ -2,56 +2,64 @@ globals
 	unit Gem_Slate_Stacking___Target = null
 endglobals
 
-function Gem_Slate_Stacking___Filter takes nothing returns boolean
-	local integer filter = 0
-	local integer slate = 0
-	local boolean is_base = false
+function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y returns group
+	local integer slate_id = 0
+	local group stacking = null
+	local group in_range = null
 	local integer combination = 0
 	local integer A = 0
 	local integer B = 0
-
-	// Ignore the target itself.
-	if Gem_Slate_Stacking___Target == GetFilterUnit () then
-		return false
-	endif
-
-	set filter = GetUnitTypeId (GetFilterUnit ())
-	set slate = GetUnitTypeId (Gem_Slate_Stacking___Target)
-	set is_base = Gem_Recipe__Has_Combination (slate)
-
-	// A base slate cannot stack with another slate of the same type or its
-	// combination.
-	if is_base then
-		set combination = Gem_Recipe__Get_Combination (slate)
-		set A = slate
-
-	// A combination slate cannot stack with another slate of the same type or
-	// either of its component pieces.
-	else
-		set combination = slate
-		set A = Gem_Recipe__Get_Part (combination, 0)
-		set B = Gem_Recipe__Get_Part (combination, 1)
-	endif
-
-	return filter == combination or filter == A or filter == B
-endfunction
-
-function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y returns group
-	local group slates = null
+	local unit check = null
+	local integer check_id = 0
 
 	if slate == null then
 		return null
 	endif
 
-	if not Gem_Slate__Is_Slate (GetUnitTypeId (slate)) then
+	set slate_id = GetUnitTypeId (slate)
+
+	if not Gem_Slate__Is_Slate (slate_id) then
 		return null
 	endif
 
-	set Gem_Slate_Stacking___Target = slate
-	set slates = CreateGroup ()
-	call GroupEnumUnitsInRange (slates, x, y, 220, Filter (function Gem_Slate_Stacking___Filter))
+	set in_range = CreateGroup ()
+	set stacking = CreateGroup ()
 
-	return slates
+	call GroupEnumUnitsInRange (in_range, x, y, 220, null)
+
+	// Ignore the target itself.
+	call GroupRemoveUnit (in_range, slate)
+
+	// A base slate cannot stack with another slate of the same type or its
+	// combination.
+	if Gem_Recipe__Has_Combination (slate_id) then
+		set combination = Gem_Recipe__Get_Combination (slate_id)
+		set A = slate_id
+
+	// A combination slate cannot stack with another slate of the same type or
+	// either of its component pieces.
+	else
+		set combination = slate_id
+		set A = Gem_Recipe__Get_Part (combination, 0)
+		set B = Gem_Recipe__Get_Part (combination, 1)
+	endif
+
+	loop
+		set check = FirstOfGroup (in_range)
+		exitwhen check == null
+		set check_id = GetUnitTypeId (check)
+
+		if check_id == combination or check_id == A or check_id == B then
+			call GroupAddUnit (stacking, check)
+		endif
+
+		call GroupRemoveUnit (in_range, check)
+	endloop
+
+	call DestroyGroup (in_range)
+	set in_range = null
+
+	return stacking
 endfunction
 
 function Gem_Slate_Stacking__Get_Stacking takes unit slate returns group

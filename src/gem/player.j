@@ -17,7 +17,47 @@ endglobals
 // Returns a `boolean` indicating whether `the_player` is a valid gem player.
 // Note that this does not indicate presence in the game.
 function Gem_Player__Is_Player takes player the_player returns boolean
-	return the_player != null and GetPlayerId (the_player) < Gem__MAXIMUM_PLAYERS
+	if the_player == null then
+		return false
+	endif
+
+	if GetPlayerId (the_player) >= Gem__MAXIMUM_PLAYERS then
+		return false
+	endif
+
+	return GetPlayerController (the_player) == MAP_CONTROL_USER
+endfunction
+
+function Gem_Player__Remove_Creeps takes player whom returns nothing
+	local integer whom_id = 0
+	local group units = null
+	local unit which = null
+	local integer index = 0
+	local integer owner_id = 0
+
+	if not Gem_Player__Is_Player (whom) then
+		return
+	endif
+
+	set whom_id = GetPlayerId (whom)
+	set units = CreateGroup ()
+	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
+
+	loop
+		set which = FirstOfGroup (units)
+		exitwhen which == null
+		call GroupRemoveUnit (units, which)
+
+		set index = Unit_Indexer__Unit_Index (which)
+		set owner_id = udg_CreepOwner [index] - 1
+
+		if whom_id == owner_id then
+			call RemoveUnit (which)
+		endif
+	endloop
+
+	call DestroyGroup (units)
+	set units = null
 endfunction
 
 // Returns the miner `unit` for `the_player`. Returns `null` for an invalid

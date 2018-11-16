@@ -14,15 +14,15 @@ do
 	-- ## Data
 
 	-- Armor Duration
-	debuff.Ufa1.value = duration
+	debuff.Ufa1.values = duration
 
 	-- ## Stats
 
 	-- Duration - Hero
-	debuff.ahdu.value = duration
+	debuff.ahdu.values = duration
 
 	-- Duration - Normal
-	debuff.adur.value = duration
+	debuff.adur.values = duration
 end
 
 -- # Elder Information
@@ -32,15 +32,14 @@ do
 	-- ## Text
 
 	-- Tooltip - Normal - Extended
-	info.aub1.value = {
-		type = 'string',
-		value = 'Chance to cast per attack:|n'
-			.. '- Frost Nova|n'
-			.. '- Thunder Clap|n'
-			.. '- Fan of Knives|n'
-			.. '- Armor Reduction|n'
-			.. '- Shockwave|n'
-			.. '- Forked Lightning|n'
-			.. '- Poison Shot'
-	}
+	for i = 1, 11 do
+		info.aub1.values [i] = 'Chance to cast per attack:|n'
+			.. '5% Frost Nova (300 + 30 * Level)|n'
+			.. '5% Thunder Clap (150 + 15 * Level)|n'
+			.. '5% Fan of Knives (150 + 15 * Level)|n'
+			.. '7% Armor Reduction (7 + 2 * Level)|n'
+			.. '5% Shockwave (200 + 50 * Level)|n'
+			.. '5% Forked Lightning (200 + 20 * Level)|n'
+			.. '8% Poison Shot (40 + 4 * Level)'
+	end
 end

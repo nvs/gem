@@ -68,7 +68,6 @@ function Settings__Setup takes nothing returns boolean
 	local player the_player
 
 	call Settings___Setup_Mode ()
-	call Settings__Difficulty_Setup ()
 
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()
@@ -81,9 +80,9 @@ function Settings__Setup takes nothing returns boolean
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_REPOSITORY))
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_DISCORD))
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_FORUM))
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "Please report any bugs or issues")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "encountered. Thanks.")
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
@@ -109,7 +108,6 @@ function Settings__Setup takes nothing returns boolean
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)
 	set Settings___Countdown = CreateTimerDialog (Settings___Timer)
 	call TimerDialogSetTitle (Settings___Countdown, "Game starts in:")
-	call TimerDialogSetTitleColor (Settings___Countdown, 255, 255, 255, 0)
 	call TimerDialogSetTimeColor (Settings___Countdown, 255, 255, 255, 0)
 	call TimerDialogDisplay (Settings___Countdown, true)
 

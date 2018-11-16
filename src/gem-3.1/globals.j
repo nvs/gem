@@ -27,10 +27,6 @@ globals
 	unit array udg_SpecCombUnit
 	integer udg_KillsNUMBER=0
 	integer udg_DebugPointvalue=0
-	integer udg_SlateStackNo=0
-	group udg_SlateStackGROUP=null
-	location udg_SlateStackPoint=null
-	unit udg_SlateStackUnit=null
 	real udg_DiffFactor=1.00
 	unit array udg_Boulders
 	integer array udg_FirstKillNo
@@ -52,7 +48,6 @@ globals
 	integer array udg_CountJadeMoney
 	boolean array udg_Rbonus
 	boolean array udg_Rmode25
-	location udg_SlateStackDestination=null
 	player udg_MafaBaby=null
 	boolean array udg_RmodeFinished
 	integer array udg_CountExtrachance
@@ -174,7 +169,6 @@ globals
 	trigger gg_trg_Type_Air=null
 	trigger gg_trg_Cancels_Building_idiot_proofing=null
 	trigger gg_trg_Swap_Reworked=null
-	trigger gg_trg_Slate_Stack_Check=null
 	trigger gg_trg_AntiStuck=null
 	trigger gg_trg_Slate_move=null
 	trigger gg_trg_Range_Check=null
