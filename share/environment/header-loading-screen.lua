@@ -40,5 +40,5 @@ changes, see %s in game or visit:
 - %s
 
 Please report any bugs or issues encountered.]],
-	color_red ('Bryvx (Bryan K.)'), maintainer,
+	color_red ('Bryvx'), maintainer,
 	color_gold ('Information (F9)'), repository, discord)
