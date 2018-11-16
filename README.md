@@ -18,7 +18,6 @@ features, possibilities, and strategies.
 
 - [GitHub](https://github.com/nvs/gem)
 - [Discord](https://discord.gg/PxNNp77)
-- [Forum](https://entgaming.net/forum/viewforum.php?f=246)
 
 ## How to Play
 

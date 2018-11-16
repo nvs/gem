@@ -13,7 +13,6 @@ function Gem_Information___What_Is_Gem_TD_Plus takes nothing returns nothing
 	set text = text + "For further information and discussion on the map, or to report bugs and other issues, visit:\n"
 	set text = text + "- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n"
 	set text = text + "- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n"
-	set text = text + "- " + Color__Link (Gem__WEBSITE_FORUM)
 
 	call Gem_Information__Setup (CreateQuest (), title, icon, text)
 endfunction
