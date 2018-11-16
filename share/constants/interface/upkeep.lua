@@ -1,6 +1,8 @@
 local map = ...
 local globals = map.globals
 
+map.settings.date = map.settings.date or require ('lib.gem.date')
+
 -- # Upkeep
 
 local FrameDef = map.constants.interface.FrameDef
@@ -41,7 +43,8 @@ FrameDef.COLON_GOLD_INCOME_RATE =
 -- Text - General - 'Upkeep is determined...'
 FrameDef.RESOURCE_UBERTIP_UPKEEP =
 	'- ' .. repository .. '|n' ..
-	'- ' .. discord
+	'- ' .. discord .. '|n|n' ..
+	'Released: ' .. map.settings.date
 
 -- Text - General - '|n%d-%d Food...'
 --

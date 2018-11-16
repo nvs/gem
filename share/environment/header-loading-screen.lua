@@ -1,5 +1,7 @@
 local map = ...
 
+map.settings.date = map.settings.date or require ('lib.gem.date')
+
 local function color_red (text)
 	return '|cff' .. map.globals.Color__RED .. text .. '|r'
 end
@@ -19,7 +21,9 @@ local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY)
 map.information.map.description = string.format ([[
 %s by %s
 - %s
-- %s]],
+- %s
+
+Released: %s]],
 	map.globals.Gem__NAME_FULL, maintainer,
 	repository, discord, map.settings.date)
 
