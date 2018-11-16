@@ -222,8 +222,12 @@ objects [cancel.active] = {
 		type = 'string',
 		values = {
 			[1] = 'Cancels Extra Chance, clearing the currently '
-				.. 'set target.|n|n'
-				.. 'The gold cost of Extra Chance will be refunded.'
+				.. 'set target and refunding gold.|n|n'
+
+				.. '|cffffcc00Extra Chance Details:|r|n'
+				.. '- Failing to hit the target and selecting it in '
+				.. 'consecutive rounds will increase a bonus.|n'
+				.. '- Skipping a round will cause the bonus to decrease.'
 		}
 	}
 }
@@ -308,14 +312,8 @@ objects [perfect.active] = {
 	aub1 = {
 		type = 'string',
 		values = {
-			[1] = 'Sets the Extra Chance target to the Perfect of the '
-				.. 'chosen type. This will increase the chances to get the '
-				.. 'target as well as all qualities of the chosen type.|n|n'
-
-				.. 'Failing to hit the target and selecting it in '
-				.. 'consecutive rounds will increase a bonus. Skipping a '
-				.. 'round will cause the bonus to decrease. Switching '
-				.. 'targets will not affect the bonus.'
+			[1] = 'Sets the target to the selected Perfect, increasing the '
+				.. 'chances to get all qualities of the chosen type.'
 		}
 	}
 }
@@ -400,15 +398,9 @@ objects [slate.active] = {
 	aub1 = {
 		type = 'string',
 		values = {
-			[1] = 'Sets the Extra Chance target to the chosen base slate. '
-				.. 'This will increase the odds to get that target\'s '
-				.. 'component Normal and Flawed pieces, as well as those '
-				.. 'of the other base slate used in their combination.|n|n'
-
-				.. 'Failing to hit the target and selecting it in '
-				.. 'consecutive rounds will increase a bonus. Skipping a '
-				.. 'round will cause the bonus to decrease. Switching '
-				.. 'targets will not affect the bonus.'
+			[1] = 'Sets the target to the chosen base slate, increasing '
+				.. 'chances to get the component Normal and Flawed pieces '
+				.. 'of both base slates that make a combination.'
 		}
 	}
 }
