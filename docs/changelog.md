@@ -63,7 +63,7 @@ full list of changes to the project, please consult the commit log.
 - Ancient Blood Stone:
     - Increased chance to cast Blood Lightning from `10%` to `40%`.
 - Elder Slate:
-    - Armor debuff duration no longer increases with levels.
+    - Armor debuff duration no longer increases with kill levels.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.

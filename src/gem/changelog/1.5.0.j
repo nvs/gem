@@ -61,7 +61,7 @@ function Gem_Changelog___1_5_0_Part_3 takes nothing returns nothing
 	set text = text + "- Ancient Blood Stone:\n"
 	set text = text + "    - Increased chance to cast Blood Lightning from `10%` to `40%`.\n"
 	set text = text + "- Elder Slate:\n"
-	set text = text + "    - Armor debuff duration no longer increases with levels.\n"
+	set text = text + "    - Armor debuff duration no longer increases with kill levels.\n"
 	set text = text + "    - No longer rewards gold.\n"
 	set text = text + "- Spell Slate:\n"
 	set text = text + "    - No longer rewards gold.\n"
