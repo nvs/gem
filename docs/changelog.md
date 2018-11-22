@@ -5,7 +5,9 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.5.1] - Unreleased
 
-- N/A
+### Fixed
+- Handling of rank related to players Green and Pink reaching the Damage
+  Test has been resolved.
 
 ## [1.5.0] - 2018-11-16
 

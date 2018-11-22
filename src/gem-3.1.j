@@ -6805,7 +6805,7 @@ function Trig_Fin_P7_2_Func006001 takes nothing returns boolean
 	return(udg_PlayerHERE[7]==true)
 endfunction
 function Trig_Fin_P7_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (7))
+	call Gem_Rank__Clear (Player (6))
 	set udg_CountWastedGems[7]=0
 	set udg_RmodeFinished[7]=true
 	call TriggerSleepAction(2)
