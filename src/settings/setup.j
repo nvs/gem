@@ -66,6 +66,7 @@ endfunction
 function Settings__Setup takes nothing returns boolean
 	local integer index
 	local player the_player
+	local string text = ""
 
 	call Settings___Setup_Mode ()
 
@@ -73,21 +74,23 @@ function Settings__Setup takes nothing returns boolean
 		set Settings___Timer = CreateTimer ()
 	endif
 
+	set text = text + Color__Gold ("Welcome to " + Gem__NAME + "!") + "\n"
+	set text = text + "For map information, including a list of\n"
+	set text = text + "changes, see " + Color__Gold ("Information (F9)") + ".\n"
+	set text = text + "\n"
+	set text = text + "For the latest news, to find other players,\n"
+	set text = text + "or to view the leaderboards, visit:\n"
+	set text = text + "\n"
+	set text = text + "- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n"
+	set text = text + "- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n"
+	set text = text + "\n"
+	set text = text + "Please report any bugs or issues\n"
+	set text = text + "encountered. Thanks.\n"
+	set text = text + "\n"
+	set text = text + "\n"
+
 	call ClearTextMessages ()
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, Color__Gold ("Welcome to " + Gem__NAME + "!"))
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "For map information, including a list of")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "changes, see " + Color__Gold ("Information (F9)") + " or visit:")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_REPOSITORY))
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "- " + Color__Link (Gem__WEBSITE_DISCORD))
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "Please report any bugs or issues")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, "encountered. Thanks.")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, " ")
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, text)
 
 	// Ensure that the unit selected is the Miner, and that the camera is
 	// focused on it initially.
