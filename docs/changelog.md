@@ -23,6 +23,12 @@ full list of changes to the project, please consult the commit log.
   is now the only difficulty.
 
 ### Changed
+- Combine has been split into distinct Combine (2x) and Combine (4x)
+  buttons.
+- A base slate can now stack upon any other base slate, except those of the
+  same type. For example, a Range can stack on a Damage but not another
+  Range. Stacking rules for combination slates remain the same.
+- Maximum number of lives reduced from `50` to `30`.
 - Extra Chance:
     - No longer needs to be upgraded. The previous upgrade levels have no
       meaning in the new system.
@@ -58,12 +64,6 @@ full list of changes to the project, please consult the commit log.
         - For slates with 2 Flawed pieces (e.g. Hold), it is superior to the
           old system at a bonus of `1x`. For slates with 3 Flawed pieces
           (e.g. Air), it is superior to the old system at a bonus of `0x`.
-- Combine has been split into distinct Combine (2x) and Combine (4x)
-  buttons.
-- A base slate can now stack upon any other base slate, except those of the
-  same type. For example, a Range can stack on a Damage but not another
-  Range. Stacking rules for combination slates remain the same.
-- Maximum number of lives reduced from `50` to `30`.
 - Mighty Malachite:
     - Reduced upgrade cost from `280` to `180`.
 - Fire Star:
