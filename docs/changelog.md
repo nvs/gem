@@ -24,16 +24,40 @@ full list of changes to the project, please consult the commit log.
 
 ### Changed
 - Extra Chance:
-    - It is now active the entire round and no longer needs to be upgraded.
-    - Failing to hit the target and selecting it in consecutive rounds will
-      increase a bonus that has a maximum value of 5x.
-    - Skipping a round will cause the bonus to decrease.
-    - Extra Chance for Perfects sets the target to the selected Perfect,
-      increasing chances to get all qualities of the chosen type.
-    - Extra Chance for Slates no longer gives slates directly. Rather, it
-      sets the target to the chosen base slate, increasing chances to get
-      the component Normal and Flawed pieces of both base slates that make
-      a combintion.
+    - No longer needs to be upgraded. The previous upgrade levels have no
+      meaning in the new system.
+    - Is now active the entire placement round, and no longer deactivates
+      once the target has been hit.
+    - It is no longer possible to change the target once the first gem has
+      been placed in a placement round.
+    - The current target is shown on the board in white. The previous
+      target is shown in grey when no current target is set.
+    - A bonus that can grow has now been introduced:
+        - As the bonus grows it will make it more likely to hit the target.
+        - Failing to hit the target and selecting the same one in the next
+          placement round will increase the bonus.
+        - Not using Extra Chance for a placement round will cause the bonus
+          to decrease.
+        - Switching to a different target from the previous placement round
+          does not alter the bonus.
+        - At the maximum `5x` bonus, the player will only be offered gems
+          related to their target.
+    - For Perfects:
+        - Sets the target to the selected Perfect, increasing chances to get
+          all qualities of the chosen type.
+        - Is superior to the old system at a bonus of `2x`. However, if one
+          factors in the chance to make the target via Combine, it could be
+          considered superior at a bonus of `1x`.
+    - For Slates:
+        - No longer gives slates directly.
+        - Sets the target to the chosen base slate, increasing chances to
+          get the component Normal and Flawed pieces of both base slates
+          that make a combination.
+        - The target slate is weighted more heavily than that of the other
+          slate in its pair.
+        - For slates with 2 Flawed pieces (e.g. Hold), it is superior to the
+          old system at a bonus of `1x`. For slates with 3 Flawed pieces
+          (e.g. Air), it is superior to the old system at a bonus of `0x`.
 - Combine has been split into distinct Combine (2x) and Combine (4x)
   buttons.
 - A base slate can now stack upon any other base slate, except those of the
