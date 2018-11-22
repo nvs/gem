@@ -130,6 +130,12 @@ endfunction
 function main takes nothing returns nothing
 	local trigger initialize
 
+	// The two faster game speeds cannot be used at all in single-player or
+	// multiplayer.  As such, we lock the speed to the default, to prevent
+	// slower speeds from being used in multiplayer.
+	call SetGameSpeed (MAP_SPEED_NORMAL)
+	call SetMapFlag (MAP_LOCK_SPEED, true)
+
 	call SetCameraBounds (-9472.0 + GetCameraMargin (CAMERA_MARGIN_LEFT), -9728.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 9472.0 -GetCameraMargin (CAMERA_MARGIN_RIGHT), 9216.0 - GetCameraMargin(CAMERA_MARGIN_TOP), -9472.0 + GetCameraMargin (CAMERA_MARGIN_LEFT), 9216.0 - GetCameraMargin (CAMERA_MARGIN_TOP), 9472.0 - GetCameraMargin (CAMERA_MARGIN_RIGHT), -9728.0 + GetCameraMargin (CAMERA_MARGIN_BOTTOM))
 	call SetDayNightModels ("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl", "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl")
 	call NewSoundEnvironment ("Default")
