@@ -19,6 +19,8 @@ local slate = {
 	placeholder = id (globals.Gem_Mine_Slate___PLACEHOLDER_ID)
 }
 
+local information = id (globals.Gem_Mine_Information___BUTTON_ID)
+
 -- # Placeholder
 local function placeholder (active)
 	return {
@@ -100,7 +102,8 @@ do
 		'',
 		cancel.placeholder,
 		perfect.placeholder,
-		slate.placeholder
+		slate.placeholder,
+		information
 	}
 
 	-- ## Stats
@@ -222,13 +225,7 @@ objects [cancel.active] = {
 		type = 'string',
 		values = {
 			[1] = 'Cancels Extra Chance, clearing the currently '
-				.. 'set target and refunding gold.|n|n'
-
-				.. '|cffffcc00Extra Chance Details:|r|n'
-				.. '- The maximum bonus is 5x.|n'
-				.. '- Failing to hit the target and selecting it in '
-				.. 'consecutive rounds will increase a bonus.|n'
-				.. '- Skipping a round will cause the bonus to decrease.'
+				.. 'set target and refunding gold.'
 		}
 	}
 }
@@ -408,3 +405,100 @@ objects [slate.active] = {
 
 -- # Mine Slate (Placeholder)
 objects [slate.placeholder] = placeholder (slate.active)
+
+-- # Mine Information
+do
+	local ability = {
+		type = 'ability',
+		base = 'ACev'
+	}
+
+	objects [information] = ability
+
+	-- ## Art
+	do
+		-- Button Position - Normal (X)
+		ability.abpx = {
+			type = 'integer',
+			value = 3
+		}
+
+		-- Button Position - Normal (Y)
+		ability.abpy = {
+			type = 'integer',
+			value = 1
+		}
+
+		-- Icon - Normal
+		ability.aart = {
+			type = 'string',
+			value = 'ReplaceableTextures\\'
+				.. 'PassiveButtons\\'
+				.. 'PASBTNElunesBlessing.blp'
+		}
+	end
+
+	-- ## Data
+	do
+		-- Chance to Evade
+		ability.Eev1 = {
+			data = 1,
+			type = 'unreal',
+			values = {
+				[1] = 0
+			}
+		}
+	end
+
+	-- ## Text
+	do
+		-- Editor Suffix
+		ability.ansf = {
+			type = 'string',
+			value = '(Mine)'
+		}
+
+		-- Name
+		ability.anam = {
+			type = 'string',
+			value = 'Extra Chance Information'
+		}
+
+		-- Tooltip - Normal
+		ability.atp1 = {
+			type = 'string',
+			values = {
+				[1] = '|cffffcc00Extra Chance Information|r'
+			}
+		}
+
+		-- Tooltip - Normal - Extended
+		ability.aub1 = {
+			type = 'string',
+			values = {
+				[1] = ''
+					.. '-'
+					.. ' The current target is shown on the board in white.'
+					.. ' The previous target is shown in grey when no'
+					.. ' current target is set.\n'
+
+					.. '-'
+					.. ' Failing to hit the target and selecting the same'
+					.. ' one in the next placement round will increase a'
+					.. ' bonus that starts at `0x`.\n'
+
+					.. '-'
+					.. ' Not using Extra Chance for a placement round will'
+					.. ' cause the bonus to decrease.\n'
+
+					.. '-'
+					.. ' Switching to a different target from the previous'
+					.. ' placement round does not alter the bonus.\n'
+
+					.. '-'
+					.. ' At the maximum `5x` bonus, the player will only'
+					.. ' be offered gems related to their target.\n'
+			}
+		}
+	end
+end
