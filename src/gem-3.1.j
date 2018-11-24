@@ -2392,100 +2392,72 @@ function Trig_Ancient_Bloodstone_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Ancient_Bloodstone_Func002Func003001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func004001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Ancient_Bloodstone_Func002Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Ancient_Bloodstone_Func002C takes nothing returns boolean
-	if(not(udg_Random[6]<=4))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
-	set udg_Random[6]=GetRandomInt(1,10)
-	if(Trig_Ancient_Bloodstone_Func002C())then
-		call UnitAddAbilityBJ('A07A',GetAttacker())
-		if(Trig_Ancient_Bloodstone_Func002Func003001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func004001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func005001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func006001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func007001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func008001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func009001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func010001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func011001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Ancient_Bloodstone_Func002Func012001())then
-			call IncUnitAbilityLevelSwapped('A07A',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A07A',GetAttacker())
-	else
+	local unit attacker = GetAttacker ()
+	local player owner = null
+	local unit victim = null
+	local group units = null
+	local unit which = null
+	local string name = null
+	local integer count = 0
+	local integer roll = 0
+	local integer kills = 0
+	local integer level = 0
+
+	if GetUnitState (attacker, UNIT_STATE_MANA) < 5.0 then
+		set attacker = null
+		return
 	endif
+
+	set owner = GetOwningPlayer (attacker)
+	set victim = GetTriggerUnit ()
+	set units = CreateGroup ()
+
+	set name = UnitId2String (Gem_Special__BLOODSTONE_1)
+	call GroupEnumUnitsOfType (units, name, null)
+	loop
+		set which = FirstOfGroup (units)
+		exitwhen which == null
+		call GroupRemoveUnit (units, which)
+
+		if GetOwningPlayer (which) == owner then
+			set count = count + 1
+		endif
+	endloop
+
+	set name = UnitId2String (Gem_Special__BLOODSTONE_2)
+	call GroupEnumUnitsOfType (units, name, null)
+	loop
+		set which = FirstOfGroup (units)
+		exitwhen which == null
+		call GroupRemoveUnit (units, which)
+
+		if GetOwningPlayer (which) == owner then
+			set count = count + 1
+		endif
+	endloop
+
+	call DestroyGroup (units)
+	set units = null
+
+	set roll = GetRandomInt (1, 10)
+
+	// By default, a single Ancient Blood Stone has `20%` chance to trigger
+	// Blood Lightning on attack.  Each additional Blood Stone or Ancient
+	// Blood Stone adds `10%` chance.
+	if roll <= count + 1 then
+		set kills = Unit_User_Data__Get (attacker)
+		set level = IMinBJ (kills / 10 + 1, 11)
+
+		call UnitAddAbility (attacker, 'A07A')
+		call SetUnitAbilityLevel (attacker, 'A07A', level)
+		call IssueTargetOrder (attacker, ORDER_FORKEDLIGHTNING, victim)
+		call UnitRemoveAbility (attacker, 'A07A')
+	endif
+
+	set attacker = null
+	set owner = null
+	set victim = null
 endfunction
 function InitTrig_Ancient_Bloodstone takes nothing returns nothing
 	set gg_trg_Ancient_Bloodstone=CreateTrigger()

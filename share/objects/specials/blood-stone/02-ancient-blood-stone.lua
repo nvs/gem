@@ -8,13 +8,21 @@ do
 	-- ## Text
 	do
 		-- Tooltip - Normal - Extended
-		for level = 1, 11 do
-			ability.aub1.values [level] = string.format (''
-				.. '- <A019,DataA%d>%% to do <A019,DataB%d,.>x damage.|n'
-				.. '- 40%% chance to cast a <A07A,DataA%d> damage Blood '
-				.. 'Lightning spell, costing <A07A,Cost%d> mana.',
-				level, level, level, level)
+		local text = ''
+			.. '-'
+			.. ' <A019,DataA%d>%% to do <A019,DataB%d,.>x damage.\n'
 
+			.. '-'
+			.. ' 20%% chance to cast a <A07A,DataA%d> damage Blood'
+			.. ' Lightning spell, costing <A07A,Cost%d> mana.\n'
+
+			.. '-'
+			.. ' +10%% chance to cast Blood Lightning for each additional'
+			.. ' Blood Stone or Ancient Blood Stone.\n'
+
+		for level = 1, 11 do
+			ability.aub1.values [level] = string.format (
+				text, level, level, level, level)
 		end
 	end
 end
