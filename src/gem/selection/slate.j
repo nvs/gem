@@ -45,6 +45,11 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 	call Gem_Selection_Slate_Marker__Attach (which)
 
 	set tag = CreateTextTag ()
+
+	if GetHandleId (tag) == 0 then
+		call BJDebugMsg ("Error: Gem_Selection_Slate___Tag (): `texttag` limit reached")
+	endif
+
 	call SetTextTagText (tag, prefix + Color (color, Gem_Slate__Name (slate) + " Slate"), 0.023)
 	call SetTextTagPos (tag, GetUnitX (which), GetUnitY (which), 0.0)
 	call SetTextTagPermanent (tag, false)

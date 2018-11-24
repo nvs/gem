@@ -24,6 +24,11 @@ function Gem_Slate___Damage takes nothing returns boolean
 		call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
 
 		set tag = CreateTextTag ()
+
+		if GetHandleId (tag) == 0 then
+			call BJDebugMsg ("Error: Gem_Slate___Damage (): `texttag` limit reached")
+		endif
+
 		call SetTextTagText (tag, I2S (damage) + " Damage!", 0.023)
 		call SetTextTagPos (tag, x - 75.00, y, 0.00)
 		call SetTextTagColor (tag, GetRandomInt (0, 255), GetRandomInt (0, 255), GetRandomInt (0, 255), 255)
