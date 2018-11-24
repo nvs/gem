@@ -42,6 +42,8 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 		call UnitAddAbility (which, Gem_Selection_Slate__COMBINE_ID)
 	endif
 
+	call Gem_Selection_Slate_Marker__Attach (which)
+
 	call SetTextTagText (tag, prefix + Color (color, Gem_Slate__Name (slate) + " Slate"), 0.023)
 	call SetTextTagPos (tag, GetUnitX (which), GetUnitY (which), 0.0)
 	call SetTextTagPermanent (tag, false)

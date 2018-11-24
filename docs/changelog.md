@@ -5,6 +5,11 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.5.1] - Unreleased
 
+### Added
+- Introduced a new effect to indicate that the player can make a slate. In
+  part, this is due to a peculiar, and unsolved, issue where slate names do
+  not always appear.
+
 ### Changed
 - Further explained details of the Extra Chance changes in the 1.5.0
   changelog.
