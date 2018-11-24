@@ -21,7 +21,7 @@ endfunction
 
 function Gem_Selection_Slate___Tag takes unit which, integer slate, string color returns nothing
 	local player whom = GetOwningPlayer (which)
-	local texttag tag = CreateTextTag ()
+	local texttag tag = null
 	local integer target = 0
 	local string prefix = ""
 	local integer which_id = GetUnitTypeId (which)
@@ -44,6 +44,7 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 
 	call Gem_Selection_Slate_Marker__Attach (which)
 
+	set tag = CreateTextTag ()
 	call SetTextTagText (tag, prefix + Color (color, Gem_Slate__Name (slate) + " Slate"), 0.023)
 	call SetTextTagPos (tag, GetUnitX (which), GetUnitY (which), 0.0)
 	call SetTextTagPermanent (tag, false)
