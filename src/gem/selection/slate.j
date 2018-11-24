@@ -49,6 +49,7 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 	call SetTextTagPermanent (tag, false)
 	call SetTextTagLifespan (tag, 3.0)
 	call SetTextTagFadepoint (tag, 2.5)
+	call SetTextTagColor (tag, 255, 255, 255, 255)
 	call SetTextTagVisibility (tag, true)
 
 	set whom = null

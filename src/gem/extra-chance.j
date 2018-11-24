@@ -250,6 +250,7 @@ function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing
 	call SetTextTagLifespan (tag, 3.0)
 	call SetTextTagFadepoint (tag, 2.5)
 	call SetTextTagVisibility (tag, true)
+	call SetTextTagColor (tag, 255, 255, 255, 255)
 
 	set tag = null
 endfunction
