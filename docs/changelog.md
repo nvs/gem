@@ -12,7 +12,7 @@ full list of changes to the project, please consult the commit log.
 
 ### Changed
 - Further explained details of the Extra Chance changes in the 1.5.0
-  changelog.
+  changelog. Give it another read.
 - Ancient Blood Stone:
     - Reduced base chance to cast Blood Lightning from `40%` to `20%`.
     - Each additional Blood Stone or Ancient Blood Stone increases the
