@@ -19,8 +19,8 @@ full list of changes to the project, please consult the commit log.
       chance to cast Blood Lightning by `12%`.
 
 ### Fixed
-- Handling of rank related to players Green and Pink reaching the Damage
-  Test has been resolved.
+- Board issues related to players Green and Pink reaching the Damage Test
+  have been resolved.
 
 ## [1.5.0] - 2018-11-16
 
