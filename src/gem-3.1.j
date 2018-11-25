@@ -2400,6 +2400,7 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 	local unit which = null
 	local string name = null
 	local integer count = 0
+	local integer chance = 0
 	local integer roll = 0
 	local integer kills = 0
 	local integer level = 0
@@ -2440,12 +2441,14 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 	call DestroyGroup (units)
 	set units = null
 
-	set roll = GetRandomInt (1, 10)
+	set roll = GetRandomInt (1, 100)
 
-	// By default, a single Ancient Blood Stone has `20%` chance to trigger
+	// By default, a single Ancient Blood Stone has `24%` chance to trigger
 	// Blood Lightning on attack.  Each additional Blood Stone or Ancient
-	// Blood Stone adds `10%` chance.
-	if roll <= count + 1 then
+	// Blood Stone adds `12%` chance.
+	set chance = 24 + 12 * (count - 1)
+
+	if roll <= chance then
 		set kills = Unit_User_Data__Get (attacker)
 		set level = IMinBJ (kills / 10 + 1, 11)
 

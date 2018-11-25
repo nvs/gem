@@ -14,9 +14,9 @@ full list of changes to the project, please consult the commit log.
 - Further explained details of the Extra Chance changes in the 1.5.0
   changelog. Give it another read.
 - Ancient Blood Stone:
-    - Reduced base chance to cast Blood Lightning from `40%` to `20%`.
+    - Reduced base chance to cast Blood Lightning from `40%` to `24%`.
     - Each additional Blood Stone or Ancient Blood Stone increases the
-      chance to cast Blood Lightning by `10%`.
+      chance to cast Blood Lightning by `12%`.
 
 ### Fixed
 - Handling of rank related to players Green and Pink reaching the Damage
