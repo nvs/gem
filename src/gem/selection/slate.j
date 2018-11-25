@@ -21,7 +21,7 @@ endfunction
 
 function Gem_Selection_Slate___Tag takes unit which, integer slate, string color returns nothing
 	local player whom = GetOwningPlayer (which)
-	local texttag tag = CreateTextTag ()
+	local texttag tag = null
 	local integer target = 0
 	local string prefix = ""
 	local integer which_id = GetUnitTypeId (which)
@@ -42,11 +42,20 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 		call UnitAddAbility (which, Gem_Selection_Slate__COMBINE_ID)
 	endif
 
+	call Gem_Selection_Slate_Marker__Attach (which)
+
+	set tag = CreateTextTag ()
+
+	if GetHandleId (tag) == 0 then
+		call BJDebugMsg ("Error: Gem_Selection_Slate___Tag (): `texttag` limit reached")
+	endif
+
 	call SetTextTagText (tag, prefix + Color (color, Gem_Slate__Name (slate) + " Slate"), 0.023)
 	call SetTextTagPos (tag, GetUnitX (which), GetUnitY (which), 0.0)
 	call SetTextTagPermanent (tag, false)
 	call SetTextTagLifespan (tag, 3.0)
 	call SetTextTagFadepoint (tag, 2.5)
+	call SetTextTagColor (tag, 255, 255, 255, 255)
 	call SetTextTagVisibility (tag, true)
 
 	set whom = null

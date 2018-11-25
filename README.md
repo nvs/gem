@@ -3,7 +3,6 @@
 ## Contents
 
 - [Overview](#overview)
-- [Links](#links)
 - [How to Play](#how-to-play)
 - [Changelog](#changelog)
 - [Development](#development)
@@ -14,10 +13,16 @@ Gem TD+ is an updated version of Gem Tower Defense, a map originally created
 by Bryvx.  It aims to enhance the existing gameplay while introducing new
 features, possibilities, and strategies.
 
-## Links
+The [GitHub] repository is oriented more towards development of the map.  If
+that is of interest to you, please consider creating an account and
+participating.  Feedback and contributions are always welcome.
 
-- [GitHub](https://github.com/nvs/gem)
-- [Discord](https://discord.gg/PxNNp77)
+To learn the latest community news, meet other players, or view the
+leaderboards, one should visit the [Discord].  It aims to serve as the focal
+point for all things Gem TD+.
+
+[GitHub]: https://github.com/nvs/gem
+[Discord]: https://discord.gg/PxNNp77
 
 ## How to Play
 

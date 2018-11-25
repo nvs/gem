@@ -151,9 +151,11 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 	if previous == null then
 		set previous = current
 
-		// If no replacement was done, then we need to remove the selection
-		// location marker. All other markers are removed automatically.
+		// If no replacement was done, then we need to remove various
+		// markers.  In the case of replacement, then markers are removed
+		// automatically when the units leave the map or die.
 		call Gem_Selection_Marker__Remove (current)
+		call Gem_Selection_Slate_Marker__Detach (current)
 	endif
 
 	set the_player = GetOwningPlayer (current)

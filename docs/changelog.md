@@ -7,6 +7,25 @@ full list of changes to the project, please consult the commit log.
 
 - N/A
 
+## [1.5.1] - 2018-11-24
+
+### Added
+- Introduced a new effect to indicate that the player can make a slate. In
+  part, this is due to a peculiar, and unsolved, issue where slate names do
+  not always appear.
+
+### Changed
+- Further explained details of the Extra Chance changes in the 1.5.0
+  changelog. Give it another read.
+- Ancient Blood Stone:
+    - Reduced base chance to cast Blood Lightning from `40%` to `24%`.
+    - Each additional Blood Stone or Ancient Blood Stone increases the
+      chance to cast Blood Lightning by `12%`.
+
+### Fixed
+- Board issues related to players Green and Pink reaching the Damage Test
+  have been resolved.
+
 ## [1.5.0] - 2018-11-16
 
 ### Added
@@ -19,23 +38,47 @@ full list of changes to the project, please consult the commit log.
   support.
 
 ### Changed
-- Extra Chance:
-    - It is now active the entire round and no longer needs to be upgraded.
-    - Failing to hit the target and selecting it in consecutive rounds will
-      increase a bonus that has a maximum value of 5x.
-    - Skipping a round will cause the bonus to decrease.
-    - Extra Chance for Perfects sets the target to the selected Perfect,
-      increasing chances to get all qualities of the chosen type.
-    - Extra Chance for Slates no longer gives slates directly. Rather, it
-      sets the target to the chosen base slate, increasing chances to get
-      the component Normal and Flawed pieces of both base slates that make
-      a combintion.
 - Combine has been split into distinct Combine (2x) and Combine (4x)
   buttons.
 - A base slate can now stack upon any other base slate, except those of the
   same type. For example, a Range can stack on a Damage but not another
   Range. Stacking rules for combination slates remain the same.
 - Maximum number of lives reduced from `50` to `30`.
+- Extra Chance:
+    - No longer needs to be upgraded. The previous upgrade levels have no
+      meaning in the new system.
+    - Is now active the entire placement round, and no longer deactivates
+      once the target has been hit.
+    - It is no longer possible to change the target once the first gem has
+      been placed in a placement round.
+    - The current target is shown on the board in white. The previous
+      target is shown in grey when no current target is set.
+    - A bonus that can grow has now been introduced:
+        - As the bonus grows it will make it more likely to hit the target.
+        - Failing to hit the target and selecting the same one in the next
+          placement round will increase the bonus.
+        - Not using Extra Chance for a placement round will cause the bonus
+          to decrease.
+        - Switching to a different target from the previous placement round
+          does not alter the bonus.
+        - At the maximum `5x` bonus, the player will only be offered gems
+          related to their target.
+    - For Perfects:
+        - Sets the target to the selected Perfect, increasing chances to get
+          all qualities of the chosen type.
+        - Is superior to the old system at a bonus of `2x`. However, if one
+          factors in the chance to make the target via Combine, it could be
+          considered superior at a bonus of `1x`.
+    - For Slates:
+        - No longer gives slates directly.
+        - Sets the target to the chosen base slate, increasing chances to
+          get the component Normal and Flawed pieces of both base slates
+          that make a combination.
+        - The target slate is weighted more heavily than that of the other
+          slate in its pair.
+        - For slates with 2 Flawed pieces (e.g. Hold), it is superior to the
+          old system at a bonus of `1x`. For slates with 3 Flawed pieces
+          (e.g. Air), it is superior to the old system at a bonus of `0x`.
 - Mighty Malachite:
     - Reduced upgrade cost from `280` to `180`.
 - Fire Star:
@@ -59,7 +102,7 @@ full list of changes to the project, please consult the commit log.
 - Ancient Blood Stone:
     - Increased chance to cast Blood Lightning from `10%` to `40%`.
 - Elder Slate:
-    - Armor debuff duration no longer increases with levels.
+    - Armor debuff duration no longer increases with kill levels.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
@@ -286,7 +329,8 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.5.0...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.5.1...master
+[1.5.1]: https://github.com/nvs/gem/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/nvs/gem/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/nvs/gem/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/nvs/gem/compare/v1.4.1...v1.4.2

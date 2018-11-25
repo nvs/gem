@@ -8,6 +8,11 @@ function Gem_Special___Jade_Tag takes unit the_unit, string message, integer red
 	endif
 
 	set tag = CreateTextTag ()
+
+	if GetHandleId (tag) == 0 then
+		call BJDebugMsg ("Error: Gem_Special___Jade_Tag (): `texttag` limit reached")
+	endif
+
 	call SetTextTagPos (tag, GetUnitX (the_unit), GetUnitY (the_unit), 0.00)
 	call SetTextTagPermanent (tag, false)
 	call SetTextTagLifespan (tag, 2.00)
