@@ -33,10 +33,6 @@ full list of changes to the project, please consult the commit log.
 - The board has gained a DPS meter, Extra Chance indicator, and rank
   support.
 
-### Removed
-- Settings have been removed. As such, the default difficulty (i.e. Extreme)
-  is now the only difficulty.
-
 ### Changed
 - Combine has been split into distinct Combine (2x) and Combine (4x)
   buttons.
@@ -106,6 +102,10 @@ full list of changes to the project, please consult the commit log.
     - No longer rewards gold.
 - Spell Slate:
     - No longer rewards gold.
+
+### Removed
+- Settings have been removed. As such, the default difficulty (i.e. Extreme)
+  is now the only difficulty.
 
 ### Fixed
 - Dead gems are no longer replaced by rocks upon using action buttons (e.g.
