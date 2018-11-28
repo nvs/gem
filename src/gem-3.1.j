@@ -1282,792 +1282,90 @@ function InitTrig_Player_Leaves takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Player_Leaves,function Trig_Player_Leaves_Actions)
 endfunction
 function Trig_Creeps_attacking_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetAttacker())==Player(11)))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Creeps_attacking_Func002Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func002Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func002Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func002Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func002Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func002Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func002Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func002Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func002C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(GetAttacker())==6))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Creeps_attacking_Func003Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func003Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func003Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func003Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func003Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func003Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func003Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func003Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func003Func010001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func003Func011001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func003Func012001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func003Func013001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func003Func014001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func003Func015001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func003Func016001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func003Func017001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func003C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(GetAttacker())==5))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Creeps_attacking_Func004Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func004Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func004Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func004Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func004Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func004Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func004Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func004Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func004Func010001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func004Func011001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func004Func012001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func004Func013001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func004Func014001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func004Func015001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func004Func016001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func004Func017001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func004C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(GetAttacker())==4))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Creeps_attacking_Func005Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func005Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func005Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func005Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func005Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func005Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func005Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func005Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func005Func010001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func005Func011001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func005Func012001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func005Func013001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func005Func014001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func005Func015001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func005Func016001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func005Func017001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func005C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(GetAttacker())==3))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Creeps_attacking_Func006Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func006Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func006Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func006Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func006Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func006Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func006Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func006Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func006Func010001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func006Func011001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func006Func012001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func006Func013001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func006Func014001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func006Func015001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func006Func016001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func006Func017001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func006C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(GetAttacker())==2))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Creeps_attacking_Func007Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func007Func002001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func007Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func007Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func007Func005001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func007Func006001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func007Func007001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func007Func008001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func007Func010001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(0))
-endfunction
-function Trig_Creeps_attacking_Func007Func011001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(1))
-endfunction
-function Trig_Creeps_attacking_Func007Func012001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(2))
-endfunction
-function Trig_Creeps_attacking_Func007Func013001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(3))
-endfunction
-function Trig_Creeps_attacking_Func007Func014001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(4))
-endfunction
-function Trig_Creeps_attacking_Func007Func015001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(5))
-endfunction
-function Trig_Creeps_attacking_Func007Func016001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(6))
-endfunction
-function Trig_Creeps_attacking_Func007Func017001 takes nothing returns boolean
-	return(GetOwningPlayer(GetAttackedUnitBJ())==Player(7))
-endfunction
-function Trig_Creeps_attacking_Func007C takes nothing returns boolean
-	if(not(Unit_User_Data__Get(GetAttacker())==1))then
-		return false
-	endif
-	return true
+	return GetOwningPlayer (GetAttacker ()) == Gem__PLAYER_CREEPS
 endfunction
 function Trig_Creeps_attacking_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.60)
-	if(Trig_Creeps_attacking_Func002C())then
-		if(Trig_Creeps_attacking_Func002Func001001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_1))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func002001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func003001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func004001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func005001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func006001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func007001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func002Func008001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_Finish_8))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	if(Trig_Creeps_attacking_Func003C())then
-		if(Trig_Creeps_attacking_Func003Func001001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_1move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func002001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_2move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func003001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_3move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func004001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_4move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func005001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_5move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func006001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_6move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func007001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_7move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func008001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_8move6))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.05)
-		if(Trig_Creeps_attacking_Func003Func010001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_1move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func011001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_2move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func012001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_3move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func013001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_4move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func014001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_5move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func015001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_6move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func016001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_7move7))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func003Func017001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_8move7))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.10)
-		call Unit_User_Data__Set(GetAttacker(),6)
-	else
-	endif
-	if(Trig_Creeps_attacking_Func004C())then
-		if(Trig_Creeps_attacking_Func004Func001001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_1move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func002001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_2move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func003001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_3move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func004001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_4move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func005001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_5move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func006001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_6move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func007001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_7move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func008001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_8move5))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.05)
-		if(Trig_Creeps_attacking_Func004Func010001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_1move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func011001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_2move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func012001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_3move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func013001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_4move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func014001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_5move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func015001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_6move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func016001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_7move6))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func004Func017001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_8move6))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.10)
-		call Unit_User_Data__Set(GetAttacker(),5)
-	else
-	endif
-	if(Trig_Creeps_attacking_Func005C())then
-		if(Trig_Creeps_attacking_Func005Func001001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_1move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func002001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_2move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func003001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_3move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func004001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_4move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func005001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_5move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func006001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_6move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func007001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_7move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func008001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_8move4))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.05)
-		if(Trig_Creeps_attacking_Func005Func010001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_1move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func011001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_2move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func012001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_3move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func013001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_4move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func014001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_5move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func015001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_6move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func016001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_7move5))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func005Func017001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_8move5))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.10)
-		call Unit_User_Data__Set(GetAttacker(),4)
-	else
-	endif
-	if(Trig_Creeps_attacking_Func006C())then
-		if(Trig_Creeps_attacking_Func006Func001001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_1move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func002001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_2move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func003001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_3move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func004001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_4move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func005001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_5move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func006001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_6move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func007001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_7move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func008001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_8move3))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.05)
-		if(Trig_Creeps_attacking_Func006Func010001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_1move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func011001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_2move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func012001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_3move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func013001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_4move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func014001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_5move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func015001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_6move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func016001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_7move4))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func006Func017001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_8move4))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.10)
-		call Unit_User_Data__Set(GetAttacker(),3)
-	else
-	endif
-	if(Trig_Creeps_attacking_Func007C())then
-		if(Trig_Creeps_attacking_Func007Func001001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_1move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func002001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_2move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func003001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_3move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func004001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_4move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func005001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_5move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func006001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_6move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func007001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_7move2))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func008001())then
-			call SetUnitPositionLoc(GetAttacker(),GetRectCenter(gg_rct_8move2))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.05)
-		if(Trig_Creeps_attacking_Func007Func010001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_1move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func011001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_2move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func012001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_3move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func013001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_4move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func014001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_5move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func015001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_6move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func016001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_7move3))
-		else
-			call DoNothing()
-		endif
-		if(Trig_Creeps_attacking_Func007Func017001())then
-			call IssuePointOrderLocBJ(GetAttacker(),"move",GetRectCenter(gg_rct_8move3))
-		else
-			call DoNothing()
-		endif
-		call TriggerSleepAction(0.10)
-		call Unit_User_Data__Set(GetAttacker(),2)
-	else
-	endif
+	local unit attacker = GetAttacker ()
+	local integer attacker_index = Unit_Indexer__Unit_Index (attacker)
+	local integer owner_id = udg_CreepOwner [attacker_index] - 1
+	local integer previous = Unit_User_Data__Get (attacker)
+	local rect checkpoint = udg_MoveOnAttack [(owner_id + 1) * 10 + previous]
+	local real x = GetRectCenterX (checkpoint)
+	local real y = GetRectCenterY (checkpoint)
+
+	call DisplayTextToPlayer (Player (owner_id), 0., 0., "WARNING: Block detected or creeps confused!")
+	call SetUnitPosition (attacker, x, y)
+
+	set attacker = null
+	set checkpoint = null
 endfunction
+globals
+	rect array udg_MoveOnAttack
+endglobals
 function InitTrig_Creeps_attacking takes nothing returns nothing
 	set gg_trg_Creeps_attacking=CreateTrigger()
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Creeps_attacking,EVENT_PLAYER_UNIT_ATTACKED)
 	call TriggerAddCondition(gg_trg_Creeps_attacking,Condition(function Trig_Creeps_attacking_Conditions))
 	call TriggerAddAction(gg_trg_Creeps_attacking,function Trig_Creeps_attacking_Actions)
+
+	// The attacking unit's last destination is accessible via
+	// `Unit_User_Data__Get ()`.  Upon reaching the first checkpoint,
+	// `Unit_User_Data__Get ()` will return `1`.
+	set udg_MoveOnAttack [11] = gg_rct_1move2
+	set udg_MoveOnAttack [12] = gg_rct_1move3
+	set udg_MoveOnAttack [13] = gg_rct_1move4
+	set udg_MoveOnAttack [14] = gg_rct_1move5
+	set udg_MoveOnAttack [15] = gg_rct_1move6
+	set udg_MoveOnAttack [16] = gg_rct_1move7
+
+	set udg_MoveOnAttack [21] = gg_rct_2move2
+	set udg_MoveOnAttack [22] = gg_rct_2move3
+	set udg_MoveOnAttack [23] = gg_rct_2move4
+	set udg_MoveOnAttack [24] = gg_rct_2move5
+	set udg_MoveOnAttack [25] = gg_rct_2move6
+	set udg_MoveOnAttack [26] = gg_rct_2move7
+
+	set udg_MoveOnAttack [31] = gg_rct_3move2
+	set udg_MoveOnAttack [32] = gg_rct_3move3
+	set udg_MoveOnAttack [33] = gg_rct_3move4
+	set udg_MoveOnAttack [34] = gg_rct_3move5
+	set udg_MoveOnAttack [35] = gg_rct_3move6
+	set udg_MoveOnAttack [36] = gg_rct_3move7
+
+	set udg_MoveOnAttack [41] = gg_rct_4move2
+	set udg_MoveOnAttack [42] = gg_rct_4move3
+	set udg_MoveOnAttack [43] = gg_rct_4move4
+	set udg_MoveOnAttack [44] = gg_rct_4move5
+	set udg_MoveOnAttack [45] = gg_rct_4move6
+	set udg_MoveOnAttack [46] = gg_rct_4move7
+
+	set udg_MoveOnAttack [51] = gg_rct_5move2
+	set udg_MoveOnAttack [52] = gg_rct_5move3
+	set udg_MoveOnAttack [53] = gg_rct_5move4
+	set udg_MoveOnAttack [54] = gg_rct_5move5
+	set udg_MoveOnAttack [55] = gg_rct_5move6
+	set udg_MoveOnAttack [56] = gg_rct_5move7
+
+	set udg_MoveOnAttack [61] = gg_rct_6move2
+	set udg_MoveOnAttack [62] = gg_rct_6move3
+	set udg_MoveOnAttack [63] = gg_rct_6move4
+	set udg_MoveOnAttack [64] = gg_rct_6move5
+	set udg_MoveOnAttack [65] = gg_rct_6move6
+	set udg_MoveOnAttack [66] = gg_rct_6move7
+
+	set udg_MoveOnAttack [71] = gg_rct_7move2
+	set udg_MoveOnAttack [72] = gg_rct_7move3
+	set udg_MoveOnAttack [73] = gg_rct_7move4
+	set udg_MoveOnAttack [74] = gg_rct_7move5
+	set udg_MoveOnAttack [75] = gg_rct_7move6
+	set udg_MoveOnAttack [76] = gg_rct_7move7
+
+	set udg_MoveOnAttack [81] = gg_rct_8move2
+	set udg_MoveOnAttack [82] = gg_rct_8move3
+	set udg_MoveOnAttack [83] = gg_rct_8move4
+	set udg_MoveOnAttack [84] = gg_rct_8move5
+	set udg_MoveOnAttack [85] = gg_rct_8move6
+	set udg_MoveOnAttack [86] = gg_rct_8move7
 endfunction
 function Trig_Type_Air_Func002C takes nothing returns boolean
 	if(not(udg_Mode==1))then

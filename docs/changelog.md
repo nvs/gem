@@ -5,7 +5,10 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.5.2] - Unreleased
 
-- N/A
+### Fixed
+- Existing behavior to detect and prevent creep attacks has been improved.
+  Creeps will now properly teleport to the next checkpoint upon encountering
+  a block or when becoming confused.
 
 ## [1.5.1] - 2018-11-24
 
