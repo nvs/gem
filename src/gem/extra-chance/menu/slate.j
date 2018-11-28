@@ -28,42 +28,42 @@ function Gem_Extra_Chance_Menu_Slate__Initialize takes trigger rule returns noth
 	set names [0] = "Hold Slate"
 	set targets [0] = Gem_Slate__HOLD
 	set hotkeys [0] = 'H'
-	set labels [0] = Color__Gold ("Ancient - ") + Color__White ("H") + Color__Gold ("old")
+	set labels [0] = Color__White ("H") + Color__Gold ("old")
 
 	set names [1] = "Air Slate"
 	set targets [1] = Gem_Slate__AIR
 	set hotkeys [1] = 'A'
-	set labels [1] = Color__Gold ("Ancient - ") + Color__White ("A") + Color__Gold ("ir")
+	set labels [1] = Color__White ("A") + Color__Gold ("ir")
 
 	set names [2] = "Opal Vein Slate"
 	set targets [2] = Gem_Slate__OPAL_VEIN
 	set hotkeys [2] = 'O'
-	set labels [2] = Color__Gold ("Wraith - ") + Color__White ("O") + Color__Gold ("pal Vein")
+	set labels [2] = Color__White ("O") + Color__Gold ("pal Vein")
 
 	set names [3] = "Slow Slate"
 	set targets [3] = Gem_Slate__SLOW
 	set hotkeys [3] = 'S'
-	set labels [3] = Color__Gold ("Wraith - ") + Color__White ("S") + Color__Gold ("low")
+	set labels [3] = Color__White ("S") + Color__Gold ("low")
 
 	set names [4] = "Spell Slate"
 	set targets [4] = Gem_Slate__SPELL
 	set hotkeys [4] = 'E'
-	set labels [4] = Color__Gold ("Elder - Sp") + Color__White ("e") + Color__Gold ("ll")
+	set labels [4] = Color__Gold ("Sp") + Color__White ("e") + Color__Gold ("ll")
 
 	set names [5] = "Poison Slate"
 	set targets [5] = Gem_Slate__POISON
 	set hotkeys [5] = 'P'
-	set labels [5] = Color__Gold ("Elder - ") + Color__White ("P") + Color__Gold ("oison")
+	set labels [5] = Color__White ("P") + Color__Gold ("oison")
 
 	set names [6] = "Damage Slate"
 	set targets [6] = Gem_Slate__DAMAGE
 	set hotkeys [6] = 'D'
-	set labels [6] = Color__Gold ("Viper - " ) + Color__White ("D") + Color__Gold ("amage")
+	set labels [6] = Color__White ("D") + Color__Gold ("amage")
 
 	set names [7] = "Range Slate"
 	set targets [7] = Gem_Slate__RANGE
 	set hotkeys [7] = 'R'
-	set labels [7] = Color__Gold ("Viper - " ) + Color__White ("R") + Color__Gold ("ange")
+	set labels [7] = Color__White ("R") + Color__Gold ("ange")
 
 	set targets [8] = 0
 	set hotkeys [8] = 'X'
