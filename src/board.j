@@ -202,6 +202,10 @@ function Board___Update takes nothing returns nothing
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
+
+					if Cheats__Detected () then
+						set is_grey = true
+					endif
 				elseif level == 51 then
 					set damage = Gem_Rank__Get_Damage (whom_id, 51)
 					set value = I2S (R2I (damage + 0.5))

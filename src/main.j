@@ -176,6 +176,7 @@ function main takes nothing returns nothing
 	call InitCustomTriggers ()
 	call RunInitializationTriggers ()
 
+	call TriggerAddCondition (initialize, Condition (function Cheats__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Mine__Initialize))
 
 	// Must occur after all Gem 3.1 initializations (for now).
