@@ -17,9 +17,6 @@ function config takes nothing returns nothing
 	call DefineStartLocation(5,-2304.0,-8000.0)
 	call DefineStartLocation(6,-7488.0,-2560.0)
 	call DefineStartLocation(7,-7680.0,2048.0)
-	call DefineStartLocation(8,0.0,-256.0)
-	call DefineStartLocation(9,0.0,-256.0)
-	call DefineStartLocation(11,0.0,-256.0)
 
 	set i = 0
 	loop

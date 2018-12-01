@@ -130,6 +130,11 @@ endfunction
 function main takes nothing returns nothing
 	local trigger initialize
 
+	// Set the names of computer players.  This was previously done in the
+	// `war3map.w3i`, but was removed to ensure accurate games list counts.
+	call SetPlayerName (Gem__PLAYER_CREEPS, "Monsters")
+	call SetPlayerName (Player (9), "Gem not in play")
+
 	// The two faster game speeds cannot be used at all in single-player or
 	// multiplayer.  As such, we lock the speed to the default, to prevent
 	// slower speeds from being used in multiplayer.
