@@ -143,6 +143,10 @@ function main takes nothing returns nothing
 	call SetAmbientNightSound ("SunkenRuinsNight")
 	call SetMapMusic ("Music", true, 0)
 
+	// This should be done before all systems initialized via triggers as
+	// they may or may not rely on `blizzard.j` features.
+	call InitBlizzard ()
+
 	set initialize = CreateTrigger ()
 
 	call TriggerAddCondition (initialize, Condition (function Preload__Initialize))
@@ -167,7 +171,6 @@ function main takes nothing returns nothing
 	call InitSounds ()
 	call CreateRegions ()
 	call CreateAllUnits ()
-	call InitBlizzard ()
 	call InitGlobals ()
 	call InitCustomTriggers ()
 	call RunInitializationTriggers ()
