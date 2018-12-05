@@ -79,6 +79,8 @@ function Board___Title takes player whom returns string
 	local string name = null
 	local integer type_id = ID__NULL
 
+	local string title = null
+
 	if current > 0 or previous > 0 then
 		if current > 0 then
 			set color = Color__WHITE
@@ -102,7 +104,13 @@ function Board___Title takes player whom returns string
 		set extra_chance = Color__White ("N/A")
 	endif
 
-	return "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
+	set title = "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
+
+	if Game_Status () == Game_Status__REPLAY or Gem_Rank__Get_Level (whom_id) == 52 then
+		set title = title + " — ID: " + Color__White (I2S (Gem__GAME_ID))
+	endif
+
+	return title
 endfunction
 
 function Board___Add_Test_Column takes nothing returns nothing

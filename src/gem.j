@@ -16,4 +16,9 @@ globals
 
 	constant integer Gem__PLAYER_CREEPS_INDEX = 11
 	constant player Gem__PLAYER_CREEPS = Player (Gem__PLAYER_CREEPS_INDEX)
+
+	// This is not a unique game identifier.  That is not its purpose.  The
+	// point is to allow verification that a screenshot pairs to a replay in
+	// an easy, albeit not foolproof, way.
+	constant integer Gem__GAME_ID = GetRandomInt (0, 2147483647)
 endglobals
