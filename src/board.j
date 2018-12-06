@@ -216,7 +216,14 @@ function Board___Update takes nothing returns nothing
 					endif
 				elseif level == 51 then
 					set damage = Gem_Rank__Get_Damage (whom_id, 51)
-					set value = I2S (R2I (damage + 0.5))
+
+					// Get the ceiling.  Note that damage is always
+					// positive.
+					if damage != R2I (damage) then
+						set damage = damage + 1
+					endif
+
+					set value = I2S (R2I (damage))
 				else
 					set value = ""
 				endif
