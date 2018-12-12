@@ -13,6 +13,7 @@ full list of changes to the project, please consult the commit log.
 - Existing behavior to detect and prevent creep attacks has been improved.
   Creeps will now properly teleport to the next checkpoint upon encountering
   a block or when becoming confused.
+- The board would be short rows if players left before it was displayed.
 
 ## [1.5.1] - 2018-11-24
 

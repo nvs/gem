@@ -9,6 +9,7 @@ function Gem_Changelog___1_5_2 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
 	set text = text + "- Existing behavior to detect and prevent creep attacks has been improved. Creeps will now properly teleport to the next checkpoint upon encountering a block or when becoming confused.\n"
+	set text = text + "- The board would be short rows if players left before it was displayed.\n"
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction

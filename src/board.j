@@ -308,7 +308,7 @@ function Board__Setup takes nothing returns nothing
 	set player_index = 0
 	set count = 0
 	loop
-		if udg_PlayerHERE [player_index + 1] then
+		if GetPlayerSlotState (Player (player_index)) != PLAYER_SLOT_STATE_EMPTY then
 			set Board___Players [count] = player_index
 			set name_width = space * 2 + String__Width (GetPlayerName (Player (player_index)))
 
