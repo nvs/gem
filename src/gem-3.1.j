@@ -1236,6 +1236,10 @@ function InitTrig_Gem_Awards_Upgrade_debug takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ(gg_trg_Gem_Awards_Upgrade_debug,EVENT_PLAYER_UNIT_UPGRADE_FINISH)
 	call TriggerAddAction(gg_trg_Gem_Awards_Upgrade_debug,function Trig_Gem_Awards_Upgrade_debug_Actions)
 endfunction
+function Trig_Player_Leaves_Control_Enum takes nothing returns nothing
+	call SetUnitInvulnerable (GetEnumUnit (), false)
+	call SetUnitOwner (GetEnumUnit (), bj_groupEnumOwningPlayer, true)
+endfunction
 function Trig_Player_Leaves_Actions takes nothing returns nothing
 	local player whom = GetTriggerPlayer ()
 	local integer whom_id = GetPlayerId (whom)
@@ -1249,6 +1253,11 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 	call Gem_Rank__Fail (whom)
 
 	call DisplayTextToForce (GetPlayersAll (), Color ("33ff33", GetPlayerName (whom) + " is gone!!!"))
+
+	// Return control back to the player, if they were in the build phase.
+	set bj_groupEnumOwningPlayer = whom
+	call ForGroup (udg_UnitGroup [whom_id + 1], function Trig_Player_Leaves_Control_Enum)
+	set bj_groupEnumOwningPlayer = null
 
 	// Freeze all creeps 'owned' by the leaving player.
 	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
