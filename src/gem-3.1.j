@@ -1243,15 +1243,8 @@ endfunction
 function Trig_Player_Leaves_Actions takes nothing returns nothing
 	local player whom = GetTriggerPlayer ()
 	local integer whom_id = GetPlayerId (whom)
-	local group units = CreateGroup ()
-	local unit which = null
-	local integer index = 0
-	local integer owner_id = 0
 
 	set udg_PlayerHERE [whom_id + 1] = false
-	call Gem_Spawn__Stop (whom_id)
-	call Gem_Rank__Fail (whom)
-
 	call DisplayTextToForce (GetPlayersAll (), Color ("33ff33", GetPlayerName (whom) + " is gone!!!"))
 
 	// Return control back to the player, if they were in the build phase.
@@ -1259,24 +1252,7 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 	call ForGroup (udg_UnitGroup [whom_id + 1], function Trig_Player_Leaves_Control_Enum)
 	set bj_groupEnumOwningPlayer = null
 
-	// Freeze all creeps 'owned' by the leaving player.
-	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
-	loop
-		set which = FirstOfGroup (units)
-		exitwhen which == null
-		call GroupRemoveUnit (units, which)
-
-		set index = Unit_Indexer__Unit_Index (which)
-		set owner_id = udg_CreepOwner [index] - 1
-
-		if whom_id == owner_id then
-			call PauseUnit (which, true)
-			call SetUnitInvulnerable (which, true)
-		endif
-	endloop
-
-	call DestroyGroup (units)
-	set units = null
+	set whom = null
 endfunction
 function InitTrig_Player_Leaves takes nothing returns nothing
 	set gg_trg_Player_Leaves=CreateTrigger()
@@ -7030,8 +7006,10 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	set udg_RaceModeKills[1]=0
 	set udg_RaceBuildingPeriod[1]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(0),Condition(function Trig_New_Level_P1_Func016001002)),function Trig_New_Level_P1_Func016002)
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
-	call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
+	if GetPlayerSlotState (Player (0)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func017002)
+		call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P1_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
@@ -7178,8 +7156,10 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	set udg_RaceModeKills[2]=0
 	set udg_RaceBuildingPeriod[2]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(1),Condition(function Trig_New_Level_P2_Func016001002)),function Trig_New_Level_P2_Func016002)
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
-	call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
+	if GetPlayerSlotState (Player (1)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func017002)
+		call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P2_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
@@ -7326,8 +7306,10 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	set udg_RaceModeKills[3]=0
 	set udg_RaceBuildingPeriod[3]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(2),Condition(function Trig_New_Level_P3_Func016001002)),function Trig_New_Level_P3_Func016002)
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
-	call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
+	if GetPlayerSlotState (Player (2)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func017002)
+		call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P3_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
@@ -7474,8 +7456,10 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	set udg_RaceModeKills[4]=0
 	set udg_RaceBuildingPeriod[4]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(3),Condition(function Trig_New_Level_P4_Func016001002)),function Trig_New_Level_P4_Func016002)
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
-	call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
+	if GetPlayerSlotState (Player (3)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func017002)
+		call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P4_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
@@ -7622,8 +7606,10 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	set udg_RaceModeKills[5]=0
 	set udg_RaceBuildingPeriod[5]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(4),Condition(function Trig_New_Level_P5_Func016001002)),function Trig_New_Level_P5_Func016002)
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
-	call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
+	if GetPlayerSlotState (Player (4)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func017002)
+		call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P5_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
@@ -7770,8 +7756,10 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	set udg_RaceModeKills[6]=0
 	set udg_RaceBuildingPeriod[6]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(5),Condition(function Trig_New_Level_P6_Func016001002)),function Trig_New_Level_P6_Func016002)
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
-	call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
+	if GetPlayerSlotState (Player (5)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func017002)
+		call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P6_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
@@ -7918,8 +7906,10 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	set udg_RaceModeKills[7]=0
 	set udg_RaceBuildingPeriod[7]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(6),Condition(function Trig_New_Level_P7_Func016001002)),function Trig_New_Level_P7_Func016002)
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
-	call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
+	if GetPlayerSlotState (Player (6)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func017002)
+		call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P7_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
@@ -8066,8 +8056,10 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	set udg_RaceModeKills[8]=0
 	set udg_RaceBuildingPeriod[8]=true
 	call ForGroupBJ(GetUnitsOfPlayerMatching(Player(7),Condition(function Trig_New_Level_P8_Func016001002)),function Trig_New_Level_P8_Func016002)
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
-	call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
+	if GetPlayerSlotState (Player (7)) == PLAYER_SLOT_STATE_PLAYING then
+		call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func017002)
+		call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
+	endif
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
 	if(Trig_New_Level_P8_Func021001())then
 		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))

@@ -276,14 +276,12 @@ function Gem_Rank___Damage_Timer takes nothing returns nothing
 		set whom = Player (whom_id)
 
 		if Gem_Rank__Is_Player_Registered (whom) then
-			if GetPlayerSlotState (whom) == PLAYER_SLOT_STATE_PLAYING then
-				set level = Gem_Rank__Get_Level (whom_id)
+			set level = Gem_Rank__Get_Level (whom_id)
 
-				// If a player's current level has already 'stopped' that
-				// means they have lost.  Stop recording damage.
-				if Gem_Rank__Get_Stop (whom_id, level) == 0 then
-					call Gem_Rank___Update_Damage (whom_id)
-				endif
+			// If a player's current level has already 'stopped' that
+			// means they have lost.  Stop recording damage.
+			if Gem_Rank__Get_Stop (whom_id, level) == 0 then
+				call Gem_Rank___Update_Damage (whom_id)
 			endif
 		endif
 
