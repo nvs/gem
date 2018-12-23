@@ -9,6 +9,10 @@ full list of changes to the project, please consult the commit log.
 - Introduced a game identifier to help verify screenshot/replay pairing when
   submitting games to the leaderboard. This is not a unique game identifier.
 
+### Changed
+- A player can now select their race in the lobby. By default, race will be
+  selected randomnly. This is purely a cosmetic change.
+
 ### Fixed
 - Existing behavior to detect and prevent creep attacks has been improved.
   Creeps will now properly teleport to the next checkpoint upon encountering

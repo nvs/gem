@@ -24,8 +24,8 @@ function config takes nothing returns nothing
 
 		call ForcePlayerStartLocation (p, i)
 		call SetPlayerColor (p, ConvertPlayerColor (i))
-		call SetPlayerRacePreference (p, RACE_PREF_HUMAN)
-		call SetPlayerRaceSelectable (p, false)
+		call SetPlayerRacePreference (p, RACE_PREF_RANDOM)
+		call SetPlayerRaceSelectable (p, true)
 		call SetPlayerState(p, PLAYER_STATE_ALLIED_VICTORY, 1)
 		call SetPlayerTeam (p, 0)
 
