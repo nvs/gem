@@ -282,12 +282,12 @@ function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 		set Gem_Extra_Chance___Current_Target [whom_id] = 0
 		set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
 
-		set bonus = IMaxBJ (Gem_Extra_Chance___Previous_Bonus [whom_id] - 1, 0)
-		set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
-
-		if bonus == 0 then
+		if Gem_Extra_Chance___Previous_Bonus [whom_id] == 0 then
 			set Gem_Extra_Chance___Previous_Target [whom_id] = 0
 		endif
+
+		set bonus = IMaxBJ (Gem_Extra_Chance___Previous_Bonus [whom_id] - 1, 0)
+		set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
 	endif
 
 	set whom = null

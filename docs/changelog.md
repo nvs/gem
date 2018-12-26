@@ -18,6 +18,8 @@ full list of changes to the project, please consult the commit log.
   Creeps will now properly teleport to the next checkpoint upon encountering
   a block or when becoming confused.
 - The player count on the games list should be more accurate.
+- Not using Extra Chance when the previous bonus was at `1x` would cause it
+  to be cleared entirely rather than decreased to `0x`.
 - The board would be short rows if players left before it was displayed.
 
 ## [1.5.1] - 2018-11-24
