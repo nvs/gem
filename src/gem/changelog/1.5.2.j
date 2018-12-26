@@ -7,7 +7,7 @@ function Gem_Changelog___1_5_2 takes nothing returns nothing
 	set text = text + "- Introduced a game identifier to help verify screenshot/replay pairing when submitting games to the leaderboard. This is not a unique game identifier.\n"
 	set text = text + "\n"
 
-	set text = text + Color__Gold ("Added:") + "\n"
+	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- A player can now select their race in the lobby. By default, race will be selected randomnly. This is purely a cosmetic change.\n"
 	set text = text + "\n"
 
