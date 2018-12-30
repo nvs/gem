@@ -1464,94 +1464,18 @@ function Trig_Range_Check_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Range_Check_Func002C takes nothing returns boolean
-	if(not(udg_Random[3]>=801))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Range_Check_Func003Func018002 takes nothing returns nothing
-	call KillUnit(GetEnumUnit())
-endfunction
-function Trig_Range_Check_Func003C takes nothing returns boolean
-	if(not(udg_Random[3]<=800))then
-		return false
-	endif
-	return true
-endfunction
+// Credits for this idea goes to SelectionCircle by Aniki:
+// - https://www.hiveworkshop.com/threads/show-me-the-ranges.299681
 function Trig_Range_Check_Actions takes nothing returns nothing
-	set udg_Random[3]=GetUnitPointValueByType(GetUnitTypeId(GetSpellAbilityUnit()))
-	if(Trig_Range_Check_Func002C())then
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),(I2R(udg_Random[3])+15.00),0.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),15.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),30.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),45.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),60.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),75.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),(I2R(udg_Random[3])+15.00),90.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),105.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),120.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),135.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),150.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),165.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),(I2R(udg_Random[3])+15.00),180.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),195.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),210.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),225.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),240.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),255.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),(I2R(udg_Random[3])+15.00),270.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),285.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),300.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),315.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),330.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-		call CreateNUnitsAtLocFacingLocBJ(1,'n006',Player(PLAYER_NEUTRAL_PASSIVE),PolarProjectionBJ(GetUnitLoc(GetSpellAbilityUnit()),I2R(udg_Random[3]),345.00),GetUnitLoc(GetTriggerUnit()))
-		call KillUnit(GetLastCreatedUnit())
-	else
-	endif
-	if(Trig_Range_Check_Func003C())then
-		call CreateNUnitsAtLoc(1,'n00D',Player(PLAYER_NEUTRAL_PASSIVE),GetUnitLoc(GetSpellAbilityUnit()),bj_UNIT_FACING)
-		call SetUnitScalePercent(GetLastCreatedUnit(),(I2R(udg_Random[3])*1.50),(I2R(udg_Random[3])*1.50),(I2R(udg_Random[3])*1.50))
-		call SetUnitVertexColorBJ(GetLastCreatedUnit(),0.00,0.00,0.00,60.00)
-		call CreateNUnitsAtLoc(1,'n00D',Player(PLAYER_NEUTRAL_PASSIVE),GetUnitLoc(GetSpellAbilityUnit()),bj_UNIT_FACING)
-		call SetUnitScalePercent(GetLastCreatedUnit(),(I2R(udg_Random[3])*1.15),(I2R(udg_Random[3])*1.15),(I2R(udg_Random[3])*1.15))
-		call SetUnitVertexColorBJ(GetLastCreatedUnit(),0.00,0.00,0.00,70.00)
-		call CreateNUnitsAtLoc(1,'n00D',Player(PLAYER_NEUTRAL_PASSIVE),GetUnitLoc(GetSpellAbilityUnit()),bj_UNIT_FACING)
-		call SetUnitScalePercent(GetLastCreatedUnit(),(I2R(udg_Random[3])*0.85),(I2R(udg_Random[3])*0.85),(I2R(udg_Random[3])*0.85))
-		call SetUnitVertexColorBJ(GetLastCreatedUnit(),0.00,0.00,0.00,70.00)
-		call CreateNUnitsAtLoc(1,'n00D',Player(PLAYER_NEUTRAL_PASSIVE),GetUnitLoc(GetSpellAbilityUnit()),bj_UNIT_FACING)
-		call SetUnitScalePercent(GetLastCreatedUnit(),(I2R(udg_Random[3])*0.65),(I2R(udg_Random[3])*0.65),(I2R(udg_Random[3])*0.65))
-		call SetUnitVertexColorBJ(GetLastCreatedUnit(),0.00,0.00,0.00,70.00)
-		call CreateNUnitsAtLoc(1,'n00D',Player(PLAYER_NEUTRAL_PASSIVE),GetUnitLoc(GetSpellAbilityUnit()),bj_UNIT_FACING)
-		call SetUnitScalePercent(GetLastCreatedUnit(),(I2R(udg_Random[3])*0.50),(I2R(udg_Random[3])*0.50),(I2R(udg_Random[3])*0.50))
-		call SetUnitVertexColorBJ(GetLastCreatedUnit(),0.00,0.00,0.00,70.00)
-		call TriggerSleepAction(2)
-		call ForGroupBJ(GetUnitsOfTypeIdAll('n00D'),function Trig_Range_Check_Func003Func018002)
-	else
-	endif
+	local integer radius = GetUnitPointValueByType (GetUnitTypeId (GetTriggerUnit ()))
+	local image circle = CreateImage ("ReplaceableTextures\\Selection\\SelectionCircleLarge.blp", 2 * radius, 2 * radius, 0., GetUnitX (GetTriggerUnit ()), GetUnitY (GetTriggerUnit ()), 0., radius, radius, 0., 1)
+
+	call SetImageRenderAlways (circle, true)
+	call SetImageColor (circle, 255, 255, 255, 255)
+	call TriggerSleepAction (2.0)
+	call DestroyImage (circle)
+
+	set circle = null
 endfunction
 function InitTrig_Range_Check takes nothing returns nothing
 	set gg_trg_Range_Check=CreateTrigger()

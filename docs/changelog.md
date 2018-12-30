@@ -12,6 +12,7 @@ full list of changes to the project, please consult the commit log.
 ### Changed
 - A player can now select their race in the lobby. By default, race will be
   selected randomnly. This is purely a cosmetic change.
+- Range check appearance has been reworked.
 
 ### Fixed
 - Existing behavior to detect and prevent creep attacks has been improved.

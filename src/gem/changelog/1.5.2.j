@@ -9,6 +9,7 @@ function Gem_Changelog___1_5_2 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Changed:") + "\n"
 	set text = text + "- A player can now select their race in the lobby. By default, race will be selected randomnly. This is purely a cosmetic change.\n"
+	set text = text + "- Range check appearance has been reworked.\n"
 	set text = text + "\n"
 
 	set text = text + Color__Gold ("Fixed:") + "\n"
