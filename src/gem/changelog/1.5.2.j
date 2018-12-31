@@ -17,6 +17,7 @@ function Gem_Changelog___1_5_2 takes nothing returns nothing
 	set text = text + "- The player count on the games list should be more accurate.|n"
 	set text = text + "- Not using Extra Chance when the previous bonus was at `1x` would cause it to be cleared entirely rather than decreased to `0x`.|n"
 	set text = text + "- The board would be short rows if players left before it was displayed.|n"
+	set text = text + "- Resolved issues that broke save/load compatibility in 1.5.1.|n"
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
