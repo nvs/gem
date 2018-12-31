@@ -26,7 +26,7 @@ function Gem_Changelog___1_5_0_Part_2 takes nothing returns nothing
 	set text = text + "- Extra Chance:|n"
 	set text = text + "    - No longer needs to be upgraded. The previous upgrade levels have no meaning in the new system.|n"
 	set text = text + "    - Is now active the entire placement round, and no longer deactivates once the target has been hit.|n"
-	set text = text + "    - It is no longer possible to change the target once the first gem has been placed in a placement round.|n"
+	set text = text + "    - It is no longer possible to change the target once the first gem has been placed.|n"
 	set text = text + "    - The current target is shown on the board in white. The previous target is shown in grey when no current target is set.|n"
 	set text = text + "    - A bonus that can grow has now been introduced:|n"
 	set text = text + "        - As the bonus grows it will make it more likely to hit the target.|n"

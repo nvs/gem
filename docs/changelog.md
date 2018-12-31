@@ -66,7 +66,7 @@ full list of changes to the project, please consult the commit log.
     - Is now active the entire placement round, and no longer deactivates
       once the target has been hit.
     - It is no longer possible to change the target once the first gem has
-      been placed in a placement round.
+      been placed.
     - The current target is shown on the board in white. The previous
       target is shown in grey when no current target is set.
     - A bonus that can grow has now been introduced:
