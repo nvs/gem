@@ -211,7 +211,7 @@ function Board___Update takes nothing returns nothing
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
 
-					if Cheats__Detected () then
+					if Cheats__Detected () or Game__Is_Loaded () then
 						set is_grey = true
 					endif
 				elseif level == 51 then
