@@ -1266,17 +1266,27 @@ function InitTrig_Player_Leaves takes nothing returns nothing
 	call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(7))
 	call TriggerAddAction(gg_trg_Player_Leaves,function Trig_Player_Leaves_Actions)
 endfunction
-function Trig_Creeps_attacking_Conditions takes nothing returns boolean
-	return GetOwningPlayer (GetAttacker ()) == Gem__PLAYER_CREEPS
-endfunction
 function Trig_Creeps_attacking_Actions takes nothing returns nothing
-	local unit attacker = GetAttacker ()
-	local integer attacker_index = Unit_Indexer__Unit_Index (attacker)
-	local integer owner_id = udg_CreepOwner [attacker_index] - 1
-	local integer previous = Unit_User_Data__Get (attacker)
-	local rect checkpoint = udg_MoveOnAttack [(owner_id + 1) * 10 + previous]
-	local real x = GetRectCenterX (checkpoint)
-	local real y = GetRectCenterY (checkpoint)
+	local integer order = GetIssuedOrderId ()
+	local unit attacker = null
+	local integer attacker_index = 0
+	local integer owner_id = 0
+	local integer previous = 0
+	local rect checkpoint = null
+	local real x = 0.
+	local real y = 0.
+
+	if order != 851983 then
+		return
+	endif
+
+	set attacker = GetOrderedUnit ()
+	set attacker_index = Unit_Indexer__Unit_Index (attacker)
+	set owner_id = udg_CreepOwner [attacker_index] - 1
+	set previous = Unit_User_Data__Get (attacker)
+	set checkpoint = udg_MoveOnAttack [(owner_id + 1) * 10 + previous]
+	set x = GetRectCenterX (checkpoint)
+	set y = GetRectCenterY (checkpoint)
 
 	call DisplayTextToPlayer (Player (owner_id), 0., 0., "WARNING: Block detected or creeps confused!")
 	call SetUnitPosition (attacker, x, y)
@@ -1289,68 +1299,83 @@ globals
 endglobals
 function InitTrig_Creeps_attacking takes nothing returns nothing
 	set gg_trg_Creeps_attacking=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Creeps_attacking,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Creeps_attacking,Condition(function Trig_Creeps_attacking_Conditions))
+	call TriggerRegisterPlayerUnitEvent(gg_trg_Creeps_attacking, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER, null)
 	call TriggerAddAction(gg_trg_Creeps_attacking,function Trig_Creeps_attacking_Actions)
 
 	// The attacking unit's last destination is accessible via
 	// `Unit_User_Data__Get ()`.  Upon reaching the first checkpoint,
 	// `Unit_User_Data__Get ()` will return `1`.
+	set udg_MoveOnAttack [10] = gg_rct_1move1
 	set udg_MoveOnAttack [11] = gg_rct_1move2
 	set udg_MoveOnAttack [12] = gg_rct_1move3
 	set udg_MoveOnAttack [13] = gg_rct_1move4
 	set udg_MoveOnAttack [14] = gg_rct_1move5
 	set udg_MoveOnAttack [15] = gg_rct_1move6
 	set udg_MoveOnAttack [16] = gg_rct_1move7
+	set udg_MoveOnAttack [17] = gg_rct_Finish_1
 
+	set udg_MoveOnAttack [20] = gg_rct_2move1
 	set udg_MoveOnAttack [21] = gg_rct_2move2
 	set udg_MoveOnAttack [22] = gg_rct_2move3
 	set udg_MoveOnAttack [23] = gg_rct_2move4
 	set udg_MoveOnAttack [24] = gg_rct_2move5
 	set udg_MoveOnAttack [25] = gg_rct_2move6
 	set udg_MoveOnAttack [26] = gg_rct_2move7
+	set udg_MoveOnAttack [27] = gg_rct_Finish_2
 
+	set udg_MoveOnAttack [30] = gg_rct_3move1
 	set udg_MoveOnAttack [31] = gg_rct_3move2
 	set udg_MoveOnAttack [32] = gg_rct_3move3
 	set udg_MoveOnAttack [33] = gg_rct_3move4
 	set udg_MoveOnAttack [34] = gg_rct_3move5
 	set udg_MoveOnAttack [35] = gg_rct_3move6
 	set udg_MoveOnAttack [36] = gg_rct_3move7
+	set udg_MoveOnAttack [37] = gg_rct_Finish_3
 
+	set udg_MoveOnAttack [40] = gg_rct_4move1
 	set udg_MoveOnAttack [41] = gg_rct_4move2
 	set udg_MoveOnAttack [42] = gg_rct_4move3
 	set udg_MoveOnAttack [43] = gg_rct_4move4
 	set udg_MoveOnAttack [44] = gg_rct_4move5
 	set udg_MoveOnAttack [45] = gg_rct_4move6
 	set udg_MoveOnAttack [46] = gg_rct_4move7
+	set udg_MoveOnAttack [47] = gg_rct_Finish_4
 
+	set udg_MoveOnAttack [50] = gg_rct_5move1
 	set udg_MoveOnAttack [51] = gg_rct_5move2
 	set udg_MoveOnAttack [52] = gg_rct_5move3
 	set udg_MoveOnAttack [53] = gg_rct_5move4
 	set udg_MoveOnAttack [54] = gg_rct_5move5
 	set udg_MoveOnAttack [55] = gg_rct_5move6
 	set udg_MoveOnAttack [56] = gg_rct_5move7
+	set udg_MoveOnAttack [57] = gg_rct_Finish_5
 
+	set udg_MoveOnAttack [60] = gg_rct_6move1
 	set udg_MoveOnAttack [61] = gg_rct_6move2
 	set udg_MoveOnAttack [62] = gg_rct_6move3
 	set udg_MoveOnAttack [63] = gg_rct_6move4
 	set udg_MoveOnAttack [64] = gg_rct_6move5
 	set udg_MoveOnAttack [65] = gg_rct_6move6
 	set udg_MoveOnAttack [66] = gg_rct_6move7
+	set udg_MoveOnAttack [67] = gg_rct_Finish_6
 
+	set udg_MoveOnAttack [70] = gg_rct_7move1
 	set udg_MoveOnAttack [71] = gg_rct_7move2
 	set udg_MoveOnAttack [72] = gg_rct_7move3
 	set udg_MoveOnAttack [73] = gg_rct_7move4
 	set udg_MoveOnAttack [74] = gg_rct_7move5
 	set udg_MoveOnAttack [75] = gg_rct_7move6
 	set udg_MoveOnAttack [76] = gg_rct_7move7
+	set udg_MoveOnAttack [77] = gg_rct_Finish_7
 
+	set udg_MoveOnAttack [80] = gg_rct_8move1
 	set udg_MoveOnAttack [81] = gg_rct_8move2
 	set udg_MoveOnAttack [82] = gg_rct_8move3
 	set udg_MoveOnAttack [83] = gg_rct_8move4
 	set udg_MoveOnAttack [84] = gg_rct_8move5
 	set udg_MoveOnAttack [85] = gg_rct_8move6
 	set udg_MoveOnAttack [86] = gg_rct_8move7
+	set udg_MoveOnAttack [87] = gg_rct_Finish_8
 endfunction
 function Trig_Type_Air_Func002C takes nothing returns boolean
 	if(not(udg_Mode==1))then
