@@ -1266,30 +1266,74 @@ function InitTrig_Player_Leaves takes nothing returns nothing
 	call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(7))
 	call TriggerAddAction(gg_trg_Player_Leaves,function Trig_Player_Leaves_Actions)
 endfunction
+globals
+	integer array udg_AttackedAt
+endglobals
 function Trig_Creeps_attacking_Actions takes nothing returns nothing
-	local integer order = GetIssuedOrderId ()
+	local eventid id = GetTriggerEventId ()
 	local unit attacker = null
-	local integer attacker_index = 0
+	local boolean teleport = false
+	local integer index = 0
 	local integer owner_id = 0
 	local integer previous = 0
 	local rect checkpoint = null
 	local real x = 0.
 	local real y = 0.
 
-	if order != 851983 then
-		return
+	// A creep should begin all its attacks with an attack move order to
+	// a certain point.
+	if id == EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER then
+		if GetIssuedOrderId () != 851983 then
+			return
+		endif
+
+		set attacker = GetOrderedUnit ()
+
+	// To be fair, this event should not happen as we are intercepting all
+	// the attack orders.  However, if it is, we must teleport the unit no
+	// matter what.
+	elseif id == EVENT_PLAYER_UNIT_ATTACKED then
+		set attacker = GetAttacker ()
+
+		if GetOwningPlayer (attacker) != Gem__PLAYER_CREEPS then
+			set attacker = null
+			return
+		endif
+
+		call BJDebugMsg ("Error: Gem 3.1: `EVENT_PLAYER_UNIT_ATTACKED` detected for creeps")
+		set teleport = true
 	endif
 
-	set attacker = GetOrderedUnit ()
-	set attacker_index = Unit_Indexer__Unit_Index (attacker)
-	set owner_id = udg_CreepOwner [attacker_index] - 1
+	set index = Unit_Indexer__Unit_Index (attacker)
+	set owner_id = udg_CreepOwner [index] - 1
 	set previous = Unit_User_Data__Get (attacker)
 	set checkpoint = udg_MoveOnAttack [(owner_id + 1) * 10 + previous]
 	set x = GetRectCenterX (checkpoint)
 	set y = GetRectCenterY (checkpoint)
 
-	call DisplayTextToPlayer (Player (owner_id), 0., 0., "WARNING: Block detected or creeps confused!")
-	call SetUnitPosition (attacker, x, y)
+	// Either a unit attacked event was detected or we are under the time
+	// threshold.  Either way, we must teleport the unit.
+	if teleport or Time__Total () - udg_AttackedAt [index] <= 3000 then
+		// Move the unit to the next checkpoint.  It should be business as
+		// usual from this point on.
+		call SetUnitPosition (attacker, x, y)
+
+		call DisplayTextToPlayer (Player (owner_id), 0., 0., "Warning: Block detected! Please fix your maze!")
+
+		// Reset the time to ensure blocking events that occur close
+		// together remain distinct.
+		set udg_AttackedAt [index] = 0
+
+	// Too much time has elapsed, so we assume this to be an entirely new
+	// blocking event.  Update the timestamp.
+	else
+		set udg_AttackedAt [index] = Time__Total ()
+
+		// Order the unit to move to its next checkpoint.  If this was
+		// a false positive, it should reach the next point without much
+		// hassle.  If not, it will be given another attack order soon.
+		call IssuePointOrder (attacker, "move", x, y)
+	endif
 
 	set attacker = null
 	set checkpoint = null
@@ -1298,9 +1342,17 @@ globals
 	rect array udg_MoveOnAttack
 endglobals
 function InitTrig_Creeps_attacking takes nothing returns nothing
-	set gg_trg_Creeps_attacking=CreateTrigger()
-	call TriggerRegisterPlayerUnitEvent(gg_trg_Creeps_attacking, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER, null)
-	call TriggerAddAction(gg_trg_Creeps_attacking,function Trig_Creeps_attacking_Actions)
+	local integer index = 0
+
+	set gg_trg_Creeps_attacking = CreateTrigger()
+	call TriggerRegisterPlayerUnitEvent (gg_trg_Creeps_attacking, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER, null)
+	call TriggerAddAction (gg_trg_Creeps_attacking, function Trig_Creeps_attacking_Actions)
+
+	loop
+		call TriggerRegisterPlayerUnitEvent (gg_trg_Creeps_attacking, Player (index), EVENT_PLAYER_UNIT_ATTACKED, null)
+		set index = index + 1
+		exitwhen index >= Gem__MAXIMUM_PLAYERS
+	endloop
 
 	// The attacking unit's last destination is accessible via
 	// `Unit_User_Data__Get ()`.  Upon reaching the first checkpoint,
