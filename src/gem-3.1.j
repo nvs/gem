@@ -1507,18 +1507,31 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	local real y = GetUnitY (slate)
 	local group slates = null
 	local boolean is_stacking = false
+	local player owner = GetOwningPlayer (slate)
+	local integer owner_id = GetPlayerId (owner)
+	local rect area = udg_GA [owner_id + 1]
 
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", x, y))
 
 	set x = GetSpellTargetX ()
 	set y = GetSpellTargetY ()
 
+	if x < GetRectMinX (area) or GetRectMaxX (area) < x or y < GetRectMinY (area) or GetRectMaxY (area) < y then
+		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Cannot move a slate outside your area!"))
+
+		set slate = null
+		set owner = null
+		set area = null
+
+		return
+	endif
+
 	set slates = Gem_Slate_Stacking__Get_Stacking_At (slate, x, y)
 	set is_stacking = CountUnitsInGroup (slates) > 0
 
 	if is_stacking then
 		call ForGroup (slates, function Trig_Slate_move_Func019002002)
-		call DisplayTextToPlayer (GetOwningPlayer (slate), 0, 0, Color ("ffff00", "Moving to that location would cause Slate Stacking!"))
+		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Moving to that location would cause Slate Stacking!"))
 	else
 		call SetUnitPosition (slate, x, y)
 		call UnitRemoveAbility (slate, 'A02J')
@@ -1528,6 +1541,8 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 
 	set slate = null
 	set slates = null
+	set owner = null
+	set area = null
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing
 	set gg_trg_Slate_move=CreateTrigger()
