@@ -1543,9 +1543,16 @@ function Trig_Range_Check_Conditions takes nothing returns boolean
 endfunction
 // Credits for this idea goes to SelectionCircle by Aniki:
 // - https://www.hiveworkshop.com/threads/show-me-the-ranges.299681
+//
+// We use a different image.  And of particular note is that the image used
+// is `256x256`, whereas the circle itself does not extend to the edges.  It
+// is closer to `242x242`, so an adjustment to the radius needs to be made.
+//
+// All of the default selection circles need this adjustment; however, the
+// exact value may differ.
 function Trig_Range_Check_Actions takes nothing returns nothing
-	local integer radius = GetUnitPointValueByType (GetUnitTypeId (GetTriggerUnit ()))
-	local image circle = CreateImage ("ReplaceableTextures\\Selection\\SelectionCircleLarge.blp", 2 * radius, 2 * radius, 0., GetUnitX (GetTriggerUnit ()), GetUnitY (GetTriggerUnit ()), 0., radius, radius, 0., 1)
+	local real radius = GetUnitPointValueByType (GetUnitTypeId (GetTriggerUnit ())) / 121 * 128
+	local image circle = CreateImage ("ReplaceableTextures\\Selection\\SpellAreaOfEffect_Basic.blp", 2 * radius, 2 * radius, 0., GetUnitX (GetTriggerUnit ()), GetUnitY (GetTriggerUnit ()), 0., radius, radius, 0., 1)
 
 	call SetImageRenderAlways (circle, true)
 	call SetImageColor (circle, 255, 255, 255, 255)
