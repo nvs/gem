@@ -1566,7 +1566,7 @@ endfunction
 // All of the default selection circles need this adjustment; however, the
 // exact value may differ.
 function Trig_Range_Check_Actions takes nothing returns nothing
-	local real radius = GetUnitPointValueByType (GetUnitTypeId (GetTriggerUnit ())) / 121 * 128
+	local real radius = GetUnitPointValueByType (GetUnitTypeId (GetTriggerUnit ())) / 15 * 16
 	local image circle = CreateImage ("ReplaceableTextures\\Selection\\SpellAreaOfEffect_Basic.blp", 2 * radius, 2 * radius, 0., GetUnitX (GetTriggerUnit ()), GetUnitY (GetTriggerUnit ()), 0., radius, radius, 0., 1)
 
 	call SetImageRenderAlways (circle, true)
