@@ -17,7 +17,7 @@ full list of changes to the project, please consult the commit log.
 ### Fixed
 - Existing behavior to detect and prevent creep attacks has been improved.
   Creeps will now properly teleport to the next checkpoint upon encountering
-  a block or when becoming confused.
+  a block.
 - The player count on the games list should be more accurate.
 - Not using Extra Chance when the previous bonus was at `1x` would cause it
   to be cleared entirely rather than decreased to `0x`.

@@ -13,7 +13,7 @@ function Gem_Changelog___1_5_2 takes nothing returns nothing
 	set text = text + "|n"
 
 	set text = text + Color__Gold ("Fixed:") + "|n"
-	set text = text + "- Existing behavior to detect and prevent creep attacks has been improved. Creeps will now properly teleport to the next checkpoint upon encountering a block or when becoming confused.|n"
+	set text = text + "- Existing behavior to detect and prevent creep attacks has been improved. Creeps will now properly teleport to the next checkpoint upon encountering a block.|n"
 	set text = text + "- The player count on the games list should be more accurate.|n"
 	set text = text + "- Not using Extra Chance when the previous bonus was at `1x` would cause it to be cleared entirely rather than decreased to `0x`.|n"
 	set text = text + "- The board would be short rows if players left before it was displayed.|n"
