@@ -18,6 +18,7 @@ function Gem_Changelog___1_5_2 takes nothing returns nothing
 	set text = text + "- Not using Extra Chance when the previous bonus was at `1x` would cause it to be cleared entirely rather than decreased to `0x`.|n"
 	set text = text + "- The board would be short rows if players left before it was displayed.|n"
 	set text = text + "- Resolved issues that broke save/load compatibility in 1.5.1.|n"
+	set text = text + "- The Extra Chance bonus is now properly cleared when using Cancel.|n"
 	set text = text + "- Slates can no longer be moved outside of a player's area.|n"
 
 	call Gem_Changelog__Setup (title, text, date)

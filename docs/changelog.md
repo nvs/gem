@@ -23,6 +23,7 @@ full list of changes to the project, please consult the commit log.
   to be cleared entirely rather than decreased to `0x`.
 - The board would be short rows if players left before it was displayed.
 - Resolved issues that broke save/load compatibility in 1.5.1.
+- The Extra Chance bonus is now properly cleared when using Cancel.
 - Slates can no longer be moved outside of a player's area.
 
 ## [1.5.1] - 2018-11-24

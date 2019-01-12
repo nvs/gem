@@ -216,6 +216,8 @@ function Gem_Extra_Chance__Clear takes player whom returns nothing
 		return
 	endif
 
+	call Gem_Chance__Reset (whom)
+
 	set whom_id = GetPlayerId (whom)
 	set target = Gem_Extra_Chance___Current_Target [whom_id]
 
