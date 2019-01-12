@@ -79,6 +79,8 @@ function Board___Title takes player whom returns string
 	local string name = null
 	local integer type_id = ID__NULL
 
+	local string title = null
+
 	if current > 0 or previous > 0 then
 		if current > 0 then
 			set color = Color__WHITE
@@ -102,7 +104,13 @@ function Board___Title takes player whom returns string
 		set extra_chance = Color__White ("N/A")
 	endif
 
-	return "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
+	set title = "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
+
+	if Game_Status () == Game_Status__REPLAY or Gem_Rank__Get_Level (whom_id) == 52 then
+		set title = title + " — ID: " + Color__White (I2S (Gem__GAME_ID))
+	endif
+
+	return title
 endfunction
 
 function Board___Add_Test_Column takes nothing returns nothing
@@ -202,9 +210,23 @@ function Board___Update takes nothing returns nothing
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
+
+					// The time will be greyed despite a player being
+					// present in the game if offline cheats have been
+					// detected or the game was saved then loaded.
+					if Cheats__Detected () or Game__Is_Loaded () then
+						set is_grey = true
+					endif
 				elseif level == 51 then
 					set damage = Gem_Rank__Get_Damage (whom_id, 51)
-					set value = I2S (R2I (damage + 0.5))
+
+					// Get the ceiling.  Note that damage is always
+					// positive.
+					if damage != R2I (damage) then
+						set damage = damage + 1
+					endif
+
+					set value = I2S (R2I (damage))
 				else
 					set value = ""
 				endif
@@ -289,7 +311,7 @@ function Board__Setup takes nothing returns nothing
 	set player_index = 0
 	set count = 0
 	loop
-		if udg_PlayerHERE [player_index + 1] then
+		if GetPlayerSlotState (Player (player_index)) != PLAYER_SLOT_STATE_EMPTY then
 			set Board___Players [count] = player_index
 			set name_width = space * 2 + String__Width (GetPlayerName (Player (player_index)))
 

@@ -8,7 +8,7 @@ function Settings__Initialize takes nothing returns boolean
 
 		call SetPlayerName (the_player, String__Sanitize (GetPlayerName (the_player)))
 
-		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
+		if GetPlayerSlotState (the_player) != PLAYER_SLOT_STATE_EMPTY then
 			set udg_PlayerHERE [index + 1] = true
 			call Gem_Rank__Register_Player (the_player)
 		endif

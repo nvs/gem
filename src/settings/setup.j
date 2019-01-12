@@ -84,7 +84,7 @@ function Settings__Setup takes nothing returns boolean
 	set text = text + "- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n"
 	set text = text + "- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n"
 	set text = text + "\n"
-	set text = text + "Please report any bugs or issues\n"
+	set text = text + "Please report any bugs or errors\n"
 	set text = text + "encountered. Thanks.\n"
 	set text = text + "\n"
 	set text = text + "\n"

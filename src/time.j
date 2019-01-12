@@ -16,7 +16,7 @@
 
 globals
 	constant integer Time___FREQUENCY = 200
-	constant real Time___PERIOD = 1. / I2R (Time___FREQUENCY) // `0.05`
+	constant real Time___PERIOD = 1. / I2R (Time___FREQUENCY) // `0.005`
 
 	// We increment the `integer` total every tick.  To ensure that accuracy is
 	// not lost, `1000` must be divisble by the frequency.

@@ -130,6 +130,11 @@ endfunction
 function main takes nothing returns nothing
 	local trigger initialize
 
+	// Set the names of computer players.  This was previously done in the
+	// `war3map.w3i`, but was removed to ensure accurate games list counts.
+	call SetPlayerName (Gem__PLAYER_CREEPS, "Monsters")
+	call SetPlayerName (Player (9), "Gem not in play")
+
 	// The two faster game speeds cannot be used at all in single-player or
 	// multiplayer.  As such, we lock the speed to the default, to prevent
 	// slower speeds from being used in multiplayer.
@@ -143,11 +148,17 @@ function main takes nothing returns nothing
 	call SetAmbientNightSound ("SunkenRuinsNight")
 	call SetMapMusic ("Music", true, 0)
 
+	// This should be done before all systems initialized via triggers as
+	// they may or may not rely on `blizzard.j` features.
+	call InitBlizzard ()
+
 	set initialize = CreateTrigger ()
 
+	call TriggerAddCondition (initialize, Condition (function Game_Status__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Preload__Initialize))
 	call TriggerAddCondition (initialize, Condition (function String__Initialize))
 	call TriggerAddCondition (initialize, Condition (function HCL__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Game__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Player__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Player_Color__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Event__Initialize))
@@ -167,11 +178,11 @@ function main takes nothing returns nothing
 	call InitSounds ()
 	call CreateRegions ()
 	call CreateAllUnits ()
-	call InitBlizzard ()
 	call InitGlobals ()
 	call InitCustomTriggers ()
 	call RunInitializationTriggers ()
 
+	call TriggerAddCondition (initialize, Condition (function Cheats__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Mine__Initialize))
 
 	// Must occur after all Gem 3.1 initializations (for now).

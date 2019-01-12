@@ -28,6 +28,7 @@ globals
 	integer array Gem_Rank___Level
 	player array Gem_Rank___Sorted
 	integer array Gem_Rank___Rank
+	boolean array Gem_Rank___Finished
 
 	integer Gem_Rank___Count = 0
 	group Gem_Rank___Temporary_Group = CreateGroup ()
@@ -51,6 +52,7 @@ function Gem_Rank__Register_Player takes player whom returns nothing
 	set Gem_Rank___Count = Gem_Rank___Count + 1
 	set Gem_Rank___Sorted [Gem_Rank___Count] = whom
 	set Gem_Rank___Group [whom_id] = CreateGroup ()
+	set Gem_Rank___Finished [whom_id] = false
 endfunction
 
 function Gem_Rank__Get_Sorted takes integer index returns player
@@ -274,14 +276,12 @@ function Gem_Rank___Damage_Timer takes nothing returns nothing
 		set whom = Player (whom_id)
 
 		if Gem_Rank__Is_Player_Registered (whom) then
-			if GetPlayerSlotState (whom) == PLAYER_SLOT_STATE_PLAYING then
-				set level = Gem_Rank__Get_Level (whom_id)
+			set level = Gem_Rank__Get_Level (whom_id)
 
-				// If a player's current level has already 'stopped' that
-				// means they have lost.  Stop recording damage.
-				if Gem_Rank__Get_Stop (whom_id, level) == 0 then
-					call Gem_Rank___Update_Damage (whom_id)
-				endif
+			// If a player's current level has already 'stopped' that
+			// means they have lost.  Stop recording damage.
+			if Gem_Rank__Get_Stop (whom_id, level) == 0 then
+				call Gem_Rank___Update_Damage (whom_id)
 			endif
 		endif
 
@@ -309,6 +309,7 @@ function Gem_Rank__Fail takes player whom returns nothing
 	call Gem_Rank___Set_Stop (whom_id, level, Time__Total ())
 
 	set Gem_Rank___Temporary_Damage [whom_id] = 0.
+	set Gem_Rank___Finished [whom_id] = true
 endfunction
 
 function Gem_Rank__Clear takes player whom returns nothing
@@ -327,6 +328,12 @@ function Gem_Rank__Clear takes player whom returns nothing
 
 	set Gem_Rank___Level [whom_id] = level + 1
 	set Gem_Rank___Temporary_Damage [whom_id] = 0.
+
+	// If the player has reached the maximum level, they are done.  No more
+	// updates to damage or time.
+	if Gem_Rank___Level [whom_id] == Gem_Rank___LEVELS then
+		set Gem_Rank___Finished [whom_id] = true
+	endif
 endfunction
 
 function Gem_Rank__Deregister_Unit takes unit which returns nothing
@@ -350,6 +357,10 @@ function Gem_Rank__Deregister_Unit takes unit which returns nothing
 	// `ghost` units will exist in the group.  This will allow proper
 	// traversal via `FirstOfGroup ()`.
 	call GroupRemoveUnit (Gem_Rank___Group [whom_id], which)
+
+	if Gem_Rank___Finished [whom_id] then
+		return
+	endif
 
 	set damage = Gem_Rank___Temporary_Damage [whom_id]
 	set damage = damage + GetUnitState (which, UNIT_STATE_MAX_LIFE)

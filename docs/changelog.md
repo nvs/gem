@@ -7,6 +7,29 @@ full list of changes to the project, please consult the commit log.
 
 - N/A
 
+## [1.5.2] - 2019-01-12
+
+### Added
+- Introduced a game identifier to help verify screenshot/replay pairing when
+  submitting games to the leaderboard. This is not a unique game identifier.
+
+### Changed
+- A player can now select their race in the lobby. By default, race will be
+  selected randomly. This is purely a cosmetic change.
+- Range check appearance has been reworked.
+
+### Fixed
+- Existing behavior to detect and prevent creep attacks has been improved.
+  Creeps will now properly teleport to the next checkpoint upon encountering
+  a block.
+- The player count on the games list should be more accurate.
+- Not using Extra Chance when the previous bonus was at `1x` would cause it
+  to be cleared entirely rather than decreased to `0x`.
+- The board would be short rows if players left before it was displayed.
+- Resolved issues that broke save/load compatibility in 1.5.1.
+- The Extra Chance bonus is now properly cleared when using Cancel.
+- Slates can no longer be moved outside of a player's area.
+
 ## [1.5.1] - 2018-11-24
 
 ### Added
@@ -50,7 +73,7 @@ full list of changes to the project, please consult the commit log.
     - Is now active the entire placement round, and no longer deactivates
       once the target has been hit.
     - It is no longer possible to change the target once the first gem has
-      been placed in a placement round.
+      been placed.
     - The current target is shown on the board in white. The previous
       target is shown in grey when no current target is set.
     - A bonus that can grow has now been introduced:
@@ -329,7 +352,8 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.5.1...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.5.2...master
+[1.5.2]: https://github.com/nvs/gem/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/nvs/gem/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/nvs/gem/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/nvs/gem/compare/v1.4.2...v1.4.3
