@@ -5,7 +5,8 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.5.3] - Unreleased
 
-- N/A
+### Fixed
+- Attack type tooltips were broken.
 
 ## [1.5.2] - 2019-01-12
 
