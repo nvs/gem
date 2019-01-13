@@ -3,6 +3,10 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
+## [1.5.3] - Unreleased
+
+- N/A
+
 ## [1.5.2] - 2019-01-12
 
 ### Added
@@ -348,6 +352,7 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
+[1.5.3]: https://github.com/nvs/gem/compare/v1.5.2...release/1.5.3
 [1.5.2]: https://github.com/nvs/gem/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/nvs/gem/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/nvs/gem/compare/v1.4.3...v1.5.0
