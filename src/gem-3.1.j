@@ -1561,7 +1561,7 @@ endfunction
 //
 // We use a different image.  And of particular note is that the image used
 // is `256x256`, whereas the circle itself does not extend to the edges.  It
-// is closer to `242x242`, so an adjustment to the radius needs to be made.
+// is closer to `240x240`, so an adjustment to the radius needs to be made.
 //
 // All of the default selection circles need this adjustment; however, the
 // exact value may differ.
