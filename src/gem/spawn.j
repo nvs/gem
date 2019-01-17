@@ -48,6 +48,7 @@ endglobals
 
 function Gem_Spawn___Reset_Index takes nothing returns boolean
 	set Gem_Spawn___Is_Adjusted [Unit_Indexer__The_Index ()] = false
+	set udg_CreepOwner [Unit_Indexer__The_Index ()] = 0
 
 	return false
 endfunction
@@ -107,7 +108,7 @@ function Gem_Spawn___Movement takes nothing returns boolean
 	set the_unit_index = Unit_Indexer__Unit_Index (the_unit)
 	set owner = GetOwningPlayer (the_unit)
 
-	if owner == Gem__PLAYER_CREEPS then
+	if owner == Gem__PLAYER_CREEPS and udg_CreepOwner [the_unit_index] == 0 then
 		set player_index = Handle__Load (GetTriggeringRegion (), Gem_Spawn___ID_PLAYER_INDEX)
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))

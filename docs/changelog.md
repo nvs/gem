@@ -7,6 +7,8 @@ full list of changes to the project, please consult the commit log.
 
 ### Fixed
 - Attack type tooltips were broken.
+- Checkpoint pathing will no longer break for creeps that are forced to
+  return through the spwn point.
 
 ## [1.5.2] - 2019-01-12
 
