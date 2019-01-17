@@ -10,6 +10,12 @@ function Commands___Zoom takes nothing returns boolean
 	set the_string = GetEventPlayerChatString ()
 	set value = S2I (SubString (the_string, 6, StringLength (the_string)))
 
+	// Do not further process the 'zoom' command in replays.  This ensures
+	// that watchers maintain a consistent viewing experience.
+	if Game_Status () == Game_Status__REPLAY then
+		return false
+	endif
+
 	if GetLocalPlayer () == GetTriggerPlayer () then
 		call SetCameraField (CAMERA_FIELD_TARGET_DISTANCE, value, Commands___ZOOM_DURATION)
 	endif
@@ -21,6 +27,11 @@ function Commands___Initialize_Zoom takes nothing returns nothing
 	local integer player_index
 	local player the_player
 	local trigger the_trigger
+
+	// Set a 'sane' default zoom for replays.
+	if Game_Status () == Game_Status__REPLAY then
+		call SetCameraField (CAMERA_FIELD_TARGET_DISTANCE, 2500, Commands___ZOOM_DURATION)
+	endif
 
 	set the_trigger = CreateTrigger ()
 
