@@ -1152,6 +1152,7 @@ function Trig_Gem_Awards_Upgrade_debug_Func017001 takes nothing returns boolean
 	return GetBooleanOr(Trig_Gem_Awards_Upgrade_debug_Func017001001(),Trig_Gem_Awards_Upgrade_debug_Func017001002())
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Actions takes nothing returns nothing
+	call IssueImmediateOrder (GetTriggerUnit (), "stop")
 	call TriggerSleepAction(0.25)
 	if(Trig_Gem_Awards_Upgrade_debug_Func002C())then
 		call UnitAddAbilityBJ('A01L',GetTriggerUnit())

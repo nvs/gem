@@ -9,6 +9,7 @@ full list of changes to the project, please consult the commit log.
 - Attack type tooltips were broken.
 - Checkpoint pathing will no longer break for creeps that are forced to
   return through the spwn point.
+- Units would not always attack after upgrading.
 
 ## [1.5.2] - 2019-01-12
 
