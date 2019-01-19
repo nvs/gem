@@ -10,6 +10,8 @@ full list of changes to the project, please consult the commit log.
 - Checkpoint pathing will no longer break for creeps that are forced to
   return through the spwn point.
 - Units would not always attack after upgrading.
+- Switching Extra Chance targets would fail to charge/refund the difference,
+  if there was one.
 
 ## [1.5.2] - 2019-01-12
 
