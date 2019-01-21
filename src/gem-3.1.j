@@ -592,7 +592,6 @@ function Trig_Inihilization_Actions takes nothing returns nothing
 	set udg_Move1st[7]=gg_rct_7move1
 	set udg_Move1st[8]=gg_rct_8move1
 	set udg_SpawnUnit=udg_SpawningUnit[1]
-	call TriggerSleepAction(0.50)
 	set udg_GA[1]=gg_rct_GA1
 	set udg_GA[2]=gg_rct_GA2
 	set udg_GA[3]=gg_rct_GA3
@@ -813,21 +812,18 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	endif
 	if(Trig_Gem_Awards_Func003C())then
 		call UnitRemoveAbilityBJ('A01L',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01N',GetKillingUnitBJ())
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func004C())then
 		call UnitRemoveAbilityBJ('A01N',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01M',GetKillingUnitBJ())
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
 	else
 	endif
 	if(Trig_Gem_Awards_Func005C())then
 		call UnitRemoveAbilityBJ('A01M',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01O',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A01Z',GetKillingUnitBJ())
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
@@ -836,7 +832,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	if(Trig_Gem_Awards_Func006C())then
 		call UnitRemoveAbilityBJ('A01O',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A01Z',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01V',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A01P',GetKillingUnitBJ())
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
@@ -845,7 +840,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	if(Trig_Gem_Awards_Func007C())then
 		call UnitRemoveAbilityBJ('A01V',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A01P',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01R',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A022',GetKillingUnitBJ())
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MarkOfChaos\\MarkOfChaosTarget.mdl", GetUnitX (GetKillingUnitBJ()), GetUnitY (GetKillingUnitBJ())))
@@ -854,7 +848,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	if(Trig_Gem_Awards_Func008C())then
 		call UnitRemoveAbilityBJ('A01R',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A022',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01S',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A023',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A026',GetKillingUnitBJ())
@@ -865,7 +858,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A01S',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A023',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A026',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01T',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A024',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A027',GetKillingUnitBJ())
@@ -876,7 +868,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A01T',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A024',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A027',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01U',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A021',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A028',GetKillingUnitBJ())
@@ -887,7 +878,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A01U',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A021',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A028',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01W',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A020',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A029',GetKillingUnitBJ())
@@ -900,7 +890,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A020',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A029',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A02C',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01X',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A01Y',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02A',GetKillingUnitBJ())
@@ -913,7 +902,6 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A01Y',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A02A',GetKillingUnitBJ())
 		call UnitRemoveAbilityBJ('A02D',GetKillingUnitBJ())
-		call TriggerSleepAction(0.10)
 		call UnitAddAbilityBJ('A01Q',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A025',GetKillingUnitBJ())
 		call UnitAddAbilityBJ('A02B',GetKillingUnitBJ())
@@ -1152,7 +1140,7 @@ function Trig_Gem_Awards_Upgrade_debug_Func017001 takes nothing returns boolean
 	return GetBooleanOr(Trig_Gem_Awards_Upgrade_debug_Func017001001(),Trig_Gem_Awards_Upgrade_debug_Func017001002())
 endfunction
 function Trig_Gem_Awards_Upgrade_debug_Actions takes nothing returns nothing
-	call TriggerSleepAction(0.25)
+	call IssueImmediateOrder (GetTriggerUnit (), "stop")
 	if(Trig_Gem_Awards_Upgrade_debug_Func002C())then
 		call UnitAddAbilityBJ('A01L',GetTriggerUnit())
 	else
@@ -1219,7 +1207,6 @@ function Trig_Gem_Awards_Upgrade_debug_Actions takes nothing returns nothing
 		call UnitAddAbilityBJ('A02E',GetTriggerUnit())
 	else
 	endif
-	call TriggerSleepAction(0.25)
 	if(Trig_Gem_Awards_Upgrade_debug_Func016001())then
 		set udg_CheckSpelllvlUNIT=GetTriggerUnit()
 	else
@@ -1442,7 +1429,7 @@ function Trig_Type_Air_Func003C takes nothing returns boolean
 	return true
 endfunction
 function Trig_Type_Air_Actions takes nothing returns nothing
-	call DisableTrigger(GetTriggeringTrigger())
+	call DisableTrigger(gg_trg_Type_Air)
 	if(Trig_Type_Air_Func002C())then
 		call DisplayTextToForce(GetPlayersAll(),"|cffffff00Air levels are ( 4 , 8 , 12 , 16 , 20 , 24 , 28 , 32 , 36 , 40 )|r")
 	else
@@ -1452,7 +1439,7 @@ function Trig_Type_Air_Actions takes nothing returns nothing
 	else
 	endif
 	call TriggerSleepAction(10.00)
-	call EnableTrigger(GetTriggeringTrigger())
+	call EnableTrigger(gg_trg_Type_Air)
 endfunction
 function InitTrig_Type_Air takes nothing returns nothing
 	set gg_trg_Type_Air=CreateTrigger()
@@ -1561,7 +1548,7 @@ endfunction
 //
 // We use a different image.  And of particular note is that the image used
 // is `256x256`, whereas the circle itself does not extend to the edges.  It
-// is closer to `242x242`, so an adjustment to the radius needs to be made.
+// is closer to `240x240`, so an adjustment to the radius needs to be made.
 //
 // All of the default selection circles need this adjustment; however, the
 // exact value may differ.
@@ -1598,9 +1585,11 @@ function Trig_Remove_rocks_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Remove_rocks_Actions takes nothing returns nothing
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl", GetUnitX (GetTriggerUnit()), GetUnitY (GetTriggerUnit())))
+	local unit rock = GetTriggerUnit ()
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl", GetUnitX (rock), GetUnitY (rock)))
 	call TriggerSleepAction(0.10)
-	call RemoveUnit(GetTriggerUnit())
+	call RemoveUnit(rock)
+	set rock = null
 endfunction
 function InitTrig_Remove_rocks takes nothing returns nothing
 	set gg_trg_Remove_rocks=CreateTrigger()
@@ -3381,7 +3370,6 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (0))
 		set udg_PlayerDie[1]=true
 		call Gem_Player__Remove_Creeps (Player (0))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
 	else
 	endif
@@ -3680,7 +3668,6 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (1))
 		set udg_PlayerDie[2]=true
 		call Gem_Player__Remove_Creeps (Player (1))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
 	else
 	endif
@@ -3979,7 +3966,6 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (2))
 		set udg_PlayerDie[3]=true
 		call Gem_Player__Remove_Creeps (Player (2))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
 	else
 	endif
@@ -4278,7 +4264,6 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (3))
 		set udg_PlayerDie[4]=true
 		call Gem_Player__Remove_Creeps (Player (3))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
 	else
 	endif
@@ -4577,7 +4562,6 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (4))
 		set udg_PlayerDie[5]=true
 		call Gem_Player__Remove_Creeps (Player (4))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
 	else
 	endif
@@ -4876,7 +4860,6 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (5))
 		set udg_PlayerDie[6]=true
 		call Gem_Player__Remove_Creeps (Player (5))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
 	else
 	endif
@@ -5175,7 +5158,6 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (6))
 		set udg_PlayerDie[7]=true
 		call Gem_Player__Remove_Creeps (Player (6))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
 	else
 	endif

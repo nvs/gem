@@ -36,8 +36,6 @@ globals
 	integer array Gem_Spawn___Index
 	real array Gem_Spawn___Facing
 
-	boolean array Gem_Spawn___Is_Adjusted
-
 	constant real Gem_Spawn___FACING_LEFT = 180.00
 	constant real Gem_Spawn___FACING_RIGHT = 0.00
 	constant real Gem_Spawn___FACING_UP = 90.00
@@ -47,7 +45,7 @@ endglobals
 // ## Functions
 
 function Gem_Spawn___Reset_Index takes nothing returns boolean
-	set Gem_Spawn___Is_Adjusted [Unit_Indexer__The_Index ()] = false
+	set udg_CreepOwner [Unit_Indexer__The_Index ()] = 0
 
 	return false
 endfunction
@@ -107,20 +105,11 @@ function Gem_Spawn___Movement takes nothing returns boolean
 	set the_unit_index = Unit_Indexer__Unit_Index (the_unit)
 	set owner = GetOwningPlayer (the_unit)
 
-	if owner == Gem__PLAYER_CREEPS then
+	if owner == Gem__PLAYER_CREEPS and udg_CreepOwner [the_unit_index] == 0 then
 		set player_index = Handle__Load (GetTriggeringRegion (), Gem_Spawn___ID_PLAYER_INDEX)
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (the_unit)] = player_index + 1
-
-		// Ensure we do not adjust for difficulty multiple times.
-		if not Gem_Spawn___Is_Adjusted [the_unit_index] then
-			set Gem_Spawn___Is_Adjusted [the_unit_index] = true
-
-			set life = Unit_State__Get (the_unit, UNIT_STATE_MAX_LIFE)
-			call Unit_State__Set (the_unit, UNIT_STATE_MAX_LIFE, life * udg_DiffFactor)
-		endif
-
+		set udg_CreepOwner [the_unit_index] = player_index + 1
 		call Gem_Rank__Register_Unit (the_unit)
 	endif
 

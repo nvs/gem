@@ -121,6 +121,17 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 		set bonus = Gem_Extra_Chance___Previous_Bonus [whom_id]
 	endif
 
+	// Refund the old current target's cost, if one exists.
+	if Gem_Extra_Chance__Is_Active (whom) then
+		if Gem_Gems__Is_Gem (Gem_Extra_Chance___Current_Target [whom_id]) then
+			set cost = Gem_Extra_Chance__TYPE_COST
+		else
+			set cost = Gem_Extra_Chance__SLATE_COST
+		endif
+
+		call AdjustPlayerStateSimpleBJ (whom, PLAYER_STATE_RESOURCE_GOLD, cost)
+	endif
+
 	if Gem_Gems__Is_Gem (target) then
 		set type_id = Gem_Gems__Get_ID_Type (target)
 
@@ -178,9 +189,8 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 		set gems [6] = Gem_Slate__Get_Flawed_C (B)
 	endif
 
-	if not Gem_Extra_Chance__Is_Active (whom) then
-		call AdjustPlayerStateSimpleBJ (whom, PLAYER_STATE_RESOURCE_GOLD, -cost)
-	endif
+	// Charge the cost for the new current target.
+	call AdjustPlayerStateSimpleBJ (whom, PLAYER_STATE_RESOURCE_GOLD, -cost)
 
 	// A weight less than zero implies that we need to clear the entire
 	// placement table first.  Essentially, this makes it impossible to get

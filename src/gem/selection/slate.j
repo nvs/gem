@@ -262,7 +262,7 @@ function Gem_Selection_Slate___Button takes nothing returns boolean
 	set new = CreateUnit (whom, new_id, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
 	call RemoveUnit (old)
 
-	call DisplayTextToPlayer (whom, 0, 0, Color ("66ffff", "Slate Create!"))
+	call DisplayTextToPlayer (whom, 0, 0, Color ("66ffff", Gem_Slate__Name (new_id) + " Slate Created!"))
 
 	if is_combination then
 		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_UPDATED,  Color ("00ffff", GetPlayerName (whom) + " has created " + GetUnitName (new) + Color ("00ffff", " in one-hit!")))
