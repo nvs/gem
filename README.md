@@ -17,12 +17,19 @@ The [GitHub] repository is oriented more towards development of the map.  If
 that is of interest to you, please consider creating an account and
 participating.  Feedback and contributions are always welcome.
 
-To learn the latest community news, meet other players, or view the
+To learn the latest community news, meet other players, or view the active
 leaderboards, one should visit the [Discord].  It aims to serve as the focal
 point for all things Gem TD+.
 
+The [Leaderboards] repository is the official source of leaderboard
+information.  It contains the screenshots and replays for all games that are
+currently, or were formerly, on the leaderboards, both past and present.
+Various useful information, including details of how to submit games and
+view replays, is also available.
+
 [GitHub]: https://github.com/nvs/gem
 [Discord]: https://discord.gg/PxNNp77
+[Leaderboards]: https://github.com/nvs/gem-leaderboards
 
 ## How to Play
 
