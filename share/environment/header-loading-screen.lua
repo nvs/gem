@@ -33,12 +33,11 @@ a map originally created by %s.
 
 Maintained by %s.
 
-For map information, including a list of
-changes, see %s in game or visit:
+For the latest news, to find other players,
+or to view the leaderboards, visit:
 
 - %s
 - %s
 
 Please report any bugs or errors encountered.]],
-	color_red ('Bryvx'), maintainer,
-	color_gold ('Information (F9)'), repository, discord)
+	color_red ('Bryvx'), maintainer, repository, discord)
