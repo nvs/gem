@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [1.5.4] - Unreleased
+## [1.5.4] - 2019-01-28
 
 ### Fixed
 - Resolved issue introduced in 1.5.2 that caused online (either Battle.net
@@ -366,7 +366,7 @@ full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[1.5.4]: https://github.com/nvs/gem/compare/v1.5.3...release/1.5.4
+[1.5.4]: https://github.com/nvs/gem/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/nvs/gem/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/nvs/gem/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/nvs/gem/compare/v1.5.0...v1.5.1

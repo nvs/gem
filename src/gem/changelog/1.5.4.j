@@ -1,6 +1,6 @@
 function Gem_Changelog___1_5_4 takes nothing returns nothing
 	local string title = Gem_Changelog__Title ("1.5.4")
-	local string date = "N/A"
+	local string date = "2019-01-28"
 	local string text = ""
 
 	set text = text + Color__Gold ("Fixed:") + "|n"
