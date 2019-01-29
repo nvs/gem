@@ -70,6 +70,14 @@ function Settings__Setup takes nothing returns boolean
 
 	call Settings___Setup_Mode ()
 
+	// If a player has their ability to select, etc. disabled, we try to
+	// make things right.  Not really targetting any issue in particular.
+	call EnableUserControl (true)
+	call EnableUserUI (true)
+	call EnableSelect (true, true)
+	call EnablePreSelect (true, true)
+	call EnableDragSelect (true, true)
+
 	if Settings___Timer == null then
 		set Settings___Timer = CreateTimer ()
 	endif

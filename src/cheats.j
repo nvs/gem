@@ -123,11 +123,6 @@ function Cheats__Initialize takes nothing returns boolean
 		return false
 	endif
 
-	// A single-player game can be online.  Ignore those.
-	if Game_Status () == Game_Status__ONLINE then
-		return false
-	endif
-
 	// Avoid using the slot occupied by the player.
 	if GetPlayerSlotState (Cheats___PLAYER) == PLAYER_SLOT_STATE_PLAYING then
 		set Cheats___PLAYER = Player (1)
