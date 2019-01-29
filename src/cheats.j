@@ -118,16 +118,8 @@ function Cheats___Fast_Build takes nothing returns boolean
 endfunction
 
 function Cheats__Initialize takes nothing returns boolean
-	// Disable this module completely.
-	return false
-
 	// Ignore games that are not single-player.
 	if not bj_isSinglePlayer then
-		return false
-	endif
-
-	// A single-player game can be online.  Ignore those.
-	if Game_Status () == Game_Status__ONLINE then
 		return false
 	endif
 

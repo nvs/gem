@@ -5,7 +5,9 @@ full list of changes to the project, please consult the commit log.
 
 ## [1.5.4] - Unreleased
 
-- N/A
+### Fixed
+- Resolved issue introduced in 1.5.2 that caused online (either Battle.net
+  or LAN) games involving a single player to create invalid replays.
 
 ## [1.5.3] - 2019-01-20
 
