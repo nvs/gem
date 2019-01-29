@@ -5,6 +5,7 @@
 // - Game
 
 function Gem_Changelog___On_Start takes nothing returns boolean
+	call Gem_Changelog___1_5_4 ()
 	call Gem_Changelog___1_5_3 ()
 	call Gem_Changelog___1_5_2 ()
 	call Gem_Changelog___1_5_1 ()
