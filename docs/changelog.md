@@ -8,6 +8,8 @@ full list of changes to the project, please consult the commit log.
 ### Fixed
 - Resolved issue introduced in 1.5.2 that caused online (either Battle.net
   or LAN) games involving a single player to create invalid replays.
+- Attempt to resolve a rare issue where player control could be disabled at
+  game start.
 
 ## [1.5.3] - 2019-01-20
 
