@@ -157,7 +157,6 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Game_Status__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Preload__Initialize))
 	call TriggerAddCondition (initialize, Condition (function String__Initialize))
-	call TriggerAddCondition (initialize, Condition (function HCL__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Game__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Player__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Player_Color__Initialize))
