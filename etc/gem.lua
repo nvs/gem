@@ -22,5 +22,11 @@ return {
 		'share/objects',
 
 		'share/imports/import-directory.lua'
+	},
+
+	wurst = {
+		dependencies = {
+			'lib/wurst-stdlib'
+		}
 	}
 }
