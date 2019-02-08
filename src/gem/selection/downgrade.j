@@ -42,15 +42,11 @@ function Gem_Selection_Downgrade___On_Finish takes nothing returns boolean
 		set index = index + 1
 	endloop
 
-	set the_player = null
-	set the_unit = null
-
 	return false
 endfunction
 
 function Gem_Selection_Downgrade___Event takes nothing returns boolean
 	local player the_player
-	local integer the_player_index
 
 	local unit original
 	local integer original_type
@@ -68,7 +64,6 @@ function Gem_Selection_Downgrade___Event takes nothing returns boolean
 	endif
 
 	set the_player = GetTriggerPlayer ()
-	set the_player_index = GetPlayerId (the_player)
 
 	set original = GetTriggerUnit ()
 	set original_type = GetUnitTypeId (original)
@@ -92,10 +87,6 @@ function Gem_Selection_Downgrade___Event takes nothing returns boolean
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("33ff33", GetUnitName (replacement) + " has been created!!"))
 
 	call Gem_Selection__Finalize (replacement, original)
-
-	set the_player = null
-	set original = null
-	set replacement = null
 
 	return false
 endfunction

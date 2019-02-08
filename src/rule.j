@@ -8,8 +8,8 @@ function Rule___Runner takes nothing returns boolean
 	local trigger rule = GetTriggeringTrigger ()
 	local integer rule_id = GetHandleId (rule)
 
-	local boolexpr condition = null
-	local string label = null
+	local boolexpr condition
+	local string label
 
 	local integer index = -1
 	local integer size = LoadInteger (Table, rule_id, Rule___SIZE)
@@ -37,7 +37,7 @@ endfunction
 
 function Rule___Add takes trigger rule, boolexpr condition, string label returns nothing
 	local integer rule_id = GetHandleId (rule)
-	local integer index = 0
+	local integer index
 
 	if not LoadBoolean (Table, rule_id, Rule___IS_ALLOCATED) then
 		return

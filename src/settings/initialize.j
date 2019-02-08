@@ -20,7 +20,5 @@ function Settings__Initialize takes nothing returns boolean
 	call Settings___Pause_Miners ()
 	call Game__On_Start (Condition (function Settings__Setup))
 
-	set the_player = null
-
 	return false
 endfunction

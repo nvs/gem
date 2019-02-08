@@ -15,10 +15,10 @@ function Gem_Mine__Add_Research takes integer active, integer placeholder return
 endfunction
 
 function Gem_Mine___Research takes nothing returns boolean
-	local player whom = null
-	local integer whom_id = 0
-	local integer level = 0
-	local unit mine = null
+	local player whom
+	local integer whom_id
+	local integer level
+	local unit mine
 	local integer index = -1
 
 	if GetResearched () != Gem_Chance___RESEARCH then
@@ -30,7 +30,6 @@ function Gem_Mine___Research takes nothing returns boolean
 	set level = GetPlayerTechCount (whom, Gem_Chance___RESEARCH, true)
 
 	if level < 8 then
-		set whom = null
 		return true
 	endif
 
@@ -44,19 +43,16 @@ function Gem_Mine___Research takes nothing returns boolean
 		call UnitAddAbility (mine, Gem_Mine___Buttons [index])
 	endloop
 
-	set whom = null
-	set mine = null
-
 	return true
 endfunction
 
 function Gem_Mine__Initialize takes nothing returns boolean
-	local trigger rule = null
-	local code task = null
-	local string label = null
-	local player whom = null
+	local trigger rule
+	local code task
+	local string label
+	local player whom
 	local integer whom_id = 0
-	local unit mine = null
+	local unit mine
 
 	set Gem_Mine___Mines [0] = gg_unit_h01V_0011
 	set Gem_Mine___Mines [1] = gg_unit_h01V_0012
@@ -80,7 +76,6 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	call Rule__Register (rule)
 
 	loop
-		set whom = Player (whom_id)
 		set mine = Gem_Mine___Mines [whom_id]
 
 		call UnitRemoveAbility (mine, 'ARal')
@@ -96,10 +91,6 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	call Gem_Mine_Cancel__Initialize (rule)
 	call Gem_Mine_Type__Initialize (rule)
 	call Gem_Mine_Slate__Initialize (rule)
-
-	set rule = null
-	set whom = null
-	set mine = null
 
 	return false
 endfunction

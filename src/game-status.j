@@ -23,13 +23,13 @@ function Game_Status takes nothing returns integer
 endfunction
 
 function Game_Status__Initialize takes nothing returns boolean
-	local player whom = null
+	local player whom
 	local integer whom_id = 0
-	local boolean is_user = false
-	local boolean is_playing = false
+	local boolean is_user
+	local boolean is_playing
 
-	local unit which = null
-	local boolean is_selected = false
+	local unit which
+	local boolean is_selected
 
 	// Get the first human player.
 	loop
@@ -45,7 +45,6 @@ function Game_Status__Initialize takes nothing returns boolean
 	call SelectUnit (which, true)
 	set is_selected = IsUnitSelected (which, whom)
 	call RemoveUnit (which)
-	set which = null
 
 	if is_selected then
 		if ReloadGameCachesFromDisk () then

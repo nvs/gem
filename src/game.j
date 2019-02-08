@@ -22,8 +22,6 @@ function Game__On_Start takes boolexpr callback returns nothing
 	call TriggerRegisterTimerEvent (on_start, 0.00, false)
 	call TriggerAddCondition (on_start, callback)
 	call TriggerAddCondition (on_start, Condition (function Game___Destroy_Trigger))
-
-	set on_start = null
 endfunction
 
 function Game__Is_Loaded takes nothing returns boolean

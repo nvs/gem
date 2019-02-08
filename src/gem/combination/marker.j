@@ -33,9 +33,6 @@ function Gem_Combination_Marker___Effect takes nothing returns nothing
 	call SaveEffectHandle (Table, the_timer_id, Gem_Combination_Marker___EFFECT, AddSpecialEffect ("Abilities\\Spells\\Orc\\AncestralSpirit\\AncestralSpiritCaster.mdl", GetUnitX (the_unit), GetUnitY (the_unit)))
 
 	call TimerStart (the_timer, 2.00, false, function Gem_Combination_Marker___Effect)
-
-	set the_timer = null
-	set the_unit = null
 endfunction
 
 // Adds `the_unit` to be marked as a focal point. This will cause it to have
@@ -60,8 +57,6 @@ function Gem_Combination_Marker__Add takes unit the_unit returns nothing
 	// This initial wait is necessary to avoid having too much special effect
 	// clutter immediately after keeping a gem.
 	call TimerStart (the_timer, 2.00, false, function Gem_Combination_Marker___Effect)
-
-	set the_timer = null
 endfunction
 
 // Removes `the_unit` from being marked as a focal point, removing the
@@ -86,8 +81,6 @@ function Gem_Combination_Marker__Remove takes unit the_unit returns nothing
 
 	call PauseTimer (the_timer)
 	call DestroyTimer (the_timer)
-
-	set the_timer = null
 endfunction
 
 // Unmarks a unit when it leaves the map, causing the special effect to no

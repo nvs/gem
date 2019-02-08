@@ -27,10 +27,10 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 	local integer target = LoadInteger (Table, pane_id, Gem_Extra_Chance_Menu___TARGET)
 	local string name = LoadStr (Table, pane_id, Gem_Extra_Chance_Menu___NAME)
 	local boolean is_active = Gem_Extra_Chance__Is_Active (whom)
-	local string message = null
-	local integer previous = 0
-	local integer current = 0
-	local integer bonus = 0
+	local string message
+	local integer previous
+	local integer current
+	local integer bonus
 
 	call Fix__Dialog_User_Control (whom)
 	set Gem_Extra_Chance_Menu___IS_DISPLAYED [whom_id] = false
@@ -56,10 +56,6 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 		call DisplayTextToPlayer (whom, 0, 0, message + " Extra Chance to " + name + " (" + I2S (bonus) + "x)")
 	endif
 
-	set whom = null
-	set window = null
-	set pane = null
-
 	return true
 endfunction
 
@@ -73,6 +69,4 @@ function Gem_Extra_Chance_Menu__Initialize takes nothing returns nothing
 
 	call Gem_Extra_Chance_Menu_Type__Initialize (rule)
 	call Gem_Extra_Chance_Menu_Slate__Initialize (rule)
-
-	set rule = null
 endfunction

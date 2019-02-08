@@ -250,14 +250,12 @@ endfunction
 // phase is currently active.
 function Gem_Placement___Cancel takes nothing returns boolean
 	local player the_player
-	local integer index__player
 
 	if GetUnitTypeId (GetTriggerUnit ()) != Gem_Placement___PLACEMENT_UNIT_ID then
 		return false
 	endif
 
 	set the_player = GetTriggerPlayer ()
-	set index__player = GetPlayerId (the_player)
 
 	if Gem_Placement__Is_Active (the_player) then
 		// As the constant 'ConstructionRefundRate' has been set to zero, we need
@@ -266,8 +264,6 @@ function Gem_Placement___Cancel takes nothing returns boolean
 		// stopped.
 		call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER) + Gem_Placement___PLACEMENT_UNIT_COST)
 	endif
-
-	set the_player = null
 
 	return false
 endfunction
@@ -282,8 +278,6 @@ function Gem_Placement___Placement takes nothing returns boolean
 	set old = GetTriggerUnit ()
 
 	if GetUnitTypeId (old) != Gem_Placement___PLACEMENT_UNIT_ID then
-		set old = null
-
 		return false
 	endif
 
@@ -292,9 +286,6 @@ function Gem_Placement___Placement takes nothing returns boolean
 
 	if not Gem_Placement__Is_Active (the_player) then
 		call RemoveUnit (old)
-
-		set old = null
-		set the_player = null
 
 		return false
 	endif
@@ -307,7 +298,6 @@ function Gem_Placement___Placement takes nothing returns boolean
 	set Gem_Placement___The_Unit = PlaceRandomUnit (Gem_Placement___POOL [index__player], the_player, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
 
 	call RemoveUnit (old)
-	set old = null
 
 	call TriggerEvaluate (Gem_Placement___ON_PLACEMENT)
 
@@ -319,7 +309,6 @@ function Gem_Placement___Placement takes nothing returns boolean
 	endif
 
 	set Gem_Placement___The_Player = null
-	set the_player = null
 
 	return false
 endfunction
@@ -348,11 +337,6 @@ function Gem_Placement__Initialize takes nothing returns boolean
 		set index__player = index__player + 1
 		exitwhen index__player >= Gem__MAXIMUM_PLAYERS
 	endloop
-
-	set trigger__cancel = null
-	set trigger__placement = null
-
-	set the_player = null
 
 	return false
 endfunction

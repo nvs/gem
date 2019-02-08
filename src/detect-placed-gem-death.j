@@ -35,8 +35,6 @@ function Detect_Placed_Gem_Death___On_Placement takes nothing returns boolean
 		set Detect_Placed_Gem_Death___Count [placement__player_index] = 0
 	endif
 
-	set placement__player = null
-
 	return false
 endfunction
 
@@ -51,25 +49,16 @@ function Detect_Placed_Gem_Death___On_Death takes nothing returns boolean
 	set owner_index = GetPlayerId (owner)
 
 	if not Gem_Player__Is_Player (owner) then
-		set dead = null
-		set owner = null
-
 		return false
 	endif
 
 	// Only consider units belonging to this player that die during their
 	// building period.
 	if not udg_RaceBuildingPeriod [owner_index + 1] then
-		set dead = null
-		set owner = null
-
 		return false
 	endif
 
 	if not Gem_Gems__Is_Gem (GetUnitTypeId (dead)) then
-		set dead = null
-		set owner = null
-
 		return false
 	endif
 
@@ -97,9 +86,6 @@ function Detect_Placed_Gem_Death___On_Death takes nothing returns boolean
 			call Trig_Finish_Build_Race_P8_Actions ()
 		endif
 	endif
-
-	set dead = null
-	set owner = null
 
 	return false
 endfunction

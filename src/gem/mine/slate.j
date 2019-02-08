@@ -7,7 +7,7 @@ globals
 endglobals
 
 function Gem_Mine_Slate___Button takes nothing returns boolean
-	local player whom = null
+	local player whom
 
 	if GetIssuedOrderId () != Gem_Mine_Slate___ORDER_ID then
 		return true
@@ -17,8 +17,6 @@ function Gem_Mine_Slate___Button takes nothing returns boolean
 
 	call AdjustPlayerStateSimpleBJ (whom, PLAYER_STATE_RESOURCE_GOLD, Gem_Extra_Chance__SLATE_COST)
 	call Gem_Extra_Chance_Menu_Slate__Display (whom)
-
-	set whom = null
 
 	return true
 endfunction

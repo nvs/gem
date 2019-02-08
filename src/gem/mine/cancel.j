@@ -8,7 +8,7 @@ endglobals
 
 function Gem_Mine_Cancel___Button takes nothing returns boolean
 	local integer order_id = GetIssuedOrderId ()
-	local player whom = null
+	local player whom
 
 	if order_id != Gem_Mine_Cancel___ORDER_ID then
 		return true
@@ -18,8 +18,6 @@ function Gem_Mine_Cancel___Button takes nothing returns boolean
 
 	call DisplayTextToPlayer (whom, 0, 0, "Clearing the Extra Chance target")
 	call Gem_Extra_Chance__Clear (whom)
-
-	set whom = null
 
 	return true
 endfunction

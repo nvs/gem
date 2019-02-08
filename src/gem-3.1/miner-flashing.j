@@ -22,8 +22,6 @@ function Miner_Flashing___Core takes nothing returns nothing
 
 	call TriggerSleepAction (1.00)
 	call SetUnitVertexColor (miner, 255, 255, 255, 255)
-
-	set miner = null
 endfunction
 
 function Miner_Flashing takes player the_player returns nothing
@@ -47,6 +45,4 @@ function Miner_Flashing takes player the_player returns nothing
 	endif
 
 	call TriggerExecute (flash)
-
-	set flash = null
 endfunction

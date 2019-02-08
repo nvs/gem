@@ -8,14 +8,12 @@ function Gem_Extra_Chance_Menu_Slate__Display takes player whom returns nothing
 	local string title = Gem_Extra_Chance_Menu_Slate___TITLE
 
 	call Gem_Extra_Chance_Menu__Display (whom, window, title)
-
-	set window = null
 endfunction
 
 function Gem_Extra_Chance_Menu_Slate__Initialize takes trigger rule returns nothing
 	local dialog window = Gem_Extra_Chance_Menu_Slate___DIALOG
-	local button pane = null
-	local integer pane_id = 0
+	local button pane
+	local integer pane_id
 
 	local string array names
 	local integer array targets
@@ -79,7 +77,4 @@ function Gem_Extra_Chance_Menu_Slate__Initialize takes trigger rule returns noth
 		call SaveInteger (Table, pane_id, Gem_Extra_Chance_Menu___TARGET, targets [index])
 		call SaveStr (Table, pane_id, Gem_Extra_Chance_Menu___NAME, names [index])
 	endloop
-
-	set window = null
-	set pane = null
 endfunction

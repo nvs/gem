@@ -8,8 +8,8 @@ function Run___Runner takes boolexpr condition, string label returns nothing
 	local trigger runner = CreateTrigger ()
 	local integer runner_id = GetHandleId (runner)
 
-	local integer error = 0
-	local string message = null
+	local integer error
+	local string message
 
 	call TriggerAddCondition (runner, condition)
 	call SaveBoolean (Table, runner_id, Run___IS_RUNNING, true)
@@ -29,8 +29,6 @@ function Run___Runner takes boolexpr condition, string label returns nothing
 
 	call DestroyTrigger (runner)
 	call FlushChildHashtable (Table, runner_id)
-
-	set runner = null
 endfunction
 
 function Run__Condition takes boolexpr condition, string label returns nothing

@@ -30,8 +30,6 @@ function Gem_Selection_Special___On_Start takes nothing returns boolean
 
 	set Gem_Selection_Special___COMBINATION [the_player_index] = 0
 
-	set the_player = null
-
 	return false
 endfunction
 
@@ -57,16 +55,11 @@ function Gem_Selection_Special___On_Placement takes nothing returns boolean
 	set the_unit_type = GetUnitTypeId (the_unit)
 
 	if the_unit == null then
-		set the_player = null
-
 		return false
 	endif
 
 	// Slates have recipes, but we do not consider them for one-hits.
 	if not Gem_Gems__Is_Gem (the_unit_type) then
-		set the_player = null
-		set the_unit = null
-
 		return false
 	endif
 
@@ -84,9 +77,6 @@ function Gem_Selection_Special___On_Placement takes nothing returns boolean
 		endif
 	endif
 
-	set the_player = null
-	set the_unit = null
-
 	return false
 endfunction
 
@@ -101,8 +91,6 @@ function Gem_Selection_Special___On_Finish takes nothing returns boolean
 	set the_player_index = GetPlayerId (the_player)
 
 	if Gem_Selection_Special___COMBINATION [the_player_index] == 0 then
-		set the_player = null
-
 		return false
 	endif
 
@@ -116,9 +104,6 @@ function Gem_Selection_Special___On_Finish takes nothing returns boolean
 		set index = index + 1
 	endloop
 
-	set the_player = null
-	set the_unit = null
-
 	return false
 endfunction
 
@@ -127,7 +112,6 @@ function Gem_Selection_Special___Event takes nothing returns boolean
 	local integer the_player_index
 
 	local unit original
-	local integer original_type
 
 	local unit replacement
 	local integer replacement_type
@@ -142,7 +126,6 @@ function Gem_Selection_Special___Event takes nothing returns boolean
 	set the_player_index = GetPlayerId (the_player)
 
 	set original = GetTriggerUnit ()
-	set original_type = GetUnitTypeId (original)
 
 	set replacement_type = Gem_Selection_Special___COMBINATION [the_player_index]
 	set Gem_Selection_Special___COMBINATION [the_player_index] = 0
@@ -160,11 +143,6 @@ function Gem_Selection_Special___Event takes nothing returns boolean
 	call RemoveLocation (point)
 
 	call Gem_Selection__Finalize (replacement, original)
-
-	set the_player = null
-	set original = null
-	set replacement = null
-	set point = null
 
 	return false
 endfunction

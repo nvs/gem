@@ -39,7 +39,7 @@ function Gem_Rank__Is_Player_Registered takes player whom returns boolean
 endfunction
 
 function Gem_Rank__Register_Player takes player whom returns nothing
-	local integer whom_id = 0
+	local integer whom_id
 
 	if not Gem_Player__Is_Player (whom) then
 		return
@@ -100,7 +100,7 @@ function Gem_Rank__Get_DPS takes integer whom_id, integer level returns real
 	local real damage = Gem_Rank___Damage [index]
 	local integer start = Gem_Rank___Start [index]
 	local integer stop = Gem_Rank___Stop [index]
-	local integer time = 0
+	local integer time
 
 	if stop == 0 then
 		set stop = Time__Total ()
@@ -123,9 +123,9 @@ function Gem_Rank___Is_Creep takes unit which returns boolean
 endfunction
 
 function Gem_Rank__Register_Unit takes unit which returns nothing
-	local integer index = 0
-	local integer whom_id = 0
-	local integer level = 0
+	local integer index
+	local integer whom_id
+	local integer level
 
 	if not Gem_Rank___Is_Creep (which) then
 		return
@@ -150,11 +150,11 @@ function Gem_Rank___Compare takes integer A, integer B returns integer
 	local integer A_level = Gem_Rank___Level [A]
 	local integer B_level = Gem_Rank___Level [B]
 
-	local integer A_time = 0
-	local integer B_time = 0
+	local integer A_time
+	local integer B_time
 
-	local real A_damage = 0
-	local real B_damage = 0
+	local real A_damage
+	local real B_damage
 
 	// Being on a level implies that one has cleared all previous levels.
 	if A_level > B_level then
@@ -192,15 +192,15 @@ endfunction
 // In the event of a tie, the same rank is used and subsequent ranks are
 // accordingly skipped.
 function Gem_Rank___Sort takes nothing returns nothing
-	local player A_player = null
+	local player A_player
 	local integer A = 0
 
-	local player B_player = null
-	local integer B = 0
+	local player B_player
+	local integer B
 
 	local integer comparison = 0
 	local integer i = 0
-	local integer j = 0
+	local integer j
 
 	loop
 		set i = i + 1
@@ -235,16 +235,13 @@ function Gem_Rank___Sort takes nothing returns nothing
 
 		set Gem_Rank___Sorted [j + 1] = B_player
 	endloop
-
-	set A_player = null
-	set B_player = null
 endfunction
 
 function Gem_Rank___Update_Damage takes integer whom_id returns nothing
 	local integer level = Gem_Rank___Level [whom_id]
 	local real damage = Gem_Rank___Temporary_Damage [whom_id]
 
-	local unit which = null
+	local unit which
 	local group temporary = Gem_Rank___Temporary_Group
 
 	loop
@@ -262,15 +259,14 @@ function Gem_Rank___Update_Damage takes integer whom_id returns nothing
 	call GroupClear (Gem_Rank___Temporary_Group)
 
 	set Gem_Rank___Group [whom_id] = temporary
-	set temporary = null
 
 	call Gem_Rank___Set_Damage (whom_id, level, damage)
 endfunction
 
 function Gem_Rank___Damage_Timer takes nothing returns nothing
-	local player whom = null
+	local player whom
 	local integer whom_id = 0
-	local integer level = 0
+	local integer level
 
 	loop
 		set whom = Player (whom_id)
@@ -290,13 +286,11 @@ function Gem_Rank___Damage_Timer takes nothing returns nothing
 	endloop
 
 	call Gem_Rank___Sort ()
-
-	set whom = null
 endfunction
 
 function Gem_Rank__Fail takes player whom returns nothing
-	local integer whom_id = 0
-	local integer level = 0
+	local integer whom_id
+	local integer level
 
 	if not Gem_Rank__Is_Player_Registered (whom) then
 		return
@@ -313,8 +307,8 @@ function Gem_Rank__Fail takes player whom returns nothing
 endfunction
 
 function Gem_Rank__Clear takes player whom returns nothing
-	local integer whom_id = 0
-	local integer level = 0
+	local integer whom_id
+	local integer level
 
 	if not Gem_Rank__Is_Player_Registered (whom) then
 		return
@@ -337,10 +331,10 @@ function Gem_Rank__Clear takes player whom returns nothing
 endfunction
 
 function Gem_Rank__Deregister_Unit takes unit which returns nothing
-	local integer index = 0
-	local integer whom_id = 0
-	local real damage = 0.
-	local integer level = 0
+	local integer index
+	local integer whom_id
+	local real damage
+	local integer level
 
 	if not Gem_Rank___Is_Creep (which) then
 		return

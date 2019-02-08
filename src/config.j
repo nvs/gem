@@ -69,7 +69,4 @@ function config takes nothing returns nothing
 	call SetPlayerRaceSelectable (p, false)
 	call SetPlayerController (p, MAP_CONTROL_COMPUTER)
 	call SetPlayerTeam (p, 1)
-
-	set o = null
-	set p = null
 endfunction

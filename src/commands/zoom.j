@@ -47,6 +47,4 @@ function Commands___Initialize_Zoom takes nothing returns nothing
 
 	call TriggerAddCondition (the_trigger, Condition (function Commands___Zoom))
 
-	set the_player = null
-	set the_trigger = null
 endfunction

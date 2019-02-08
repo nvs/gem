@@ -1,5 +1,5 @@
 function InitGlobals takes nothing returns nothing
-	local integer i=0
+	local integer i
 	set udg_Level=1
 	set i=0
 	loop
@@ -275,11 +275,11 @@ function CreateBuildingsForPlayer0 takes nothing returns nothing
 	local integer unitID
 	local trigger t
 	local real life
-	set u=CreateUnit(p,'h00E',-640.0,4160.0,270.000)
+	call CreateUnit(p,'h00E',-640.0,4160.0,270.000)
 	set gg_unit_h01V_0011=CreateUnit(p,'h01V',-256.0,4160.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0011,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0011,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h034',-640.0,3776.0,270.000)
+	call CreateUnit(p,'h034',-640.0,3776.0,270.000)
 endfunction
 function CreateBuildingsForPlayer1 takes nothing returns nothing
 	local player p=Player(1)
@@ -290,8 +290,8 @@ function CreateBuildingsForPlayer1 takes nothing returns nothing
 	set gg_unit_h01V_0012=CreateUnit(p,'h01V',256.0,4160.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0012,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0012,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',640.0,4160.0,270.000)
-	set u=CreateUnit(p,'h034',640.0,3776.0,270.000)
+	call CreateUnit(p,'h00E',640.0,4160.0,270.000)
+	call CreateUnit(p,'h034',640.0,3776.0,270.000)
 endfunction
 function CreateBuildingsForPlayer2 takes nothing returns nothing
 	local player p=Player(2)
@@ -302,8 +302,8 @@ function CreateBuildingsForPlayer2 takes nothing returns nothing
 	set gg_unit_h01V_0013=CreateUnit(p,'h01V',4416.0,0.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0013,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0013,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',4416.0,384.0,270.000)
-	set u=CreateUnit(p,'h034',4032.0,384.0,270.000)
+	call CreateUnit(p,'h00E',4416.0,384.0,270.000)
+	call CreateUnit(p,'h034',4032.0,384.0,270.000)
 endfunction
 function CreateBuildingsForPlayer3 takes nothing returns nothing
 	local player p=Player(3)
@@ -314,8 +314,8 @@ function CreateBuildingsForPlayer3 takes nothing returns nothing
 	set gg_unit_h01V_0014=CreateUnit(p,'h01V',4416.0,-512.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0014,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0014,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',4416.0,-896.0,270.000)
-	set u=CreateUnit(p,'h034',4032.0,-896.0,270.000)
+	call CreateUnit(p,'h00E',4416.0,-896.0,270.000)
+	call CreateUnit(p,'h034',4032.0,-896.0,270.000)
 endfunction
 function CreateBuildingsForPlayer4 takes nothing returns nothing
 	local player p=Player(4)
@@ -326,8 +326,8 @@ function CreateBuildingsForPlayer4 takes nothing returns nothing
 	set gg_unit_h01V_0016=CreateUnit(p,'h01V',256.0,-4672.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0016,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0016,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',640.0,-4672.0,270.000)
-	set u=CreateUnit(p,'h034',640.0,-4288.0,270.000)
+	call CreateUnit(p,'h00E',640.0,-4672.0,270.000)
+	call CreateUnit(p,'h034',640.0,-4288.0,270.000)
 endfunction
 function CreateBuildingsForPlayer5 takes nothing returns nothing
 	local player p=Player(5)
@@ -338,8 +338,8 @@ function CreateBuildingsForPlayer5 takes nothing returns nothing
 	set gg_unit_h01V_0015=CreateUnit(p,'h01V',-256.0,-4672.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0015,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0015,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',-640.0,-4672.0,270.000)
-	set u=CreateUnit(p,'h034',-640.0,-4288.0,270.000)
+	call CreateUnit(p,'h00E',-640.0,-4672.0,270.000)
+	call CreateUnit(p,'h034',-640.0,-4288.0,270.000)
 endfunction
 function CreateBuildingsForPlayer6 takes nothing returns nothing
 	local player p=Player(6)
@@ -350,8 +350,8 @@ function CreateBuildingsForPlayer6 takes nothing returns nothing
 	set gg_unit_h01V_0017=CreateUnit(p,'h01V',-4416.0,-512.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0017,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0017,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',-4416.0,-896.0,270.000)
-	set u=CreateUnit(p,'h034',-4032.0,-896.0,270.000)
+	call CreateUnit(p,'h00E',-4416.0,-896.0,270.000)
+	call CreateUnit(p,'h034',-4032.0,-896.0,270.000)
 endfunction
 function CreateBuildingsForPlayer7 takes nothing returns nothing
 	local player p=Player(7)
@@ -362,8 +362,8 @@ function CreateBuildingsForPlayer7 takes nothing returns nothing
 	set gg_unit_h01V_0018=CreateUnit(p,'h01V',-4416.0,0.0,270.000)
 	set life=GetUnitState(gg_unit_h01V_0018,UNIT_STATE_LIFE)
 	call SetUnitState(gg_unit_h01V_0018,UNIT_STATE_LIFE,0.50*life)
-	set u=CreateUnit(p,'h00E',-4416.0,384.0,270.000)
-	set u=CreateUnit(p,'h034',-4032.0,384.0,270.000)
+	call CreateUnit(p,'h00E',-4416.0,384.0,270.000)
+	call CreateUnit(p,'h034',-4032.0,384.0,270.000)
 endfunction
 function CreateBuildingsForPlayer11 takes nothing returns nothing
 	local player p=Player(11)
@@ -490,8 +490,6 @@ function Trig_kills_and_remove_Corpse_Actions takes nothing returns nothing
 	call TriggerSleepAction (2.00)
 
 	call RemoveUnit (killed)
-
-	set killed = null
 endfunction
 function InitTrig_kills_and_remove_Corpse takes nothing returns nothing
 	set gg_trg_kills_and_remove_Corpse=CreateTrigger()
@@ -1238,8 +1236,6 @@ function Trig_Player_Leaves_Actions takes nothing returns nothing
 	set bj_groupEnumOwningPlayer = whom
 	call ForGroup (udg_UnitGroup [whom_id + 1], function Trig_Player_Leaves_Control_Enum)
 	set bj_groupEnumOwningPlayer = null
-
-	set whom = null
 endfunction
 function InitTrig_Player_Leaves takes nothing returns nothing
 	set gg_trg_Player_Leaves=CreateTrigger()
@@ -1260,12 +1256,12 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 	local eventid id = GetTriggerEventId ()
 	local unit attacker = null
 	local boolean teleport = false
-	local integer index = 0
-	local integer owner_id = 0
-	local integer previous = 0
-	local rect checkpoint = null
-	local real x = 0.
-	local real y = 0.
+	local integer index
+	local integer owner_id
+	local integer previous
+	local rect checkpoint
+	local real x
+	local real y
 
 	// A creep should begin all its attacks with an attack move order to
 	// a certain point.
@@ -1283,7 +1279,6 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 		set attacker = GetAttacker ()
 
 		if GetOwningPlayer (attacker) != Gem__PLAYER_CREEPS then
-			set attacker = null
 			return
 		endif
 
@@ -1321,9 +1316,6 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 		// hassle.  If not, it will be given another attack order soon.
 		call IssuePointOrder (attacker, "move", x, y)
 	endif
-
-	set attacker = null
-	set checkpoint = null
 endfunction
 globals
 	rect array udg_MoveOnAttack
@@ -1472,7 +1464,6 @@ function Trig_AntiStuck_Actions takes nothing returns nothing
 		call UnitAddAbility (u, 'Aeth')
 		call TriggerSleepAction(1.00)
 		call UnitRemoveAbility (u, 'Aeth')
-		set u = null
 	else
 	endif
 endfunction
@@ -1492,8 +1483,8 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	local unit slate = GetSpellAbilityUnit ()
 	local real x = GetUnitX (slate)
 	local real y = GetUnitY (slate)
-	local group slates = null
-	local boolean is_stacking = false
+	local group slates
+	local boolean is_stacking
 	local player owner = GetOwningPlayer (slate)
 	local integer owner_id = GetPlayerId (owner)
 	local rect area = udg_GA [owner_id + 1]
@@ -1505,10 +1496,6 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 
 	if x < GetRectMinX (area) or GetRectMaxX (area) < x or y < GetRectMinY (area) or GetRectMaxY (area) < y then
 		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Cannot move a slate outside your area!"))
-
-		set slate = null
-		set owner = null
-		set area = null
 
 		return
 	endif
@@ -1525,11 +1512,6 @@ function Trig_Slate_move_Actions takes nothing returns nothing
 	endif
 
 	call DestroyGroup (slates)
-
-	set slate = null
-	set slates = null
-	set owner = null
-	set area = null
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing
 	set gg_trg_Slate_move=CreateTrigger()
@@ -1560,8 +1542,6 @@ function Trig_Range_Check_Actions takes nothing returns nothing
 	call SetImageColor (circle, 255, 255, 255, 255)
 	call TriggerSleepAction (2.0)
 	call DestroyImage (circle)
-
-	set circle = null
 endfunction
 function InitTrig_Range_Check takes nothing returns nothing
 	set gg_trg_Range_Check=CreateTrigger()
@@ -1589,7 +1569,6 @@ function Trig_Remove_rocks_Actions takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl", GetUnitX (rock), GetUnitY (rock)))
 	call TriggerSleepAction(0.10)
 	call RemoveUnit(rock)
-	set rock = null
 endfunction
 function InitTrig_Remove_rocks takes nothing returns nothing
 	set gg_trg_Remove_rocks=CreateTrigger()
@@ -1689,19 +1668,18 @@ function Trig_Ancient_Bloodstone_Conditions takes nothing returns boolean
 endfunction
 function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 	local unit attacker = GetAttacker ()
-	local player owner = null
-	local unit victim = null
-	local group units = null
-	local unit which = null
-	local string name = null
+	local player owner
+	local unit victim
+	local group units
+	local unit which
+	local string name
 	local integer count = 0
-	local integer chance = 0
-	local integer roll = 0
-	local integer kills = 0
-	local integer level = 0
+	local integer chance
+	local integer roll
+	local integer kills
+	local integer level
 
 	if GetUnitState (attacker, UNIT_STATE_MANA) < 5.0 then
-		set attacker = null
 		return
 	endif
 
@@ -1734,7 +1712,6 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 	endloop
 
 	call DestroyGroup (units)
-	set units = null
 
 	set roll = GetRandomInt (1, 100)
 
@@ -1752,10 +1729,6 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 		call IssueTargetOrder (attacker, ORDER_FORKEDLIGHTNING, victim)
 		call UnitRemoveAbility (attacker, 'A07A')
 	endif
-
-	set attacker = null
-	set owner = null
-	set victim = null
 endfunction
 function InitTrig_Ancient_Bloodstone takes nothing returns nothing
 	set gg_trg_Ancient_Bloodstone=CreateTrigger()
@@ -1864,9 +1837,6 @@ function Trig_Spell_Slate_Actions takes nothing returns nothing
 			call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
 			call UnitRemoveAbility (attacker, 'A05T')
 		endif
-
-		set attacker = null
-		set target = null
 	else
 	endif
 endfunction
@@ -2363,9 +2333,6 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		call SetUnitAbilityLevel (attacker, 'A05W', debuff_level + 1)
 		call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
 		call UnitRemoveAbility (attacker, 'A05W')
-
-		set attacker = null
-		set target = null
 	else
 	endif
 	if(Trig_Elder_Slate_Func006C())then
@@ -2628,8 +2595,6 @@ function Trig_End_game_dmg_test_RACE_kills_Actions takes nothing returns nothing
 	if udg_Mode == 2 then
 		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (owner) + "!!|r")
 	endif
-
-	set owner = null
 endfunction
 function InitTrig_End_game_dmg_test_RACE_kills takes nothing returns nothing
 	set gg_trg_End_game_dmg_test_RACE_kills=CreateTrigger()

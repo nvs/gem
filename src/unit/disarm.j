@@ -54,8 +54,6 @@ function Unit_Disarm___Expires takes nothing returns nothing
 		call UnitRemoveAbility (the_unit, Unit_Disarm___ABILITY_ID)
 		call UnitRemoveAbility (the_unit, Unit_Disarm___TEMPORARY_ID)
 		call UnitRemoveAbility (the_unit, Unit_Disarm___BUFF_ID)
-
-		set the_unit = null
 	endif
 endfunction
 
@@ -107,8 +105,6 @@ function Unit_Disarm__Apply takes unit the_unit, real duration returns nothing
 			call TimerStart (the_timer, duration, false, function Unit_Disarm___Expires)
 		endif
 	endif
-
-	set the_timer = null
 endfunction
 
 // Removes disarm from the unit.
@@ -148,8 +144,6 @@ function Unit_Disarm___On_Leave takes nothing returns boolean
 		set Unit_Disarm___Timers [index] = null
 		set Unit_Disarm___Is_Disarmed [index] = false
 	endif
-
-	set the_timer = null
 
 	return false
 endfunction

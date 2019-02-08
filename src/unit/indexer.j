@@ -100,8 +100,6 @@ function Unit_Indexer___On_Enter takes nothing returns boolean
 		set Unit_Indexer___Units [unit_index] = the_unit
 	endif
 
-	set the_unit = null
-
 	return false
 endfunction
 
@@ -118,8 +116,6 @@ function Unit_Indexer___On_Leave takes nothing returns boolean
 		call SetUnitUserData (the_unit, 0)
 		set Unit_Indexer___Units [unit_index] = null
 	endif
-
-	set the_unit = null
 
 	return false
 endfunction

@@ -18,8 +18,6 @@ function Gem_Slate___Hold_Taunt takes nothing returns boolean
 		call IssueTargetOrder (the_unit, "attack", Gem_Slate___Hold_Unit)
 	endif
 
-	set the_unit = null
-
 	return false
 endfunction
 
@@ -66,10 +64,6 @@ function Gem_Slate___Hold takes nothing returns boolean
 		call Unit_Disarm__Apply (attacker, 3.50)
 	endif
 
-	set attacker = null
-	set victim = null
-	set tag = null
-
 	return false
 endfunction
 
@@ -80,6 +74,4 @@ function Gem_Slate___Initialize_Hold takes nothing returns nothing
 
 	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Slate___Hold))
-
-	set the_trigger = null
 endfunction

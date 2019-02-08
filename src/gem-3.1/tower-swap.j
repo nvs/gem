@@ -85,10 +85,6 @@ function Trig_Swap_Reworked_Actions takes nothing returns nothing
 	else
 		call QuestMessage (bj_FORCE_PLAYER [index__player], bj_QUESTMESSAGE_UPDATED, "|cffff33ffYou need 200 Gold to swap|r")
 	endif
-
-	set the_player = null
-	set A = null
-	set B = null
 endfunction
 function InitTrig_Swap_Reworked takes nothing returns nothing
 	set gg_trg_Swap_Reworked=CreateTrigger()

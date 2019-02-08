@@ -45,10 +45,6 @@ function Gem_Selection_Marker___Check takes nothing returns nothing
 	endif
 
 	call TimerStart (the_timer, 0.10, false, function Gem_Selection_Marker___Check)
-
-	set the_timer = null
-	set target = null
-	set marker = null
 endfunction
 
 // Adds `the_unit` to be marked as a selection location. This will cause it to
@@ -72,8 +68,6 @@ function Gem_Selection_Marker__Add takes unit the_unit returns nothing
 	call SaveUnitHandle (Table, the_timer_id, Gem_Selection_Marker___MARKER, CreateUnit (Player (PLAYER_NEUTRAL_PASSIVE), Gem_Selection_Marker___UNIT, GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit)))
 
 	call TimerStart (the_timer, 0.00, false, function Gem_Selection_Marker___Check)
-
-	set the_timer = null
 endfunction
 
 // Removes `the_unit` from being marked as a selection location, removing the
@@ -98,8 +92,6 @@ function Gem_Selection_Marker__Remove takes unit the_unit returns nothing
 
 	call PauseTimer (the_timer)
 	call DestroyTimer (the_timer)
-
-	set the_timer = null
 endfunction
 
 // Unmarks a unit when it leaves the map, causing the special effect to no

@@ -40,11 +40,6 @@ function Gem_Slate___Damage takes nothing returns boolean
 		call Unit_Disarm__Apply (attacker, 1.00)
 	endif
 
-	set attacker = null
-	set victim = null
-	set owner = null
-	set tag = null
-
 	return false
 endfunction
 
@@ -55,6 +50,4 @@ function Gem_Slate___Initialize_Damage takes nothing returns nothing
 
 	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Slate___Damage))
-
-	set the_trigger = null
 endfunction

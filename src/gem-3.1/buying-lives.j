@@ -24,9 +24,6 @@ function Trig_Buying_Lives_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", GetUnitX (GetTriggerUnit()), GetUnitY (GetTriggerUnit())))
 		call SetUnitLifeBJ (the_unit, udg_Lives [player_index + 1])
 	endif
-
-	set the_player = null
-	set the_unit = null
 endfunction
 
 function InitTrig_Buying_Lives takes nothing returns nothing
@@ -37,6 +34,4 @@ function InitTrig_Buying_Lives takes nothing returns nothing
 	call TriggerRegisterAnyUnitEventBJ (the_trigger, EVENT_PLAYER_UNIT_TRAIN_FINISH)
 	call TriggerAddCondition (the_trigger, Condition (function Trig_Buying_Lives_Conditions))
 	call TriggerAddAction (the_trigger, function Trig_Buying_Lives_Actions)
-
-	set the_trigger = null
 endfunction

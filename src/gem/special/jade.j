@@ -20,8 +20,6 @@ function Gem_Special___Jade_Tag takes unit the_unit, string message, integer red
 	call SetTextTagVisibility (tag, true)
 	call SetTextTagText (tag, message, 0.023)
 	call SetTextTagColor (tag, red, green, blue, 255)
-
-	set tag = null
 endfunction
 
 function Gem_Special___Jade takes nothing returns boolean
@@ -57,10 +55,6 @@ function Gem_Special___Jade takes nothing returns boolean
 		endif
 	endif
 
-	set attacker = null
-	set victim = null
-	set owner = null
-
 	return false
 endfunction
 
@@ -71,6 +65,4 @@ function Gem_Special___Initialize_Jade takes nothing returns nothing
 
 	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Special___Jade))
-
-	set the_trigger = null
 endfunction

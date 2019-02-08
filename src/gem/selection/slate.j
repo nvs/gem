@@ -21,11 +21,9 @@ endfunction
 
 function Gem_Selection_Slate___Tag takes unit which, integer slate, string color returns nothing
 	local player whom = GetOwningPlayer (which)
-	local texttag tag = null
-	local integer target = 0
+	local texttag tag
+	local integer target
 	local string prefix = ""
-	local integer which_id = GetUnitTypeId (which)
-	local integer combination = Gem_Recipe__Get_Combination (slate)
 	local integer other = Gem_Selection_Slate___Get_Other_Part (slate)
 
 	if Gem_Extra_Chance__Is_Active (whom) then
@@ -57,9 +55,6 @@ function Gem_Selection_Slate___Tag takes unit which, integer slate, string color
 	call SetTextTagFadepoint (tag, 2.5)
 	call SetTextTagColor (tag, 255, 255, 255, 255)
 	call SetTextTagVisibility (tag, true)
-
-	set whom = null
-	set tag = null
 endfunction
 
 function Gem_Selection_Slate__Has takes player whom, integer slate returns boolean
@@ -171,26 +166,21 @@ function Gem_Selection_Slate___On_Finish takes nothing returns boolean
 		set index = index + 1
 	endloop
 
-	set the_player = null
-	set the_unit = null
-
 	return false
 endfunction
 
 function Gem_Selection_Slate___Button takes nothing returns boolean
-	local player whom = null
-	local integer whom_id = 0
+	local player whom
 
-	local integer order_id = 0
-	local boolean is_combination = false
+	local integer order_id
+	local boolean is_combination
 
 	local unit old = GetTriggerUnit ()
 	local integer old_id = GetUnitTypeId (old)
-	local unit new = null
+	local unit new
 	local integer new_id = 0
 
 	if not Gem_Gems__Is_Gem (old_id) then
-		set old = null
 		return true
 	endif
 
@@ -201,12 +191,10 @@ function Gem_Selection_Slate___Button takes nothing returns boolean
 	elseif order_id == Gem_Selection_Slate___COMBINE_ORDER_ID then
 		set is_combination = true
 	else
-		set old = null
 		return true
 	endif
 
 	set whom = GetTriggerPlayer ()
-	set whom_id = GetPlayerId (whom)
 
 	if old_id == Gem_Gems__AMETHYST_NORMAL then
 		if is_combination then
@@ -273,10 +261,6 @@ function Gem_Selection_Slate___Button takes nothing returns boolean
 	endif
 
 	call Gem_Selection__Finalize (new, old)
-
-	set whom = null
-	set old = null
-	set new = null
 
 	return true
 endfunction

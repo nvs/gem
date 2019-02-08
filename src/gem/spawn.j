@@ -113,9 +113,6 @@ function Gem_Spawn___Movement takes nothing returns boolean
 		call Gem_Rank__Register_Unit (the_unit)
 	endif
 
-	set the_unit = null
-	set owner = null
-
 	return false
 endfunction
 
@@ -123,7 +120,6 @@ endfunction
 //
 // Setup the system for use.
 function Gem_Spawn__Initialize takes nothing returns boolean
-	local region the_region
 	local trigger the_trigger
 	local integer player_index
 	local integer round
@@ -133,8 +129,6 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 
 	set the_trigger = CreateTrigger ()
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Spawn___Movement))
-
-	set the_region = CreateRegion ()
 
 	set player_index = 0
 	loop

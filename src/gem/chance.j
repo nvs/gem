@@ -247,7 +247,5 @@ function Gem_Chance__Initialize takes nothing returns boolean
 		exitwhen index >= Gem__MAXIMUM_PLAYERS
 	endloop
 
-	set research = null
-
 	return false
 endfunction

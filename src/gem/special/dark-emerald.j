@@ -14,9 +14,6 @@ function Gem_Special___Dark_Emerald takes nothing returns boolean
 		call Unit_Stun__Apply (victim, 1.50)
 	endif
 
-	set attacker = null
-	set victim = null
-
 	return false
 endfunction
 
@@ -27,6 +24,4 @@ function Gem_Special___Initialize_Dark_Emerald takes nothing returns nothing
 
 	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Special___Dark_Emerald))
-
-	set the_trigger = null
 endfunction

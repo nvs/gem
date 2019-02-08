@@ -40,7 +40,6 @@ function Board___Time takes integer time returns string
 	local integer hours = 0
 	local integer minutes = 0
 	local integer seconds = 0
-	local integer milliseconds = 0
 
 	if time >= Board___HOUR then
 		set hours = time / Board___HOUR
@@ -57,8 +56,6 @@ function Board___Time takes integer time returns string
 		set time = time - seconds * Board___SECOND
 	endif
 
-	set milliseconds = time
-
 	return Board___Format (hours) + ":" + Board___Format (minutes) + ":" + Board___Format (seconds)
 endfunction
 
@@ -72,14 +69,14 @@ function Board___Title takes player whom returns string
 	local integer current = Gem_Extra_Chance__Current_Target (whom)
 	local integer previous = Gem_Extra_Chance__Previous_Target (whom)
 
-	local string extra_chance = null
-	local string color = null
-	local integer target = 0
-	local integer bonus = 0
-	local string name = null
-	local integer type_id = ID__NULL
+	local string extra_chance
+	local string color
+	local integer target
+	local integer bonus
+	local string name
+	local integer type_id
 
-	local string title = null
+	local string title
 
 	if current > 0 or previous > 0 then
 		if current > 0 then
@@ -117,7 +114,7 @@ function Board___Add_Test_Column takes nothing returns nothing
 	local real space = String__Width (" ")
 	local real dps_width = String__Width ("DPS") + space * 7
 	local real test_width = String__Width ("44:44:44")
-	local multiboarditem object = null
+	local multiboarditem object
 	local integer rows = MultiboardGetRowCount (Board)
 	local integer row = 0
 
@@ -149,20 +146,20 @@ function Board___Add_Test_Column takes nothing returns nothing
 endfunction
 
 function Board___Update takes nothing returns nothing
-	local player whom = null
-	local integer whom_id = 0
-	local boolean has_left = false
-	local integer row = 1
+	local player whom
+	local integer whom_id
+	local boolean has_left
+	local integer row
 	local integer row_count = MultiboardGetRowCount (Board)
-	local integer column = 1
+	local integer column
 	local integer column_count = MultiboardGetColumnCount (Board)
-	local integer level = 0
-	local real dps = 0.
-	local real damage = 0.
-	local integer time = 0
-	local string value = null
-	local multiboarditem board_item = null
-	local boolean is_grey = false
+	local integer level
+	local real dps
+	local real damage
+	local integer time
+	local string value
+	local multiboarditem board_item
+	local boolean is_grey
 
 	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 
@@ -253,8 +250,6 @@ function Board___Update takes nothing returns nothing
 		set row = row + 1
 		exitwhen row == row_count
 	endloop
-
-	set board_item = null
 endfunction
 
 function Board__Setup takes nothing returns nothing
@@ -374,6 +369,4 @@ function Board__Setup takes nothing returns nothing
 	call Board__Display ()
 
 	call MultiboardMinimize (Board, false)
-
-	set board_item = null
 endfunction

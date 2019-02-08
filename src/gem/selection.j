@@ -54,10 +54,8 @@ endfunction
 
 function Gem_Selection___On_Start takes nothing returns boolean
 	local player the_player
-	local integer the_player_index
 
 	set the_player = Gem_Placement__The_Player ()
-	set the_player_index = GetPlayerId (the_player)
 
 	if the_player == null then
 		return false
@@ -65,14 +63,11 @@ function Gem_Selection___On_Start takes nothing returns boolean
 
 	call Gem_Selection__Flush (the_player)
 
-	set the_player = null
-
 	return false
 endfunction
 
 function Gem_Selection___On_Placement takes nothing returns boolean
 	local player the_player
-	local integer the_player_index
 
 	local unit the_unit
 	local integer the_unit_type
@@ -84,7 +79,6 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 	local integer count
 
 	set the_player = Gem_Placement__The_Player ()
-	set the_player_index = GetPlayerId (the_player)
 
 	if the_player == null then
 		return false
@@ -94,8 +88,6 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 	set the_unit_type = GetUnitTypeId (the_unit)
 
 	if the_unit == null then
-		set the_player = null
-
 		return false
 	endif
 
@@ -114,18 +106,13 @@ function Gem_Selection___On_Placement takes nothing returns boolean
 
 	call Gem_Selection_Marker__Add (the_unit)
 
-	set the_player = null
-	set the_unit = null
-
 	return false
 endfunction
 
 function Gem_Selection___On_Finish takes nothing returns boolean
 	local player the_player
-	local integer the_player_index
 
 	set the_player = Gem_Placement__The_Player ()
-	set the_player_index = GetPlayerId (the_player)
 
 	if the_player == null then
 		return false
@@ -207,9 +194,6 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 	elseif the_player_index == 7 then
 		call Trig_Finish_Build_Race_P8_Actions ()
 	endif
-
-	set the_player = null
-	set the_unit = null
 endfunction
 
 function Gem_Selection__Register_Event takes boolexpr callback returns nothing

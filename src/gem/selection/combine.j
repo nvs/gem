@@ -14,9 +14,9 @@ endglobals
 
 function Gem_Selection_Combine___On_Finish takes nothing returns boolean
 	local player whom = Gem_Placement__The_Player ()
-	local unit which = null
-	local integer which_id = 0
-	local integer count = 0
+	local unit which
+	local integer which_id
+	local integer count
 	local integer index = 0
 
 	loop
@@ -38,31 +38,26 @@ function Gem_Selection_Combine___On_Finish takes nothing returns boolean
 		endif
 	endloop
 
-	set whom = null
-	set which = null
-
 	return false
 endfunction
 
 function Gem_Selection_Combine___Button takes nothing returns boolean
-	local player whom = null
-	local integer whom_id = 0
+	local player whom
 
-	local integer order_id = 0
-	local integer count = 0
+	local integer order_id
+	local integer count
 
 	local unit old = GetTriggerUnit ()
 	local integer old_id = GetUnitTypeId (old)
-	local unit new = null
-	local integer new_id = 0
+	local unit new
+	local integer new_id
 
-	local integer type_id = ID__NULL
-	local integer quality_id = ID__NULL
-	local integer quality_index = 0
-	local integer great_index = 0
+	local integer type_id
+	local integer quality_id
+	local integer quality_index
+	local integer great_index
 
 	if not Gem_Gems__Is_Gem (old_id) then
-		set old = null
 		return true
 	endif
 
@@ -75,12 +70,10 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	elseif order_id == Gem_Selection_Combine___X4_ORDER_ID then
 		set count = 4
 	else
-		set old = null
 		return true
 	endif
 
 	set whom = GetTriggerPlayer ()
-	set whom_id = GetPlayerId (whom)
 
 	set type_id = Gem_Gems__Get_ID_Type (old_id)
 	set quality_id = Gem_Gems__Get_ID_Quality (old_id)
@@ -96,7 +89,6 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	// Stone of Bryvx:
 	if quality_index > great_index then
 		set type_id = ID__NULL
-		set quality_id = ID__NULL
 		set new_id = 'h04A'
 
 	// Default:
@@ -120,10 +112,6 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 
 	call DisplayTextToPlayer (whom, 0, 0, Color ("33ff33", GetUnitName (new) + " has been created!!"))
 	call Gem_Selection__Finalize (new, old)
-
-	set whom = null
-	set old = null
-	set new = null
 
 	return true
 endfunction

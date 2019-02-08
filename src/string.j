@@ -225,7 +225,6 @@ function String__Sanitize takes string text returns string
 	local string output
 	local string color
 
-	set previous = null
 	set current = null
 	set output = ""
 

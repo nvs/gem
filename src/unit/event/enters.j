@@ -29,10 +29,7 @@ function Unit_Event___Enters takes nothing returns boolean
 		endloop
 
 		set Unit_Event___The_Unit = temporary_unit
-		set temporary_unit = null
 	endif
-
-	set the_unit = null
 
 	return false
 endfunction
@@ -48,7 +45,4 @@ function Unit_Event___Initialize_Enters takes nothing returns nothing
 	call RemoveRect (world_bounds)
 
 	call TriggerRegisterEnterRegion (CreateTrigger (), the_world, Filter (function Unit_Event___Enters))
-
-	set world_bounds = null
-	set the_world = null
 endfunction

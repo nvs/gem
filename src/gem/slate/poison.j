@@ -28,9 +28,6 @@ function Gem_Slate___Poison takes nothing returns boolean
 		endif
 	endif
 
-	set attacker = null
-	set victim = null
-
 	return false
 endfunction
 
@@ -41,8 +38,6 @@ function Gem_Slate___Initialize_Poison takes nothing returns nothing
 
 	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Slate___Poison))
-
-	set the_trigger = null
 endfunction
 
 function Gem_Slate_Poison__Initialize takes nothing returns nothing

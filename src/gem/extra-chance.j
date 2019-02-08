@@ -68,21 +68,21 @@ function Gem_Extra_Chance__Previous_Bonus takes player whom returns integer
 endfunction
 
 function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
-	local boolean is_gem = false
-	local boolean is_slate = false
+	local boolean is_gem
+	local boolean is_slate
 
-	local integer whom_id = 0
-	local integer bonus = 0
-	local real weight = 0.
-	local integer cost = 0
+	local integer whom_id
+	local integer bonus
+	local real weight
+	local integer cost
 
 	local integer array gems
 	local real array weights
-	local integer index = 0
+	local integer index
 
-	local integer type_id = 0
-	local integer A = 0
-	local integer B = 0
+	local integer type_id
+	local integer A
+	local integer B
 
 	if not Gem_Player__Is_Player (whom) then
 		call Error (ERROR__NOT_GEM_PLAYER, null)
@@ -218,9 +218,9 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 endfunction
 
 function Gem_Extra_Chance__Clear takes player whom returns nothing
-	local integer whom_id = 0
-	local integer target = 0
-	local integer cost = 0
+	local integer whom_id
+	local integer target
+	local integer cost
 
 	if not Gem_Extra_Chance__Is_Active (whom) then
 		return
@@ -244,9 +244,9 @@ function Gem_Extra_Chance__Clear takes player whom returns nothing
 endfunction
 
 function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing
-	local texttag tag = null
-	local real x = 0
-	local real y = 0
+	local texttag tag
+	local real x
+	local real y
 
 	if placed == null then
 		return
@@ -267,16 +267,14 @@ function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing
 	call SetTextTagFadepoint (tag, 2.5)
 	call SetTextTagVisibility (tag, true)
 	call SetTextTagColor (tag, 255, 255, 255, 255)
-
-	set tag = null
 endfunction
 
 function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 	local player whom = Gem_Placement__The_Player ()
 	local integer whom_id = GetPlayerId (whom)
-	local unit placed = null
-	local integer target = 0
-	local integer bonus = 0
+	local unit placed
+	local integer target
+	local integer bonus
 
 	if Gem_Extra_Chance__Is_Active (whom) then
 		set placed = Gem_Placement__The_Unit ()
@@ -285,8 +283,6 @@ function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 		if GetUnitTypeId (placed) == target then
 			call Gem_Extra_Chance___Extra_Chanced (placed)
 		endif
-
-		set placed = null
 
 	// No active Extra Chance and the first gem has been placed?  It is too late
 	// to enable, so decay the previous bonus and adjust accordingly.
@@ -302,22 +298,19 @@ function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 		set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
 	endif
 
-	set whom = null
-
 	return false
 endfunction
 
 function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	local player whom = Gem_Placement__The_Player ()
-	local integer whom_id = 0
-	local integer bonus = 0
-	local integer target = 0
-	local boolean has_target = false
-	local boolean is_slate = false
-	local integer index = 0
+	local integer whom_id
+	local integer bonus
+	local integer target
+	local boolean has_target
+	local boolean is_slate
+	local integer index
 
 	if not Gem_Extra_Chance__Is_Active (whom) then
-		set whom = null
 		return false
 	endif
 
@@ -329,7 +322,6 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 		set has_target = Gem_Selection__Get_Count (whom, target) > 0
 	else
 		set has_target = Gem_Selection_Slate__Has (whom, target)
-		set is_slate = true
 	endif
 
 	call Gem_Chance__Reset (whom)
@@ -344,8 +336,6 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 		set Gem_Extra_Chance___Previous_Target [whom_id] = target
 		set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus
 	endif
-
-	set whom = null
 
 	return false
 endfunction

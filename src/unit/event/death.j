@@ -20,7 +20,6 @@ function Unit_Event___Death takes nothing returns boolean
 	endloop
 
 	set Unit_Event___The_Unit = temporary_unit
-	set temporary_unit = null
 
 	return false
 endfunction
@@ -42,7 +41,4 @@ function Unit_Event___Initialize_Death takes nothing returns nothing
 	endloop
 
 	call TriggerAddCondition (the_trigger, Condition (function Unit_Event___Death))
-
-	set the_trigger = null
-	set the_player = null
 endfunction

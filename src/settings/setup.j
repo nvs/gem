@@ -25,8 +25,6 @@ function Settings___Pause_Miners takes nothing returns nothing
 		set index__player = index__player + 1
 		exitwhen index__player == Gem__MAXIMUM_PLAYERS
 	endloop
-
-	set miner = null
 endfunction
 
 function Settings___Begin_Game takes nothing returns nothing
@@ -57,8 +55,6 @@ function Settings___Begin_Game takes nothing returns nothing
 		set index = index + 1
 		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
-
-	set miner = null
 endfunction
 
 // This function is guaranteed to run after map initialization, and currently

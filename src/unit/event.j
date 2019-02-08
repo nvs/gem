@@ -43,8 +43,6 @@ function Unit_Event__On_Enter takes boolexpr callback returns nothing
 	set callback_index = Unit_Event___On_Enter_Callback_Count
 	set Unit_Event___On_Enter_Callbacks [callback_index] = the_trigger
 	set Unit_Event___On_Enter_Callback_Count = callback_index + 1
-
-	set the_trigger = null
 endfunction
 
 // Registers the provided `callback` to fire when a unit leaves the map. Note
@@ -59,8 +57,6 @@ function Unit_Event__On_Leave takes boolexpr callback returns nothing
 	set callback_index = Unit_Event___On_Leave_Callback_Count
 	set Unit_Event___On_Leave_Callbacks [callback_index] = the_trigger
 	set Unit_Event___On_Leave_Callback_Count = callback_index + 1
-
-	set the_trigger = null
 endfunction
 
 // Registers the provided `callback` to fire when a unit dies. Note that
@@ -75,6 +71,4 @@ function Unit_Event__On_Death takes boolexpr callback returns nothing
 	set callback_index = Unit_Event___On_Death_Callback_Count
 	set Unit_Event___On_Death_Callbacks [callback_index] = the_trigger
 	set Unit_Event___On_Death_Callback_Count = callback_index + 1
-
-	set the_trigger = null
 endfunction

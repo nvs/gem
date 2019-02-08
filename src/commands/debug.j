@@ -36,9 +36,6 @@ function Commands___Debug_Move takes nothing returns boolean
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (the_rect), GetRectCenterY (the_rect))
 	endif
 
-	set the_unit = null
-	set the_rect = null
-
 	return false
 endfunction
 
@@ -63,8 +60,6 @@ function Commands___Debug takes nothing returns boolean
 		call EnableDragSelect (true, true)
 	endif
 
-	set the_player = null
-
 	return false
 endfunction
 
@@ -88,6 +83,4 @@ function Commands___Initialize_Debug takes nothing returns nothing
 
 	call TriggerAddCondition (the_trigger, Condition (function Commands___Debug))
 
-	set the_trigger = null
-	set the_player = null
 endfunction

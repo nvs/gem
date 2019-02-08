@@ -3,14 +3,14 @@ globals
 endglobals
 
 function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y returns group
-	local integer slate_id = 0
-	local group stacking = null
-	local group in_range = null
-	local integer combination = 0
-	local integer A = 0
+	local integer slate_id
+	local group stacking
+	local group in_range
+	local integer combination
+	local integer A
 	local integer B = 0
-	local unit check = null
-	local integer check_id = 0
+	local unit check
+	local integer check_id
 
 	if slate == null then
 		return null
@@ -57,7 +57,6 @@ function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y re
 	endloop
 
 	call DestroyGroup (in_range)
-	set in_range = null
 
 	return stacking
 endfunction
@@ -71,7 +70,6 @@ function Gem_Slate_Stacking__Is_Stacking_At takes unit slate, real x, real y ret
 	local boolean is_stacking = CountUnitsInGroup (slates) > 0
 
 	call DestroyGroup (slates)
-	set slates = null
 
 	return is_stacking
 endfunction
@@ -81,9 +79,9 @@ function Gem_Slate_Stacking__Is_Stacking takes unit slate returns boolean
 endfunction
 
 function Gem_Slate_Stacking__Move takes unit slate returns nothing
-	local real x = 0
-	local real y = 0
-	local real angle = 0
+	local real x
+	local real y
+	local real angle
 
 	if slate == null then
 		return

@@ -19,28 +19,19 @@ function Gem_Selection_Keep___On_Finish takes nothing returns boolean
 		set index = index + 1
 	endloop
 
-	set the_player = null
-	set the_unit = null
-
 	return false
 endfunction
 
 function Gem_Selection_Keep___Event takes nothing returns boolean
 	local player the_player
-	local integer the_player_index
-
 	local unit the_unit
-	local integer the_unit_type
 
 	if GetSpellAbilityId () != Gem_Selection_Keep__ABILITY then
 		return false
 	endif
 
 	set the_player = GetTriggerPlayer ()
-	set the_player_index = GetPlayerId (the_player)
-
 	set the_unit = GetTriggerUnit ()
-	set the_unit_type = GetUnitTypeId (the_unit)
 
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, Color ("66ffff", GetUnitName (the_unit) + " has been chosen as your gem this round."))
 
@@ -54,9 +45,6 @@ function Gem_Selection_Keep___Event takes nothing returns boolean
 	call UnitRemoveAbility (the_unit, Gem_Selection_Special__ABILITY)
 
 	call Gem_Selection__Finalize (the_unit, null)
-
-	set the_player = null
-	set the_unit = null
 
 	return false
 endfunction

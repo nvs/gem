@@ -96,8 +96,6 @@ function Gem_Combination__Register takes unit the_unit returns boolean
 	set the_player = GetOwningPlayer (the_unit)
 
 	if not Gem_Player__Is_Player (the_player) then
-		set the_player = null
-
 		return false
 	endif
 
@@ -133,8 +131,6 @@ function Gem_Combination__Register takes unit the_unit returns boolean
 
 		call Gem_Combination_Marker__Add (the_unit)
 	endif
-
-	set the_player = null
 
 	return true
 endfunction
@@ -282,11 +278,6 @@ function Gem_Combination___Recipe takes nothing returns boolean
 
 	call IssueImmediateOrder (replacement, "stop")
 
-	set the_player = null
-	set original = null
-	set replacement = null
-	set the_part = null
-
 	return false
 endfunction
 
@@ -312,8 +303,6 @@ function Gem_Combination__Initialize takes nothing returns boolean
 		set the_player_index = the_player_index + 1
 		exitwhen the_player_index >= Gem__MAXIMUM_PLAYERS
 	endloop
-
-	set combination = null
 
 	return false
 endfunction

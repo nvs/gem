@@ -29,11 +29,11 @@ function Gem_Player__Is_Player takes player the_player returns boolean
 endfunction
 
 function Gem_Player__Remove_Creeps takes player whom returns nothing
-	local integer whom_id = 0
-	local group units = null
-	local unit which = null
-	local integer index = 0
-	local integer owner_id = 0
+	local integer whom_id
+	local group units
+	local unit which
+	local integer index
+	local integer owner_id
 
 	if not Gem_Player__Is_Player (whom) then
 		return
@@ -57,7 +57,6 @@ function Gem_Player__Remove_Creeps takes player whom returns nothing
 	endloop
 
 	call DestroyGroup (units)
-	set units = null
 endfunction
 
 // Returns the miner `unit` for `the_player`. Returns `null` for an invalid
@@ -85,8 +84,6 @@ function Gem_Player__Initialize takes nothing returns boolean
 		set index__player = index__player + 1
 		exitwhen index__player >= Gem__MAXIMUM_PLAYERS
 	endloop
-
-	set the_player = null
 
 	return false
 endfunction

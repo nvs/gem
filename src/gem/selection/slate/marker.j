@@ -20,16 +20,12 @@ function Gem_Selection_Slate_Marker___Effect takes nothing returns nothing
 	set sfx = AddSpecialEffect (Gem_Selection_Slate_Marker___SFX, GetUnitX (which), GetUnitY (which))
 	call SaveEffectHandle (Table, clock_id, Gem_Selection_Slate_Marker___EFFECT, sfx)
 	call TimerStart (clock, Gem_Selection_Slate_Marker___PERIOD, false, function Gem_Selection_Slate_Marker___Effect)
-
-	set clock = null
-	set which = null
-	set sfx = null
 endfunction
 
 function Gem_Selection_Slate_Marker__Attach takes unit which returns nothing
 	local integer which_index = Unit_Indexer__Unit_Index (which)
-	local timer clock = null
-	local integer clock_id = 0
+	local timer clock
+	local integer clock_id
 
 	if Gem_Selection_Slate_Marker___Timer [which_index] != null then
 		return
@@ -41,14 +37,12 @@ function Gem_Selection_Slate_Marker__Attach takes unit which returns nothing
 
 	call SaveUnitHandle (Table, clock_id, Gem_Selection_Slate_Marker___UNIT, which)
 	call TimerStart (clock, Gem_Selection_Slate_Marker___DELAY, false, function Gem_Selection_Slate_Marker___Effect)
-
-	set clock = null
 endfunction
 
 function Gem_Selection_Slate_Marker__Detach takes unit which returns nothing
 	local integer which_index = Unit_Indexer__Unit_Index (which)
 	local timer clock = Gem_Selection_Slate_Marker___Timer [which_index]
-	local integer clock_id = 0
+	local integer clock_id
 
 	if clock == null then
 		return
@@ -62,8 +56,6 @@ function Gem_Selection_Slate_Marker__Detach takes unit which returns nothing
 
 	call PauseTimer (clock)
 	call DestroyTimer (clock)
-
-	set clock = null
 endfunction
 
 function Gem_Selection_Slate_Marker___On_Leave takes nothing returns boolean

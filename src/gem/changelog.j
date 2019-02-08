@@ -26,6 +26,4 @@ function Gem_Changelog__Setup takes string title, string text, string date retur
 	endif
 
 	call Quest__Item (the_quest, "Can also view at: " + Color__Link	(Gem__WEBSITE_REPOSITORY))
-
-	set the_quest = null
 endfunction

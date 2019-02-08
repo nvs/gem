@@ -1,6 +1,6 @@
 function Gem_Selection__Initialize takes nothing returns boolean
 	local trigger rule = CreateTrigger ()
-	local player whom = null
+	local player whom
 	local integer whom_id = -1
 
 	call Rule__Register (rule)
@@ -24,9 +24,6 @@ function Gem_Selection__Initialize takes nothing returns boolean
 		call TriggerRegisterPlayerUnitEvent (Gem_Selection___TRIGGER, whom, EVENT_PLAYER_UNIT_SPELL_CAST, null)
 		call TriggerRegisterPlayerUnitEvent (rule, whom, EVENT_PLAYER_UNIT_ISSUED_ORDER, null)
 	endloop
-
-	set rule = null
-	set whom = null
 
 	return false
 endfunction

@@ -21,8 +21,6 @@ function Gem_Slate___Ancient_Taunt takes nothing returns boolean
 		call IssueTargetOrder (the_unit, "attack", Gem_Slate___Ancient_Unit)
 	endif
 
-	set the_unit = null
-
 	return false
 endfunction
 
@@ -37,8 +35,6 @@ function Gem_Slate___Ancient_Remove_Debuff takes nothing returns nothing
 		call UnitRemoveAbility (victim, 'A02I')
 		call UnitRemoveAbility (victim, 'B008')
 	endif
-
-	set victim = null
 endfunction
 
 function Gem_Slate___Ancient takes nothing returns boolean
@@ -94,11 +90,6 @@ function Gem_Slate___Ancient takes nothing returns boolean
 		call Unit_Disarm__Apply (attacker, 5.00)
 	endif
 
-	set attacker = null
-	set victim = null
-	set owner = null
-	set tag = null
-
 	return false
 endfunction
 
@@ -111,6 +102,4 @@ function Gem_Slate___Initialize_Ancient takes nothing returns nothing
 
 	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Slate___Ancient))
-
-	set the_trigger = null
 endfunction

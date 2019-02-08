@@ -102,8 +102,6 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns nothing
 			call TimerStart (the_timer, duration, false, function Unit_Stun___Expires)
 		endif
 	endif
-
-	set the_timer = null
 endfunction
 
 // Removes stun from the unit.
@@ -141,8 +139,6 @@ function Unit_Stun___On_Leave takes nothing returns boolean
 		set Unit_Stun___Timers [index] = null
 		set Unit_Stun___Is_Stunned [index] = false
 	endif
-
-	set the_timer = null
 
 	return false
 endfunction

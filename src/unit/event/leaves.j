@@ -28,10 +28,7 @@ function Unit_Event___Leaves takes nothing returns boolean
 			endloop
 
 			set Unit_Event___The_Unit = temporary_unit
-			set temporary_unit = null
 		endif
-
-		set the_unit = null
 	endif
 
 	return false
@@ -55,7 +52,4 @@ function Unit_Event___Initialize_Leaves takes nothing returns nothing
 	endloop
 
 	call TriggerAddCondition (the_trigger, Condition (function Unit_Event___Leaves))
-
-	set the_trigger = null
-	set the_player = null
 endfunction

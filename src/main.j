@@ -209,6 +209,4 @@ function main takes nothing returns nothing
 
 	call TriggerEvaluate (initialize)
 	call DestroyTrigger (initialize)
-
-	set initialize = null
 endfunction
