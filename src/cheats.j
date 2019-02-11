@@ -14,6 +14,12 @@
 // - Lumber: `leafittome`.
 // - Gold and lumber: `greedisgood`.
 // - Fast building: `warpten`.
+//
+// It should be noted that this module, in the typical use case, defeats
+// utilization of fixed random seed to produce a game with predictable
+// results.  This is achieved through the creation of additional units as
+// well as the use of `UnitDamageTarget ()`, both of which advance the
+// random sequence.
 
 globals
 	constant integer Cheats___UNIT_ID = 'cdun'
