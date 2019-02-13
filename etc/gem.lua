@@ -2,7 +2,10 @@ return {
 	input = 'share/maps/Gem TD Plus.w3x',
 
 	output = {
-		directory = 'tmp',
+		directories = {
+			build = 'tmp',
+			optimize = 'tmp/optimize'
+		},
 		name = 'Gem TD Plus.w3x'
 	},
 
