@@ -464,8 +464,8 @@ function Gem_Extra_Chance___On_Placement takes nothing returns boolean
 
 		call Gem_Chance__Reset (whom)
 
-	// No active Extra Chance and the first gem has been placed?  It is too late
-	// to enable, so decay the previous bonus and adjust accordingly.
+	// No active Extra Chance and the first gem has been placed?  It is too
+	// late to enable, so decay the previous bonus and adjust accordingly.
 	elseif Gem_Placement__Placed (whom) == 1 then
 		set Gem_Extra_Chance___Current_Target [whom_id] = 0
 		set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
