@@ -18,6 +18,7 @@
 // - If there are no registered units, then nothing will be placed. Rather, the
 //   placement structure will be replaced by `null`.
 // - If all unit types have a weight of `0.0`, placement behavior is undefined.
+// - Certain guarantees of Orc style construction are expected.
 
 globals
 
@@ -27,8 +28,12 @@ globals
 	// unless some sort of error is encountered.
 	constant integer Gem_Placement___PLACEMENT_UNIT_ID = 'h006'
 
+	constant integer Gem_Placement___CANCEL_ORDER_ID = 851976
+
 	// The lumber cost for the placement structure.
 	constant integer Gem_Placement___PLACEMENT_UNIT_COST = 1
+
+	unit array Gem_Placement___Constructing
 
 	// Each player has their own unique pool, which contains up to date unit
 	// types and weights.
@@ -245,17 +250,47 @@ function Gem_Placement__Clear_Weight takes player the_player, integer unit_type 
 	call Gem_Placement__Set_Weight (the_player, unit_type, 0.00)
 endfunction
 
+function Gem_Placement___Start takes nothing returns nothing
+	local unit which = GetTriggerUnit ()
+	local player whom
+	local integer whom_id
+
+	if GetUnitTypeId (which) != Gem_Placement___PLACEMENT_UNIT_ID then
+		return
+	endif
+
+	set whom = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (whom)
+
+	set Gem_Placement___Constructing [whom_id] = which
+endfunction
+
+function Gem_Placement___Escape takes nothing returns nothing
+	local player whom = GetTriggerPlayer ()
+	local integer whom_id = GetPlayerId (whom)
+	local unit builder = Gem_Player__Get_Miner (whom)
+
+	if not IsUnitSelected (builder, whom) then
+		return
+	endif
+
+	call IssueImmediateOrderById (Gem_Placement___Constructing [whom_id], Gem_Placement___CANCEL_ORDER_ID)
+	set Gem_Placement___Constructing [whom_id] = null
+endfunction
+
 // Keeps track of when placement structures have had construction cancelled.
 // The primary purpose of this function is to refund lumber if a placement
 // phase is currently active.
 function Gem_Placement___Cancel takes nothing returns boolean
 	local player the_player
+	local integer whom_id
 
 	if GetUnitTypeId (GetTriggerUnit ()) != Gem_Placement___PLACEMENT_UNIT_ID then
 		return false
 	endif
 
 	set the_player = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (the_player)
 
 	if Gem_Placement__Is_Active (the_player) then
 		// As the constant 'ConstructionRefundRate' has been set to zero, we need
@@ -265,6 +300,8 @@ function Gem_Placement___Cancel takes nothing returns boolean
 		call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER) + Gem_Placement___PLACEMENT_UNIT_COST)
 	endif
 
+	set Gem_Placement___Constructing [whom_id] = null
+
 	return false
 endfunction
 
@@ -272,6 +309,7 @@ endfunction
 // construction, turning them into registered unit types.
 function Gem_Placement___Placement takes nothing returns boolean
 	local player the_player
+	local integer whom_id
 	local integer index__player
 	local unit old
 
@@ -289,6 +327,9 @@ function Gem_Placement___Placement takes nothing returns boolean
 
 		return false
 	endif
+
+	set whom_id = GetPlayerId (the_player)
+	set Gem_Placement___Constructing [whom_id] = null
 
 	set Gem_Placement___Placed [index__player] = Gem_Placement___Placed [index__player] + 1
 
@@ -317,8 +358,16 @@ function Gem_Placement__Initialize takes nothing returns boolean
 	local player the_player
 	local integer index__player
 
+	local trigger trigger__escape
+	local trigger trigger__start
 	local trigger trigger__cancel
 	local trigger trigger__placement
+
+	set trigger__escape = CreateTrigger ()
+	call TriggerAddCondition (trigger__escape, Condition (function Gem_Placement___Escape))
+
+	set trigger__start = CreateTrigger ()
+	call TriggerAddCondition (trigger__start, Condition (function Gem_Placement___Start))
 
 	set trigger__cancel = CreateTrigger ()
 	call TriggerAddCondition (trigger__cancel, Condition (function Gem_Placement___Cancel))
@@ -331,6 +380,8 @@ function Gem_Placement__Initialize takes nothing returns boolean
 		set the_player = Player (index__player)
 		set Gem_Placement___POOL [index__player] = CreateUnitPool ()
 
+		call TriggerRegisterPlayerEvent (trigger__escape, the_player, EVENT_PLAYER_END_CINEMATIC)
+		call TriggerRegisterPlayerUnitEvent (trigger__start, the_player, EVENT_PLAYER_UNIT_CONSTRUCT_START, null)
 		call TriggerRegisterPlayerUnitEvent (trigger__cancel, the_player, EVENT_PLAYER_UNIT_CONSTRUCT_CANCEL, null)
 		call TriggerRegisterPlayerUnitEvent (trigger__placement, the_player, EVENT_PLAYER_UNIT_CONSTRUCT_FINISH, null)
 
