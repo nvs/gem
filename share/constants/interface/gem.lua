@@ -124,10 +124,6 @@ CustomSkin.InfoPanelIconDamageSiege =
 CustomSkin.InfoPanelIconDamageSiegeNeutral =
 	'ReplaceableTextures\\CommandButtons\\BTNAntiMagicShell.blp'
 
--- Icon - Command - Basic Structure (Undead):
-CustomSkin.CommandBasicStructUndead =
-	'ReplaceableTextures\\CommandButtons\\BTNAdvStruct.blp'
-
 -- Icon - Defense Type Divine (Bryvx):
 CustomSkin.InfoPanelIconArmorDivine =
 	'ReplaceableTextures\\CommandButtons\\BTNMedivh.blp'
