@@ -105,7 +105,6 @@ function Settings__Setup takes nothing returns boolean
 		if GetLocalPlayer () == the_player then
 			call ClearSelection ()
 			call SelectUnit (Gem_Player__Get_Miner (the_player), true)
-			call SetCameraPosition (GetStartLocationX (index), GetStartLocationY (index))
 		endif
 
 		set index = index + 1
