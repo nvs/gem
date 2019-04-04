@@ -6,12 +6,17 @@ do
 	local debuff = objects ['A05W']
 
 	local duration = {}
+	local armor = {}
 
 	for level = 1, 11 do
 		duration [level] = 25.0
+		armor [level] = -7
 	end
 
 	-- ## Data
+
+	-- Armor Bonus
+	debuff.ufa2.values = armor
 
 	-- Armor Duration
 	debuff.Ufa1.values = duration
