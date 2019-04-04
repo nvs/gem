@@ -16,7 +16,7 @@ do
 	-- ## Data
 
 	-- Armor Bonus
-	debuff.ufa2.values = armor
+	debuff.Ufa2.values = armor
 
 	-- Armor Duration
 	debuff.Ufa1.values = duration
