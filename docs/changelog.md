@@ -5,7 +5,9 @@ full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
-- N/A
+### Removed
+- Bonus gold that was awarded for reaching certain levels first has been
+  removed.
 
 ## [1.5.4] - 2019-01-28
 

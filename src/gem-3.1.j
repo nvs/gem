@@ -6912,60 +6912,6 @@ endfunction
 function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P1_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[1]==10)
-endfunction
-function Trig_New_Level_P1_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P1_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P1_Func021001001(),Trig_New_Level_P1_Func021001002())
-endfunction
-function Trig_New_Level_P1_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[1]==10)
-endfunction
-function Trig_New_Level_P1_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P1_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P1_Func022001001(),Trig_New_Level_P1_Func022001002())
-endfunction
-function Trig_New_Level_P1_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[1]==10)
-endfunction
-function Trig_New_Level_P1_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P1_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P1_Func023001001(),Trig_New_Level_P1_Func023001002())
-endfunction
-function Trig_New_Level_P1_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[1]==10)
-endfunction
-function Trig_New_Level_P1_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P1_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P1_Func024001001(),Trig_New_Level_P1_Func024001002())
-endfunction
-function Trig_New_Level_P1_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[1]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P1_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[1]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (0))
 	call Gem_Spawn__Stop (0)
@@ -6981,33 +6927,6 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P1_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[1])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P1_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P1_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P1_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P1_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[1],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P1 takes nothing returns nothing
 	set gg_trg_New_Level_P1=CreateTrigger()
@@ -7062,60 +6981,6 @@ endfunction
 function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P2_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[2]==10)
-endfunction
-function Trig_New_Level_P2_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P2_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P2_Func021001001(),Trig_New_Level_P2_Func021001002())
-endfunction
-function Trig_New_Level_P2_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[2]==10)
-endfunction
-function Trig_New_Level_P2_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P2_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P2_Func022001001(),Trig_New_Level_P2_Func022001002())
-endfunction
-function Trig_New_Level_P2_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[2]==10)
-endfunction
-function Trig_New_Level_P2_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P2_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P2_Func023001001(),Trig_New_Level_P2_Func023001002())
-endfunction
-function Trig_New_Level_P2_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[2]==10)
-endfunction
-function Trig_New_Level_P2_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P2_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P2_Func024001001(),Trig_New_Level_P2_Func024001002())
-endfunction
-function Trig_New_Level_P2_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[2]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P2_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[2]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (1))
 	call Gem_Spawn__Stop (1)
@@ -7131,33 +6996,6 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P2_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[2])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P2_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P2_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P2_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P2_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[2],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P2 takes nothing returns nothing
 	set gg_trg_New_Level_P2=CreateTrigger()
@@ -7212,60 +7050,6 @@ endfunction
 function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P3_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[3]==10)
-endfunction
-function Trig_New_Level_P3_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P3_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P3_Func021001001(),Trig_New_Level_P3_Func021001002())
-endfunction
-function Trig_New_Level_P3_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[3]==10)
-endfunction
-function Trig_New_Level_P3_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P3_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P3_Func022001001(),Trig_New_Level_P3_Func022001002())
-endfunction
-function Trig_New_Level_P3_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[3]==10)
-endfunction
-function Trig_New_Level_P3_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P3_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P3_Func023001001(),Trig_New_Level_P3_Func023001002())
-endfunction
-function Trig_New_Level_P3_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[3]==10)
-endfunction
-function Trig_New_Level_P3_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P3_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P3_Func024001001(),Trig_New_Level_P3_Func024001002())
-endfunction
-function Trig_New_Level_P3_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[3]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P3_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[3]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (2))
 	call Gem_Spawn__Stop (2)
@@ -7281,33 +7065,6 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P3_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[3])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P3_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P3_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P3_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P3_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[3],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P3 takes nothing returns nothing
 	set gg_trg_New_Level_P3=CreateTrigger()
@@ -7362,60 +7119,6 @@ endfunction
 function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P4_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[4]==10)
-endfunction
-function Trig_New_Level_P4_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P4_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P4_Func021001001(),Trig_New_Level_P4_Func021001002())
-endfunction
-function Trig_New_Level_P4_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[4]==10)
-endfunction
-function Trig_New_Level_P4_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P4_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P4_Func022001001(),Trig_New_Level_P4_Func022001002())
-endfunction
-function Trig_New_Level_P4_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[4]==10)
-endfunction
-function Trig_New_Level_P4_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P4_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P4_Func023001001(),Trig_New_Level_P4_Func023001002())
-endfunction
-function Trig_New_Level_P4_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[4]==10)
-endfunction
-function Trig_New_Level_P4_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P4_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P4_Func024001001(),Trig_New_Level_P4_Func024001002())
-endfunction
-function Trig_New_Level_P4_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[4]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P4_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[4]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (3))
 	call Gem_Spawn__Stop (3)
@@ -7431,33 +7134,6 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P4_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[4])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P4_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P4_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P4_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P4_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[4],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P4 takes nothing returns nothing
 	set gg_trg_New_Level_P4=CreateTrigger()
@@ -7512,60 +7188,6 @@ endfunction
 function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P5_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[5]==10)
-endfunction
-function Trig_New_Level_P5_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P5_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P5_Func021001001(),Trig_New_Level_P5_Func021001002())
-endfunction
-function Trig_New_Level_P5_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[5]==10)
-endfunction
-function Trig_New_Level_P5_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P5_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P5_Func022001001(),Trig_New_Level_P5_Func022001002())
-endfunction
-function Trig_New_Level_P5_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[5]==10)
-endfunction
-function Trig_New_Level_P5_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P5_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P5_Func023001001(),Trig_New_Level_P5_Func023001002())
-endfunction
-function Trig_New_Level_P5_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[5]==10)
-endfunction
-function Trig_New_Level_P5_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P5_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P5_Func024001001(),Trig_New_Level_P5_Func024001002())
-endfunction
-function Trig_New_Level_P5_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[5]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P5_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[5]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (4))
 	call Gem_Spawn__Stop (4)
@@ -7581,33 +7203,6 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P5_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[5])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P5_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P5_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P5_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P5_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[5],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P5 takes nothing returns nothing
 	set gg_trg_New_Level_P5=CreateTrigger()
@@ -7662,60 +7257,6 @@ endfunction
 function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P6_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[6]==10)
-endfunction
-function Trig_New_Level_P6_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P6_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P6_Func021001001(),Trig_New_Level_P6_Func021001002())
-endfunction
-function Trig_New_Level_P6_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[6]==10)
-endfunction
-function Trig_New_Level_P6_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P6_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P6_Func022001001(),Trig_New_Level_P6_Func022001002())
-endfunction
-function Trig_New_Level_P6_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[6]==10)
-endfunction
-function Trig_New_Level_P6_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P6_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P6_Func023001001(),Trig_New_Level_P6_Func023001002())
-endfunction
-function Trig_New_Level_P6_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[6]==10)
-endfunction
-function Trig_New_Level_P6_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P6_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P6_Func024001001(),Trig_New_Level_P6_Func024001002())
-endfunction
-function Trig_New_Level_P6_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[6]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P6_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[6]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (5))
 	call Gem_Spawn__Stop (5)
@@ -7731,33 +7272,6 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P6_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[6])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P6_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P6_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P6_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P6_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[6],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P6 takes nothing returns nothing
 	set gg_trg_New_Level_P6=CreateTrigger()
@@ -7812,60 +7326,6 @@ endfunction
 function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P7_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[7]==10)
-endfunction
-function Trig_New_Level_P7_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P7_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P7_Func021001001(),Trig_New_Level_P7_Func021001002())
-endfunction
-function Trig_New_Level_P7_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[7]==10)
-endfunction
-function Trig_New_Level_P7_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P7_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P7_Func022001001(),Trig_New_Level_P7_Func022001002())
-endfunction
-function Trig_New_Level_P7_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[7]==10)
-endfunction
-function Trig_New_Level_P7_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P7_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P7_Func023001001(),Trig_New_Level_P7_Func023001002())
-endfunction
-function Trig_New_Level_P7_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[7]==10)
-endfunction
-function Trig_New_Level_P7_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P7_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P7_Func024001001(),Trig_New_Level_P7_Func024001002())
-endfunction
-function Trig_New_Level_P7_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[7]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P7_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[7]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (6))
 	call Gem_Spawn__Stop (6)
@@ -7881,33 +7341,6 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P7_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[7])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P7_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P7_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P7_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P7_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[7],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P7 takes nothing returns nothing
 	set gg_trg_New_Level_P7=CreateTrigger()
@@ -7962,60 +7395,6 @@ endfunction
 function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
 endfunction
-function Trig_New_Level_P8_Func021001001 takes nothing returns boolean
-	return(udg_RLevel[8]==10)
-endfunction
-function Trig_New_Level_P8_Func021001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P8_Func021001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P8_Func021001001(),Trig_New_Level_P8_Func021001002())
-endfunction
-function Trig_New_Level_P8_Func022001001 takes nothing returns boolean
-	return(udg_RLevel[8]==10)
-endfunction
-function Trig_New_Level_P8_Func022001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P8_Func022001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P8_Func022001001(),Trig_New_Level_P8_Func022001002())
-endfunction
-function Trig_New_Level_P8_Func023001001 takes nothing returns boolean
-	return(udg_RLevel[8]==10)
-endfunction
-function Trig_New_Level_P8_Func023001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P8_Func023001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P8_Func023001001(),Trig_New_Level_P8_Func023001002())
-endfunction
-function Trig_New_Level_P8_Func024001001 takes nothing returns boolean
-	return(udg_RLevel[8]==10)
-endfunction
-function Trig_New_Level_P8_Func024001002 takes nothing returns boolean
-	return(udg_Rbonus[1]==false)
-endfunction
-function Trig_New_Level_P8_Func024001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_New_Level_P8_Func024001001(),Trig_New_Level_P8_Func024001002())
-endfunction
-function Trig_New_Level_P8_Func025C takes nothing returns boolean
-	if(not(udg_RLevel[8]==20))then
-		return false
-	endif
-	if(not(udg_Rbonus[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_New_Level_P8_Func026C takes nothing returns boolean
-	if(not(udg_RLevel[8]==30))then
-		return false
-	endif
-	if(not(udg_Rbonus[3]==false))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (7))
 	call Gem_Spawn__Stop (7)
@@ -8031,33 +7410,6 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
-	if(Trig_New_Level_P8_Func021001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,("|cffffff00"+(GetPlayerName(udg_Player[8])+" is the first to level 10, adding 30 Gold.|r")))
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P8_Func022001())then
-		call AdjustPlayerStateBJ(30,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P8_Func024001())then
-		set udg_Rbonus[1]=true
-	else
-		call DoNothing()
-	endif
-	if(Trig_New_Level_P8_Func025C())then
-		set udg_Rbonus[2]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 20, adding 50 Gold.|r"))
-		call AdjustPlayerStateBJ(50,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
-	if(Trig_New_Level_P8_Func026C())then
-		set udg_Rbonus[3]=true
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_ALWAYSHINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+" is the first to reach Level 30, adding 75 Gold.|r"))
-		call AdjustPlayerStateBJ(75,udg_Player[8],PLAYER_STATE_RESOURCE_GOLD)
-	else
-	endif
 endfunction
 function InitTrig_New_Level_P8 takes nothing returns nothing
 	set gg_trg_New_Level_P8=CreateTrigger()
