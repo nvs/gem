@@ -21,6 +21,7 @@
 // - Certain guarantees of Orc style construction are expected.
 
 globals
+	region array Gem_Placement___Marked
 
 	// The placeholder unit type to be replaced during placement, henceforth
 	// known as the placement structure. This large red question mark grows as a
@@ -121,6 +122,7 @@ function Gem_Placement__Start takes player the_player, integer count returns not
 
 	set Gem_Placement___Total [index__player] = count
 	set Gem_Placement___Placed [index__player] = 0
+	set Gem_Placement___Marked [index__player] = CreateRegion ()
 
 	call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, count)
 
@@ -143,6 +145,9 @@ function Gem_Placement__Stop takes player the_player returns nothing
 
 	set Gem_Placement___Total [index__player] = 0
 	set Gem_Placement___Placed [index__player] = 0
+
+	call RemoveRegion (Gem_Placement___Marked [index__player])
+	set Gem_Placement___Marked [index__player] = null
 
 	call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, 0)
 endfunction
@@ -305,6 +310,115 @@ function Gem_Placement___Cancel takes nothing returns boolean
 	return false
 endfunction
 
+function Gem_Placement___Mark takes player whom, unit placed returns nothing
+	local integer whom_id = GetPlayerId (whom)
+	local region marked = Gem_Placement___Marked [whom_id]
+	local real x = GetUnitX (placed)
+	local real y = GetUnitY (placed)
+
+	// Mark the following area as possibly blocked by the builder.
+	// ```
+	//  ***
+	//  ***
+	//  *M*
+	// *****
+	// *****
+	// ```
+
+	call RegionAddCell (marked, x - 128, y + 256)
+	call RegionAddCell (marked, x      , y + 256)
+	call RegionAddCell (marked, x + 128, y + 256)
+
+	call RegionAddCell (marked, x - 128, y + 128)
+	call RegionAddCell (marked, x      , y + 128)
+	call RegionAddCell (marked, x + 128, y + 128)
+
+	call RegionAddCell (marked, x - 128, y)
+	call RegionAddCell (marked, x      , y)
+	call RegionAddCell (marked, x + 128, y)
+
+	call RegionAddCell (marked, x - 256, y - 128)
+	call RegionAddCell (marked, x - 128, y - 128)
+	call RegionAddCell (marked, x      , y - 128)
+	call RegionAddCell (marked, x + 128, y - 128)
+	call RegionAddCell (marked, x + 256, y - 128)
+
+	call RegionAddCell (marked, x - 256, y - 256)
+	call RegionAddCell (marked, x - 128, y - 256)
+	call RegionAddCell (marked, x      , y - 256)
+	call RegionAddCell (marked, x + 128, y - 256)
+	call RegionAddCell (marked, x + 256, y - 256)
+endfunction
+
+function Gem_Placement___Is_In_Area takes integer whom_id, real x, real y returns boolean
+	local rect area = udg_GA [whom_id + 1]
+
+	return GetRectMinX (area) <= x and x <= GetRectMaxX (area) and GetRectMinY (area) <= y and y <= GetRectMaxY (area)
+endfunction
+
+function Gem_Placement___Move_Builder takes player whom, real X, real Y returns nothing
+	local integer whom_id = GetPlayerId (whom)
+	local region marked = Gem_Placement___Marked [whom_id]
+	local rect area = udg_GA [whom_id + 1]
+	local unit builder = Gem_Player__Get_Miner (whom)
+	local real x
+	local real y
+	local integer depth
+
+	set depth = 0
+	loop
+		set depth = depth + 128
+
+		if depth >= 1280 then
+			exitwhen true
+		endif
+
+		set y = Y
+		loop
+			set x = X - depth
+			if Gem_Placement___Is_In_Area (whom_id, x, y) then
+				if not IsPointInRegion (marked, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set x = X + depth
+			if Gem_Placement___Is_In_Area (whom_id, x, y) then
+				if not IsPointInRegion (marked, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set y = y + depth
+			exitwhen y == Y + depth
+		endloop
+
+		set x = X - depth
+		loop
+			set y = Y - depth
+			if Gem_Placement___Is_In_Area (whom_id, x, y) then
+				if not IsPointInRegion (marked, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set y = Y + depth
+			if Gem_Placement___Is_In_Area (whom_id, x, y) then
+				if not IsPointInRegion (marked, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set x = x + depth
+			exitwhen x > X + depth
+		endloop
+	endloop
+endfunction
+
 // The core of the system. Deals with placement structures that have finished
 // construction, turning them into registered unit types.
 function Gem_Placement___Placement takes nothing returns boolean
@@ -312,6 +426,9 @@ function Gem_Placement___Placement takes nothing returns boolean
 	local integer whom_id
 	local integer index__player
 	local unit old
+	local integer index
+	local real x
+	local real y
 
 	set old = GetTriggerUnit ()
 
@@ -330,6 +447,10 @@ function Gem_Placement___Placement takes nothing returns boolean
 
 	set whom_id = GetPlayerId (the_player)
 	set Gem_Placement___Constructing [whom_id] = null
+	call Gem_Placement___Mark (the_player, old)
+
+	set x = GetUnitX (old)
+	set y = GetUnitY (old)
 
 	set Gem_Placement___Placed [index__player] = Gem_Placement___Placed [index__player] + 1
 
@@ -345,6 +466,7 @@ function Gem_Placement___Placement takes nothing returns boolean
 	set Gem_Placement___The_Unit = null
 
 	if Gem_Placement___Placed [index__player] == Gem_Placement___Total [index__player] then
+		call Gem_Placement___Move_Builder (the_player, x, y)
 		call TriggerEvaluate (Gem_Placement___ON_FINISH)
 		call Gem_Placement__Stop (the_player)
 	endif
