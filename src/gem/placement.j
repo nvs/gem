@@ -359,7 +359,6 @@ endfunction
 function Gem_Placement___Move_Builder takes player whom, real X, real Y returns nothing
 	local integer whom_id = GetPlayerId (whom)
 	local region marked = Gem_Placement___Marked [whom_id]
-	local rect area = udg_GA [whom_id + 1]
 	local unit builder = Gem_Player__Get_Miner (whom)
 	local real x
 	local real y
