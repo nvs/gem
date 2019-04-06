@@ -310,28 +310,22 @@ function Gem_Placement___Cancel takes nothing returns boolean
 	return false
 endfunction
 
-function Gem_Placement___Mark takes player whom, unit placed returns nothing
-	local integer whom_id = GetPlayerId (whom)
-	local region marked = Gem_Placement___Marked [whom_id]
-	local real x = GetUnitX (placed)
-	local real y = GetUnitY (placed)
+function Gem_Placement___Mark takes integer whom_id, real x, real y returns nothing
+	local region marked
 
-	// Mark the following area as possibly blocked by the builder.
-	// ```
-	//  ***
-	//  ***
-	//  *M*
-	// *****
-	// *****
-	// ```
+	if ModuloReal (x, 128) != 0 then
+		call Gem_Placement___Mark (whom_id, x - 64, y)
+		call Gem_Placement___Mark (whom_id, x + 64, y)
+		return
+	endif
 
-	call RegionAddCell (marked, x - 128, y + 256)
-	call RegionAddCell (marked, x      , y + 256)
-	call RegionAddCell (marked, x + 128, y + 256)
+	if ModuloReal (y, 128) != 0 then
+		call Gem_Placement___Mark (whom_id, x, y - 64)
+		call Gem_Placement___Mark (whom_id, x, y + 64)
+		return
+	endif
 
-	call RegionAddCell (marked, x - 128, y + 128)
-	call RegionAddCell (marked, x      , y + 128)
-	call RegionAddCell (marked, x + 128, y + 128)
+	set marked = Gem_Placement___Marked [whom_id]
 
 	call RegionAddCell (marked, x - 128, y)
 	call RegionAddCell (marked, x      , y)
@@ -364,6 +358,14 @@ function Gem_Placement___Move_Builder takes player whom, real X, real Y returns 
 	local real y
 	local integer depth
 
+	if ModuloReal (X, 128) != 0 then
+		set X = X + RSignBJ (X) * 64
+	endif
+
+	if ModuloReal (Y, 128) != 0 then
+		set Y = Y + RSignBJ (Y) * 64
+	endif
+
 	set depth = 0
 	loop
 		set depth = depth + 128
@@ -375,16 +377,16 @@ function Gem_Placement___Move_Builder takes player whom, real X, real Y returns 
 		set y = Y
 		loop
 			set x = X - depth
-			if Gem_Placement___Is_In_Area (whom_id, x, y) then
-				if not IsPointInRegion (marked, x, y) then
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
 					call IssuePointOrder (builder, "move", x, y)
 					return
 				endif
 			endif
 
 			set x = X + depth
-			if Gem_Placement___Is_In_Area (whom_id, x, y) then
-				if not IsPointInRegion (marked, x, y) then
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
 					call IssuePointOrder (builder, "move", x, y)
 					return
 				endif
@@ -397,16 +399,16 @@ function Gem_Placement___Move_Builder takes player whom, real X, real Y returns 
 		set x = X - depth
 		loop
 			set y = Y - depth
-			if Gem_Placement___Is_In_Area (whom_id, x, y) then
-				if not IsPointInRegion (marked, x, y) then
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
 					call IssuePointOrder (builder, "move", x, y)
 					return
 				endif
 			endif
 
 			set y = Y + depth
-			if Gem_Placement___Is_In_Area (whom_id, x, y) then
-				if not IsPointInRegion (marked, x, y) then
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
 					call IssuePointOrder (builder, "move", x, y)
 					return
 				endif
@@ -444,12 +446,12 @@ function Gem_Placement___Placement takes nothing returns boolean
 		return false
 	endif
 
-	set whom_id = GetPlayerId (the_player)
-	set Gem_Placement___Constructing [whom_id] = null
-	call Gem_Placement___Mark (the_player, old)
-
 	set x = GetUnitX (old)
 	set y = GetUnitY (old)
+
+	set whom_id = GetPlayerId (the_player)
+	set Gem_Placement___Constructing [whom_id] = null
+	call Gem_Placement___Mark (whom_id, x, y)
 
 	set Gem_Placement___Placed [index__player] = Gem_Placement___Placed [index__player] + 1
 
