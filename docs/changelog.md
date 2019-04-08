@@ -9,6 +9,9 @@ full list of changes to the project, please consult the commit log.
 - Elder Slate armor debuff no longer improves with levels, and now remains
   at the base value of `-7`.
 
+### Fixed
+- Air pathing is now more consistent across all players.
+
 ### Removed
 - Bonus gold that was awarded for reaching certain levels first has been
   removed.
