@@ -483,21 +483,23 @@ do
 					.. ' current target is set.|n'
 
 					.. '-'
-					.. ' Failing to hit the target and selecting the same'
-					.. ' one in the next placement round will increase a'
-					.. ' bonus that starts at `0x`.|n'
+					.. ' There are two Extra Chance classes: Perfects and'
+					.. ' Slates.|n'
 
 					.. '-'
-					.. ' Not using Extra Chance for a placement round will'
-					.. ' cause the bonus to decrease.|n'
+					.. ' The bonus starts at `0x`, and will increase by'
+					.. ' `1x` only when the current target is in the same'
+					.. ' class as the previous target.|n'
 
 					.. '-'
-					.. ' Switching to a different target from the previous'
-					.. ' placement round does not alter the bonus.|n'
+					.. ' Not using Extra Chance for a round will cause the'
+					.. ' bonus to decrease by `1x`.|n'
 
 					.. '-'
-					.. ' At the maximum `5x` bonus, the player will only'
-					.. ' be offered gems related to their target.|n'
+					.. ' Hitting the target will cause the bonus to'
+					.. ' decrease by `4x`. If this would reduce the bonus'
+					.. ' below `0x`, then the target and bonus are'
+					.. ' cleared.|n'
 			}
 		}
 	end
