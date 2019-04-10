@@ -478,9 +478,10 @@ do
 			values = {
 				[1] = ''
 					.. '-'
-					.. ' The current target is shown on the board in white.'
-					.. ' The previous target is shown in grey when no'
-					.. ' current target is set.|n'
+					.. ' The current target is shown on the board in white,'
+					.. ' indicating that Extra Chance is active. The '
+					.. ' previous target is shown in grey when no current'
+					.. ' target is set.|n'
 
 					.. '-'
 					.. ' There are two Extra Chance classes: Perfects and'
