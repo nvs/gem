@@ -70,6 +70,7 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	local boolean is_slate
 
 	local integer whom_id
+	local integer previous
 	local integer bonus
 	local integer cost
 
@@ -92,20 +93,21 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	endif
 
 	set whom_id = GetPlayerId (whom)
+	set previous = Gem_Extra_Chance___Previous_Target [whom_id]
 
 	// Already active and same target.
 	if Gem_Extra_Chance___Current_Target [whom_id] == target then
 		return true
 
 	// No target during previous round or the bonus reset.
-	elseif Gem_Extra_Chance___Previous_Target [whom_id] == 0 then
+	elseif previous == 0 then
 		set bonus = 0
 
-	// Same target as previous round.
-	elseif Gem_Extra_Chance___Previous_Target [whom_id] == target then
+	// Same class as previous round.
+	elseif (is_gem and Gem_Gems__Is_Gem (previous)) or (is_slate and Gem_Slate__Is_Slate (previous)) then
 		set bonus = IMinBJ (Gem_Extra_Chance___Previous_Bonus [whom_id] + 1, Gem_Extra_Chance___MAXIMUM_BONUS)
 
-	// Different target than previous round.
+	// Different class than previous round.
 	else
 		set bonus = Gem_Extra_Chance___Previous_Bonus [whom_id]
 	endif
