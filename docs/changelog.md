@@ -1,7 +1,7 @@
 # Changelog
 
-This file presents a list of changes from the perspective of the player. For a
-full list of changes to the project, please consult the commit log.
+This file presents a list of changes from the perspective of the player. For
+a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
@@ -187,8 +187,8 @@ full list of changes to the project, please consult the commit log.
 ### Changed
 - Difficulty is now scaled by life rather than armor. All difficulties will
   use the armor levels from Extreme.
-- Bonus armor is applied directly to the units, and will no longer be applied
-  via global auras.
+- Bonus armor is applied directly to the units, and will no longer be
+  applied via global auras.
 - Level progression bonus armor no longer applies to other players.
 
 ### Fixed
@@ -214,7 +214,8 @@ full list of changes to the project, please consult the commit log.
 - The Downgrade action has been moved alongside others such as Keep and
   Combine.
 - Slate teleportation now has a cooldown of `1.0` seconds, down from `3.0`.
-- Slates with a melee attack now share a standardized attack range of `128.0`.
+- Slates with a melee attack now share a standardized attack range of
+  `128.0`.
   For reference, here are the old values:
     - Hold: `115.0`
     - Air: `130.0`
@@ -230,27 +231,29 @@ full list of changes to the project, please consult the commit log.
 - Gold Mine button placement has shifted.
 - Monsters now spawn facing the first touchpoint for all players.
 - Aura buffs now display on gems and rocks.
-- Spell/Elder armor debuff behavior has been modified. A stronger debuff will
-  now overwrite a weaker one.
+- Spell/Elder armor debuff behavior has been modified. A stronger debuff
+  will now overwrite a weaker one.
 - Tower swapping no longer has a delay.
 
 ### Fixed
 - Lives bought when a player has already reached the maximum will no longer
   waste gold.
 - Gold Mine buttons will no longer shift upon activation.
-- Player names are now sanitized of special tags (i.e. `|cAARRGGBB`, `|r`, and
-  `|n`).
-- Ruby damage versus Red armor via attacks was incorrect and has been set to a
-  multiplier of `1.8`, down from `2.8`.
+- Player names are now sanitized of special tags (i.e. `|cAARRGGBB`, `|r`,
+  and `|n`).
+- Ruby damage versus Red armor via attacks was incorrect and has been set to
+  a multiplier of `1.8`, down from `2.8`.
 - The armor reduction of Ancient Slate is now properly applied before damage
   is dealt.
-- Placement auras now move if necessary, and are removed when a player leaves.
+- Placement auras now move if necessary, and are removed when a player
+  leaves.
 - Anti-stuck removes unit pathing temporarily instead of permanently.
 
 ## [1.3.3] - 2017-04-06
 
 ### Fixed
-- An incompatible change in the 1.28.0 patch broke behavior for the following:
+- An incompatible change in the 1.28.0 patch broke behavior for the
+  following:
     - Poison Slate
     - Spell Slate
     - Elder Slate
@@ -259,7 +262,8 @@ full list of changes to the project, please consult the commit log.
 ## [1.3.2] - 2017-04-05
 
 ### Fixed
-- An incompatible change in the 1.28.0 patch broke behavior for the following:
+- An incompatible change in the 1.28.0 patch broke behavior for the
+  following:
     - Damage Slate
     - Hold Slate
     - Ancient Slate
@@ -267,8 +271,8 @@ full list of changes to the project, please consult the commit log.
 ## [1.3.1] - 2016-11-12
 
 ### Fixed
-- Structures that accumulated 70+ kills were becoming spell immune. This broke
-  the following functionality:
+- Structures that accumulated 70+ kills were becoming spell immune. This
+  broke the following functionality:
     - Disarming for Damage Slate, Hold Slate, and Ancient Slate;
     - The ability to swap.
 
@@ -276,10 +280,10 @@ full list of changes to the project, please consult the commit log.
 
 ### Changed
 - Hold Slate and Ancient Slate can now be moved in the middle of their stun.
-- The `-debug` command has been reworked. It no longer targets any known bugs.
-  Instead, it provides the ability to recover from a variety of issues (e.g.
-  user interface and control issues). In short, if this command resolves a
-  problem, then a bug report should be created.
+- The `-debug` command has been reworked. It no longer targets any known
+  bugs. Instead, it provides the ability to recover from a variety of
+  issues (e.g. user interface and control issues). In short, if this
+  command resolves a problem, then a bug report should be created.
 
 ### Fixed
 - The bug known as the 'glitch' has been removed.
@@ -290,14 +294,14 @@ full list of changes to the project, please consult the commit log.
   unnaturally extended by stuns.
 - The duration of stuns and certain slate abilities will no longer be
   susceptible to lag and pauses.
-- Certain types of damage (most notably area of effect) did not apply to units
-  that were stunned.
+- Certain types of damage (most notably area of effect) did not apply to
+  units that were stunned.
 - A slate could still retain the ability to move even after moving due to
   another slate movement bug.
 - Slates will no longer be damaged when attacking the ReRunner.
 - Spamming Keep Slate, when offered multiple slates, could cause extra units
-  to spawn. This made it possible to skip multiple rounds, assuming the units
-  were killed.
+  to spawn. This made it possible to skip multiple rounds, assuming the
+  units were killed.
 - A Warcraft 3 bug could cause button spamming on dialog windows (e.g. Extra
   Chance) to disable a player's control, essentially ending their game.
 
@@ -318,8 +322,8 @@ full list of changes to the project, please consult the commit log.
 - New slates could occasionally be missing the ability to move.
 - Recently moved slates could retain their ability to move.
 - Slates could stack on rare occasions.
-- When multiple of the same slate appears due to Extra Chance, the ability to
-  Combine will no longer appear.
+- When multiple of the same slate appears due to Extra Chance, the ability
+  to Combine will no longer appear.
 
 ## [1.1.0] - 2016-07-19
 
@@ -328,8 +332,8 @@ full list of changes to the project, please consult the commit log.
   full amount is returned.
 
 ### Fixed
-- Leaks related to special effects have been resolved. This will increase FPS
-  and responsiveness for many players throughout the game.
+- Leaks related to special effects have been resolved. This will increase
+  FPS and responsiveness for many players throughout the game.
 
 ## 1.0.0 - 2016-07-09
 
@@ -350,8 +354,8 @@ full list of changes to the project, please consult the commit log.
 - No one is required to be Red anymore.
 - There is now a default difficulty: Extreme.
 - When hosted without HCL, players (in lobby order) will be asked to select
-  game settings. If too much elapses, selection will pass to the next player.
-  If all players pass, then the default settings are used.
+  game settings. If too much elapses, selection will pass to the next
+  player. If all players pass, then the default settings are used.
 - The game timer no longer runs during game settings selection.
 - Board player colors now match Warcraft 3 in-game colors.
 - The board's width changes according to player name length. This is only
@@ -364,9 +368,9 @@ full list of changes to the project, please consult the commit log.
 - Landing a killing blow at the moment a recipe was combined could cause the
   kill to not be registered. This would prevent the player from progressing
   further.
-- Taking another player's kill no longer prevents that player from progressing
-  further. Also, the player that stole the kill will no longer experience
-  unexpected behavior.
+- Taking another player's kill no longer prevents that player from
+  progressing further. Also, the player that stole the kill will no longer
+  experience unexpected behavior.
 - Collecting multiple pieces of the same recipe will no longer leave some of
   those pieces unusable.
 - The board no longer disappears if too much time passes during settings
