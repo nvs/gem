@@ -509,8 +509,13 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 	set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
 
 	if has_target then
-		set Gem_Extra_Chance___Previous_Target [whom_id] = 0
-		set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
+		if bonus > 3 then
+			set Gem_Extra_Chance___Previous_Target [whom_id] = target
+			set Gem_Extra_Chance___Previous_Bonus [whom_id] = bonus - 4
+		else
+			set Gem_Extra_Chance___Previous_Target [whom_id] = 0
+			set Gem_Extra_Chance___Previous_Bonus [whom_id] = 0
+		endif
 		set udg_CountExtrachance [whom_id + 1] = udg_CountExtrachance [whom_id + 1] + 1
 	else
 		set Gem_Extra_Chance___Previous_Target [whom_id] = target
