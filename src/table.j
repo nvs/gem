@@ -14,5 +14,5 @@ globals
 	// ### `Table`
 	//
 	// The global hash table. Very basic. Very simple.
-	hashtable Table = InitHashtable ()
+	hashtable Table = Hashtable__New ()
 endglobals

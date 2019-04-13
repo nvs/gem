@@ -14,7 +14,7 @@
 // - Unit User Data
 
 globals
-	constant hashtable Gem_Combination___TABLE = InitHashtable ()
+	constant hashtable Gem_Combination___TABLE = Hashtable__New ()
 
 	integer array Gem_Combination___Indices
 

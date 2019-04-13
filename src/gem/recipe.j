@@ -2,7 +2,7 @@
 // ==========
 
 globals
-	constant hashtable Gem_Recipe___TABLE = InitHashtable ()
+	constant hashtable Gem_Recipe___TABLE = Hashtable__New ()
 
 	constant integer Gem_Recipe___RESULT = -1
 	constant integer Gem_Recipe___SIZE = -2

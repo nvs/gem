@@ -25,7 +25,7 @@
 
 globals
 	constant trigger Gem_Selection___TRIGGER = CreateTrigger ()
-	constant hashtable Gem_Selection___TABLE = InitHashtable ()
+	constant hashtable Gem_Selection___TABLE = Hashtable__New ()
 endglobals
 
 function Gem_Selection__Has takes player the_player, integer index returns boolean

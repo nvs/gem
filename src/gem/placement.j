@@ -36,7 +36,7 @@ globals
 
 	// This table mirrors the weights that are present in the pools. This is
 	// necessary because it is not possible to query a `unitpool` for data.
-	constant hashtable Gem_Placement___TABLE = InitHashtable ()
+	constant hashtable Gem_Placement___TABLE = Hashtable__New ()
 
 	// These hold the event values during event firing.
 	player Gem_Placement___The_Player = null

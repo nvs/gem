@@ -11,7 +11,7 @@
 // - `Handle__Flush ()`
 
 globals
-	hashtable Handle = InitHashtable ()
+	hashtable Handle = Hashtable__New ()
 endglobals
 
 // Returns a boolean if the provided handle has a value attached by the
