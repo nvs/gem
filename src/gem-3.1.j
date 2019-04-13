@@ -1295,7 +1295,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 
 	// Either a unit attacked event was detected or we are under the time
 	// threshold.  Either way, we must teleport the unit.
-	if teleport or Time__Total () - udg_AttackedAt [index] <= 3000 then
+	if teleport or Time__Now () - udg_AttackedAt [index] <= 3000 then
 		// Move the unit to the next checkpoint.  It should be business as
 		// usual from this point on.
 		call SetUnitPosition (attacker, x, y)
@@ -1309,7 +1309,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 	// Too much time has elapsed, so we assume this to be an entirely new
 	// blocking event.  Update the timestamp.
 	else
-		set udg_AttackedAt [index] = Time__Total ()
+		set udg_AttackedAt [index] = Time__Now ()
 
 		// Order the unit to move to its next checkpoint.  If this was
 		// a false positive, it should reach the next point without much

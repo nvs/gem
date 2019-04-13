@@ -154,6 +154,7 @@ function main takes nothing returns nothing
 
 	set initialize = CreateTrigger ()
 
+	call TriggerAddCondition (initialize, Condition (function Time__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Game_Status__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Preload__Initialize))
 	call TriggerAddCondition (initialize, Condition (function String__Initialize))

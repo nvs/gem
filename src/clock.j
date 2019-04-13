@@ -6,13 +6,12 @@ globals
 endglobals
 
 function Clock___Update takes nothing returns nothing
-	call TimerStart (Clock___Timer, I2R (Time__Total () - Clock___Start) / 1000., false, null)
+	call TimerStart (Clock___Timer, Time__To_Seconds (Time__Now () - Clock___Start), false, null)
 	call PauseTimer (Clock___Timer)
 endfunction
 
 function Clock__Start takes nothing returns nothing
-	call Time__Start ()
-	set Clock___Start = Time__Total ()
+	set Clock___Start = Time__Now ()
 
 	// Setup the clock.
 	set Clock___Timer = CreateTimer ()

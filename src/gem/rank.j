@@ -103,7 +103,7 @@ function Gem_Rank__Get_DPS takes integer whom_id, integer level returns real
 	local integer time
 
 	if stop == 0 then
-		set stop = Time__Total ()
+		set stop = Time__Now ()
 	endif
 
 	set time = stop - start
@@ -138,7 +138,7 @@ function Gem_Rank__Register_Unit takes unit which returns nothing
 	call GroupAddUnit (Gem_Rank___Group [whom_id], which)
 
 	if Gem_Rank__Get_Start (whom_id, level) == 0 then
-		call Gem_Rank___Set_Start (whom_id, level, Time__Total ())
+		call Gem_Rank___Set_Start (whom_id, level, Time__Now ())
 	endif
 endfunction
 
@@ -300,7 +300,7 @@ function Gem_Rank__Fail takes player whom returns nothing
 	set level = Gem_Rank___Level [whom_id]
 
 	call Gem_Rank___Update_Damage (whom_id)
-	call Gem_Rank___Set_Stop (whom_id, level, Time__Total ())
+	call Gem_Rank___Set_Stop (whom_id, level, Time__Now ())
 
 	set Gem_Rank___Temporary_Damage [whom_id] = 0.
 	set Gem_Rank___Finished [whom_id] = true
@@ -318,7 +318,7 @@ function Gem_Rank__Clear takes player whom returns nothing
 	set level = Gem_Rank___Level [whom_id]
 
 	call Gem_Rank___Update_Damage (whom_id)
-	call Gem_Rank___Set_Stop (whom_id, level, Time__Total ())
+	call Gem_Rank___Set_Stop (whom_id, level, Time__Now ())
 
 	set Gem_Rank___Level [whom_id] = level + 1
 	set Gem_Rank___Temporary_Damage [whom_id] = 0.
