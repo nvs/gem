@@ -208,6 +208,7 @@ function Run___Tick takes nothing returns boolean
 
 			set Run___Scheduled = runner
 			call Run___Now (try, catch)
+			set Label = "Run___Tick"
 
 			// The runner may have been destroyed during evaluation.
 			if Run___Period [runner] > 0 and Run___Is_Scheduled [runner] then
