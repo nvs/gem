@@ -148,8 +148,7 @@ function Run___Destroy takes integer self returns nothing
 	set Run___Is_Scheduled [self] = false
 endfunction
 
-function Run___Schedule takes integer milliseconds, integer runner returns nothing
-	local integer ticks
+function Run___Schedule takes integer ticks, integer runner returns nothing
 	local integer list
 	local integer size
 	local boolexpr try
@@ -158,8 +157,6 @@ function Run___Schedule takes integer milliseconds, integer runner returns nothi
 	if runner == Run__NULL then
 		return
 	endif
-
-	set ticks = milliseconds / 5
 
 	if Node__Has_Integer (Run___Schedule, ticks) then
 		set list = Node__Get_Integer (Run___Schedule, ticks)
@@ -228,11 +225,15 @@ function Run___Tick takes nothing returns boolean
 	return true
 endfunction
 
+function Run___Convert takes real time returns integer
+	return Time__To_Milliseconds (time) / Time___PER
+endfunction
+
 function Run__At takes real time, code try, code catch returns integer
-	local integer converted = Time__To_Milliseconds (time)
+	local integer ticks = Run___Convert (time)
 	local integer runner
 
-	if converted < Time__Now () then
+	if ticks < Run___Ticks then
 		return Run__NULL
 	endif
 
@@ -241,7 +242,7 @@ function Run__At takes real time, code try, code catch returns integer
 	endif
 
 	set runner = Run___New (try, catch)
-	call Run___Schedule (converted, runner)
+	call Run___Schedule (ticks, runner)
 
 	return runner
 endfunction
@@ -251,10 +252,10 @@ function Run__At takes real time, code try returns integer
 endfunction
 
 function Run__After takes real time, code try, code catch returns integer
-	local integer converted = Time__To_Milliseconds (time)
+	local integer ticks = Run___Convert (time)
 	local integer runner
 
-	if converted < 0 then
+	if ticks < 0 then
 		return Run__NULL
 	endif
 
@@ -263,7 +264,7 @@ function Run__After takes real time, code try, code catch returns integer
 	endif
 
 	set runner = Run___New (try, catch)
-	call Run___Schedule (Time__Now () + converted, runner)
+	call Run___Schedule (Run___Ticks + ticks, runner)
 
 	return runner
 endfunction
@@ -273,10 +274,10 @@ function Run__After takes real time, code try returns integer
 endfunction
 
 function Run__Every takes real period, code try, code catch returns integer
-	local integer converted = Time__To_Milliseconds (period)
+	local integer ticks = Run___Convert (period)
 	local integer runner
 
-	if converted <= 0 then
+	if ticks <= 0 then
 		return Run__NULL
 	endif
 
@@ -284,8 +285,8 @@ function Run__Every takes real period, code try, code catch returns integer
 		return Run__NULL
 	endif
 
-	set runner = Run___New (try, catch, converted)
-	call Run___Schedule (Time__Now () + converted, runner)
+	set runner = Run___New (try, catch, ticks)
+	call Run___Schedule (Run___Ticks + ticks, runner)
 
 	return runner
 endfunction
