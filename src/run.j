@@ -1,8 +1,4 @@
 globals
-	constant integer Run___IS_RUNNING = -1
-
-	constant string Run___DEFAULT_ERROR = "Thread crash or failure encountered"
-
 	constant trigger Run___RUNNER = CreateTrigger ()
 	constant trigger Run___SCHEDULER = CreateTrigger ()
 
