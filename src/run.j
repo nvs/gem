@@ -46,3 +46,16 @@ function Run__Code takes code task, string label returns nothing
 
 	call Run___Runner (Condition (task), label)
 endfunction
+
+function Run__Catch takes nothing returns boolean
+	if Error == null then
+		set Error = "Unexpected thread crash or failure"
+	endif
+
+	call Log__Error (Label, Error)
+
+	set Label = null
+	set Error = null
+
+	return false
+endfunction
