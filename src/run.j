@@ -207,7 +207,7 @@ function Run___Tick takes nothing returns boolean
 			// The runner may have been destroyed during evaluation.
 			if Run___Period [runner] > 0 and Run___Is_Scheduled [runner] then
 				set period = Run___Period [runner]
-				call Run___Schedule (Time__Now () + period, runner)
+				call Run___Schedule (Run___Ticks + period, runner)
 			elseif Run___Is_Scheduled [runner] then
 				call Run___Destroy (runner)
 			endif
