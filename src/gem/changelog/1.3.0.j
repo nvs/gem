@@ -11,6 +11,7 @@ function Gem_Changelog___1_3_0_Part_1 takes nothing returns nothing
 	set text = Color__Gold ("Changed:") + "|n"
 	set text = text + "- Hold Slate and Ancient Slate can now be moved in the middle of their stun.|n"
 	set text = text + "- The `-debug` command has been reworked. It no longer targets any known bugs. Instead, it provides the ability to recover from a variety of issues (e.g. user interface and control issues). In short, if this command resolves a problem, then a bug report should be created.|n"
+	set text = text + "|n"
 
 	set text = text + Color__Gold ("Fixed:") + "|n"
 	set text = text + "- The bug known as the 'glitch' has been removed.|n"
