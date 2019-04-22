@@ -24,7 +24,7 @@ globals
 	// what is currently used: `0.01`, `0.008`, `0.004`, `0.002`, and
 	// `0.001`.
 	constant integer Time___FREQUENCY = 200
-	constant real Time___PERIOD = 1. / I2R (Time___FREQUENCY) // `0.005`
+	constant real Time__PERIOD = 1. / I2R (Time___FREQUENCY) // `0.005`
 
 	// Accuracy will be lost unless divisible by the frequency.
 	constant integer Time___MILLISECONDS = 1000
@@ -35,7 +35,7 @@ endglobals
 
 // The number of milliseconds since map start.
 function Time__Now takes nothing returns integer
-	return GetTriggerEvalCount (Time___TRIGGER) * Time___PER
+	return Run__Ticks () * Time___PER
 endfunction
 
 // Converts the specified time from milliseconds to seconds.
@@ -47,8 +47,4 @@ endfunction
 // precision is truncated.
 function Time__To_Milliseconds takes real seconds returns integer
 	return R2I (seconds * Time___MILLISECONDS)
-endfunction
-
-function Time__Initialize takes nothing returns nothing
-	call TriggerRegisterTimerEvent (Time___TRIGGER, Time___PERIOD, true)
 endfunction

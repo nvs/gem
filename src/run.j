@@ -362,7 +362,7 @@ endfunction
 function Run__Initialize takes nothing returns nothing
 	set Run___Schedule = Node__New ()
 
-	call TriggerRegisterTimerEvent (Run___SCHEDULER, 1. / 200., true)
+	call TriggerRegisterTimerEvent (Run___SCHEDULER, Time__PERIOD, true)
 	call Trigger__Try (Run___SCHEDULER, function Run___Tick)
 
 	call Run___Tick ()
