@@ -32,6 +32,8 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 	local integer current
 	local integer bonus
 
+	set Label = "Gem_Extra_Chance_Menu___Button"
+
 	call Fix__Dialog_User_Control (whom)
 	set Gem_Extra_Chance_Menu___IS_DISPLAYED [whom_id] = false
 	call DialogDisplay (whom, window, false)
@@ -61,12 +63,8 @@ endfunction
 
 function Gem_Extra_Chance_Menu__Initialize takes nothing returns nothing
 	local trigger rule = CreateTrigger ()
-	local code task = function Gem_Extra_Chance_Menu___Button
-	local string label = "Gem_Extra_Chance_Menu___Button ()"
 
-	call Rule__Register (rule)
-	call Rule__Add_Code (rule, task, label)
-
+	call Trigger__Try (rule, function Gem_Extra_Chance_Menu___Button)
 	call Gem_Extra_Chance_Menu_Type__Initialize (rule)
 	call Gem_Extra_Chance_Menu_Slate__Initialize (rule)
 endfunction

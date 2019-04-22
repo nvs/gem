@@ -180,6 +180,8 @@ function Gem_Selection_Slate___Button takes nothing returns boolean
 	local unit new
 	local integer new_id = 0
 
+	set Label = "Gem_Selection_Slate___Button"
+
 	if not Gem_Gems__Is_Gem (old_id) then
 		return true
 	endif
@@ -266,10 +268,7 @@ function Gem_Selection_Slate___Button takes nothing returns boolean
 endfunction
 
 function Gem_Selection_Slate__Initialize takes trigger rule returns boolean
-	local code task = function Gem_Selection_Slate___Button
-	local string label = "Gem_Selection_Slate___Button"
-
-	call Rule__Add_Code (rule, task, label)
+	call Trigger__Try (rule, function Gem_Selection_Slate___Button)
 	call Gem_Placement__On_Finish (Condition (function Gem_Selection_Slate___On_Finish))
 
 	return false

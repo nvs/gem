@@ -9,6 +9,8 @@ endglobals
 function Gem_Mine_Type___Button takes nothing returns boolean
 	local player whom
 
+	set Label = "Gem_Mine_Type___Button"
+
 	if GetIssuedOrderId () != Gem_Mine_Type___ORDER_ID then
 		return true
 	endif
@@ -22,9 +24,6 @@ function Gem_Mine_Type___Button takes nothing returns boolean
 endfunction
 
 function Gem_Mine_Type__Initialize takes trigger rule returns nothing
-	local code task = function Gem_Mine_Type___Button
-	local string label = "Gem_Mine_Type___Button ()"
-
-	call Rule__Add_Code (rule, task, label)
+	call Trigger__Try (rule, function Gem_Mine_Type___Button)
 	call Gem_Mine__Add_Research (Gem_Mine_Type___BUTTON_ID, Gem_Mine_Type___PLACEHOLDER_ID)
 endfunction

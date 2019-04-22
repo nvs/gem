@@ -3,8 +3,6 @@ function Gem_Selection__Initialize takes nothing returns boolean
 	local player whom
 	local integer whom_id = -1
 
-	call Rule__Register (rule)
-
 	call Gem_Placement__On_Start (Condition (function Gem_Selection___On_Start))
 	call Gem_Placement__On_Placement (Condition (function Gem_Selection___On_Placement))
 

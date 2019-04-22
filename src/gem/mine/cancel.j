@@ -10,6 +10,8 @@ function Gem_Mine_Cancel___Button takes nothing returns boolean
 	local integer order_id = GetIssuedOrderId ()
 	local player whom
 
+	set Label = "Gem_Mine_Cancel___Button"
+
 	if order_id != Gem_Mine_Cancel___ORDER_ID then
 		return true
 	endif
@@ -23,9 +25,6 @@ function Gem_Mine_Cancel___Button takes nothing returns boolean
 endfunction
 
 function Gem_Mine_Cancel__Initialize takes trigger rule returns nothing
-	local code task = function Gem_Mine_Cancel___Button
-	local string label = "Gem_Mine_Cancel___Button ()"
-
-	call Rule__Add_Code (rule, task, label)
+	call Trigger__Try (rule, function Gem_Mine_Cancel___Button)
 	call Gem_Mine__Add_Research (Gem_Mine_Cancel___BUTTON_ID, Gem_Mine_Cancel___PLACEHOLDER_ID)
 endfunction

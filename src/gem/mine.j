@@ -21,6 +21,8 @@ function Gem_Mine___Research takes nothing returns boolean
 	local unit mine
 	local integer index = -1
 
+	set Label = "Gem_Mine___Research"
+
 	if GetResearched () != Gem_Chance___RESEARCH then
 		return true
 	endif
@@ -64,16 +66,10 @@ function Gem_Mine__Initialize takes nothing returns boolean
 	set Gem_Mine___Mines [7] = gg_unit_h01V_0018
 
 	set rule = CreateTrigger ()
-	set task = function Gem_Mine___Research
-	set label = "Gem_Mine___Research ()"
-
-	call Rule__Register (rule)
-	call Rule__Add_Code (rule, task, label)
-
+	call Trigger__Try (rule, function Gem_Mine___Research)
 	call TriggerRegisterAnyUnitEventBJ (rule, EVENT_PLAYER_UNIT_RESEARCH_FINISH)
 
 	set rule = CreateTrigger ()
-	call Rule__Register (rule)
 
 	loop
 		set mine = Gem_Mine___Mines [whom_id]

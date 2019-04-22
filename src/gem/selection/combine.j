@@ -57,6 +57,8 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	local integer quality_index
 	local integer great_index
 
+	set Label = "Gem_Selection_Combine___Button"
+
 	if not Gem_Gems__Is_Gem (old_id) then
 		return true
 	endif
@@ -117,10 +119,7 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 endfunction
 
 function Gem_Selection_Combine__Initialize takes trigger rule returns boolean
-	local code task = function Gem_Selection_Combine___Button
-	local string label = "Gem_Selection_Combine___Button ()"
-
-	call Rule__Add_Code (rule, task, label)
+	call Trigger__Try (rule, function Gem_Selection_Combine___Button)
 	call Gem_Placement__On_Finish (Condition (function Gem_Selection_Combine___On_Finish))
 
 	return false
