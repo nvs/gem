@@ -8,7 +8,7 @@ globals
 
 	constant integer Run__NULL = 0
 
-	integer Run___Ticks = -1
+	integer Run___Ticks = 0
 	integer Run___Schedule = Node__NULL
 	integer Run___Scheduled = Run__NULL
 
@@ -184,7 +184,6 @@ function Run___Tick takes nothing returns boolean
 	local integer period
 
 	set Label = "Run___Tick"
-	set Run___Ticks = Run___Ticks + 1
 
 	if not Node__Has_Integer (Run___Schedule, Run___Ticks) then
 		return true
@@ -193,6 +192,8 @@ function Run___Tick takes nothing returns boolean
 	set list = Node__Get_Integer (Run___Schedule, Run___Ticks)
 	call Node__Remove_Integer (Run___Schedule, Run___Ticks)
 	set index = Node__Get_Integer (list, Run___SIZE)
+
+	set Run___Ticks = Run___Ticks + 1
 
 	loop
 		exitwhen index == 0
@@ -322,10 +323,4 @@ function Run__Initialize takes nothing returns nothing
 
 	call TriggerRegisterTimerEvent (Run___SCHEDULER, Time__PERIOD, true)
 	call Trigger__Try (Run___SCHEDULER, function Run___Tick)
-
-	call Run___Tick ()
-
-	// Thise is mostly here as the label is set within the above call.
-	// Normally, such functions (that set labels) are run via a trigger.
-	set Label = null
 endfunction
