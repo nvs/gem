@@ -8,6 +8,7 @@ function Gem_Special__Initialize takes nothing returns boolean
 	// Preload abilities:
 	call Gem_Special_Blood_Stone__Initialize ()
 	call Gem_Special_Tourmaline__Initialize ()
+	call Gem_Special_Red_Crystal__Initialize ()
 
 	// Malachite:
 	call Gem_Recipe__Register (Gem_Special__MALACHITE_1, Gem_Gems__AQUAMARINE_CHIPPED, Gem_Gems__EMERALD_CHIPPED, Gem_Gems__OPAL_CHIPPED, 0)
