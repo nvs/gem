@@ -217,7 +217,7 @@ function Gem_Combination___Recipe takes nothing returns boolean
 
 	call Unit_User_Data__Set (replacement, kills)
 
-	if combination == Gem_Special__STAR_RUBY_1 or combination == Gem_Special__STAR_RUBY_2 or combination == Gem_Special__BLOODSTONE_2 or combination == Gem_Slate__ELDER or combination == Gem_Slate__VIPER then
+	if combination == Gem_Special__STAR_RUBY_1 or combination == Gem_Special__STAR_RUBY_2 or combination == Gem_Special__BLOOD_STONE_2 or combination == Gem_Slate__ELDER or combination == Gem_Slate__VIPER then
 		set udg_CheckSpelllvlUNIT = replacement
 		call Trig_Find_spell_levels_Actions ()
 	endif
