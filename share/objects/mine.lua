@@ -480,24 +480,24 @@ do
 					.. '-'
 					.. ' The current target is shown on the board in white.'
 					.. ' The previous target is shown in grey when no'
-					.. ' current target is set.\n'
+					.. ' current target is set.|n'
 
 					.. '-'
 					.. ' Failing to hit the target and selecting the same'
 					.. ' one in the next placement round will increase a'
-					.. ' bonus that starts at `0x`.\n'
+					.. ' bonus that starts at `0x`.|n'
 
 					.. '-'
 					.. ' Not using Extra Chance for a placement round will'
-					.. ' cause the bonus to decrease.\n'
+					.. ' cause the bonus to decrease.|n'
 
 					.. '-'
 					.. ' Switching to a different target from the previous'
-					.. ' placement round does not alter the bonus.\n'
+					.. ' placement round does not alter the bonus.|n'
 
 					.. '-'
 					.. ' At the maximum `5x` bonus, the player will only'
-					.. ' be offered gems related to their target.\n'
+					.. ' be offered gems related to their target.|n'
 			}
 		}
 	end
