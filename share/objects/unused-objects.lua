@@ -8,3 +8,10 @@ objects ['n006'] = nil
 -- Old difficulty aura buffs.
 objects ['B003'] = nil
 objects ['B009'] = nil
+
+-- Buffs from old Immolation.
+objects ['B00E'] = nil
+objects ['B00C'] = nil
+objects ['B00S'] = nil
+objects ['B00D'] = nil
+objects ['B00U'] = nil
