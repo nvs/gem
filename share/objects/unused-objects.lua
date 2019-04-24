@@ -4,3 +4,7 @@ local objects = map.objects
 -- Used in old range check.
 objects ['n00D'] = nil
 objects ['n006'] = nil
+
+-- Old difficulty aura buffs.
+objects ['B003'] = nil
+objects ['B009'] = nil
