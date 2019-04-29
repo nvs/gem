@@ -1,7 +1,12 @@
 // # Cheats
 //
 // Detect use of certain built-in Warcraft III cheat codes in single-player.
-// This is done without creating visible units to the player and in
+// It should be noted that this system is not needed, as any use of such
+// cheat codes is added directly to the replay itself.  The purpose of this
+// system is not to prevent use of these codes.  Rather, it is to aid in
+// quickly identifying screenshots from games where they were used.
+//
+// Detection is achieved without creating visible units to the player and in
 // a fashion that should not alter gameplay at all.  Functionality is quite
 // sparatan, and only a single function to determine if cheats were detected
 // is provided.  Upon detection, this system disables itself.
