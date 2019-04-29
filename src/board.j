@@ -210,8 +210,9 @@ function Board___Update takes nothing returns nothing
 
 					// The time will be greyed despite a player being
 					// present in the game if offline cheats have been
-					// detected or the game was saved then loaded.
-					if Cheats__Detected () or Game__Is_Loaded () then
+					// detected, the game was saved then loaded, or the map
+					// has determined tampering has occurred.
+					if Cheats__Detected () or Game__Is_Loaded () or not Zeta__Is_OK () then
 						set is_grey = true
 					endif
 				elseif level == 51 then

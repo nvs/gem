@@ -88,10 +88,58 @@ function Settings__Setup takes nothing returns boolean
 	set text = text + "- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n"
 	set text = text + "- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n"
 	set text = text + "\n"
-	set text = text + "Please report any bugs or errors\n"
-	set text = text + "encountered. Thanks.\n"
-	set text = text + "\n"
-	set text = text + "\n"
+
+	if Zeta__Is_OK () then
+		set text = text + "Please report any bugs or errors\n"
+		set text = text + "encountered. Thanks.\n"
+		set text = text + "\n"
+		set text = text + "\n"
+	else
+		call Cheat ("Hi. If you've stumbled here, then you should be made")
+		call Cheat ("aware that this serves no purpose but to inform")
+		call Cheat ("players that the map may not be an official release.")
+		call Cheat ("No map functionality has been hindered or restricted")
+		call Cheat ("in any way, shape, or form.")
+		call Cheat ("")
+		call Cheat ("Gem TD+ is open source, with the repository on")
+		call Cheat ("GitHub. The tools used to build the map are freely")
+		call Cheat ("available as well. Any official release (after")
+		call Cheat ("a certain point) is openable in the World Editor.")
+		call Cheat ("We want players to figure out how the game they love")
+		call Cheat ("and enjoy works. We want constructive feedback and")
+		call Cheat ("contributions.")
+		call Cheat ("")
+		call Cheat ("Do realize that all single-player Bliizard cheats")
+		call Cheat ("work, and will always works. We openly encourage")
+		call Cheat ("curious players to contribute or release their own")
+		call Cheat ("custom versions. Knowledgeable community members,")
+		call Cheat ("including the map's author, answer development")
+		call Cheat ("questions and provide guidance on the Discord. Just")
+		call Cheat ("realize that we we ask that these versions be")
+		call Cheat ("branded differently.")
+		call Cheat ("")
+		call Cheat ("And therein lies the main problem. The community is")
+		call Cheat ("being harmed by 'fake' official releases. That a")
+		call Cheat ("cheat pack is added is irrelevant; although, it does")
+		call Cheat ("represent a more common impetus behind 'faking' a")
+		call Cheat ("release. Our leaderboards depend on replays. It is")
+		call Cheat ("not fun to inform people who unknowingly played on")
+		call Cheat ("ineligible versions that their game will not count.")
+		call Cheat ("Sometimes those players never play the map again, and")
+		call Cheat ("that is regrettable. Any loss of existing or")
+		call Cheat ("potential players, for any reason, is regrettable.")
+		call Cheat ("")
+		call Cheat ("So, I implore you to reconsider. If you're fulfilling")
+		call Cheat ("a request on behalf of someone else, please tell them")
+		call Cheat ("that we will gladly help them improve Gem to their")
+		call Cheat ("liking, assuming that it fits the community's wishes.")
+		call Cheat ("We care about our community and want it to thrive.")
+		call Cheat ("Thanks.")
+		set text = text + "|cffff0000Tampering detected!|r\n"
+		set text = text + "This is an unofficial release. It is not\n"
+		set text = text + "eligible for the leaderboards. It may\n"
+		set text = text + "contain cheats and/or bugs!\n"
+	endif
 
 	call ClearTextMessages ()
 	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, text)
