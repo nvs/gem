@@ -16,6 +16,12 @@ a full list of changes to the project, please consult the commit log.
 - Bonus gold that was awarded for reaching certain levels first has been
   removed.
 
+## [1.5.5] - 2019-04-28
+
+### Fixed
+- Enhance patch 1.31 compatibility. Earlier 1.5 versions may not work in the
+  upcoming patch.
+
 ## [1.5.4] - 2019-01-28
 
 ### Fixed
@@ -383,7 +389,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.5.4...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.5.5...master
+[1.5.5]: https://github.com/nvs/gem/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/nvs/gem/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/nvs/gem/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/nvs/gem/compare/v1.5.1...v1.5.2
