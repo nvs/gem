@@ -3,9 +3,11 @@
 This file presents a list of changes from the perspective of the player. For a
 full list of changes to the project, please consult the commit log.
 
-## [Unreleased]
+## [1.5.5] - 2019-04-28
 
-- N/A
+### Fixed
+- Enhance patch 1.31 compatibility. Earlier 1.5 versions may not work in the
+  upcoming patch.
 
 ## [1.5.4] - 2019-01-28
 
