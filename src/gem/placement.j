@@ -34,6 +34,7 @@ globals
 	// The lumber cost for the placement structure.
 	constant integer Gem_Placement___PLACEMENT_UNIT_COST = 1
 
+	unit array Gem_Placement___Progress
 	unit array Gem_Placement___Constructing
 
 	// Each player has their own unique pool, which contains up to date unit
@@ -255,10 +256,23 @@ function Gem_Placement__Clear_Weight takes player the_player, integer unit_type 
 	call Gem_Placement__Set_Weight (the_player, unit_type, 0.00)
 endfunction
 
+function Gem_Placement___Progress takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local unit which
+
+	set which = Gem_Placement___Progress [runner]
+	set Gem_Placement___Progress [runner] = null
+
+	call UnitSetConstructionProgress (which, 50)
+
+	return true
+endfunction
+
 function Gem_Placement___Start takes nothing returns nothing
 	local unit which = GetTriggerUnit ()
 	local player whom
 	local integer whom_id
+	local integer runner
 
 	if GetUnitTypeId (which) != Gem_Placement___PLACEMENT_UNIT_ID then
 		return
@@ -268,6 +282,9 @@ function Gem_Placement___Start takes nothing returns nothing
 	set whom_id = GetPlayerId (whom)
 
 	set Gem_Placement___Constructing [whom_id] = which
+
+	set runner = Run__After (0.0, function Gem_Placement___Progress)
+	set Gem_Placement___Progress [runner] = which
 endfunction
 
 function Gem_Placement___Escape takes nothing returns nothing
