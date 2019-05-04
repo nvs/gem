@@ -184,11 +184,10 @@ function Run___Tick takes nothing returns boolean
 	endif
 
 	set list = Node__Get_Integer (Run___Schedule, Run___Ticks)
-	call Node__Remove_Integer (Run___Schedule, Run___Ticks)
-	set index = Node__Get_Integer (list, Run___SIZE)
+	set index = 1
 
 	loop
-		exitwhen index == 0
+		exitwhen index > Node__Get_Integer (list, Run___SIZE)
 		set runner = Node__Get_Integer (list, index)
 
 		if runner != Run__NULL then
@@ -212,11 +211,12 @@ function Run___Tick takes nothing returns boolean
 			endif
 		endif
 
-		set index = index - 1
+		set index = index + 1
 	endloop
 
 	set Run___Ticks = Run___Ticks + 1
 	call Node__Destroy (list)
+	call Node__Remove_Integer (Run___Schedule, Run___Ticks)
 
 	return true
 endfunction
