@@ -169,7 +169,6 @@ function Run___Schedule takes integer ticks, integer runner returns nothing
 endfunction
 
 function Run___Tick takes nothing returns boolean
-	local integer ticks = Run___Ticks
 	local integer list
 	local integer index
 	local integer runner
@@ -177,15 +176,15 @@ function Run___Tick takes nothing returns boolean
 	local boolexpr catch
 	local integer period
 
-	set Run___Ticks = ticks + 1
 	set Label = "Run___Tick"
 
-	if not Node__Has_Integer (Run___Schedule, ticks) then
+	if not Node__Has_Integer (Run___Schedule, Run___Ticks) then
+		set Run___Ticks = Run___Ticks + 1
 		return true
 	endif
 
-	set list = Node__Get_Integer (Run___Schedule, ticks)
-	call Node__Remove_Integer (Run___Schedule, ticks)
+	set list = Node__Get_Integer (Run___Schedule, Run___Ticks)
+	call Node__Remove_Integer (Run___Schedule, Run___Ticks)
 	set index = Node__Get_Integer (list, Run___SIZE)
 
 	loop
@@ -207,7 +206,7 @@ function Run___Tick takes nothing returns boolean
 			// The runner may have been destroyed during evaluation.
 			if Run___Period [runner] > 0 and Run___Is_Scheduled [runner] then
 				set period = Run___Period [runner]
-				call Run___Schedule (ticks + period, runner)
+				call Run___Schedule (Run___Ticks + period, runner)
 			elseif Run___Is_Scheduled [runner] then
 				call Run___Destroy (runner)
 			endif
@@ -216,6 +215,7 @@ function Run___Tick takes nothing returns boolean
 		set index = index - 1
 	endloop
 
+	set Run___Ticks = Run___Ticks + 1
 	call Node__Destroy (list)
 
 	return true
