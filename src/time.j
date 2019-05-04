@@ -46,5 +46,5 @@ endfunction
 // Converts the specified time from seconds to milliseconds.  Further
 // precision is truncated.
 function Time__To_Milliseconds takes real seconds returns integer
-	return R2I (seconds * Time___MILLISECONDS)
+	return R2I (seconds * Time___MILLISECONDS + 0.0005)
 endfunction
