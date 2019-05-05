@@ -214,9 +214,9 @@ function Run___Tick takes nothing returns boolean
 		set index = index + 1
 	endloop
 
-	set Run___Ticks = Run___Ticks + 1
 	call Node__Destroy (list)
 	call Node__Remove_Integer (Run___Schedule, Run___Ticks)
+	set Run___Ticks = Run___Ticks + 1
 
 	return true
 endfunction
