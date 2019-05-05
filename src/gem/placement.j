@@ -18,8 +18,10 @@
 // - If there are no registered units, then nothing will be placed. Rather, the
 //   placement structure will be replaced by `null`.
 // - If all unit types have a weight of `0.0`, placement behavior is undefined.
+// - Certain guarantees of Orc style construction are expected.
 
 globals
+	region array Gem_Placement___Marked
 
 	// The placeholder unit type to be replaced during placement, henceforth
 	// known as the placement structure. This large red question mark grows as a
@@ -27,8 +29,13 @@ globals
 	// unless some sort of error is encountered.
 	constant integer Gem_Placement___PLACEMENT_UNIT_ID = 'h006'
 
+	constant integer Gem_Placement___CANCEL_ORDER_ID = 851976
+
 	// The lumber cost for the placement structure.
 	constant integer Gem_Placement___PLACEMENT_UNIT_COST = 1
+
+	unit array Gem_Placement___Progress
+	unit array Gem_Placement___Constructing
 
 	// Each player has their own unique pool, which contains up to date unit
 	// types and weights.
@@ -116,6 +123,7 @@ function Gem_Placement__Start takes player the_player, integer count returns not
 
 	set Gem_Placement___Total [index__player] = count
 	set Gem_Placement___Placed [index__player] = 0
+	set Gem_Placement___Marked [index__player] = CreateRegion ()
 
 	call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, count)
 
@@ -138,6 +146,9 @@ function Gem_Placement__Stop takes player the_player returns nothing
 
 	set Gem_Placement___Total [index__player] = 0
 	set Gem_Placement___Placed [index__player] = 0
+
+	call RemoveRegion (Gem_Placement___Marked [index__player])
+	set Gem_Placement___Marked [index__player] = null
 
 	call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, 0)
 endfunction
@@ -245,17 +256,63 @@ function Gem_Placement__Clear_Weight takes player the_player, integer unit_type 
 	call Gem_Placement__Set_Weight (the_player, unit_type, 0.00)
 endfunction
 
+function Gem_Placement___Progress takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local unit which
+
+	set which = Gem_Placement___Progress [runner]
+	set Gem_Placement___Progress [runner] = null
+
+	call UnitSetConstructionProgress (which, 50)
+
+	return true
+endfunction
+
+function Gem_Placement___Start takes nothing returns nothing
+	local unit which = GetTriggerUnit ()
+	local player whom
+	local integer whom_id
+	local integer runner
+
+	if GetUnitTypeId (which) != Gem_Placement___PLACEMENT_UNIT_ID then
+		return
+	endif
+
+	set whom = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (whom)
+
+	set Gem_Placement___Constructing [whom_id] = which
+
+	set runner = Run__After (0.0, function Gem_Placement___Progress)
+	set Gem_Placement___Progress [runner] = which
+endfunction
+
+function Gem_Placement___Escape takes nothing returns nothing
+	local player whom = GetTriggerPlayer ()
+	local integer whom_id = GetPlayerId (whom)
+	local unit builder = Gem_Player__Get_Miner (whom)
+
+	if not IsUnitSelected (builder, whom) then
+		return
+	endif
+
+	call IssueImmediateOrderById (Gem_Placement___Constructing [whom_id], Gem_Placement___CANCEL_ORDER_ID)
+	set Gem_Placement___Constructing [whom_id] = null
+endfunction
+
 // Keeps track of when placement structures have had construction cancelled.
 // The primary purpose of this function is to refund lumber if a placement
 // phase is currently active.
 function Gem_Placement___Cancel takes nothing returns boolean
 	local player the_player
+	local integer whom_id
 
 	if GetUnitTypeId (GetTriggerUnit ()) != Gem_Placement___PLACEMENT_UNIT_ID then
 		return false
 	endif
 
 	set the_player = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (the_player)
 
 	if Gem_Placement__Is_Active (the_player) then
 		// As the constant 'ConstructionRefundRate' has been set to zero, we need
@@ -265,15 +322,131 @@ function Gem_Placement___Cancel takes nothing returns boolean
 		call SetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState (the_player, PLAYER_STATE_RESOURCE_LUMBER) + Gem_Placement___PLACEMENT_UNIT_COST)
 	endif
 
+	set Gem_Placement___Constructing [whom_id] = null
+
 	return false
+endfunction
+
+function Gem_Placement___Mark takes integer whom_id, real x, real y returns nothing
+	local region marked
+
+	if ModuloReal (x, 128) != 0 then
+		call Gem_Placement___Mark (whom_id, x - 64, y)
+		call Gem_Placement___Mark (whom_id, x + 64, y)
+		return
+	endif
+
+	if ModuloReal (y, 128) != 0 then
+		call Gem_Placement___Mark (whom_id, x, y - 64)
+		call Gem_Placement___Mark (whom_id, x, y + 64)
+		return
+	endif
+
+	set marked = Gem_Placement___Marked [whom_id]
+
+	call RegionAddCell (marked, x - 128, y)
+	call RegionAddCell (marked, x      , y)
+	call RegionAddCell (marked, x + 128, y)
+
+	call RegionAddCell (marked, x - 256, y - 128)
+	call RegionAddCell (marked, x - 128, y - 128)
+	call RegionAddCell (marked, x      , y - 128)
+	call RegionAddCell (marked, x + 128, y - 128)
+	call RegionAddCell (marked, x + 256, y - 128)
+
+	call RegionAddCell (marked, x - 256, y - 256)
+	call RegionAddCell (marked, x - 128, y - 256)
+	call RegionAddCell (marked, x      , y - 256)
+	call RegionAddCell (marked, x + 128, y - 256)
+	call RegionAddCell (marked, x + 256, y - 256)
+endfunction
+
+function Gem_Placement___Is_In_Area takes integer whom_id, real x, real y returns boolean
+	local rect area = udg_GA [whom_id + 1]
+
+	return GetRectMinX (area) <= x and x <= GetRectMaxX (area) and GetRectMinY (area) <= y and y <= GetRectMaxY (area)
+endfunction
+
+function Gem_Placement___Move_Builder takes player whom, real X, real Y returns nothing
+	local integer whom_id = GetPlayerId (whom)
+	local region marked = Gem_Placement___Marked [whom_id]
+	local unit builder = Gem_Player__Get_Miner (whom)
+	local real x
+	local real y
+	local integer depth
+
+	if ModuloReal (X, 128) != 0 then
+		set X = X + RSignBJ (X) * 64
+	endif
+
+	if ModuloReal (Y, 128) != 0 then
+		set Y = Y + RSignBJ (Y) * 64
+	endif
+
+	set depth = 0
+	loop
+		set depth = depth + 128
+
+		if depth >= 1280 then
+			exitwhen true
+		endif
+
+		set y = Y
+		loop
+			set x = X - depth
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set x = X + depth
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set y = y + depth
+			exitwhen y == Y + depth
+		endloop
+
+		set x = X - depth
+		loop
+			set y = Y - depth
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set y = Y + depth
+			if not IsPointInRegion (marked, x, y) then
+				if Gem_Placement___Is_In_Area (whom_id, x, y) then
+					call IssuePointOrder (builder, "move", x, y)
+					return
+				endif
+			endif
+
+			set x = x + depth
+			exitwhen x > X + depth
+		endloop
+	endloop
 endfunction
 
 // The core of the system. Deals with placement structures that have finished
 // construction, turning them into registered unit types.
 function Gem_Placement___Placement takes nothing returns boolean
 	local player the_player
+	local integer whom_id
 	local integer index__player
 	local unit old
+	local integer index
+	local real x
+	local real y
 
 	set old = GetTriggerUnit ()
 
@@ -290,6 +463,13 @@ function Gem_Placement___Placement takes nothing returns boolean
 		return false
 	endif
 
+	set x = GetUnitX (old)
+	set y = GetUnitY (old)
+
+	set whom_id = GetPlayerId (the_player)
+	set Gem_Placement___Constructing [whom_id] = null
+	call Gem_Placement___Mark (whom_id, x, y)
+
 	set Gem_Placement___Placed [index__player] = Gem_Placement___Placed [index__player] + 1
 
 	call ShowUnit (old, false)
@@ -304,6 +484,7 @@ function Gem_Placement___Placement takes nothing returns boolean
 	set Gem_Placement___The_Unit = null
 
 	if Gem_Placement___Placed [index__player] == Gem_Placement___Total [index__player] then
+		call Gem_Placement___Move_Builder (the_player, x, y)
 		call TriggerEvaluate (Gem_Placement___ON_FINISH)
 		call Gem_Placement__Stop (the_player)
 	endif
@@ -317,8 +498,16 @@ function Gem_Placement__Initialize takes nothing returns boolean
 	local player the_player
 	local integer index__player
 
+	local trigger trigger__escape
+	local trigger trigger__start
 	local trigger trigger__cancel
 	local trigger trigger__placement
+
+	set trigger__escape = CreateTrigger ()
+	call TriggerAddCondition (trigger__escape, Condition (function Gem_Placement___Escape))
+
+	set trigger__start = CreateTrigger ()
+	call TriggerAddCondition (trigger__start, Condition (function Gem_Placement___Start))
 
 	set trigger__cancel = CreateTrigger ()
 	call TriggerAddCondition (trigger__cancel, Condition (function Gem_Placement___Cancel))
@@ -331,6 +520,8 @@ function Gem_Placement__Initialize takes nothing returns boolean
 		set the_player = Player (index__player)
 		set Gem_Placement___POOL [index__player] = CreateUnitPool ()
 
+		call TriggerRegisterPlayerEvent (trigger__escape, the_player, EVENT_PLAYER_END_CINEMATIC)
+		call TriggerRegisterPlayerUnitEvent (trigger__start, the_player, EVENT_PLAYER_UNIT_CONSTRUCT_START, null)
 		call TriggerRegisterPlayerUnitEvent (trigger__cancel, the_player, EVENT_PLAYER_UNIT_CONSTRUCT_CANCEL, null)
 		call TriggerRegisterPlayerUnitEvent (trigger__placement, the_player, EVENT_PLAYER_UNIT_CONSTRUCT_FINISH, null)
 
