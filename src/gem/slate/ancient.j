@@ -5,6 +5,7 @@ globals
 	unit Gem_Slate___Ancient_Unit = null
 
 	integer Gem_Slate___ID_ANCIENT_UNIT_INDEX
+	integer array Gem_Slate_Ancient___Before
 endglobals
 
 function Gem_Slate___Ancient_Taunt takes nothing returns boolean
@@ -27,11 +28,14 @@ endfunction
 function Gem_Slate___Ancient_Remove_Debuff takes nothing returns nothing
 	local integer index
 	local unit victim
+	local integer armor
 
 	set index = Handle__Load (GetExpiredTimer (), Gem_Slate___ID_ANCIENT_UNIT_INDEX)
 
 	if index > 0 then
 		set victim = Unit_Indexer__Unit_By_Index (index)
+		set armor = Gem_Slate_Ancient___Before [index]
+		call Unit_Bonus_Armor__Set (victim, armor)
 		call UnitRemoveAbility (victim, 'A02I')
 		call UnitRemoveAbility (victim, 'B008')
 	endif
@@ -40,7 +44,9 @@ endfunction
 function Gem_Slate___Ancient takes nothing returns boolean
 	local unit attacker
 	local unit victim
+	local integer index
 	local player owner
+	local integer armor
 	local texttag tag
 	local integer damage
 	local timer the_timer
@@ -53,10 +59,14 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	if GetUnitTypeId (attacker) == 'n003' and not Unit_Stun__Is_Stunned (victim) then
 		set owner = GetOwningPlayer (attacker)
 
+		set index = Unit_Indexer__Unit_Index (victim)
+		set armor = Unit_Bonus_Armor__Get (victim)
+		set Gem_Slate_Ancient___Before [index] = armor
+		call Unit_Bonus_Armor__Set (victim, armor - 12)
 		call UnitAddAbility (victim, 'A02I')
 
 		set the_timer = CreateTimer ()
-		call Handle__Save (the_timer, Gem_Slate___ID_ANCIENT_UNIT_INDEX, Unit_Indexer__Unit_Index (victim))
+		call Handle__Save (the_timer, Gem_Slate___ID_ANCIENT_UNIT_INDEX, index)
 		call TimerStart (the_timer, 2.50, false, function Gem_Slate___Ancient_Remove_Debuff)
 
 		set Gem_Slate___Ancient_Unit = victim
