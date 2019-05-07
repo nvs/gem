@@ -54,6 +54,7 @@ globals
 	// FIFO ordering is simple to implement given that is how triggers
 	// execute/evaluate.
 	constant trigger Gem_Placement___ON_START = CreateTrigger ()
+	constant trigger Gem_Placement___ON_PRE_PLACEMENT = CreateTrigger()
 	constant trigger Gem_Placement___ON_PLACEMENT = CreateTrigger ()
 	constant trigger Gem_Placement___ON_FINISH = CreateTrigger ()
 endglobals
@@ -82,6 +83,12 @@ endfunction
 // functions are executed in registration order (FIFO).
 function Gem_Placement__On_Start takes boolexpr callback returns nothing
 	call TriggerAddCondition (Gem_Placement___ON_START, callback)
+endfunction
+
+// This occurs after a placement event has started, but before the random
+// gem has been finalized.  It is possible to adjust weights here.
+function Gem_Placement__On_Pre_Placement takes boolexpr callback returns nothing
+	call TriggerAddCondition (Gem_Placement___ON_PRE_PLACEMENT, callback)
 endfunction
 
 // Registers the provided `callback` to fire after a placement structure is
@@ -290,14 +297,16 @@ function Gem_Placement___Placement takes nothing returns boolean
 		return false
 	endif
 
-	set Gem_Placement___Placed [index__player] = Gem_Placement___Placed [index__player] + 1
-
 	call ShowUnit (old, false)
 
 	set Gem_Placement___The_Player = the_player
+	call TriggerEvaluate (Gem_Placement___ON_PRE_PLACEMENT)
+
 	set Gem_Placement___The_Unit = PlaceRandomUnit (Gem_Placement___POOL [index__player], the_player, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
 
 	call RemoveUnit (old)
+
+	set Gem_Placement___Placed [index__player] = Gem_Placement___Placed [index__player] + 1
 
 	call TriggerEvaluate (Gem_Placement___ON_PLACEMENT)
 

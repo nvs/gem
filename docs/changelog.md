@@ -6,6 +6,14 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Changed
+- Extra Chance:
+    - Has been adjusted to be more rewarding at all bonuses.
+    - Maximum bonus increased from `5x` to `10x`.
+    - The bonus now increases when the current target is in the same class
+      as the previous target. Classes are defined as Perfects and Slates.
+    - If the bonus is `4x` or higher, hitting the target will now decrease
+      it by `4x` (e.g. `4x` becomes `0x`).  If the bonus is `3x` or lower,
+      it will continue to be cleared.
 - Elder Slate armor debuff no longer improves with levels, and now remains
   at the base value of `-7`.
 
