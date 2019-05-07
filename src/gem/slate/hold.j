@@ -44,6 +44,7 @@ function Gem_Slate___Hold takes nothing returns boolean
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", x, y))
 
 		set damage = Unit_User_Data__Get (attacker) * 20 + 160
+		call Unit_Damage__Is_Code ()
 		call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_CHAOS, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
 
 		set tag = CreateTextTag ()

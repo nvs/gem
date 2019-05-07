@@ -98,6 +98,7 @@ function Gem_Immolation___Damage takes nothing returns boolean
 
 		if GetOwningPlayer (target) == Gem__PLAYER_CREEPS and UnitAlive (target) then
 			if damage > 0 then
+				call Unit_Damage__Is_Code ()
 				call UnitDamageTarget (source, target, damage, false, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, null)
 			endif
 
