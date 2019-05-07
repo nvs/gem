@@ -40,8 +40,8 @@ globals
 	constant integer Gem_Special__BLACK_OPAL_1 = 'h015'
 	constant integer Gem_Special__BLACK_OPAL_2 = 'h02K'
 
-	constant integer Gem_Special__BLOODSTONE_1 = 'h01O'
-	constant integer Gem_Special__BLOODSTONE_2 = 'h02U'
+	constant integer Gem_Special__BLOOD_STONE_1 = 'h01O'
+	constant integer Gem_Special__BLOOD_STONE_2 = 'h02U'
 
 	constant integer Gem_Special__YELLOW_SAPPHIRE_1 = 'h014'
 	constant integer Gem_Special__YELLOW_SAPPHIRE_2 = 'h02R'

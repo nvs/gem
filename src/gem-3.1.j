@@ -1687,7 +1687,7 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 	set victim = GetTriggerUnit ()
 	set units = CreateGroup ()
 
-	set name = UnitId2String (Gem_Special__BLOODSTONE_1)
+	set name = UnitId2String (Gem_Special__BLOOD_STONE_1)
 	call GroupEnumUnitsOfType (units, name, null)
 	loop
 		set which = FirstOfGroup (units)
@@ -1699,7 +1699,7 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 		endif
 	endloop
 
-	set name = UnitId2String (Gem_Special__BLOODSTONE_2)
+	set name = UnitId2String (Gem_Special__BLOOD_STONE_2)
 	call GroupEnumUnitsOfType (units, name, null)
 	loop
 		set which = FirstOfGroup (units)

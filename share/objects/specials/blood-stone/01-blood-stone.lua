@@ -2,10 +2,10 @@ local map = ...
 local objects = map.objects
 
 local ids = {
-	immolation = 'A015'
+	immolation = 'A00Q'
 }
 
--- # Blood Star Immolation
+-- # Blood Stone Immolation
 do
 	local ability = {
 		type = 'ability',
@@ -63,7 +63,7 @@ do
 		}
 
 		for level = 1, 11 do
-			ability.acdn.values [level] = 50 * (1 + 0.1 * (level - 1))
+			ability.acdn.values [level] = 60 * (1 + 0.1 * (level - 1))
 		end
 
 		-- Levels
@@ -84,7 +84,7 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Blood Star)'
+			value = '(Blood Stone)'
 		}
 
 		-- Name
@@ -97,7 +97,7 @@ do
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cff33ff33Blood Star Abilities|r'
+				[1] = '|cff33ff33Blood Stone Abilities|r'
 			}
 		}
 
@@ -107,7 +107,12 @@ do
 			values = {}
 		}
 
-		local text = 'Enemies within <%s,Area1> range will receive'
+		local text = ''
+			.. '-'
+			.. ' Attacks deal splash damage.|n'
+
+			.. '-'
+			.. ' Enemies within <%s,Area1> range will receive'
 			.. ' <%s,Cool%d> spell damage per second.'
 
 		for level = 1, 11 do

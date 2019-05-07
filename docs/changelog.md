@@ -19,6 +19,10 @@ a full list of changes to the project, please consult the commit log.
 
 ### Fixed
 - Air pathing is now more consistent across all players.
+- Sources of AoE spell damage (i.e. Immolation) have been fixed:
+    - Multiple sources will now stack.
+    - Kill bonuses now apply to this type of damage, up to `100%` bonus.
+- Viper Slate's AoE spell damage was double what was intended.
 
 ### Removed
 - Bonus gold that was awarded for reaching certain levels first has been

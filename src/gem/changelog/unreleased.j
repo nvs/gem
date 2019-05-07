@@ -14,6 +14,10 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 
 	set text = text + Color__Gold ("Fixed:") + "|n"
 	set text = text + "- Air pathing is now more consistent across all players.|n"
+	set text = text + "- Sources of AoE spell damage (i.e. Immolation) have been fixed:|n"
+	set text = text + "    - Multiple sources will now stack.|n"
+	set text = text + "    - Kill bonuses now apply to this type of damage, up to `100%` bonus.|n"
+	set text = text + "- Viper Slate's AoE spell damage was double what was intended.|n"
 	set text = text + "|n"
 
 	set text = text + Color__Gold ("Removed:") + "|n"

@@ -2,10 +2,10 @@ local map = ...
 local objects = map.objects
 
 local ids = {
-	immolation = 'A015'
+	immolation = 'A075'
 }
 
--- # Blood Star Immolation
+-- # Viper Slate Immolation
 do
 	local ability = {
 		type = 'ability',
@@ -18,7 +18,7 @@ do
 		-- Button Position - Normal (X)
 		ability.abpx = {
 			type = 'integer',
-			value = 3
+			value = 2
 		}
 
 		-- Button Position - Normal (Y)
@@ -52,7 +52,7 @@ do
 		ability.aare = {
 			type = 'unreal',
 			values = {
-				[1] = 500
+				[1] = 400
 			}
 		}
 
@@ -84,20 +84,20 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Blood Star)'
+			value = '(Viper Slate)'
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Abilities'
+			value = 'Abilities II'
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cff33ff33Blood Star Abilities|r'
+				[1] = '|cff33ff33Viper Slate Abilities 2|r'
 			}
 		}
 

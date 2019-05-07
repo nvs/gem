@@ -6,8 +6,11 @@ function Gem_Special__Initialize takes nothing returns boolean
 	call Gem_Special___Initialize_Jade ()
 
 	// Preload abilities:
-	call Gem_Special_Bloodstone__Initialize ()
+	call Gem_Special_Blood_Stone__Initialize ()
 	call Gem_Special_Tourmaline__Initialize ()
+	call Gem_Special_Red_Crystal__Initialize ()
+	call Gem_Special_Star_Ruby__Initialize ()
+	call Gem_Special_Uranium__Initialize ()
 
 	// Malachite:
 	call Gem_Recipe__Register (Gem_Special__MALACHITE_1, Gem_Gems__AQUAMARINE_CHIPPED, Gem_Gems__EMERALD_CHIPPED, Gem_Gems__OPAL_CHIPPED, 0)
@@ -43,7 +46,7 @@ function Gem_Special__Initialize takes nothing returns boolean
 	call Gem_Recipe__Register (Gem_Special__BLACK_OPAL_1, Gem_Gems__OPAL_PERFECT, Gem_Gems__DIAMOND_FLAWLESS, Gem_Gems__AQUAMARINE_NORMAL, 0)
 
 	// Blood Stone:
-	call Gem_Recipe__Register (Gem_Special__BLOODSTONE_1, Gem_Gems__RUBY_PERFECT, Gem_Gems__AQUAMARINE_FLAWLESS, Gem_Gems__AMETHYST_NORMAL, 0)
+	call Gem_Recipe__Register (Gem_Special__BLOOD_STONE_1, Gem_Gems__RUBY_PERFECT, Gem_Gems__AQUAMARINE_FLAWLESS, Gem_Gems__AMETHYST_NORMAL, 0)
 
 	// Yellow Sapphire:
 	call Gem_Recipe__Register (Gem_Special__YELLOW_SAPPHIRE_1, Gem_Gems__SAPPHIRE_PERFECT, Gem_Gems__RUBY_FLAWLESS, Gem_Gems__TOPAZ_FLAWLESS, 0)

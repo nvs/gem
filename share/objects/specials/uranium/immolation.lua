@@ -2,10 +2,10 @@ local map = ...
 local objects = map.objects
 
 local ids = {
-	immolation = 'A015'
+	immolation = 'A00K'
 }
 
--- # Blood Star Immolation
+-- # Uranium Immolation
 do
 	local ability = {
 		type = 'ability',
@@ -63,7 +63,7 @@ do
 		}
 
 		for level = 1, 11 do
-			ability.acdn.values [level] = 50 * (1 + 0.1 * (level - 1))
+			ability.acdn.values [level] = 200 * (1 + 0.1 * (level - 1))
 		end
 
 		-- Levels
@@ -84,20 +84,20 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Blood Star)'
+			value = '(Uranium)'
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Abilities'
+			value = 'Abilities II'
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cff33ff33Blood Star Abilities|r'
+				[1] = '|cff33ff33Uranium Abilities 2|r'
 			}
 		}
 
