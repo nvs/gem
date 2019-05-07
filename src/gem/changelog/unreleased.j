@@ -11,6 +11,9 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 	set text = text + "    - If the bonus is `4x` or higher, hitting the target will now decrease it by `4x` (e.g. `4x` becomes `0x`).  If the bonus is `3x` or lower, it will continue to be cleared.|n"
 	set text = text + "- Elder Slate armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
 	set text = text + "- Spawn points have been shifted closer to the first checkpoints.|n"
+	set text = text + "- Ancient Slate:|n"
+	set text = text + "    - Armor reduction base value is now `-4`.|n"
+	set text = text + "    - Each additional Ancient Slate adds `-4` to the armor reduction.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)

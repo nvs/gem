@@ -17,6 +17,9 @@ a full list of changes to the project, please consult the commit log.
 - Elder Slate armor debuff no longer improves with levels, and now remains
   at the base value of `-7`.
 - Spawn points have been shifted closer to the first checkpoints.
+- Ancient Slate:
+    - Armor reduction base value is now `-4`.
+    - Each additional Ancient Slate adds `-4` to the armor reduction.
 
 ### Fixed
 - Air pathing is now more consistent across all players.
