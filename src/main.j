@@ -164,6 +164,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Unit_Event__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_State__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Indexer__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Unit_Damage__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Dummy_Caster__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Bonus_Armor__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_User_Data__Initialize))
