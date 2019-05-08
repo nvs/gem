@@ -212,3 +212,20 @@ endfunction
 function Gem_Immolation__Register_SFX takes string id, string sfx, string attach, real period returns nothing
 	call Gem_Immolation__Register_SFX (id, sfx, attach, period, 0.0)
 endfunction
+
+function Gem_Immolation___On_Leave takes nothing returns boolean
+	local unit which = Unit_Event__The_Unit ()
+	call Gem_Immolation__Deregister (which)
+
+	return true
+endfunction
+
+function Gem_Immolation__Initialize takes nothing returns boolean
+	local boolexpr leave
+
+	set leave = Condition (function Gem_Immolation___On_Leave)
+	call Unit_Event__On_Death (leave)
+	call Unit_Event__On_Leave (leave)
+
+	return true
+endfunction

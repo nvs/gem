@@ -193,6 +193,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Commands__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Detect_Placed_Gem_Death__Initialize))
 
+	call TriggerAddCondition (initialize, Condition (function Gem_Immolation__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Slate__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Special__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Spawn__Initialize))
