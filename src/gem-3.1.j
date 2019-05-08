@@ -1007,6 +1007,9 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	else
 		call DoNothing()
 	endif
+	// Not a fan of this.  This is a 'private' function.  But, Jass is on
+	// life support as far as Gem is concerned.
+	call Gem_Special_Fire_Star___Kill ()
 endfunction
 function InitTrig_Gem_Awards takes nothing returns nothing
 	set gg_trg_Gem_Awards=CreateTrigger()
