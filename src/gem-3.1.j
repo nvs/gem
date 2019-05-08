@@ -4068,7 +4068,7 @@ function Trig_Fin_P1_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P1_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[1]==true)
+	return true
 endfunction
 function Trig_Fin_P1_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (0))
@@ -4131,7 +4131,7 @@ function Trig_Fin_P2_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P2_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[2]==true)
+	return true
 endfunction
 function Trig_Fin_P2_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (1))
@@ -4194,7 +4194,7 @@ function Trig_Fin_P3_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P3_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[3]==true)
+	return true
 endfunction
 function Trig_Fin_P3_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (2))
@@ -4257,7 +4257,7 @@ function Trig_Fin_P4_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P4_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[4]==true)
+	return true
 endfunction
 function Trig_Fin_P4_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (3))
@@ -4320,7 +4320,7 @@ function Trig_Fin_P5_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P5_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[5]==true)
+	return true
 endfunction
 function Trig_Fin_P5_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (4))
@@ -4383,7 +4383,7 @@ function Trig_Fin_P6_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P6_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[6]==true)
+	return true
 endfunction
 function Trig_Fin_P6_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (5))
@@ -4446,7 +4446,7 @@ function Trig_Fin_P7_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P7_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[7]==true)
+	return true
 endfunction
 function Trig_Fin_P7_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (6))
@@ -4509,7 +4509,7 @@ function Trig_Fin_P8_2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Fin_P8_2_Func006001 takes nothing returns boolean
-	return(udg_PlayerHERE[8]==true)
+	return true
 endfunction
 function Trig_Fin_P8_2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (7))
