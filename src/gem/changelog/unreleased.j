@@ -1,5 +1,5 @@
-function Gem_Changelog___Unreleased takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased")
+function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 1 of 2"
 	local string date = "N/A"
 	local string text = ""
 
@@ -13,6 +13,14 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 	set text = text + "- Spawn points have been shifted closer to the first checkpoints.|n"
 	set text = text + "|n"
 
+	call Gem_Changelog__Setup (title, text, date)
+endfunction
+
+function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 2 of 2"
+	local string date = "N/A"
+	local string text = ""
+
 	set text = text + Color__Gold ("Fixed:") + "|n"
 	set text = text + "- Air pathing is now more consistent across all players.|n"
 	set text = text + "- Sources of AoE spell damage (i.e. Immolation) have been fixed:|n"
@@ -23,6 +31,12 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 
 	set text = text + Color__Gold ("Removed:") + "|n"
 	set text = text + "- Bonus gold that was awarded for reaching certain levels first has been removed.|n"
+	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
+endfunction
+
+function Gem_Changelog___Unreleased takes nothing returns nothing
+	call Gem_Changelog___Unreleased_Part_1 ()
+	call Gem_Changelog___Unreleased_Part_2 ()
 endfunction
