@@ -5330,6 +5330,7 @@ function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (0))
+	call Gem_Swap__Clear_Round (Player (0))
 	call Gem_Spawn__Stop (0)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
@@ -5399,6 +5400,7 @@ function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (1))
+	call Gem_Swap__Clear_Round (Player (1))
 	call Gem_Spawn__Stop (1)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
@@ -5468,6 +5470,7 @@ function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (2))
+	call Gem_Swap__Clear_Round (Player (2))
 	call Gem_Spawn__Stop (2)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
@@ -5537,6 +5540,7 @@ function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (3))
+	call Gem_Swap__Clear_Round (Player (3))
 	call Gem_Spawn__Stop (3)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
@@ -5606,6 +5610,7 @@ function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (4))
+	call Gem_Swap__Clear_Round (Player (4))
 	call Gem_Spawn__Stop (4)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
@@ -5675,6 +5680,7 @@ function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (5))
+	call Gem_Swap__Clear_Round (Player (5))
 	call Gem_Spawn__Stop (5)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
@@ -5744,6 +5750,7 @@ function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (6))
+	call Gem_Swap__Clear_Round (Player (6))
 	call Gem_Spawn__Stop (6)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
@@ -5813,6 +5820,7 @@ function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (7))
+	call Gem_Swap__Clear_Round (Player (7))
 	call Gem_Spawn__Stop (7)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)

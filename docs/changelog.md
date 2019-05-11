@@ -6,6 +6,10 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Changed
+- Swap:
+    - No longer available on individual towers.
+    - Is now an ability on the builder, and costs `10` mana.
+    - The builder gains `1` mana for every level completed.
 - Extra Chance:
     - Has been adjusted to be more rewarding at all bonuses.
     - Maximum bonus increased from `5x` to `10x`.

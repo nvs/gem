@@ -6,7 +6,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Player_Leaves ()
 	call InitTrig_Creeps_attacking ()
 	call InitTrig_Type_Air ()
-	call InitTrig_Swap_Reworked ()
 	call InitTrig_AntiStuck ()
 	call InitTrig_Slate_move ()
 	call InitTrig_Range_Check ()
@@ -197,6 +196,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Special__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Spawn__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Rank__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Swap__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Gem_Quality__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Type__Initialize))

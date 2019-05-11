@@ -4,6 +4,10 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed:") + "|n"
+	set text = text + "- Swap:|n"
+	set text = text + "    - No longer available on individual towers.|n"
+	set text = text + "    - Is now an ability on the builder, and costs `10` mana.|n"
+	set text = text + "    - The builder gains `1` mana for every level completed.|n"
 	set text = text + "- Extra Chance:|n"
 	set text = text + "    - Has been adjusted to be more rewarding at all bonuses.|n"
 	set text = text + "    - Maximum bonus increased from `5x` to `10x`.|n"
