@@ -190,3 +190,4 @@ CustomSkin.ToolTipLumberIcon =
 
 -- Text - Message - 'Not enough lumber.':
 Errors.Nolumber = 'Five gems placed already'
+Errors.Notancient = 'Unable to target Slates'

@@ -27,7 +27,7 @@ for _, id in ipairs (slates) do
 	if unit then
 		unit.utyp = {
 			type = 'string',
-			value = 'mechanical,standon'
+			value = 'mechanical,standon,ancient'
 		}
 	end
 end
