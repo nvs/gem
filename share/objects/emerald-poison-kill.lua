@@ -22,6 +22,3 @@ for _, id in ipairs (list) do
 		}
 	}
 end
-
-local inspect = require ('inspect')
-print (inspect (objects.A002))
