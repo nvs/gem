@@ -18,6 +18,8 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 	set text = text + "- Ancient Slate:|n"
 	set text = text + "    - Armor reduction base value is now `-4`.|n"
 	set text = text + "    - Each additional Ancient Slate adds `-4` to the armor reduction.|n"
+	set text = text + "- Emeralds:|n"
+	set text = text + "    - Poison damage can now kill units.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)

@@ -24,6 +24,8 @@ a full list of changes to the project, please consult the commit log.
 - Ancient Slate:
     - Armor reduction base value is now `-4`.
     - Each additional Ancient Slate adds `-4` to the armor reduction.
+- Emeralds:
+    - Poison damage can now kill units.
 
 ### Fixed
 - Air pathing is now more consistent across all players.
