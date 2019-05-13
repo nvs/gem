@@ -23,6 +23,7 @@ function Gem_Special_Star_Ruby___Register takes unit which returns nothing
 		return
 	endif
 
+	call Gem_Immolation__Deregister (which)
 	call Gem_Immolation__Register (which, id, radius, period, damage)
 endfunction
 
