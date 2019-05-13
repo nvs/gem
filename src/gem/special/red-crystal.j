@@ -2,7 +2,7 @@ function Gem_Special_Red_Crystal___Register_SFX takes nothing returns nothing
 	local string id = "red crystal"
 	local string sfx = "Abilities\\Spells\\Demon\\DemonBoltImpact\\DemonBoltImpact.mdl"
 	local string attach = "chest"
-	local real period = 0.20
+	local real period = 1.0
 
 	call Gem_Immolation__Register_SFX (id, sfx, attach, period)
 endfunction
