@@ -28,28 +28,12 @@ function Gem_Special_Blood_Stone___Enter takes nothing returns boolean
 	return true
 endfunction
 
-function Gem_Special_Blood_Stone___Leave takes nothing returns boolean
-	local unit which = Unit_Event__The_Unit ()
-	local integer id = GetUnitTypeId (which)
-
-	if id == Gem_Special__BLOOD_STONE_1 then
-		call Gem_Immolation__Deregister (which)
-	endif
-
-	return true
-endfunction
-
 function Gem_Special_Blood_Stone__Initialize takes nothing returns nothing
 	local boolexpr enter
-	local boolexpr leave
 
 	call Gem_Special_Blood_Stone___Register_SFX ()
 	call Preload__Ability ('A07A') // Forked Lightning
 
 	set enter = Condition (function Gem_Special_Blood_Stone___Enter)
 	call Unit_Event__On_Enter (enter)
-
-	set leave = Condition (function Gem_Special_Blood_Stone___Leave)
-	call Unit_Event__On_Death (leave)
-	call Unit_Event__On_Leave (leave)
 endfunction

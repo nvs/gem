@@ -90,6 +90,7 @@ endfunction
 
 function Cheats___Invincibility takes nothing returns boolean
 	call SetUnitInvulnerable (Cheats___VICTIM, false)
+	call Unit_Damage__Is_Code ()
 	call UnitDamageTarget (Cheats___ATTACKER, Cheats___VICTIM, Cheats___DAMAGE, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, null)
 
 	if UnitAlive (Cheats___VICTIM) then

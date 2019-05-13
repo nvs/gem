@@ -31,3 +31,32 @@ objects ['UEDL'] = {
 		value = 'other'
 	}
 }
+
+-- Unit Event: Detect Damage
+objects ['UEDD'] = {
+	type = 'ability',
+	base = 'AIsr',
+
+	anam = {
+		type = 'string',
+		value = 'Detect Damage',
+	},
+
+	ansf = {
+		type = 'string',
+		value = '(Unit Event)'
+	},
+
+	aite = {
+		type = 'integer',
+		value = 0
+	},
+
+	isr2 = {
+		data = 2,
+		type = 'unreal',
+		values = {
+			[1] = 2.0
+		}
+	}
+}

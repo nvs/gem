@@ -28,27 +28,11 @@ function Gem_Slate_Viper___Enter takes nothing returns boolean
 	return true
 endfunction
 
-function Gem_Slate_Viper___Leave takes nothing returns boolean
-	local unit which = Unit_Event__The_Unit ()
-	local integer id = GetUnitTypeId (which)
-
-	if id == Gem_Slate__VIPER then
-		call Gem_Immolation__Deregister (which)
-	endif
-
-	return true
-endfunction
-
 function Gem_Slate_Viper__Initialize takes nothing returns nothing
 	local boolexpr enter
-	local boolexpr leave
 
 	call Gem_Slate_Viper___Register_SFX ()
 
 	set enter = Condition (function Gem_Slate_Viper___Enter)
 	call Unit_Event__On_Enter (enter)
-
-	set leave = Condition (function Gem_Slate_Viper___Leave)
-	call Unit_Event__On_Death (leave)
-	call Unit_Event__On_Leave (leave)
 endfunction
