@@ -64,7 +64,7 @@ function Board___Title takes player whom returns string
 
 	local string rank = Color__White (Board___Ranks [Gem_Rank__Get_Rank (GetLocalPlayer ())])
 	local string level = Color__White (I2S (udg_RLevel [whom_id + 1]))
-	local string lives = Color__White (I2S (udg_Lives [whom_id + 1]))
+	local string lives = I2S (udg_Lives [whom_id + 1])
 
 	local integer current = Gem_Extra_Chance__Current_Target (whom)
 	local integer previous = Gem_Extra_Chance__Previous_Target (whom)
@@ -99,6 +99,12 @@ function Board___Title takes player whom returns string
 		set extra_chance = Color (color, name + " (" + I2S (bonus) + "x)")
 	else
 		set extra_chance = Color__White ("N/A")
+	endif
+
+	if lives == "0" then
+		set lives = Color__Red (lives)
+	else
+		set lives = Color__White (lives)
 	endif
 
 	set title = "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
@@ -160,6 +166,7 @@ function Board___Update takes nothing returns nothing
 	local string value
 	local multiboarditem board_item
 	local boolean is_grey
+	local boolean is_red
 
 	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 
@@ -181,6 +188,7 @@ function Board___Update takes nothing returns nothing
 			set value = null
 			set board_item = MultiboardGetItem (Board, row, column)
 			set is_grey = false
+			set is_red = false
 
 			if column == 0 then
 				set value = GetPlayerName (whom)
@@ -188,6 +196,7 @@ function Board___Update takes nothing returns nothing
 				set value = I2S (udg_RLevel [whom_id + 1])
 			elseif column == 2 then
 				set value = I2S (udg_Lives [whom_id + 1])
+				set is_red = value == "0"
 			elseif column == 3 then
 				set value = I2S (GetPlayerState (whom, PLAYER_STATE_RESOURCE_GOLD))
 			elseif column == 4 then
@@ -234,6 +243,8 @@ function Board___Update takes nothing returns nothing
 				call MultiboardSetItemValueColor (board_item, Player_Color__Red (whom_id), Player_Color__Green (whom_id), Player_Color__Blue (whom_id), 255)
 			elseif has_left or is_grey then
 				call MultiboardSetItemValueColor (board_item, 128, 128, 128, 255)
+			elseif is_red then
+				call MultiboardSetItemValueColor (board_item, 255, 0, 0, 255)
 			else
 				call MultiboardSetItemValueColor (board_item, 255, 255, 255, 255)
 			endif
