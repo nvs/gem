@@ -1,9 +1,42 @@
 local map = ...
 local objects = map.objects
+local globals = map.globals
+
+local id = require ('lib.gem.id')
 
 local ids = {
+	unit = id (globals.Gem_Special__BLOOD_STONE_1),
 	immolation = 'A00Q'
 }
+
+-- # Blood Stone
+do
+	local unit = objects [ids.unit]
+	unit.base = 'hgtw'
+	unit.uabi.value = ids.immolation
+	unit.ua1w = {
+		type = 'string',
+		value = 'missile'
+	}
+	unit.ua1g.value = 'enemies'
+	unit.ua1c.value = 0.8
+
+	unit.ua1f.value = 0
+	unit.ua1h.value = 0
+	unit.ua1q.value = 0
+	unit.umpm = {
+		type = 'integer',
+		value = 10
+	}
+	unit.umpi = {
+		type = 'integer',
+		value = 10
+	}
+	unit.umpr = {
+		type = 'unreal',
+		value = 3.5
+	}
+end
 
 -- # Blood Stone Immolation
 do
@@ -48,23 +81,11 @@ do
 
 	-- ## Stats
 	do
-		-- Area of Effect
-		ability.aare = {
-			type = 'unreal',
-			values = {
-				[1] = 500
-			}
-		}
-
 		-- Cooldown
 		ability.acdn = {
 			type = 'unreal',
 			values = {}
 		}
-
-		for level = 1, 11 do
-			ability.acdn.values [level] = 60 * (1 + 0.1 * (level - 1))
-		end
 
 		-- Levels
 		ability.alev = {
@@ -109,15 +130,89 @@ do
 
 		local text = ''
 			.. '-'
-			.. ' Attacks deal splash damage.|n'
+			.. ' 24%% chance to cast a <GBSB,DataA%d> damage Blood'
+			.. ' Lightning spell, costing <GBSB,Cost%d> mana.|n'
 
 			.. '-'
-			.. ' Enemies within <%s,Area1> range will receive'
-			.. ' <%s,Cool%d> spell damage per second.'
+			.. ' +12%% chance to cast Blood Lightning for each additional'
+			.. ' Blood Stone or Ancient Blood Stone.|n'
 
 		for level = 1, 11 do
-			ability.aub1.values [level] = string.format (
-				text, ids.immolation, ids.immolation, level)
+			ability.aub1.values [level] = string.format (text, level, level)
 		end
 	end
 end
+
+local function fill (value)
+	local values = {}
+
+	for level = 1, 11 do
+		values [level] = value
+	end
+
+	return values
+end
+
+-- # Blood Lightning
+objects.GBSB = {
+	type = 'ability',
+	base = 'ANfl',
+
+	Ocl1 = {
+		data = 1,
+		type = 'unreal',
+		values = {
+			150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450
+		}
+	},
+	Ocl2 = {
+		data = 2,
+		type = 'integer',
+		values = fill (9)
+	},
+	Ucs4 = {
+		data = 4,
+		type = 'unreal',
+		values = fill (600)
+	},
+	aare = {
+		type = 'unreal',
+		values = fill (250)
+	},
+	acdn = {
+		type = 'unreal',
+		values = fill (0)
+	},
+	aher = {
+		type = 'integer',
+		value = 0
+	},
+	alev = {
+		type = 'integer',
+		value = 11
+	},
+	alig = {
+		type = 'string',
+		value = 'AFOD'
+	},
+	amcs = {
+		type = 'integer',
+		values = fill (5)
+	},
+	anam = {
+		type = 'string',
+		value = 'Blood Lightning'
+	},
+	arac = {
+		type = 'string',
+		value = 'other'
+	},
+	asat = {
+		type = 'string',
+		value = 'Abilities\\Spells\\Demon\\DemonBoltImpact\\DemonBoltImpact.mdl'
+	},
+	atar = {
+		type = 'string',
+		values = fill ('enemies')
+	}
+}

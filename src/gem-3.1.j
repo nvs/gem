@@ -1010,6 +1010,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	// Not a fan of this.  This is a 'private' function.  But, Jass is on
 	// life support as far as Gem is concerned.
 	call Gem_Special_Fire_Star___Kill ()
+	call Gem_Special_Blood_Stone___Kill ()
 endfunction
 function InitTrig_Gem_Awards takes nothing returns nothing
 	set gg_trg_Gem_Awards=CreateTrigger()
@@ -1672,98 +1673,6 @@ function Trig_Tourmaline_Facet_Actions takes nothing returns boolean
 endfunction
 function InitTrig_Tourmaline_Facet takes nothing returns nothing
 	call Unit_Damage__On_Damage (function Trig_Tourmaline_Facet_Actions)
-endfunction
-function Trig_Ancient_Bloodstone_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttacker())=='h02U'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Ancient_Bloodstone_Actions takes nothing returns boolean
-	local string kind = Unit_Damage__Kind ()
-
-	local unit source = GetEventDamageSource ()
-	local unit target = GetTriggerUnit ()
-
-	local unit attacker
-	local player owner
-	local unit victim
-	local group units
-	local unit which
-	local string name
-	local integer count = 0
-	local integer chance
-	local integer roll
-	local integer kills
-	local integer level
-
-	set Label = "Gem_Special_Ancient_Blood_Stone"
-
-	if kind != "attack" then
-		return true
-	endif
-
-	if GetUnitTypeId (source) != 'h02U' then
-		return true
-	endif
-
-	set attacker = source
-
-	if GetUnitState (attacker, UNIT_STATE_MANA) < 5.0 then
-		return true
-	endif
-
-	set owner = GetOwningPlayer (attacker)
-	set victim = target
-	set units = CreateGroup ()
-
-	set name = UnitId2String (Gem_Special__BLOOD_STONE_1)
-	call GroupEnumUnitsOfType (units, name, null)
-	loop
-		set which = FirstOfGroup (units)
-		exitwhen which == null
-		call GroupRemoveUnit (units, which)
-
-		if GetOwningPlayer (which) == owner then
-			set count = count + 1
-		endif
-	endloop
-
-	set name = UnitId2String (Gem_Special__BLOOD_STONE_2)
-	call GroupEnumUnitsOfType (units, name, null)
-	loop
-		set which = FirstOfGroup (units)
-		exitwhen which == null
-		call GroupRemoveUnit (units, which)
-
-		if GetOwningPlayer (which) == owner then
-			set count = count + 1
-		endif
-	endloop
-
-	call DestroyGroup (units)
-
-	set roll = GetRandomInt (1, 100)
-
-	// By default, a single Ancient Blood Stone has `24%` chance to trigger
-	// Blood Lightning on attack.  Each additional Blood Stone or Ancient
-	// Blood Stone adds `12%` chance.
-	set chance = 24 + 12 * (count - 1)
-
-	if roll <= chance then
-		set kills = Unit_User_Data__Get (attacker)
-		set level = IMinBJ (kills / 10 + 1, 11)
-
-		call UnitAddAbility (attacker, 'A07A')
-		call SetUnitAbilityLevel (attacker, 'A07A', level)
-		call IssueTargetOrder (attacker, ORDER_FORKEDLIGHTNING, victim)
-		call UnitRemoveAbility (attacker, 'A07A')
-	endif
-
-	return true
-endfunction
-function InitTrig_Ancient_Bloodstone takes nothing returns nothing
-	call Unit_Damage__On_Damage (function Trig_Ancient_Bloodstone_Actions)
 endfunction
 function Trig_Spell_Slate_Actions takes nothing returns boolean
 	local string kind = Unit_Damage__Kind ()

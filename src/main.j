@@ -16,7 +16,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Find_spell_levels ()
 	call InitTrig_Tourmaline ()
 	call InitTrig_Tourmaline_Facet ()
-	call InitTrig_Ancient_Bloodstone ()
 	call InitTrig_Spell_Slate ()
 	call InitTrig_Elder_Slate ()
 	call InitTrig_Air_Slate ()

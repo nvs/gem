@@ -1,5 +1,5 @@
 function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 1 of 3"
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 1 of 4"
 	local string date = "N/A"
 	local string text = ""
 
@@ -19,7 +19,7 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 endfunction
 
 function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 2 of 3"
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 2 of 4"
 	local string date = "N/A"
 	local string text = ""
 
@@ -33,6 +33,22 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "    - Each additional Dark Emerald or Enchanted Emerald:|n"
 	set text = text + "        - Causes attacks to bounce to an additional nearby enemy.|n"
 	set text = text + "        - Increases the chance to stun on attack.|n"
+	set text = text + "|n"
+
+	call Gem_Changelog__Setup (title, text, date)
+endfunction
+
+function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 3 of 4"
+	local string date = "N/A"
+	local string text = ""
+
+	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
+	set text = text + "- Blood Stone:|n"
+	set text = text + "    - Attack is no longer AoE.|n"
+	set text = text + "    - No longer deals Immolation style damage.|n"
+	set text = text + "    - Now has a chance to cast a Blood Lightning on attack.|n"
+	set text = text + "    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as Ancient Blood Stone.|n"
 	set text = text + "- Emeralds:|n"
 	set text = text + "    - Poison damage can now kill units.|n"
 	set text = text + "- Fire Star:|n"
@@ -43,8 +59,8 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
 
-function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 3 of 3"
+function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 4 of 4"
 	local string date = "N/A"
 	local string text = ""
 
@@ -76,4 +92,5 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 	call Gem_Changelog___Unreleased_Part_1 ()
 	call Gem_Changelog___Unreleased_Part_2 ()
 	call Gem_Changelog___Unreleased_Part_3 ()
+	call Gem_Changelog___Unreleased_Part_4 ()
 endfunction

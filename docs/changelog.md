@@ -28,6 +28,12 @@ a full list of changes to the project, please consult the commit log.
     - Each additional Dark Emerald or Enchanted Emerald:
         - Causes attacks to bounce to an additional nearby enemy.
         - Increases the chance to stun on attack.
+- Blood Stone:
+    - Attack is no longer AoE.
+    - No longer deals Immolation style damage.
+    - Now has a chance to cast a Blood Lightning on attack.
+    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as
+      Ancient Blood Stone.
 - Emeralds:
     - Poison damage can now kill units.
 - Fire Star:
