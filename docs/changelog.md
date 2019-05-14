@@ -38,6 +38,16 @@ a full list of changes to the project, please consult the commit log.
     - Multiple sources will now stack.
     - Kill bonuses now apply to this type of damage, up to `100%` bonus.
 - Viper Slate's AoE spell damage was double what was intended.
+- The following structures now only perform actions (i.e. stuns, casts,
+  etc.) when damage is actually dealt:
+    - Dark Emerald.
+    - Enchanted Dark Emerald.
+    - Ancient Blood Stone.
+    - Lucky China Jade.
+    - Paraiba Tourmaline.
+    - Paraiba Tourmaline Facet.
+    - Spell Slate.
+    - Elder Slate.
 
 ### Removed
 - Bonus gold that was awarded for reaching certain levels first has been

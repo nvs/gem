@@ -1,27 +1,33 @@
 // # Dark Emerald
 
-function Gem_Special___Dark_Emerald takes nothing returns boolean
-	local unit attacker
-	local unit victim
-	local integer attacker_id
+function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
 
-	set attacker = GetAttacker ()
-	set victim = GetTriggerUnit ()
-	set attacker_id = GetUnitTypeId (attacker)
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
 
-	if (attacker_id == 'h02V' or attacker_id == 'h01N') and GetRandomInt (1, 8) == 1 and not Unit_Stun__Is_Stunned (victim) then
-		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", victim, "chest"))
-		call Unit_Stun__Apply (victim, 1.50)
+	local integer id
+
+	set Label = "Gem_Special_Dark_Emerald___Damage"
+
+	if kind != "attack" then
+		return true
 	endif
 
-	return false
+	set id = GetUnitTypeId (source)
+
+	if id != Gem_Special__DARK_EMERALD_1 and id != Gem_Special__DARK_EMERALD_2 then
+		return true
+	endif
+
+	if not Unit_Stun__Is_Stunned (target) and GetRandomInt (1, 8) == 1 then
+		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", target, "chest"))
+		call Unit_Stun__Apply (target, 1.50)
+	endif
+
+	return true
 endfunction
 
 function Gem_Special___Initialize_Dark_Emerald takes nothing returns nothing
-	local trigger the_trigger
-
-	set the_trigger = CreateTrigger ()
-
-	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
-	call TriggerAddCondition (the_trigger, Condition (function Gem_Special___Dark_Emerald))
+	call Unit_Damage__On_Damage (function Gem_Special_Dark_Emerald___Damage)
 endfunction

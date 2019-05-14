@@ -23,6 +23,11 @@ function Gem_Special___Jade_Tag takes unit the_unit, string message, integer red
 endfunction
 
 function Gem_Special___Jade takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
+
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
+
 	local unit attacker
 	local unit victim
 	local player owner
@@ -30,8 +35,14 @@ function Gem_Special___Jade takes nothing returns boolean
 	local integer roll
 	local integer gold
 
-	set attacker = GetAttacker ()
-	set victim = GetTriggerUnit ()
+	set Label = "Gem_Special_Jade"
+
+	if kind != "attack" then
+		return true
+	endif
+
+	set attacker = source
+	set victim = target
 
 	if GetUnitTypeId (attacker) == 'h035' then
 		set owner = GetOwningPlayer (attacker)
@@ -55,14 +66,9 @@ function Gem_Special___Jade takes nothing returns boolean
 		endif
 	endif
 
-	return false
+	return true
 endfunction
 
 function Gem_Special___Initialize_Jade takes nothing returns nothing
-	local trigger the_trigger
-
-	set the_trigger = CreateTrigger ()
-
-	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
-	call TriggerAddCondition (the_trigger, Condition (function Gem_Special___Jade))
+	call Unit_Damage__On_Damage (function Gem_Special___Jade)
 endfunction

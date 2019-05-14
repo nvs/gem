@@ -1601,67 +1601,77 @@ function InitTrig_Maxed_out_quality_Upgrade takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Maxed_out_quality_Upgrade,Condition(function Trig_Maxed_out_quality_Upgrade_Conditions))
 	call TriggerAddAction(gg_trg_Maxed_out_quality_Upgrade,function Trig_Maxed_out_quality_Upgrade_Actions)
 endfunction
-function Trig_Tourmaline_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttacker())=='h040'))then
-		return false
+function Trig_Tourmaline_Actions takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
+	local real mana
+
+	set Label = "Gem_Special_Tourmaline"
+
+	if kind != "attack" then
+		return true
 	endif
-	if(not(R2I(GetUnitStateSwap(UNIT_STATE_MANA,GetAttacker()))>=5))then
-		return false
+
+	if GetUnitTypeId (source) != 'h040' then
+		return true
 	endif
+
+	set mana = GetUnitState (source, UNIT_STATE_MANA)
+
+	if mana < 5.0 then
+		return true
+	endif
+
+	if GetRandomInt (1, 5) > 1 then
+		return true
+	endif
+
+	call UnitAddAbility (source, 'A03J')
+	call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
+	call UnitRemoveAbility (source, 'A03J')
+	call SetUnitState (source, UNIT_STATE_MANA, mana - 5.0)
+
 	return true
-endfunction
-function Trig_Tourmaline_Func002C takes nothing returns boolean
-	if(not(udg_Random[7]==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Tourmaline_Actions takes nothing returns nothing
-	set udg_Random[7]=GetRandomInt(1,5)
-	if(Trig_Tourmaline_Func002C())then
-		call UnitAddAbilityBJ('A03J',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A03J',GetAttacker())
-		call SetUnitManaBJ(GetAttacker(),(GetUnitStateSwap(UNIT_STATE_MANA,GetAttacker())-5.00))
-	else
-	endif
 endfunction
 function InitTrig_Tourmaline takes nothing returns nothing
-	set gg_trg_Tourmaline=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Tourmaline,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Tourmaline,Condition(function Trig_Tourmaline_Conditions))
-	call TriggerAddAction(gg_trg_Tourmaline,function Trig_Tourmaline_Actions)
+	call Unit_Damage__On_Damage (function Trig_Tourmaline_Actions)
 endfunction
-function Trig_Tourmaline_Facet_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttacker())=='h041'))then
-		return false
+function Trig_Tourmaline_Facet_Actions takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
+	local real mana
+
+	set Label = "Gem_Special_Tourmaline_Facet"
+
+	if kind != "attack" then
+		return true
 	endif
-	if(not(R2I(GetUnitStateSwap(UNIT_STATE_MANA,GetAttacker()))>=5))then
-		return false
+
+	if GetUnitTypeId (source) != 'h041' then
+		return true
 	endif
+
+	set mana = GetUnitState (source, UNIT_STATE_MANA)
+
+	if mana < 5.0 then
+		return true
+	endif
+
+	if GetRandomInt (1, 5) > 1 then
+		return true
+	endif
+
+	call UnitAddAbility (source, 'A03N')
+	call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
+	call UnitRemoveAbility (source, 'A03N')
+	call SetUnitState (source, UNIT_STATE_MANA, mana - 5.0)
+
 	return true
-endfunction
-function Trig_Tourmaline_Facet_Func002C takes nothing returns boolean
-	if(not(udg_Random[7]==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Tourmaline_Facet_Actions takes nothing returns nothing
-	set udg_Random[7]=GetRandomInt(1,5)
-	if(Trig_Tourmaline_Facet_Func002C())then
-		call UnitAddAbilityBJ('A03N',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A03N',GetAttacker())
-		call SetUnitManaBJ(GetAttacker(),(GetUnitStateSwap(UNIT_STATE_MANA,GetAttacker())-5.00))
-	else
-	endif
 endfunction
 function InitTrig_Tourmaline_Facet takes nothing returns nothing
-	set gg_trg_Tourmaline_Facet=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Tourmaline_Facet,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Tourmaline_Facet,Condition(function Trig_Tourmaline_Facet_Conditions))
-	call TriggerAddAction(gg_trg_Tourmaline_Facet,function Trig_Tourmaline_Facet_Actions)
+	call Unit_Damage__On_Damage (function Trig_Tourmaline_Facet_Actions)
 endfunction
 function Trig_Ancient_Bloodstone_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='h02U'))then
@@ -1669,8 +1679,13 @@ function Trig_Ancient_Bloodstone_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
-	local unit attacker = GetAttacker ()
+function Trig_Ancient_Bloodstone_Actions takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
+
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
+
+	local unit attacker
 	local player owner
 	local unit victim
 	local group units
@@ -1682,12 +1697,24 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 	local integer kills
 	local integer level
 
+	set Label = "Gem_Special_Ancient_Blood_Stone"
+
+	if kind != "attack" then
+		return true
+	endif
+
+	if GetUnitTypeId (source) != 'h02U' then
+		return true
+	endif
+
+	set attacker = source
+
 	if GetUnitState (attacker, UNIT_STATE_MANA) < 5.0 then
-		return
+		return true
 	endif
 
 	set owner = GetOwningPlayer (attacker)
-	set victim = GetTriggerUnit ()
+	set victim = target
 	set units = CreateGroup ()
 
 	set name = UnitId2String (Gem_Special__BLOOD_STONE_1)
@@ -1732,96 +1759,51 @@ function Trig_Ancient_Bloodstone_Actions takes nothing returns nothing
 		call IssueTargetOrder (attacker, ORDER_FORKEDLIGHTNING, victim)
 		call UnitRemoveAbility (attacker, 'A07A')
 	endif
+
+	return true
 endfunction
 function InitTrig_Ancient_Bloodstone takes nothing returns nothing
-	set gg_trg_Ancient_Bloodstone=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Ancient_Bloodstone,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Ancient_Bloodstone,Condition(function Trig_Ancient_Bloodstone_Conditions))
-	call TriggerAddAction(gg_trg_Ancient_Bloodstone,function Trig_Ancient_Bloodstone_Actions)
+	call Unit_Damage__On_Damage (function Trig_Ancient_Bloodstone_Actions)
 endfunction
-function Trig_Spell_Slate_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttacker())=='n009'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Spell_Slate_Func002C takes nothing returns boolean
-	if(not(udg_Random[8]>=1))then
-		return false
-	endif
-	if(not(udg_Random[8]<=5))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Spell_Slate_Func003C takes nothing returns boolean
-	if(not(udg_Random[8]>=6))then
-		return false
-	endif
-	if(not(udg_Random[8]<=10))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Spell_Slate_Func004C takes nothing returns boolean
-	if(not(udg_Random[8]>=11))then
-		return false
-	endif
-	if(not(udg_Random[8]<=15))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Spell_Slate_Func005C takes nothing returns boolean
-	if(not(udg_Random[8]>=16))then
-		return false
-	endif
-	if(not(udg_Random[8]<=20))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Spell_Slate_Func006C takes nothing returns boolean
-	if(not(udg_Random[8]>=21))then
-		return false
-	endif
-	if(not(udg_Random[8]<=25))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Spell_Slate_Actions takes nothing returns nothing
-	local unit attacker
-	local unit target
+function Trig_Spell_Slate_Actions takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
+	local unit attacker = source
 	local integer target_index
 	local integer debuff_level
 	local boolean has_elder_debuff
-	set udg_Random[8]=GetRandomInt(1,100)
-	if(Trig_Spell_Slate_Func002C())then
+	local integer random
+
+	set Label = "Gem_Spell_Slate"
+
+	if kind != "attack" then
+		return true
+	endif
+
+	if GetUnitTypeId (source) != 'n009' then
+		return true
+	endif
+
+	set random = GetRandomInt (1, 100)
+
+	if random <= 5 then
 		call UnitAddAbilityBJ('A05R',GetAttacker())
 		call IssueImmediateOrderBJ(GetAttacker(),ORDER_FANOFKNIVES)
 		call UnitRemoveAbilityBJ('A05R',GetAttacker())
-	else
-	endif
-	if(Trig_Spell_Slate_Func003C())then
+	elseif random <= 10 then
 		call UnitAddAbilityBJ('A05S',GetAttacker())
 		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05S',GetAttacker())
-	else
-	endif
-	if(Trig_Spell_Slate_Func004C())then
+	elseif random <= 15 then
 		call UnitAddAbilityBJ('A05Q',GetAttacker())
 		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05Q',GetAttacker())
-	else
-	endif
-	if(Trig_Spell_Slate_Func005C())then
+	elseif random <= 20 then
 		call UnitAddAbilityBJ('A05U',GetAttacker())
-		call IssuePointOrderLocBJ(GetAttacker(),ORDER_CARRIONSWARM,GetUnitLoc(GetAttackedUnitBJ()))
+		call IssuePointOrder (GetAttacker (), ORDER_CARRIONSWARM, GetUnitX (target), GetUnitY (target))
 		call UnitRemoveAbilityBJ('A05U',GetAttacker())
-	else
-	endif
-	if(Trig_Spell_Slate_Func006C() and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0)then
+	elseif random <= 25 and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0 then
 		set attacker = GetAttacker ()
 		set target = GetTriggerUnit ()
 
@@ -1840,14 +1822,12 @@ function Trig_Spell_Slate_Actions takes nothing returns nothing
 			call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
 			call UnitRemoveAbility (attacker, 'A05T')
 		endif
-	else
 	endif
+
+	return true
 endfunction
 function InitTrig_Spell_Slate takes nothing returns nothing
-	set gg_trg_Spell_Slate=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Spell_Slate,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Spell_Slate,Condition(function Trig_Spell_Slate_Conditions))
-	call TriggerAddAction(gg_trg_Spell_Slate,function Trig_Spell_Slate_Actions)
+	call Unit_Damage__On_Damage (function Trig_Spell_Slate_Actions)
 endfunction
 function Trig_Elder_Slate_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='n00A'))then
@@ -1885,15 +1865,6 @@ endfunction
 function Trig_Elder_Slate_Func002Func013001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
-function Trig_Elder_Slate_Func002C takes nothing returns boolean
-	if(not(udg_Random[7]>=1))then
-		return false
-	endif
-	if(not(udg_Random[7]<=5))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Elder_Slate_Func003Func005001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
@@ -1923,15 +1894,6 @@ function Trig_Elder_Slate_Func003Func013001 takes nothing returns boolean
 endfunction
 function Trig_Elder_Slate_Func003Func014001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func003C takes nothing returns boolean
-	if(not(udg_Random[7]>=6))then
-		return false
-	endif
-	if(not(udg_Random[7]<=13))then
-		return false
-	endif
-	return true
 endfunction
 function Trig_Elder_Slate_Func004Func004001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=10)
@@ -1963,15 +1925,6 @@ endfunction
 function Trig_Elder_Slate_Func004Func013001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
-function Trig_Elder_Slate_Func004C takes nothing returns boolean
-	if(not(udg_Random[7]>=14))then
-		return false
-	endif
-	if(not(udg_Random[7]<=18))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Elder_Slate_Func005Func005001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
@@ -2001,15 +1954,6 @@ function Trig_Elder_Slate_Func005Func013001 takes nothing returns boolean
 endfunction
 function Trig_Elder_Slate_Func005Func014001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func005C takes nothing returns boolean
-	if(not(udg_Random[7]>=19))then
-		return false
-	endif
-	if(not(udg_Random[7]<=25))then
-		return false
-	endif
-	return true
 endfunction
 function Trig_Elder_Slate_Func006Func004001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=10)
@@ -2041,15 +1985,6 @@ endfunction
 function Trig_Elder_Slate_Func006Func013001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
-function Trig_Elder_Slate_Func006C takes nothing returns boolean
-	if(not(udg_Random[7]>=26))then
-		return false
-	endif
-	if(not(udg_Random[7]<=30))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Elder_Slate_Func008Func004001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=10)
 endfunction
@@ -2079,15 +2014,6 @@ function Trig_Elder_Slate_Func008Func012001 takes nothing returns boolean
 endfunction
 function Trig_Elder_Slate_Func008Func013001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func008C takes nothing returns boolean
-	if(not(udg_Random[7]>=36))then
-		return false
-	endif
-	if(not(udg_Random[7]<=40))then
-		return false
-	endif
-	return true
 endfunction
 function Trig_Elder_Slate_Func009Func004001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=10)
@@ -2119,25 +2045,32 @@ endfunction
 function Trig_Elder_Slate_Func009Func013001 takes nothing returns boolean
 	return(Unit_User_Data__Get(GetAttacker())>=100)
 endfunction
-function Trig_Elder_Slate_Func009C takes nothing returns boolean
-	if(not(udg_Random[7]>=41))then
-		return false
-	endif
-	if(not(udg_Random[7]<=45))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Elder_Slate_Actions takes nothing returns nothing
-	local unit attacker
+function Trig_Elder_Slate_Actions takes nothing returns boolean
+	local string kind = Unit_Damage__Kind ()
+
+	local unit source = GetEventDamageSource ()
+	local unit target = GetTriggerUnit ()
+	local unit attacker = source
 	local integer attacker_kills
-	local unit target
 	local integer target_index
 	local integer debuff_level
 	local boolean has_spell_debuff
 	local boolean has_elder_debuff
-	set udg_Random[7]=GetRandomInt(1,100)
-	if(Trig_Elder_Slate_Func002C())then
+	local integer random
+
+	set Label = "Gem_Slate_Elder"
+
+	if kind != "attack" then
+		return true
+	endif
+
+	if GetUnitTypeId (source) != 'n00A' then
+		return true
+	endif
+
+	set random = GetRandomInt (1, 100)
+
+	if random <= 5 then
 		call UnitAddAbilityBJ('A05Z',GetAttacker())
 		if(Trig_Elder_Slate_Func002Func004001())then
 			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
@@ -2191,9 +2124,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		endif
 		call IssueImmediateOrderBJ(GetAttacker(),ORDER_FANOFKNIVES)
 		call UnitRemoveAbilityBJ('A05Z',GetAttacker())
-	else
-	endif
-	if(Trig_Elder_Slate_Func003C())then
+	elseif random <= 13 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call UnitAddAbilityBJ('A05Y',GetAttacker())
 		if(Trig_Elder_Slate_Func003Func005001())then
@@ -2248,9 +2179,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		endif
 		call IssueTargetOrderBJ(GetAttacker(),ORDER_SHADOWSTRIKE,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A05Y',GetAttacker())
-	else
-	endif
-	if(Trig_Elder_Slate_Func004C())then
+	elseif random <= 18 then
 		call UnitAddAbilityBJ('A05X',GetAttacker())
 		if(Trig_Elder_Slate_Func004Func004001())then
 			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
@@ -2305,9 +2234,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		call IssueImmediateOrderBJ(GetAttacker(),ORDER_THUNDERCLAP)
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 		call UnitRemoveAbilityBJ('A05X',GetAttacker())
-	else
-	endif
-	if Trig_Elder_Slate_Func005C () and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0 then
+	elseif random <= 25 and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 
 		set attacker = GetAttacker ()
@@ -2336,9 +2263,7 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		call SetUnitAbilityLevel (attacker, 'A05W', debuff_level + 1)
 		call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
 		call UnitRemoveAbility (attacker, 'A05W')
-	else
-	endif
-	if(Trig_Elder_Slate_Func006C())then
+	elseif random <= 30 then
 		call UnitAddAbilityBJ('A060',GetAttacker())
 		if(Trig_Elder_Slate_Func006Func004001())then
 			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
@@ -2392,9 +2317,9 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		endif
 		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
 		call UnitRemoveAbilityBJ('A060',GetAttacker())
-	else
-	endif
-	if(Trig_Elder_Slate_Func008C())then
+	elseif random <= 35 then
+		// Nothing here.
+	elseif random <= 40 then
 		call UnitAddAbilityBJ('A062',GetAttacker())
 		if(Trig_Elder_Slate_Func008Func004001())then
 			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
@@ -2446,11 +2371,9 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		else
 			call DoNothing()
 		endif
-		call IssuePointOrderLocBJ(GetAttacker(),ORDER_SHOCKWAVE,GetUnitLoc(GetAttackedUnitBJ()))
+		call IssuePointOrder (source, ORDER_SHOCKWAVE, GetUnitX (target), GetUnitY (target))
 		call UnitRemoveAbilityBJ('A062',GetAttacker())
-	else
-	endif
-	if(Trig_Elder_Slate_Func009C())then
+	elseif random <= 45 then
 		call UnitAddAbilityBJ('A063',GetAttacker())
 		if(Trig_Elder_Slate_Func009Func004001())then
 			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
@@ -2506,12 +2429,11 @@ function Trig_Elder_Slate_Actions takes nothing returns nothing
 		call UnitRemoveAbilityBJ('A063',GetAttacker())
 	else
 	endif
+
+	return true
 endfunction
 function InitTrig_Elder_Slate takes nothing returns nothing
-	set gg_trg_Elder_Slate=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_Elder_Slate,EVENT_PLAYER_UNIT_ATTACKED)
-	call TriggerAddCondition(gg_trg_Elder_Slate,Condition(function Trig_Elder_Slate_Conditions))
-	call TriggerAddAction(gg_trg_Elder_Slate,function Trig_Elder_Slate_Actions)
+	call Unit_Damage__On_Damage (function Trig_Elder_Slate_Actions)
 endfunction
 function Trig_Air_Slate_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='n000'))then

@@ -175,11 +175,6 @@ globals
 	trigger gg_trg_Remove_rocks=null
 	trigger gg_trg_Maxed_out_quality_Upgrade=null
 	trigger gg_trg_Find_spell_levels=null
-	trigger gg_trg_Tourmaline=null
-	trigger gg_trg_Tourmaline_Facet=null
-	trigger gg_trg_Ancient_Bloodstone=null
-	trigger gg_trg_Spell_Slate=null
-	trigger gg_trg_Elder_Slate=null
 	trigger gg_trg_Air_Slate=null
 	trigger gg_trg_Slow_Slate=null
 	trigger gg_trg_Opal_Vein_SLate=null
