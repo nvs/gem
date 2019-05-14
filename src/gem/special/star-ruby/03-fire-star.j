@@ -1,7 +1,5 @@
 globals
 	integer array Gem_Special_Fire_Star___List
-	group Gem_Special_Fire_Star___A = CreateGroup ()
-	group Gem_Special_Fire_Star___B = CreateGroup ()
 endglobals
 
 function Gem_Special_Fire_Star___Register takes unit source, unit target returns integer
@@ -14,46 +12,64 @@ function Gem_Special_Fire_Star___Register takes unit source, unit target returns
 endfunction
 
 function Gem_Special_Fire_Star___Mark takes unit source, unit target returns nothing
-	local integer index
+	local integer Sindex
+	local integer Tindex
 	local integer list
 	local integer expires
 	local integer runner
+	local integer stars
+	local integer size
 
 	if source == null or target == null then
 		return
 	endif
 
-	set index = Unit_Indexer__Unit_Index (source)
+	set Sindex = Unit_Indexer__Unit_Index (source)
 
-	if index == 0 then
+	if Sindex == 0 then
 		return
 	endif
 
-	set list = Gem_Special_Fire_Star___List [index]
+	set list = Gem_Special_Fire_Star___List [Sindex]
 
 	if list == Node__NULL then
 		set list = Node__New ()
-		set Gem_Special_Fire_Star___List [index] = list
+		set Gem_Special_Fire_Star___List [Sindex] = list
 	endif
 
-	set index = Unit_Indexer__Unit_Index (target)
+	set Tindex = Unit_Indexer__Unit_Index (target)
 
-	if index == 0 then
+	if Tindex == 0 then
 		return
 	endif
 
-	set expires = Node__Get_Integer (list, -index)
+	set stars = Gem_Special_Fire_Star___List [Tindex]
+
+	if stars == Node__NULL then
+		set stars = Node__New ()
+		set Gem_Special_Fire_Star___List [Tindex] = stars
+	endif
+
+	if not Node__Get_Boolean (stars, -Sindex) then
+		call Node__Set_Boolean (stars, -Sindex, true)
+
+		set size = Node__Get_Integer (stars, 0) + 1
+		call Node__Set_Integer (stars, 0, size)
+		call Node__Set_Unit (stars, size, source)
+	endif
+
+	set expires = Node__Get_Integer (list, -Tindex)
 
 	if expires < Time__Now () then
 		set runner = Gem_Special_Fire_Star___Register (source, target)
-		call Node__Set_Integer (list, index, runner)
+		call Node__Set_Integer (list, Tindex, runner)
 	else
-		set runner = Node__Get_Integer (list, index)
+		set runner = Node__Get_Integer (list, Tindex)
 	endif
 
 	call Gem_Immolation__Set_Lifespan (runner, 6.0)
 	set expires = Time__Now () + Time__To_Milliseconds (6.0)
-	call Node__Set_Integer (list, -index, expires)
+	call Node__Set_Integer (list, -Tindex, expires)
 endfunction
 
 function Gem_Special_Fire_Star___Unmark takes unit source, unit target returns nothing
@@ -77,6 +93,11 @@ function Gem_Special_Fire_Star___Unmark takes unit source, unit target returns n
 	endif
 
 	set index = Unit_Indexer__Unit_Index (target)
+
+	if index == 0 then
+		return
+	endif
+
 	call Node__Remove_Integer (list, index)
 	call Node__Remove_Integer (list, -index)
 endfunction
@@ -106,26 +127,18 @@ function Gem_Special_Fire_Star___On_Damage takes nothing returns boolean
 	return true
 endfunction
 
-function Gem_Special_Fire_Star___Enter takes nothing returns boolean
-	local unit which = Unit_Event__The_Unit ()
-
-	if GetUnitTypeId (which) == Gem_Special__STAR_RUBY_3 then
-		call GroupAddUnit (Gem_Special_Fire_Star___A, which)
-	endif
-
-	return true
-endfunction
-
 function Gem_Special_Fire_Star___Leave takes nothing returns boolean
 	local unit which = Unit_Event__The_Unit ()
 	local integer list
 	local integer index
-
+	local integer size
 	local unit source
-	local group temporary
 
 	if GetUnitTypeId (which) == Gem_Special__STAR_RUBY_3 then
-		call GroupRemoveUnit (Gem_Special_Fire_Star___A, which)
+		set index = Unit_Indexer__Unit_Index (which)
+		set list = Gem_Special_Fire_Star___List [index]
+		set Gem_Special_Fire_Star___List [index] = Node__NULL
+		call Node__Destroy (list)
 		return true
 	endif
 
@@ -133,22 +146,25 @@ function Gem_Special_Fire_Star___Leave takes nothing returns boolean
 		return true
 	endif
 
-	set temporary = Gem_Special_Fire_Star___B
+	set index = Unit_Indexer__Unit_Index (which)
+	set list = Gem_Special_Fire_Star___List [index]
+
+	if list == Node__NULL then
+		return true
+	endif
+
+	set Gem_Special_Fire_Star___List [index] = Node__NULL
+	set size = Node__Get_Integer (list, 0)
+	set index = size
 
 	loop
-		set source = FirstOfGroup (Gem_Special_Fire_Star___A)
-		exitwhen source == null
-
-		call GroupRemoveUnit (Gem_Special_Fire_Star___A, source)
-		call GroupAddUnit (temporary, source)
-
+		exitwhen index == 0
+		set source = Node__Get_Unit (list, index)
 		call Gem_Special_Fire_Star___Unmark (source, which)
+		set index = index - 1
 	endloop
 
-	set Gem_Special_Fire_Star___B = Gem_Special_Fire_Star___A
-	set Gem_Special_Fire_Star___A = temporary
-
-	call GroupClear (Gem_Special_Fire_Star___B)
+	call Node__Destroy (list)
 
 	return true
 endfunction
@@ -170,14 +186,9 @@ function Gem_Special_Fire_Star___Kill takes nothing returns nothing
 endfunction
 
 function Gem_Special_Fire_Star__Initialize takes nothing returns boolean
-	local boolexpr enter
 	local boolexpr leave
-	local trigger kill
 
 	call Unit_Damage__On_Damage (function Gem_Special_Fire_Star___On_Damage)
-
-	set enter = Condition (function Gem_Special_Fire_Star___Enter)
-	call Unit_Event__On_Enter (enter)
 
 	set leave = Condition (function Gem_Special_Fire_Star___Leave)
 	call Unit_Event__On_Death (leave)
