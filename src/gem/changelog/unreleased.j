@@ -24,7 +24,8 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
-	set text = text + "- Elder Slate armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
+	set text = text + "- Elder Slate:|n"
+	set text = text + "    - Armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
 	set text = text + "- Spawn points have been shifted closer to the first checkpoints.|n"
 	set text = text + "- Ancient Slate:|n"
 	set text = text + "    - Armor reduction base value is now `-4`.|n"
