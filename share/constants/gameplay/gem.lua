@@ -60,3 +60,6 @@ Misc.MinUnitSpeed = 220.0 -- Minimum
 
 -- Spells - Frost:
 Misc.FrostMoveSpeedDecrease = 0.2 -- Movement Speed Reduction
+
+-- Allow Multiple Bounces Per Hit
+Misc.AllowMultiBounce = 0
