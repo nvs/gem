@@ -41,6 +41,10 @@ a full list of changes to the project, please consult the commit log.
     - Covers enemies in Fire, causing each target to burn like a Star Ruby.
       The marked target, and enemies within `256` range of it, will take
       `100` spell damage per second for the next `6.0` seconds.
+- Wraith Slate:
+    - Explosion has been reworked. It now deals full damage to units within
+      `250` range, and half damage to units outside the primary explosion,
+      up to `750` range.
 
 ### Fixed
 - Air pathing is now more consistent across all players.

@@ -54,6 +54,8 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "- Fire Star:|n"
 	set text = text + "    - No longer deals physical damage.|n"
 	set text = text + "    - Covers enemies in Fire, causing each target to burn like a Star Ruby. The marked target, and enemies within `256` range of it, will take `100` spell damage per second for the next `6.0` seconds.|n"
+	set text = text + "- Wraith Slate:|n"
+	set text = text + "    - Explosion has been reworked. It now deals full damage to units within `250` range, and half damage to units outside the primary explosion, up to `750` range.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
