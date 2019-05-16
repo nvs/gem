@@ -254,7 +254,7 @@ do
 	GSAA.ansf.value = '(A)'
 
 	-- Tooltip - Normal - Extended
-	GSAA.aub1.values [1] = description
+	GSAA.aub1.values [1] = description ..'|n'
 		.. '|cffc3dbffMark a tower to be swapped.|r'
 end
 
@@ -272,7 +272,7 @@ do
 	GSAB.ansf.value = '(B)'
 
 	-- Tooltip - Normal - Extended
-	GSAB.aub1.values [1] = description
+	GSAB.aub1.values [1] = description .. '|n'
 		.. '|cffc3dbffSwap a tower with the previously marked structure. '
 		.. 'If the same target is specified, then the sequence is reset.|r'
 
