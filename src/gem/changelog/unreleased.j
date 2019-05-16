@@ -69,7 +69,7 @@ function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
 	set text = text + "- Sources of AoE spell damage (i.e. Immolation) have been fixed:|n"
 	set text = text + "    - Multiple sources will now stack.|n"
 	set text = text + "    - Kill bonuses now apply to this type of damage, up to `100%` bonus.|n"
-	set text = text + "- Viper Slate's AoE spell damage was double what was intended.|n"
+	set text = text + "- Viper Slate's AoE spell damage was double what was intended, and has been properly set to `50` damage per second.|n"
 	set text = text + "- The following structures now only perform actions (i.e. stuns, casts, etc.) when damage is actually dealt:|n"
 	set text = text + "    - Dark Emerald.|n"
 	set text = text + "    - Enchanted Dark Emerald.|n"
