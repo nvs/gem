@@ -11,5 +11,5 @@ for _, id in ipairs (list) do
 	local ability = objects [id]
 
 	-- Stats - Duration - Hero
-	ability.hdu = ability.adur
+	ability.ahdu = ability.adur
 end
