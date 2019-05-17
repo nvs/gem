@@ -200,8 +200,6 @@ function Board___Update takes nothing returns nothing
 			elseif column == 3 then
 				set value = I2S (GetPlayerState (whom, PLAYER_STATE_RESOURCE_GOLD))
 			elseif column == 4 then
-				set value = I2S (udg_Kills [whom_id + 1])
-			elseif column == 5 then
 				// Display previous round's DPS if the next round's spawn
 				// has not started (i.e. in placement phase).
 				if Gem_Rank__Get_Start (whom_id, level) == 0 then
@@ -212,7 +210,7 @@ function Board___Update takes nothing returns nothing
 				endif
 
 				set value = I2S (R2I (dps + 0.5))
-			elseif Board___On_Test and column == 6 then
+			elseif Board___On_Test and column == 5 then
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
@@ -300,8 +298,7 @@ function Board__Setup takes nothing returns nothing
 	set header [1] = "Level"
 	set header [2] = "Lives"
 	set header [3] = "Gold"
-	set header [4] = "Kills"
-	set header [5] = "DPS"
+	set header [4] = "DPS"
 
 	// Width (by column):
 	set space = String__Width (" ")
@@ -312,8 +309,7 @@ function Board__Setup takes nothing returns nothing
 	set width [1] = String__Width ("Level") + space * 3
 	set width [2] = String__Width ("Lives") + space * 3
 	set width [3] = String__Width ("Gold") + space * 5
-	set width [4] = String__Width ("Kills") + space * 3
-	set width [5] = String__Width ("DPS") + space * 5
+	set width [4] = String__Width ("DPS") + space * 5
 
 	set player_index = 0
 	set count = 0
