@@ -21,7 +21,6 @@ a full list of changes to the project, please consult the commit log.
     - If the bonus is `4x` or higher, hitting the target will now decrease
       it by `4x` (e.g. `4x` becomes `0x`). If the bonus is `3x` or lower,
       it will continue to be cleared.
-
 - Emeralds:
     - Poison damage can now kill units.
 - Ancient Slate:
@@ -41,7 +40,7 @@ a full list of changes to the project, please consult the commit log.
 - Blood Stone:
     - Attack is no longer AoE.
     - No longer deals Immolation style damage.
-    - Now has a chance to cast a Blood Lightning on attack.
+    - Now has a chance to cast a lesser Blood Lightning on attack.
     - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as
       Ancient Blood Stone.
 - Fire Star:

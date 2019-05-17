@@ -55,7 +55,7 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "- Blood Stone:|n"
 	set text = text + "    - Attack is no longer AoE.|n"
 	set text = text + "    - No longer deals Immolation style damage.|n"
-	set text = text + "    - Now has a chance to cast a Blood Lightning on attack.|n"
+	set text = text + "    - Now has a chance to cast a lesser Blood Lightning on attack.|n"
 	set text = text + "    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as Ancient Blood Stone.|n"
 	set text = text + "- Fire Star:|n"
 	set text = text + "    - No longer deals physical damage.|n"
