@@ -6,10 +6,13 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Changed
+- Spawn points have been shifted closer to the first checkpoints.
+- Builder:
+    - Has a maximum mana of `10`, and starts with full mana.
+    - Gains `1` mana for every level completed.
 - Swap:
     - No longer available on individual towers.
     - Is now an ability on the builder, and costs `10` mana.
-    - The builder gains `1` mana for every level completed.
 - Extra Chance:
     - Has been adjusted to be more rewarding at all bonuses.
     - Maximum bonus increased from `5x` to `10x`.
@@ -18,13 +21,19 @@ a full list of changes to the project, please consult the commit log.
     - If the bonus is `4x` or higher, hitting the target will now decrease
       it by `4x` (e.g. `4x` becomes `0x`). If the bonus is `3x` or lower,
       it will continue to be cleared.
-- Elder Slate:
-    - Armor debuff no longer improves with levels, and now remains at the
-      base value of `-7`.
-- Spawn points have been shifted closer to the first checkpoints.
+
+- Emeralds:
+    - Poison damage can now kill units.
 - Ancient Slate:
     - Armor reduction base value is now `-4`.
     - Each additional Ancient Slate adds `-4` to the armor reduction.
+- Elder Slate:
+    - Armor debuff no longer improves with levels, and now remains at the
+      base value of `-7`.
+- Wraith Slate:
+    - Explosion has been reworked. It now deals full damage to units within
+      `250` range, and half damage to units outside the primary explosion,
+      up to `750` range.
 - Dark Emerald / Enchanted Emerald:
     - Each additional Dark Emerald or Enchanted Emerald:
         - Causes attacks to bounce to an additional nearby enemy.
@@ -35,17 +44,11 @@ a full list of changes to the project, please consult the commit log.
     - Now has a chance to cast a Blood Lightning on attack.
     - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as
       Ancient Blood Stone.
-- Emeralds:
-    - Poison damage can now kill units.
 - Fire Star:
     - No longer deals physical damage.
     - Covers enemies in Fire, causing each target to burn like a Star Ruby.
       The marked target, and enemies within `256` range of it, will take
       `100` spell damage per second for the next `6.0` seconds.
-- Wraith Slate:
-    - Explosion has been reworked. It now deals full damage to units within
-      `250` range, and half damage to units outside the primary explosion,
-      up to `750` range.
 
 ### Fixed
 - Air pathing is now more consistent across all players.
