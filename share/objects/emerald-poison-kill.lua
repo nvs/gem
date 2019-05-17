@@ -21,4 +21,7 @@ for _, id in ipairs (list) do
 			[1] = 9
 		}
 	}
+
+	-- Stats - Duration - Hero
+	ability.ahdu = ability.adur
 end
