@@ -3357,7 +3357,6 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		call Gem_Rank__Fail (Player (7))
 		set udg_PlayerDie[8]=true
 		call Gem_Player__Remove_Creeps (Player (7))
-		call TriggerSleepAction(0.05)
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
 	else
 	endif
