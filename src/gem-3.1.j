@@ -1678,7 +1678,6 @@ function Trig_Spell_Slate_Actions takes nothing returns boolean
 	local string kind = Unit_Damage__Kind ()
 	local unit source = GetEventDamageSource ()
 	local unit target = GetTriggerUnit ()
-	local unit attacker = source
 	local integer target_index
 	local integer debuff_level
 	local boolean has_elder_debuff
@@ -1697,39 +1696,36 @@ function Trig_Spell_Slate_Actions takes nothing returns boolean
 	set random = GetRandomInt (1, 100)
 
 	if random <= 5 then
-		call UnitAddAbilityBJ('A05R',GetAttacker())
-		call IssueImmediateOrderBJ(GetAttacker(),ORDER_FANOFKNIVES)
-		call UnitRemoveAbilityBJ('A05R',GetAttacker())
+		call UnitAddAbility (source, 'A05R')
+		call IssueImmediateOrder (source, ORDER_FANOFKNIVES)
+		call UnitRemoveAbility (source, 'A05R')
 	elseif random <= 10 then
-		call UnitAddAbilityBJ('A05S',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A05S',GetAttacker())
+		call UnitAddAbility (source, 'A05S')
+		call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
+		call UnitRemoveAbility (source, 'A05S')
 	elseif random <= 15 then
-		call UnitAddAbilityBJ('A05Q',GetAttacker())
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A05Q',GetAttacker())
+		call UnitAddAbility (source, 'A05Q')
+		call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
+		call UnitRemoveAbility (source, 'A05Q')
 	elseif random <= 20 then
-		call UnitAddAbilityBJ('A05U',GetAttacker())
-		call IssuePointOrder (GetAttacker (), ORDER_CARRIONSWARM, GetUnitX (target), GetUnitY (target))
-		call UnitRemoveAbilityBJ('A05U',GetAttacker())
-	elseif random <= 25 and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0 then
-		set attacker = GetAttacker ()
-		set target = GetTriggerUnit ()
-
+		call UnitAddAbility (source, 'A05U')
+		call IssuePointOrder (source, ORDER_CARRIONSWARM, GetUnitX (target), GetUnitY (target))
+		call UnitRemoveAbility (source, 'A05U')
+	elseif random <= 25 and GetUnitState (source, UNIT_STATE_MANA) >= 5.0 then
 		set has_elder_debuff = GetUnitAbilityLevel (target, 'B00L') > 0
 
 		if has_elder_debuff then
 			set target_index = Unit_Indexer__Unit_Index (target)
 			set debuff_level = udg_ElderDebuffLevel [target_index]
 
-			call UnitAddAbility (attacker, 'A05W')
-			call SetUnitAbilityLevel (attacker, 'A05W', debuff_level + 1)
-			call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
-			call UnitRemoveAbility (attacker, 'A05W')
+			call UnitAddAbility (source, 'A05W')
+			call SetUnitAbilityLevel (source, 'A05W', debuff_level + 1)
+			call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
+			call UnitRemoveAbility (source, 'A05W')
 		else
-			call UnitAddAbility (attacker, 'A05T')
-			call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
-			call UnitRemoveAbility (attacker, 'A05T')
+			call UnitAddAbility (source, 'A05T')
+			call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
+			call UnitRemoveAbility (source, 'A05T')
 		endif
 	endif
 
