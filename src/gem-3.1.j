@@ -1734,229 +1734,15 @@ endfunction
 function InitTrig_Spell_Slate takes nothing returns nothing
 	call Unit_Damage__On_Damage (function Trig_Spell_Slate_Actions)
 endfunction
-function Trig_Elder_Slate_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttacker())=='n00A'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Elder_Slate_Func002Func004001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func002Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func002Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func002Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func002Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func002Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func002Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func002Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func002Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func002Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func003Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func003Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func003Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func003Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func003Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func003Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func003Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func003Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func003Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func003Func014001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func004Func004001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func004Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func004Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func004Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func004Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func004Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func004Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func004Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func004Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func004Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func005Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func005Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func005Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func005Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func005Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func005Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func005Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func005Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func005Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func005Func014001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func006Func004001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func006Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func006Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func006Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func006Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func006Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func006Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func006Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func006Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func006Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func008Func004001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func008Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func008Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func008Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func008Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func008Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func008Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func008Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func008Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func008Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
-function Trig_Elder_Slate_Func009Func004001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=10)
-endfunction
-function Trig_Elder_Slate_Func009Func005001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=20)
-endfunction
-function Trig_Elder_Slate_Func009Func006001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=30)
-endfunction
-function Trig_Elder_Slate_Func009Func007001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=40)
-endfunction
-function Trig_Elder_Slate_Func009Func008001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=50)
-endfunction
-function Trig_Elder_Slate_Func009Func009001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=60)
-endfunction
-function Trig_Elder_Slate_Func009Func010001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=70)
-endfunction
-function Trig_Elder_Slate_Func009Func011001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=80)
-endfunction
-function Trig_Elder_Slate_Func009Func012001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=90)
-endfunction
-function Trig_Elder_Slate_Func009Func013001 takes nothing returns boolean
-	return(Unit_User_Data__Get(GetAttacker())>=100)
-endfunction
 function Trig_Elder_Slate_Actions takes nothing returns boolean
-	local string kind = Unit_Damage__Kind ()
-
-	local unit source = GetEventDamageSource ()
+	local unit source = GetAttacker ()
 	local unit target = GetTriggerUnit ()
-	local unit attacker = source
-	local integer attacker_kills
+	local real armor
+	local real factor
+	local integer kills
+	local integer level
+	local real x
+	local real y
 	local integer target_index
 	local integer debuff_level
 	local boolean has_spell_debuff
@@ -1965,187 +1751,39 @@ function Trig_Elder_Slate_Actions takes nothing returns boolean
 
 	set Label = "Gem_Slate_Elder"
 
-	if kind != "attack" then
-		return true
-	endif
-
 	if GetUnitTypeId (source) != 'n00A' then
 		return true
 	endif
 
+	set kills = Unit_User_Data__Get (source)
+	set level = kills / 10 + 1
+	set x = GetUnitX (source)
+	set y = GetUnitY (source)
+
 	set random = GetRandomInt (1, 100)
 
 	if random <= 5 then
-		call UnitAddAbilityBJ('A05Z',GetAttacker())
-		if(Trig_Elder_Slate_Func002Func004001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func005001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func006001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func007001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func008001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func009001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func010001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func011001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func012001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func002Func013001())then
-			call IncUnitAbilityLevelSwapped('A05Z',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueImmediateOrderBJ(GetAttacker(),ORDER_FANOFKNIVES)
-		call UnitRemoveAbilityBJ('A05Z',GetAttacker())
+		call UnitAddAbility (source, 'A05Z')
+		call SetUnitAbilityLevel (source, 'A05Z', level)
+		call IssueImmediateOrder (source, ORDER_FANOFKNIVES)
+		call UnitRemoveAbility (source, 'A05Z')
 	elseif random <= 13 then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
-		call UnitAddAbilityBJ('A05Y',GetAttacker())
-		if(Trig_Elder_Slate_Func003Func005001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func006001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func007001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func008001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func009001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func010001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func011001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func012001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func013001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func003Func014001())then
-			call IncUnitAbilityLevelSwapped('A05Y',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_SHADOWSTRIKE,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A05Y',GetAttacker())
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", x, y))
+
+		call UnitAddAbility (source, 'A05Y')
+		call SetUnitAbilityLevel (source, 'A05Y', level)
+		call IssueTargetOrder (source, ORDER_SHADOWSTRIKE, target)
+		call UnitRemoveAbility (source, 'A05Y')
 	elseif random <= 18 then
-		call UnitAddAbilityBJ('A05X',GetAttacker())
-		if(Trig_Elder_Slate_Func004Func004001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func005001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func006001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func007001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func008001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func009001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func010001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func011001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func012001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func004Func013001())then
-			call IncUnitAbilityLevelSwapped('A05X',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueImmediateOrderBJ(GetAttacker(),ORDER_THUNDERCLAP)
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
-		call UnitRemoveAbilityBJ('A05X',GetAttacker())
-	elseif random <= 25 and GetUnitState (GetAttacker (), UNIT_STATE_MANA) >= 5.0 then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", x, y))
 
-		set attacker = GetAttacker ()
-		set attacker_kills = Unit_User_Data__Get (attacker)
+		call UnitAddAbility (source, 'A05X')
+		call SetUnitAbilityLevel (source, 'A05X', level)
+		call IssueImmediateOrder (source, ORDER_THUNDERCLAP)
+		call UnitRemoveAbility (source, 'A05X')
+	elseif random <= 25 and GetUnitState (source, UNIT_STATE_MANA) >= 5.0 then
+		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", x, y))
 
-		set target = GetTriggerUnit ()
 		set target_index = Unit_Indexer__Unit_Index (target)
 
 		set has_spell_debuff = GetUnitAbilityLevel (target, 'B00K') > 0
@@ -2155,7 +1793,7 @@ function Trig_Elder_Slate_Actions takes nothing returns boolean
 			call UnitRemoveAbility (target, 'B00K')
 		endif
 
-		set debuff_level = attacker_kills / 10
+		set debuff_level = level - 1
 
 		if has_elder_debuff then
 			call UnitRemoveAbility (target, 'B00L')
@@ -2164,181 +1802,35 @@ function Trig_Elder_Slate_Actions takes nothing returns boolean
 
 		set udg_ElderDebuffLevel [target_index] = debuff_level
 
-		call UnitAddAbility (attacker, 'A05W')
-		call SetUnitAbilityLevel (attacker, 'A05W', debuff_level + 1)
-		call IssueTargetOrder (attacker, ORDER_FROSTARMOR, target)
-		call UnitRemoveAbility (attacker, 'A05W')
+		call UnitAddAbility (source, 'A05W')
+		call SetUnitAbilityLevel (source, 'A05W', level)
+		call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
+		call UnitRemoveAbility (source, 'A05W')
 	elseif random <= 30 then
-		call UnitAddAbilityBJ('A060',GetAttacker())
-		if(Trig_Elder_Slate_Func006Func004001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func005001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func006001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func007001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func008001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func009001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func010001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func011001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func012001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func006Func013001())then
-			call IncUnitAbilityLevelSwapped('A060',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FROSTNOVA,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A060',GetAttacker())
+		call UnitAddAbility (source, 'A060')
+		call SetUnitAbilityLevel (source, 'A060', level)
+		call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
+		call UnitRemoveAbility (source, 'A060')
 	elseif random <= 35 then
 		// Nothing here.
 	elseif random <= 40 then
-		call UnitAddAbilityBJ('A062',GetAttacker())
-		if(Trig_Elder_Slate_Func008Func004001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func005001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func006001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func007001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func008001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func009001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func010001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func011001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func012001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func008Func013001())then
-			call IncUnitAbilityLevelSwapped('A062',GetAttacker())
-		else
-			call DoNothing()
-		endif
+		call UnitAddAbility (source, 'A062')
+		call SetUnitAbilityLevel (source, 'A062', level)
 		call IssuePointOrder (source, ORDER_SHOCKWAVE, GetUnitX (target), GetUnitY (target))
-		call UnitRemoveAbilityBJ('A062',GetAttacker())
+		call UnitRemoveAbility (source, 'A062')
 	elseif random <= 45 then
-		call UnitAddAbilityBJ('A063',GetAttacker())
-		if(Trig_Elder_Slate_Func009Func004001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func005001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func006001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func007001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func008001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func009001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func010001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func011001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func012001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		if(Trig_Elder_Slate_Func009Func013001())then
-			call IncUnitAbilityLevelSwapped('A063',GetAttacker())
-		else
-			call DoNothing()
-		endif
-		call IssueTargetOrderBJ(GetAttacker(),ORDER_FORKEDLIGHTNING,GetAttackedUnitBJ())
-		call UnitRemoveAbilityBJ('A063',GetAttacker())
-	else
+		call UnitAddAbility (source, 'A063')
+		call SetUnitAbilityLevel (source, 'A063', level)
+		call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
+		call UnitRemoveAbility (source, 'A063')
 	endif
 
 	return true
 endfunction
 function InitTrig_Elder_Slate takes nothing returns nothing
-	call Unit_Damage__On_Damage (function Trig_Elder_Slate_Actions)
+	local trigger attack = CreateTrigger ()
+	call TriggerRegisterAnyUnitEventBJ (attack, EVENT_PLAYER_UNIT_ATTACKED)
+	call Trigger__Try (attack, function Trig_Elder_Slate_Actions)
 endfunction
 function Trig_Air_Slate_Conditions takes nothing returns boolean
 	if(not(GetUnitTypeId(GetAttacker())=='n000'))then
