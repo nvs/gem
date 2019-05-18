@@ -38,6 +38,10 @@ function Gem_Rank__Is_Player_Registered takes player whom returns boolean
 	return Gem_Rank___Level [GetPlayerId (whom)] > 0
 endfunction
 
+function Gem_Rank__Is_Player_Finished takes player whom returns boolean
+	return Gem_Rank___Finished [GetPlayerId (whom)]
+endfunction
+
 function Gem_Rank__Register_Player takes player whom returns nothing
 	local integer whom_id
 

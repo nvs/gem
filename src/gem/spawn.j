@@ -40,6 +40,8 @@ globals
 	constant real Gem_Spawn___FACING_RIGHT = 0.00
 	constant real Gem_Spawn___FACING_UP = 90.00
 	constant real Gem_Spawn___FACING_DOWN = 270.00
+
+	integer array Gem_Spawn___HP
 endglobals
 
 // ## Functions
@@ -65,6 +67,27 @@ endfunction
 // Returns the `integer` unit type for the specified `round (integer)`.
 function Gem_Spawn___Unit_Type takes integer round returns integer
 	return udg_SpawningUnit [round]
+endfunction
+
+function Gem_Spawn__Get_Total_HP takes integer round returns integer
+	local integer index = Gem_Spawn___Round [round]
+	local integer id
+	local unit which
+	local integer hp
+	local integer count
+
+	if Gem_Spawn___HP [round] == 0 then
+		set id = Spawn__Get_Type (index)
+		set which = CreateUnit (Gem__PLAYER_CREEPS, id, 0.0, 0.0, 0.0)
+		call ShowUnit (which, false)
+		set Gem_Spawn___HP [round] = BlzGetUnitMaxHP (which)
+		call RemoveUnit (which)
+	endif
+
+	set hp = Gem_Spawn___HP [round]
+	set count = Spawn__Get_Waves (index)
+
+	return hp * count
 endfunction
 
 // ### `Gem_Spawn__Start ()`

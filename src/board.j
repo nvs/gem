@@ -59,6 +59,19 @@ function Board___Time takes integer time returns string
 	return Board___Format (hours) + ":" + Board___Format (minutes) + ":" + Board___Format (seconds)
 endfunction
 
+function Board___Title_Damage takes integer whom_id, integer round returns string
+	local real damage = Gem_Rank__Get_Damage (whom_id, round)
+	local real total = I2R (Gem_Spawn__Get_Total_HP (round))
+	local string text
+
+	set text = R2S (damage)
+	set text = text + " ("
+	set text = text + I2S (PercentToInt (damage / total * 100, 100))
+	set text = text + "%)"
+
+	return Color__White (text)
+endfunction
+
 function Board___Title takes player whom returns string
 	local integer whom_id = GetPlayerId (whom)
 
@@ -68,8 +81,9 @@ function Board___Title takes player whom returns string
 
 	local integer current = Gem_Extra_Chance__Current_Target (whom)
 	local integer previous = Gem_Extra_Chance__Previous_Target (whom)
-
-	local string extra_chance
+	local integer round = Gem_Rank__Get_Level (whom_id)
+	local string damage = null
+	local string extra_chance = null
 	local string color
 	local integer target
 	local integer bonus
@@ -78,7 +92,9 @@ function Board___Title takes player whom returns string
 
 	local string title
 
-	if current > 0 or previous > 0 then
+	if Gem_Rank__Is_Player_Finished (whom) and round != 52 then
+		set damage = Board___Title_Damage (whom_id, round)
+	elseif current > 0 or previous > 0 then
 		if current > 0 then
 			set color = Color__WHITE
 			set target = current
@@ -107,9 +123,17 @@ function Board___Title takes player whom returns string
 		set lives = Color__White (lives)
 	endif
 
-	set title = "Rank: " + rank + " — Level: " + level + " — Lives: " + lives + " — Extra: " + extra_chance
+	set title = "Rank: " + rank + " — Level: " + level + " — Lives: " + lives
 
-	if Game_Status () == Game_Status__REPLAY or Gem_Rank__Get_Level (whom_id) == 52 then
+	if damage != null then
+		set title = title + " — Damage: " + damage
+	endif
+
+	if extra_chance != null then
+		set title = title + " — Extra: " + extra_chance
+	endif
+
+	if Game_Status () == Game_Status__REPLAY or round == 52 then
 		set title = title + " — ID: " + Color__White (I2S (Gem__GAME_ID))
 	endif
 
