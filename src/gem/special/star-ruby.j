@@ -43,11 +43,16 @@ endfunction
 function Gem_Special_Star_Ruby___Upgrade takes nothing returns boolean
 	local unit which = GetTriggerUnit ()
 	local integer id = GetUnitTypeId (which)
+	local integer kills
+	local integer level
 
 	if id == Gem_Special__STAR_RUBY_2 then
 		call Gem_Special_Star_Ruby___Register (which)
 	elseif id == Gem_Special__STAR_RUBY_3 then
 		call Gem_Immolation__Deregister (which)
+		set kills = Unit_User_Data__Get (which)
+		set level = IMinBJ (10, kills / 10) + 1
+		call SetUnitAbilityLevel (which, 'A02F', level)
 	endif
 
 	return true
