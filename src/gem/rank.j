@@ -149,6 +149,7 @@ endfunction
 function Gem_Rank___Compare takes integer A, integer B returns integer
 	local integer A_level = Gem_Rank___Level [A]
 	local integer B_level = Gem_Rank___Level [B]
+	local integer level
 
 	local integer A_time
 	local integer B_time
@@ -163,9 +164,11 @@ function Gem_Rank___Compare takes integer A, integer B returns integer
 		return 1
 	endif
 
+	set level = A_level
+
 	// Check damage dealt on the current level.
-	set A_damage = Gem_Rank__Get_Damage (A, A_level)
-	set B_damage = Gem_Rank__Get_Damage (B, B_level)
+	set A_damage = Gem_Rank__Get_Damage (A, level)
+	set B_damage = Gem_Rank__Get_Damage (B, level)
 
 	if A_damage > B_damage then
 		return -1
@@ -173,15 +176,27 @@ function Gem_Rank___Compare takes integer A, integer B returns integer
 		return 1
 	endif
 
-	// Look at finish time for the previous level.
-	set A_time = Gem_Rank__Get_Stop (A, A_level - 1)
-	set B_time = Gem_Rank__Get_Stop (B, B_level - 1)
-
-	if A_time < B_time then
-		return -1
-	elseif A_time > B_time then
-		return 1
+	// If on Level 52, then the Damage Test was killed.  Set the current
+	// level to the previous level (i.e. Level 51).
+	if level == Gem_Rank___LEVELS then
+		set level = level - 1
 	endif
+
+	// Check the stop time for all levels for a tiebreak.
+	loop
+		exitwhen level == 0
+
+		set A_time = Gem_Rank__Get_Stop (A, level)
+		set B_time = Gem_Rank__Get_Stop (B, level)
+
+		if A_time < B_time then
+			return -1
+		elseif A_time > B_time then
+			return 1
+		endif
+
+		set level = level - 1
+	endloop
 
 	return 0
 endfunction
