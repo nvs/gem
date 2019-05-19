@@ -127,6 +127,16 @@ function RunInitializationTriggers takes nothing returns nothing
 endfunction
 function main takes nothing returns nothing
 	local trigger initialize
+	local integer index
+
+	// Ensure that player colors remain correct.  Use of various in-lobby
+	// commands (e.g. `!hold`) can cause them to bug and duplicate.
+	set index = 0
+	loop
+		call SetPlayerColor (Player (index), ConvertPlayerColor (index))
+		set index = index + 1
+		exitwhen index > Gem__MAXIMUM_PLAYERS
+	endloop
 
 	// Set the names of computer players.  This was previously done in the
 	// `war3map.w3i`, but was removed to ensure accurate games list counts.
