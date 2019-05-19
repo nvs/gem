@@ -3,6 +3,12 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 	local string date = "N/A"
 	local string text = ""
 
+	set text = text + Color__Gold ("Added:") + "|n"
+	set text = text + "- A `-maze` command:|n"
+	set text = text + "    - This toggles between mazing and no-mazing modes.|n"
+	set text = text + "    - Can only be used before placing a gem at game start.|n"
+	set text = text + "|n"
+
 	set text = text + Color__Gold ("Changed:") + "|n"
 	set text = text + "- Spawn points have been shifted closer to the first checkpoints.|n"
 	set text = text + "- Builder:|n"
