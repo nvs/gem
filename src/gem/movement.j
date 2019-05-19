@@ -45,9 +45,9 @@ function Gem_Movement___Move takes unit which returns nothing
 	local real distance
 	local real angle
 
-	// Air units get moved a short distance ahead, instead of all the way
-	// to the checkpoint.  This avoids a tendency for the path to curve.
-	if IsUnitType (which, UNIT_TYPE_FLYING) then
+	local integer index = Unit_Indexer__Unit_Index (which)
+
+	if Gem_Movement___Timers [index] != null then
 		set Ux = GetUnitX (which)
 		set Uy = GetUnitY (which)
 		set dx = Cx - Ux
@@ -73,14 +73,28 @@ function Gem_Movement___On_Timer takes nothing returns nothing
 endfunction
 
 function Gem_Movement___Register takes unit which returns nothing
-	local integer index
+	local integer index = Unit_Indexer__Unit_Index (which)
+	local player whom
+	local integer whom_id
+	local boolean register
 	local timer clock
 
-	if not IsUnitType (which, UNIT_TYPE_FLYING) then
+	if index == 0 then
 		return
 	endif
 
-	set index = Unit_Indexer__Unit_Index (which)
+	set whom_id = udg_CreepOwner [index] - 1
+	set whom = Player (whom_id)
+
+	// If no-mazing mode is enabled, all units get movement assistance.  If
+	// it is disabled, then only air units.
+	set register = Commands__Is_No_Maze (whom)
+	set register = register or IsUnitType (which, UNIT_TYPE_FLYING)
+
+	if not register then
+		return
+	endif
+
 	set clock = Gem_Movement___Timers [index]
 
 	if clock != null then
