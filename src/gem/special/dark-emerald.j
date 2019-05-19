@@ -62,10 +62,13 @@ function Gem_Special_Dark_Emerald___Enter takes nothing returns boolean
 	set whom = GetOwningPlayer (which)
 	set whom_id = GetPlayerId (whom)
 
-	call AddPlayerTechResearched (whom, 'GDEB', 1)
+	set count = Gem_Special_Dark_Emerald___COUNT [whom_id] + 1
+	set Gem_Special_Dark_Emerald___COUNT [whom_id] = count
 
-	set count = Gem_Special_Dark_Emerald___COUNT [whom_id]
-	set Gem_Special_Dark_Emerald___COUNT [whom_id] = count + 1
+	// This is the new count.
+	if count > 1 then
+		call AddPlayerTechResearched (whom, 'GDEB', 1)
+	endif
 
 	return true
 endfunction
@@ -84,10 +87,13 @@ function Gem_Special_Dark_Emerald___Leave takes nothing returns boolean
 	set whom = GetOwningPlayer (which)
 	set whom_id = GetPlayerId (whom)
 
-	call BlzDecPlayerTechResearched (whom, 'GDEB', 1)
-
 	set count = Gem_Special_Dark_Emerald___COUNT [whom_id]
 	set Gem_Special_Dark_Emerald___COUNT [whom_id] = count - 1
+
+	// This is the old count.
+	if count > 1 then
+		call BlzDecPlayerTechResearched (whom, 'GDEB', 1)
+	endif
 
 	return true
 endfunction
