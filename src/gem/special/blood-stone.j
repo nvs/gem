@@ -47,12 +47,6 @@ function Gem_Special_Blood_Stone___Damage takes nothing returns boolean
 		set id = 'A07A'
 	endif
 
-
-	call BJDebugMsg ("Count: " + I2S (count))
-	call BJDebugMsg ("Roll: " + I2S (roll))
-	call BJDebugMsg ("Chanc: " + I2S (chance))
-
-
 	if roll <= chance then
 		set kills = Unit_User_Data__Get (source)
 		set level = IMinBJ (kills / 10 + 1, 11)
