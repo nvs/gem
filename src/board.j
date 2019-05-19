@@ -150,14 +150,14 @@ function Board___Add_Test_Column takes nothing returns nothing
 
 	set Board___On_Test = true
 
-	call MultiboardSetColumnCount (Board, 7)
+	call MultiboardSetColumnCount (Board, 6)
 
 	loop
-		set object = MultiboardGetItem (Board, row, 5)
+		set object = MultiboardGetItem (Board, row, 4)
 		call MultiboardSetItemWidth (object, dps_width)
 		call MultiboardReleaseItem (object)
 
-		set object = MultiboardGetItem (Board, row, 6)
+		set object = MultiboardGetItem (Board, row, 5)
 		call MultiboardSetItemStyle (object, true, false)
 		call MultiboardSetItemWidth (object, test_width)
 
