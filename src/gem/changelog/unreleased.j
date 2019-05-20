@@ -60,7 +60,6 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "- Dark Emerald / Enchanted Emerald:|n"
 	set text = text + "    - Each additional Dark Emerald or Enchanted Emerald:|n"
 	set text = text + "        - Causes attacks to bounce to an additional nearby enemy.|n"
-	set text = text + "        - Increases the chance to stun on attack.|n"
 	set text = text + "- Blood Stone:|n"
 	set text = text + "    - Attack is no longer AoE.|n"
 	set text = text + "    - No longer deals Immolation style damage.|n"

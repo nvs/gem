@@ -10,9 +10,6 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 	local unit target = GetTriggerUnit ()
 
 	local integer id
-	local integer whom_id
-	local integer count
-	local real check
 
 	set Label = "Gem_Special_Dark_Emerald___Damage"
 
@@ -30,17 +27,7 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 		return true
 	endif
 
-	set whom_id = GetPlayerId (GetOwningPlayer (source))
-	set count = Gem_Special_Dark_Emerald___COUNT [whom_id]
-
-	if count == 0 then
-		call Log__Warning ("Dark Emerald", "Count should not be zero")
-		return true
-	endif
-
-	set check = 283.0 / 256.0 - Pow (1.0 - 5.0 / 256.0, count)
-
-	if check >= GetRandomReal (0.0, 1.0) then
+	if GetRandomInt (1, 8) == 1 then
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", target, "chest"))
 		call Unit_Stun__Apply (target, 1.50)
 	endif

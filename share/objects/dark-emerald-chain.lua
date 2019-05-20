@@ -81,7 +81,6 @@ do
 			.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
 			.. '    - Causes attacks to bounce to an additional nearby '
 			.. 'e nemy.|n'
-			.. '    - Increases the chance to stun on attack.'
 	end
 end
 
@@ -98,6 +97,5 @@ do
 			.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
 			.. '    - Causes attacks to bounce to an additional nearby '
 			.. 'enemy.|n'
-			.. '    - Increases the chance to stun on attack.'
 	end
 end
