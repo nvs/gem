@@ -2595,6 +2595,7 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		set udg_PlayerDie[1]=true
 		call Gem_Player__Remove_Creeps (Player (0))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (0)), "Game Over")
 		return
 	endif
 
@@ -2635,6 +2636,7 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		set udg_PlayerDie[2]=true
 		call Gem_Player__Remove_Creeps (Player (1))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (1)), "Game Over")
 		return
 	endif
 
@@ -2675,6 +2677,7 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		set udg_PlayerDie[3]=true
 		call Gem_Player__Remove_Creeps (Player (2))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (2)), "Game Over")
 		return
 	endif
 
@@ -2715,6 +2718,7 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		set udg_PlayerDie[4]=true
 		call Gem_Player__Remove_Creeps (Player (3))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (3)), "Game Over")
 		return
 	endif
 
@@ -2755,6 +2759,7 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		set udg_PlayerDie[5]=true
 		call Gem_Player__Remove_Creeps (Player (4))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (4)), "Game Over")
 		return
 	endif
 
@@ -2795,6 +2800,7 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		set udg_PlayerDie[6]=true
 		call Gem_Player__Remove_Creeps (Player (5))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (5)), "Game Over")
 		return
 	endif
 
@@ -2835,6 +2841,7 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		set udg_PlayerDie[7]=true
 		call Gem_Player__Remove_Creeps (Player (6))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (6)), "Game Over")
 		return
 	endif
 
@@ -2875,6 +2882,7 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		set udg_PlayerDie[8]=true
 		call Gem_Player__Remove_Creeps (Player (7))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (7)), "Game Over")
 		return
 	endif
 
