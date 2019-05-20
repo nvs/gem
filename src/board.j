@@ -91,7 +91,7 @@ function Board___Title takes player whom returns string
 
 	local string title
 
-	if Gem_Rank__Is_Player_Finished (whom) and round != 52 then
+	if Gem_Rank__Is_Player_Finished (whom) and round != Gem_Rank__LEVELS then
 		set damage = Board___Title_Damage (whom_id, round)
 	elseif current > 0 or previous > 0 then
 		if current > 0 then
@@ -126,7 +126,7 @@ function Board___Title takes player whom returns string
 		set title = title + " — Extra: " + extra_chance
 	endif
 
-	if Game_Status () == Game_Status__REPLAY or round == 52 then
+	if Game_Status () == Game_Status__REPLAY or round == Gem_Rank__LEVELS then
 		set title = title + " — ID: " + Color__White (I2S (Gem__GAME_ID))
 	endif
 
@@ -223,7 +223,7 @@ function Board___Update takes nothing returns nothing
 
 				set value = I2S (R2I (dps + 0.5))
 			elseif Board___On_Test and column == 4 then
-				if level == 52 then
+				if level == Gem_Rank__LEVELS then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
 

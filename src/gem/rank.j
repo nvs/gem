@@ -9,7 +9,7 @@ globals
 	// Level 50 is the official last level.  However, we internally consider
 	// the Damage Test to be Level 51.  As such, the maximum number of
 	// levels is 52.
-	constant integer Gem_Rank___LEVELS = 52
+	constant integer Gem_Rank__LEVELS = 52
 
 	// The rate at which damage dealt to register units is updated.
 	constant integer Gem_Rank___FREQUENCY = 4
@@ -68,7 +68,7 @@ function Gem_Rank__Get_Rank takes player whom returns integer
 endfunction
 
 function Gem_Rank___Index takes integer whom_id, integer level returns integer
-	return whom_id * Gem_Rank___LEVELS + level
+	return whom_id * Gem_Rank__LEVELS + level
 endfunction
 
 function Gem_Rank__Get_Level takes integer whom_id returns integer
@@ -182,7 +182,7 @@ function Gem_Rank___Compare takes integer A, integer B returns integer
 
 	// If on Level 52, then the Damage Test was killed.  Set the current
 	// level to the previous level (i.e. Level 51).
-	if level == Gem_Rank___LEVELS then
+	if level == Gem_Rank__LEVELS then
 		set level = level - 1
 	endif
 
@@ -344,7 +344,7 @@ function Gem_Rank__Clear takes player whom returns nothing
 
 	// If the player has reached the maximum level, they are done.  No more
 	// updates to damage or time.
-	if Gem_Rank___Level [whom_id] == Gem_Rank___LEVELS then
+	if Gem_Rank___Level [whom_id] == Gem_Rank__LEVELS then
 		set Gem_Rank___Finished [whom_id] = true
 	endif
 endfunction
