@@ -1437,21 +1437,12 @@ function Trig_AntiStuck_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_AntiStuck_Func001C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetSpellTargetUnit())!='H04B'))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_AntiStuck_Actions takes nothing returns nothing
 	local unit u
-	if(Trig_AntiStuck_Func001C())then
-		set u = GetSpellTargetUnit()
-		call UnitAddAbility (u, 'Aeth')
-		call TriggerSleepAction(1.00)
-		call UnitRemoveAbility (u, 'Aeth')
-	else
-	endif
+	set u = GetSpellTargetUnit()
+	call UnitAddAbility (u, 'Aeth')
+	call TriggerSleepAction(1.00)
+	call UnitRemoveAbility (u, 'Aeth')
 endfunction
 function InitTrig_AntiStuck takes nothing returns nothing
 	set gg_trg_AntiStuck=CreateTrigger()
