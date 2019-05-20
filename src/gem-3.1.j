@@ -1845,641 +1845,6 @@ function InitTrig_Opal_Vein_SLate takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Opal_Vein_SLate,Condition(function Trig_Opal_Vein_SLate_Conditions))
 	call TriggerAddAction(gg_trg_Opal_Vein_SLate,function Trig_Opal_Vein_SLate_Actions)
 endfunction
-function Trig_End_game_dmg_test_RACE_kills_Conditions takes nothing returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_End_game_dmg_test_RACE_kills_Func001Func001001 takes nothing returns boolean
-	return(GetOwningPlayer(GetKillingUnitBJ())==udg_Player[GetForLoopIndexA()])
-endfunction
-function Trig_End_game_dmg_test_RACE_kills_Func003001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_End_game_dmg_test_RACE_kills_Actions takes nothing returns nothing
-	local unit killed = GetDyingUnit ()
-	local integer index = Unit_Indexer__Unit_Index (killed)
-	local integer owner_id = udg_CreepOwner [index]
-	local player owner = Player (owner_id - 1)
-
-	if owner_id >= 1 and owner_id <= 8 then
-		set udg_Damage [owner_id] = 2000000
-	endif
-
-	call Gem_Rank__Clear (owner)
-
-	call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(owner)+" has killed their damage test!!!! Dealing 2,000,000 DAMAGE!|r")))
-
-	if udg_Mode == 2 then
-		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (owner) + "!!|r")
-	endif
-endfunction
-function InitTrig_End_game_dmg_test_RACE_kills takes nothing returns nothing
-	set gg_trg_End_game_dmg_test_RACE_kills=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_End_game_dmg_test_RACE_kills,EVENT_PLAYER_UNIT_DEATH)
-	call TriggerAddCondition(gg_trg_End_game_dmg_test_RACE_kills,Condition(function Trig_End_game_dmg_test_RACE_kills_Conditions))
-	call TriggerAddAction(gg_trg_End_game_dmg_test_RACE_kills,function Trig_End_game_dmg_test_RACE_kills_Actions)
-endfunction
-function Trig_P1_Dmg_test_Func008001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P1_Dmg_test_Func008002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P1_Dmg_test_Func008002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P1_Dmg_test_Func008002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P1_Dmg_test_Func008002001(),Trig_P1_Dmg_test_Func008002002())
-endfunction
-function Trig_P1_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P1_Dmg_test_Func008001(),Trig_P1_Dmg_test_Func008002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P1_Dmg_test_Func001C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P1_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P1_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P1_Dmg_test_Func004C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P1_Dmg_test_Func007001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P1_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P1_Dmg_test_Func001C())then
-		set udg_Damage[1]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P1_Dmg_test_Func002C())then
-		set udg_Damage[1]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P1_Dmg_test_Func003C())then
-		set udg_Damage[1]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P1_Dmg_test_Func004C())then
-		set udg_Damage[1]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[0],("|cffff0000Your maze has done "+(I2S(udg_Damage[1])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (0))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P1_Dmg_test_Func007001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[1]))+(" has done "+(I2S(udg_Damage[1])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P1_Dmg_test takes nothing returns nothing
-	set gg_trg_P1_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P1_Dmg_test,gg_rct_Finish_1)
-	call TriggerAddCondition(gg_trg_P1_Dmg_test,Condition(function Trig_P1_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P1_Dmg_test,function Trig_P1_Dmg_test_Actions)
-endfunction
-function Trig_P2_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P2_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P2_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P2_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P2_Dmg_test_Func001002001(),Trig_P2_Dmg_test_Func001002002())
-endfunction
-function Trig_P2_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P2_Dmg_test_Func001001(),Trig_P2_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P2_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P2_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P2_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P2_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P2_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P2_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P2_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P2_Dmg_test_Func002C())then
-		set udg_Damage[2]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P2_Dmg_test_Func003C())then
-		set udg_Damage[2]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P2_Dmg_test_Func004C())then
-		set udg_Damage[2]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P2_Dmg_test_Func005C())then
-		set udg_Damage[2]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P2_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(1))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[1],("|cffff0000Your maze has done "+(I2S(udg_Damage[2])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (1))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P2_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[2]))+(" has done "+(I2S(udg_Damage[2])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P2_Dmg_test takes nothing returns nothing
-	set gg_trg_P2_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P2_Dmg_test,gg_rct_Finish_2)
-	call TriggerAddCondition(gg_trg_P2_Dmg_test,Condition(function Trig_P2_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P2_Dmg_test,function Trig_P2_Dmg_test_Actions)
-endfunction
-function Trig_P3_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P3_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P3_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P3_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P3_Dmg_test_Func001002001(),Trig_P3_Dmg_test_Func001002002())
-endfunction
-function Trig_P3_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P3_Dmg_test_Func001001(),Trig_P3_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P3_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P3_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P3_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P3_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P3_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P3_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P3_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P3_Dmg_test_Func002C())then
-		set udg_Damage[3]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P3_Dmg_test_Func003C())then
-		set udg_Damage[3]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P3_Dmg_test_Func004C())then
-		set udg_Damage[3]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P3_Dmg_test_Func005C())then
-		set udg_Damage[3]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P3_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(2))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[2],("|cffff0000Your maze has done "+(I2S(udg_Damage[3])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (2))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P3_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[3]))+(" has done "+(I2S(udg_Damage[3])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P3_Dmg_test takes nothing returns nothing
-	set gg_trg_P3_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P3_Dmg_test,gg_rct_Finish_3)
-	call TriggerAddCondition(gg_trg_P3_Dmg_test,Condition(function Trig_P3_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P3_Dmg_test,function Trig_P3_Dmg_test_Actions)
-endfunction
-function Trig_P4_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P4_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P4_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P4_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P4_Dmg_test_Func001002001(),Trig_P4_Dmg_test_Func001002002())
-endfunction
-function Trig_P4_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P4_Dmg_test_Func001001(),Trig_P4_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P4_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P4_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P4_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P4_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P4_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P4_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P4_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P4_Dmg_test_Func002C())then
-		set udg_Damage[4]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P4_Dmg_test_Func003C())then
-		set udg_Damage[4]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P4_Dmg_test_Func004C())then
-		set udg_Damage[4]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P4_Dmg_test_Func005C())then
-		set udg_Damage[4]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P4_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(3))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[3],("|cffff0000Your maze has done "+(I2S(udg_Damage[4])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (3))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P4_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[4]))+(" has done "+(I2S(udg_Damage[4])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P4_Dmg_test takes nothing returns nothing
-	set gg_trg_P4_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P4_Dmg_test,gg_rct_Finish_4)
-	call TriggerAddCondition(gg_trg_P4_Dmg_test,Condition(function Trig_P4_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P4_Dmg_test,function Trig_P4_Dmg_test_Actions)
-endfunction
-function Trig_P5_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P5_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P5_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P5_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P5_Dmg_test_Func001002001(),Trig_P5_Dmg_test_Func001002002())
-endfunction
-function Trig_P5_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P5_Dmg_test_Func001001(),Trig_P5_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P5_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P5_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P5_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P5_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P5_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P5_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P5_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P5_Dmg_test_Func002C())then
-		set udg_Damage[5]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P5_Dmg_test_Func003C())then
-		set udg_Damage[5]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P5_Dmg_test_Func004C())then
-		set udg_Damage[5]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P5_Dmg_test_Func005C())then
-		set udg_Damage[5]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P5_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(4))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[4],("|cffff0000Your maze has done "+(I2S(udg_Damage[5])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (4))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P5_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[5]))+(" has done "+(I2S(udg_Damage[5])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P5_Dmg_test takes nothing returns nothing
-	set gg_trg_P5_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P5_Dmg_test,gg_rct_Finish_5)
-	call TriggerAddCondition(gg_trg_P5_Dmg_test,Condition(function Trig_P5_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P5_Dmg_test,function Trig_P5_Dmg_test_Actions)
-endfunction
-function Trig_P6_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P6_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P6_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P6_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P6_Dmg_test_Func001002001(),Trig_P6_Dmg_test_Func001002002())
-endfunction
-function Trig_P6_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P6_Dmg_test_Func001001(),Trig_P6_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P6_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P6_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P6_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P6_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P6_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P6_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P6_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P6_Dmg_test_Func002C())then
-		set udg_Damage[6]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P6_Dmg_test_Func003C())then
-		set udg_Damage[6]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P6_Dmg_test_Func004C())then
-		set udg_Damage[6]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P6_Dmg_test_Func005C())then
-		set udg_Damage[6]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P6_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(5))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[5],("|cffff0000Your maze has done "+(I2S(udg_Damage[6])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (5))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P6_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[6]))+(" has done "+(I2S(udg_Damage[6])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P6_Dmg_test takes nothing returns nothing
-	set gg_trg_P6_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P6_Dmg_test,gg_rct_Finish_6)
-	call TriggerAddCondition(gg_trg_P6_Dmg_test,Condition(function Trig_P6_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P6_Dmg_test,function Trig_P6_Dmg_test_Actions)
-endfunction
-function Trig_P7_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P7_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P7_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P7_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P7_Dmg_test_Func001002001(),Trig_P7_Dmg_test_Func001002002())
-endfunction
-function Trig_P7_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P7_Dmg_test_Func001001(),Trig_P7_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P7_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P7_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P7_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P7_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P7_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P7_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P7_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P7_Dmg_test_Func002C())then
-		set udg_Damage[7]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P7_Dmg_test_Func003C())then
-		set udg_Damage[7]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P7_Dmg_test_Func004C())then
-		set udg_Damage[7]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P7_Dmg_test_Func005C())then
-		set udg_Damage[7]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P7_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(6))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[6],("|cffff0000Your maze has done "+(I2S(udg_Damage[7])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (6))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P7_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[7]))+(" has done "+(I2S(udg_Damage[7])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P7_Dmg_test takes nothing returns nothing
-	set gg_trg_P7_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P7_Dmg_test,gg_rct_Finish_7)
-	call TriggerAddCondition(gg_trg_P7_Dmg_test,Condition(function Trig_P7_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P7_Dmg_test,function Trig_P7_Dmg_test_Actions)
-endfunction
-function Trig_P8_Dmg_test_Func001001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P8_Dmg_test_Func001002001 takes nothing returns boolean
-	return false
-endfunction
-function Trig_P8_Dmg_test_Func001002002 takes nothing returns boolean
-	return(GetUnitTypeId(GetTriggerUnit())=='H04B')
-endfunction
-function Trig_P8_Dmg_test_Func001002 takes nothing returns boolean
-	return GetBooleanOr(Trig_P8_Dmg_test_Func001002001(),Trig_P8_Dmg_test_Func001002002())
-endfunction
-function Trig_P8_Dmg_test_Conditions takes nothing returns boolean
-	if(not GetBooleanOr(Trig_P8_Dmg_test_Func001001(),Trig_P8_Dmg_test_Func001002()))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P8_Dmg_test_Func002C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P8_Dmg_test_Func003C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P8_Dmg_test_Func004C takes nothing returns boolean
-	return false
-endfunction
-function Trig_P8_Dmg_test_Func005Func002001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P8_Dmg_test_Func005C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='H04B'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_P8_Dmg_test_Func008001 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_P8_Dmg_test_Actions takes nothing returns nothing
-	if(Trig_P8_Dmg_test_Func002C())then
-		set udg_Damage[8]=(7500-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P8_Dmg_test_Func003C())then
-		set udg_Damage[8]=(150000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P8_Dmg_test_Func004C())then
-		set udg_Damage[8]=(1000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-	else
-	endif
-	if(Trig_P8_Dmg_test_Func005C())then
-		set udg_Damage[8]=(2000000-R2I(GetUnitStateSwap(UNIT_STATE_LIFE,GetTriggerUnit())))
-		if(Trig_P8_Dmg_test_Func005Func002001())then
-			call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_COMPLETED,("|cffffff00Congratulations "+(GetPlayerName(Player(7))+"!! on completing Race Mode.|r")))
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	call DisplayTextToForce(bj_FORCE_PLAYER[7],("|cffff0000Your maze has done "+(I2S(udg_Damage[8])+" damage!!!|r")))
-	call Gem_Rank__Fail (Player (7))
-	call RemoveUnit(GetTriggerUnit())
-	if(Trig_P8_Dmg_test_Func008001())then
-		call QuestMessage(GetPlayersAll(),bj_QUESTMESSAGE_HINT,(("|cffffff00"+GetPlayerName(udg_Player[8]))+(" has done "+(I2S(udg_Damage[8])+" damage!|r"))))
-	else
-		call DoNothing()
-	endif
-endfunction
-function InitTrig_P8_Dmg_test takes nothing returns nothing
-	set gg_trg_P8_Dmg_test=CreateTrigger()
-	call TriggerRegisterEnterRectSimple(gg_trg_P8_Dmg_test,gg_rct_Finish_8)
-	call TriggerAddCondition(gg_trg_P8_Dmg_test,Condition(function Trig_P8_Dmg_test_Conditions))
-	call TriggerAddAction(gg_trg_P8_Dmg_test,function Trig_P8_Dmg_test_Actions)
-endfunction
 function Trig_Players_attacking_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetAttackedUnitBJ())!=Player(11)))then
 		return false
@@ -2543,9 +1908,6 @@ function Trig_Leak_and_lose_P1_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
-		return false
-	endif
 	return true
 endfunction
 function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
@@ -2582,9 +1944,6 @@ function InitTrig_Leak_and_lose_P1 takes nothing returns nothing
 endfunction
 function Trig_Leak_and_lose_P2_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
 		return false
 	endif
 	return true
@@ -2625,9 +1984,6 @@ function Trig_Leak_and_lose_P3_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
-		return false
-	endif
 	return true
 endfunction
 function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
@@ -2664,9 +2020,6 @@ function InitTrig_Leak_and_lose_P3 takes nothing returns nothing
 endfunction
 function Trig_Leak_and_lose_P4_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
 		return false
 	endif
 	return true
@@ -2707,9 +2060,6 @@ function Trig_Leak_and_lose_P5_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
-		return false
-	endif
 	return true
 endfunction
 function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
@@ -2746,9 +2096,6 @@ function InitTrig_Leak_and_lose_P5 takes nothing returns nothing
 endfunction
 function Trig_Leak_and_lose_P6_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
 		return false
 	endif
 	return true
@@ -2789,9 +2136,6 @@ function Trig_Leak_and_lose_P7_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
-		return false
-	endif
 	return true
 endfunction
 function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
@@ -2830,9 +2174,6 @@ function Trig_Leak_and_lose_P8_Conditions takes nothing returns boolean
 	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
 		return false
 	endif
-	if(not(GetUnitTypeId(GetTriggerUnit())!='H04B'))then
-		return false
-	endif
 	return true
 endfunction
 function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
@@ -2867,483 +2208,8 @@ function InitTrig_Leak_and_lose_P8 takes nothing returns nothing
 	call TriggerAddCondition(gg_trg_Leak_and_lose_P8,Condition(function Trig_Leak_and_lose_P8_Conditions))
 	call TriggerAddAction(gg_trg_Leak_and_lose_P8,function Trig_Leak_and_lose_P8_Actions)
 endfunction
-function Trig_Fin_P1_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[1]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P1_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P1_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (0))
-	set udg_CountWastedGems[1]=0
-	set udg_RmodeFinished[1]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [1]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P1_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[1]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 1
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [1]), GetRectCenterY (udg_Move1st [1]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[1]=(udg_CountWastedGems[1]+udg_SpecialsROUNDp1[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[1]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(0),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[1])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[1])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[1])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[1])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[1])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[1])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[1])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[1])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[1])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[1])))
-endfunction
-function InitTrig_Fin_P1_2 takes nothing returns nothing
-	set gg_trg_Fin_P1_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P1_2,Condition(function Trig_Fin_P1_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P1_2,function Trig_Fin_P1_2_Actions)
-endfunction
-function Trig_Fin_P2_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P2_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P2_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (1))
-	set udg_CountWastedGems[2]=0
-	set udg_RmodeFinished[2]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [2]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P2_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[2]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 2
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [2]), GetRectCenterY (udg_Move1st [2]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[2]=(udg_CountWastedGems[2]+udg_SpecialsROUNDp2[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[2]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(1),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[2])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[2])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[2])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[2])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[2])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[2])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[2])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[2])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[2])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[2])))
-endfunction
-function InitTrig_Fin_P2_2 takes nothing returns nothing
-	set gg_trg_Fin_P2_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P2_2,Condition(function Trig_Fin_P2_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P2_2,function Trig_Fin_P2_2_Actions)
-endfunction
-function Trig_Fin_P3_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[3]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P3_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P3_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (2))
-	set udg_CountWastedGems[3]=0
-	set udg_RmodeFinished[3]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [3]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P3_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[3]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 3
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [3]), GetRectCenterY (udg_Move1st [3]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[3]=(udg_CountWastedGems[3]+udg_SpecialsROUNDp3[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[3]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(2),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[3])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[3])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[3])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[3])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[3])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[3])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[3])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[3])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[3])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[3])))
-endfunction
-function InitTrig_Fin_P3_2 takes nothing returns nothing
-	set gg_trg_Fin_P3_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P3_2,Condition(function Trig_Fin_P3_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P3_2,function Trig_Fin_P3_2_Actions)
-endfunction
-function Trig_Fin_P4_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[4]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P4_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P4_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (3))
-	set udg_CountWastedGems[4]=0
-	set udg_RmodeFinished[4]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [4]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P4_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[4]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 4
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [4]), GetRectCenterY (udg_Move1st [4]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[4]=(udg_CountWastedGems[4]+udg_SpecialsROUNDp4[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[4]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(3),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[4])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[4])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[4])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[4])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[4])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[4])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[4])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[4])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[4])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[4])))
-endfunction
-function InitTrig_Fin_P4_2 takes nothing returns nothing
-	set gg_trg_Fin_P4_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P4_2,Condition(function Trig_Fin_P4_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P4_2,function Trig_Fin_P4_2_Actions)
-endfunction
-function Trig_Fin_P5_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[5]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P5_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P5_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (4))
-	set udg_CountWastedGems[5]=0
-	set udg_RmodeFinished[5]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [5]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P5_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[5]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 5
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [5]), GetRectCenterY (udg_Move1st [5]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[5]=(udg_CountWastedGems[5]+udg_SpecialsROUNDp5[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[5]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(4),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[5])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[5])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[5])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[5])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[5])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[5])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[5])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[5])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[5])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[5])))
-endfunction
-function InitTrig_Fin_P5_2 takes nothing returns nothing
-	set gg_trg_Fin_P5_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P5_2,Condition(function Trig_Fin_P5_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P5_2,function Trig_Fin_P5_2_Actions)
-endfunction
-function Trig_Fin_P6_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[6]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P6_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P6_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (5))
-	set udg_CountWastedGems[6]=0
-	set udg_RmodeFinished[6]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [6]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P6_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[6]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 6
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [6]), GetRectCenterY (udg_Move1st [6]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[6]=(udg_CountWastedGems[6]+udg_SpecialsROUNDp6[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[6]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(5),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[6])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[6])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[6])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[6])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[6])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[6])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[6])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[6])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[6])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[6])))
-endfunction
-function InitTrig_Fin_P6_2 takes nothing returns nothing
-	set gg_trg_Fin_P6_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P6_2,Condition(function Trig_Fin_P6_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P6_2,function Trig_Fin_P6_2_Actions)
-endfunction
-function Trig_Fin_P7_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[7]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P7_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P7_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (6))
-	set udg_CountWastedGems[7]=0
-	set udg_RmodeFinished[7]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [7]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P7_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[7]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 7
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [7]), GetRectCenterY (udg_Move1st [7]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[7]=(udg_CountWastedGems[7]+udg_SpecialsROUNDp7[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[7]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(6),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[7])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[7])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[7])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[7])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[7])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[7])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[7])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[7])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[7])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[7])))
-endfunction
-function InitTrig_Fin_P7_2 takes nothing returns nothing
-	set gg_trg_Fin_P7_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P7_2,Condition(function Trig_Fin_P7_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P7_2,function Trig_Fin_P7_2_Actions)
-endfunction
-function Trig_Fin_P8_2_Conditions takes nothing returns boolean
-	if(not(udg_RmodeFinished[8]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Fin_P8_2_Func006001 takes nothing returns boolean
-	return true
-endfunction
-function Trig_Fin_P8_2_Actions takes nothing returns nothing
-	call Gem_Rank__Clear (Player (7))
-	set udg_CountWastedGems[8]=0
-	set udg_RmodeFinished[8]=true
-	call TriggerSleepAction(2)
-	call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [8]) + " has finished Race Mode! Running Damage Test!|r")
-	if(Trig_Fin_P8_2_Func006001())then
-		call CreateNUnitsAtLoc(1,'H04B',Player(11),GetRectCenter(udg_Spawn[8]),bj_UNIT_FACING)
-		set udg_CreepOwner [Unit_Indexer__Unit_Index (bj_lastCreatedUnit)] = 8
-		call Gem_Rank__Register_Unit (bj_lastCreatedUnit)
-		call SetHeroLevel (bj_lastCreatedUnit, 50, false)
-		call IssuePointOrder (bj_lastCreatedUnit, "move", GetRectCenterX (udg_Move1st [8]), GetRectCenterY (udg_Move1st [8]))
-	endif
-	call PlaySoundBJ(gg_snd_QuestNew)
-	call TriggerSleepAction(10.00)
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=48
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		set udg_CountWastedGems[8]=(udg_CountWastedGems[8]+udg_SpecialsROUNDp8[GetForLoopIndexA()])
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	set udg_CountRocks[8]=CountUnitsInGroup(GetUnitsOfPlayerAndTypeId(Player(7),'h00G'))
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,"|cffffff00Final Statistics:|r")
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[8])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[8])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[8])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[8])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Amount of Gems / Slates Extra-Chanced:|r "+I2S(udg_CountExtrachance[8])))
-	call TriggerSleepAction(5.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 1:|r "+I2S(udg_CountMove1[8])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 2:|r "+I2S(udg_CountMove2[8])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 3:|r "+I2S(udg_CountMove3[8])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 4:|r "+I2S(udg_CountMove4[8])))
-	call TriggerSleepAction(1.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Number of creeps who have made it to mazing point 5:|r "+I2S(udg_CountMove5[8])))
-endfunction
-function InitTrig_Fin_P8_2 takes nothing returns nothing
-	set gg_trg_Fin_P8_2=CreateTrigger()
-	call TriggerAddCondition(gg_trg_Fin_P8_2,Condition(function Trig_Fin_P8_2_Conditions))
-	call TriggerAddAction(gg_trg_Fin_P8_2,function Trig_Fin_P8_2_Actions)
-endfunction
 function Trig_Race_Mode_Kills_Conditions takes nothing returns boolean
 	local integer unit_id = GetUnitTypeId (GetDyingUnit ())
-	if unit_id == 'H04B' then
-		return false
-	endif
 	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
 		return false
 	endif
@@ -3352,244 +2218,38 @@ function Trig_Race_Mode_Kills_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Race_Mode_Kills_Func001Func001001 takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == bj_forLoopAIndex
-endfunction
-function Trig_Race_Mode_Kills_Func002Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[1]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func002Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[1]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func002Func003001002 takes nothing returns boolean
-	return(udg_RLevel[1]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func002Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func002Func003001001(),Trig_Race_Mode_Kills_Func002Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func002C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 1
-endfunction
-function Trig_Race_Mode_Kills_Func003Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[2]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func003Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[2]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func003Func003001002 takes nothing returns boolean
-	return(udg_RLevel[2]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func003Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func003Func003001001(),Trig_Race_Mode_Kills_Func003Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func003C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 2
-endfunction
-function Trig_Race_Mode_Kills_Func004Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[3]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func004Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[3]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func004Func003001002 takes nothing returns boolean
-	return(udg_RLevel[3]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func004Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func004Func003001001(),Trig_Race_Mode_Kills_Func004Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func004C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 3
-endfunction
-function Trig_Race_Mode_Kills_Func005Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[4]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func005Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[4]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func005Func003001002 takes nothing returns boolean
-	return(udg_RLevel[4]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func005Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func005Func003001001(),Trig_Race_Mode_Kills_Func005Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func005C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 4
-endfunction
-function Trig_Race_Mode_Kills_Func006Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[5]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func006Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[5]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func006Func003001002 takes nothing returns boolean
-	return(udg_RLevel[5]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func006Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func006Func003001001(),Trig_Race_Mode_Kills_Func006Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func006C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 5
-endfunction
-function Trig_Race_Mode_Kills_Func007Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[6]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func007Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[6]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func007Func003001002 takes nothing returns boolean
-	return(udg_RLevel[6]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func007Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func007Func003001001(),Trig_Race_Mode_Kills_Func007Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func007C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 6
-endfunction
-function Trig_Race_Mode_Kills_Func008Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[7]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func008Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[7]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func008Func003001002 takes nothing returns boolean
-	return(udg_RLevel[7]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func008Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func008Func003001001(),Trig_Race_Mode_Kills_Func008Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func008C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 7
-endfunction
-function Trig_Race_Mode_Kills_Func009Func001001 takes nothing returns boolean
-	return(udg_RaceModeKills[8]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func009Func003001001 takes nothing returns boolean
-	return(udg_RaceModeKills[8]==10)
-endfunction
-function Trig_Race_Mode_Kills_Func009Func003001002 takes nothing returns boolean
-	return(udg_RLevel[8]==50)
-endfunction
-function Trig_Race_Mode_Kills_Func009Func003001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Race_Mode_Kills_Func009Func003001001(),Trig_Race_Mode_Kills_Func009Func003001002())
-endfunction
-function Trig_Race_Mode_Kills_Func009C takes nothing returns boolean
-	return udg_CreepOwner [Unit_Indexer__Unit_Index (GetDyingUnit ())] == 8
-endfunction
 function Trig_Race_Mode_Kills_Actions takes nothing returns nothing
-	set bj_forLoopAIndex=1
-	set bj_forLoopAIndexEnd=8
-	loop
-		exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-		if(Trig_Race_Mode_Kills_Func001Func001001())then
-			set udg_RaceModeKills[GetForLoopIndexA()]=(udg_RaceModeKills[GetForLoopIndexA()]+1)
-		else
-			call DoNothing()
-		endif
-		set bj_forLoopAIndex=bj_forLoopAIndex+1
-	endloop
-	if(Trig_Race_Mode_Kills_Func002C())then
-		if(Trig_Race_Mode_Kills_Func002Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P1)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func002Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P1_2)
-		else
-			call DoNothing()
-		endif
-	else
+	local integer index = Unit_Indexer__Unit_Index (GetDyingUnit ())
+	local integer owner_id = udg_CreepOwner [index] - 1
+	local player owner = Player (owner_id)
+	local integer kills = udg_RaceModeKills [owner_id + 1] + 1
+
+	set udg_RaceModeKills [owner_id + 1] = kills
+
+	if kills < 10 then
+		return
 	endif
-	if(Trig_Race_Mode_Kills_Func003C())then
-		if(Trig_Race_Mode_Kills_Func003Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P2)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func003Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P2_2)
-		else
-			call DoNothing()
-		endif
-	else
+
+	if udg_RLevel [owner_id + 1] == 50 and kills < 11 then
+		return
 	endif
-	if(Trig_Race_Mode_Kills_Func004C())then
-		if(Trig_Race_Mode_Kills_Func004Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P3)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func004Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P3_2)
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	if(Trig_Race_Mode_Kills_Func005C())then
-		if(Trig_Race_Mode_Kills_Func005Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P4)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func005Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P4_2)
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	if(Trig_Race_Mode_Kills_Func006C())then
-		if(Trig_Race_Mode_Kills_Func006Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P5)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func006Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P5_2)
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	if(Trig_Race_Mode_Kills_Func007C())then
-		if(Trig_Race_Mode_Kills_Func007Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P6)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func007Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P6_2)
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	if(Trig_Race_Mode_Kills_Func008C())then
-		if(Trig_Race_Mode_Kills_Func008Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P7)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func008Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P7_2)
-		else
-			call DoNothing()
-		endif
-	else
-	endif
-	if(Trig_Race_Mode_Kills_Func009C())then
-		if(Trig_Race_Mode_Kills_Func009Func001001())then
-			call ConditionalTriggerExecute(gg_trg_New_Level_P8)
-		else
-			call DoNothing()
-		endif
-		if(Trig_Race_Mode_Kills_Func009Func003001())then
-			call ConditionalTriggerExecute(gg_trg_Fin_P8_2)
-		else
-			call DoNothing()
-		endif
-	else
+
+	if owner_id == 0 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P1)
+	elseif owner_id == 1 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P2)
+	elseif owner_id == 2 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P3)
+	elseif owner_id == 3 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P4)
+	elseif owner_id == 4 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P5)
+	elseif owner_id == 5 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P6)
+	elseif owner_id == 6 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P7)
+	elseif owner_id == 7 then
+		call ConditionalTriggerExecute (gg_trg_New_Level_P8)
 	endif
 endfunction
 function InitTrig_Race_Mode_Kills takes nothing returns nothing
@@ -3650,6 +2310,11 @@ function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func026002)
 	call ForGroupBJ(udg_UnitGroup[1],function Trig_Finish_Build_Race_P1_Func027002)
 	call Gem_Spawn__Start (0, udg_RLevel [1])
+
+	if udg_RLevel [1] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [1]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P1 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P1=CreateTrigger()
@@ -3707,6 +2372,11 @@ function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func026002)
 	call ForGroupBJ(udg_UnitGroup[2],function Trig_Finish_Build_Race_P2_Func027002)
 	call Gem_Spawn__Start (1, udg_RLevel [2])
+
+	if udg_RLevel [2] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [2]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P2 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P2=CreateTrigger()
@@ -3764,6 +2434,11 @@ function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func026002)
 	call ForGroupBJ(udg_UnitGroup[3],function Trig_Finish_Build_Race_P3_Func027002)
 	call Gem_Spawn__Start (2, udg_RLevel [3])
+
+	if udg_RLevel [3] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [3]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P3 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P3=CreateTrigger()
@@ -3821,6 +2496,11 @@ function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func026002)
 	call ForGroupBJ(udg_UnitGroup[4],function Trig_Finish_Build_Race_P4_Func027002)
 	call Gem_Spawn__Start (3, udg_RLevel [4])
+
+	if udg_RLevel [4] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [4]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P4 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P4=CreateTrigger()
@@ -3878,6 +2558,11 @@ function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func026002)
 	call ForGroupBJ(udg_UnitGroup[5],function Trig_Finish_Build_Race_P5_Func027002)
 	call Gem_Spawn__Start (4, udg_RLevel [5])
+
+	if udg_RLevel [5] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [5]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P5 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P5=CreateTrigger()
@@ -3935,6 +2620,11 @@ function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func026002)
 	call ForGroupBJ(udg_UnitGroup[6],function Trig_Finish_Build_Race_P6_Func027002)
 	call Gem_Spawn__Start (5, udg_RLevel [6])
+
+	if udg_RLevel [6] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [6]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P6 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P6=CreateTrigger()
@@ -3992,6 +2682,11 @@ function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func026002)
 	call ForGroupBJ(udg_UnitGroup[7],function Trig_Finish_Build_Race_P7_Func027002)
 	call Gem_Spawn__Start (6, udg_RLevel [7])
+
+	if udg_RLevel [7] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [7]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P7 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P7=CreateTrigger()
@@ -4049,6 +2744,11 @@ function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func026002)
 	call ForGroupBJ(udg_UnitGroup[8],function Trig_Finish_Build_Race_P8_Func027002)
 	call Gem_Spawn__Start (7, udg_RLevel [8])
+
+	if udg_RLevel [8] == 50 then
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_ALWAYSHINT, "|c00ffff00" +  GetPlayerName (udg_Player [8]) + " is attempting the final level!|r")
+		call PlaySoundBJ(gg_snd_QuestNew)
+	endif
 endfunction
 function InitTrig_Finish_Build_Race_P8 takes nothing returns nothing
 	set gg_trg_Finish_Build_Race_P8=CreateTrigger()
@@ -4056,9 +2756,6 @@ function InitTrig_Finish_Build_Race_P8 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P1_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[1]!=50))then
 		return false
 	endif
 	return true
@@ -4108,6 +2805,13 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (0)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
+
+	if udg_RLevel [1] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (0))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (0)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P1)
 	call Gem_Placement__Start (udg_Player [1], 5)
 	set udg_RaceModeKills[1]=0
@@ -4126,9 +2830,6 @@ function InitTrig_New_Level_P1 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P2_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[2]!=50))then
 		return false
 	endif
 	return true
@@ -4178,6 +2879,13 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (1)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
+
+	if udg_RLevel [2] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (1))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (1)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P2)
 	call Gem_Placement__Start (udg_Player [2], 5)
 	set udg_RaceModeKills[2]=0
@@ -4196,9 +2904,6 @@ function InitTrig_New_Level_P2 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P3_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[3]!=50))then
 		return false
 	endif
 	return true
@@ -4248,6 +2953,13 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (2)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
+
+	if udg_RLevel [3] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (2))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (2)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P3)
 	call Gem_Placement__Start (udg_Player [3], 5)
 	set udg_RaceModeKills[3]=0
@@ -4266,9 +2978,6 @@ function InitTrig_New_Level_P3 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P4_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[4]!=50))then
 		return false
 	endif
 	return true
@@ -4318,6 +3027,13 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (3)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
+
+	if udg_RLevel [4] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (3))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (3)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P4)
 	call Gem_Placement__Start (udg_Player [4], 5)
 	set udg_RaceModeKills[4]=0
@@ -4336,9 +3052,6 @@ function InitTrig_New_Level_P4 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P5_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[5]!=50))then
 		return false
 	endif
 	return true
@@ -4388,6 +3101,13 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (4)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
+
+	if udg_RLevel [5] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (4))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (4)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P5)
 	call Gem_Placement__Start (udg_Player [5], 5)
 	set udg_RaceModeKills[5]=0
@@ -4406,9 +3126,6 @@ function InitTrig_New_Level_P5 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P6_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[6]!=50))then
 		return false
 	endif
 	return true
@@ -4458,6 +3175,13 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (5)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
+
+	if udg_RLevel [6] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (5))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (5)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P6)
 	call Gem_Placement__Start (udg_Player [6], 5)
 	set udg_RaceModeKills[6]=0
@@ -4476,9 +3200,6 @@ function InitTrig_New_Level_P6 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P7_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[7]!=50))then
 		return false
 	endif
 	return true
@@ -4528,6 +3249,13 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (6)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
+
+	if udg_RLevel [7] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (6))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (6)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P7)
 	call Gem_Placement__Start (udg_Player [7], 5)
 	set udg_RaceModeKills[7]=0
@@ -4546,9 +3274,6 @@ function InitTrig_New_Level_P7 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P8_Conditions takes nothing returns boolean
 	if(not(udg_Mode==2))then
-		return false
-	endif
-	if(not(udg_RLevel[8]!=50))then
 		return false
 	endif
 	return true
@@ -4598,6 +3323,13 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call Gem_Spawn__Stop (7)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
+
+	if udg_RLevel [8] == Gem_Rank__LEVELS then
+		call DisplayTextToForce(GetPlayersAll(),("|cffff0000"+(GetPlayerName(Player (7))+" has killed the boss and his minions!!!!|r")))
+		call QuestMessage (bj_FORCE_ALL_PLAYERS, bj_QUESTMESSAGE_COMPLETED, "|c00ffff00Congratulations " + GetPlayerName (Player (7)) + "!!|r")
+		return
+	endif
+
 	call EnableTrigger(gg_trg_Finish_Build_Race_P8)
 	call Gem_Placement__Start (udg_Player [8], 5)
 	set udg_RaceModeKills[8]=0

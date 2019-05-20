@@ -34,6 +34,7 @@ globals
 	region array Gem_Spawn___Region
 	integer array Gem_Spawn___Round
 	integer array Gem_Spawn___Index
+	integer array Gem_Spawn___Boss_Index
 	real array Gem_Spawn___Facing
 
 	constant real Gem_Spawn___FACING_LEFT = 180.00
@@ -41,6 +42,7 @@ globals
 	constant real Gem_Spawn___FACING_UP = 90.00
 	constant real Gem_Spawn___FACING_DOWN = 270.00
 
+	constant integer Gem_Spawn___BOSS_HP = 500000
 	integer array Gem_Spawn___HP
 endglobals
 
@@ -74,6 +76,10 @@ function Gem_Spawn__Get_Total_HP takes integer round returns integer
 	local integer waves = Spawn__Get_Waves (spawn)
 	local integer hp = Gem_Spawn___HP [round] * waves
 
+	if round == 50 then
+		set hp = hp + Gem_Spawn___BOSS_HP
+	endif
+
 	return hp
 endfunction
 
@@ -82,13 +88,31 @@ endfunction
 // Starts spawning units for the specified `round (integer)` at the spawn
 // location belonging to the player referenced by `player_index (integer)`.
 function Gem_Spawn__Start takes integer player_index, integer round returns nothing
-	set Gem_Spawn___Index [player_index] = Spawn__Clone (Gem_Spawn___Round [round])
+	local rect zone = Gem_Spawn___Spawn_Rect (player_index)
+	local real x = GetRectCenterX (zone)
+	local real y = GetRectCenterY (zone)
+	local real facing = Gem_Spawn___Facing [player_index]
 
-	call Spawn__Set_X (Gem_Spawn___Index [player_index], GetRectCenterX (Gem_Spawn___Spawn_Rect (player_index)))
-	call Spawn__Set_Y (Gem_Spawn___Index [player_index], GetRectCenterY (Gem_Spawn___Spawn_Rect (player_index)))
-	call Spawn__Set_Facing (Gem_Spawn___Index [player_index], Gem_Spawn___Facing [player_index])
+	local integer spawn = Spawn__Clone (Gem_Spawn___Round [round])
+	local integer boss = 0
+	local integer waves
 
-	call Spawn__Start (Gem_Spawn___Index [player_index])
+	set Gem_Spawn___Index [player_index] = spawn
+	call Spawn__Set_X (spawn, x)
+	call Spawn__Set_Y (spawn, y)
+	call Spawn__Set_Facing (spawn, facing)
+
+	if round == 50 then
+		set waves = Spawn__Get_Waves (spawn)
+		set boss = Spawn__Create (Gem__PLAYER_CREEPS, 'H04B', 1, 1, x, y, facing, waves * 1.61, 0)
+		set Gem_Spawn___Boss_Index [player_index] = boss
+	endif
+
+	call Spawn__Start (spawn)
+
+	if Spawn__Is_Allocated (boss) then
+		call Spawn__Start (boss)
+	endif
 endfunction
 
 // ### `Gem_Spawn__Stop ()`
@@ -96,9 +120,17 @@ endfunction
 // Stops spawning units for the player specified by `player_index (integer)`,
 // and performs any necessary cleanup.
 function Gem_Spawn__Stop takes integer player_index returns nothing
-	if Spawn__Is_Allocated (Gem_Spawn___Index [player_index]) then
-		call Spawn__Destroy (Gem_Spawn___Index [player_index])
+	local integer spawn = Gem_Spawn___Index [player_index]
+	local integer boss = Gem_Spawn___Boss_Index [player_index]
+
+	if Spawn__Is_Allocated (spawn) then
+		call Spawn__Destroy (spawn)
 		set Gem_Spawn___Index [player_index] = 0
+	endif
+
+	if Spawn__Is_Allocated (boss) then
+		call Spawn__Destroy (boss)
+		set Gem_Spawn___Boss_Index [player_index] = 0
 	endif
 endfunction
 
@@ -121,6 +153,11 @@ function Gem_Spawn___Movement takes nothing returns boolean
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))
 		set udg_CreepOwner [the_unit_index] = player_index + 1
 		call Gem_Rank__Register_Unit (the_unit)
+
+		if GetUnitTypeId (the_unit) == 'H04B' then
+			call SetHeroLevel (the_unit, 50, false)
+			call BlzSetUnitMaxHP (the_unit, Gem_Spawn___BOSS_HP)
+		endif
 	endif
 
 	return false

@@ -7,9 +7,8 @@
 
 globals
 	// Level 50 is the official last level.  However, we internally consider
-	// the Damage Test to be Level 51.  As such, the maximum number of
-	// levels is 52.
-	constant integer Gem_Rank__LEVELS = 52
+	// the maximum number of levels to be 51.
+	constant integer Gem_Rank__LEVELS = 51
 
 	// The rate at which damage dealt to register units is updated.
 	constant integer Gem_Rank___FREQUENCY = 4
