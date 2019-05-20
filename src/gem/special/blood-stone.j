@@ -55,6 +55,7 @@ function Gem_Special_Blood_Stone___Damage takes nothing returns boolean
 		call SetUnitAbilityLevel (source, id, level)
 		call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
 		call UnitRemoveAbility (source, id)
+		call IssueTargetOrder (source, "attack", target)
 	endif
 
 	return true

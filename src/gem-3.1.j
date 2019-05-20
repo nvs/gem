@@ -1632,6 +1632,7 @@ function Trig_Tourmaline_Actions takes nothing returns boolean
 	call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
 	call UnitRemoveAbility (source, 'A03J')
 	call SetUnitState (source, UNIT_STATE_MANA, mana - 5.0)
+	call IssueTargetOrder (source, "attack", target)
 
 	return true
 endfunction
@@ -1668,6 +1669,7 @@ function Trig_Tourmaline_Facet_Actions takes nothing returns boolean
 	call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
 	call UnitRemoveAbility (source, 'A03N')
 	call SetUnitState (source, UNIT_STATE_MANA, mana - 5.0)
+	call IssueTargetOrder (source, "attack", target)
 
 	return true
 endfunction
@@ -1728,6 +1730,8 @@ function Trig_Spell_Slate_Actions takes nothing returns boolean
 			call UnitRemoveAbility (source, 'A05T')
 		endif
 	endif
+
+	call IssueTargetOrder (source, "attack", target)
 
 	return true
 endfunction
@@ -1824,6 +1828,8 @@ function Trig_Elder_Slate_Actions takes nothing returns boolean
 		call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
 		call UnitRemoveAbility (source, 'A063')
 	endif
+
+	call IssueTargetOrder (source, "attack", target)
 
 	return true
 endfunction
