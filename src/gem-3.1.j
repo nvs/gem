@@ -23,12 +23,6 @@ function InitGlobals takes nothing returns nothing
 	set i=0
 	loop
 		exitwhen(i>8)
-		set udg_Lives[i]=15
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
 		set udg_Kills[i]=0
 		set i=i+1
 	endloop
@@ -155,12 +149,6 @@ function InitGlobals takes nothing returns nothing
 	set i=0
 	loop
 		exitwhen(i>8)
-		set udg_CountBuyLives[i]=0
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
 		set udg_CountDownGrades[i]=0
 		set i=i+1
 	endloop
@@ -204,12 +192,6 @@ function InitGlobals takes nothing returns nothing
 	loop
 		exitwhen(i>8)
 		set udg_CountWastedGems[i]=0
-		set i=i+1
-	endloop
-	set i=0
-	loop
-		exitwhen(i>8)
-		set udg_CountLivesLost[i]=0
 		set i=i+1
 	endloop
 	set i=0
@@ -2597,66 +2579,15 @@ function Trig_Leak_and_lose_P1_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P1_Func005001 takes nothing returns boolean
-	return(udg_Lives[1]<=0)
-endfunction
-function Trig_Leak_and_lose_P1_Func007C takes nothing returns boolean
-	if(not(udg_Lives[1]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P1_Func008C takes nothing returns boolean
-	if(not(udg_Lives[1]<=0))then
-		return false
-	endif
-	if(not(udg_PlayerDie[1]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P1_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[1]==false)
-endfunction
-function Trig_Leak_and_lose_P1_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P1_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P1_Func009001001(),Trig_Leak_and_lose_P1_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P1_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[1]==10)
-endfunction
-function Trig_Leak_and_lose_P1_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[1]==10)
-endfunction
-function Trig_Leak_and_lose_P1_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[1]==50)
-endfunction
-function Trig_Leak_and_lose_P1_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P1_Func012001001(),Trig_Leak_and_lose_P1_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
-	set udg_CountLivesLost[1]=(udg_CountLivesLost[1]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[1]=(udg_Lives[1]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P1_Func005001())then
-		set udg_Lives[1]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0011,I2R(udg_Lives[1]))
-	if(Trig_Leak_and_lose_P1_Func007C())then
+
+	if udg_RLevel [1] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0011), GetUnitY (gg_unit_h01V_0011)))
-		call ForceAddPlayerSimple(Player(0),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[1])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(0),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (0), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P1_Func008C())then
-		set udg_Lives[1]=0
 		call KillUnit(gg_unit_h01V_0011)
 		set udg_PlayerHERE[1]=false
 		call Gem_Spawn__Stop (0)
@@ -2664,22 +2595,13 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 		set udg_PlayerDie[1]=true
 		call Gem_Player__Remove_Creeps (Player (0))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P1_Func009001())then
-		set udg_RaceModeKills[1]=(udg_RaceModeKills[1]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P1_Func010001())then
+
+	set udg_RaceModeKills[1]=(udg_RaceModeKills[1]+1)
+
+	if udg_RaceModeKills [1] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P1_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P1_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P1 takes nothing returns nothing
@@ -2697,66 +2619,15 @@ function Trig_Leak_and_lose_P2_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P2_Func005001 takes nothing returns boolean
-	return(udg_Lives[2]<=0)
-endfunction
-function Trig_Leak_and_lose_P2_Func007C takes nothing returns boolean
-	if(not(udg_Lives[2]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P2_Func008C takes nothing returns boolean
-	if(not(udg_Lives[2]<=0))then
-		return false
-	endif
-	if(not(udg_PlayerDie[2]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P2_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[2]==false)
-endfunction
-function Trig_Leak_and_lose_P2_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P2_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P2_Func009001001(),Trig_Leak_and_lose_P2_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P2_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[2]==10)
-endfunction
-function Trig_Leak_and_lose_P2_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[2]==10)
-endfunction
-function Trig_Leak_and_lose_P2_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[2]==50)
-endfunction
-function Trig_Leak_and_lose_P2_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P2_Func012001001(),Trig_Leak_and_lose_P2_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
-	set udg_CountLivesLost[2]=(udg_CountLivesLost[2]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[2]=(udg_Lives[2]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P2_Func005001())then
-		set udg_Lives[2]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0012,I2R(udg_Lives[2]))
-	if(Trig_Leak_and_lose_P2_Func007C())then
+
+	if udg_RLevel [2] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0012), GetUnitY (gg_unit_h01V_0012)))
-		call ForceAddPlayerSimple(Player(1),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[2])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(1),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (1), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P2_Func008C())then
-		set udg_Lives[2]=0
 		call KillUnit(gg_unit_h01V_0012)
 		set udg_PlayerHERE[2]=false
 		call Gem_Spawn__Stop (1)
@@ -2764,22 +2635,13 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		set udg_PlayerDie[2]=true
 		call Gem_Player__Remove_Creeps (Player (1))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P2_Func009001())then
-		set udg_RaceModeKills[2]=(udg_RaceModeKills[2]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P2_Func010001())then
+
+	set udg_RaceModeKills[2]=(udg_RaceModeKills[2]+1)
+
+	if udg_RaceModeKills [2] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P2)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P2_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P2_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P2 takes nothing returns nothing
@@ -2797,66 +2659,15 @@ function Trig_Leak_and_lose_P3_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P3_Func005001 takes nothing returns boolean
-	return(udg_Lives[3]<=0)
-endfunction
-function Trig_Leak_and_lose_P3_Func007C takes nothing returns boolean
-	if(not(udg_Lives[3]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P3_Func008C takes nothing returns boolean
-	if(not(udg_PlayerDie[3]==false))then
-		return false
-	endif
-	if(not(udg_Lives[3]<=0))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P3_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[3]==false)
-endfunction
-function Trig_Leak_and_lose_P3_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P3_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P3_Func009001001(),Trig_Leak_and_lose_P3_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P3_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[3]==10)
-endfunction
-function Trig_Leak_and_lose_P3_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[3]==10)
-endfunction
-function Trig_Leak_and_lose_P3_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[3]==50)
-endfunction
-function Trig_Leak_and_lose_P3_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P3_Func012001001(),Trig_Leak_and_lose_P3_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
-	set udg_CountLivesLost[3]=(udg_CountLivesLost[3]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[3]=(udg_Lives[3]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P3_Func005001())then
-		set udg_Lives[3]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0013,I2R(udg_Lives[3]))
-	if(Trig_Leak_and_lose_P3_Func007C())then
+
+	if udg_RLevel [3] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0013), GetUnitY (gg_unit_h01V_0013)))
-		call ForceAddPlayerSimple(Player(2),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[3])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(2),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (2), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P3_Func008C())then
-		set udg_Lives[3]=0
 		call KillUnit(gg_unit_h01V_0013)
 		set udg_PlayerHERE[3]=false
 		call Gem_Spawn__Stop (2)
@@ -2864,22 +2675,13 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		set udg_PlayerDie[3]=true
 		call Gem_Player__Remove_Creeps (Player (2))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P3_Func009001())then
-		set udg_RaceModeKills[3]=(udg_RaceModeKills[3]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P3_Func010001())then
+
+	set udg_RaceModeKills[3]=(udg_RaceModeKills[3]+1)
+
+	if udg_RaceModeKills [3] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P3)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P3_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P3_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P3 takes nothing returns nothing
@@ -2897,66 +2699,15 @@ function Trig_Leak_and_lose_P4_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P4_Func005001 takes nothing returns boolean
-	return(udg_Lives[4]<=0)
-endfunction
-function Trig_Leak_and_lose_P4_Func007C takes nothing returns boolean
-	if(not(udg_Lives[4]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P4_Func008C takes nothing returns boolean
-	if(not(udg_PlayerDie[4]==false))then
-		return false
-	endif
-	if(not(udg_Lives[4]<=0))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P4_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[4]==false)
-endfunction
-function Trig_Leak_and_lose_P4_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P4_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P4_Func009001001(),Trig_Leak_and_lose_P4_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P4_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[4]==10)
-endfunction
-function Trig_Leak_and_lose_P4_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[4]==10)
-endfunction
-function Trig_Leak_and_lose_P4_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[4]==50)
-endfunction
-function Trig_Leak_and_lose_P4_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P4_Func012001001(),Trig_Leak_and_lose_P4_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
-	set udg_CountLivesLost[4]=(udg_CountLivesLost[4]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[4]=(udg_Lives[4]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P4_Func005001())then
-		set udg_Lives[4]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0014,I2R(udg_Lives[4]))
-	if(Trig_Leak_and_lose_P4_Func007C())then
+
+	if udg_RLevel [4] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0014), GetUnitY (gg_unit_h01V_0014)))
-		call ForceAddPlayerSimple(Player(3),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[4])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(3),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (3), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P4_Func008C())then
-		set udg_Lives[4]=0
 		call KillUnit(gg_unit_h01V_0014)
 		set udg_PlayerHERE[4]=false
 		call Gem_Spawn__Stop (3)
@@ -2964,22 +2715,13 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		set udg_PlayerDie[4]=true
 		call Gem_Player__Remove_Creeps (Player (3))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P4_Func009001())then
-		set udg_RaceModeKills[4]=(udg_RaceModeKills[4]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P4_Func010001())then
+
+	set udg_RaceModeKills[4]=(udg_RaceModeKills[4]+1)
+
+	if udg_RaceModeKills [4] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P4)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P4_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P4_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P4 takes nothing returns nothing
@@ -2997,66 +2739,15 @@ function Trig_Leak_and_lose_P5_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P5_Func005001 takes nothing returns boolean
-	return(udg_Lives[5]<=0)
-endfunction
-function Trig_Leak_and_lose_P5_Func007C takes nothing returns boolean
-	if(not(udg_Lives[5]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P5_Func008C takes nothing returns boolean
-	if(not(udg_Lives[5]<=0))then
-		return false
-	endif
-	if(not(udg_PlayerDie[5]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P5_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[5]==false)
-endfunction
-function Trig_Leak_and_lose_P5_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P5_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P5_Func009001001(),Trig_Leak_and_lose_P5_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P5_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[5]==10)
-endfunction
-function Trig_Leak_and_lose_P5_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[5]==10)
-endfunction
-function Trig_Leak_and_lose_P5_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[5]==50)
-endfunction
-function Trig_Leak_and_lose_P5_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P5_Func012001001(),Trig_Leak_and_lose_P5_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
-	set udg_CountLivesLost[5]=(udg_CountLivesLost[5]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[5]=(udg_Lives[5]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P5_Func005001())then
-		set udg_Lives[5]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0016,I2R(udg_Lives[5]))
-	if(Trig_Leak_and_lose_P5_Func007C())then
+
+	if udg_RLevel [5] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0016), GetUnitY (gg_unit_h01V_0016)))
-		call ForceAddPlayerSimple(Player(4),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[5])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(4),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (4), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P5_Func008C())then
-		set udg_Lives[5]=0
 		call KillUnit(gg_unit_h01V_0016)
 		set udg_PlayerHERE[5]=false
 		call Gem_Spawn__Stop (4)
@@ -3064,22 +2755,13 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		set udg_PlayerDie[5]=true
 		call Gem_Player__Remove_Creeps (Player (4))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P5_Func009001())then
-		set udg_RaceModeKills[5]=(udg_RaceModeKills[5]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P5_Func010001())then
+
+	set udg_RaceModeKills[5]=(udg_RaceModeKills[5]+1)
+
+	if udg_RaceModeKills [5] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P5)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P5_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P5_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P5 takes nothing returns nothing
@@ -3097,66 +2779,15 @@ function Trig_Leak_and_lose_P6_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P6_Func005001 takes nothing returns boolean
-	return(udg_Lives[6]<=0)
-endfunction
-function Trig_Leak_and_lose_P6_Func007C takes nothing returns boolean
-	if(not(udg_Lives[6]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P6_Func008C takes nothing returns boolean
-	if(not(udg_Lives[6]<=0))then
-		return false
-	endif
-	if(not(udg_PlayerDie[6]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P6_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[6]==false)
-endfunction
-function Trig_Leak_and_lose_P6_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P6_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P6_Func009001001(),Trig_Leak_and_lose_P6_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P6_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[6]==10)
-endfunction
-function Trig_Leak_and_lose_P6_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[6]==10)
-endfunction
-function Trig_Leak_and_lose_P6_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[6]==50)
-endfunction
-function Trig_Leak_and_lose_P6_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P6_Func012001001(),Trig_Leak_and_lose_P6_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
-	set udg_CountLivesLost[6]=(udg_CountLivesLost[6]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[6]=(udg_Lives[6]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P6_Func005001())then
-		set udg_Lives[6]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0015,I2R(udg_Lives[6]))
-	if(Trig_Leak_and_lose_P6_Func007C())then
+
+	if udg_RLevel [6] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0015), GetUnitY (gg_unit_h01V_0015)))
-		call ForceAddPlayerSimple(Player(5),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[6])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(5),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (5), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P6_Func008C())then
-		set udg_Lives[6]=0
 		call KillUnit(gg_unit_h01V_0015)
 		set udg_PlayerHERE[6]=false
 		call Gem_Spawn__Stop (5)
@@ -3164,22 +2795,13 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		set udg_PlayerDie[6]=true
 		call Gem_Player__Remove_Creeps (Player (5))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P6_Func009001())then
-		set udg_RaceModeKills[6]=(udg_RaceModeKills[6]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P6_Func010001())then
+
+	set udg_RaceModeKills[6]=(udg_RaceModeKills[6]+1)
+
+	if udg_RaceModeKills [6] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P6)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P6_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P6_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P6 takes nothing returns nothing
@@ -3197,66 +2819,15 @@ function Trig_Leak_and_lose_P7_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P7_Func005001 takes nothing returns boolean
-	return(udg_Lives[7]<=0)
-endfunction
-function Trig_Leak_and_lose_P7_Func007C takes nothing returns boolean
-	if(not(udg_Lives[7]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P7_Func008C takes nothing returns boolean
-	if(not(udg_PlayerDie[7]==false))then
-		return false
-	endif
-	if(not(udg_Lives[7]<=0))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P7_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[7]==false)
-endfunction
-function Trig_Leak_and_lose_P7_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P7_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P7_Func009001001(),Trig_Leak_and_lose_P7_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P7_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[7]==10)
-endfunction
-function Trig_Leak_and_lose_P7_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[7]==10)
-endfunction
-function Trig_Leak_and_lose_P7_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[7]==50)
-endfunction
-function Trig_Leak_and_lose_P7_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P7_Func012001001(),Trig_Leak_and_lose_P7_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
-	set udg_CountLivesLost[7]=(udg_CountLivesLost[7]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[7]=(udg_Lives[7]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P7_Func005001())then
-		set udg_Lives[7]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0017,I2R(udg_Lives[7]))
-	if(Trig_Leak_and_lose_P7_Func007C())then
+
+	if udg_RLevel [7] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0017), GetUnitY (gg_unit_h01V_0017)))
-		call ForceAddPlayerSimple(Player(6),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[7])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(6),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (6), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P7_Func008C())then
-		set udg_Lives[7]=0
 		call KillUnit(gg_unit_h01V_0017)
 		set udg_PlayerHERE[7]=false
 		call Gem_Spawn__Stop (6)
@@ -3264,22 +2835,13 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		set udg_PlayerDie[7]=true
 		call Gem_Player__Remove_Creeps (Player (6))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P7_Func009001())then
-		set udg_RaceModeKills[7]=(udg_RaceModeKills[7]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P7_Func010001())then
+
+	set udg_RaceModeKills[7]=(udg_RaceModeKills[7]+1)
+
+	if udg_RaceModeKills [7] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P7)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P7_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P7_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P7 takes nothing returns nothing
@@ -3297,66 +2859,15 @@ function Trig_Leak_and_lose_P8_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Leak_and_lose_P8_Func005001 takes nothing returns boolean
-	return(udg_Lives[8]<=0)
-endfunction
-function Trig_Leak_and_lose_P8_Func007C takes nothing returns boolean
-	if(not(udg_Lives[8]>=1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P8_Func008C takes nothing returns boolean
-	if(not(udg_Lives[8]<=0))then
-		return false
-	endif
-	if(not(udg_PlayerDie[8]==false))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Leak_and_lose_P8_Func009001001 takes nothing returns boolean
-	return(udg_PlayerDie[8]==false)
-endfunction
-function Trig_Leak_and_lose_P8_Func009001002 takes nothing returns boolean
-	return(udg_Mode==2)
-endfunction
-function Trig_Leak_and_lose_P8_Func009001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P8_Func009001001(),Trig_Leak_and_lose_P8_Func009001002())
-endfunction
-function Trig_Leak_and_lose_P8_Func010001 takes nothing returns boolean
-	return(udg_RaceModeKills[8]==10)
-endfunction
-function Trig_Leak_and_lose_P8_Func012001001 takes nothing returns boolean
-	return(udg_RaceModeKills[8]==10)
-endfunction
-function Trig_Leak_and_lose_P8_Func012001002 takes nothing returns boolean
-	return(udg_RLevel[8]==50)
-endfunction
-function Trig_Leak_and_lose_P8_Func012001 takes nothing returns boolean
-	return GetBooleanAnd(Trig_Leak_and_lose_P8_Func012001001(),Trig_Leak_and_lose_P8_Func012001002())
-endfunction
 function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
-	set udg_CountLivesLost[8]=(udg_CountLivesLost[8]+GetUnitPointValue(GetTriggerUnit()))
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
-	set udg_Lives[8]=(udg_Lives[8]-GetUnitPointValue(GetTriggerUnit()))
-	if(Trig_Leak_and_lose_P8_Func005001())then
-		set udg_Lives[8]=0
-	else
-		call DoNothing()
-	endif
-	call SetUnitLifeBJ(gg_unit_h01V_0018,I2R(udg_Lives[8]))
-	if(Trig_Leak_and_lose_P8_Func007C())then
+
+	if udg_RLevel [8] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0018), GetUnitY (gg_unit_h01V_0018)))
-		call ForceAddPlayerSimple(Player(7),udg_CombiningPlayer)
-		call DisplayTextToForce(udg_CombiningPlayer,(("|cffff0000"+GetUnitName(GetTriggerUnit()))+(" has entered your Mine!!|r "+(I2S(udg_Lives[8])+" |cffff0000 lives left!!|r"))))
-		call ForceRemovePlayerSimple(Player(7),udg_CombiningPlayer)
+		call DisplayTextToPlayer (Player (7), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-	endif
-	if(Trig_Leak_and_lose_P8_Func008C())then
-		set udg_Lives[8]=0
 		call KillUnit(gg_unit_h01V_0018)
 		set udg_PlayerHERE[8]=false
 		call Gem_Spawn__Stop (7)
@@ -3364,22 +2875,13 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		set udg_PlayerDie[8]=true
 		call Gem_Player__Remove_Creeps (Player (7))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
-	else
+		return
 	endif
-	if(Trig_Leak_and_lose_P8_Func009001())then
-		set udg_RaceModeKills[8]=(udg_RaceModeKills[8]+1)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P8_Func010001())then
+
+	set udg_RaceModeKills[8]=(udg_RaceModeKills[8]+1)
+
+	if udg_RaceModeKills [8] == 10 then
 		call ConditionalTriggerExecute(gg_trg_New_Level_P8)
-	else
-		call DoNothing()
-	endif
-	if(Trig_Leak_and_lose_P8_Func012001())then
-		call ConditionalTriggerExecute(gg_trg_Fin_P8_2)
-	else
-		call DoNothing()
 	endif
 endfunction
 function InitTrig_Leak_and_lose_P8 takes nothing returns nothing
@@ -3425,10 +2927,6 @@ function Trig_Fin_P1_2_Actions takes nothing returns nothing
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[1])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[1])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[1])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[1])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[1])))
 	call TriggerSleepAction(2.00)
@@ -3489,10 +2987,6 @@ function Trig_Fin_P2_2_Actions takes nothing returns nothing
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[2])))
 	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[2])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[2])))
-	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[2])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[2])))
@@ -3551,10 +3045,6 @@ function Trig_Fin_P3_2_Actions takes nothing returns nothing
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[3])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[3])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[3])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[3])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[3])))
 	call TriggerSleepAction(2.00)
@@ -3615,10 +3105,6 @@ function Trig_Fin_P4_2_Actions takes nothing returns nothing
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[4])))
 	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[4])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[4])))
-	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[4])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[4])))
@@ -3677,10 +3163,6 @@ function Trig_Fin_P5_2_Actions takes nothing returns nothing
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[5])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[5])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[5])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[5])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[5])))
 	call TriggerSleepAction(2.00)
@@ -3741,10 +3223,6 @@ function Trig_Fin_P6_2_Actions takes nothing returns nothing
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[6])))
 	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[6])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[6])))
-	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[6])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[6])))
@@ -3804,10 +3282,6 @@ function Trig_Fin_P7_2_Actions takes nothing returns nothing
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[7])))
 	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[7])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[7])))
-	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[7])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_HINT,("|cffffff00Money Spent on Extra-Chancing:|r "+I2S(udg_CountExtraChanceMoney[7])))
@@ -3866,10 +3340,6 @@ function Trig_Fin_P8_2_Actions takes nothing returns nothing
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Special Towers:|r "+I2S(udg_CountSpecials[8])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Gems/Slates not made into Specials:|r "+I2S(udg_CountWastedGems[8])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives Bought:|r "+I2S(udg_CountBuyLives[8])))
-	call TriggerSleepAction(2.00)
-	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Lives lost:|r "+I2S(udg_CountLivesLost[8])))
 	call TriggerSleepAction(2.00)
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_HINT,("|cffffff00Mazing Rocks:|r "+I2S(udg_CountRocks[8])))
 	call TriggerSleepAction(2.00)

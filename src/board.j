@@ -77,7 +77,6 @@ function Board___Title takes player whom returns string
 
 	local string rank = Color__White (Board___Ranks [Gem_Rank__Get_Rank (GetLocalPlayer ())])
 	local string level = Color__White (I2S (udg_RLevel [whom_id + 1]))
-	local string lives = I2S (udg_Lives [whom_id + 1])
 
 	local integer current = Gem_Extra_Chance__Current_Target (whom)
 	local integer previous = Gem_Extra_Chance__Previous_Target (whom)
@@ -117,13 +116,7 @@ function Board___Title takes player whom returns string
 		set extra_chance = Color__White ("N/A")
 	endif
 
-	if lives == "0" then
-		set lives = Color__Red (lives)
-	else
-		set lives = Color__White (lives)
-	endif
-
-	set title = "Rank: " + rank + " — Level: " + level + " — Lives: " + lives
+	set title = "Rank: " + rank + " — Level: " + level
 
 	if damage != null then
 		set title = title + " — Damage: " + damage
@@ -150,14 +143,14 @@ function Board___Add_Test_Column takes nothing returns nothing
 
 	set Board___On_Test = true
 
-	call MultiboardSetColumnCount (Board, 6)
+	call MultiboardSetColumnCount (Board, 5)
 
 	loop
-		set object = MultiboardGetItem (Board, row, 4)
+		set object = MultiboardGetItem (Board, row, 3)
 		call MultiboardSetItemWidth (object, dps_width)
 		call MultiboardReleaseItem (object)
 
-		set object = MultiboardGetItem (Board, row, 5)
+		set object = MultiboardGetItem (Board, row, 4)
 		call MultiboardSetItemStyle (object, true, false)
 		call MultiboardSetItemWidth (object, test_width)
 
@@ -190,7 +183,6 @@ function Board___Update takes nothing returns nothing
 	local string value
 	local multiboarditem board_item
 	local boolean is_grey
-	local boolean is_red
 
 	call MultiboardSetTitleText (Board, Board___Title (GetLocalPlayer ()))
 
@@ -212,18 +204,14 @@ function Board___Update takes nothing returns nothing
 			set value = null
 			set board_item = MultiboardGetItem (Board, row, column)
 			set is_grey = false
-			set is_red = false
 
 			if column == 0 then
 				set value = GetPlayerName (whom)
 			elseif column == 1 then
 				set value = I2S (udg_RLevel [whom_id + 1])
 			elseif column == 2 then
-				set value = I2S (udg_Lives [whom_id + 1])
-				set is_red = value == "0"
-			elseif column == 3 then
 				set value = I2S (GetPlayerState (whom, PLAYER_STATE_RESOURCE_GOLD))
-			elseif column == 4 then
+			elseif column == 3 then
 				// Display previous round's DPS if the next round's spawn
 				// has not started (i.e. in placement phase).
 				if Gem_Rank__Get_Start (whom_id, level) == 0 then
@@ -234,7 +222,7 @@ function Board___Update takes nothing returns nothing
 				endif
 
 				set value = I2S (R2I (dps + 0.5))
-			elseif Board___On_Test and column == 5 then
+			elseif Board___On_Test and column == 4 then
 				if level == 52 then
 					set time = Gem_Rank__Get_Stop (whom_id, 51)
 					set value = Board___Time (time)
@@ -265,8 +253,6 @@ function Board___Update takes nothing returns nothing
 				call MultiboardSetItemValueColor (board_item, Player_Color__Red (whom_id), Player_Color__Green (whom_id), Player_Color__Blue (whom_id), 255)
 			elseif has_left or is_grey then
 				call MultiboardSetItemValueColor (board_item, 128, 128, 128, 255)
-			elseif is_red then
-				call MultiboardSetItemValueColor (board_item, 255, 0, 0, 255)
 			else
 				call MultiboardSetItemValueColor (board_item, 255, 255, 255, 255)
 			endif
@@ -320,9 +306,8 @@ function Board__Setup takes nothing returns nothing
 	// Header (by column):
 	set header [0] = "Players"
 	set header [1] = "Level"
-	set header [2] = "Lives"
-	set header [3] = "Gold"
-	set header [4] = "DPS"
+	set header [2] = "Gold"
+	set header [3] = "DPS"
 
 	// Width (by column):
 	set space = String__Width (" ")
@@ -331,9 +316,8 @@ function Board__Setup takes nothing returns nothing
 	set initial = space * 2 + String__Width ("W") * 6
 	set width [0] = initial
 	set width [1] = String__Width ("Level") + space * 3
-	set width [2] = String__Width ("Lives") + space * 3
-	set width [3] = String__Width ("Gold") + space * 5
-	set width [4] = String__Width ("DPS") + space * 5
+	set width [2] = String__Width ("Gold") + space * 5
+	set width [3] = String__Width ("DPS") + space * 5
 
 	set player_index = 0
 	set count = 0

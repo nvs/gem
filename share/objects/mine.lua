@@ -21,7 +21,6 @@ local slate = {
 
 local information = id (globals.Gem_Mine_Information___BUTTON_ID)
 
--- # Placeholder
 local function placeholder (active)
 	return {
 		type = 'ability',
@@ -103,7 +102,8 @@ do
 		cancel.placeholder,
 		perfect.placeholder,
 		slate.placeholder,
-		information
+		information,
+		'Avul'
 	}
 
 	-- ## Stats
@@ -118,34 +118,13 @@ do
 
 	-- Researches Available
 	mine.ures.value = 'R000'
-
-	-- Units Trained
-	mine.utra.value = 'h01W'
 end
 
 -- # Remove Objects
 objects ['R001'] = nil
 objects ['h03Q'] = nil
 objects ['h042'] = nil
-
--- # Mine Life
-do
-	local unit = objects ['h01W']
-
-	-- ## Text
-	do
-		-- Hotkey - Normal
-		unit.uhot.value = 'L'
-
-		-- Tooltip - Normal
-		unit.utip.value = 'Buy |cffffcc00L|rife'
-
-		-- Tooltip - Normal - Extended
-		unit.utub.value = 'Adds one life to your Mine.|n|n'
-			.. 'Creeps that reach your Mine remove lives equal to their '
-			.. 'gold value.'
-	end
-end
+objects ['h01W'] = nil
 
 -- # Mine Cancel (Active)
 objects [cancel.active] = {

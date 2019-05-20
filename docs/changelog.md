@@ -12,6 +12,10 @@ a full list of changes to the project, please consult the commit log.
 
 ### Changed
 - Spawn points have been shifted closer to the first checkpoints.
+- Leaking creeps:
+    - Any leak on Level 10 and beyond will result in a loss.
+    - Leaks before Level 10 are not penalized, beyond the increase in time
+      and loss of bounty gold that they represent.
 - Builder:
     - Has a maximum mana of `10`, and starts with full mana.
     - Gains `1` mana for every level completed.
@@ -73,6 +77,7 @@ a full list of changes to the project, please consult the commit log.
     - Elder Slate.
 
 ### Removed
+- Lives have been removed.
 - Bonus gold that was awarded for reaching certain levels first has been
   removed.
 

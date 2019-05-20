@@ -11,7 +11,6 @@ globals
 	group array udg_UnitGroup
 	integer array udg_SpawningUnit
 	force udg_CombiningPlayer=null
-	integer array udg_Lives
 	integer array udg_Kills
 	player array udg_Player
 	integer array udg_Damage
@@ -43,7 +42,6 @@ globals
 	integer array udg_CountSpecials
 	integer array udg_Count1stkills
 	integer array udg_Count2ndKills
-	integer array udg_CountBuyLives
 	integer array udg_CountDownGrades
 	integer array udg_CountJadeMoney
 	boolean array udg_Rbonus
@@ -59,7 +57,6 @@ globals
 	unit udg_CheckSpelllvlUNIT=null
 	integer udg_CheckLvlSpell=0
 	integer array udg_CountWastedGems
-	integer array udg_CountLivesLost
 	integer array udg_CountMove1
 	integer array udg_CountMove2
 	integer array udg_CountMove3
