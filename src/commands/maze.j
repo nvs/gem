@@ -137,7 +137,6 @@ function Commands___Initialize_Maze takes nothing returns nothing
 	set index = 0
 	loop
 		call TriggerRegisterPlayerChatEvent (maze, Player (index), "-maze", false)
-		set Commands___No_Maze [index] = true
 
 		set index = index + 1
 		exitwhen index >= bj_MAX_PLAYERS
