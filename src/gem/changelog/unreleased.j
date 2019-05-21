@@ -35,7 +35,8 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "    - Maximum bonus increased from `5x` to `10x`.|n"
 	set text = text + "    - The bonus now increases when the current target is in the same class as the previous target. Classes are defined as Perfects and Slates.|n"
 	set text = text + "    - If the bonus is `4x` or higher, hitting the target will now decrease it by `4x` (e.g. `4x` becomes `0x`). If the bonus is `3x` or lower, it will continue to be cleared.|n"
-	set text = text + "|n"
+	set text = text + "- Level 50:|n"
+	set text = text + "    - The Damage Test (i.e. Boss) will spawn along with the minions on Level 50, rather than after they been killed.|n"
 	set text = text + "- Emeralds:|n"
 	set text = text + "    - Poison damage can now kill units.|n"
 	set text = text + "- Ancient Slate:|n"
@@ -43,9 +44,6 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "    - Each additional Ancient Slate adds `-4` to the armor reduction.|n"
 	set text = text + "- Elder Slate:|n"
 	set text = text + "    - Armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
-
-	set text = text + "- Wraith Slate:|n"
-	set text = text + "    - Explosion has been reworked. It now deals full damage to units within `250` range, and half damage to units outside the primary explosion, up to `750` range.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
@@ -57,6 +55,8 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
+	set text = text + "- Wraith Slate:|n"
+	set text = text + "    - Explosion has been reworked. It now deals full damage to units within `250` range, and half damage to units outside the primary explosion, up to `750` range.|n"
 	set text = text + "- Dark Emerald / Enchanted Emerald:|n"
 	set text = text + "    - Each additional Dark Emerald or Enchanted Emerald:|n"
 	set text = text + "        - Causes attacks to bounce to an additional nearby enemy.|n"
