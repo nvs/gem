@@ -92,7 +92,6 @@ function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
 	set text = text + "    - Paraiba Tourmaline.|n"
 	set text = text + "    - Paraiba Tourmaline Facet.|n"
 	set text = text + "    - Spell Slate.|n"
-	set text = text + "    - Elder Slate.|n"
 	set text = text + "|n"
 
 	set text = text + Color__Gold ("Removed:") + "|n"
