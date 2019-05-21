@@ -59,40 +59,41 @@ function Board___Time takes integer time returns string
 	return Board___Format (hours) + ":" + Board___Format (minutes) + ":" + Board___Format (seconds)
 endfunction
 
-function Board___Title_Damage takes integer whom_id, integer round returns string
-	local real damage = Gem_Rank__Get_Damage (whom_id, round)
-	local real total = I2R (Gem_Spawn__Get_Total_HP (round))
-	local string text
-
-	set text = R2S (damage)
-	set text = text + " ("
-	set text = text + I2S (PercentToInt (damage / total * 100, 100))
-	set text = text + "%)"
-
-	return Color__White (text)
+// Use to determine if offline cheats have been detected, the game was saved
+// then loaded, or the map has determined tampering has occurred.
+function Board___Cheated takes nothing returns boolean
+	return Cheats__Detected () or Game__Is_Loaded () or not Zeta__Is_OK ()
 endfunction
 
 function Board___Title takes player whom returns string
 	local integer whom_id = GetPlayerId (whom)
 
 	local string rank = Color__White (Board___Ranks [Gem_Rank__Get_Rank (GetLocalPlayer ())])
-	local string level = Color__White (I2S (udg_RLevel [whom_id + 1]))
+	local string level
 
 	local integer current = Gem_Extra_Chance__Current_Target (whom)
 	local integer previous = Gem_Extra_Chance__Previous_Target (whom)
 	local integer round = Gem_Rank__Get_Level (whom_id)
-	local string damage = null
+	local real damage
 	local string extra_chance = null
 	local string color
 	local integer target
 	local integer bonus
 	local string name
 	local integer type_id
+	local integer time
+	local string progress = null
 
 	local string title
 
-	if Gem_Rank__Is_Player_Finished (whom) and round != Gem_Rank__LEVELS then
-		set damage = Board___Title_Damage (whom_id, round)
+	if Gem_Rank__Is_Player_Finished (whom) then
+		if round == Gem_Rank__LEVELS then
+			set time = Gem_Rank__Get_Stop (whom_id, round - 1)
+			set progress = " — Time: " + Color__White (Board___Time (time))
+		else
+			set damage = Gem_Rank__Get_Damage (whom_id, round)
+			set progress = " — Damage: " + Color__White (R2S (damage))
+		endif
 	elseif current > 0 or previous > 0 then
 		if current > 0 then
 			set color = Color__WHITE
@@ -116,56 +117,31 @@ function Board___Title takes player whom returns string
 		set extra_chance = Color__White ("N/A")
 	endif
 
-	set title = "Rank: " + rank + " — Level: " + level
+	if round == Gem_Rank__LEVELS then
+		set round = round - 1
+	endif
 
-	if damage != null then
-		set title = title + " — Damage: " + damage
+	set title = "Rank: " + rank + " — Level: " + Color__White (I2S (round))
+
+	if progress != null then
+		set title = title + progress
 	endif
 
 	if extra_chance != null then
 		set title = title + " — Extra: " + extra_chance
 	endif
 
-	if Game_Status () == Game_Status__REPLAY or round == Gem_Rank__LEVELS then
-		set title = title + " — ID: " + Color__White (I2S (Gem__GAME_ID))
+	if Game_Status () == Game_Status__REPLAY or Gem_Rank__Is_Player_Finished (whom) then
+		if Board___Cheated () then
+			set color = "808080"
+		else
+			set color = Color__WHITE
+		endif
+
+		set title = title + " — ID: " + Color (color, I2S (Gem__GAME_ID))
 	endif
 
 	return title
-endfunction
-
-function Board___Add_Test_Column takes nothing returns nothing
-	local real space = String__Width (" ")
-	local real dps_width = String__Width ("DPS") + space * 7
-	local real test_width = String__Width ("44:44:44")
-	local multiboarditem object
-	local integer rows = MultiboardGetRowCount (Board)
-	local integer row = 0
-
-	set Board___On_Test = true
-
-	call MultiboardSetColumnCount (Board, 5)
-
-	loop
-		set object = MultiboardGetItem (Board, row, 3)
-		call MultiboardSetItemWidth (object, dps_width)
-		call MultiboardReleaseItem (object)
-
-		set object = MultiboardGetItem (Board, row, 4)
-		call MultiboardSetItemStyle (object, true, false)
-		call MultiboardSetItemWidth (object, test_width)
-
-		if row == 0 then
-			call MultiboardSetItemValue (object, "Test")
-			call MultiboardSetItemValueColor (object, 254, 211, 18, 255)
-		else
-			call MultiboardSetItemValue (object, "")
-		endif
-
-		call MultiboardReleaseItem (object)
-
-		set row = row + 1
-		exitwhen row >= rows
-	endloop
 endfunction
 
 function Board___Update takes nothing returns nothing
@@ -179,6 +155,7 @@ function Board___Update takes nothing returns nothing
 	local integer level
 	local real dps
 	local real damage
+	local real total
 	local integer time
 	local string value
 	local multiboarditem board_item
@@ -193,12 +170,6 @@ function Board___Update takes nothing returns nothing
 		set has_left = GetPlayerSlotState (whom) == PLAYER_SLOT_STATE_LEFT
 		set level = Gem_Rank__Get_Level (whom_id)
 
-		if not Board___On_Test and level > 50 then
-			call Board___Add_Test_Column ()
-			call Board___Update ()
-			exitwhen true
-		endif
-
 		set column = 0
 		loop
 			set value = null
@@ -208,7 +179,11 @@ function Board___Update takes nothing returns nothing
 			if column == 0 then
 				set value = GetPlayerName (whom)
 			elseif column == 1 then
-				set value = I2S (udg_RLevel [whom_id + 1])
+				if level == Gem_Rank__LEVELS then
+					set value = I2S (level - 1)
+				else
+					set value = I2S (level)
+				endif
 			elseif column == 2 then
 				set value = I2S (GetPlayerState (whom, PLAYER_STATE_RESOURCE_GOLD))
 			elseif column == 3 then
@@ -222,30 +197,14 @@ function Board___Update takes nothing returns nothing
 				endif
 
 				set value = I2S (R2I (dps + 0.5))
-			elseif Board___On_Test and column == 4 then
+			elseif column == 4 then
 				if level == Gem_Rank__LEVELS then
-					set time = Gem_Rank__Get_Stop (whom_id, 51)
+					set time = Gem_Rank__Get_Stop (whom_id, level - 1)
 					set value = Board___Time (time)
-
-					// The time will be greyed despite a player being
-					// present in the game if offline cheats have been
-					// detected, the game was saved then loaded, or the map
-					// has determined tampering has occurred.
-					if Cheats__Detected () or Game__Is_Loaded () or not Zeta__Is_OK () then
-						set is_grey = true
-					endif
-				elseif level == 51 then
-					set damage = Gem_Rank__Get_Damage (whom_id, 51)
-
-					// Get the ceiling.  Note that damage is always
-					// positive.
-					if damage != R2I (damage) then
-						set damage = damage + 1
-					endif
-
-					set value = I2S (R2I (damage))
 				else
-					set value = ""
+					set damage = Gem_Rank__Get_Damage (whom_id, level)
+					set total = I2R (Gem_Spawn__Get_Total_HP (level))
+					set value = value + R2SW (damage / total * 100, 0, 1) + "%"
 				endif
 			endif
 
@@ -308,6 +267,7 @@ function Board__Setup takes nothing returns nothing
 	set header [1] = "Level"
 	set header [2] = "Gold"
 	set header [3] = "DPS"
+	set header [4] = "Progress"
 
 	// Width (by column):
 	set space = String__Width (" ")
@@ -316,8 +276,9 @@ function Board__Setup takes nothing returns nothing
 	set initial = space * 2 + String__Width ("W") * 6
 	set width [0] = initial
 	set width [1] = String__Width ("Level") + space * 3
-	set width [2] = String__Width ("Gold") + space * 5
-	set width [3] = String__Width ("DPS") + space * 5
+	set width [2] = String__Width ("Gold") + space * 4
+	set width [3] = String__Width ("DPS") + space * 7
+	set width [4] = String__Width ("44:44:44")
 
 	set player_index = 0
 	set count = 0
