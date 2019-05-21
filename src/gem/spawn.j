@@ -70,24 +70,11 @@ function Gem_Spawn___Unit_Type takes integer round returns integer
 endfunction
 
 function Gem_Spawn__Get_Total_HP takes integer round returns integer
-	local integer index = Gem_Spawn___Round [round]
-	local integer id
-	local unit which
-	local integer hp
-	local integer count
+	local integer spawn = Gem_Spawn___Round [round]
+	local integer waves = Spawn__Get_Waves (spawn)
+	local integer hp = Gem_Spawn___HP [round] * waves
 
-	if Gem_Spawn___HP [round] == 0 then
-		set id = Spawn__Get_Type (index)
-		set which = CreateUnit (Gem__PLAYER_CREEPS, id, 0.0, 0.0, 0.0)
-		call ShowUnit (which, false)
-		set Gem_Spawn___HP [round] = BlzGetUnitMaxHP (which)
-		call RemoveUnit (which)
-	endif
-
-	set hp = Gem_Spawn___HP [round]
-	set count = Spawn__Get_Waves (index)
-
-	return hp * count
+	return hp
 endfunction
 
 // ### `Gem_Spawn__Start ()`
@@ -146,7 +133,9 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 	local trigger the_trigger
 	local integer player_index
 	local integer round
-	local integer array unit_type
+	local integer id
+	local integer hp
+	local unit which
 
 	set Gem_Spawn___ID_PLAYER_INDEX = ID ()
 
@@ -169,6 +158,10 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 		set round = round + 1
 		exitwhen round > 50
 
+		set id = Gem_Spawn___Unit_Type (round)
+		set which = CreateUnit (Gem__PLAYER_CREEPS, id, 0, 0, 0)
+		set Gem_Spawn___HP [round] = BlzGetUnitMaxHP (which)
+		call RemoveUnit (which)
 		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, Gem_Spawn___FACING_RIGHT, 0.00, 1.61)
 	endloop
 
