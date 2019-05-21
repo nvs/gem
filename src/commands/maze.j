@@ -10,6 +10,9 @@ function Commands___Maze takes nothing returns boolean
 	local player whom = GetTriggerPlayer ()
 	local integer whom_id = GetPlayerId (whom)
 
+	local string text = GetEventPlayerChatString ()
+	local string flag = SubString (text, 6, -1)
+
 	local rect A
 	local real Ax
 	local real Ay
@@ -31,12 +34,27 @@ function Commands___Maze takes nothing returns boolean
 
 	local boolean started
 
+	if not (flag == "on" or flag == "off") then
+		return true
+	endif
+
 	set started = Gem_Rank__Get_Level (whom_id) > 1
-	set started = started or (Gem_Placement__Is_Active (whom) and Gem_Placement__Placed (whom) > 0)
+	set started = started or Gem_Placement__Placed (whom) > 0
+	set started = started or Gem_Rank__Get_Start (whom_id, 1) > 0
 
 	if started then
 		call DisplayTextToPlayer (whom, 0.0, 0.0, "The `-maze` command can only be used before placing a gem at game start")
 		return true
+	endif
+
+	set buildable = flag == "on"
+
+	if buildable then
+		set source = 'Zbks'
+		set target = 'Zdrg'
+	else
+		set source = 'Zdrg'
+		set target = 'Zbks'
 	endif
 
 	loop
@@ -70,46 +88,29 @@ function Commands___Maze takes nothing returns boolean
 			loop
 				set terrain = GetTerrainType (Ax, Ay)
 
-				if source == 0 then
-					if terrain == 'Zdrg' then
-						set target = 'Zbks'
-					elseif terrain == 'Zbks' then
-						set target = 'Zdrg'
-					else
-						set target = 0
-					endif
-
-					if target > 0 then
-						set source = terrain
-						// This will return `false` when it is actually
-						// buildable, so we must flip it.
-						set buildable = not IsTerrainPathable (Ax, Ay, PATHING_TYPE_BUILDABILITY)
-					endif
-				endif
-
 				if terrain == source and count < 68 then
 					set count = count + 1
 					call SetTerrainType (Ax, Ay, target, -1, 1, 1)
 
-					call SetTerrainPathable (Ax - 48, Ay + 48, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax - 48, Ay + 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax - 48, Ay - 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax - 48, Ay - 48, PATHING_TYPE_BUILDABILITY, not buildable)
+					call SetTerrainPathable (Ax - 48, Ay + 48, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax - 48, Ay + 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax - 48, Ay - 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax - 48, Ay - 48, PATHING_TYPE_BUILDABILITY, buildable)
 
-					call SetTerrainPathable (Ax - 16, Ay + 48, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax - 16, Ay + 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax - 16, Ay - 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax - 16, Ay - 48, PATHING_TYPE_BUILDABILITY, not buildable)
+					call SetTerrainPathable (Ax - 16, Ay + 48, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax - 16, Ay + 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax - 16, Ay - 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax - 16, Ay - 48, PATHING_TYPE_BUILDABILITY, buildable)
 
-					call SetTerrainPathable (Ax + 16, Ay + 48, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax + 16, Ay + 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax + 16, Ay - 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax + 16, Ay - 48, PATHING_TYPE_BUILDABILITY, not buildable)
+					call SetTerrainPathable (Ax + 16, Ay + 48, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax + 16, Ay + 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax + 16, Ay - 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax + 16, Ay - 48, PATHING_TYPE_BUILDABILITY, buildable)
 
-					call SetTerrainPathable (Ax + 48, Ay + 48, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax + 48, Ay + 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax + 48, Ay - 16, PATHING_TYPE_BUILDABILITY, not buildable)
-					call SetTerrainPathable (Ax + 48, Ay - 48, PATHING_TYPE_BUILDABILITY, not buildable)
+					call SetTerrainPathable (Ax + 48, Ay + 48, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax + 48, Ay + 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax + 48, Ay - 16, PATHING_TYPE_BUILDABILITY, buildable)
+					call SetTerrainPathable (Ax + 48, Ay - 48, PATHING_TYPE_BUILDABILITY, buildable)
 				endif
 
 				set Ay = Ay + Ysign * 128
@@ -120,12 +121,6 @@ function Commands___Maze takes nothing returns boolean
 			exitwhen Ax == Bx
 		endloop
 	endloop
-
-	if buildable then
-		call DisplayTextToPlayer (whom, 0.0, 0.0, "Mazing has been disabled")
-	else
-		call DisplayTextToPlayer (whom, 0.0, 0.0, "Mazing has been enabled")
-	endif
 
 	set Commands___No_Maze [whom_id] = buildable
 
@@ -141,7 +136,8 @@ function Commands___Initialize_Maze takes nothing returns nothing
 
 	set index = 0
 	loop
-		call TriggerRegisterPlayerChatEvent (maze, Player (index), "-maze", true)
+		call TriggerRegisterPlayerChatEvent (maze, Player (index), "-maze", false)
+		set Commands___No_Maze [index] = true
 
 		set index = index + 1
 		exitwhen index >= bj_MAX_PLAYERS
