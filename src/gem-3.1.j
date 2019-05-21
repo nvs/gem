@@ -1394,30 +1394,8 @@ function InitTrig_Creeps_attacking takes nothing returns nothing
 	set udg_MoveOnAttack [86] = gg_rct_8move7
 	set udg_MoveOnAttack [87] = gg_rct_Finish_8
 endfunction
-function Trig_Type_Air_Func002C takes nothing returns boolean
-	if(not(udg_Mode==1))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_Type_Air_Func003C takes nothing returns boolean
-	if(not(udg_Mode==2))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Type_Air_Actions takes nothing returns nothing
-	call DisableTrigger(gg_trg_Type_Air)
-	if(Trig_Type_Air_Func002C())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffffff00Air levels are ( 4 , 8 , 12 , 16 , 20 , 24 , 28 , 32 , 36 , 40 )|r")
-	else
-	endif
-	if(Trig_Type_Air_Func003C())then
-		call DisplayTextToForce(GetPlayersAll(),"|cffffff00Air levels are ( 4 , 8 , 12 , 16 , 20 , 24 , 28 , 32 , 36 , 40 , 44 , 48 )|r")
-	else
-	endif
-	call TriggerSleepAction(10.00)
-	call EnableTrigger(gg_trg_Type_Air)
+	call DisplayTextToPlayer (GetTriggerPlayer (), 0, 0, "|cffffff00Air is every 4 levels:|r 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, and 48")
 endfunction
 function InitTrig_Type_Air takes nothing returns nothing
 	set gg_trg_Type_Air=CreateTrigger()
