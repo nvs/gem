@@ -25,11 +25,18 @@ FrameDef.ARMOR_UNKNOWN = 'Type: |Cffffcc00Sapphire|R'
 FrameDef.DAMAGE_UNKNOWN = 'Type: |Cffffcc00Sapphire|R'
 
 -- Miner / Gems:
-FrameDef.IDLE_PEON_DESC = 'Miner'
-FrameDef.IDLE_PEON = 'Miner'
-FrameDef.RESOURCE_UBERTIP_LUMBER = 'Gems available to build.'
-FrameDef.COLON_LUMBER = 'Gem Points'
-FrameDef.LUMBER = 'Gem Points'
+FrameDef.IDLE_PEON = 'Miner (|cfffed312F8|r)'
+FrameDef.IDLE_PEON_DESC = 'Use the Miner to place gems, perform various '
+	.. 'actions, and learn more about the game.'
+
+FrameDef.LUMBER = 'Gems'
+FrameDef.COLON_LUMBER = 'Gems:'
+FrameDef.RESOURCE_UBERTIP_LUMBER = 'Gems are awarded for finishing levels.'
+
+FrameDef.GOLD = 'Gold'
+FrameDef.COLON_GOLD = 'Gold:'
+FrameDef.RESOURCE_UBERTIP_GOLD = 'Gold is awarded as bounty for killing '
+	.. 'monsters and as a bonus for finishing levels.'
 
 -- Damage:
 FrameDef.DAMAGETIP_HERO = ''
@@ -182,12 +189,12 @@ CustomSkin.IdlePeon =
 
 -- Icon - Lumber:
 CustomSkin.LumberIcon =
-	'ReplaceableTextures\\CommandButtons\\BTNEnchantedGemstone.blp'
+	'ReplaceableTextures\\PassiveButtons\\PASBTNEnchantedGemstone.blp'
 
 -- Image - Tooltip Lumber Icon:
 CustomSkin.ToolTipLumberIcon =
-	'ReplaceableTextures\\CommandButtons\\BTNEnchantedGemstone.blp'
+	'ReplaceableTextures\\PassiveButtons\\PASBTNEnchantedGemstone.blp'
 
 -- Text - Message - 'Not enough lumber.':
-Errors.Nolumber = 'Five gems placed already'
+Errors.Nolumber = 'Not enough gems'
 Errors.Notancient = 'Unable to target Slates'
