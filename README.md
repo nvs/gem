@@ -34,11 +34,9 @@ view replays, is also available.
 ## How to Play
 
 Head over to [releases] and find the version of the map you wish to play.
-It is recommened to play the [latest release].  For the time being, Gem TD+
-is compatible with Warcraft III patch versions 1.26 or higher.
-
-_Do note that Gem TD+ is primarily tested against the most recent Warcraft
-III patch, and may eventually rely on features specific to future patches._
+It is recommened to play the [latest release].  Gem TD+ is compatible with
+the latest Warcraft III patch.  No efforts are made to maintain
+compatibility with older patches.
 
 [releases]: https://github.com/nvs/gem/releases
 [latest release]: https://github.com/nvs/gem/releases/latest
