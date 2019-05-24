@@ -10,6 +10,10 @@ function Clock___Update takes nothing returns nothing
 	call PauseTimer (Clock___Timer)
 endfunction
 
+function Clock__Started takes nothing returns integer
+	return Clock___Start
+endfunction
+
 function Clock__Start takes nothing returns nothing
 	set Clock___Start = Time__Now ()
 

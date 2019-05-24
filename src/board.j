@@ -81,6 +81,7 @@ function Board___Title takes player whom returns string
 	local integer bonus
 	local string name
 	local integer type_id
+	local integer start
 	local integer time
 	local string progress = null
 
@@ -88,7 +89,7 @@ function Board___Title takes player whom returns string
 
 	if Gem_Rank__Is_Player_Finished (whom) then
 		if round == Gem_Rank__LEVELS then
-			set time = Gem_Rank__Get_Stop (whom_id, round - 1)
+			set time = Gem_Rank__Get_Stop (whom_id, round - 1) - Clock__Started ()
 			set progress = " — Time: " + Color__White (Board___Time (time))
 		else
 			set damage = Gem_Rank__Get_Damage (whom_id, round)
@@ -199,7 +200,7 @@ function Board___Update takes nothing returns nothing
 				set value = I2S (R2I (dps + 0.5))
 			elseif column == 4 then
 				if level == Gem_Rank__LEVELS then
-					set time = Gem_Rank__Get_Stop (whom_id, level - 1)
+					set time = Gem_Rank__Get_Stop (whom_id, level - 1) - Clock__Started ()
 					set value = Board___Time (time)
 				else
 					set damage = Gem_Rank__Get_Damage (whom_id, level)
