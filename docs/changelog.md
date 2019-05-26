@@ -60,9 +60,10 @@ a full list of changes to the project, please consult the commit log.
       Ancient Blood Stone.
 - Fire Star:
     - No longer deals physical damage.
-    - Covers enemies in Fire, causing each target to burn like a Star Ruby.
-      The marked target, and enemies within `256` range of it, will take
-      `100` spell damage per second for the next `6.0` seconds.
+    - Each attack covers enemies in fire, causing targets to burn like a
+      Star Ruby. The marked target, and enemies within `256` range of it,
+      will take `100` spell damage per second for the next `6.0` seconds.
+      Additional attacks only refresh this duration.
 
 ### Fixed
 - Air pathing is now more consistent across all players.

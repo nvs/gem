@@ -1,5 +1,5 @@
 function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 1 of 4"
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 1 of 5"
 	local string date = "N/A"
 	local string text = ""
 
@@ -26,7 +26,7 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 endfunction
 
 function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 2 of 4"
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 2 of 5"
 	local string date = "N/A"
 	local string text = ""
 
@@ -51,7 +51,7 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 endfunction
 
 function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 3 of 4"
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 3 of 5"
 	local string date = "N/A"
 	local string text = ""
 
@@ -69,18 +69,21 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "    - No longer deals Immolation style damage.|n"
 	set text = text + "    - Now has a chance to cast a lesser Blood Lightning on attack.|n"
 	set text = text + "    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as Ancient Blood Stone.|n"
-	set text = text + "- Fire Star:|n"
-	set text = text + "    - No longer deals physical damage.|n"
-	set text = text + "    - Covers enemies in Fire, causing each target to burn like a Star Ruby. The marked target, and enemies within `256` range of it, will take `100` spell damage per second for the next `6.0` seconds.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
 endfunction
 
 function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
-	local string title = Gem_Changelog__Title ("Unreleased") + " - 4 of 4"
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 4 of 5"
 	local string date = "N/A"
 	local string text = ""
+
+	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
+	set text = text + "- Fire Star:|n"
+	set text = text + "    - No longer deals physical damage.|n"
+	set text = text + "    - Each attack covers enemies in fire, causing targets to burn like a Star Ruby. The marked target, and enemies within `256` range of it, will take `100` spell damage per second for the next `6.0` seconds. Additional attacks only refresh this duration.|n"
+	set text = text + "|n"
 
 	set text = text + Color__Gold ("Fixed:") + "|n"
 	set text = text + "- Air pathing is now more consistent across all players.|n"
@@ -98,6 +101,14 @@ function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
 	set text = text + "    - Spell Slate.|n"
 	set text = text + "|n"
 
+	call Gem_Changelog__Setup (title, text, date)
+endfunction
+
+function Gem_Changelog___Unreleased_Part_5 takes nothing returns nothing
+	local string title = Gem_Changelog__Title ("Unreleased") + " - 5 of 5"
+	local string date = "N/A"
+	local string text = ""
+
 	set text = text + Color__Gold ("Removed:") + "|n"
 	set text = text + "- Lives have been removed.|n"
 	set text = text + "- Bonus gold that was awarded for reaching certain levels first has been removed.|n"
@@ -111,4 +122,5 @@ function Gem_Changelog___Unreleased takes nothing returns nothing
 	call Gem_Changelog___Unreleased_Part_2 ()
 	call Gem_Changelog___Unreleased_Part_3 ()
 	call Gem_Changelog___Unreleased_Part_4 ()
+	call Gem_Changelog___Unreleased_Part_5 ()
 endfunction
