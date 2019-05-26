@@ -39,6 +39,9 @@ a full list of changes to the project, please consult the commit log.
 - Ancient Slate:
     - Armor reduction base value is now `-4`.
     - Each additional Ancient Slate adds `-4` to the armor reduction.
+    - Stun duration has changed from `2.5` seconds to a range of `1.5` to
+      `3.5` seconds.
+    - Disarm duration has been reduced from `5.0` to `2.5` seconds.
 - Elder Slate:
     - Armor debuff no longer improves with levels, and now remains at the
       base value of `-7`.

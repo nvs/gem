@@ -59,59 +59,73 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	local texttag tag
 	local integer damage
 	local integer runner
+	local real stun
 	local real x
 	local real y
 
 	set attacker = GetAttacker ()
 	set victim = GetTriggerUnit ()
 
-	if GetUnitTypeId (attacker) == 'n003' and not Unit_Stun__Is_Stunned (victim) then
-		set owner = GetOwningPlayer (attacker)
-		set owner_id = GetPlayerId (owner)
-
-		set index = Unit_Indexer__Unit_Index (victim)
-		set armor = Unit_Bonus_Armor__Get (victim)
-		set debuff = Gem_Slate_Ancient___Count [owner_id] * 4
-		call Unit_Bonus_Armor__Set (victim, armor - debuff)
-		call UnitAddAbility (victim, 'A02I')
-
-		set runner = Run__After (2.50, function Gem_Slate___Ancient_Remove_Debuff)
-		set Gem_Slate_Ancient___Victim [runner] = index
-		set Gem_Slate_Ancient___Debuff [runner] = debuff
-
-		set Gem_Slate___Ancient_Unit = victim
-		call GroupEnumUnitsInRange (Gem_Slate___Ancient_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Ancient_Taunt))
-		set Gem_Slate___Ancient_Unit = victim
-
-		set x = GetUnitX (attacker)
-		set y = GetUnitY (attacker)
-
-		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl", victim, "chest"))
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", x, y))
-
-		set damage = Unit_User_Data__Get (attacker) * GetRandomInt (5, 120) + udg_RLevel [owner_id + 1] * 50
-		call Unit_Damage__Is_Code ()
-		call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-
-		set tag = CreateTextTag ()
-
-		if GetHandleId (tag) == 0 then
-			call BJDebugMsg ("Error: Gem_Slate___Ancient (): `texttag` limit reached")
-		endif
-
-		call SetTextTagText (tag, I2S (damage) + " Damage!", 0.023)
-		call SetTextTagPos (tag, x, y, 0.00)
-		call SetTextTagColor (tag, 255, 255, 0, 255)
-		call SetTextTagPermanent (tag, false)
-		call SetTextTagLifespan (tag, 3.00)
-		call SetTextTagFadepoint (tag, 2.50)
-		call SetTextTagVisibility (tag, true)
-
-		call Unit_Stun__Apply (victim, 2.50)
-		call Unit_Disarm__Apply (attacker, 5.00)
+	if GetUnitTypeId (attacker) != 'n003' then
+		return true
 	endif
 
-	return false
+	call BlzUnitInterruptAttack (attacker)
+
+	if Unit_Stun__Is_Stunned (victim) then
+		return true
+	endif
+
+	set stun = GetRandomReal (1.5, 3.5)
+
+	if not Unit_Stun__Apply (victim, stun) then
+		return true
+	endif
+
+	call Unit_Disarm__Apply (attacker, 2.50)
+
+	set owner = GetOwningPlayer (attacker)
+	set owner_id = GetPlayerId (owner)
+
+	set index = Unit_Indexer__Unit_Index (victim)
+	set armor = Unit_Bonus_Armor__Get (victim)
+	set debuff = Gem_Slate_Ancient___Count [owner_id] * 4
+	call Unit_Bonus_Armor__Set (victim, armor - debuff)
+	call UnitAddAbility (victim, 'A02I')
+
+	set runner = Run__After (stun, function Gem_Slate___Ancient_Remove_Debuff)
+	set Gem_Slate_Ancient___Victim [runner] = index
+	set Gem_Slate_Ancient___Debuff [runner] = debuff
+
+	set Gem_Slate___Ancient_Unit = victim
+	call GroupEnumUnitsInRange (Gem_Slate___Ancient_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Ancient_Taunt))
+	set Gem_Slate___Ancient_Unit = victim
+
+	set x = GetUnitX (attacker)
+	set y = GetUnitY (attacker)
+
+	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl", victim, "chest"))
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", x, y))
+
+	set damage = Unit_User_Data__Get (attacker) * GetRandomInt (5, 120) + udg_RLevel [owner_id + 1] * 50
+	call Unit_Damage__Is_Code ()
+	call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+
+	set tag = CreateTextTag ()
+
+	if GetHandleId (tag) == 0 then
+		call BJDebugMsg ("Error: Gem_Slate___Ancient (): `texttag` limit reached")
+	endif
+
+	call SetTextTagText (tag, I2S (damage) + " Damage!", 0.023)
+	call SetTextTagPos (tag, x, y, 0.00)
+	call SetTextTagColor (tag, 255, 255, 0, 255)
+	call SetTextTagPermanent (tag, false)
+	call SetTextTagLifespan (tag, 3.00)
+	call SetTextTagFadepoint (tag, 2.50)
+	call SetTextTagVisibility (tag, true)
+
+	return true
 endfunction
 
 function Gem_Slate_Ancient___Enter takes nothing returns nothing

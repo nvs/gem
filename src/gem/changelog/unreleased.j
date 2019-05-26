@@ -43,8 +43,8 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "- Ancient Slate:|n"
 	set text = text + "    - Armor reduction base value is now `-4`.|n"
 	set text = text + "    - Each additional Ancient Slate adds `-4` to the armor reduction.|n"
-	set text = text + "- Elder Slate:|n"
-	set text = text + "    - Armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
+	set text = text + "    - Stun duration has changed from `2.5` seconds to a range of `1.5` to `3.5` seconds.|n"
+	set text = text + "    - Disarm duration has been reduced from `5.0` to `2.5` seconds.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
@@ -56,6 +56,9 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
+
+	set text = text + "- Elder Slate:|n"
+	set text = text + "    - Armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
 	set text = text + "- Wraith Slate:|n"
 	set text = text + "    - Explosion has been reworked. It now deals full damage to units within `250` range, and half damage to units outside the primary explosion, up to `750` range.|n"
 	set text = text + "- Dark Emerald / Enchanted Emerald:|n"
