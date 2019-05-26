@@ -74,6 +74,7 @@ function Gem_Player__Initialize takes nothing returns boolean
 	local integer index__player
 	local real x
 	local real y
+	local unit miner
 
 	set index__player = 0
 	loop
@@ -82,7 +83,11 @@ function Gem_Player__Initialize takes nothing returns boolean
 		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
 			set x = GetStartLocationX (index__player)
 			set y = GetStartLocationY (index__player)
-			set Gem_Player___MINER [index__player] = CreateUnit (the_player, 'u000', x, y, bj_UNIT_FACING)
+			set miner = CreateUnit (the_player, 'u000', x, y, bj_UNIT_FACING)
+			set Gem_Player___MINER [index__player] = miner
+
+			call UnitAddItem (miner, CreateItem ('gmi1', x, y))
+			call UnitAddItem (miner, CreateItem ('gmi2', x, y))
 
 			// Ensure that the player camera is set to the builder during
 			// map initialization.  This prevents a brief shift from the
