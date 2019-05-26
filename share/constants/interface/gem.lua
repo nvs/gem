@@ -26,8 +26,8 @@ FrameDef.DAMAGE_UNKNOWN = 'Type: |Cffffcc00Sapphire|R'
 
 -- Miner / Gems:
 FrameDef.IDLE_PEON = 'Miner (|cfffed312F8|r)'
-FrameDef.IDLE_PEON_DESC = 'Use the Miner to place gems, perform various '
-	.. 'actions, and learn more about the game.'
+FrameDef.IDLE_PEON_DESC = 'Use the Miner to place gems and perform various '
+	.. 'actions.'
 
 FrameDef.LUMBER = 'Gems'
 FrameDef.COLON_LUMBER = 'Gems:'
