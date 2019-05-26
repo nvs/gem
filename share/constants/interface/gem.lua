@@ -90,98 +90,68 @@ FrameDef.QUESTS = 'Information'
 FrameDef.UPPER_BUTTON_QUEST_UBER = 'This dialog displays information related to |c00fed312Gem TD+|r.'
 
 -- Icon - Attack Type Chaos (Topaz):
-CustomSkin.InfoPanelIconDamageChaos =
-	'ReplaceableTextures\\CommandButtons\\BTNBearBlink.blp'
-CustomSkin.InfoPanelIconDamageChaosNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNBearBlink.blp'
+CustomSkin.InfoPanelIconDamageChaos = 'Gem\\Attack\\Topaz.blp'
+CustomSkin.InfoPanelIconDamageChaosNeutral = 'Gem\\Attack\\Topaz.blp'
 
 -- Icon - Attack Type Hero (Ruby):
-CustomSkin.InfoPanelIconDamageHero =
-	'ReplaceableTextures\\CommandButtons\\BTNDeathPact.blp'
-CustomSkin.InfoPanelIconDamageHeroNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNDeathPact.blp'
+CustomSkin.InfoPanelIconDamageHero = 'Gem\\Attack\\Ruby.blp'
+CustomSkin.InfoPanelIconDamageHeroNeutral = 'Gem\\Attack\\Ruby.blp'
 
 -- Icon - Attack Type Magic (Water - Aquamarine / Opal):
-CustomSkin.InfoPanelIconDamageMagic =
-	'ReplaceableTextures\\CommandButtons\\BTNCrushingWave.blp'
-CustomSkin.InfoPanelIconDamageMagicNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNCrushingWave.blp'
+CustomSkin.InfoPanelIconDamageMagic = 'Gem\\Attack\\Water.blp'
+CustomSkin.InfoPanelIconDamageMagicNeutral = 'Gem\\Attack\\Water.blp'
 
 -- Icon - Attack Type Melee (Diamond):
-CustomSkin.InfoPanelIconDamageMelee =
-	'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp'
-CustomSkin.InfoPanelIconDamageMeleeNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp'
+CustomSkin.InfoPanelIconDamageMelee = 'Gem\\Attack\\Diamond.blp'
+CustomSkin.InfoPanelIconDamageMeleeNeutral = 'Gem\\Attack\\Diamond.blp'
 
 -- Icon - Attack Type Normal (Sapphire):
-CustomSkin.InfoPanelIconDamageNormal =
-	'ReplaceableTextures\\CommandButtons\\BTNFrostBolt.blp'
-CustomSkin.InfoPanelIconDamageNormalNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNFrostBolt.blp'
+CustomSkin.InfoPanelIconDamageNormal = 'Gem\\Attack\\Sapphire.blp'
+CustomSkin.InfoPanelIconDamageNormalNeutral = 'Gem\\Attack\\Sapphire.blp'
 
 -- Icon - Attack Type Pierce (Amethyst):
-CustomSkin.InfoPanelIconDamagePierce =
-	'ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp'
-CustomSkin.InfoPanelIconDamagePierceNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp'
+CustomSkin.InfoPanelIconDamagePierce = 'Gem\\Attack\\Amethyst.blp'
+CustomSkin.InfoPanelIconDamagePierceNeutral = 'Gem\\Attack\\Amethyst.blp'
 
 -- Icon - Attack Type Siege (Emerald):
-CustomSkin.InfoPanelIconDamageSiege =
-	'ReplaceableTextures\\CommandButtons\\BTNAntiMagicShell.blp'
-CustomSkin.InfoPanelIconDamageSiegeNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNAntiMagicShell.blp'
+CustomSkin.InfoPanelIconDamageSiege = 'Gem\\Attack\\Emerald.blp'
+CustomSkin.InfoPanelIconDamageSiegeNeutral = 'Gem\\Attack\\Emerald.blp'
 
 -- Icon - Command - Basic Structure (Undead):
 CustomSkin.CommandBasicStructUndead =
 	'ReplaceableTextures\\CommandButtons\\BTNAdvStruct.blp'
 
 -- Icon - Defense Type Divine (Bryvx):
-CustomSkin.InfoPanelIconArmorDivine =
-	'ReplaceableTextures\\CommandButtons\\BTNMedivh.blp'
-CustomSkin.InfoPanelIconArmorDivineNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNMedivh.blp'
+CustomSkin.InfoPanelIconArmorDivine = 'Gem\\Armor\\Bryvx.blp'
+CustomSkin.InfoPanelIconArmorDivineNeutral = 'Gem\\Armor\\Bryvx.blp'
 
 -- Icon - Defense Type Fort (Green):
-CustomSkin.InfoPanelIconArmorFort =
-	'ReplaceableTextures\\CommandButtons\\BTNBanish.blp'
-CustomSkin.InfoPanelIconArmorFortNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNBanish.blp'
+CustomSkin.InfoPanelIconArmorFort = 'Gem\\Armor\\Green.blp'
+CustomSkin.InfoPanelIconArmorFortNeutral = 'Gem\\Armor\\Green.blp'
 
 -- Icon - Defense Type Hero (Blue):
-CustomSkin.InfoPanelIconArmorHero =
-	'ReplaceableTextures\\CommandButtons\\BTNAnimalWarTraining.blp'
-CustomSkin.InfoPanelIconArmorHeroNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNAnimalWarTraining.blp'
+CustomSkin.InfoPanelIconArmorHero = 'Gem\\Armor\\Blue.blp'
+CustomSkin.InfoPanelIconArmorHeroNeutral = 'Gem\\Armor\\Blue.blp'
 
 -- Icon - Defense Type Large (White):
-CustomSkin.InfoPanelIconArmorLarge =
-	'ReplaceableTextures\\CommandButtons\\BTNWellSpring.blp'
-CustomSkin.InfoPanelIconArmorLargeNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNWellSpring.blp'
+CustomSkin.InfoPanelIconArmorLarge = 'Gem\\Armor\\White.blp'
+CustomSkin.InfoPanelIconArmorLargeNeutral = 'Gem\\Armor\\White.blp'
 
 -- Icon - Defense Type Medium (Blazed):
-CustomSkin.InfoPanelIconArmorMedium =
-	'ReplaceableTextures\\CommandButtons\\BTNWallOfFire.blp'
-CustomSkin.InfoPanelIconArmorMediumNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNWallOfFire.blp'
+CustomSkin.InfoPanelIconArmorMedium = 'Gem\\Armor\\Blazed.blp'
+CustomSkin.InfoPanelIconArmorMediumNeutral = 'Gem\\Armor\\Blazed.blp'
 
 -- Icon - Defense Type None (Pink):
-CustomSkin.InfoPanelIconArmorNone =
-	'ReplaceableTextures\\CommandButtons\\BTNDoom.blp'
-CustomSkin.InfoPanelIconArmorNoneNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNDoom.blp'
+CustomSkin.InfoPanelIconArmorNone = 'Gem\\Armor\\Pink.blp'
+CustomSkin.InfoPanelIconArmorNoneNeutral = 'Gem\\Armor\\Pink.blp'
 
 -- Icon - Defense Type Normal (Yellow):
-CustomSkin.InfoPanelIconArmorNormal =
-	'ReplaceableTextures\\CommandButtons\\BTNHolyBolt.blp'
-CustomSkin.InfoPanelIconArmorNormalNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNHolyBolt.blp'
+CustomSkin.InfoPanelIconArmorNormal = 'Gem\\Armor\\Yellow.blp'
+CustomSkin.InfoPanelIconArmorNormalNeutral = 'Gem\\Armor\\Yellow.blp'
 
 -- Icon - Defense Type Small (Red):
-CustomSkin.InfoPanelIconArmorSmall =
-	'ReplaceableTextures\\CommandButtons\\BTNRedDragon.blp'
-CustomSkin.InfoPanelIconArmorSmallNeutral =
-	'ReplaceableTextures\\CommandButtons\\BTNRedDragon.blp'
+CustomSkin.InfoPanelIconArmorSmall = 'Gem\\Armor\\Red.blp'
+CustomSkin.InfoPanelIconArmorSmallNeutral = 'Gem\\Armor\\Red.blp'
 
 -- Icon - Idle Worker:
 CustomSkin.IdlePeon =
