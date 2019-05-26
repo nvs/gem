@@ -11,6 +11,7 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Changed:") + "|n"
 	set text = text + "- Spawn points have been shifted closer to the first checkpoints.|n"
+	set text = text + "- Units now gain stun immunity for `0.1` seconds after a stun has ended.|n"
 	set text = text + "- Leaking creeps:|n"
 	set text = text + "    - Any leak on Level 10 and beyond will result in a loss.|n"
 	set text = text + "    - Leaks before Level 10 are not penalized, beyond the increase in time and loss of bounty gold that they represent.|n"

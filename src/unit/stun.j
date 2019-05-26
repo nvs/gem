@@ -36,8 +36,12 @@ globals
 
 	integer Unit_Stun___ID_UNIT_INDEX = ID__NULL
 
+	integer array Unit_Stun___Stop
+
 	timer array Unit_Stun___Timers
 	boolean array Unit_Stun___Is_Stunned
+
+	constant integer Unit_Stun___IMMUNITY = 100
 endglobals
 
 // Returns a boolean indicating whether or not the unit is stunned.
@@ -52,6 +56,7 @@ function Unit_Stun___Expires takes nothing returns nothing
 
 	if index > 0 and Unit_Stun___Is_Stunned [index] then
 		set Unit_Stun___Is_Stunned [index] = false
+		set Unit_Stun___Stop [index] = Time__Now ()
 		call UnitRemoveAbility (Unit_Indexer__Unit_By_Index (index), Unit_Stun___BUFF_ID)
 	endif
 endfunction
@@ -74,7 +79,7 @@ endfunction
 // duration. If a unit is already stunned, then this function will extend the
 // stun length to the provided duration, assuming it is longer than what
 // remains.
-function Unit_Stun__Apply takes unit the_unit, real duration returns nothing
+function Unit_Stun__Apply takes unit the_unit, real duration returns boolean
 	local integer index
 	local timer the_timer
 
@@ -83,6 +88,10 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns nothing
 	// No sense trying to stun a unit that is not indexed, or if the stun
 	// duration is not greater than zero.
 	if index > 0 and duration > 0.00 then
+		if Time__Now () - Unit_Stun___Stop [index] <= Unit_Stun___IMMUNITY then
+			return false
+		endif
+
 		set the_timer = Unit_Stun___Timers [index]
 
 		if the_timer == null then
@@ -101,7 +110,11 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns nothing
 		if Unit_Stun___Is_Stunned [index] and duration > TimerGetRemaining (the_timer) then
 			call TimerStart (the_timer, duration, false, function Unit_Stun___Expires)
 		endif
+
+		return true
 	endif
+
+	return false
 endfunction
 
 // Removes stun from the unit.
@@ -112,6 +125,7 @@ function Unit_Stun__Remove takes unit the_unit returns nothing
 
 	if index > 0 and Unit_Stun___Is_Stunned [index] then
 		set Unit_Stun___Is_Stunned [index] = false
+		set Unit_Stun___Stop [index] = Time__Now ()
 		call UnitRemoveAbility (the_unit, Unit_Stun___BUFF_ID)
 		call PauseTimer (Unit_Stun___Timers [index])
 	endif

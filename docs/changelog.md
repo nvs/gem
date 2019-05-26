@@ -12,6 +12,7 @@ a full list of changes to the project, please consult the commit log.
 
 ### Changed
 - Spawn points have been shifted closer to the first checkpoints.
+- Units now gain stun immunity for `0.1` seconds after a stun has ended.
 - Leaking creeps:
     - Any leak on Level 10 and beyond will result in a loss.
     - Leaks before Level 10 are not penalized, beyond the increase in time
