@@ -5,7 +5,7 @@ globals
 	unit Gem_Slate___Ancient_Unit = null
 
 	integer array Gem_Slate_Ancient___Victim
-	integer array Gem_Slate_Ancient___Before
+	integer array Gem_Slate_Ancient___Debuff
 	integer array Gem_Slate_Ancient___Count
 	group array Gem_Slate_Ancient___Group
 endglobals
@@ -32,14 +32,16 @@ function Gem_Slate___Ancient_Remove_Debuff takes nothing returns boolean
 	local integer index = Gem_Slate_Ancient___Victim [runner]
 	local unit victim
 	local integer armor
+	local integer debuff
 
 	if index == 0 then
 		return true
 	endif
 
+	set debuff = Gem_Slate_Ancient___Debuff [runner]
 	set victim = Unit_Indexer__Unit_By_Index (index)
-	set armor = Gem_Slate_Ancient___Before [index]
-	call Unit_Bonus_Armor__Set (victim, armor)
+	set armor = Unit_Bonus_Armor__Get (victim)
+	call Unit_Bonus_Armor__Set (victim, armor + debuff)
 	call UnitRemoveAbility (victim, 'A02I')
 	call UnitRemoveAbility (victim, 'B008')
 
@@ -70,12 +72,12 @@ function Gem_Slate___Ancient takes nothing returns boolean
 		set index = Unit_Indexer__Unit_Index (victim)
 		set armor = Unit_Bonus_Armor__Get (victim)
 		set debuff = Gem_Slate_Ancient___Count [owner_id] * 4
-		set Gem_Slate_Ancient___Before [index] = armor
 		call Unit_Bonus_Armor__Set (victim, armor - debuff)
 		call UnitAddAbility (victim, 'A02I')
 
 		set runner = Run__After (2.50, function Gem_Slate___Ancient_Remove_Debuff)
 		set Gem_Slate_Ancient___Victim [runner] = index
+		set Gem_Slate_Ancient___Debuff [runner] = debuff
 
 		set Gem_Slate___Ancient_Unit = victim
 		call GroupEnumUnitsInRange (Gem_Slate___Ancient_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Ancient_Taunt))
