@@ -189,11 +189,11 @@ CustomSkin.IdlePeon =
 
 -- Icon - Lumber:
 CustomSkin.LumberIcon =
-	'ReplaceableTextures\\PassiveButtons\\PASBTNEnchantedGemstone.blp'
+	'ReplaceableTextures\\PassiveButtons\\PASBTNGems.blp'
 
 -- Image - Tooltip Lumber Icon:
 CustomSkin.ToolTipLumberIcon =
-	'ReplaceableTextures\\PassiveButtons\\PASBTNEnchantedGemstone.blp'
+	'ReplaceableTextures\\PassiveButtons\\PASBTNGems.blp'
 
 -- Text - Message - 'Not enough lumber.':
 Errors.Nolumber = 'Not enough gems'
