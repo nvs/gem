@@ -4,7 +4,7 @@ function Gem_Changelog___Unreleased_Part_1 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Added:") + "|n"
-	set text = text + "- A `-maze` command:|n"
+	set text = text + "- `-maze` command:|n"
 	set text = text + "    - This toggles between mazing and no-mazing modes.|n"
 	set text = text + "    - Can only be used before placing a gem at game start.|n"
 	set text = text + "|n"

@@ -6,7 +6,7 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Added
-- A `-maze` command:
+- `-maze` command:
     - This toggles between mazing and no-mazing modes.
     - Can only be used before placing a gem at game start.
 
