@@ -36,15 +36,15 @@ function Gem_Changelog___Unreleased_Part_2 takes nothing returns nothing
 	set text = text + "    - Maximum bonus increased from `5x` to `10x`.|n"
 	set text = text + "    - The bonus now increases when the current target is in the same class as the previous target. Classes are defined as Perfects and Slates.|n"
 	set text = text + "    - If the bonus is `4x` or higher, hitting the target will now decrease it by `4x` (e.g. `4x` becomes `0x`). If the bonus is `3x` or lower, it will continue to be cleared.|n"
+	set text = text + "- Air levels:|n"
+	set text = text + "    - Monster life increased by `20%`.|n"
+	set text = text + "- Ground levels 41+:|n"
+	set text = text + "    - Monster life increased by `20%`.|n"
 	set text = text + "- Level 50:|n"
 	set text = text + "    - The Damage Test (i.e. Boss) will spawn along with the minions on Level 50, rather than after they been killed.|n"
 	set text = text + "- Emeralds:|n"
 	set text = text + "    - Poison damage can now kill units.|n"
-	set text = text + "- Ancient Slate:|n"
-	set text = text + "    - Armor reduction base value is now `-4`.|n"
-	set text = text + "    - Each additional Ancient Slate adds `-4` to the armor reduction.|n"
-	set text = text + "    - Stun duration has changed from `2.5` seconds to a range of `1.5` to `3.5` seconds.|n"
-	set text = text + "    - Disarm duration has been reduced from `5.0` to `2.5` seconds.|n"
+
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
@@ -57,6 +57,11 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
 
+	set text = text + "- Ancient Slate:|n"
+	set text = text + "    - Armor reduction base value is now `-4`.|n"
+	set text = text + "    - Each additional Ancient Slate adds `-4` to the armor reduction.|n"
+	set text = text + "    - Stun duration has changed from `2.5` seconds to a range of `1.5` to `3.5` seconds.|n"
+	set text = text + "    - Disarm duration has been reduced from `5.0` to `2.5` seconds.|n"
 	set text = text + "- Elder Slate:|n"
 	set text = text + "    - Armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
 	set text = text + "- Wraith Slate:|n"
@@ -66,15 +71,6 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "- Dark Emerald / Enchanted Emerald:|n"
 	set text = text + "    - Each additional Dark Emerald or Enchanted Emerald:|n"
 	set text = text + "        - Causes attacks to bounce to an additional nearby enemy.|n"
-	set text = text + "- Blood Stone:|n"
-	set text = text + "    - Attack is no longer AoE.|n"
-	set text = text + "    - No longer deals Immolation style damage.|n"
-	set text = text + "    - Now has a chance to cast a lesser Blood Lightning on attack.|n"
-	set text = text + "    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as Ancient Blood Stone.|n"
-	set text = text + "- Star Ruby:|n"
-	set text = text + "    - Damage reduced from `40` to `30` spell damage per second.|n"
-	set text = text + "- Blood Star:|n"
-	set text = text + "    - Damage reduced from `50` to `40` spell damage per second.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
@@ -86,6 +82,15 @@ function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
 	local string text = ""
 
 	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
+	set text = text + "- Blood Stone:|n"
+	set text = text + "    - Attack is no longer AoE.|n"
+	set text = text + "    - No longer deals Immolation style damage.|n"
+	set text = text + "    - Now has a chance to cast a lesser Blood Lightning on attack.|n"
+	set text = text + "    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as Ancient Blood Stone.|n"
+	set text = text + "- Star Ruby:|n"
+	set text = text + "    - Damage reduced from `40` to `30` spell damage per second.|n"
+	set text = text + "- Blood Star:|n"
+	set text = text + "    - Damage reduced from `50` to `40` spell damage per second.|n"
 	set text = text + "- Fire Star:|n"
 	set text = text + "    - No longer deals physical damage.|n"
 	set text = text + "    - Covers enemies in fire, causing targets to burn like a Star Ruby. The marked target, and enemies within `256` range of it, will take `100` spell damage per second for the next `6.0` seconds. Additional attacks only refreshes this duration.|n"
@@ -99,14 +104,7 @@ function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
 	set text = text + "    - Multiple sources will now stack.|n"
 	set text = text + "    - Kill bonuses now apply to this type of damage, up to `100%` bonus.|n"
 	set text = text + "- Viper Slate's AoE spell damage was double what was intended, and has been properly set to `50` damage per second.|n"
-	set text = text + "- The following structures now only perform actions (i.e. stuns, casts, etc.) when damage is actually dealt:|n"
-	set text = text + "    - Dark Emerald.|n"
-	set text = text + "    - Enchanted Dark Emerald.|n"
-	set text = text + "    - Ancient Blood Stone.|n"
-	set text = text + "    - Lucky China Jade.|n"
-	set text = text + "    - Paraiba Tourmaline.|n"
-	set text = text + "    - Paraiba Tourmaline Facet.|n"
-	set text = text + "    - Spell Slate.|n"
+
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)
@@ -116,6 +114,16 @@ function Gem_Changelog___Unreleased_Part_5 takes nothing returns nothing
 	local string title = Gem_Changelog__Title ("Unreleased") + " - 5 of 5"
 	local string date = "N/A"
 	local string text = ""
+
+	set text = text + Color__Gold ("Fixed: (cont.)") + "|n"
+	set text = text + "- The following structures now only perform actions (i.e. stuns, casts, etc.) when damage is actually dealt:|n"
+	set text = text + "    - Dark Emerald.|n"
+	set text = text + "    - Enchanted Dark Emerald.|n"
+	set text = text + "    - Ancient Blood Stone.|n"
+	set text = text + "    - Lucky China Jade.|n"
+	set text = text + "    - Paraiba Tourmaline.|n"
+	set text = text + "    - Paraiba Tourmaline Facet.|n"
+	set text = text + "    - Spell Slate.|n"
 
 	set text = text + Color__Gold ("Removed:") + "|n"
 	set text = text + "- Lives have been removed.|n"

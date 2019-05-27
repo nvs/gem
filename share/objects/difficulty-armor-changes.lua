@@ -57,7 +57,7 @@ local units = {
 	[51] = { 'H04B', 40 }
 }
 
-for _, pair in ipairs (units) do
+for level, pair in ipairs (units) do
 	local id = pair [1]
 	local armor = pair [2]
 
@@ -69,5 +69,11 @@ for _, pair in ipairs (units) do
 			type = 'integer',
 			value = armor
 		}
+	end
+
+	if level % 4 == 0 or (40 <= level and level < 50) then
+		unit.uhpm.value = unit.uhpm.value * 1.2
+	elseif level == 50 then
+		unit.uhpm.value = 75000
 	end
 end
