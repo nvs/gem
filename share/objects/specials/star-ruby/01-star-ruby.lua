@@ -63,7 +63,7 @@ do
 		}
 
 		for level = 1, 11 do
-			ability.acdn.values [level] = 40 * (1 + 0.1 * (level - 1))
+			ability.acdn.values [level] = 30 * (1 + 0.1 * (level - 1))
 		end
 
 		-- Levels

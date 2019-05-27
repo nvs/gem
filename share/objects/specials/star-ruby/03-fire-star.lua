@@ -59,7 +59,7 @@ do
 	do
 		-- Tooltip - Normal - Extended
 		local radius = 256
-		local damage = 100
+		local damage = 60
 		local per = damage * 0.1
 		local text = 'Each attack covers enemies in fire, causing targets '
 			.. 'to burn like a Star Ruby. The marked target, and enemies '

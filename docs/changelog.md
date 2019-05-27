@@ -58,11 +58,15 @@ a full list of changes to the project, please consult the commit log.
     - Now has a chance to cast a lesser Blood Lightning on attack.
     - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as
       Ancient Blood Stone.
+- Star Ruby:
+    - Damage reduced from `40` to `30` spell damage per second.
+- Blood Star:
+    - Damage reduced from `50` to `40` spell damage per second.
 - Fire Star:
     - No longer deals physical damage.
     - Each attack covers enemies in fire, causing targets to burn like a
       Star Ruby. The marked target, and enemies within `256` range of it,
-      will take `100` spell damage per second for the next `6.0` seconds.
+      will take `60` spell damage per second for the next `6.0` seconds.
       Additional attacks only refresh this duration.
 
 ### Fixed

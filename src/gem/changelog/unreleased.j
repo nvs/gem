@@ -69,6 +69,10 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "    - No longer deals Immolation style damage.|n"
 	set text = text + "    - Now has a chance to cast a lesser Blood Lightning on attack.|n"
 	set text = text + "    - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as Ancient Blood Stone.|n"
+	set text = text + "- Star Ruby:|n"
+	set text = text + "    - Damage reduced from `40` to `30` spell damage per second.|n"
+	set text = text + "- Blood Star:|n"
+	set text = text + "    - Damage reduced from `50` to `40` spell damage per second.|n"
 	set text = text + "|n"
 
 	call Gem_Changelog__Setup (title, text, date)

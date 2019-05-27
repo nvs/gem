@@ -14,10 +14,10 @@ function Gem_Special_Star_Ruby___Register takes unit which returns nothing
 	local real damage
 
 	if GetUnitTypeId (which) == Gem_Special__STAR_RUBY_1 then
-		set damage = 10.0
+		set damage = 7.5
 		set radius = 265.0
 	elseif GetUnitTypeId (which) == Gem_Special__STAR_RUBY_2 then
-		set damage = 12.5
+		set damage = 10.0
 		set radius = 500.0
 	else
 		return
