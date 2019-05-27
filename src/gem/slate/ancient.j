@@ -108,6 +108,7 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\ReplenishHealth\\ReplenishHealthCasterOverhead.mdl", x, y))
 
 	set damage = Unit_User_Data__Get (attacker) * GetRandomInt (5, 120) + udg_RLevel [owner_id + 1] * 50
+	set damage = damage / 2
 	call Unit_Damage__Is_Code ()
 	call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
 
