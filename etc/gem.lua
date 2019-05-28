@@ -12,7 +12,7 @@ return {
 	source = {
 		directory = 'src',
 		include = {
-			'lib/patch/1.30.4'
+			'lib/patch/1.31.0'
 		}
 	},
 
