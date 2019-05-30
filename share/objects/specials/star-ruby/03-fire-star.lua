@@ -58,7 +58,7 @@ do
 	-- ## Text
 	do
 		-- Tooltip - Normal - Extended
-		local radius = 256
+		local radius = 192
 		local damage = 60
 		local per = damage * 0.1
 		local text = 'Each attack covers enemies in fire, causing targets '

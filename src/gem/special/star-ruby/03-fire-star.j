@@ -4,7 +4,7 @@ endglobals
 
 function Gem_Special_Fire_Star___Register takes unit source, unit target returns integer
 	local string id = "star ruby"
-	local real radius = 265.0
+	local real radius = 192.0
 	local real period = 0.25
 	local real damage = 15.0
 
