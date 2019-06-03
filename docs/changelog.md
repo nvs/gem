@@ -49,6 +49,8 @@ a full list of changes to the project, please consult the commit log.
     - Explosion has been reworked. It now deals full damage to units within
       `250` range, and half damage to units outside the primary explosion,
       up to `750` range.
+- Viper Slate:
+    - Damage bonus gain reduced from `5%` to `3%` per level.
 - Dark Emerald / Enchanted Emerald:
     - Each additional Dark Emerald or Enchanted Emerald:
         - Causes attacks to bounce to an additional nearby enemy.

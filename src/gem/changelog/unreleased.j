@@ -61,6 +61,8 @@ function Gem_Changelog___Unreleased_Part_3 takes nothing returns nothing
 	set text = text + "    - Armor debuff no longer improves with levels, and now remains at the base value of `-7`.|n"
 	set text = text + "- Wraith Slate:|n"
 	set text = text + "    - Explosion has been reworked. It now deals full damage to units within `250` range, and half damage to units outside the primary explosion, up to `750` range.|n"
+	set text = text + "- Viper Slate:|n"
+	set text = text + "    - Damage bonus gain reduced from `5%` to `3%` per level.|n"
 	set text = text + "- Dark Emerald / Enchanted Emerald:|n"
 	set text = text + "    - Each additional Dark Emerald or Enchanted Emerald:|n"
 	set text = text + "        - Causes attacks to bounce to an additional nearby enemy.|n"

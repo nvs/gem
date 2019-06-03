@@ -2,7 +2,8 @@ local map = ...
 local objects = map.objects
 
 local ids = {
-	immolation = 'A075'
+	immolation = 'A075',
+	aura = 'A076'
 }
 
 -- # Viper Slate Immolation
@@ -114,5 +115,30 @@ do
 			ability.aub1.values [level] = string.format (
 				text, ids.immolation, ids.immolation, level)
 		end
+	end
+end
+
+-- # Viper Slate Aura
+do
+	local ability = objects [ids.aura]
+
+	-- ## Data
+	do
+		-- Attack Damage Increase
+		for level = 1, 11 do
+			ability.Cac1.values [level] = 0.10 + 0.03 * (level - 1)
+		end
+	end
+
+	-- ## Text
+	do
+		-- Tooltip - Normal - Extended
+		local text = 'Grants a <%s,DataA%d,%%>%% increased damage aura to '
+		 .. 'friendly structures within <%s,Area%d> range.'
+
+		 for level = 1, 11 do
+			 ability.aub1.values [level] = string.format (
+				 text, ids.aura, level, ids.aura, level)
+		 end
 	end
 end
