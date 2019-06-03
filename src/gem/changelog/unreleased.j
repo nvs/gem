@@ -86,7 +86,7 @@ function Gem_Changelog___Unreleased_Part_4 takes nothing returns nothing
 	set text = text + Color__Gold ("Changed: (cont.)") + "|n"
 	set text = text + "- Fire Star:|n"
 	set text = text + "    - No longer deals physical damage.|n"
-	set text = text + "    - Each attack covers enemies in fire, causing targets to burn like a Star Ruby. The marked target, and enemies within `256` range of it, will take `100` spell damage per second for the next `6.0` seconds. Additional attacks only refresh this duration.|n"
+	set text = text + "    - Covers enemies in fire, causing targets to burn like a Star Ruby. The marked target, and enemies within `256` range of it, will take `100` spell damage per second for the next `6.0` seconds. Additional attacks only refreshes this duration.|n"
 	set text = text + "|n"
 
 	set text = text + Color__Gold ("Fixed:") + "|n"

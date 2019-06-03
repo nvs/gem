@@ -61,11 +61,11 @@ do
 		local radius = 192
 		local damage = 60
 		local per = damage * 0.1
-		local text = 'Each attack covers enemies in fire, causing targets '
+		local text = 'Covers enemies in fire, causing targets '
 			.. 'to burn like a Star Ruby. The marked target, and enemies '
 			.. 'within %d range of it, will take %d spell damage per '
 			.. 'second for the next 6.0 seconds. Additional attacks only '
-			.. 'refresh this duration.'
+			.. 'refreshes this duration.'
 
 		for level = 1, 11 do
 			ability.aub1.values [level] = string.format (

@@ -64,10 +64,10 @@ a full list of changes to the project, please consult the commit log.
     - Damage reduced from `50` to `40` spell damage per second.
 - Fire Star:
     - No longer deals physical damage.
-    - Each attack covers enemies in fire, causing targets to burn like a
-      Star Ruby. The marked target, and enemies within `256` range of it,
-      will take `60` spell damage per second for the next `6.0` seconds.
-      Additional attacks only refresh this duration.
+    - Covers enemies in fire, causing them to burn like a Star Ruby. The
+      marked target, and enemies within `192` range of it, will take `60`
+      spell damage per second for the next `6.0` seconds. Additional attacks
+      only refreshes this duration.
 
 ### Fixed
 - Air pathing is now more consistent across all players.
