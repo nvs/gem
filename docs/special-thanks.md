@@ -9,8 +9,9 @@ The following people deserve recognition for their support in the making of
 Gem TD+:
 
 - bunnyjean
-- DMVPDemonMOM
 - Sesamia
+- Arsenic
+- DMVPDemonMOM
 
 ## Gem Tower Defense
 
