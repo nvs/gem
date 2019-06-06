@@ -6,6 +6,7 @@
 
 function Gem_Information___On_Start takes nothing returns boolean
 	call Gem_Information___What_Is_Gem_TD_Plus ()
+	call Gem_Information___Changelogs ()
 	call Gem_Information___Random_Information ()
 
 	return false

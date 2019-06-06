@@ -11,6 +11,8 @@
 // `icon`, and `text`.
 function Gem_Information__Setup takes quest the_quest, string title, string icon, string text returns nothing
 	call Quest__Setup (the_quest, title, icon, text, true)
+	call Gem_Information__Item (the_quest, Color__Link (Gem__WEBSITE_REPOSITORY))
+	call Gem_Information__Item (the_quest, Color__Link (Gem__WEBSITE_DISCORD))
 endfunction
 
 // Adds an item to `the_quest`, using the provided `text` as the description.

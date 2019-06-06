@@ -82,8 +82,8 @@ FrameDef.ARMORTIP_LARGE = 'Main weakness -  Diamonds (+60%)'
 FrameDef.TRAINING = 'Purchasing'
 
 -- Quests:
-FrameDef.QUESTSMAIN = 'Information'
-FrameDef.QUESTSOPTIONAL = 'Changelogs'
+FrameDef.QUESTSMAIN = '|r'
+FrameDef.QUESTSOPTIONAL = '|r'
 FrameDef.UPPER_BUTTON_QUEST_TIP = 'Information (|c00fed312F9|r)'
 FrameDef.KEY_QUESTS = 'Information (|c00fed312F9|r)'
 FrameDef.QUESTS = 'Information'
