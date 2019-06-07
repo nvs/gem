@@ -180,7 +180,7 @@ local function ability ()
 		amcs = {
 			type = 'integer',
 			values = {
-				[1] = 10
+				[1] = globals.Gem_Swap___COST
 			}
 		},
 

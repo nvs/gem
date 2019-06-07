@@ -3,6 +3,8 @@ globals
 	integer array Gem_Swap___Runner
 	effect array Gem_Swap___Effect
 	boolean array Gem_Swap___Reset
+
+	constant integer Gem_Swap___COST = 10
 endglobals
 
 function Gem_Swap___To_A takes unit builder returns nothing
@@ -60,8 +62,7 @@ function Gem_Swap___Expire takes nothing returns boolean
 	set builder = Gem_Player__Get_Miner (Player (whom_id))
 	call Gem_Swap___To_A (builder)
 
-	set mana = BlzGetAbilityManaCost ('GSAA', 1)
-	call Unit_State__Set (builder, UNIT_STATE_MANA, mana)
+	call Unit_State__Set (builder, UNIT_STATE_MANA, Gem_Swap___COST)
 
 	return true
 endfunction
@@ -107,8 +108,7 @@ function Gem_Swap___Spell takes nothing returns boolean
 		call Run__Cancel (runner)
 
 		if target == marked then
-			set mana = BlzGetAbilityManaCost ('GSAA', 1)
-			call Unit_State__Set (builder, UNIT_STATE_MANA, mana)
+			call Unit_State__Set (builder, UNIT_STATE_MANA, Gem_Swap___COST)
 		else
 			call Gem_Swap___Swap (marked, target)
 		endif
