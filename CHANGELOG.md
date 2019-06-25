@@ -33,11 +33,13 @@ a full list of changes to the project, please consult the commit log.
       it will continue to be cleared.
 - Air levels:
     - Monster life increased by `20%`.
-- Ground levels 41+:
+- Ground levels 41-49:
     - Monster life increased by `20%`.
 - Level 50:
     - The Damage Test (i.e. Boss) will spawn along with the minions on
       Level 50, rather than after they been killed.
+    - Boss life has been reduced to `500000`.
+    - Minion life has been increased from `55000` to `75000`.
 - Emeralds:
     - Poison damage can now kill units.
 - Ancient Slate:
