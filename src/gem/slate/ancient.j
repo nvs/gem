@@ -59,6 +59,7 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	local texttag tag
 	local integer damage
 	local integer runner
+	local integer count
 	local real stun
 	local real x
 	local real y
@@ -89,7 +90,14 @@ function Gem_Slate___Ancient takes nothing returns boolean
 
 	set index = Unit_Indexer__Unit_Index (victim)
 	set armor = Unit_Bonus_Armor__Get (victim)
-	set debuff = Gem_Slate_Ancient___Count [owner_id] * 4
+	set count = Gem_Slate_Ancient___Count [owner_id]
+
+	if IsUnitType (victim, UNIT_TYPE_FLYING) then
+		set debuff = count + 2
+	else
+		set debuff = count * 3 + 3
+	endif
+
 	call Unit_Bonus_Armor__Set (victim, armor - debuff)
 	call UnitAddAbility (victim, 'A02I')
 
