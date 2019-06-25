@@ -90,6 +90,7 @@ a full list of changes to the project, please consult the commit log.
     - Damage bonus reduced from `50%` to `30%`.
 
 ### Fixed
+- Spawn points were not symmetrical across all players.
 - Air pathing is now more consistent across all players.
 - Sources of AoE spell damage (i.e. Immolation) have been fixed:
     - Multiple sources will now stack.
