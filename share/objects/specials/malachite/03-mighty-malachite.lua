@@ -5,11 +5,18 @@ local globals = map.globals
 local id = require ('lib.gem.id')
 
 -- # Mighty Malachite
-local unit = objects [id (globals.Gem_Special__MALACHITE_3)]
-
--- ## Stats
 do
-	-- Gold Cost
-	unit.ugol.value = 180
-end
+	local unit = objects [id (globals.Gem_Special__MALACHITE_3)]
 
+	-- ## Combat - Attack 1
+	do
+		-- Cooldown
+		unit.ua1c.value = 0.33
+	end
+
+	-- ## Stats
+	do
+		-- Gold Cost
+		unit.ugol.value = 180
+	end
+end
