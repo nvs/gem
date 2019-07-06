@@ -13,6 +13,9 @@ do
 	}
 end
 
+-- Enchanted Emerald
+objects [ids [2]].ugol.value = 185
+
 for _, id in ipairs (ids) do
 	local unit = objects [id]
 

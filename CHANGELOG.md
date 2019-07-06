@@ -71,6 +71,7 @@ a full list of changes to the project, please consult the commit log.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.
 - Enchanted Emerald:
+    - Upgrade cost reduced from `225` to `185` gold.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.
 - Blood Stone:
