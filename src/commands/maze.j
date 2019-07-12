@@ -10,9 +10,6 @@ function Commands___Maze takes nothing returns boolean
 	local player whom = GetTriggerPlayer ()
 	local integer whom_id = GetPlayerId (whom)
 
-	local string text = GetEventPlayerChatString ()
-	local string flag = SubString (text, 6, -1)
-
 	local rect A
 	local real Ax
 	local real Ay
@@ -34,10 +31,6 @@ function Commands___Maze takes nothing returns boolean
 
 	local boolean started
 
-	if not (flag == "on" or flag == "off") then
-		return true
-	endif
-
 	set started = Gem_Rank__Get_Level (whom_id) > 1
 	set started = started or Gem_Placement__Placed (whom) > 0
 	set started = started or Gem_Rank__Get_Start (whom_id, 1) > 0
@@ -47,7 +40,8 @@ function Commands___Maze takes nothing returns boolean
 		return true
 	endif
 
-	set buildable = flag == "on"
+	// Indicates whether the current layout is buildable.
+	set buildable = Commands___No_Maze [whom_id]
 
 	if buildable then
 		set source = 'Zbks'
@@ -122,7 +116,7 @@ function Commands___Maze takes nothing returns boolean
 		endloop
 	endloop
 
-	set Commands___No_Maze [whom_id] = buildable
+	set Commands___No_Maze [whom_id] = not buildable
 
 	return true
 endfunction
@@ -136,7 +130,7 @@ function Commands___Initialize_Maze takes nothing returns nothing
 
 	set index = 0
 	loop
-		call TriggerRegisterPlayerChatEvent (maze, Player (index), "-maze", false)
+		call TriggerRegisterPlayerChatEvent (maze, Player (index), "-maze", true)
 
 		set index = index + 1
 		exitwhen index >= bj_MAX_PLAYERS
