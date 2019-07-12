@@ -31,6 +31,6 @@ do
 	-- ## Data
 	do
 		-- Maximum Number of Targets
-		ability.Efk3.value = 9
+		ability.Efk3.values = { 0 }
 	end
 end
