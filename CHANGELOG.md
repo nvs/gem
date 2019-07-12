@@ -67,9 +67,12 @@ a full list of changes to the project, please consult the commit log.
     - Attack cooldown reduced from `0.5` to `0.33` seconds.
 - Might Malachite:
     - Attack cooldown reduced from `0.55` to `0.33` seconds.
-- Dark Emerald / Enchanted Emerald:
-    - Each additional Dark Emerald or Enchanted Emerald:
-        - Causes attacks to bounce to an additional nearby enemy.
+- Dark Emerald
+    - Each additional Dark Emerald or Enchanted Emerald causes attacks to
+      bounce to an additional nearby enemy.
+- Enchanted Emerald:
+    - Each additional Dark Emerald or Enchanted Emerald causes attacks to
+      bounce to an additional nearby enemy.
 - Blood Stone:
     - Attack is no longer AoE.
     - No longer deals Immolation style damage.
