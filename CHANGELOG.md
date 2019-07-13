@@ -83,6 +83,10 @@ a full list of changes to the project, please consult the commit log.
     - Now has a chance to cast a lesser Blood Lightning on attack.
     - Attack cooldown reduced from `1.5` to `0.8` seconds, the same as
       Ancient Blood Stone.
+- Pink Diamond:
+    - Critical strike multiplier increased from `5x` to `9x`.
+- Great Pink Diamond:
+    - Critical strike multiplier increased from `9x` to `15x`.
 - Star Ruby:
     - Damage reduced from `40` to `30` spell damage per second.
 - Blood Star:
