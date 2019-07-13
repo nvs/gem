@@ -1,7 +1,4 @@
 // # Dark Emerald
-globals
-	integer array Gem_Special_Dark_Emerald___COUNT
-endglobals
 
 function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 	local string kind = Unit_Damage__Kind ()
@@ -38,23 +35,13 @@ function Gem_Special_Dark_Emerald___Enter takes nothing returns boolean
 	local unit which = Unit_Event__The_Unit ()
 	local integer id = GetUnitTypeId (which)
 	local player whom
-	local integer whom_id
-	local integer count
 
 	if not (id == Gem_Special__DARK_EMERALD_1 or id == Gem_Special__DARK_EMERALD_2) then
 		return true
 	endif
 
 	set whom = GetOwningPlayer (which)
-	set whom_id = GetPlayerId (whom)
-
-	set count = Gem_Special_Dark_Emerald___COUNT [whom_id] + 1
-	set Gem_Special_Dark_Emerald___COUNT [whom_id] = count
-
-	// This is the new count.
-	if count > 1 then
-		call AddPlayerTechResearched (whom, 'GDEB', 1)
-	endif
+	call AddPlayerTechResearched (whom, 'GDEB', 1)
 
 	return true
 endfunction
@@ -63,23 +50,13 @@ function Gem_Special_Dark_Emerald___Leave takes nothing returns boolean
 	local unit which = Unit_Event__The_Unit ()
 	local integer id = GetUnitTypeId (which)
 	local player whom
-	local integer whom_id
-	local integer count
 
 	if not (id == Gem_Special__DARK_EMERALD_1 or id == Gem_Special__DARK_EMERALD_2) then
 		return true
 	endif
 
 	set whom = GetOwningPlayer (which)
-	set whom_id = GetPlayerId (whom)
-
-	set count = Gem_Special_Dark_Emerald___COUNT [whom_id]
-	set Gem_Special_Dark_Emerald___COUNT [whom_id] = count - 1
-
-	// This is the old count.
-	if count > 1 then
-		call BlzDecPlayerTechResearched (whom, 'GDEB', 1)
-	endif
+	call BlzDecPlayerTechResearched (whom, 'GDEB', 1)
 
 	return true
 endfunction

@@ -69,10 +69,12 @@ a full list of changes to the project, please consult the commit log.
 - Might Malachite:
     - Attack cooldown reduced from `0.55` to `0.33` seconds.
 - Dark Emerald
+    - Attacks bounce to one nearby enemy.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.
 - Enchanted Emerald:
     - Upgrade cost reduced from `225` to `185` gold.
+    - Attacks bounce to one nearby enemy.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.
 - Blood Stone:
