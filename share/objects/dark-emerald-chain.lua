@@ -46,7 +46,7 @@ for _, id in ipairs (ids) do
 	-- Attack 1 - Damage Loss Factor
 	unit.udl1 = {
 		type = 'unreal',
-		value = 0.5
+		value = 0.00
 	}
 end
 
