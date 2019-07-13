@@ -71,6 +71,8 @@ a full list of changes to the project, please consult the commit log.
 - Dark Emerald
     - Stun duration has increased from `1.5` seconds to a range of
       `3.5 - 7.0` seconds.
+    - Units stunned by a Dark Emerald will take `20%` more damage from all
+      sources while stunned.
     - Attacks bounce to one nearby enemy.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.
@@ -78,6 +80,8 @@ a full list of changes to the project, please consult the commit log.
     - Upgrade cost reduced from `225` to `185` gold.
     - Stun duration has increased from `1.5` seconds to a range of
       `3.5 - 7.0` seconds.
+    - Units stunned by an Enchanted Emerald will take `20%` more damage from
+      all sources while stunned.
     - Attacks bounce to one nearby enemy.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.
