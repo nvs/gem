@@ -59,9 +59,11 @@ function Gem_Special___Jade takes nothing returns boolean
 
 		// Stun:
 		elseif roll == 2 and not Unit_Stun__Is_Stunned (victim) then
-			call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", victim, "chest"))
-			call Unit_Stun__Apply (victim, 2.00)
+			if not Unit_Stun__Apply (victim, 2.0) then
+				return true
+			endif
 
+			call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", victim, "chest"))
 			call Gem_Special___Jade_Tag (attacker, "Stun Hit!", 0, 255, 255)
 		endif
 	endif

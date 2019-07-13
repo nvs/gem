@@ -32,7 +32,17 @@ function Gem_Slate___Hold takes nothing returns boolean
 	set attacker = GetAttacker ()
 	set victim = GetTriggerUnit ()
 
-	if GetUnitTypeId (attacker) == 'n002' and not Unit_Stun__Is_Stunned (victim) then
+	if GetUnitTypeId (attacker) != 'n002' then
+		return false
+	endif
+
+	call BlzUnitInterruptAttack (attacker)
+
+	if Unit_Stun__Is_Stunned (victim) then
+		return false
+	endif
+
+	if Unit_Stun__Apply (victim, 1.50) then
 		set Gem_Slate___Hold_Unit = victim
 		call GroupEnumUnitsInRange (Gem_Slate___Hold_Group, GetUnitX (victim), GetUnitY (victim), 600.00, Filter (function Gem_Slate___Hold_Taunt))
 		set Gem_Slate___Hold_Unit = null
@@ -61,7 +71,6 @@ function Gem_Slate___Hold takes nothing returns boolean
 		call SetTextTagFadepoint (tag, 2.50)
 		call SetTextTagVisibility (tag, true)
 
-		call Unit_Stun__Apply (victim, 1.50)
 		call Unit_Disarm__Apply (attacker, 3.50)
 	endif
 

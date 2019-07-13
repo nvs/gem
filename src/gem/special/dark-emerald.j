@@ -27,9 +27,8 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 		return true
 	endif
 
-	if GetRandomInt (1, 8) == 1 then
+	if GetRandomInt (1, 8) == 1 and Unit_Stun__Apply (target, 1.50) then
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", target, "chest"))
-		call Unit_Stun__Apply (target, 1.50)
 	endif
 
 	return true
