@@ -7,6 +7,7 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 	local unit target = GetTriggerUnit ()
 
 	local integer id
+	local real stun
 
 	set Label = "Gem_Special_Dark_Emerald___Damage"
 
@@ -24,7 +25,9 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 		return true
 	endif
 
-	if GetRandomInt (1, 8) == 1 and Unit_Stun__Apply (target, 1.50) then
+	set stun = GetRandomReal (3.0, 7.0)
+
+	if GetRandomInt (1, 8) == 1 and Unit_Stun__Apply (target, stun) then
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", target, "chest"))
 	endif
 
