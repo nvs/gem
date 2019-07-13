@@ -77,13 +77,13 @@ function Gem_Slate___Ancient takes nothing returns boolean
 		return true
 	endif
 
-	set stun = GetRandomReal (1.5, 3.5)
+	set stun = GetRandomReal (3.0, 7.0)
 
 	if not Unit_Stun__Apply (victim, stun) then
 		return true
 	endif
 
-	call Unit_Disarm__Apply (attacker, 2.50)
+	call Unit_Disarm__Apply (attacker, 5.0)
 
 	set owner = GetOwningPlayer (attacker)
 	set owner_id = GetPlayerId (owner)
