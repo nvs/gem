@@ -47,8 +47,8 @@ a full list of changes to the project, please consult the commit log.
       air units.
     - Each additional Ancient Slate adds `-3` to the armor reduction for
       ground units and `-1` to the armor reduction for air units.
-    - Stun duration has changed from `2.5` seconds to a range of `3.0` to
-      `7.0` seconds.
+    - Stun duration has changed from `2.5` seconds to a range of `3.0 - 7.0`
+      seconds.
 - Elder Slate:
     - Armor debuff no longer improves with levels, and now remains at the
       base value of `-7`.
@@ -122,13 +122,13 @@ a full list of changes to the project, please consult the commit log.
   properly set to `50` damage per second.
 - The following structures now only perform actions (i.e. stuns, casts,
   etc.) when damage is actually dealt:
-    - Dark Emerald.
-    - Enchanted Dark Emerald.
-    - Ancient Blood Stone.
-    - Lucky China Jade.
-    - Paraiba Tourmaline.
-    - Paraiba Tourmaline Facet.
-    - Spell Slate.
+    - Dark Emerald
+    - Enchanted Dark Emerald
+    - Ancient Blood Stone
+    - Lucky China Jade
+    - Paraiba Tourmaline
+    - Paraiba Tourmaline Facet
+    - Spell Slate
 
 ### Removed
 - Lives have been removed.
