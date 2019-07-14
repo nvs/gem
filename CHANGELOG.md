@@ -82,6 +82,8 @@ a full list of changes to the project, please consult the commit log.
       `3.5 - 7.0` seconds.
     - Units stunned by an Enchanted Emerald will take `20%` more damage from
       all sources while stunned.
+    - Critical strike has been removed.  Damage has been increased from
+      `100 - 200` to `168 - 268`, maintaining the existing DPS.
     - Attacks bounce to one nearby enemy.
     - Each additional Dark Emerald or Enchanted Emerald causes attacks to
       bounce to an additional nearby enemy.

@@ -15,6 +15,7 @@ end
 
 -- Enchanted Emerald
 objects [ids [2]].ugol.value = 185
+objects [ids [2]].ua1b.value = 166
 
 for _, id in ipairs (ids) do
 	local unit = objects [id]
@@ -89,16 +90,85 @@ end
 
 -- # Enchanted Emerald Information
 do
-	local ability = objects.A01A
+	local ability = {
+		type = 'ability',
+		base = 'ACev'
+	}
+	objects.A01A = ability
+
+	-- ## Art
+	do
+		-- Button Position - Normal (X)
+		ability.abpx = {
+			type = 'integer',
+			value = 3
+		}
+
+		-- Button Position - Normal (Y)
+		ability.abpy = {
+			type = 'integer',
+			value = 1
+		}
+
+		-- Icon - Normal
+		ability.aart = {
+			type = 'string',
+			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp'
+		}
+	end
+
+	-- ## Data
+	do
+		-- Chance to Evade
+		ability.Eev1 = {
+			data = 1,
+			type = 'unreal',
+			values = {
+				[1] = 0
+			}
+		}
+	end
+
+	-- ## Stats
+	do
+		-- Race
+		ability.arac = {
+			type = 'string',
+			value = 'human'
+		}
+	end
 
 	-- ## Text
 	do
+		-- Editor Suffix
+		ability.ansf = {
+			type = 'string',
+			value = '(Enchanted Emerald)'
+		}
+
+		-- Name
+		ability.anam = {
+			type = 'string',
+			value = 'Abilities'
+		}
+
+		-- Tooltip - Normal
+		ability.atp1 = {
+			type = 'string',
+			values = {
+				[1] = '|cff33ff33Enchanted Emerald Abilities|r'
+			}
+		}
+
 		-- Tooltip - Normal - Extended
-		ability.aub1.values [1] = ''
-			.. '- 12.5% chance to stun for 1.5 seconds.|n'
-			.. '- 15.0% chance to do 4.0x damage.|n'
-			.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
-			.. '    - Causes attacks to bounce to an additional nearby '
-			.. 'enemy.|n'
+		ability.aub1 = {
+			type = 'string',
+			values = {
+				[1] = '- 12.5% chance to stun for 1.5 seconds.|n'
+				.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
+				.. '    - Causes attacks to bounce to an additional nearby '
+				.. 'enemy.|n'
+			}
+		}
 	end
 end
