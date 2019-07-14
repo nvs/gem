@@ -70,7 +70,7 @@ a full list of changes to the project, please consult the commit log.
     - Attack cooldown reduced from `0.55` to `0.33` seconds.
 - Dark Emerald
     - Stun duration has increased from `1.5` seconds to a range of
-      `3.5 - 7.0` seconds.
+      `3.0 - 7.0` seconds.
     - Units stunned by a Dark Emerald will take `20%` more damage from all
       sources while stunned.
     - Attacks bounce to one nearby enemy.
@@ -79,7 +79,7 @@ a full list of changes to the project, please consult the commit log.
 - Enchanted Emerald:
     - Upgrade cost reduced from `225` to `185` gold.
     - Stun duration has increased from `1.5` seconds to a range of
-      `3.5 - 7.0` seconds.
+      `3.0 - 7.0` seconds.
     - Units stunned by an Enchanted Emerald will take `20%` more damage from
       all sources while stunned.
     - Critical strike has been removed.  Damage has been increased from
