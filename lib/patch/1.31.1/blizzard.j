@@ -1,1 +1,1 @@
-1.31.0/blizzard.j
+../1.31.0/blizzard.j
