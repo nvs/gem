@@ -129,6 +129,8 @@ a full list of changes to the project, please consult the commit log.
     - Paraiba Tourmaline
     - Paraiba Tourmaline Facet
     - Spell Slate
+- Resolved an issue introduced in patch 1.31 that broke various map
+  functionality after loading a saved game.
 
 ### Removed
 - Lives have been removed.

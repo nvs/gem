@@ -118,7 +118,7 @@ function Cheats___Resources takes nothing returns boolean
 endfunction
 
 function Cheats___Fast_Build takes nothing returns boolean
-	if GetTriggerEventId () == EVENT_UNIT_TRAIN_FINISH then
+	if GetTriggerEventId () == EVENT_PLAYER_UNIT_TRAIN_FINISH then
 		call RemoveUnit (GetTrainedUnit ())
 		call Cheats___Is_Detected ()
 	else
@@ -180,7 +180,7 @@ function Cheats__Initialize takes nothing returns boolean
 	call ShowUnit (Cheats___TRAINER, false)
 
 	set Cheats___BUILD = CreateTrigger ()
-	call TriggerRegisterUnitEvent (Cheats___BUILD, Cheats___TRAINER, EVENT_UNIT_TRAIN_FINISH)
+	call TriggerRegisterPlayerUnitEvent (Cheats___BUILD, Cheats___PLAYER, EVENT_PLAYER_UNIT_TRAIN_FINISH, null)
 	call TriggerRegisterTimerEvent (Cheats___BUILD, Cheats___BUILD_PERIOD, true)
 	call TriggerAddCondition (Cheats___BUILD, Condition (function Cheats___Fast_Build))
 	call TriggerEvaluate (Cheats___BUILD)

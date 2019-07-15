@@ -17,6 +17,10 @@ function Gem_Mine_Type___Button takes nothing returns boolean
 
 	set whom = GetTriggerPlayer ()
 
+	if GetUnitTypeId (GetTriggerUnit ()) != 'h01V' then
+		return true
+	endif
+
 	call AdjustPlayerStateSimpleBJ (whom, PLAYER_STATE_RESOURCE_GOLD, Gem_Extra_Chance__TYPE_COST)
 	call Gem_Extra_Chance_Menu_Type__Display (whom)
 

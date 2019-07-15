@@ -18,6 +18,10 @@ function Gem_Mine_Cancel___Button takes nothing returns boolean
 
 	set whom = GetTriggerPlayer ()
 
+	if GetUnitTypeId (GetTriggerUnit ()) != 'h01V' then
+		return true
+	endif
+
 	call DisplayTextToPlayer (whom, 0, 0, "Clearing the Extra Chance target")
 	call Gem_Extra_Chance__Clear (whom)
 

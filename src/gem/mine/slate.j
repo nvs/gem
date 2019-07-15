@@ -17,6 +17,10 @@ function Gem_Mine_Slate___Button takes nothing returns boolean
 
 	set whom = GetTriggerPlayer ()
 
+	if GetUnitTypeId (GetTriggerUnit ()) != 'h01V' then
+		return true
+	endif
+
 	call AdjustPlayerStateSimpleBJ (whom, PLAYER_STATE_RESOURCE_GOLD, Gem_Extra_Chance__SLATE_COST)
 	call Gem_Extra_Chance_Menu_Slate__Display (whom)
 

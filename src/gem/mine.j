@@ -77,7 +77,7 @@ function Gem_Mine__Initialize takes nothing returns boolean
 		call UnitRemoveAbility (mine, 'ARal')
 
 		if mine != null then
-			call TriggerRegisterUnitEvent (rule, mine, EVENT_UNIT_ISSUED_ORDER)
+			call TriggerRegisterPlayerUnitEvent (rule, Player (whom_id), EVENT_PLAYER_UNIT_ISSUED_ORDER, null)
 		endif
 
 		set whom_id = whom_id + 1
