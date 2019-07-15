@@ -43,7 +43,7 @@ compatibility with older patches.
 
 ## Changelog
 
-The [changelog](docs/changelog.md) is written with the perspective of the
+The [changelog](CHANGELOG.md) is written with the perspective of the
 player in mind.  As such, it will be void of many changes that affect
 development of the map.  For that information, please consult the commit
 log.
