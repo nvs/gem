@@ -13,6 +13,8 @@ a full list of changes to the project, please consult the commit log.
 ### Changed
 - Spawn points have been shifted closer to the first checkpoints.
 - Units now gain stun immunity for `0.1` seconds after a stun has ended.
+- Monster collision has changed. Ground units will no longer try to path
+  around units in their way. Air units already behave this way.
 - Leaking creeps:
     - Any leak on Level 10 and beyond will result in a loss.
     - Leaks before Level 10 are not penalized, beyond the increase in time
@@ -136,6 +138,7 @@ a full list of changes to the project, please consult the commit log.
 - Lives have been removed.
 - Bonus gold that was awarded for reaching certain levels first has been
   removed.
+- The Anti-Stick ability has been removed as it has been rendered redundant.
 
 ## [1.5.5] - 2019-04-28
 

@@ -9,7 +9,7 @@ do
 	do
 		-- Normal
 		builder.uabi.value =
-			builder.uabi.value:gsub ('A06Z', 'GBIn') .. ',GSAA'
+			builder.uabi.value:gsub ('A06Z', 'GBIn'):gsub ('A02Y', 'GSAA')
 	end
 
 	-- ## Stats

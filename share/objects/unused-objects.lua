@@ -15,3 +15,6 @@ objects ['B00C'] = nil
 objects ['B00S'] = nil
 objects ['B00D'] = nil
 objects ['B00U'] = nil
+
+-- Anti-Stick
+objects ['A02Y'] = nil

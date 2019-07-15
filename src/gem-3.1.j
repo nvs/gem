@@ -1409,25 +1409,6 @@ function InitTrig_Type_Air takes nothing returns nothing
 	call TriggerRegisterPlayerChatEvent(gg_trg_Type_Air,Player(7),"-air",true)
 	call TriggerAddAction(gg_trg_Type_Air,function Trig_Type_Air_Actions)
 endfunction
-function Trig_AntiStuck_Conditions takes nothing returns boolean
-	if(not(GetSpellAbilityId()=='A02Y'))then
-		return false
-	endif
-	return true
-endfunction
-function Trig_AntiStuck_Actions takes nothing returns nothing
-	local unit u
-	set u = GetSpellTargetUnit()
-	call UnitAddAbility (u, 'Aeth')
-	call TriggerSleepAction(1.00)
-	call UnitRemoveAbility (u, 'Aeth')
-endfunction
-function InitTrig_AntiStuck takes nothing returns nothing
-	set gg_trg_AntiStuck=CreateTrigger()
-	call TriggerRegisterAnyUnitEventBJ(gg_trg_AntiStuck,EVENT_PLAYER_UNIT_SPELL_CAST)
-	call TriggerAddCondition(gg_trg_AntiStuck,Condition(function Trig_AntiStuck_Conditions))
-	call TriggerAddAction(gg_trg_AntiStuck,function Trig_AntiStuck_Actions)
-endfunction
 function Trig_Slate_move_Conditions takes nothing returns boolean
 	return GetSpellAbilityId () == 'A02J'
 endfunction

@@ -158,6 +158,9 @@ function Gem_Spawn___Movement takes nothing returns boolean
 			call SetHeroLevel (the_unit, 50, false)
 			call BlzSetUnitMaxHP (the_unit, Gem_Spawn___BOSS_HP)
 		endif
+
+		// Remove collision from all spawned units.
+		call UnitAddAbility (the_unit, 'Aeth')
 	endif
 
 	return false

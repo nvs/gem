@@ -6,7 +6,6 @@ function InitCustomTriggers takes nothing returns nothing
 	call InitTrig_Player_Leaves ()
 	call InitTrig_Creeps_attacking ()
 	call InitTrig_Type_Air ()
-	call InitTrig_AntiStuck ()
 	call InitTrig_Slate_move ()
 	call InitTrig_Range_Check ()
 	call InitTrig_Remove_rocks ()
