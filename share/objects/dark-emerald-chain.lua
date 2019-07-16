@@ -23,7 +23,7 @@ for _, id in ipairs (ids) do
 	-- Attack 1 - Area of Effect (Full Damage)
 	unit.ua1f = {
 		type = 'integer',
-		value = 300
+		value = 256
 	}
 
 	-- Techtree - Upgrades Used
