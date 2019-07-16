@@ -34,7 +34,6 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 	local real damage
 	local integer id
 	local integer index = Unit_Indexer__Unit_Index (target)
-	local real stun
 	local integer runner
 
 	set Label = "Gem_Special_Dark_Emerald___Damage"
@@ -66,9 +65,7 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 		return true
 	endif
 
-	set stun = GetRandomReal (1.5, 3.5)
-
-	if GetRandomInt (1, 8) == 1 and Unit_Stun__Apply (target, stun) then
+	if GetRandomInt (1, 8) == 1 and Unit_Stun__Apply (target, 1.50) then
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", target, "chest"))
 
 		// The unit was not stunned, but needs the current damage event to
@@ -76,7 +73,7 @@ function Gem_Special_Dark_Emerald___Damage takes nothing returns boolean
 		set damage = GetEventDamage ()
 		call BlzSetEventDamage (damage * 1.2)
 
-		set runner = Run__After (stun, function Gem_Special_Dark_Emerald___Remove_Bonus)
+		set runner = Run__After (1.50, function Gem_Special_Dark_Emerald___Remove_Bonus)
 		set Gem_Special_Dark_Emerald___Stunned [index] = true
 		set Gem_Special_Dark_Emerald___Victim [runner] = target
 	endif
