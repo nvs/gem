@@ -1791,18 +1791,10 @@ function Trig_Slow_Slate_Conditions takes nothing returns boolean
 	endif
 	return true
 endfunction
-function Trig_Slow_Slate_Func003C takes nothing returns boolean
-	if(not(GetUnitTypeId(GetAttackedUnitBJ())!='H04B'))then
-		return false
-	endif
-	return true
-endfunction
 function Trig_Slow_Slate_Actions takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Feedback\\ArcaneTowerAttack.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl", GetUnitX (GetAttackedUnitBJ()), GetUnitY (GetAttackedUnitBJ())))
-	if(Trig_Slow_Slate_Func003C())then
-		call SetUnitMoveSpeed(GetAttackedUnitBJ(),(GetUnitDefaultMoveSpeed(GetAttackedUnitBJ())*0.85))
-	endif
+	call SetUnitMoveSpeed(GetAttackedUnitBJ(),(GetUnitDefaultMoveSpeed(GetAttackedUnitBJ())*0.85))
 endfunction
 function InitTrig_Slow_Slate takes nothing returns nothing
 	set gg_trg_Slow_Slate=CreateTrigger()

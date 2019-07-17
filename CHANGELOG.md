@@ -44,6 +44,8 @@ a full list of changes to the project, please consult the commit log.
     - Minion life has been increased from `55000` to `75000`.
 - Emeralds:
     - Poison damage can now kill units.
+- Slow Slate:
+    - Slow effect now applies to boss units.
 - Ancient Slate:
     - Armor reduction base value is now `-6` for ground units and `-3` for
       air units.
