@@ -9,6 +9,9 @@ a full list of changes to the project, please consult the commit log.
 - `-maze` command:
     - This toggles between mazing and no-mazing modes.
     - Can only be used before placing a gem at game start.
+- Champions, players recognized for their contribution to the map, and a few
+  old faces will appear randomly in place of the boss. This is purely
+  cosmetic.
 
 ### Changed
 - Spawn points have been shifted closer to the first checkpoints.

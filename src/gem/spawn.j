@@ -83,6 +83,18 @@ function Gem_Spawn__Get_Total_HP takes integer round returns integer
 	return hp
 endfunction
 
+function Gem_Spawn___Boss takes nothing returns integer
+	local integer roll = GetRandomInt (1, 100)
+
+	if roll <= 70 then
+		return 'H04B' + GetRandomInt (0, 2)
+	elseif roll <= 95 then
+		return 'H050' + GetRandomInt (0, 1)
+	else
+		return 'H052' + GetRandomInt (0, 2)
+	endif
+endfunction
+
 // ### `Gem_Spawn__Start ()`
 //
 // Starts spawning units for the specified `round (integer)` at the spawn
@@ -104,7 +116,7 @@ function Gem_Spawn__Start takes integer player_index, integer round returns noth
 
 	if round == 50 then
 		set waves = Spawn__Get_Waves (spawn)
-		set boss = Spawn__Create (Gem__PLAYER_CREEPS, 'H04B', 1, 1, x, y, facing, waves * 1.61, 0)
+		set boss = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Boss (), 1, 1, x, y, facing, waves * 1.61, 0)
 		set Gem_Spawn___Boss_Index [player_index] = boss
 	endif
 
@@ -154,7 +166,7 @@ function Gem_Spawn___Movement takes nothing returns boolean
 		set udg_CreepOwner [the_unit_index] = player_index + 1
 		call Gem_Rank__Register_Unit (the_unit)
 
-		if GetUnitTypeId (the_unit) == 'H04B' then
+		if IsUnitType (the_unit, UNIT_TYPE_HERO) then
 			call SetHeroLevel (the_unit, 50, false)
 			call BlzSetUnitMaxHP (the_unit, Gem_Spawn___BOSS_HP)
 		endif
