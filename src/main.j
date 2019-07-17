@@ -218,6 +218,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Combination_Marker__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Combination__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Movement__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Critters__Initialize))
 
 	call TriggerEvaluate (initialize)
 	call DestroyTrigger (initialize)

@@ -12,6 +12,9 @@ a full list of changes to the project, please consult the commit log.
 - Champions, players recognized for their contribution to the map, and a few
   old faces will appear randomly in place of the boss. This is purely
   cosmetic.
+- Top leaderboard players and players recognized for their contribution to
+  the map, in both the original and current versions, will appear as
+  critters near the middle fountain.
 
 ### Changed
 - Spawn points have been shifted closer to the first checkpoints.
