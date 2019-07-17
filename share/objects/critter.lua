@@ -9,6 +9,15 @@ local function create_critter (input)
 
 	objects [input.id] = critter
 
+	-- Abilities
+	do
+		-- Unit
+		critter.uabi = {
+			type = 'string',
+			value = 'Awan,Avul'
+		}
+	end
+
 	-- Art
 	do
 		-- Model File
@@ -21,6 +30,15 @@ local function create_critter (input)
 		critter.usca = {
 			type = 'real',
 			value = input.scale
+		}
+	end
+
+	-- Combat
+	do
+		-- Defense Type
+		critter.udty = {
+			type = 'string',
+			value = 'divine'
 		}
 	end
 
