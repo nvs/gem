@@ -7,5 +7,5 @@ local unit = objects.n000
 -- ## Combats
 do
 	-- Weapons Enabled
-	unit.n000.value = 2
+	unit.uaen.value = 2
 end
