@@ -7,6 +7,12 @@ local id = require ('lib.gem.id')
 -- # Star Yellow Sapphire
 local unit = objects [id (globals.Gem_Special__YELLOW_SAPPHIRE_2)]
 
+-- ## Abilities
+do
+	-- Normal
+	unit.uabi.value = unit.uabi.value:gsub ('A06T,', '')
+end
+
 -- ## Combat - Attack 1
 do
 	-- Area of Effect (Full Damage)

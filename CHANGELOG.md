@@ -112,6 +112,8 @@ a full list of changes to the project, please consult the commit log.
       marked target, and enemies within `192` range of it, will take `60`
       spell damage per second for the next `6.0` seconds. Additional attacks
       only refresh this duration.
+- Star Yellow Sapphire:
+    - Removed bonus damage aura.
 - Uranium 235:
     - Attack damage increased from `14` to `20`.
 - Stone of Bryvx:

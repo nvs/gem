@@ -18,3 +18,6 @@ objects ['B00U'] = nil
 
 -- Anti-Stick
 objects ['A02Y'] = nil
+
+-- Star Yellow Sapphire aura.
+objects ['A06T'] = nil
