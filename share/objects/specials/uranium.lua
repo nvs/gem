@@ -10,6 +10,15 @@ do
 		-- Attack 2 - Damage Base
 		unit.ua2b.value = 19
 	end
+
+	-- ## Text
+	do
+		-- Hotkey
+		unit.uhot = {
+			type = 'string',
+			value = 'R'
+		}
+	end
 end
 
 -- # Uranium 235 Ability

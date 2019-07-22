@@ -128,6 +128,7 @@ a full list of changes to the project, please consult the commit log.
 - Sources of AoE spell damage (i.e. Immolation) have been fixed:
     - Multiple sources will now stack.
     - Kill bonuses now apply to this type of damage, up to `100%` bonus.
+- Ensure the upgrade hotkey works for all upgradeable specials.
 - Viper Slate's AoE spell damage was double what was intended, and has been
   properly set to `50` damage per second.
 - The following structures now only perform actions (i.e. stuns, casts,
