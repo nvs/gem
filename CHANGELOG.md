@@ -20,6 +20,7 @@ a full list of changes to the project, please consult the commit log.
 - Units now gain stun immunity for `0.1` seconds after a stun has ended.
 - Monster collision has changed. Ground units will no longer try to path
   around units in their way. Air units already behave this way.
+- Range Check hotkey changed to `C`.
 - Leaking creeps:
     - Any leak on Level 10 and beyond will result in a loss.
     - Leaks before Level 10 are not penalized, beyond the increase in time
