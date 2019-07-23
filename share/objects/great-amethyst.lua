@@ -1,0 +1,3 @@
+local map = ...
+
+map.objects.h02X.uabi.value = map.objects.h02X.uabi.value:gsub (',A01I', '')
