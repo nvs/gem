@@ -50,6 +50,9 @@ a full list of changes to the project, please consult the commit log.
     - Minion life has been increased from `55000` to `75000`.
 - Emeralds:
     - Poison damage can now kill units.
+- Rubies:
+    - Splash radius has set to `200` for all qualities. For reference,
+      Perfect Ruby already has this value.
 - Air Slate:
     - No longer attacks ground units.
 - Slow Slate:
