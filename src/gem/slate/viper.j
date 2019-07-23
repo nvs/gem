@@ -23,6 +23,9 @@ function Gem_Slate_Viper___Enter takes nothing returns boolean
 
 	if id == Gem_Slate__VIPER then
 		call Gem_Slate_Viper___Register (which)
+
+		call BlzUnitHideAbility (which, 'A074', true)
+		call BlzUnitHideAbility (which, 'A075', true)
 	endif
 
 	return true
