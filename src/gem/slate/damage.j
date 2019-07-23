@@ -20,7 +20,7 @@ function Gem_Slate___Damage takes nothing returns boolean
 		call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Human\\Invisibility\\InvisibilityTarget.mdl", victim, "chest"))
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", x, y))
 
-		set damage = Unit_User_Data__Get (attacker) * 10 + udg_RLevel [GetPlayerId (owner) + 1] * 20
+		set damage = Unit_User_Data__Get (attacker) * 10 + 256
 		call Unit_Damage__Is_Code ()
 		call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
 
