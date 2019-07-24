@@ -57,6 +57,9 @@ a full list of changes to the project, please consult the commit log.
     - No longer attacks ground units.
 - Slow Slate:
     - Slow effect now applies to boss units.
+- Poison Slate:
+    - The initial hit has been decreased to match that of the damage over
+      time component.
 - Ancient Slate:
     - Armor reduction base value is now `-6` for ground units and `-3` for
       air units.
