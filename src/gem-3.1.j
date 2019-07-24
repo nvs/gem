@@ -1884,6 +1884,10 @@ function Trig_Leak_and_lose_P1_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -1922,6 +1926,10 @@ function Trig_Leak_and_lose_P2_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -1960,6 +1968,10 @@ function Trig_Leak_and_lose_P3_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -1998,6 +2010,10 @@ function Trig_Leak_and_lose_P4_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -2036,6 +2052,10 @@ function Trig_Leak_and_lose_P5_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -2074,6 +2094,10 @@ function Trig_Leak_and_lose_P6_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -2112,6 +2136,10 @@ function Trig_Leak_and_lose_P7_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
@@ -2150,6 +2178,10 @@ function Trig_Leak_and_lose_P8_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
+	// Ignore units that are merely passing by.
+	if Unit_User_Data__Get (GetTriggerUnit ()) != 7 then
+		return
+	endif
 	call Gem_Rank__Deregister_Unit (GetTriggerUnit ())
 	call RemoveUnit(GetTriggerUnit())
 	call PlaySoundBJ(gg_snd_SpellShieldImpact1)
