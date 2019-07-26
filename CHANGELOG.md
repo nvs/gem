@@ -154,7 +154,7 @@ a full list of changes to the project, please consult the commit log.
 - Lives have been removed.
 - Bonus gold that was awarded for reaching certain levels first has been
   removed.
-- The Anti-Stick ability has been removed as it has been rendered redundant.
+- The Anti-Stuck ability has been removed as it has been rendered redundant.
 
 ## [1.5.5] - 2019-04-28
 
