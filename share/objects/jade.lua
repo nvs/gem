@@ -13,3 +13,6 @@ for _, id in ipairs (list) do
 	-- Stats - Duration - Hero
 	ability.ahdu = ability.adur
 end
+
+-- Jade poison damage.
+objects.A00P.Spo1.values [1] = 25
