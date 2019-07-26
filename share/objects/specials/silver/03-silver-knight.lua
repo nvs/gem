@@ -2,10 +2,16 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
+local deep_copy = require ('lib.gem.deep_copy')
 local id = require ('lib.gem.id')
 
 -- # Silver
 local unit = objects [id (globals.Gem_Special__SILVER_3)]
+
+-- ## Abilities
+do
+	unit.uabi.value = 'A051'
+end
 
 -- ## Combat - Attack 1
 do
@@ -27,3 +33,6 @@ do
 	-- Gold Cost
 	unit.ugol.value = 190
 end
+
+-- # Silver 3 Information
+objects.A051 = deep_copy (objects.A00L)
