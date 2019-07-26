@@ -1,12 +1,17 @@
 globals
 	integer array Gem_Special_Fire_Star___List
+
+	constant real Gem_Special_Fire_Star___RADIUS = 192.0
+	constant real Gem_Special_Fire_Star___DAMAGE = 15.0
+	constant real Gem_Special_Fire_Star___PERIOD = 0.25
+	constant real Gem_Special_Fire_Star___DURATION = 6.0
 endglobals
 
 function Gem_Special_Fire_Star___Register takes unit source, unit target returns integer
 	local string id = "star ruby"
-	local real radius = 192.0
-	local real period = 0.25
-	local real damage = 15.0
+	local real radius = Gem_Special_Fire_Star___RADIUS
+	local real period = Gem_Special_Fire_Star___PERIOD
+	local real damage = Gem_Special_Fire_Star___DAMAGE
 
 	return Gem_Immolation__Register (source, target, id, radius, period, damage)
 endfunction
@@ -67,8 +72,8 @@ function Gem_Special_Fire_Star___Mark takes unit source, unit target returns not
 		set runner = Node__Get_Integer (list, Tindex)
 	endif
 
-	call Gem_Immolation__Set_Lifespan (runner, 6.0)
-	set expires = Time__Now () + Time__To_Milliseconds (6.0)
+	call Gem_Immolation__Set_Lifespan (runner, Gem_Special_Fire_Star___DURATION)
+	set expires = Time__Now () + Time__To_Milliseconds (Gem_Special_Fire_Star___DURATION)
 	call Node__Set_Integer (list, -Tindex, expires)
 endfunction
 
