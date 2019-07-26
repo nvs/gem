@@ -51,8 +51,7 @@ a full list of changes to the project, please consult the commit log.
 - Emeralds:
     - Poison damage can now kill units.
 - Rubies:
-    - Splash radius has set to `200` for all qualities. For reference,
-      Perfect Ruby already has this value.
+    - Splash radius for all qualities now matches that of Perfect Ruby.
 - Air Slate:
     - No longer attacks ground units.
 - Slow Slate:
