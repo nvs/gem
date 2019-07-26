@@ -60,15 +60,15 @@ a full list of changes to the project, please consult the commit log.
     - The initial hit has been decreased to match that of the damage over
       time component.
 - Ancient Slate:
-    - Armor reduction base value is now `-6` for ground units and `-3` for
+    - Armor reduction base value is now `6` for ground units and `3` for
       air units.
-    - Each additional Ancient Slate adds `-3` to the armor reduction for
-      ground units and `-1` to the armor reduction for air units.
+    - Each additional Ancient Slate adds `3` to the armor reduction for
+      ground units and `1` to the armor reduction for air units.
     - Stun duration has changed from `2.5` seconds to a range of `3.0 - 7.0`
       seconds.
 - Elder Slate:
-    - Armor debuff no longer improves with levels, and now remains at the
-      base value of `-7`.
+    - Armor reduction no longer improves with levels, and now remains at the
+      base value of `7`.
 - Wraith Slate:
     - Explosion has been reworked. It now deals full damage to units within
       `250` range, and half damage to units outside the primary explosion,
