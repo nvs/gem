@@ -88,7 +88,9 @@ local abilities = {
 	['A03E'] = true, -- Vivid Malachite
 	['A03F'] = true, -- Mighty Malachite
 
-	['A00L'] = true, -- Silver
+	['A00L'] = true, -- Silver 1
+	['A050'] = true, -- Silver 2
+	['A051'] = true, -- Silver 3
 
 	['A00H'] = true, -- Star Ruby
 	['A015'] = true, -- Blood Star
