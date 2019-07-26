@@ -75,7 +75,7 @@ function Gem_Special_Jade___Enter takes nothing returns boolean
 	local unit which = Unit_Event__The_Unit ()
 	local integer id = GetUnitTypeId (which)
 
-	if id == Gem_Special__JADE_1 then
+	if id == Gem_Special__JADE_3 then
 		call BlzUnitHideAbility (which, 'A02X', true)
 	endif
 
