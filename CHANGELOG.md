@@ -138,6 +138,8 @@ a full list of changes to the project, please consult the commit log.
 - Upgrade hotkeys now work for all upgradeable specials.
 - Viper Slate's AoE spell damage was double what was intended, and has been
   properly set to `50` damage per second.
+- The slow aura on Uranium 238 and Uranium 235 reduced movement speed at a
+  greater value than what was intended, and has been properly set to `50%`.
 - The following structures now only perform actions (i.e. stuns, casts,
   etc.) when damage is actually dealt:
     - Dark Emerald

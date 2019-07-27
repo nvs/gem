@@ -42,3 +42,9 @@ do
 	local unit = objects.h019
 	unit.uabi.value = 'A00W'
 end
+
+-- # Uranium Slow
+do
+	local ability = objects.A00W
+	ability.Uau1.values [1] = 0.50
+end
