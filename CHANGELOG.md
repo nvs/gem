@@ -78,13 +78,13 @@ a full list of changes to the project, please consult the commit log.
 - Malachite:
     - Now attacks all targets in range.
     - Attack range increased from `750` to `800`.
-    - Attack cooldown reduced from `0.5` to `0.33` seconds.
+    - Attack cooldown reduced from `0.5` to `0.45` seconds.
 - Vivid Malachite:
     - Now attacks all targets in range.
     - Attack range increased from `750` to `800`.
-    - Attack cooldown reduced from `0.5` to `0.33` seconds.
+    - Attack cooldown reduced from `0.5` to `0.45` seconds.
 - Mighty Malachite:
-    - Attack cooldown reduced from `0.55` to `0.33` seconds.
+    - Attack cooldown reduced from `0.55` to `0.45` seconds.
 - Lucky China Jade:
     - Poison damage increased from `10` to `25` spell damage per second.
 - Dark Emerald

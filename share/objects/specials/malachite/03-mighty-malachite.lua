@@ -11,7 +11,7 @@ do
 	-- ## Combat - Attack 1
 	do
 		-- Cooldown
-		unit.ua1c.value = 0.33
+		unit.ua1c.value = 0.45
 	end
 
 	-- ## Stats
