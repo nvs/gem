@@ -46,5 +46,5 @@ end
 -- # Uranium Slow
 do
 	local ability = objects.A00W
-	ability.Uau1.values [1] = 0.50
+	ability.Uau1.values [1] = -0.50
 end
