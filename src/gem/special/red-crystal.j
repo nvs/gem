@@ -22,6 +22,7 @@ function Gem_Special_Red_Crystal___Enter takes nothing returns boolean
 
 	if id == Gem_Special__RED_CRYSTAL_3 then
 		call Gem_Special_Red_Crystal___Register (which)
+		call BlzUnitHideAbility (which, 'A018', true)
 	endif
 
 	return true
