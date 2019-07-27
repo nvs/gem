@@ -24,6 +24,7 @@ function Gem_Special_Uranium___Enter takes nothing returns boolean
 		call Gem_Special_Uranium___Register (which)
 	elseif id == Gem_Special__URANIUM_2 then
 		call Gem_Special_Uranium___Register (which)
+		call BlzUnitHideAbility (which, 'A016', true)
 	endif
 
 	return true

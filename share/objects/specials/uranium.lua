@@ -5,6 +5,11 @@ local objects = map.objects
 do
 	local unit = objects.h02N
 
+	-- ## Ablities
+	do
+		unit.uabi.value = 'A00W,A016'
+	end
+
 	-- ## Combat
 	do
 		-- Attack 2 - Damage Base
@@ -30,4 +35,10 @@ do
 		-- Damage Per Target
 		ability.Efk1.value = 19
 	end
+end
+
+-- # Uranium 238
+do
+	local unit = objects.h019
+	unit.uabi.value = 'A00W'
 end
