@@ -7,7 +7,7 @@ do
 
 	-- ## Ablities
 	do
-		unit.uabi.value = 'A00W,A016'
+		unit.uabi.value = 'A016,A00W'
 	end
 
 	-- ## Combat
@@ -35,6 +35,11 @@ do
 		-- Damage Per Target
 		ability.Efk1.value = 19
 	end
+
+	ability.alev = {
+		type = 'integer',
+		value = 11
+	}
 end
 
 -- # Uranium 238
@@ -47,4 +52,8 @@ end
 do
 	local ability = objects.A00W
 	ability.Uau1.values [1] = -0.50
+	ability.alev = {
+		type = 'integer',
+		value = 11
+	}
 end

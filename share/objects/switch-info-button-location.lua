@@ -113,7 +113,7 @@ local abilities = {
 	['A01D'] = true, -- Egyptian Gold
 
 	['A00W'] = true, -- Uranium
-	['A016'] = false, -- Uranium 235
+	['A016'] = true, -- Uranium 235
 	['A00K'] = false, -- Uranium Burn
 
 	['A00I'] = true, -- Pink Diamond
