@@ -1682,67 +1682,52 @@ function Trig_Elder_Slate_Actions takes nothing returns boolean
 
 	set random = GetRandomInt (1, 100)
 
-	if random <= 5 then
-		call UnitAddAbility (source, 'A05Z')
-		call SetUnitAbilityLevel (source, 'A05Z', level)
-		call IssueImmediateOrder (source, ORDER_FANOFKNIVES)
-		call UnitRemoveAbility (source, 'A05Z')
-	elseif random <= 13 then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", x, y))
+	if random <= 35 and GetUnitState (source, UNIT_STATE_MANA) >= 5.0 then
+		set random = GetRandomInt (1, 4)
 
-		call UnitAddAbility (source, 'A05Y')
-		call SetUnitAbilityLevel (source, 'A05Y', level)
-		call IssueTargetOrder (source, ORDER_SHADOWSTRIKE, target)
-		call UnitRemoveAbility (source, 'A05Y')
-	elseif random <= 18 then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", x, y))
+		if random == 1 then
+			call UnitAddAbility (source, 'A05Z')
+			call SetUnitAbilityLevel (source, 'A05Z', level)
+			call IssueImmediateOrder (source, ORDER_FANOFKNIVES)
+			call UnitRemoveAbility (source, 'A05Z')
+		elseif random == 2 then
+			call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", x, y))
 
-		call UnitAddAbility (source, 'A05X')
-		call SetUnitAbilityLevel (source, 'A05X', level)
-		call IssueImmediateOrder (source, ORDER_THUNDERCLAP)
-		call UnitRemoveAbility (source, 'A05X')
-	elseif random <= 25 and GetUnitState (source, UNIT_STATE_MANA) >= 5.0 then
-		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", x, y))
+			call UnitAddAbility (source, 'A05X')
+			call SetUnitAbilityLevel (source, 'A05X', level)
+			call IssueImmediateOrder (source, ORDER_THUNDERCLAP)
+			call UnitRemoveAbility (source, 'A05X')
+		elseif random == 3 then
+			call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIil\\AIilTarget.mdl", x, y))
 
-		set target_index = Unit_Indexer__Unit_Index (target)
+			set target_index = Unit_Indexer__Unit_Index (target)
 
-		set has_spell_debuff = GetUnitAbilityLevel (target, 'B00K') > 0
-		set has_elder_debuff = GetUnitAbilityLevel (target, 'B00L') > 0
+			set has_spell_debuff = GetUnitAbilityLevel (target, 'B00K') > 0
+			set has_elder_debuff = GetUnitAbilityLevel (target, 'B00L') > 0
 
-		if has_spell_debuff then
-			call UnitRemoveAbility (target, 'B00K')
+			if has_spell_debuff then
+				call UnitRemoveAbility (target, 'B00K')
+			endif
+
+			set debuff_level = level - 1
+
+			if has_elder_debuff then
+				call UnitRemoveAbility (target, 'B00L')
+				set debuff_level = IMaxBJ (debuff_level, udg_ElderDebuffLevel [target_index])
+			endif
+
+			set udg_ElderDebuffLevel [target_index] = debuff_level
+
+			call UnitAddAbility (source, 'A05W')
+			call SetUnitAbilityLevel (source, 'A05W', level)
+			call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
+			call UnitRemoveAbility (source, 'A05W')
+		elseif random == 4 then
+			call UnitAddAbility (source, 'A063')
+			call SetUnitAbilityLevel (source, 'A063', level)
+			call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
+			call UnitRemoveAbility (source, 'A063')
 		endif
-
-		set debuff_level = level - 1
-
-		if has_elder_debuff then
-			call UnitRemoveAbility (target, 'B00L')
-			set debuff_level = IMaxBJ (debuff_level, udg_ElderDebuffLevel [target_index])
-		endif
-
-		set udg_ElderDebuffLevel [target_index] = debuff_level
-
-		call UnitAddAbility (source, 'A05W')
-		call SetUnitAbilityLevel (source, 'A05W', level)
-		call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
-		call UnitRemoveAbility (source, 'A05W')
-	elseif random <= 30 then
-		call UnitAddAbility (source, 'A060')
-		call SetUnitAbilityLevel (source, 'A060', level)
-		call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
-		call UnitRemoveAbility (source, 'A060')
-	elseif random <= 35 then
-		// Nothing here.
-	elseif random <= 40 then
-		call UnitAddAbility (source, 'A062')
-		call SetUnitAbilityLevel (source, 'A062', level)
-		call IssuePointOrder (source, ORDER_SHOCKWAVE, GetUnitX (target), GetUnitY (target))
-		call UnitRemoveAbility (source, 'A062')
-	elseif random <= 45 then
-		call UnitAddAbility (source, 'A063')
-		call SetUnitAbilityLevel (source, 'A063', level)
-		call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
-		call UnitRemoveAbility (source, 'A063')
 	endif
 
 	call IssueTargetOrder (source, "attack", target)

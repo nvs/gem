@@ -71,6 +71,9 @@ a full list of changes to the project, please consult the commit log.
 - Elder Slate:
     - Armor reduction no longer improves with levels, and now remains at the
       base value of `7`.
+    - Can no longer cast Frost Nova, Shockwave, or Poison.
+    - Chance to cast on attack has been reduced from `40%` to `35%`, and is
+      now equally split amongst all spells.
 - Wraith Slate:
     - Explosion has been reworked. It now deals full damage to units within
       `250` range, and half damage to units outside the primary explosion,

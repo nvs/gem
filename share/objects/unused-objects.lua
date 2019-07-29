@@ -28,3 +28,8 @@ objects ['A01I'] = nil
 -- Spell Slate.
 objects.A05Q = nil
 objects.A05T = nil
+
+-- Elder Slate.
+objects.A05Y = nil
+objects.A060 = nil
+objects.A062 = nil
