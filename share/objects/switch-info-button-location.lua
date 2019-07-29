@@ -129,7 +129,7 @@ local abilities = {
 	['A019'] = true, -- Ancient Bloodstone
 
 	['A00F'] = true, -- Yellow Sapphire
-	['A01B'] = false, -- Star Yellow Sapphire
+	['A01B'] = true, -- Star Yellow Sapphire
 	['A06T'] = false, -- Star Yellow Sapphire 2
 
 	['A068'] = true -- Stone of Bryvx
