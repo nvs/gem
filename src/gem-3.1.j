@@ -1629,37 +1629,21 @@ function Trig_Spell_Slate_Actions takes nothing returns boolean
 
 	set random = GetRandomInt (1, 100)
 
-	if random <= 5 then
-		call UnitAddAbility (source, 'A05R')
-		call IssueImmediateOrder (source, ORDER_FANOFKNIVES)
-		call UnitRemoveAbility (source, 'A05R')
-	elseif random <= 10 then
-		call UnitAddAbility (source, 'A05S')
-		call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
-		call UnitRemoveAbility (source, 'A05S')
-	elseif random <= 15 then
-		call UnitAddAbility (source, 'A05Q')
-		call IssueTargetOrder (source, ORDER_FROSTNOVA, target)
-		call UnitRemoveAbility (source, 'A05Q')
-	elseif random <= 20 then
-		call UnitAddAbility (source, 'A05U')
-		call IssuePointOrder (source, ORDER_CARRIONSWARM, GetUnitX (target), GetUnitY (target))
-		call UnitRemoveAbility (source, 'A05U')
-	elseif random <= 25 and GetUnitState (source, UNIT_STATE_MANA) >= 5.0 then
-		set has_elder_debuff = GetUnitAbilityLevel (target, 'B00L') > 0
+	if random <= 25 then
+		set random = GetRandomInt (1, 3)
 
-		if has_elder_debuff then
-			set target_index = Unit_Indexer__Unit_Index (target)
-			set debuff_level = udg_ElderDebuffLevel [target_index]
-
-			call UnitAddAbility (source, 'A05W')
-			call SetUnitAbilityLevel (source, 'A05W', debuff_level + 1)
-			call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
-			call UnitRemoveAbility (source, 'A05W')
-		else
-			call UnitAddAbility (source, 'A05T')
-			call IssueTargetOrder (source, ORDER_FROSTARMOR, target)
-			call UnitRemoveAbility (source, 'A05T')
+		if random == 1 then
+			call UnitAddAbility (source, 'A05R')
+			call IssueImmediateOrder (source, ORDER_FANOFKNIVES)
+			call UnitRemoveAbility (source, 'A05R')
+		elseif random == 2 then
+			call UnitAddAbility (source, 'A05S')
+			call IssueTargetOrder (source, ORDER_FORKEDLIGHTNING, target)
+			call UnitRemoveAbility (source, 'A05S')
+		elseif random == 3 then
+			call UnitAddAbility (source, 'A05U')
+			call IssuePointOrder (source, ORDER_CARRIONSWARM, GetUnitX (target), GetUnitY (target))
+			call UnitRemoveAbility (source, 'A05U')
 		endif
 	endif
 

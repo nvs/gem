@@ -24,3 +24,7 @@ objects ['A06T'] = nil
 
 -- Great Amethyst ability.
 objects ['A01I'] = nil
+
+-- Spell Slate.
+objects.A05Q = nil
+objects.A05T = nil

@@ -59,6 +59,8 @@ a full list of changes to the project, please consult the commit log.
 - Poison Slate:
     - The initial hit has been decreased to match that of the damage over
       time component.
+- Spell Slate:
+    - Can no longer cast Frost Nova or Armor Reduction.
 - Ancient Slate:
     - Armor reduction base value is now `6` for ground units and `3` for
       air units.
