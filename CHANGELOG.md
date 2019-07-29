@@ -145,6 +145,8 @@ a full list of changes to the project, please consult the commit log.
   properly set to `50` damage per second.
 - The slow aura on Uranium 238 and Uranium 235 reduced movement speed at a
   greater value than what was intended, and has been properly set to `50%`.
+- The slow on Paraiba Tourmaline and Paraiba Tourmaline Facet now correctly
+  slow boss units for the same duration as normal units.
 - The following structures now only perform actions (i.e. stuns, casts,
   etc.) when damage is actually dealt:
     - Dark Emerald
