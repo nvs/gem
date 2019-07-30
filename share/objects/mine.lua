@@ -467,18 +467,18 @@ do
 					.. ' Slates.|n'
 
 					.. '-'
-					.. ' The bonus starts at `0x`, and will increase by'
-					.. ' `1x` only when the current target is in the same'
+					.. ' The bonus starts at 0x, and will increase by'
+					.. ' 1x only when the current target is in the same'
 					.. ' class as the previous target.|n'
 
 					.. '-'
 					.. ' Not using Extra Chance for a round will cause the'
-					.. ' bonus to decrease by `1x`.|n'
+					.. ' bonus to decrease by 1x.|n'
 
 					.. '-'
 					.. ' Hitting the target will cause the bonus to'
-					.. ' decrease by `4x`. If this would reduce the bonus'
-					.. ' below `0x`, then the target and bonus are'
+					.. ' decrease by 4x. If this would reduce the bonus'
+					.. ' below 0x, then the target and bonus are'
 					.. ' cleared.|n'
 			}
 		}
