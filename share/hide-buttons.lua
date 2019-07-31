@@ -8,6 +8,9 @@ local abilities = {
 	-- Rose Quartz Crystal
 	'A018',
 
+	-- Uranium 235
+	'A016',
+
 	-- Wraith
 	'A02V',
 
