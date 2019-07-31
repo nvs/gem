@@ -5,6 +5,9 @@ local abilities = {
 	-- Lucky China Jade
 	'A02X',
 
+	-- Rose Quartz Crystal
+	'A018',
+
 	-- Wraith
 	'A02V',
 

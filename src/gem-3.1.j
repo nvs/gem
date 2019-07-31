@@ -993,6 +993,7 @@ function Trig_Gem_Awards_Actions takes nothing returns nothing
 	// life support as far as Gem is concerned.
 	call Gem_Special_Fire_Star___Kill ()
 	call Gem_Special_Blood_Stone___Kill ()
+	call Gem_Special_Red_Crystal___Kill ()
 endfunction
 function InitTrig_Gem_Awards takes nothing returns nothing
 	set gg_trg_Gem_Awards=CreateTrigger()

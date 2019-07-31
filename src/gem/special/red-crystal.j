@@ -22,7 +22,6 @@ function Gem_Special_Red_Crystal___Enter takes nothing returns boolean
 
 	if id == Gem_Special__RED_CRYSTAL_3 then
 		call Gem_Special_Red_Crystal___Register (which)
-		call BlzUnitHideAbility (which, 'A018', true)
 	endif
 
 	return true
@@ -31,12 +30,33 @@ endfunction
 function Gem_Special_Red_Crystal___Upgrade takes nothing returns boolean
 	local unit which = GetTriggerUnit ()
 	local integer id = GetUnitTypeId (which)
+	local integer kills
+	local integer level
 
 	if id == Gem_Special__RED_CRYSTAL_3 then
 		call Gem_Special_Red_Crystal___Register (which)
+		set kills = Unit_User_Data__Get (which)
+		set level = IMinBJ (10, kills / 10) + 1
+		call SetUnitAbilityLevel (which, 'A01H', level)
 	endif
 
 	return true
+endfunction
+
+function Gem_Special_Red_Crystal___Kill takes nothing returns nothing
+	local unit killer = GetKillingUnit ()
+	local integer id = GetUnitTypeId (killer)
+	local integer kills
+
+	if id != Gem_Special__RED_CRYSTAL_3 then
+		return
+	endif
+
+	set kills = Unit_User_Data__Get (killer)
+
+	if kills <= 100 and ModuloInteger (kills, 10) == 0 then
+		call IncUnitAbilityLevel (killer, 'A01H')
+	endif
 endfunction
 
 function Gem_Special_Red_Crystal__Initialize takes nothing returns nothing
