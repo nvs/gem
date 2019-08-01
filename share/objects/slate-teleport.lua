@@ -193,9 +193,12 @@ objects ['A02J'] = {
 	aub1 = {
 		type = 'string',
 		values = {
-			[1] = 'Teleports the slate to the targeted point. Slates cannot '
-				.. 'be stacked upon similar or like slates.|n|n'
-				.. 'Can only be used once per slate.'
+			[1] = 'Teleports the slate to the targeted point.|n|n'
+			.. 'A basic slate cannot stack upon a like basic slate or the '
+			.. 'combination slate it makes. A combination slate cannot '
+			.. 'stack on a like combination slate or either of the basic '
+			.. 'slates from its recipe.|n|n'
+			.. 'Can only be used once per slate.'
 		}
 	}
 }
