@@ -71,18 +71,6 @@ function Gem_Special___Jade takes nothing returns boolean
 	return true
 endfunction
 
-function Gem_Special_Jade___Enter takes nothing returns boolean
-	local unit which = Unit_Event__The_Unit ()
-	local integer id = GetUnitTypeId (which)
-
-	if id == Gem_Special__JADE_3 then
-		call BlzUnitHideAbility (which, 'A02X', true)
-	endif
-
-	return true
-endfunction
-
 function Gem_Special___Initialize_Jade takes nothing returns nothing
 	call Unit_Damage__On_Damage (function Gem_Special___Jade)
-	call Unit_Event__On_Enter (Condition (function Gem_Special_Jade___Enter))
 endfunction
