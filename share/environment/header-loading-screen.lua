@@ -6,10 +6,6 @@ local function color_red (text)
 	return '|cff' .. map.globals.Color__RED .. text .. '|r'
 end
 
-local function color_gold (text)
-	return '|cff' .. map.globals.Color__GOLD .. text .. '|r'
-end
-
 local function color_link (text)
 	return '|cff' .. map.globals.Color__LINK .. text .. '|r'
 end
