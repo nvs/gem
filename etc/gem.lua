@@ -20,6 +20,7 @@ return {
 		'share/environment',
 		'share/constants',
 		'share/objects',
+		'share/hide-buttons.lua',
 
 		'share/imports/import-directory.lua'
 	},
