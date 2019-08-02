@@ -4,6 +4,10 @@ local objects = map.objects
 local abilities = {
 	-- Lucky China Jade
 	'A02X',
+
+	-- Viper
+	'A074',
+	'A075'
 }
 
 local x = {
