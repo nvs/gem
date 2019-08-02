@@ -33,3 +33,21 @@ objects.A05T = nil
 objects.A05Y = nil
 objects.A060 = nil
 objects.A062 = nil
+
+local ids = {
+	-- Bonus armor aura buffs.
+	'B00O',
+	'B00P',
+	'B00Q',
+
+	-- Star Yellow Sapphire aura buff.
+	'B00N',
+
+	-- Spell armor reduction buff.
+	'B00K'
+}
+
+
+for _, id in ipairs (ids) do
+	objects [id] = nil
+end
