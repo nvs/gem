@@ -50,6 +50,15 @@ a full list of changes to the project, please consult the commit log.
     - Minion life has been increased from `55000` to `75000`.
 - Emeralds:
     - Poison damage can now kill units.
+    - Poison duration set to `6` seconds for all qualities.
+    - Poison spell damage per second increased:
+        - Flawed: From `3` to `4`.
+        - Normal: From `5` to `8`.
+        - Flawless: From `8` to `16`.
+        - Perfect: From `16` to `40`.
+        - Great: From `50` to `100`.
+    - Poison movement speed reduction set to `20%` for all qualities.
+      Previously, these ranged from `15%` to `50%`.
 - Rubies:
     - Splash radius for all qualities now matches that of Perfect Ruby.
 - Air Slate:

@@ -2,15 +2,15 @@ local map = ...
 local objects = map.objects
 
 local list = {
-	'A002',
-	'A003',
-	'A00B',
-	'A00C',
-	'A00D',
-	'A01J'
+	A002 = 2,
+	A003 = 4,
+	A00B = 8,
+	A00C = 16,
+	A00D = 40,
+	A01J = 100
 }
 
-for _, id in ipairs (list) do
+for id, damage in pairs (list) do
 	local ability = objects [id]
 
 	-- Stats - Stacking Type
@@ -19,6 +19,27 @@ for _, id in ipairs (list) do
 		type = 'integer',
 		values = {
 			[1] = 9
+		}
+	}
+
+	ability.adur = {
+		type = 'unreal',
+		values = {
+			[1] = 6
+		}
+	}
+
+	ability.Spo1 = {
+		type = 'unreal',
+		values = {
+			[1] = damage
+		}
+	}
+
+	ability.Spo2 = {
+		type = 'unreal',
+		values = {
+			[1] = 0.2
 		}
 	}
 
