@@ -90,8 +90,20 @@ a full list of changes to the project, please consult the commit log.
     - Attack cooldown reduced from `0.5` to `0.45` seconds.
 - Mighty Malachite:
     - Attack cooldown reduced from `0.55` to `0.45` seconds.
+- Jade:
+    - Poison damage can now kill units.
+    - Poison duration increased from `2` to `4` seconds.
+    - Poison damage increased from `5` to `15` spell damage per second.
+    - Poison movement speed reduction decreased from `50%` to `20%`.
+- China Jade:
+    - Poison damage can now kill units.
+    - Poison duration increased from `3` to `4` seconds.
+    - Poison damage increased from `10` to `30` spell damage per second.
+    - Poison movement speed reduction decreased from `50%` to `20%`.
 - Lucky China Jade:
-    - Poison damage increased from `10` to `25` spell damage per second.
+    - Poison damage can now kill units.
+    - Poison damage increased from `10` to `60` spell damage per second.
+    - Poison movement speed reduction decreased from `50%` to `20%`.
 - Dark Emerald
     - Units stunned by a Dark Emerald will take `20%` more damage from all
       sources while stunned.
