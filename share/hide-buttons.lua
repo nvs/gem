@@ -5,6 +5,9 @@ local abilities = {
 	-- Lucky China Jade
 	'A02X',
 
+	-- Wraith
+	'A02V',
+
 	-- Viper
 	'A074',
 	'A075'

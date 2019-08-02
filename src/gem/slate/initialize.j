@@ -16,7 +16,6 @@ function Gem_Slate__Initialize takes nothing returns boolean
 	call Gem_Slate_Poison__Initialize ()
 	call Gem_Slate_Elder__Initialize ()
 	call Gem_Slate_Viper__Initialize ()
-	call Gem_Slate_Wraith__Initialize ()
 
 	// Ancient:
 	set id = Gem_Slate___ID (Gem_Slate__ANCIENT)
