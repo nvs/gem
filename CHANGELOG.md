@@ -64,31 +64,31 @@ a full list of changes to the project, please consult the commit log.
 - Air Slate:
     - No longer attacks ground units.
 - Slow Slate:
-    - Slow effect now applies to boss units.
+    - Slow debuff now applies to boss units.
 - Poison Slate:
-    - The initial hit has been decreased to match that of the damage over
-      time component.
+    - Damage from the initial hit has been decreased to match that of the
+      damage over time component.
 - Spell Slate:
-    - Can no longer cast Frost Nova or Armor Reduction.
+    - Can no longer cast Frost Nova or reduce armor.
 - Ancient Slate:
     - Armor reduction base value is now `6` for ground units and `3` for
       air units.
     - Each additional Ancient Slate adds `3` to the armor reduction for
       ground units and `1` to the armor reduction for air units.
-    - Stun duration has changed from `2.5` seconds to a range of `3.0 - 7.0`
+    - Stun duration has changed from `2.5` seconds to a range of `3 - 7`
       seconds.
 - Elder Slate:
-    - Armor reduction no longer improves with levels, and now remains at the
-      base value of `7`.
     - Can no longer cast Frost Nova, Shockwave, or Poison.
     - Chance to cast on attack has been reduced from `40%` to `35%`, and is
       now equally split amongst all spells.
+    - Armor reduction no longer improves with levels, and now remains at the
+      base value of `7`.
 - Wraith Slate:
     - Explosion has been reworked. It now deals full damage to units within
       `250` range, and half damage to units outside the primary explosion,
       up to `750` range.
 - Viper Slate:
-    - Damage bonus gain reduced from `5%` to `3%` per level.
+    - Damage bonus gain on aura reduced from `5%` to `3%` per level.
 - Malachite:
     - Now attacks all targets in range.
     - Attack range increased from `750` to `800`.
