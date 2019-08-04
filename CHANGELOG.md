@@ -4,6 +4,9 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
+- N/A
+
+## [1.6.0]
 
 ### Added
 - `-maze` command:
@@ -560,7 +563,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.5.5...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.0...master
+[1.6.0]: https://github.com/nvs/gem/compare/v1.5.5...v1.6.0
 [1.5.5]: https://github.com/nvs/gem/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/nvs/gem/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/nvs/gem/compare/v1.5.2...v1.5.3
