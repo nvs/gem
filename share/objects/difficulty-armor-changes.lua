@@ -74,6 +74,6 @@ for level, pair in ipairs (units) do
 	if level % 4 == 0 or (40 <= level and level < 50) then
 		unit.uhpm.value = unit.uhpm.value * 1.2
 	elseif level == 50 then
-		unit.uhpm.value = 75000
+		unit.uhpm.value = 85000
 	end
 end

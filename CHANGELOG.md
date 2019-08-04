@@ -47,7 +47,7 @@ a full list of changes to the project, please consult the commit log.
     - The Damage Test (i.e. Boss) will spawn along with the minions on
       Level 50, rather than after they been killed.
     - Boss life has been reduced to `500000`.
-    - Minion life has been increased from `55000` to `75000`.
+    - Minion life has been increased from `55000` to `85000`.
 - Emeralds:
     - Poison damage can now kill units.
     - Poison duration set to `6` seconds for all qualities.
