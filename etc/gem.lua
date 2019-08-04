@@ -21,6 +21,7 @@ return {
 		'share/constants',
 		'share/objects',
 		'share/hide-buttons.lua',
+		'share/tooltips.lua',
 
 		'share/imports/import-directory.lua'
 	},

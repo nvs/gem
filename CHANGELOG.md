@@ -20,6 +20,7 @@ a full list of changes to the project, please consult the commit log.
 - Units now gain stun immunity for `0.1` seconds after a stun has ended.
 - Monster collision has changed. Ground units will no longer try to path
   around units in their way. Air units already behave this way.
+- Tooltips have been enhanced in terms of both clarity and accuracy.
 - Range Check hotkey changed to `C`.
 - Leaking creeps:
     - Any leak on Level 10 and beyond will result in a loss.
@@ -144,10 +145,10 @@ a full list of changes to the project, please consult the commit log.
     - Damage reduced from `50` to `40` spell damage per second.
 - Fire Star:
     - No longer deals physical damage.
-    - Covers enemies in fire, causing them to burn like a Star Ruby. The
-      marked target, and enemies within `192` range of it, will take `60`
-      spell damage per second for the next `6.0` seconds. Additional attacks
-      only refresh this duration.
+    - Debuffs enemy units on attack, covering them in flames that cause them
+      to burn like a Star Ruby. The marked target, and enemies within `192`
+      range of it, will take `60` spell damage per second for the next `6.0`
+      seconds. This debuff can be applied by each source.
 - Star Yellow Sapphire:
     - Removed bonus damage aura.
 - Uranium 235:
