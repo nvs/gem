@@ -7,7 +7,7 @@ a full list of changes to the project, please consult the commit log.
 
 ### Fixed
 - Fix incorrect tooltips.
-
+- Shorten length of leak warning.
 
 ## [1.6.0]
 

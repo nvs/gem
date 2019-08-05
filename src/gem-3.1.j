@@ -1865,7 +1865,7 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 
 	if udg_RLevel [1] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0011), GetUnitY (gg_unit_h01V_0011)))
-		call DisplayTextToPlayer (Player (0), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (0), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		call KillUnit(gg_unit_h01V_0011)
 		set udg_PlayerHERE[1]=false
