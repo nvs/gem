@@ -1865,7 +1865,7 @@ setup {
 		[1] = {
 			name = 'Wound',
 			description = text ([[
-Deals 320 plus 10 times its current number of kills in physical damage to
+Deals 256 plus 10 times its current number of kills in physical damage to
 the target. Causes the slate to disarm for 1 second.]])
 		},
 		[2] = abilities.command_aura ('A072', 'Enhance')
