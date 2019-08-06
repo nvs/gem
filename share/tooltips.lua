@@ -3039,7 +3039,7 @@ gem, allowing you to combine and make the special.|n|n
 Sometimes you may get lucky and be offered all parts of a recipe using the
 five gems of a single build phase. This will give you the option to create
 that special as a one-hit, instantly giving you the special without having
-to collect pieces.|n|n]] .. '|n '
+to collect pieces.]] .. '|n '
 
 local is_buff = {
 	buff = '|cff00ff00',
