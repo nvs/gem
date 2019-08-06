@@ -2000,7 +2000,7 @@ setup {
 			name = 'Seize',
 			description = text ([[
 Grabs the target and stuns it for 3 to 7 seconds, causing the slate to
-disarm for 5 seconds. Deals 640 plus 40 times its current amount of kills in
+disarm for 5 seconds. Deals 640 plus 20 times its current amount of kills in
 physical damage. Debuffs enemy units, causing ground units to lose 6 armor
 and air units to lose 3 armor.]])
 		}
