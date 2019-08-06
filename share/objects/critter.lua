@@ -82,7 +82,7 @@ end
 create_critter {
 	id = 'Ng00',
 	name = 'Monkeynews',
-	label = '1.5 Time - 29:46',
+	label = '1.5 Time - 1st - 29:46',
 	model = 'Units\\Orc\\Shaman\\Shaman.mdl',
 	scale = 1.35
 }
@@ -90,7 +90,7 @@ create_critter {
 create_critter {
 	id = 'Ng01',
 	name = 'Arsenic',
-	label = '1.5 Time - 32:18',
+	label = '1.5 Time - 2nd - 32:18',
 	model = 'Units\\Demon\\Infernal\\Infernal.dml',
 	scale = 0.62
 }
@@ -98,7 +98,7 @@ create_critter {
 create_critter {
 	id = 'Ng02',
 	name = 'Gemking',
-	label = '1.5 Time - 32:59',
+	label = '1.5 Time - 3rd - 32:59',
 	model = 'Units\\Orc\\HeroShadowHunter\\HeroShadowHunter.mdl',
 	scale = 1.00
 }
@@ -106,7 +106,7 @@ create_critter {
 create_critter {
 	id = 'Ng03',
 	name = 'Wolfilein',
-	label = '1.5 DPS - 25855',
+	label = '1.5 DPS - 1st - 25855',
 	model = 'Units\\Orc\\OrcWarlockGuldan\\OrcWarlockGuldan.mdl',
 	scale = 1.40
 }
@@ -114,7 +114,7 @@ create_critter {
 create_critter {
 	id = 'Ng04',
 	name = 'Ni4nMa',
-	label = '1.5 DPS - 25075',
+	label = '1.5 DPS - 2nd - 25075',
 	model = 'Units\\Critters\\PackHorse\\PackHorse.mdl',
 	scale = 1.20
 }
@@ -122,7 +122,7 @@ create_critter {
 create_critter {
 	id = 'Ng05',
 	name = 'Porposmonon',
-	label = '1.5 DPS - 24829',
+	label = '1.5 DPS - 3rd - 24829',
 	model = 'Units\\Undead\\Necromancer\\Necromancer.mdl',
 	scale = 1.30
 }
