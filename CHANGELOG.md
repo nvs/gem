@@ -6,7 +6,19 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 - N/A
 
-## [1.6.0]
+## [1.6.1] - 2019-08-06
+
+### Changed
+- Adjust boss appearance rates. Remember, this is purely cosmetic.
+
+### Fixed
+- Display better progress information inside replays. This enables
+  tracking of damage for No Maze leaderboard games that lack a screenshot.
+- Ancient Slate count remains correct even if a player opts to kill one.
+- Fix incorrect tooltips.
+- Shorten length of leak warning.
+
+## [1.6.0] - 2019-08-03
 
 ### Added
 - `-maze` command:
@@ -563,7 +575,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.0...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.1...master
+[1.6.1]: https://github.com/nvs/gem/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/nvs/gem/compare/v1.5.5...v1.6.0
 [1.5.5]: https://github.com/nvs/gem/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/nvs/gem/compare/v1.5.3...v1.5.4

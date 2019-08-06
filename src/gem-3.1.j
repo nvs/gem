@@ -1865,16 +1865,15 @@ function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 
 	if udg_RLevel [1] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0011), GetUnitY (gg_unit_h01V_0011)))
-		call DisplayTextToPlayer (Player (0), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (0), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
-		call KillUnit(gg_unit_h01V_0011)
 		set udg_PlayerHERE[1]=false
 		call Gem_Spawn__Stop (0)
 		call Gem_Rank__Fail (Player (0))
 		set udg_PlayerDie[1]=true
 		call Gem_Player__Remove_Creeps (Player (0))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(0))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (0)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (0)), "Game Over :-(")
 		return
 	endif
 
@@ -1909,14 +1908,13 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0012), GetUnitY (gg_unit_h01V_0012)))
 		call DisplayTextToPlayer (Player (1), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0012)
 		set udg_PlayerHERE[2]=false
 		call Gem_Spawn__Stop (1)
 		call Gem_Rank__Fail (Player (1))
 		set udg_PlayerDie[2]=true
 		call Gem_Player__Remove_Creeps (Player (1))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(1))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (1)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (1)), "Game Over :-(")
 		return
 	endif
 
@@ -1951,14 +1949,13 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0013), GetUnitY (gg_unit_h01V_0013)))
 		call DisplayTextToPlayer (Player (2), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0013)
 		set udg_PlayerHERE[3]=false
 		call Gem_Spawn__Stop (2)
 		call Gem_Rank__Fail (Player (2))
 		set udg_PlayerDie[3]=true
 		call Gem_Player__Remove_Creeps (Player (2))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(2))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (2)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (2)), "Game Over :-(")
 		return
 	endif
 
@@ -1993,14 +1990,13 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0014), GetUnitY (gg_unit_h01V_0014)))
 		call DisplayTextToPlayer (Player (3), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0014)
 		set udg_PlayerHERE[4]=false
 		call Gem_Spawn__Stop (3)
 		call Gem_Rank__Fail (Player (3))
 		set udg_PlayerDie[4]=true
 		call Gem_Player__Remove_Creeps (Player (3))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(3))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (3)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (3)), "Game Over :-(")
 		return
 	endif
 
@@ -2035,14 +2031,13 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0016), GetUnitY (gg_unit_h01V_0016)))
 		call DisplayTextToPlayer (Player (4), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0016)
 		set udg_PlayerHERE[5]=false
 		call Gem_Spawn__Stop (4)
 		call Gem_Rank__Fail (Player (4))
 		set udg_PlayerDie[5]=true
 		call Gem_Player__Remove_Creeps (Player (4))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(4))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (4)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (4)), "Game Over :-(")
 		return
 	endif
 
@@ -2077,14 +2072,13 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0015), GetUnitY (gg_unit_h01V_0015)))
 		call DisplayTextToPlayer (Player (5), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0015)
 		set udg_PlayerHERE[6]=false
 		call Gem_Spawn__Stop (5)
 		call Gem_Rank__Fail (Player (5))
 		set udg_PlayerDie[6]=true
 		call Gem_Player__Remove_Creeps (Player (5))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(5))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (5)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (5)), "Game Over :-(")
 		return
 	endif
 
@@ -2119,14 +2113,13 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0017), GetUnitY (gg_unit_h01V_0017)))
 		call DisplayTextToPlayer (Player (6), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0017)
 		set udg_PlayerHERE[7]=false
 		call Gem_Spawn__Stop (6)
 		call Gem_Rank__Fail (Player (6))
 		set udg_PlayerDie[7]=true
 		call Gem_Player__Remove_Creeps (Player (6))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(6))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (6)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (6)), "Game Over :-(")
 		return
 	endif
 
@@ -2161,14 +2154,13 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0018), GetUnitY (gg_unit_h01V_0018)))
 		call DisplayTextToPlayer (Player (7), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
 	else
-		call KillUnit(gg_unit_h01V_0018)
 		set udg_PlayerHERE[8]=false
 		call Gem_Spawn__Stop (7)
 		call Gem_Rank__Fail (Player (7))
 		set udg_PlayerDie[8]=true
 		call Gem_Player__Remove_Creeps (Player (7))
 		call DisplayTextToForce(GetPlayersAll(),("|cff33ff33"+(GetPlayerName(Player(7))+" has lost!|r")))
-		call BlzSetUnitName (Gem_Player__Get_Miner (Player (7)), "Game Over")
+		call BlzSetUnitName (Gem_Player__Get_Miner (Player (7)), "Game Over :-(")
 		return
 	endif
 

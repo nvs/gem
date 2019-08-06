@@ -307,8 +307,6 @@ local abilities = {
 	barrage = function (id, name)
 		assert (objects [id].base == 'Aroc')
 
-		-- the ability, and then whatever is set in the ability's target
-		-- count field.
 		local count = data (id, 'Efk3') or 9
 
 		if count == 0 then
@@ -1865,7 +1863,7 @@ setup {
 		[1] = {
 			name = 'Wound',
 			description = text ([[
-Deals 320 plus 10 times its current number of kills in physical damage to
+Deals 256 plus 10 times its current number of kills in physical damage to
 the target. Causes the slate to disarm for 1 second.]])
 		},
 		[2] = abilities.command_aura ('A072', 'Enhance')
@@ -2000,7 +1998,7 @@ setup {
 			name = 'Seize',
 			description = text ([[
 Grabs the target and stuns it for 3 to 7 seconds, causing the slate to
-disarm for 5 seconds. Deals 640 plus 40 times its current amount of kills in
+disarm for 5 seconds. Deals 640 plus 20 times its current amount of kills in
 physical damage. Debuffs enemy units, causing ground units to lose 6 armor
 and air units to lose 3 armor.]])
 		}
@@ -3039,7 +3037,7 @@ gem, allowing you to combine and make the special.|n|n
 Sometimes you may get lucky and be offered all parts of a recipe using the
 five gems of a single build phase. This will give you the option to create
 that special as a one-hit, instantly giving you the special without having
-to collect pieces.|n|n]] .. '|n '
+to collect pieces.]] .. '|n '
 
 local is_buff = {
 	buff = '|cff00ff00',

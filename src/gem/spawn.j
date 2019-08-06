@@ -86,9 +86,9 @@ endfunction
 function Gem_Spawn___Boss takes nothing returns integer
 	local integer roll = GetRandomInt (1, 100)
 
-	if roll <= 70 then
+	if roll <= 51 then
 		return 'H04B' + GetRandomInt (0, 2)
-	elseif roll <= 95 then
+	elseif roll <= 85 then
 		return 'H050' + GetRandomInt (0, 1)
 	else
 		return 'H052' + GetRandomInt (0, 2)
