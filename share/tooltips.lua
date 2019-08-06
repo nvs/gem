@@ -307,8 +307,6 @@ local abilities = {
 	barrage = function (id, name)
 		assert (objects [id].base == 'Aroc')
 
-		-- the ability, and then whatever is set in the ability's target
-		-- count field.
 		local count = data (id, 'Efk3') or 9
 
 		if count == 0 then
