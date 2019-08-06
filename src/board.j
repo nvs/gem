@@ -206,6 +206,10 @@ function Board___Update takes nothing returns nothing
 					set damage = Gem_Rank__Get_Damage (whom_id, level)
 					set total = I2R (Gem_Spawn__Get_Total_HP (level))
 					set value = value + R2SW (damage / total * 100, 0, 1) + "%"
+
+					if Game_Status () == Game_Status__REPLAY then
+						set value = value + " (" + I2S (R2I (damage)) + ")"
+					endif
 				endif
 			endif
 
@@ -279,7 +283,12 @@ function Board__Setup takes nothing returns nothing
 	set width [1] = String__Width ("Level") + space * 3
 	set width [2] = String__Width ("Gold") + space * 4
 	set width [3] = String__Width ("DPS") + space * 7
-	set width [4] = String__Width ("44:44:44")
+
+	if Game_Status () == Game_Status__REPLAY then
+		set width [4] = String__Width ("44.4% (4444444)")
+	else
+		set width [4] = String__Width ("44:44:44")
+	endif
 
 	set player_index = 0
 	set count = 0
