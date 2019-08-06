@@ -15,7 +15,7 @@ a full list of changes to the project, please consult the commit log.
 - Fix incorrect tooltips.
 - Shorten length of leak warning.
 
-## [1.6.0]
+## [1.6.0] - 2019-08-03
 
 ### Added
 - `-maze` command:
