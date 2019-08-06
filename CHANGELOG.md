@@ -9,6 +9,8 @@ a full list of changes to the project, please consult the commit log.
 - Adjust boss appearance rates. Remember, this is purely cosmetic.
 
 ### Fixed
+- Display better progress information inside replays. This enables
+  tracking of damage for No Maze leaderboard games that lack a screenshot.
 - Ancient Slate count remains correct even if a player opts to kill one.
 - Fix incorrect tooltips.
 - Shorten length of leak warning.
