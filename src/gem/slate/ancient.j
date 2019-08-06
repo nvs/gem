@@ -168,6 +168,11 @@ function Gem_Slate_Ancient___Leave takes nothing returns nothing
 	if id == Gem_Slate__ANCIENT then
 		set owner = GetOwningPlayer (which)
 		set owner_id = GetPlayerId (owner)
+
+		if not IsUnitInGroup (which, Gem_Slate_Ancient___Group [owner_id]) then
+			return
+		endif
+
 		set count = Gem_Slate_Ancient___Count [owner_id] - 1
 
 		if count < 0 then
