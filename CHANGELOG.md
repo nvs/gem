@@ -3,7 +3,7 @@
 This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
-## [Unreleased]
+## [1.6.1]
 
 ### Changed
 - Adjust boss appearance rates. Remember, this is purely cosmetic.
@@ -572,7 +572,7 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.0...master
+[1.6.1]: https://github.com/nvs/gem/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/nvs/gem/compare/v1.5.5...v1.6.0
 [1.5.5]: https://github.com/nvs/gem/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/nvs/gem/compare/v1.5.3...v1.5.4
