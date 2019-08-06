@@ -5,6 +5,9 @@ a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
+### Changed
+- Adjust boss appearance rates. Remember, this is purely cosmetic.
+
 ### Fixed
 - Fix incorrect tooltips.
 - Shorten length of leak warning.
