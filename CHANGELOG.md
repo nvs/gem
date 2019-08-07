@@ -4,7 +4,9 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-- N/A
+
+### Fixed
+- More tooltip fixes.
 
 ## [1.6.1] - 2019-08-06
 

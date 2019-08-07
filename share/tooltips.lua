@@ -3077,6 +3077,18 @@ buff {
 This unit has leveled and has increased damage.]])
 }
 
+objects.BIcb = {
+	type = 'buff'
+}
+
+buff {
+	id = 'BIcb',
+	type = 'debuff',
+	name = 'Desolated',
+	description = text ([[
+This unit has been desolated and has reduced armor.]])
+}
+
 buff {
 	id = 'B00B',
 	type = 'debuff',
