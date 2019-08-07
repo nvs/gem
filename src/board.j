@@ -208,7 +208,7 @@ function Board___Update takes nothing returns nothing
 					set value = value + R2SW (damage / total * 100, 0, 1) + "%"
 
 					// Game over indicator.
-					if udg_PlayerDie [whom_id] then
+					if udg_PlayerDie [whom_id + 1] then
 						set value = value + " :-("
 					endif
 
