@@ -6,6 +6,12 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 - N/A
 
+## [1.6.2] - 2019-08-07
+
+### Fixed
+- More tooltip fixes.
+- The correct player is now sad when they leak.
+
 ## [1.6.1] - 2019-08-06
 
 ### Changed
@@ -575,7 +581,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.1...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.2...master
+[1.6.2]: https://github.com/nvs/gem/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/nvs/gem/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/nvs/gem/compare/v1.5.5...v1.6.0
 [1.5.5]: https://github.com/nvs/gem/compare/v1.5.4...v1.5.5
