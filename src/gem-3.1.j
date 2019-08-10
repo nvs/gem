@@ -1906,7 +1906,7 @@ function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 
 	if udg_RLevel [2] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0012), GetUnitY (gg_unit_h01V_0012)))
-		call DisplayTextToPlayer (Player (1), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (1), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[2]=false
 		call Gem_Spawn__Stop (1)
@@ -1947,7 +1947,7 @@ function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 
 	if udg_RLevel [3] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0013), GetUnitY (gg_unit_h01V_0013)))
-		call DisplayTextToPlayer (Player (2), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (2), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[3]=false
 		call Gem_Spawn__Stop (2)
@@ -1988,7 +1988,7 @@ function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 
 	if udg_RLevel [4] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0014), GetUnitY (gg_unit_h01V_0014)))
-		call DisplayTextToPlayer (Player (3), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (3), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[4]=false
 		call Gem_Spawn__Stop (3)
@@ -2029,7 +2029,7 @@ function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 
 	if udg_RLevel [5] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0016), GetUnitY (gg_unit_h01V_0016)))
-		call DisplayTextToPlayer (Player (4), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (4), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[5]=false
 		call Gem_Spawn__Stop (4)
@@ -2070,7 +2070,7 @@ function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 
 	if udg_RLevel [6] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0015), GetUnitY (gg_unit_h01V_0015)))
-		call DisplayTextToPlayer (Player (5), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (5), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[6]=false
 		call Gem_Spawn__Stop (5)
@@ -2111,7 +2111,7 @@ function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 
 	if udg_RLevel [7] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0017), GetUnitY (gg_unit_h01V_0017)))
-		call DisplayTextToPlayer (Player (6), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (6), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[7]=false
 		call Gem_Spawn__Stop (6)
@@ -2152,7 +2152,7 @@ function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 
 	if udg_RLevel [8] < 10 then
 		call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", GetUnitX (gg_unit_h01V_0018), GetUnitY (gg_unit_h01V_0018)))
-		call DisplayTextToPlayer (Player (7), 0, 0, "|cffff0000" + GetUnitName (GetTriggerUnit ()) + " has entered your Mine!!|r Leaks on Level 10 and beyond will result in a loss!")
+		call DisplayTextToPlayer (Player (7), 0, 0, "|cffff0000You have leaked!|r Leaks on Level 10 and beyond result in a loss.")
 	else
 		set udg_PlayerHERE[8]=false
 		call Gem_Spawn__Stop (7)
