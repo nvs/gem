@@ -11,6 +11,7 @@ a full list of changes to the project, please consult the commit log.
       upgrade levels. It nows deals the stated damage.
     - It was incorrectly slowing units by `50%` instead of only `20%`.
 - Actually shorten length of leak warning for all colors.
+- And more tooltip fixes.
 
 ## [1.6.2] - 2019-08-07
 

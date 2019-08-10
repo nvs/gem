@@ -220,6 +220,8 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	if combination == Gem_Special__STAR_RUBY_1 or combination == Gem_Special__STAR_RUBY_2 or combination == Gem_Special__BLOOD_STONE_2 or combination == Gem_Slate__ELDER or combination == Gem_Slate__VIPER then
 		set udg_CheckSpelllvlUNIT = replacement
 		call Trig_Find_spell_levels_Actions ()
+	elseif combination == Gem_Special__URANIUM_1 then
+		call Gem_Special_Uranium___Combine (replacement)
 	endif
 
 	if kills < 10 then

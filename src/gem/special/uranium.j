@@ -44,6 +44,25 @@ function Gem_Special_Uranium___Upgrade takes nothing returns boolean
 	return true
 endfunction
 
+function Gem_Special_Uranium___Combine takes unit which returns nothing
+	local integer id = GetUnitTypeId (which)
+	local integer kills
+	local integer skill
+	local integer level
+
+	if id == Gem_Special__URANIUM_1 then
+		set skill = 'A00W'
+	elseif id == Gem_Special__URANIUM_2 then
+		set skill = 'A0U0'
+	else
+		return
+	endif
+
+	set kills = Unit_User_Data__Get (which)
+	set level = IMinBJ (10, ModuloInteger (kills, 10))
+	call SetUnitAbilityLevel (which, skill, level + 1)
+endfunction
+
 function Gem_Special_Uranium___Kill takes nothing returns nothing
 	local unit killer = GetKillingUnit ()
 	local integer id = GetUnitTypeId (killer)
