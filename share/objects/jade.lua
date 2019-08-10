@@ -21,6 +21,7 @@ for id, damage in pairs (list) do
 	ability.ahdu = ability.adur
 
 	ability.Spo1 = {
+		data = 1,
 		type = 'unreal',
 		values = {
 			[1] = damage
@@ -28,6 +29,7 @@ for id, damage in pairs (list) do
 	}
 
 	ability.Spo2 = {
+		data = 2,
 		type = 'unreal',
 		values = {
 			[1] = 0.2

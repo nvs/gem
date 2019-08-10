@@ -6,6 +6,10 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Fixed
+- The Poison ability on Emeralds and Jades has been corrected:
+    - It was dealing `4` spell damage per second at all qualities and
+      upgrade levels. It nows deals the stated damage.
+    - It was incorrectly slowing units by `50%` instead of only `20%`.
 - Actually shorten length of leak warning for all colors.
 
 ## [1.6.2] - 2019-08-07
