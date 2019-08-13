@@ -59,7 +59,7 @@ function Gem_Special_Uranium___Combine takes unit which returns nothing
 	endif
 
 	set kills = Unit_User_Data__Get (which)
-	set level = ModuloInteger (kills, 10) + 1
+	set level = IMinBJ (10, kills / 10) + 1
 	call SetUnitAbilityLevel (which, skill, level)
 endfunction
 
