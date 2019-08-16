@@ -205,7 +205,15 @@ function Board___Update takes nothing returns nothing
 				else
 					set damage = Gem_Rank__Get_Damage (whom_id, level)
 					set total = I2R (Gem_Spawn__Get_Total_HP (level))
-					set value = value + R2SW (damage / total * 100, 0, 1) + "%"
+					set value = R2SW (damage / total * 100, 0, 1)
+
+					// Never allow this to occur, as it can confuse players
+					// by implying that the round was completed.
+					if value == "100" then
+						set value = "99.9"
+					endif
+
+					set value = value + "%"
 
 					// Game over indicator.
 					if udg_PlayerDie [whom_id + 1] then

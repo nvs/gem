@@ -17,6 +17,8 @@ a full list of changes to the project, please consult the commit log.
 ### Fixed
 - Bounty gold is now properly awarded for kills landed by units that were
   recently used to combine and fulfill a recipe.
+- Round progress can no longer show `100%` in situations where a player
+  leaked or a monster is still alive.
 
 ## [1.6.3] - 2019-08-10
 
