@@ -181,6 +181,9 @@ do
 				.. '|cffff6991-air|r|n'
 				.. 'Display air rounds.|n|n'
 
+				.. '|cffff6991-bars|r|n'
+				.. 'Toggle showing status bars for your towers.|n|n'
+
 				.. '|cffff6991-maze|r|n'
 				.. 'Toggle mazing on and off. This can only be used before '
 				.. 'placing the first gem at game start.|n|n'

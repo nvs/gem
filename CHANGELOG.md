@@ -4,7 +4,15 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-- N/A
+
+### Added
+- `-bars` command:
+    - This toggles status bars on and off for player owned towers. This
+      applies only to the towers belonging to the player.
+
+### Changed
+- Status bars over towers are now hidden by default. This should cause less
+  screen clutter when trying to view the bars of the monsters.
 
 ### Fixed
 - Bounty gold is now properly awarded for kills landed by units that were
