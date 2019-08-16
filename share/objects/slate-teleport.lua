@@ -147,7 +147,7 @@ objects ['A02J'] = {
 	aran = {
 		type = 'unreal',
 		values = {
-			[1] = 2500
+			[1] = 99999
 		}
 	},
 

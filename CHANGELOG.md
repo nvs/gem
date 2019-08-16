@@ -11,6 +11,7 @@ a full list of changes to the project, please consult the commit log.
       applies only to the towers belonging to the player.
 
 ### Changed
+- Slates can now teleport anywhere in a player's area.
 - Status bars over towers are now hidden by default. This should cause less
   screen clutter when trying to view the bars of the monsters.
 
