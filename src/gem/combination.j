@@ -20,6 +20,8 @@ globals
 
 	constant integer Gem_Combination___INDEX = -1
 	constant integer Gem_Combination___SIZE = -2
+
+	group array Gem_Combination___Remove
 endglobals
 
 function Gem_Combination___Container takes player the_player, integer the_unit_type returns integer
@@ -154,12 +156,20 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	local integer index
 	local integer kills
 
+	local group units
+
 	if GetSpellAbilityId () != 'A10R' then
 		return false
 	endif
 
 	set the_player = GetTriggerPlayer ()
 	set the_player_index = GetPlayerId (the_player)
+	set units = Gem_Combination___Remove [the_player_index]
+
+	if units == null then
+		set units = CreateGroup ()
+		set Gem_Combination___Remove [the_player_index] = units
+	endif
 
 	set original = GetTriggerUnit ()
 	set original_type = GetUnitTypeId (original)
@@ -186,7 +196,9 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	// the new unit will be aligned to `0.250` boundaries.  This matters mostly
 	// for slates, which can be positioned anywhere.
 	call SetUnitPosition (replacement, GetUnitX (original), GetUnitY (original))
-	call RemoveUnit (original)
+	call ShowUnit (original, false)
+	call PauseUnit (original, true)
+	call GroupAddUnit (units, original)
 
 	set index = 0
 	loop
@@ -198,14 +210,14 @@ function Gem_Combination___Recipe takes nothing returns boolean
 
 			if the_part != null then
 				set kills = kills + Unit_User_Data__Get (the_part)
+				call ShowUnit (the_part, false)
+				call PauseUnit (the_part, true)
+				call GroupAddUnit (units, the_part)
 
 				// Slates do not get replaced by rocks.
 				if UnitAlive (the_part) and Gem_Gems__Is_Gem (the_part_type) then
-					call ShowUnit (the_part, false)
 					call CreateUnit (the_player, 'h00G', GetUnitX (the_part), GetUnitY (the_part), GetUnitFacing (the_part))
 				endif
-
-				call RemoveUnit (the_part)
 			endif
 		endif
 
@@ -289,11 +301,29 @@ function Gem_Combination___On_Enter takes nothing returns boolean
 	return false
 endfunction
 
+function Gem_Combination__Clear_Group takes player whom returns nothing
+	local integer index = GetPlayerId (whom)
+	local group units = Gem_Combination___Remove [index]
+	local unit which
+
+	loop
+		set which = FirstOfGroup (units)
+		exitwhen which == null
+		call GroupRemoveUnit (units, which)
+		call RemoveUnit (which)
+	endloop
+endfunction
+
+function Gem_Combination___On_Start takes nothing returns nothing
+	call Gem_Combination__Clear_Group (Gem_Placement__The_Player ())
+endfunction
+
 function Gem_Combination__Initialize takes nothing returns boolean
 	local trigger combination
 	local integer the_player_index
 
 	call Unit_Event__On_Enter (Condition (function Gem_Combination___On_Enter))
+	call Gem_Placement__On_Start (Condition (function Gem_Combination___On_Start))
 
 	set combination = CreateTrigger ()
 	call TriggerAddAction (combination, function Gem_Combination___Recipe)

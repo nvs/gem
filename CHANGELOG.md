@@ -6,6 +6,10 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 - N/A
 
+### Fixed
+- Bounty gold is now properly awarded for kills landed by units that were
+  recently used to combine and fulfill a recipe.
+
 ## [1.6.3] - 2019-08-10
 
 ### Fixed
