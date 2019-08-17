@@ -6,6 +6,11 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 - N/A
 
+### Fixed
+- The Extra Chance target is intended to be immutable while placing gems.
+  However, it could be cancelled, thus refunding gold and yielding the
+  Extra Chance benefit to the placed gems.
+
 ## [1.6.4] - 2019-08-16
 
 ### Added

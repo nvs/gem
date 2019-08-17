@@ -38,6 +38,7 @@ globals
 	integer array Gem_Extra_Chance___Previous_Target
 	integer array Gem_Extra_Chance___Previous_Bonus
 
+	constant integer ERROR__NOT_ACTIVE = ID ()
 	constant integer ERROR__NOT_GEM_PLAYER = ID ()
 	constant integer ERROR__PLACEMENT_HAS_STARTED = ID ()
 	constant integer ERROR__NOT_TYPE_OR_SLATE = ID ()
@@ -138,13 +139,17 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 	return true
 endfunction
 
-function Gem_Extra_Chance__Clear takes player whom returns nothing
+function Gem_Extra_Chance__Clear takes player whom returns boolean
 	local integer whom_id
 	local integer target
 	local integer cost
 
 	if not Gem_Extra_Chance__Is_Active (whom) then
-		return
+		call Error (ERROR__NOT_ACTIVE, null)
+		return false
+	elseif Gem_Placement__Placed (whom) > 0 then
+		call Error (ERROR__PLACEMENT_HAS_STARTED, null)
+		return false
 	endif
 
 	set whom_id = GetPlayerId (whom)
@@ -160,6 +165,8 @@ function Gem_Extra_Chance__Clear takes player whom returns nothing
 
 	set Gem_Extra_Chance___Current_Target [whom_id] = 0
 	set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
+
+	return true
 endfunction
 
 function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing

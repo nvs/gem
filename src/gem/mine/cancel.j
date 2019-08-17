@@ -9,6 +9,7 @@ endglobals
 function Gem_Mine_Cancel___Button takes nothing returns boolean
 	local integer order_id = GetIssuedOrderId ()
 	local player whom
+	local string message
 
 	set Label = "Gem_Mine_Cancel___Button"
 
@@ -22,8 +23,17 @@ function Gem_Mine_Cancel___Button takes nothing returns boolean
 		return true
 	endif
 
-	call DisplayTextToPlayer (whom, 0, 0, "Clearing the Extra Chance target")
-	call Gem_Extra_Chance__Clear (whom)
+	if Gem_Extra_Chance__Clear (whom) then
+		set message = "Clearing the Extra Chance target"
+	elseif Error__Code == ERROR__NOT_ACTIVE then
+		set message = "Extra Chance is not active and cannot be cleared"
+	elseif Error__Code == ERROR__PLACEMENT_HAS_STARTED then
+		set message = "Extra Chance cannot be changed during placement"
+	else
+		set message = "Unknown error clearing Extra Chance"
+	endif
+
+	call DisplayTextToPlayer (whom, 0, 0, message)
 
 	return true
 endfunction

@@ -42,7 +42,7 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 		// Do nothing.
 	elseif not Gem_Extra_Chance__Set (whom, target) then
 		if Error__Code == ERROR__PLACEMENT_HAS_STARTED then
-			call DisplayTextToPlayer (whom, 0, 0, "Extra Chance cannot be set during placement")
+			call DisplayTextToPlayer (whom, 0, 0, "Extra Chance cannot be changed during placement")
 		endif
 	else
 		set previous = Gem_Extra_Chance__Previous_Target (whom)
