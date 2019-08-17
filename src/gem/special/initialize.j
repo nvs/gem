@@ -2,6 +2,28 @@
 // ===========
 
 function Gem_Special__Initialize takes nothing returns boolean
+	local integer node = Node__New ()
+	set Gem_Special___Upgrades = node
+
+	call Node__Set_Integer (node, Gem_Special__MALACHITE_1, Gem_Special__MALACHITE_2)
+	call Node__Set_Integer (node, Gem_Special__MALACHITE_2, Gem_Special__MALACHITE_3)
+	call Node__Set_Integer (node, Gem_Special__SILVER_1, Gem_Special__SILVER_2)
+	call Node__Set_Integer (node, Gem_Special__SILVER_2, Gem_Special__SILVER_3)
+	call Node__Set_Integer (node, Gem_Special__STAR_RUBY_1, Gem_Special__STAR_RUBY_2)
+	call Node__Set_Integer (node, Gem_Special__STAR_RUBY_2, Gem_Special__STAR_RUBY_3)
+	call Node__Set_Integer (node, Gem_Special__JADE_1, Gem_Special__JADE_2)
+	call Node__Set_Integer (node, Gem_Special__JADE_2, Gem_Special__JADE_3)
+	call Node__Set_Integer (node, Gem_Special__RED_CRYSTAL_1, Gem_Special__RED_CRYSTAL_2)
+	call Node__Set_Integer (node, Gem_Special__RED_CRYSTAL_2, Gem_Special__RED_CRYSTAL_3)
+	call Node__Set_Integer (node, Gem_Special__DARK_EMERALD_1, Gem_Special__DARK_EMERALD_2)
+	call Node__Set_Integer (node, Gem_Special__GOLD_1, Gem_Special__GOLD_2)
+	call Node__Set_Integer (node, Gem_Special__URANIUM_1, Gem_Special__URANIUM_2)
+	call Node__Set_Integer (node, Gem_Special__PINK_DIAMOND_1, Gem_Special__PINK_DIAMOND_2)
+	call Node__Set_Integer (node, Gem_Special__PARAIBA_TOURMALINE_1, Gem_Special__PARAIBA_TOURMALINE_2)
+	call Node__Set_Integer (node, Gem_Special__BLACK_OPAL_1, Gem_Special__BLACK_OPAL_2)
+	call Node__Set_Integer (node, Gem_Special__BLOOD_STONE_1, Gem_Special__BLOOD_STONE_2)
+	call Node__Set_Integer (node, Gem_Special__YELLOW_SAPPHIRE_1, Gem_Special__YELLOW_SAPPHIRE_2)
+
 	call Gem_Special___Initialize_Dark_Emerald ()
 	call Gem_Special___Initialize_Jade ()
 
@@ -52,6 +74,7 @@ function Gem_Special__Initialize takes nothing returns boolean
 
 	// Yellow Sapphire:
 	call Gem_Recipe__Register (Gem_Special__YELLOW_SAPPHIRE_1, Gem_Gems__SAPPHIRE_PERFECT, Gem_Gems__RUBY_FLAWLESS, Gem_Gems__TOPAZ_FLAWLESS, 0)
+
 
 	return false
 endfunction

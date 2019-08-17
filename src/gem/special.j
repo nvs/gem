@@ -47,4 +47,6 @@ globals
 	constant integer Gem_Special__YELLOW_SAPPHIRE_2 = 'h02R'
 
 	constant integer Gem_Special__STONE_OF_BRYVX = 'h04A'
+
+	integer Gem_Special___Upgrades = Node__NULL
 endglobals
