@@ -6,6 +6,8 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 - N/A
 
+## [1.6.5] - 2019-08-16
+
 ### Fixed
 - The Extra Chance target is intended to be immutable while placing gems.
   However, it could be cancelled, thus refunding gold and yielding the
@@ -614,7 +616,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.4...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.5...master
+[1.6.5]: https://github.com/nvs/gem/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/nvs/gem/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/nvs/gem/compare/v1.6.2...v1.6.3
 [1.6.2]: https://github.com/nvs/gem/compare/v1.6.1...v1.6.2
