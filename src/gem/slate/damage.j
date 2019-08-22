@@ -46,9 +46,16 @@ endfunction
 
 function Gem_Slate___Initialize_Damage takes nothing returns nothing
 	local trigger the_trigger
+	local integer index
 
 	set the_trigger = CreateTrigger ()
 
-	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
+	set index = 11
+	loop
+		call TriggerRegisterPlayerUnitEvent (the_trigger, Player (index), EVENT_PLAYER_UNIT_ATTACKED, null)
+		set index = index + 1
+		exitwhen index > 18
+	endloop
+
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Slate___Damage))
 endfunction

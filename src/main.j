@@ -138,7 +138,12 @@ function main takes nothing returns nothing
 
 	// Set the names of computer players.  This was previously done in the
 	// `war3map.w3i`, but was removed to ensure accurate games list counts.
-	call SetPlayerName (Gem__PLAYER_CREEPS, "Monsters")
+	set index = 11
+	loop
+		call SetPlayerName (Player (index), "Monsters")
+		set index = index + 1
+		exitwhen index > 18
+	endloop
 	call SetPlayerName (Player (9), "Gem not in play")
 
 	// The two faster game speeds cannot be used at all in single-player or

@@ -108,15 +108,17 @@ function Gem_Spawn__Start takes integer player_index, integer round returns noth
 	local integer spawn = Spawn__Clone (Gem_Spawn___Round [round])
 	local integer boss = 0
 	local integer waves
+	local player owner = Player (player_index + 11)
 
 	set Gem_Spawn___Index [player_index] = spawn
 	call Spawn__Set_X (spawn, x)
 	call Spawn__Set_Y (spawn, y)
 	call Spawn__Set_Facing (spawn, facing)
+	call Spawn__Set_Owner (spawn, owner)
 
 	if round == 50 then
 		set waves = Spawn__Get_Waves (spawn)
-		set boss = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Boss (), 1, 1, x, y, facing, waves * 1.61, 0)
+		set boss = Spawn__Create (owner, Gem_Spawn___Boss (), 1, 1, x, y, facing, waves * 1.61, 0)
 		set Gem_Spawn___Boss_Index [player_index] = boss
 	endif
 
@@ -159,7 +161,7 @@ function Gem_Spawn___Movement takes nothing returns boolean
 	set the_unit_index = Unit_Indexer__Unit_Index (the_unit)
 	set owner = GetOwningPlayer (the_unit)
 
-	if owner == Gem__PLAYER_CREEPS and udg_CreepOwner [the_unit_index] == 0 then
+	if Gem_Player__Is_Monster (owner) and udg_CreepOwner [the_unit_index] == 0 then
 		set player_index = Handle__Load (GetTriggeringRegion (), Gem_Spawn___ID_PLAYER_INDEX)
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))

@@ -29,7 +29,7 @@ function Commands___Debug_Move takes nothing returns boolean
 
 	set the_unit = GetFilterUnit ()
 
-	if GetOwningPlayer (the_unit) == Gem__PLAYER_CREEPS then
+	if Gem_Player__Is_Monster (GetOwningPlayer (the_unit)) then
 		set unit_index = Unit_Indexer__Unit_Index (the_unit)
 		set the_rect = udg_Move1st [udg_CreepOwner [unit_index]]
 

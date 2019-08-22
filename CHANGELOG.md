@@ -9,6 +9,11 @@ a full list of changes to the project, please consult the commit log.
 - The small delay after selecting a target with swap has been removed. This
   allows quicker completion of the move.
 
+### Fixed
+- Unit pathing in multiplayer games should be less susceptible to stutters.
+  To be fair, Warcraft III pathing is just bad in complex mazes such as
+  those used in Gem.
+
 ## [1.6.5] - 2019-08-16
 
 ### Fixed

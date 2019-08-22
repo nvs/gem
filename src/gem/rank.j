@@ -120,7 +120,7 @@ endfunction
 
 function Gem_Rank___Is_Creep takes unit which returns boolean
 	local boolean is_indexed = Unit_Indexer__Is_Indexed (which)
-	local boolean is_creep = GetOwningPlayer (which) == Gem__PLAYER_CREEPS
+	local boolean is_creep = Gem_Player__Is_Monster (GetOwningPlayer (which))
 
 	return is_indexed and is_creep
 endfunction

@@ -63,10 +63,17 @@ function config takes nothing returns nothing
 		exitwhen i > 8
 	endloop
 
-	set p = Player (11)
-	call SetPlayerColor (p, ConvertPlayerColor (11))
-	call SetPlayerRacePreference (p, RACE_PREF_UNDEAD)
-	call SetPlayerRaceSelectable (p, false)
-	call SetPlayerController (p, MAP_CONTROL_COMPUTER)
-	call SetPlayerTeam (p, 1)
+	set i = 11
+	loop
+		set p = Player (i)
+		call SetPlayerName (p, "Monsters")
+		call SetPlayerColor (p, PLAYER_COLOR_BROWN)
+		call SetPlayerRacePreference (p, RACE_PREF_UNDEAD)
+		call SetPlayerRaceSelectable (p, false)
+		call SetPlayerController (p, MAP_CONTROL_COMPUTER)
+		call SetPlayerTeam (p, 1)
+
+		set i = i + 1
+		exitwhen i > 18
+	endloop
 endfunction

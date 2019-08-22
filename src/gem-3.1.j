@@ -458,7 +458,7 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_Build5=Rect(5152.0,4448.0,5280.0,4576.0)
 endfunction
 function Trig_kills_and_remove_Corpse_Conditions takes nothing returns boolean
-	return GetOwningPlayer (GetDyingUnit ()) == Player (11)
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetDyingUnit ()))
 endfunction
 function Trig_kills_and_remove_Corpse_Actions takes nothing returns nothing
 	local unit killed = GetDyingUnit ()
@@ -553,7 +553,13 @@ function Trig_Inihilization_Actions takes nothing returns nothing
 	call SetTimeOfDay(12)
 	call ForForce(GetPlayersAll(),function Trig_Inihilization_Func069002)
 	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(11))
-	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(10))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(12))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(13))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(14))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(15))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(16))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(17))
+	call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY,true,Player(18))
 	set udg_Level=1
 	set udg_Spawn[1]=gg_rct_Spawn_1
 	set udg_Spawn[2]=gg_rct_Spawn_2
@@ -586,10 +592,7 @@ function InitTrig_Inihilization takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Inihilization,function Trig_Inihilization_Actions)
 endfunction
 function Trig_Gem_Awards_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetDyingUnit ()))
 endfunction
 function Trig_Gem_Awards_Func002C takes nothing returns boolean
 	if(not(Unit_User_Data__Get(GetKillingUnitBJ())==10))then
@@ -1266,7 +1269,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 	elseif id == EVENT_PLAYER_UNIT_ATTACKED then
 		set attacker = GetAttacker ()
 
-		if GetOwningPlayer (attacker) != Gem__PLAYER_CREEPS then
+		if not Gem_Player__Is_Monster (GetOwningPlayer (attacker)) then
 			return
 		endif
 
@@ -1312,11 +1315,11 @@ function InitTrig_Creeps_attacking takes nothing returns nothing
 	local integer index = 0
 
 	set gg_trg_Creeps_attacking = CreateTrigger()
-	call TriggerRegisterPlayerUnitEvent (gg_trg_Creeps_attacking, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER, null)
 	call TriggerAddAction (gg_trg_Creeps_attacking, function Trig_Creeps_attacking_Actions)
 
 	loop
 		call TriggerRegisterPlayerUnitEvent (gg_trg_Creeps_attacking, Player (index), EVENT_PLAYER_UNIT_ATTACKED, null)
+		call TriggerRegisterPlayerUnitEvent (gg_trg_Creeps_attacking, Player (index + 11), EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER, null)
 		set index = index + 1
 		exitwhen index >= Gem__MAXIMUM_PLAYERS
 	endloop
@@ -1751,8 +1754,14 @@ function Trig_Air_Slate_Actions takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\Feedback\\SpellBreakerAttack.mdl", GetUnitX (GetAttacker()), GetUnitY (GetAttacker())))
 endfunction
 function InitTrig_Air_Slate takes nothing returns nothing
+	local integer index
 	set gg_trg_Air_Slate=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_Air_Slate,Player(11),EVENT_PLAYER_UNIT_ATTACKED)
+	set index = 11
+	loop
+		call TriggerRegisterPlayerUnitEventSimple(gg_trg_Air_Slate,Player(index),EVENT_PLAYER_UNIT_ATTACKED)
+		set index = index + 1
+		exitwhen index > 18
+	endloop
 	call TriggerAddCondition(gg_trg_Air_Slate,Condition(function Trig_Air_Slate_Conditions))
 	call TriggerAddAction(gg_trg_Air_Slate,function Trig_Air_Slate_Actions)
 endfunction
@@ -1768,8 +1777,14 @@ function Trig_Slow_Slate_Actions takes nothing returns nothing
 	call SetUnitMoveSpeed(GetAttackedUnitBJ(),(GetUnitDefaultMoveSpeed(GetAttackedUnitBJ())*0.85))
 endfunction
 function InitTrig_Slow_Slate takes nothing returns nothing
+	local integer index
 	set gg_trg_Slow_Slate=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_Slow_Slate,Player(11),EVENT_PLAYER_UNIT_ATTACKED)
+	set index = 11
+	loop
+		call TriggerRegisterPlayerUnitEventSimple(gg_trg_Slow_Slate,Player(index),EVENT_PLAYER_UNIT_ATTACKED)
+		set index = index + 1
+		exitwhen index > 18
+	endloop
 	call TriggerAddCondition(gg_trg_Slow_Slate,Condition(function Trig_Slow_Slate_Conditions))
 	call TriggerAddAction(gg_trg_Slow_Slate,function Trig_Slow_Slate_Actions)
 endfunction
@@ -1784,21 +1799,33 @@ function Trig_Opal_Vein_SLate_Actions takes nothing returns nothing
 	call DestroyEffect (AddSpecialEffectTarget ("Abilities\\Spells\\Orc\\Devour\\DevourEffectArt.mdl", GetAttackedUnitBJ(), "chest"))
 endfunction
 function InitTrig_Opal_Vein_SLate takes nothing returns nothing
+	local integer index
 	set gg_trg_Opal_Vein_SLate=CreateTrigger()
-	call TriggerRegisterPlayerUnitEventSimple(gg_trg_Opal_Vein_SLate,Player(11),EVENT_PLAYER_UNIT_ATTACKED)
+	set index = 11
+	loop
+		call TriggerRegisterPlayerUnitEventSimple(gg_trg_Opal_Vein_SLate,Player(index),EVENT_PLAYER_UNIT_ATTACKED)
+		set index = index + 1
+		exitwhen index > 18
+	endloop
 	call TriggerAddCondition(gg_trg_Opal_Vein_SLate,Condition(function Trig_Opal_Vein_SLate_Conditions))
 	call TriggerAddAction(gg_trg_Opal_Vein_SLate,function Trig_Opal_Vein_SLate_Actions)
 endfunction
 function Trig_Players_attacking_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetAttackedUnitBJ())!=Player(11)))then
+	local player attacker = GetOwningPlayer (GetAttacker ())
+	local player victim = GetOwningPlayer (GetAttackedUnitBJ ())
+
+	if attacker == victim then
 		return false
 	endif
-	if(not(GetOwningPlayer(GetAttacker())!=Player(11)))then
+
+	if Gem_Player__Is_Monster (attacker) then
 		return false
 	endif
-	if(not(GetOwningPlayer(GetAttacker())!=GetOwningPlayer(GetAttackedUnitBJ())))then
+
+	if Gem_Player__Is_Monster (victim) then
 		return false
 	endif
+
 	return true
 endfunction
 function Trig_Players_attacking_Actions takes nothing returns nothing
@@ -1849,10 +1876,7 @@ function InitTrig_Miner_Leaves_area takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Miner_Leaves_area,function Trig_Miner_Leaves_area_Actions)
 endfunction
 function Trig_Leak_and_lose_P1_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P1_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -1891,10 +1915,7 @@ function InitTrig_Leak_and_lose_P1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P1,function Trig_Leak_and_lose_P1_Actions)
 endfunction
 function Trig_Leak_and_lose_P2_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P2_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -1933,10 +1954,7 @@ function InitTrig_Leak_and_lose_P2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P2,function Trig_Leak_and_lose_P2_Actions)
 endfunction
 function Trig_Leak_and_lose_P3_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P3_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -1975,10 +1993,7 @@ function InitTrig_Leak_and_lose_P3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P3,function Trig_Leak_and_lose_P3_Actions)
 endfunction
 function Trig_Leak_and_lose_P4_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P4_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -2017,10 +2032,7 @@ function InitTrig_Leak_and_lose_P4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P4,function Trig_Leak_and_lose_P4_Actions)
 endfunction
 function Trig_Leak_and_lose_P5_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P5_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -2059,10 +2071,7 @@ function InitTrig_Leak_and_lose_P5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P5,function Trig_Leak_and_lose_P5_Actions)
 endfunction
 function Trig_Leak_and_lose_P6_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P6_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -2101,10 +2110,7 @@ function InitTrig_Leak_and_lose_P6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P6,function Trig_Leak_and_lose_P6_Actions)
 endfunction
 function Trig_Leak_and_lose_P7_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P7_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -2143,10 +2149,7 @@ function InitTrig_Leak_and_lose_P7 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P7,function Trig_Leak_and_lose_P7_Actions)
 endfunction
 function Trig_Leak_and_lose_P8_Conditions takes nothing returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Leak_and_lose_P8_Actions takes nothing returns nothing
 	// Ignore units that are merely passing by.
@@ -2185,14 +2188,7 @@ function InitTrig_Leak_and_lose_P8 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Leak_and_lose_P8,function Trig_Leak_and_lose_P8_Actions)
 endfunction
 function Trig_Race_Mode_Kills_Conditions takes nothing returns boolean
-	local integer unit_id = GetUnitTypeId (GetDyingUnit ())
-	if(not(GetOwningPlayer(GetDyingUnit())==Player(11)))then
-		return false
-	endif
-	if(not(udg_Mode==2))then
-		return false
-	endif
-	return true
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetDyingUnit ()))
 endfunction
 function Trig_Race_Mode_Kills_Actions takes nothing returns nothing
 	local integer index = Unit_Indexer__Unit_Index (GetDyingUnit ())

@@ -14,7 +14,7 @@ function Gem_Slate___Hold_Taunt takes nothing returns boolean
 	set the_unit = GetFilterUnit ()
 	set the_unit_type = GetUnitTypeId (the_unit)
 
-	if GetOwningPlayer (the_unit) != Gem__PLAYER_CREEPS and the_unit_type != 'u000' and the_unit_type != Gem_Slate__HOLD and the_unit_type != Gem_Slate__ANCIENT then
+	if not Gem_Player__Is_Monster (GetOwningPlayer (the_unit)) and the_unit_type != 'u000' and the_unit_type != Gem_Slate__HOLD and the_unit_type != Gem_Slate__ANCIENT then
 		call IssueTargetOrder (the_unit, "attack", Gem_Slate___Hold_Unit)
 	endif
 
@@ -79,9 +79,16 @@ endfunction
 
 function Gem_Slate___Initialize_Hold takes nothing returns nothing
 	local trigger the_trigger
+	local integer index
 
 	set the_trigger = CreateTrigger ()
 
-	call TriggerRegisterPlayerUnitEvent (the_trigger, Gem__PLAYER_CREEPS, EVENT_PLAYER_UNIT_ATTACKED, null)
+	set index = 11
+	loop
+		call TriggerRegisterPlayerUnitEvent (the_trigger, Player (index), EVENT_PLAYER_UNIT_ATTACKED, null)
+		set index = index + 1
+		exitwhen index > 18
+	endloop
+
 	call TriggerAddCondition (the_trigger, Condition (function Gem_Slate___Hold))
 endfunction

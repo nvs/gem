@@ -28,6 +28,18 @@ function Gem_Player__Is_Player takes player the_player returns boolean
 	return GetPlayerController (the_player) == MAP_CONTROL_USER
 endfunction
 
+function Gem_Player__Is_Monster takes player whom returns boolean
+	local integer index
+
+	if whom == null then
+		return false
+	endif
+
+	set index = GetPlayerId (whom)
+
+	return 11 <= index and index <= 18
+endfunction
+
 function Gem_Player__Remove_Creeps takes player whom returns nothing
 	local integer whom_id
 	local group units
@@ -41,7 +53,7 @@ function Gem_Player__Remove_Creeps takes player whom returns nothing
 
 	set whom_id = GetPlayerId (whom)
 	set units = CreateGroup ()
-	call GroupEnumUnitsOfPlayer (units, Gem__PLAYER_CREEPS, null)
+	call GroupEnumUnitsOfPlayer (units, Player (whom_id + 11), null)
 
 	loop
 		set which = FirstOfGroup (units)

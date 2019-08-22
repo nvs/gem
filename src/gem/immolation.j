@@ -118,7 +118,7 @@ function Gem_Immolation___Damage takes nothing returns boolean
 		exitwhen target == null
 		call GroupRemoveUnit (targets, target)
 
-		if GetOwningPlayer (target) == Gem__PLAYER_CREEPS and UnitAlive (target) and not BlzIsUnitInvulnerable (target) then
+		if Gem_Player__Is_Monster (GetOwningPlayer (target)) and UnitAlive (target) and not BlzIsUnitInvulnerable (target) then
 			if damage > 0 then
 				call Unit_Damage__Is_Code ()
 				call UnitDamageTarget (source, target, damage, false, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, null)

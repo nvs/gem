@@ -1,8 +1,8 @@
 function Trig_Movement1_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_1_Func003001(),Trig_Movement1_1_Func003002()))then
@@ -43,10 +43,10 @@ function InitTrig_Movement1_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement1_1,function Trig_Movement1_1_Actions)
 endfunction
 function Trig_Movement1_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_2_Func004001(),Trig_Movement1_2_Func004002()))then
@@ -69,10 +69,10 @@ function InitTrig_Movement1_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement1_2,function Trig_Movement1_2_Actions)
 endfunction
 function Trig_Movement1_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_3_Func004001(),Trig_Movement1_3_Func004002()))then
@@ -95,10 +95,10 @@ function InitTrig_Movement1_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement1_3,function Trig_Movement1_3_Actions)
 endfunction
 function Trig_Movement1_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_4_Func004001(),Trig_Movement1_4_Func004002()))then
@@ -121,10 +121,10 @@ function InitTrig_Movement1_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement1_4,function Trig_Movement1_4_Actions)
 endfunction
 function Trig_Movement1_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_5_Func004001(),Trig_Movement1_5_Func004002()))then
@@ -147,10 +147,10 @@ function InitTrig_Movement1_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement1_5,function Trig_Movement1_5_Actions)
 endfunction
 function Trig_Movement1_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_6_Func004001(),Trig_Movement1_6_Func004002()))then
@@ -173,10 +173,10 @@ function InitTrig_Movement1_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement1_6,function Trig_Movement1_6_Actions)
 endfunction
 function Trig_Movement1_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement1_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement1_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement1_7_Func003001(),Trig_Movement1_7_Func003002()))then
@@ -199,10 +199,10 @@ function InitTrig_Movement1_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement2_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_1_Func003001(),Trig_Movement2_1_Func003002()))then
@@ -243,10 +243,10 @@ function InitTrig_Movement2_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement2_1,function Trig_Movement2_1_Actions)
 endfunction
 function Trig_Movement2_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_2_Func004001(),Trig_Movement2_2_Func004002()))then
@@ -269,10 +269,10 @@ function InitTrig_Movement2_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement2_2,function Trig_Movement2_2_Actions)
 endfunction
 function Trig_Movement2_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_3_Func004001(),Trig_Movement2_3_Func004002()))then
@@ -295,10 +295,10 @@ function InitTrig_Movement2_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement2_3,function Trig_Movement2_3_Actions)
 endfunction
 function Trig_Movement2_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_4_Func004001(),Trig_Movement2_4_Func004002()))then
@@ -321,10 +321,10 @@ function InitTrig_Movement2_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement2_4,function Trig_Movement2_4_Actions)
 endfunction
 function Trig_Movement2_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_5_Func004001(),Trig_Movement2_5_Func004002()))then
@@ -347,10 +347,10 @@ function InitTrig_Movement2_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement2_5,function Trig_Movement2_5_Actions)
 endfunction
 function Trig_Movement2_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_6_Func004001(),Trig_Movement2_6_Func004002()))then
@@ -373,10 +373,10 @@ function InitTrig_Movement2_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement2_6,function Trig_Movement2_6_Actions)
 endfunction
 function Trig_Movement2_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement2_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement2_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement2_7_Func003001(),Trig_Movement2_7_Func003002()))then
@@ -399,10 +399,10 @@ function InitTrig_Movement2_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement3_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_1_Func003001(),Trig_Movement3_1_Func003002()))then
@@ -443,10 +443,10 @@ function InitTrig_Movement3_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement3_1,function Trig_Movement3_1_Actions)
 endfunction
 function Trig_Movement3_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_2_Func004001(),Trig_Movement3_2_Func004002()))then
@@ -469,10 +469,10 @@ function InitTrig_Movement3_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement3_2,function Trig_Movement3_2_Actions)
 endfunction
 function Trig_Movement3_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_3_Func004001(),Trig_Movement3_3_Func004002()))then
@@ -495,10 +495,10 @@ function InitTrig_Movement3_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement3_3,function Trig_Movement3_3_Actions)
 endfunction
 function Trig_Movement3_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_4_Func004001(),Trig_Movement3_4_Func004002()))then
@@ -521,10 +521,10 @@ function InitTrig_Movement3_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement3_4,function Trig_Movement3_4_Actions)
 endfunction
 function Trig_Movement3_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_5_Func004001(),Trig_Movement3_5_Func004002()))then
@@ -547,10 +547,10 @@ function InitTrig_Movement3_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement3_5,function Trig_Movement3_5_Actions)
 endfunction
 function Trig_Movement3_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_6_Func004001(),Trig_Movement3_6_Func004002()))then
@@ -573,10 +573,10 @@ function InitTrig_Movement3_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement3_6,function Trig_Movement3_6_Actions)
 endfunction
 function Trig_Movement3_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement3_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement3_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement3_7_Func003001(),Trig_Movement3_7_Func003002()))then
@@ -599,10 +599,10 @@ function InitTrig_Movement3_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement4_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_1_Func003001(),Trig_Movement4_1_Func003002()))then
@@ -643,10 +643,10 @@ function InitTrig_Movement4_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement4_1,function Trig_Movement4_1_Actions)
 endfunction
 function Trig_Movement4_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_2_Func004001(),Trig_Movement4_2_Func004002()))then
@@ -669,10 +669,10 @@ function InitTrig_Movement4_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement4_2,function Trig_Movement4_2_Actions)
 endfunction
 function Trig_Movement4_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_3_Func004001(),Trig_Movement4_3_Func004002()))then
@@ -695,10 +695,10 @@ function InitTrig_Movement4_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement4_3,function Trig_Movement4_3_Actions)
 endfunction
 function Trig_Movement4_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_4_Func004001(),Trig_Movement4_4_Func004002()))then
@@ -721,10 +721,10 @@ function InitTrig_Movement4_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement4_4,function Trig_Movement4_4_Actions)
 endfunction
 function Trig_Movement4_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_5_Func004001(),Trig_Movement4_5_Func004002()))then
@@ -747,10 +747,10 @@ function InitTrig_Movement4_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement4_5,function Trig_Movement4_5_Actions)
 endfunction
 function Trig_Movement4_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_6_Func004001(),Trig_Movement4_6_Func004002()))then
@@ -773,10 +773,10 @@ function InitTrig_Movement4_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement4_6,function Trig_Movement4_6_Actions)
 endfunction
 function Trig_Movement4_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement4_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement4_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement4_7_Func003001(),Trig_Movement4_7_Func003002()))then
@@ -799,10 +799,10 @@ function InitTrig_Movement4_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement5_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_1_Func003001(),Trig_Movement5_1_Func003002()))then
@@ -843,10 +843,10 @@ function InitTrig_Movement5_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement5_1,function Trig_Movement5_1_Actions)
 endfunction
 function Trig_Movement5_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_2_Func004001(),Trig_Movement5_2_Func004002()))then
@@ -869,10 +869,10 @@ function InitTrig_Movement5_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement5_2,function Trig_Movement5_2_Actions)
 endfunction
 function Trig_Movement5_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_3_Func004001(),Trig_Movement5_3_Func004002()))then
@@ -895,10 +895,10 @@ function InitTrig_Movement5_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement5_3,function Trig_Movement5_3_Actions)
 endfunction
 function Trig_Movement5_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_4_Func004001(),Trig_Movement5_4_Func004002()))then
@@ -921,10 +921,10 @@ function InitTrig_Movement5_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement5_4,function Trig_Movement5_4_Actions)
 endfunction
 function Trig_Movement5_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_5_Func004001(),Trig_Movement5_5_Func004002()))then
@@ -947,10 +947,10 @@ function InitTrig_Movement5_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement5_5,function Trig_Movement5_5_Actions)
 endfunction
 function Trig_Movement5_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_6_Func004001(),Trig_Movement5_6_Func004002()))then
@@ -973,10 +973,10 @@ function InitTrig_Movement5_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement5_6,function Trig_Movement5_6_Actions)
 endfunction
 function Trig_Movement5_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement5_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement5_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement5_7_Func003001(),Trig_Movement5_7_Func003002()))then
@@ -999,10 +999,10 @@ function InitTrig_Movement5_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement6_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_1_Func003001(),Trig_Movement6_1_Func003002()))then
@@ -1043,10 +1043,10 @@ function InitTrig_Movement6_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement6_1,function Trig_Movement6_1_Actions)
 endfunction
 function Trig_Movement6_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_2_Func004001(),Trig_Movement6_2_Func004002()))then
@@ -1069,10 +1069,10 @@ function InitTrig_Movement6_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement6_2,function Trig_Movement6_2_Actions)
 endfunction
 function Trig_Movement6_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_3_Func004001(),Trig_Movement6_3_Func004002()))then
@@ -1095,10 +1095,10 @@ function InitTrig_Movement6_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement6_3,function Trig_Movement6_3_Actions)
 endfunction
 function Trig_Movement6_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_4_Func004001(),Trig_Movement6_4_Func004002()))then
@@ -1121,10 +1121,10 @@ function InitTrig_Movement6_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement6_4,function Trig_Movement6_4_Actions)
 endfunction
 function Trig_Movement6_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_5_Func004001(),Trig_Movement6_5_Func004002()))then
@@ -1147,10 +1147,10 @@ function InitTrig_Movement6_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement6_5,function Trig_Movement6_5_Actions)
 endfunction
 function Trig_Movement6_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_6_Func004001(),Trig_Movement6_6_Func004002()))then
@@ -1173,10 +1173,10 @@ function InitTrig_Movement6_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement6_6,function Trig_Movement6_6_Actions)
 endfunction
 function Trig_Movement6_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement6_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement6_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement6_7_Func003001(),Trig_Movement6_7_Func003002()))then
@@ -1199,10 +1199,10 @@ function InitTrig_Movement6_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement7_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_1_Func003001(),Trig_Movement7_1_Func003002()))then
@@ -1243,10 +1243,10 @@ function InitTrig_Movement7_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement7_1,function Trig_Movement7_1_Actions)
 endfunction
 function Trig_Movement7_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_2_Func004001(),Trig_Movement7_2_Func004002()))then
@@ -1269,10 +1269,10 @@ function InitTrig_Movement7_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement7_2,function Trig_Movement7_2_Actions)
 endfunction
 function Trig_Movement7_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_3_Func004001(),Trig_Movement7_3_Func004002()))then
@@ -1295,10 +1295,10 @@ function InitTrig_Movement7_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement7_3,function Trig_Movement7_3_Actions)
 endfunction
 function Trig_Movement7_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_4_Func004001(),Trig_Movement7_4_Func004002()))then
@@ -1321,10 +1321,10 @@ function InitTrig_Movement7_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement7_4,function Trig_Movement7_4_Actions)
 endfunction
 function Trig_Movement7_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_5_Func004001(),Trig_Movement7_5_Func004002()))then
@@ -1347,10 +1347,10 @@ function InitTrig_Movement7_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement7_5,function Trig_Movement7_5_Actions)
 endfunction
 function Trig_Movement7_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_6_Func004001(),Trig_Movement7_6_Func004002()))then
@@ -1373,10 +1373,10 @@ function InitTrig_Movement7_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement7_6,function Trig_Movement7_6_Actions)
 endfunction
 function Trig_Movement7_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement7_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement7_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement7_7_Func003001(),Trig_Movement7_7_Func003002()))then
@@ -1399,10 +1399,10 @@ function InitTrig_Movement7_7 takes nothing returns nothing
 endfunction
 
 function Trig_Movement8_1_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_1_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_1_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_1_Func003001(),Trig_Movement8_1_Func003002()))then
@@ -1443,10 +1443,10 @@ function InitTrig_Movement8_1 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement8_1,function Trig_Movement8_1_Actions)
 endfunction
 function Trig_Movement8_2_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_2_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_2_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_2_Func004001(),Trig_Movement8_2_Func004002()))then
@@ -1469,10 +1469,10 @@ function InitTrig_Movement8_2 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement8_2,function Trig_Movement8_2_Actions)
 endfunction
 function Trig_Movement8_3_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_3_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_3_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_3_Func004001(),Trig_Movement8_3_Func004002()))then
@@ -1495,10 +1495,10 @@ function InitTrig_Movement8_3 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement8_3,function Trig_Movement8_3_Actions)
 endfunction
 function Trig_Movement8_4_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_4_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_4_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_4_Func004001(),Trig_Movement8_4_Func004002()))then
@@ -1521,10 +1521,10 @@ function InitTrig_Movement8_4 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement8_4,function Trig_Movement8_4_Actions)
 endfunction
 function Trig_Movement8_5_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_5_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_5_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_5_Func004001(),Trig_Movement8_5_Func004002()))then
@@ -1547,10 +1547,10 @@ function InitTrig_Movement8_5 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement8_5,function Trig_Movement8_5_Actions)
 endfunction
 function Trig_Movement8_6_Func004001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_6_Func004002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_6_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_6_Func004001(),Trig_Movement8_6_Func004002()))then
@@ -1573,10 +1573,10 @@ function InitTrig_Movement8_6 takes nothing returns nothing
 	call TriggerAddAction(gg_trg_Movement8_6,function Trig_Movement8_6_Actions)
 endfunction
 function Trig_Movement8_7_Func003001 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(10))
+	return Gem_Player__Is_Monster (GetOwningPlayer (GetTriggerUnit ()))
 endfunction
 function Trig_Movement8_7_Func003002 takes nothing returns boolean
-	return(GetOwningPlayer(GetTriggerUnit())==Player(11))
+	return false
 endfunction
 function Trig_Movement8_7_Conditions takes nothing returns boolean
 	if(not GetBooleanOr(Trig_Movement8_7_Func003001(),Trig_Movement8_7_Func003002()))then
