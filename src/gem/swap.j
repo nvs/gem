@@ -7,9 +7,17 @@ globals
 	constant integer Gem_Swap___COST = 10
 endglobals
 
+function Gem_Swap___Has_A takes unit builder returns boolean
+	return GetUnitAbilityLevel (builder, 'GSAA') > 0
+endfunction
+
 function Gem_Swap___To_A takes unit builder returns nothing
 	call UnitRemoveAbility (builder, 'GSAB')
 	call UnitAddAbility (builder, 'GSAA')
+endfunction
+
+function Gem_Swap___Has_B takes unit builder returns boolean
+	return GetUnitAbilityLevel (builder, 'GSAB') > 0
 endfunction
 
 function Gem_Swap___To_B takes unit builder returns nothing
@@ -67,19 +75,17 @@ function Gem_Swap___Expire takes nothing returns boolean
 	return true
 endfunction
 
-function Gem_Swap___Spell takes nothing returns boolean
+function Gem_Swap___A takes nothing returns boolean
 	local integer id = GetSpellAbilityId ()
 	local player whom
 	local integer whom_id
 	local unit builder
 	local unit target
-	local unit marked
 	local integer runner
-	local real mana
 
-	set Label = "Gem_Swap___Spell"
+	set Label = "Gem_Swap___A"
 
-	if not (id == 'GSAA' or id == 'GSAB') then
+	if id != 'GSAA' then
 		return true
 	endif
 
@@ -89,32 +95,74 @@ function Gem_Swap___Spell takes nothing returns boolean
 	set builder = GetSpellAbilityUnit ()
 	set target = GetSpellTargetUnit ()
 
-	if Gem_Swap___Marked [whom_id] == null then
-		set Gem_Swap___Marked [whom_id] = target
-		set Gem_Swap___Effect [whom_id] = AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl", GetUnitX (target), GetUnitY (target))
-
-		set runner = Run__After (10.0, function Gem_Swap___Expire)
-		set Gem_Swap___Runner [whom_id] = runner
-		call Gem_Swap___To_B (builder)
-	else
-		set marked = Gem_Swap___Marked [whom_id]
-		set Gem_Swap___Marked [whom_id] = null
-
-		call DestroyEffect (Gem_Swap___Effect [whom_id])
-		set Gem_Swap___Effect [whom_id] = null
-
-		set runner = Gem_Swap___Runner [whom_id]
-		set Gem_Swap___Runner [whom_id] = Run__NULL
-		call Run__Cancel (runner)
-
-		if target == marked then
-			call Unit_State__Set (builder, UNIT_STATE_MANA, Gem_Swap___COST)
-		else
-			call Gem_Swap___Swap (marked, target)
-		endif
-
-		call Gem_Swap___To_A (builder)
+	if not Gem_Swap___Has_A (builder) then
+		return true
 	endif
+
+	if Gem_Swap___Marked [whom_id] != null then
+		return true
+	endif
+
+	set Gem_Swap___Marked [whom_id] = target
+	set Gem_Swap___Effect [whom_id] = AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl", GetUnitX (target), GetUnitY (target))
+
+	set runner = Run__After (10.0, function Gem_Swap___Expire)
+	set Gem_Swap___Runner [whom_id] = runner
+	call Gem_Swap___To_B (builder)
+
+	// Builder will be stuck channelling without this.
+	call IssueImmediateOrder (builder, "stop")
+
+	return true
+endfunction
+
+function Gem_Swap___B takes nothing returns boolean
+	local integer id = GetSpellAbilityId ()
+	local player whom
+	local integer whom_id
+	local unit builder
+	local unit target
+	local unit marked
+	local integer runner
+	local real mana
+
+	set Label = "Gem_Swap___B"
+
+	if id != 'GSAB' then
+		return true
+	endif
+
+	set whom = GetTriggerPlayer ()
+	set whom_id = GetPlayerId (whom)
+
+	set builder = GetSpellAbilityUnit ()
+	set target = GetSpellTargetUnit ()
+
+	if not Gem_Swap___Has_B (builder) then
+		return true
+	endif
+
+	if Gem_Swap___Marked [whom_id] == null then
+		return true
+	endif
+
+	set marked = Gem_Swap___Marked [whom_id]
+	set Gem_Swap___Marked [whom_id] = null
+
+	call DestroyEffect (Gem_Swap___Effect [whom_id])
+	set Gem_Swap___Effect [whom_id] = null
+
+	set runner = Gem_Swap___Runner [whom_id]
+	set Gem_Swap___Runner [whom_id] = Run__NULL
+	call Run__Cancel (runner)
+
+	if target == marked then
+		call Unit_State__Set (builder, UNIT_STATE_MANA, Gem_Swap___COST)
+	else
+		call Gem_Swap___Swap (marked, target)
+	endif
+
+	call Gem_Swap___To_A (builder)
 
 	return true
 endfunction
@@ -127,11 +175,16 @@ function Gem_Swap__Clear_Round takes player whom returns nothing
 endfunction
 
 function Gem_Swap__Initialize takes nothing returns boolean
-	local trigger spell
+	local trigger on_cast
+	local trigger on_effect
 
-	set spell = CreateTrigger ()
-	call Trigger__Try (spell, function Gem_Swap___Spell)
-	call TriggerRegisterAnyUnitEventBJ (spell, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+	set on_cast = CreateTrigger ()
+	call Trigger__Try (on_cast, function Gem_Swap___A)
+	call TriggerRegisterAnyUnitEventBJ (on_cast, EVENT_PLAYER_UNIT_SPELL_CAST)
+
+	set on_effect = CreateTrigger ()
+	call Trigger__Try (on_effect, function Gem_Swap___B)
+	call TriggerRegisterAnyUnitEventBJ (on_effect, EVENT_PLAYER_UNIT_SPELL_EFFECT)
 
 	return true
 endfunction

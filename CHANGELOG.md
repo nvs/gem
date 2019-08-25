@@ -4,7 +4,10 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-- N/A
+
+### Changed
+- The small delay after selecting a target with swap has been removed. This
+  allows quicker completion of the move.
 
 ## [1.6.5] - 2019-08-16
 
