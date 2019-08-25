@@ -1957,6 +1957,13 @@ setup {
 	}
 }
 
+local hold_ancient_taunt = {
+	name = 'Taunt',
+	description = text ([[
+Forces friendly units within 600 range to attack the stunned target. Does
+not affect Hold or Ancient Slates.]])
+}
+
 setup {
 	name = 'Hold Slate',
 	targets = 'ground',
@@ -1970,7 +1977,8 @@ setup {
 Grabs the target and stuns it for 1.5 seconds, causing the slate to disarm
 for 3.5 seconds. Deals 160 plus 20 times its current amount of kills in
 physical damage.]])
-		}
+		},
+		[2] = hold_ancient_taunt
 	},
 	buttons = {
 		information = {
@@ -2001,7 +2009,8 @@ Grabs the target and stuns it for 3 to 7 seconds, causing the slate to
 disarm for 5 seconds. Deals 640 plus 20 times its current amount of kills in
 physical damage. Debuffs enemy units, causing ground units to lose 6 armor
 and air units to lose 3 armor.]])
-		}
+		},
+		[2] = hold_ancient_taunt
 	},
 	bonuses = {
 		units = {
