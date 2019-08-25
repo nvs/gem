@@ -209,7 +209,7 @@ function Board___Update takes nothing returns nothing
 
 					// Never allow this to occur, as it can confuse players
 					// by implying that the round was completed.
-					if value == "100" then
+					if value == "100.0" then
 						set value = "99.9"
 					endif
 
