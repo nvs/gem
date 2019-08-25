@@ -93,7 +93,7 @@ function Board___Title takes player whom returns string
 			set progress = " — Time: " + Color__White (Board___Time (time))
 		else
 			set damage = Gem_Rank__Get_Damage (whom_id, round)
-			set progress = " — Damage: " + Color__White (R2S (damage))
+			set progress = " — Damage: " + Color__White (I2S (R2I (damage)))
 		endif
 	elseif current > 0 or previous > 0 then
 		if current > 0 then
