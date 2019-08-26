@@ -43,8 +43,6 @@ function Gem_Selection_Marker___Check takes nothing returns nothing
 	if GetUnitX (marker) != x or GetUnitY (marker) != y then
 		call SetUnitPosition (marker, x, y)
 	endif
-
-	call TimerStart (the_timer, 0.10, false, function Gem_Selection_Marker___Check)
 endfunction
 
 // Adds `the_unit` to be marked as a selection location. This will cause it to
@@ -67,7 +65,7 @@ function Gem_Selection_Marker__Add takes unit the_unit returns nothing
 	call SaveUnitHandle (Table, the_timer_id, Gem_Selection_Marker___TARGET, the_unit)
 	call SaveUnitHandle (Table, the_timer_id, Gem_Selection_Marker___MARKER, CreateUnit (Player (PLAYER_NEUTRAL_PASSIVE), Gem_Selection_Marker___UNIT, GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit)))
 
-	call TimerStart (the_timer, 0.00, false, function Gem_Selection_Marker___Check)
+	call TimerStart (the_timer, 0.10, true, function Gem_Selection_Marker___Check)
 endfunction
 
 // Removes `the_unit` from being marked as a selection location, removing the

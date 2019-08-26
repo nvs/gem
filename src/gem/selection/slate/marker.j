@@ -10,16 +10,21 @@ globals
 	timer array Gem_Selection_Slate_Marker___Timer
 endglobals
 
-function Gem_Selection_Slate_Marker___Effect takes nothing returns nothing
-	local timer clock = GetExpiredTimer ()
+function Gem_Selection_Slate_Marker___SFX takes timer clock returns nothing
 	local integer clock_id = GetHandleId (clock)
 	local unit which = LoadUnitHandle (Table, clock_id, Gem_Selection_Slate_Marker___UNIT)
 	local effect sfx = LoadEffectHandle (Table, clock_id, Gem_Selection_Slate_Marker___EFFECT)
 
-	call DestroyEffect (sfx)
+	if sfx != null then
+		call DestroyEffect (sfx)
+	endif
+
 	set sfx = AddSpecialEffect (Gem_Selection_Slate_Marker___SFX, GetUnitX (which), GetUnitY (which))
 	call SaveEffectHandle (Table, clock_id, Gem_Selection_Slate_Marker___EFFECT, sfx)
-	call TimerStart (clock, Gem_Selection_Slate_Marker___PERIOD, false, function Gem_Selection_Slate_Marker___Effect)
+endfunction
+
+function Gem_Selection_Slate_Marker___Effect takes nothing returns nothing
+	call Gem_Selection_Slate_Marker___SFX (GetExpiredTimer ())
 endfunction
 
 function Gem_Selection_Slate_Marker__Attach takes unit which returns nothing
@@ -36,7 +41,8 @@ function Gem_Selection_Slate_Marker__Attach takes unit which returns nothing
 	set clock_id = GetHandleId (clock)
 
 	call SaveUnitHandle (Table, clock_id, Gem_Selection_Slate_Marker___UNIT, which)
-	call TimerStart (clock, Gem_Selection_Slate_Marker___DELAY, false, function Gem_Selection_Slate_Marker___Effect)
+	call Gem_Selection_Slate_Marker___SFX (clock)
+	call TimerStart (clock, Gem_Selection_Slate_Marker___PERIOD, true, function Gem_Selection_Slate_Marker___Effect)
 endfunction
 
 function Gem_Selection_Slate_Marker__Detach takes unit which returns nothing
