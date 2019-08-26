@@ -118,7 +118,7 @@ do
 				.. 'Level 10.|n|n'
 
 				.. '|cfffdfd96Find your gold mine near the center.|r|n'
-				.. 'The recipes are there too.|n|n'
+				.. 'Recipes and FAQ are there too.|n|n'
 
 				.. '|cff77dd77Get better stuff!|r|n'
 				.. 'Upgrade quality at your mine for stronger gems.|n|n'
