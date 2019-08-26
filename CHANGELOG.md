@@ -14,6 +14,7 @@ a full list of changes to the project, please consult the commit log.
   To be fair, Warcraft III pathing is just bad in complex mazes such as
   those used in Gem.
 - Minor board issues.
+- Further tooltip improvements.
 
 ## [1.6.5] - 2019-08-16
 
