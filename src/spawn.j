@@ -30,7 +30,6 @@
 //
 // - `Spawn__Is_Allocated ()`
 // - `Spawn__Is_Active ()`
-// - `Spawn__Is_Paused ()`
 // - `Spawn__Get_Onwer ()`
 // - `Spawn__Set_Owner ()`
 // - `Spawn__Get_Type ()`
@@ -48,8 +47,6 @@
 // - `Spawn__Get_Period ()`
 // - `Spawn__Set_Period ()`
 // - `Spawn__Start ()`
-// - `Spawn__Pause ()`
-// - `Spawn__Resume ()`
 // - `Spawn__Stop ()`
 // - `Spawn__Create ()`
 // - `Spawn__Clone ()`
@@ -146,14 +143,6 @@ endfunction
 // and is either currently running or paused.
 function Spawn__Is_Active takes integer index returns boolean
 	return Spawn___Is_Active [index]
-endfunction
-
-// ### `Spawn__Is_Paused ()`
-//
-// Returns a `boolean` indicating whether or not the spawn specified by `index
-// (integer)` is paused.
-function Spawn__Is_Paused takes integer index returns boolean
-	return Spawn___Is_Paused [index]
 endfunction
 
 // ### `Spawn__Get_Owner ()`
@@ -298,56 +287,6 @@ endfunction
 // `index (integer)`.
 function Spawn__Set_Period takes integer index, real period returns nothing
 	set Spawn___Period [index] = RMaxBJ (0.00, period)
-endfunction
-
-// ### `Spawn__Resume ()`
-//
-// Resumes the active spawn specified by `index (integer)` after it has been
-// paused. Any duration remaining before the next wave event will be
-// remembered. Note that this function will only work on a paused spawn.
-function Spawn__Resume takes integer index returns nothing
-	if not Spawn__Is_Allocated (index) then
-		call BJDebugMsg ("Error: Spawn__Resume (): Nonexistent instance.")
-		return
-	endif
-
-	if not Spawn__Is_Active (index) then
-		call BJDebugMsg ("Error: Spawn__Resume (): Instance is inactive.")
-		return
-	endif
-
-	if not Spawn__Is_Paused (index) then
-		call BJDebugMsg ("Error: Spawn__Resume (): Instance is not paused.")
-		return
-	endif
-
-	set Spawn___Is_Paused [index] = false
-	call ResumeTimer (Spawn___Timer [index])
-endfunction
-
-// ### `Spawn_Pause ()`
-//
-// Pauses the active spawn specified by `index (integer)`. The duration before
-// the next wave event will be remembered. Note that this function will not
-// work on an already paused spawn.
-function Spawn__Pause takes integer index returns nothing
-	if not Spawn__Is_Allocated (index) then
-		call BJDebugMsg ("Error: Spawn__Pause (): Nonexistent instance.")
-		return
-	endif
-
-	if not Spawn__Is_Active (index) then
-		call BJDebugMsg ("Error: Spawn__Pause (): Instance is inactive.")
-		return
-	endif
-
-	if Spawn__Is_Paused (index) then
-		call BJDebugMsg ("Error: Spawn__Pause (): Instance is paused.")
-		return
-	endif
-
-	set Spawn___Is_Paused [index] = true
-	call PauseTimer (Spawn___Timer [index])
 endfunction
 
 // ### `Spawn__Stop ()`

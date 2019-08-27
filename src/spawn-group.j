@@ -28,7 +28,6 @@
 //
 // - `Spawn_Group__Is_Allocated ()`
 // - `Spawn_Group__Is_Active ()`
-// - `Spawn_Group__Is_Paused ()`
 // - `Spawn_Group__Get_Owner ()`
 // - `Spawn_Group__Set_Owner ()`
 // - `Spawn_Group__Get_X ()`
@@ -38,8 +37,6 @@
 // - `Spawn_Group__Get_Facing ()`
 // - `Spawn_Group__Set_Facing ()`
 // - `Spawn_Group__Start ()`
-// - `Spawn_Group__Resume ()`
-// - `Spawn_Group__Pause ()`
 // - `Spawn_Group__Stop ()`
 // - `Spawn_Group__Add ()`
 // - `Spawn_Group__Flush ()`
@@ -130,14 +127,6 @@ endfunction
 // been started, and is either currently running or paused.
 function Spawn_Group__Is_Active takes integer group_index returns boolean
 	return Spawn_Group___Is_Active [group_index]
-endfunction
-
-// ### `Spawn_Group__Is_Paused ()`
-//
-// Returns a `boolean` indicating whether or not the spawn group specified by
-// `group_index (integer)` is paused.
-function Spawn_Group__Is_Paused takes integer group_index returns boolean
-	return Spawn_Group___Is_Paused [group_index]
 endfunction
 
 // ### `Spawn_Group__Get_Owner ()`
@@ -302,78 +291,6 @@ function Spawn_Group__Start takes integer group_index returns nothing
 		exitwhen index > Spawn_Group___Size [group_index]
 
 		call Spawn__Start (LoadInteger (Table, Spawn_Group___ID [group_index], index))
-	endloop
-endfunction
-
-// ### `Spawn_Group__Resume ()`
-//
-// Resumes the active spawn group specified by `group_index (integer)` after it
-// has been paused. Any duration remaining before the next wave event will
-// be remembered for each spawn object. Note that this function will only work
-// on a paused spawn.
-function Spawn_Group__Resume takes integer group_index returns nothing
-	local integer index
-
-	if not Spawn_Group__Is_Allocated (group_index) then
-		call BJDebugMsg ("Error: Spawn_Group__Start (): Nonexistent instance.")
-		return
-	endif
-
-	if not Spawn_Group__Is_Active (group_index) then
-		call BJDebugMsg ("Error: Spawn_Group__Resume (): Group is inactive.")
-		return
-	endif
-
-	if not Spawn_Group__Is_Paused (group_index) then
-		call BJDebugMsg ("Error: Spawn_Group__Resume (): Group is not paused.")
-		return
-	endif
-
-	set Spawn_Group___Is_Paused [group_index] = false
-	call Spawn_Group___Synchronize (group_index)
-
-	set index = 0
-	loop
-		set index = index + 1
-		exitwhen index > Spawn_Group___Size [group_index]
-
-		call Spawn__Resume (LoadInteger (Table, Spawn_Group___ID [group_index], index))
-	endloop
-endfunction
-
-// ### `Spawn_Group__Pause ()`
-//
-// Pauses the active spawn group specified by `group_index (integer)`. The
-// duration before the next wave event will be remembered for each spawn
-// object. Note that this function will not work on an already paused spawn
-// group.
-function Spawn_Group__Pause takes integer group_index returns nothing
-	local integer index
-
-	if not Spawn_Group__Is_Allocated (group_index) then
-		call BJDebugMsg ("Error: Spawn_Group__Pause (): Nonexistent instance.")
-		return
-	endif
-
-	if not Spawn_Group__Is_Active (group_index) then
-		call BJDebugMsg ("Error: Spawn_Group__Pause (): Group is inactive.")
-		return
-	endif
-
-	if Spawn_Group__Is_Paused (group_index) then
-		call BJDebugMsg ("Error: Spawn_Group__Pause (): Group is paused.")
-		return
-	endif
-
-	set Spawn_Group___Is_Paused [group_index] = true
-	call Spawn_Group___Synchronize (group_index)
-
-	set index = 0
-	loop
-		set index = index + 1
-		exitwhen index > Spawn_Group___Size [group_index]
-
-		call Spawn__Pause (LoadInteger (Table, Spawn_Group___ID [group_index], index))
 	endloop
 endfunction
 
