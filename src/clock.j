@@ -26,5 +26,5 @@ function Clock__Start takes nothing returns nothing
 	call TimerDialogDisplay (Clock___Dialog, true)
 
 	// Start the timer to update the clock.
-	call TimerStart (CreateTimer (), 0.10, true, function Clock___Update)
+	call TimerStart (CreateTimer (), 0.25, true, function Clock___Update)
 endfunction
