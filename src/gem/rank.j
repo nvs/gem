@@ -281,7 +281,7 @@ function Gem_Rank___Update_Damage takes integer whom_id returns nothing
 	call Gem_Rank___Set_Damage (whom_id, level, damage)
 endfunction
 
-function Gem_Rank___Damage_Timer takes nothing returns nothing
+function Gem_Rank___Damage_Timer takes nothing returns boolean
 	local player whom
 	local integer whom_id = 0
 	local integer level
@@ -304,6 +304,8 @@ function Gem_Rank___Damage_Timer takes nothing returns nothing
 	endloop
 
 	call Gem_Rank___Sort ()
+
+	return true
 endfunction
 
 function Gem_Rank__Fail takes player whom returns nothing
@@ -397,7 +399,7 @@ function Gem_Rank___On_Death takes nothing returns boolean
 endfunction
 
 function Gem_Rank__Initialize takes nothing returns boolean
-	call TimerStart (CreateTimer (), Gem_Rank___PERIOD, true, function Gem_Rank___Damage_Timer)
+	call Run__Every (Gem_Rank___PERIOD, function Gem_Rank___Damage_Timer)
 
 	call Unit_Event__On_Leave (Condition (function Gem_Rank___On_Leave))
 	call Unit_Event__On_Death (Condition (function Gem_Rank___On_Death))

@@ -239,9 +239,7 @@ function Node__Initialize takes nothing returns nothing
 		call Log__Error ("Node__Initialize", "Insufficient hashtables")
 	endif
 
-	set shifter = CreateTrigger ()
-	call TriggerRegisterTimerEvent (shifter, Node___SHIFTER_PERIOD, true)
-	call TriggerAddCondition (shifter, Condition (function Node___Shifter))
+	call Run__Every (Node___SHIFTER_PERIOD, function Node___Shifter)
 endfunction
 
 // ## Boolean

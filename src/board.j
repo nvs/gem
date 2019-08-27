@@ -145,7 +145,7 @@ function Board___Title takes player whom returns string
 	return title
 endfunction
 
-function Board___Update takes nothing returns nothing
+function Board___Update takes nothing returns boolean
 	local player whom
 	local integer whom_id
 	local boolean has_left
@@ -247,6 +247,8 @@ function Board___Update takes nothing returns nothing
 		set row = row + 1
 		exitwhen row == row_count
 	endloop
+
+	return true
 endfunction
 
 function Board__Setup takes nothing returns nothing
@@ -361,8 +363,7 @@ function Board__Setup takes nothing returns nothing
 		exitwhen row == row_count
 	endloop
 
-	call TimerStart (CreateTimer (), 0.50, true, function Board___Update)
-
+	call Run__Every (0.5, function Board___Update)
 	call Board___Update ()
 
 	// Ensure that the board always is maximized on game start.

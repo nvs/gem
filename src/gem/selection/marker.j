@@ -13,17 +13,16 @@
 globals
 	constant integer Gem_Selection_Marker___UNIT = 'n00B'
 
-	integer Gem_Selection_Marker___TARGET = ID__NULL
-	integer Gem_Selection_Marker___MARKER = ID__NULL
-
-	timer array Gem_Selection_Marker___Timer
+	integer array Gem_Selection_Marker___Runners
+	integer array Gem_Selection_Marker___Indices
+	unit array Gem_Selection_Marker___Markers
 endglobals
 
 // Determines if the unit displaying the selection location special effect
 // needs to be moved to the location of its taret.
-function Gem_Selection_Marker___Check takes nothing returns nothing
-	local timer the_timer
-	local integer the_timer_id
+function Gem_Selection_Marker___Check takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local integer index = Gem_Selection_Marker___Indices [runner]
 
 	local unit target
 	local unit marker
@@ -31,11 +30,12 @@ function Gem_Selection_Marker___Check takes nothing returns nothing
 	local real x
 	local real y
 
-	set the_timer = GetExpiredTimer ()
-	set the_timer_id = GetHandleId (the_timer)
+	if index == 0 then
+		return true
+	endif
 
-	set target = LoadUnitHandle (Table, the_timer_id, Gem_Selection_Marker___TARGET)
-	set marker = LoadUnitHandle (Table, the_timer_id, Gem_Selection_Marker___MARKER)
+	set target = Unit_Indexer__Unit_By_Index (index)
+	set marker = Gem_Selection_Marker___Markers [index]
 
 	set x = GetUnitX (target)
 	set y = GetUnitY (target)
@@ -43,53 +43,42 @@ function Gem_Selection_Marker___Check takes nothing returns nothing
 	if GetUnitX (marker) != x or GetUnitY (marker) != y then
 		call SetUnitPosition (marker, x, y)
 	endif
+
+	return true
 endfunction
 
 // Adds `the_unit` to be marked as a selection location. This will cause it to
 // have the selection special effect applied.
 function Gem_Selection_Marker__Add takes unit the_unit returns nothing
-	local integer index
-	local timer the_timer
-	local integer the_timer_id
+	local integer index = Unit_Indexer__Unit_Index (the_unit)
+	local integer runner = Gem_Selection_Marker___Runners [index]
 
-	set index = Unit_Indexer__Unit_Index (the_unit)
-
-	if Gem_Selection_Marker___Timer [index] != null then
+	if runner != Run__NULL then
 		return
 	endif
 
-	set the_timer = CreateTimer ()
-	set Gem_Selection_Marker___Timer [index] = the_timer
-	set the_timer_id = GetHandleId (the_timer)
-
-	call SaveUnitHandle (Table, the_timer_id, Gem_Selection_Marker___TARGET, the_unit)
-	call SaveUnitHandle (Table, the_timer_id, Gem_Selection_Marker___MARKER, CreateUnit (Player (PLAYER_NEUTRAL_PASSIVE), Gem_Selection_Marker___UNIT, GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit)))
-
-	call TimerStart (the_timer, 0.10, true, function Gem_Selection_Marker___Check)
+	set runner = Run__Every (0.10, function Gem_Selection_Marker___Check)
+	set Gem_Selection_Marker___Indices [runner] = index
+	set Gem_Selection_Marker___Runners [index] = runner
+	set Gem_Selection_Marker___Markers [index] = CreateUnit (Player (PLAYER_NEUTRAL_PASSIVE), Gem_Selection_Marker___UNIT, GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit))
 endfunction
 
 // Removes `the_unit` from being marked as a selection location, removing the
 // currently displaying special effect as well.
 function Gem_Selection_Marker__Remove takes unit the_unit returns nothing
-	local integer index
-	local timer the_timer
-	local integer the_timer_id
+	local integer index = Unit_Indexer__Unit_Index (the_unit)
+	local integer runner = Gem_Selection_Marker___Runners [index]
 
-	set index = Unit_Indexer__Unit_Index (the_unit)
-	set the_timer = Gem_Selection_Marker___Timer [index]
-
-	if the_timer == null then
+	if runner == Run__NULL then
 		return
 	endif
 
-	set Gem_Selection_Marker___Timer [index] = null
-	set the_timer_id = GetHandleId (the_timer)
+	call Run__Cancel (runner)
+	set Gem_Selection_Marker___Runners [index] = Run__NULL
+	set Gem_Selection_Marker___Indices [runner] = 0
 
-	call RemoveUnit (LoadUnitHandle (Table, the_timer_id, Gem_Selection_Marker___MARKER))
-	call FlushChildHashtable (Table, the_timer_id)
-
-	call PauseTimer (the_timer)
-	call DestroyTimer (the_timer)
+	call RemoveUnit (Gem_Selection_Marker___Markers [index])
+	set Gem_Selection_Marker___Markers [index] = null
 endfunction
 
 // Unmarks a unit when it leaves the map, causing the special effect to no
@@ -109,9 +98,6 @@ function Gem_Selection_Marker___On_Death takes nothing returns boolean
 endfunction
 
 function Gem_Selection_Marker__Initialize takes nothing returns boolean
-	set Gem_Selection_Marker___TARGET = ID ()
-	set Gem_Selection_Marker___MARKER = ID ()
-
 	call Unit_Event__On_Leave (Condition (function Gem_Selection_Marker___On_Leave))
 	call Unit_Event__On_Death (Condition (function Gem_Selection_Marker___On_Death))
 

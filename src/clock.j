@@ -5,9 +5,11 @@ globals
 	timerdialog Clock___Dialog = null
 endglobals
 
-function Clock___Update takes nothing returns nothing
+function Clock___Update takes nothing returns boolean
 	call TimerStart (Clock___Timer, Time__To_Seconds (Time__Now () - Clock___Start), false, null)
 	call PauseTimer (Clock___Timer)
+
+	return true
 endfunction
 
 function Clock__Started takes nothing returns integer
@@ -26,5 +28,5 @@ function Clock__Start takes nothing returns nothing
 	call TimerDialogDisplay (Clock___Dialog, true)
 
 	// Start the timer to update the clock.
-	call TimerStart (CreateTimer (), 0.25, true, function Clock___Update)
+	call Run__Every (0.25, function Clock___Update)
 endfunction

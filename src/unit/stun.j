@@ -36,9 +36,12 @@ globals
 
 	integer Unit_Stun___ID_UNIT_INDEX = ID__NULL
 
+	integer array Unit_Stun___Finish
 	integer array Unit_Stun___Stop
 
-	timer array Unit_Stun___Timers
+	integer array Unit_Stun___Runners
+	integer array Unit_Stun___Indices
+
 	boolean array Unit_Stun___Is_Stunned
 
 	constant integer Unit_Stun___IMMUNITY = 100
@@ -49,16 +52,13 @@ function Unit_Stun__Is_Stunned takes unit the_unit returns boolean
 	return Unit_Stun___Is_Stunned [Unit_Indexer__Unit_Index (the_unit)]
 endfunction
 
-function Unit_Stun___Expires takes nothing returns nothing
-	local integer index
+function Unit_Stun___Expires takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local integer index = Unit_Stun___Indices [runner]
 
-	set index = Handle__Load (GetExpiredTimer (), Unit_Stun___ID_UNIT_INDEX)
+	call Unit_Stun___Remove (index)
 
-	if index > 0 and Unit_Stun___Is_Stunned [index] then
-		set Unit_Stun___Is_Stunned [index] = false
-		set Unit_Stun___Stop [index] = Time__Now ()
-		call UnitRemoveAbility (Unit_Indexer__Unit_By_Index (index), Unit_Stun___BUFF_ID)
-	endif
+	return true
 endfunction
 
 // Returns the amount of time left for the unit to remain stunned. Returns
@@ -69,7 +69,7 @@ function Unit_Stun__Duration takes unit the_unit returns real
 	set index = Unit_Indexer__Unit_Index (the_unit)
 
 	if index > 0 and Unit_Stun___Is_Stunned [index] then
-		return TimerGetRemaining (Unit_Stun___Timers [index])
+		return Time__To_Seconds (Unit_Stun___Finish [index] - Time__Now ())
 	endif
 
 	return 0.00
@@ -82,6 +82,8 @@ endfunction
 function Unit_Stun__Apply takes unit the_unit, real duration returns boolean
 	local integer index
 	local timer the_timer
+	local integer runner
+	local integer finish
 
 	set index = Unit_Indexer__Unit_Index (the_unit)
 
@@ -92,23 +94,22 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns boolean
 			return false
 		endif
 
-		set the_timer = Unit_Stun___Timers [index]
-
-		if the_timer == null then
-			set the_timer = CreateTimer ()
-			call Handle__Save (the_timer, Unit_Stun___ID_UNIT_INDEX, index)
-			set Unit_Stun___Timers [index] = the_timer
-		endif
-
 		// A stun lasts forever, technically. So we only need to stun a unit if
 		// it has not actually been stunned.
 		if not Unit_Stun___Is_Stunned [index] then
 			set Unit_Stun___Is_Stunned [index] = Dummy_Caster__Cast_On_Target (null, Unit_Stun___ABILITY_ID, 1, Unit_Stun___ORDER, the_unit)
 		endif
 
+		set finish = Time__Now () + Time__To_Milliseconds (duration)
+
 		// Determine if we need to extend the stun.
-		if Unit_Stun___Is_Stunned [index] and duration > TimerGetRemaining (the_timer) then
-			call TimerStart (the_timer, duration, false, function Unit_Stun___Expires)
+		if Unit_Stun___Is_Stunned [index] and finish > Unit_Stun___Finish [index] then
+			set runner = Unit_Stun___Runners [index]
+			call Run__Cancel (runner)
+			set runner = Run__After (duration, function Unit_Stun___Expires)
+			set Unit_Stun___Runners [index] = runner
+			set Unit_Stun___Indices [runner] = index
+			set Unit_Stun___Finish [index] = finish
 		endif
 
 		return true
@@ -117,18 +118,28 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns boolean
 	return false
 endfunction
 
-// Removes stun from the unit.
-function Unit_Stun__Remove takes unit the_unit returns nothing
-	local integer index
+function Unit_Stun___Remove takes integer index returns nothing
+	local unit which
+	local integer runner
 
-	set index = Unit_Indexer__Unit_Index (the_unit)
-
-	if index > 0 and Unit_Stun___Is_Stunned [index] then
-		set Unit_Stun___Is_Stunned [index] = false
-		set Unit_Stun___Stop [index] = Time__Now ()
-		call UnitRemoveAbility (the_unit, Unit_Stun___BUFF_ID)
-		call PauseTimer (Unit_Stun___Timers [index])
+	if not Unit_Stun___Is_Stunned [index] then
+		return
 	endif
+
+	set which = Unit_Indexer__Unit_By_Index (index)
+	set Unit_Stun___Is_Stunned [index] = false
+	set Unit_Stun___Stop [index] = Time__Now ()
+	call UnitRemoveAbility (which, Unit_Stun___BUFF_ID)
+	set runner = Unit_Stun___Runners [index]
+	set Unit_Stun___Runners [index] = Run__NULL
+	set Unit_Stun___Indices [runner] = 0
+	set Unit_Stun___Finish [index] = 0
+endfunction
+
+function Unit_Stun__Remove takes unit the_unit returns nothing
+	local integer index = Unit_Indexer__Unit_Index (the_unit)
+
+	call Unit_Stun___Remove (index)
 endfunction
 
 function Unit_Stun___On_Death takes nothing returns boolean
@@ -138,21 +149,7 @@ function Unit_Stun___On_Death takes nothing returns boolean
 endfunction
 
 function Unit_Stun___On_Leave takes nothing returns boolean
-	local timer the_timer
-	local integer index
-
-	set index = Unit_Indexer__The_Index ()
-
-	if index > 0 then
-		set the_timer = Unit_Stun___Timers [index]
-
-		call Handle__Flush (the_timer)
-		call PauseTimer (the_timer)
-		call DestroyTimer (the_timer)
-
-		set Unit_Stun___Timers [index] = null
-		set Unit_Stun___Is_Stunned [index] = false
-	endif
+	call Unit_Stun__Remove (Unit_Event__The_Unit ())
 
 	return false
 endfunction

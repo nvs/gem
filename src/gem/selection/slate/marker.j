@@ -1,67 +1,58 @@
 globals
-	constant integer Gem_Selection_Slate_Marker___EFFECT = ID ()
-	constant integer Gem_Selection_Slate_Marker___UNIT = ID ()
-
 	constant string Gem_Selection_Slate_Marker___SFX = "Abilities\\Spells\\Other\\Silence\\SilenceAreaBirth.mdl"
 
-	constant real Gem_Selection_Slate_Marker___DELAY = 0.0
 	constant real Gem_Selection_Slate_Marker___PERIOD = 0.9
 
-	timer array Gem_Selection_Slate_Marker___Timer
+	integer array Gem_Selection_Slate_Marker___Runners
+	integer array Gem_Selection_Slate_Marker___Indices
+	effect array Gem_Selection_Slate_Marker___Markers
 endglobals
 
-function Gem_Selection_Slate_Marker___SFX takes timer clock returns nothing
-	local integer clock_id = GetHandleId (clock)
-	local unit which = LoadUnitHandle (Table, clock_id, Gem_Selection_Slate_Marker___UNIT)
-	local effect sfx = LoadEffectHandle (Table, clock_id, Gem_Selection_Slate_Marker___EFFECT)
+function Gem_Selection_Slate_Marker___SFX takes unit which returns nothing
+	local integer index = Unit_Indexer__Unit_Index (which)
 
-	if sfx != null then
-		call DestroyEffect (sfx)
-	endif
-
-	set sfx = AddSpecialEffect (Gem_Selection_Slate_Marker___SFX, GetUnitX (which), GetUnitY (which))
-	call SaveEffectHandle (Table, clock_id, Gem_Selection_Slate_Marker___EFFECT, sfx)
+	call DestroyEffect (Gem_Selection_Slate_Marker___Markers [index])
+	set Gem_Selection_Slate_Marker___Markers [index] = AddSpecialEffect (Gem_Selection_Slate_Marker___SFX, GetUnitX (which), GetUnitY (which))
 endfunction
 
-function Gem_Selection_Slate_Marker___Effect takes nothing returns nothing
-	call Gem_Selection_Slate_Marker___SFX (GetExpiredTimer ())
+function Gem_Selection_Slate_Marker___Effect takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local integer index = Gem_Selection_Slate_Marker___Indices [runner]
+	local unit which = Unit_Indexer__Unit_By_Index (index)
+
+	call Gem_Selection_Slate_Marker___SFX (which)
+
+	return true
 endfunction
 
 function Gem_Selection_Slate_Marker__Attach takes unit which returns nothing
-	local integer which_index = Unit_Indexer__Unit_Index (which)
-	local timer clock
-	local integer clock_id
+	local integer index = Unit_Indexer__Unit_Index (which)
+	local integer runner = Gem_Selection_Slate_Marker___Runners [index]
 
-	if Gem_Selection_Slate_Marker___Timer [which_index] != null then
+	if runner != Run__NULL then
 		return
 	endif
 
-	set clock = CreateTimer ()
-	set Gem_Selection_Slate_Marker___Timer [which_index] = clock
-	set clock_id = GetHandleId (clock)
-
-	call SaveUnitHandle (Table, clock_id, Gem_Selection_Slate_Marker___UNIT, which)
-	call Gem_Selection_Slate_Marker___SFX (clock)
-	call TimerStart (clock, Gem_Selection_Slate_Marker___PERIOD, true, function Gem_Selection_Slate_Marker___Effect)
+	set runner = Run__Every (Gem_Selection_Slate_Marker___PERIOD, function Gem_Selection_Slate_Marker___Effect)
+	set Gem_Selection_Slate_Marker___Indices [runner] = index
+	set Gem_Selection_Slate_Marker___Runners [index] = runner
+	call Gem_Selection_Slate_Marker___SFX (which)
 endfunction
 
 function Gem_Selection_Slate_Marker__Detach takes unit which returns nothing
-	local integer which_index = Unit_Indexer__Unit_Index (which)
-	local timer clock = Gem_Selection_Slate_Marker___Timer [which_index]
-	local integer clock_id
+	local integer index = Unit_Indexer__Unit_Index (which)
+	local integer runner = Gem_Selection_Slate_Marker___Runners [index]
 
-	if clock == null then
+	if runner == Run__NULL then
 		return
 	endif
 
-	set Gem_Selection_Slate_Marker___Timer [which_index] = null
-	set clock_id = GetHandleId (clock)
+	call Run__Cancel (runner)
+	set Gem_Selection_Slate_Marker___Runners [index] = Run__NULL
+	set Gem_Selection_Slate_Marker___Indices [runner] = 0
 
-	call DestroyEffect (LoadEffectHandle (Table, clock_id, Gem_Selection_Slate_Marker___EFFECT))
-	call FlushChildHashtable (Table, clock_id)
-
-	call PauseTimer (clock)
-	call DestroyTimer (clock)
+	call DestroyEffect (Gem_Selection_Slate_Marker___Markers [index])
+	set Gem_Selection_Slate_Marker___Markers [index] = null
 endfunction
 
 function Gem_Selection_Slate_Marker___On_Leave takes nothing returns boolean

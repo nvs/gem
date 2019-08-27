@@ -70,7 +70,8 @@ globals
 	boolean array Spawn___Is_Active
 	boolean array Spawn___Is_Paused
 
-	timer array Spawn___Timer
+	integer array Spawn___Runners
+	integer array Spawn___Indices
 
 	player array Spawn___Owner
 	integer array Spawn___Type
@@ -294,6 +295,8 @@ endfunction
 // Forces the active spawn specified by `index (integer)` to stop. This can be
 // used on an active spawn regardless of whether it is paused or not.
 function Spawn__Stop takes integer index returns nothing
+	local integer runner
+
 	if not Spawn__Is_Allocated (index) then
 		call BJDebugMsg ("Error: Spawn__Stop (): Nonexistent instance.")
 		return
@@ -304,24 +307,22 @@ function Spawn__Stop takes integer index returns nothing
 		return
 	endif
 
-	call Handle__Flush (Spawn___Timer [index])
-	call PauseTimer (Spawn___Timer [index])
-	call DestroyTimer (Spawn___Timer [index])
-
+	set runner = Spawn___Runners [index]
+	call Run__Cancel (runner)
+	set Spawn___Indices [runner] = 0
+	set Spawn___Runners [index] = Run__NULL
 	set Spawn___Is_Active [index] = false
-	set Spawn___Timer [index] = null
 endfunction
 
-// This is the core function of the spawn system, and handles the creation of
-// the units according to the configured values when the specified timer
-// expires.
-function Spawn___Core takes nothing returns nothing
-	local timer the_timer
-	local integer index
+function Spawn___Once takes integer index returns nothing
 	local integer number
 
-	set the_timer = GetExpiredTimer ()
-	set index = Handle__Load (the_timer, Spawn___ID_INDEX)
+	if Spawn___Remaining [index] == 0 then
+		call Spawn__Stop (index)
+		return
+	endif
+
+	set Spawn___Remaining [index] = Spawn___Remaining [index] - 1
 
 	set number = 0
 	loop
@@ -330,14 +331,30 @@ function Spawn___Core takes nothing returns nothing
 
 		call CreateUnit (Spawn__Get_Owner (index), Spawn__Get_Type (index), Spawn__Get_X (index), Spawn__Get_Y (index), Spawn__Get_Facing (index))
 	endloop
+endfunction
 
-	set Spawn___Remaining [index] = Spawn___Remaining [index] - 1
+function Spawn___Every takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local integer index = Spawn___Indices [runner]
 
-	if Spawn___Remaining [index] > 0 then
-		call TimerStart (the_timer, Spawn__Get_Period (index), false, function Spawn___Core)
-	else
-		call Spawn__Stop (index)
-	endif
+	call Spawn___Once (index)
+
+	return true
+endfunction
+
+function Spawn___Start takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local integer index = Spawn___Indices [runner]
+
+	set Spawn___Indices [runner] = 0
+	set runner = Run__Every (Spawn__Get_Period (index), function Spawn___Every)
+	set Spawn___Runners [index] = runner
+	set Spawn___Indices [runner] = index
+
+	// Do the initial spawn, and let the runner handle the rest.
+	call Spawn___Once (index)
+
+	return true
 endfunction
 
 // ### `Spawn__Start ()`
@@ -346,6 +363,8 @@ endfunction
 // create units according to its configuration until it either finishes, is
 // paused, or is stopped. This function has no effect on a paused spawn.
 function Spawn__Start takes integer index returns nothing
+	local integer runner
+
 	if not Spawn__Is_Allocated (index) then
 		call BJDebugMsg ("Error: Spawn__Start (): Nonexistent instance.")
 		return
@@ -358,11 +377,10 @@ function Spawn__Start takes integer index returns nothing
 
 	set Spawn___Is_Active [index] = true
 	set Spawn___Remaining [index] = Spawn__Get_Waves (index)
-	set Spawn___Timer [index] = CreateTimer ()
 
-	call Handle__Save (Spawn___Timer [index], Spawn___ID_INDEX, index)
-
-	call TimerStart (Spawn___Timer [index], Spawn__Get_Delay (index), false, function Spawn___Core)
+	set runner = Run__After (Spawn__Get_Delay (index), function Spawn___Start)
+	set Spawn___Runners [index] = runner
+	set Spawn___Indices [runner] = index
 endfunction
 
 // ### `Spawn__Create ()`

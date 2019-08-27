@@ -9,15 +9,15 @@
 //   Movement.  At some point, that should be remedied.
 
 globals
-	constant integer Gem_Movement___INDEX = ID ()
-	timer array Gem_Movement___Timers
-
 	// A shorter period makes movement look jerky due to animations
 	// restarting too quickly.
 	constant real Gem_Movement___PERIOD = 1.0
 
 	// Maximum movement speed is `522`.  Ensure this value is larger.
 	constant real Gem_Movement___DISTANCE = 522.0 * 1.05
+
+	integer array Gem_Movement___Runners
+	integer array Gem_Movement___Indices
 endglobals
 
 function Gem_Movement___Next_Checkpoint takes unit which returns rect
@@ -47,7 +47,7 @@ function Gem_Movement___Move takes unit which returns nothing
 
 	local integer index = Unit_Indexer__Unit_Index (which)
 
-	if Gem_Movement___Timers [index] != null then
+	if Gem_Movement___Runners [index] != Run__NULL then
 		set Ux = GetUnitX (which)
 		set Uy = GetUnitY (which)
 		set dx = Cx - Ux
@@ -64,12 +64,14 @@ function Gem_Movement___Move takes unit which returns nothing
 	call IssuePointOrder (which, "move", x, y)
 endfunction
 
-function Gem_Movement___On_Timer takes nothing returns nothing
-	local timer clock = GetExpiredTimer ()
-	local integer index = Handle__Load (clock, Gem_Movement___INDEX)
+function Gem_Movement___On_Timer takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+	local integer index = Gem_Movement___Indices [runner]
 	local unit which = Unit_Indexer__Unit_By_Index (index)
 
 	call Gem_Movement___Move (which)
+
+	return true
 endfunction
 
 function Gem_Movement___Register takes unit which returns nothing
@@ -77,7 +79,7 @@ function Gem_Movement___Register takes unit which returns nothing
 	local player whom
 	local integer whom_id
 	local boolean register
-	local timer clock
+	local integer runner
 
 	if index == 0 then
 		return
@@ -95,32 +97,28 @@ function Gem_Movement___Register takes unit which returns nothing
 		return
 	endif
 
-	set clock = Gem_Movement___Timers [index]
+	set runner = Gem_Movement___Runners [index]
 
-	if clock != null then
+	if runner != Run__NULL then
 		return
 	endif
 
-	set clock = CreateTimer ()
-	set Gem_Movement___Timers [index] = clock
-
-	call Handle__Save (clock, Gem_Movement___INDEX, index)
-	call TimerStart (clock, Gem_Movement___PERIOD, true, function Gem_Movement___On_Timer)
+	set runner = Run__Every (Gem_Movement___PERIOD, function Gem_Movement___On_Timer)
+	set Gem_Movement___Runners [index] = runner
+	set Gem_Movement___Indices [runner] = index
 endfunction
 
 function Gem_Movement___Deregister takes nothing returns nothing
 	local integer index = Unit_Indexer__The_Index ()
-	local timer clock = Gem_Movement___Timers [index]
+	local integer runner = Gem_Movement___Runners [index]
 
-	if clock == null then
+	if runner == Run__NULL then
 		return
 	endif
 
-	set Gem_Movement___Timers [index] = null
-
-	call Handle__Flush (clock)
-	call PauseTimer (clock)
-	call DestroyTimer (clock)
+	call Run__Cancel (runner)
+	set Gem_Movement___Runners [index] = Run__NULL
+	set Gem_Movement___Indices [runner] = 0
 endfunction
 
 function Gem_Movement__Initialize takes nothing returns nothing
