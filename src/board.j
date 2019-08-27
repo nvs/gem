@@ -306,7 +306,7 @@ function Board__Setup takes nothing returns nothing
 	set player_index = 0
 	set count = 0
 	loop
-		if GetPlayerSlotState (Player (player_index)) != PLAYER_SLOT_STATE_EMPTY then
+		if GetPlayerSlotState (Player (player_index)) != PLAYER_SLOT_STATE_EMPTY and Gem_Player__Is_Player (Player (player_index)) then
 			set Board___Players [count] = player_index
 			set name_width = space * 2 + String__Width (GetPlayerName (Player (player_index)))
 
