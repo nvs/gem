@@ -92,7 +92,7 @@ function Gem_Player__Initialize takes nothing returns boolean
 	loop
 		set the_player = Player (index__player)
 
-		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING then
+		if GetPlayerSlotState (the_player) == PLAYER_SLOT_STATE_PLAYING and Gem_Player__Is_Player (the_player) then
 			set x = GetStartLocationX (index__player)
 			set y = GetStartLocationY (index__player)
 			set miner = CreateUnit (the_player, 'u000', x, y, bj_UNIT_FACING)
