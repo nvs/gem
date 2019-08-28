@@ -1,13 +1,12 @@
 globals
 	integer Clock___Start = 0
-
-	timer Clock___Timer = null
 	timerdialog Clock___Dialog = null
+	framehandle Clock___Frame = null
 endglobals
 
 function Clock___Update takes nothing returns boolean
-	call TimerStart (Clock___Timer, Time__To_Seconds (Time__Now () - Clock___Start), false, null)
-	call PauseTimer (Clock___Timer)
+	local string time = Board___Time (Time__Now () - Clock___Start)
+	call BlzFrameSetText (Clock___Frame, time)
 
 	return true
 endfunction
@@ -17,16 +16,23 @@ function Clock__Started takes nothing returns integer
 endfunction
 
 function Clock__Start takes nothing returns nothing
-	set Clock___Start = Time__Now ()
+	local integer context
 
-	// Setup the clock.
-	set Clock___Timer = CreateTimer ()
-	set Clock___Dialog = CreateTimerDialog (Clock___Timer)
+	set Clock___Start = Time__Now ()
+	set Clock___Dialog = CreateTimerDialog (null)
 
 	call TimerDialogSetTitle (Clock___Dialog, "Game Time:")
 	call TimerDialogSetTimeColor (Clock___Dialog, 255, 255, 255, 0)
 	call TimerDialogDisplay (Clock___Dialog, true)
 
-	// Start the timer to update the clock.
-	call Run__Every (0.25, function Clock___Update)
+	set context = -1
+	loop
+		set context = context + 1
+		exitwhen BlzGetFrameByName ("TimerDialog", context) != null
+	endloop
+
+	set Clock___Frame = BlzGetFrameByName ("TimerDialogValue", context)
+	call BlzFrameSetText (Clock___Frame, "00:00:00")
+
+	call Run__Every (0.10, function Clock___Update)
 endfunction
