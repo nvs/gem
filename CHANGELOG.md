@@ -13,8 +13,6 @@ a full list of changes to the project, please consult the commit log.
 - Unit pathing in multiplayer games should be less susceptible to stutters.
   To be fair, Warcraft III pathing is just bad in complex mazes such as
   those used in Gem.
-- Attempt to address the black screen upon exiting the map. It cannot be
-  resolved completely, due to various patch 1.31 behavior.
 - Minor board issues.
 - Further tooltip improvements.
 
