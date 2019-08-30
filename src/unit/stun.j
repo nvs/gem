@@ -105,6 +105,7 @@ function Unit_Stun__Apply takes unit the_unit, real duration returns boolean
 		// Determine if we need to extend the stun.
 		if Unit_Stun___Is_Stunned [index] and finish > Unit_Stun___Finish [index] then
 			set runner = Unit_Stun___Runners [index]
+			set Unit_Stun___Indices [runner] = 0
 			call Run__Cancel (runner)
 			set runner = Run__After (duration, function Unit_Stun___Expires)
 			set Unit_Stun___Runners [index] = runner

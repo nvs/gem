@@ -96,6 +96,7 @@ function Unit_Disarm__Apply takes unit the_unit, real duration returns nothing
 		// Determine if we need to extend the disarm.
 		if Unit_Disarm___Is_Disarmed [index] and finish > Unit_Disarm___Finish [index] then
 			set runner = Unit_Disarm___Runners [index]
+			set Unit_Disarm___Indices [runner] = 0
 			call Run__Cancel (runner)
 			set runner = Run__After (duration, function Unit_Disarm___Expires)
 			set Unit_Disarm___Runners [index] = runner
