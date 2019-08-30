@@ -4,6 +4,9 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
+- N/A
+
+## [1.6.6] - 2019-08-29
 
 ### Changed
 - The small delay after selecting a target with swap has been removed. This
@@ -626,7 +629,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.5...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.6...master
+[1.6.6]: https://github.com/nvs/gem/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/nvs/gem/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/nvs/gem/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/nvs/gem/compare/v1.6.2...v1.6.3
