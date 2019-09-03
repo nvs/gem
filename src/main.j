@@ -182,6 +182,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Unit_User_Data__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Stun__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Unit_Disarm__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Fix_Upgrade_Scale__Initialize))
 
 	call TriggerAddCondition (initialize, Condition (function Gem_Information__Initialize))
 

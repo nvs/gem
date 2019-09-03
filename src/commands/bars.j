@@ -106,16 +106,10 @@ function Commands___Bars_Upgrade takes nothing returns boolean
 	local player whom = GetOwningPlayer (which)
 	local integer index = GetPlayerId (whom)
 
-	// TODO: This should be in its own area.  But it isn't.  This should
-	// address unit models being the wrong size in replays after upgrading.
-	if what == EVENT_PLAYER_UNIT_UPGRADE_FINISH then
-		set scale = BlzGetUnitRealField (which, UNIT_RF_SCALING_VALUE)
-		call SetUnitScale (which, scale, scale, scale)
-
 	// The upgrade needs to be started over again to allow the unit to have
 	// a positive selection scale from the beginning.  This ensures that the
 	// selection circle will stay.
-	elseif scale < 0 then
+	if scale < 0 then
 		call DisableTrigger (GetTriggeringTrigger ())
 		call Commands___Display_Bar (which, true)
 
