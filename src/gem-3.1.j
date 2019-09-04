@@ -1273,7 +1273,6 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 			return
 		endif
 
-		call BJDebugMsg ("Error: Gem 3.1: `EVENT_PLAYER_UNIT_ATTACKED` detected for creeps")
 		set teleport = true
 	endif
 
