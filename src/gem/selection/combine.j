@@ -100,7 +100,9 @@ function Gem_Selection_Combine___Button takes nothing returns boolean
 	endif
 
 	call ShowUnit (old, false)
+	call Gem_Ground_Textures__Prepare ()
 	set new = CreateUnit (whom, new_id, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
+	call Gem_Ground_Textures__Register (new)
 	call RemoveUnit (old)
 
 	if type_id == Gem_Type__OPAL then

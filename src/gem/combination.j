@@ -313,6 +313,7 @@ function Gem_Combination__Clear_Group takes player whom returns nothing
 		set which = FirstOfGroup (units)
 		exitwhen which == null
 		call GroupRemoveUnit (units, which)
+		call Gem_Ground_Textures__Hide (which)
 		call RemoveUnit (which)
 	endloop
 endfunction

@@ -77,7 +77,9 @@ function Gem_Selection_Downgrade___Event takes nothing returns boolean
 	set replacement_type = Gem_Gems__Get_Unit_Type (type_id, quality_id)
 
 	call ShowUnit (original, false)
+	call Gem_Ground_Textures__Prepare ()
 	set replacement = CreateUnit (the_player, replacement_type, GetUnitX (original), GetUnitY (original), GetUnitFacing (original))
+	call Gem_Ground_Textures__Register (replacement)
 	call RemoveUnit (original)
 
 	if type_id == Gem_Type__OPAL then
