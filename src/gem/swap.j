@@ -42,13 +42,9 @@ function Gem_Swap___Swap takes unit A, unit B returns nothing
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl", Bx, By))
 endfunction
 
-function Gem_Swap___Expire takes nothing returns boolean
-	local integer runner = Run__Scheduled ()
+function Gem_Swap___Cancel takes integer runner returns boolean
 	local integer whom_id
 	local unit builder
-	local real mana
-
-	set Label = "Gem_Swap___Expire"
 
 	set whom_id = 0
 	loop
@@ -61,6 +57,7 @@ function Gem_Swap___Expire takes nothing returns boolean
 		endif
 	endloop
 
+	call Run__Cancel (runner)
 	set Gem_Swap___Runner [whom_id] = Run__NULL
 	set Gem_Swap___Marked [whom_id] = null
 
@@ -69,10 +66,25 @@ function Gem_Swap___Expire takes nothing returns boolean
 
 	set builder = Gem_Player__Get_Miner (Player (whom_id))
 	call Gem_Swap___To_A (builder)
-
 	call Unit_State__Set (builder, UNIT_STATE_MANA, Gem_Swap___COST)
 
 	return true
+endfunction
+
+function Gem_Swap___Cancel takes player whom returns nothing
+	local integer whom_id = GetPlayerId (whom)
+	local integer runner = Gem_Swap___Runner [whom_id]
+
+	if runner != Run__NULL then
+		call Gem_Swap___Cancel (runner)
+	endif
+endfunction
+
+function Gem_Swap___Expire takes nothing returns boolean
+	local integer runner = Run__Scheduled ()
+
+	set Label = "Gem_Swap___Expire"
+	return Gem_Swap___Cancel (runner)
 endfunction
 
 function Gem_Swap___A takes nothing returns boolean
@@ -174,6 +186,37 @@ function Gem_Swap__Clear_Round takes player whom returns nothing
 	call Unit_State__Set (miner, UNIT_STATE_MANA, mana + 1)
 endfunction
 
+function Gem_Swap__Update takes player whom, unit old, unit new returns nothing
+	local integer whom_id
+
+	if whom == null or old == null then
+		return
+	endif
+
+	if not Gem_Player__Is_Player (whom) then
+		return
+	endif
+
+	set whom_id = GetPlayerId (whom)
+
+	if Gem_Swap___Marked [whom_id] != old then
+		return
+	endif
+
+	if new == null then
+		call Gem_Swap___Cancel (whom)
+	else
+		set Gem_Swap___Marked [whom_id] = new
+	endif
+endfunction
+
+function Gem_Swap___Remove takes nothing returns nothing
+	local unit which = Unit_Event__The_Unit ()
+	local player whom = GetOwningPlayer (which)
+
+	call Gem_Swap__Update (whom, which, null)
+endfunction
+
 function Gem_Swap__Initialize takes nothing returns boolean
 	local trigger on_cast
 	local trigger on_effect
@@ -185,6 +228,9 @@ function Gem_Swap__Initialize takes nothing returns boolean
 	set on_effect = CreateTrigger ()
 	call Trigger__Try (on_effect, function Gem_Swap___B)
 	call TriggerRegisterAnyUnitEventBJ (on_effect, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+
+	call Unit_Event__On_Death (Condition (function Gem_Swap___Remove))
+	call Unit_Event__On_Leave (Condition (function Gem_Swap___Remove))
 
 	return true
 endfunction

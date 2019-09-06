@@ -9,6 +9,7 @@ a full list of changes to the project, please consult the commit log.
 - Unit scale could be wrong on cancelling or finishing an upgrade.
 - Only the offending player will be warned when they are blocking. This will
   reduce text message spam in such cases.
+- Swap no longer works with killed or removed units.
 
 ## [1.6.6] - 2019-08-29
 

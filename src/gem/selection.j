@@ -124,10 +124,11 @@ function Gem_Selection___On_Finish takes nothing returns boolean
 endfunction
 
 function Gem_Selection__Finalize takes unit current, unit previous returns nothing
-	local player the_player
-	local integer the_player_index
+	local player the_player = GetOwningPlayer (current)
+	local integer the_player_index = GetPlayerId (the_player)
 	local integer index
 	local unit the_unit
+	local unit rock
 
 	local real x
 	local real y
@@ -143,10 +144,11 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 		// automatically when the units leave the map or die.
 		call Gem_Selection_Marker__Remove (current)
 		call Gem_Selection_Slate_Marker__Detach (current)
+	else
+		if Gem_Gems__Is_Gem (GetUnitTypeId (current)) then
+			call Gem_Swap__Update (the_player, previous, current)
+		endif
 	endif
-
-	set the_player = GetOwningPlayer (current)
-	set the_player_index = GetPlayerId (the_player)
 
 	set index = 1
 	loop
@@ -155,7 +157,8 @@ function Gem_Selection__Finalize takes unit current, unit previous returns nothi
 
 		if the_unit != previous and the_unit != null and UnitAlive (the_unit) then
 			call ShowUnit (the_unit, false)
-			call CreateUnit (the_player, 'h00G', GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit))
+			set rock = CreateUnit (the_player, 'h00G', GetUnitX (the_unit), GetUnitY (the_unit), GetUnitFacing (the_unit))
+			call Gem_Swap__Update (the_player, the_unit, rock)
 			call RemoveUnit (the_unit)
 		endif
 

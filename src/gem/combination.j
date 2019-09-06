@@ -157,6 +157,7 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	local integer kills
 
 	local group units
+	local unit rock
 
 	if GetSpellAbilityId () != 'A10R' then
 		return false
@@ -199,6 +200,7 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	call ShowUnit (original, false)
 	call PauseUnit (original, true)
 	call GroupAddUnit (units, original)
+	call Gem_Swap__Update (the_player, original, replacement)
 
 	set index = 0
 	loop
@@ -216,7 +218,8 @@ function Gem_Combination___Recipe takes nothing returns boolean
 
 				// Slates do not get replaced by rocks.
 				if UnitAlive (the_part) and Gem_Gems__Is_Gem (the_part_type) then
-					call CreateUnit (the_player, 'h00G', GetUnitX (the_part), GetUnitY (the_part), GetUnitFacing (the_part))
+					set rock = CreateUnit (the_player, 'h00G', GetUnitX (the_part), GetUnitY (the_part), GetUnitFacing (the_part))
+					call Gem_Swap__Update (the_player, the_part, rock)
 				endif
 			endif
 		endif
