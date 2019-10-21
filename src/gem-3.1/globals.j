@@ -1,8 +1,5 @@
 globals
 	integer array udg_ElderDebuffLevel
-	// It should be noted one-base indices are used to reference the players in
-	// this array.
-	integer array udg_CreepOwner
 	rect array udg_Spawn
 	rect array udg_Move1st
 	integer udg_Level=0

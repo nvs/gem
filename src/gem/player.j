@@ -44,8 +44,6 @@ function Gem_Player__Remove_Creeps takes player whom returns nothing
 	local integer whom_id
 	local group units
 	local unit which
-	local integer index
-	local integer owner_id
 
 	if not Gem_Player__Is_Player (whom) then
 		return
@@ -53,19 +51,16 @@ function Gem_Player__Remove_Creeps takes player whom returns nothing
 
 	set whom_id = GetPlayerId (whom)
 	set units = CreateGroup ()
+	// Shifting ownership of monsters to individual computer players gives
+	// the guarantee that all units owned by one is associated with a single
+	// human player.
 	call GroupEnumUnitsOfPlayer (units, Player (whom_id + 11), null)
 
 	loop
 		set which = FirstOfGroup (units)
 		exitwhen which == null
 		call GroupRemoveUnit (units, which)
-
-		set index = Unit_Indexer__Unit_Index (which)
-		set owner_id = udg_CreepOwner [index] - 1
-
-		if whom_id == owner_id then
-			call RemoveUnit (which)
-		endif
+		call RemoveUnit (which)
 	endloop
 
 	call DestroyGroup (units)

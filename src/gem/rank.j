@@ -126,7 +126,6 @@ function Gem_Rank___Is_Creep takes unit which returns boolean
 endfunction
 
 function Gem_Rank__Register_Unit takes unit which returns nothing
-	local integer index
 	local integer whom_id
 	local integer level
 
@@ -134,8 +133,7 @@ function Gem_Rank__Register_Unit takes unit which returns nothing
 		return
 	endif
 
-	set index = Unit_Indexer__Unit_Index (which)
-	set whom_id = udg_CreepOwner [index] - 1
+	set whom_id = GetPlayerId (GetOwningPlayer (which)) - 11
 	set level = Gem_Rank___Level [whom_id]
 
 	call GroupAddUnit (Gem_Rank___Group [whom_id], which)
@@ -351,7 +349,6 @@ function Gem_Rank__Clear takes player whom returns nothing
 endfunction
 
 function Gem_Rank__Deregister_Unit takes unit which returns nothing
-	local integer index
 	local integer whom_id
 	local real damage
 	local integer level
@@ -360,8 +357,7 @@ function Gem_Rank__Deregister_Unit takes unit which returns nothing
 		return
 	endif
 
-	set index = Unit_Indexer__Unit_Index (which)
-	set whom_id = udg_CreepOwner [index] - 1
+	set whom_id = GetPlayerId (GetOwningPlayer (which)) - 11
 
 	if not IsUnitInGroup (which, Gem_Rank___Group [whom_id]) then
 		return

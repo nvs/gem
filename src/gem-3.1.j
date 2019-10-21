@@ -462,11 +462,12 @@ function Trig_kills_and_remove_Corpse_Conditions takes nothing returns boolean
 endfunction
 function Trig_kills_and_remove_Corpse_Actions takes nothing returns nothing
 	local unit killed = GetDyingUnit ()
-	local integer index = Unit_Indexer__Unit_Index (killed)
-	local integer player_id = udg_CreepOwner [index]
+	local player computer = GetOwningPlayer (killed)
+	local integer player_id
 
-	if player_id >= 1 and player_id <= 8 then
-		set udg_Kills [player_id] = udg_Kills [player_id] + 1
+	if Gem_Player__Is_Monster (computer) then
+		set player_id = GetPlayerId (computer) - 11
+		set udg_Kills [player_id + 1] = udg_Kills [player_id + 1] + 1
 	endif
 
 	call TriggerSleepAction (2.00)
@@ -1248,6 +1249,7 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 	local unit attacker = null
 	local boolean teleport = false
 	local integer index
+	local player computer
 	local integer owner_id
 	local integer previous
 	local rect checkpoint
@@ -1277,7 +1279,8 @@ function Trig_Creeps_attacking_Actions takes nothing returns nothing
 	endif
 
 	set index = Unit_Indexer__Unit_Index (attacker)
-	set owner_id = udg_CreepOwner [index] - 1
+	set computer = GetOwningPlayer (attacker)
+	set owner_id = GetPlayerId (computer) - 11
 	set previous = Unit_User_Data__Get (attacker)
 	set checkpoint = udg_MoveOnAttack [(owner_id + 1) * 10 + previous]
 	set x = GetRectCenterX (checkpoint)
@@ -2190,9 +2193,8 @@ function Trig_Race_Mode_Kills_Conditions takes nothing returns boolean
 	return Gem_Player__Is_Monster (GetOwningPlayer (GetDyingUnit ()))
 endfunction
 function Trig_Race_Mode_Kills_Actions takes nothing returns nothing
-	local integer index = Unit_Indexer__Unit_Index (GetDyingUnit ())
-	local integer owner_id = udg_CreepOwner [index] - 1
-	local player owner = Player (owner_id)
+	local unit dead = GetDyingUnit ()
+	local integer owner_id = GetPlayerId (GetOwningPlayer (dead)) - 11
 	local integer kills = udg_RaceModeKills [owner_id + 1] + 1
 
 	set udg_RaceModeKills [owner_id + 1] = kills

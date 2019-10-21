@@ -6,6 +6,7 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 
 ### Fixed
+- Units dying too quickly after spawning could break level advancement.
 - Unit scale could be wrong on cancelling or finishing an upgrade.
 - Only the offending player will be warned when they are blocking. This will
   reduce text message spam in such cases.

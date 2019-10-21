@@ -48,12 +48,6 @@ endglobals
 
 // ## Functions
 
-function Gem_Spawn___Reset_Index takes nothing returns boolean
-	set udg_CreepOwner [Unit_Indexer__The_Index ()] = 0
-
-	return false
-endfunction
-
 // Returns the spawn `rect` for the player specified by `player_index
 // (integer)`.
 function Gem_Spawn___Spawn_Rect takes integer player_index returns rect
@@ -161,11 +155,11 @@ function Gem_Spawn___Movement takes nothing returns boolean
 	set the_unit_index = Unit_Indexer__Unit_Index (the_unit)
 	set owner = GetOwningPlayer (the_unit)
 
-	if Gem_Player__Is_Monster (owner) and udg_CreepOwner [the_unit_index] == 0 then
+	if Gem_Player__Is_Monster (owner) and Unit_User_Data__Get (the_unit) == 0 then
 		set player_index = Handle__Load (GetTriggeringRegion (), Gem_Spawn___ID_PLAYER_INDEX)
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (Gem_Spawn___Movement_Rect (player_index)), GetRectCenterY (Gem_Spawn___Movement_Rect (player_index)))
-		set udg_CreepOwner [the_unit_index] = player_index + 1
+		call Unit_User_Data__Set (the_unit, -1)
 		call Gem_Rank__Register_Unit (the_unit)
 
 		if IsUnitType (the_unit, UNIT_TYPE_HERO) then
@@ -218,8 +212,6 @@ function Gem_Spawn__Initialize takes nothing returns boolean
 		call RemoveUnit (which)
 		set Gem_Spawn___Round [round] = Spawn__Create (Gem__PLAYER_CREEPS, Gem_Spawn___Unit_Type (round), 1, 10, 0.00, 0.00, Gem_Spawn___FACING_RIGHT, 0.00, 1.61)
 	endloop
-
-	call Unit_Event__On_Leave (Condition (function Gem_Spawn___Reset_Index))
 
 	set Gem_Spawn___Facing [0] = Gem_Spawn___FACING_RIGHT
 	set Gem_Spawn___Facing [1] = Gem_Spawn___FACING_LEFT

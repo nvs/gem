@@ -23,15 +23,14 @@ endglobals
 // Ensure that units stuck at the player's spawn point receive the 'move'
 // order. This will only work for creep units.
 function Commands___Debug_Move takes nothing returns boolean
-	local unit the_unit
-	local integer unit_index
+	local unit the_unit = GetFilterUnit ()
 	local rect the_rect
+	local player computer = GetOwningPlayer (the_unit)
+	local integer owner_id
 
-	set the_unit = GetFilterUnit ()
-
-	if Gem_Player__Is_Monster (GetOwningPlayer (the_unit)) then
-		set unit_index = Unit_Indexer__Unit_Index (the_unit)
-		set the_rect = udg_Move1st [udg_CreepOwner [unit_index]]
+	if Gem_Player__Is_Monster (computer) then
+		set owner_id = GetPlayerId (computer) - 11
+		set the_rect = udg_Move1st [owner_id + 1]
 
 		call IssuePointOrder (the_unit, "move", GetRectCenterX (the_rect), GetRectCenterY (the_rect))
 	endif

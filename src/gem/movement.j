@@ -21,8 +21,8 @@ globals
 endglobals
 
 function Gem_Movement___Next_Checkpoint takes unit which returns rect
-	local integer index = Unit_Indexer__Unit_Index (which)
-	local integer owner_id = udg_CreepOwner [index] - 1
+	local player computer = GetOwningPlayer (which)
+	local integer owner_id = GetPlayerId (computer) - 11
 	local integer checkpoint = Unit_User_Data__Get (which)
 
 	// TODO: Shift behavior of getting the checkpoint into Gem Movement.
@@ -76,6 +76,7 @@ endfunction
 
 function Gem_Movement___Register takes unit which returns nothing
 	local integer index = Unit_Indexer__Unit_Index (which)
+	local player computer
 	local player whom
 	local integer whom_id
 	local boolean register
@@ -85,7 +86,8 @@ function Gem_Movement___Register takes unit which returns nothing
 		return
 	endif
 
-	set whom_id = udg_CreepOwner [index] - 1
+	set computer = GetOwningPlayer (which)
+	set whom_id = GetPlayerId (computer) - 11
 	set whom = Player (whom_id)
 
 	// If no-mazing mode is enabled, all units get movement assistance.  If
