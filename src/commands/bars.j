@@ -158,5 +158,4 @@ function Commands___Initialize_Bars takes nothing returns nothing
 	call Trigger__Try (upgrade, function Commands___Bars_Upgrade)
 	call TriggerRegisterAnyUnitEventBJ (upgrade, EVENT_PLAYER_UNIT_UPGRADE_CANCEL)
 	call TriggerRegisterAnyUnitEventBJ (upgrade, EVENT_PLAYER_UNIT_UPGRADE_START)
-	call TriggerRegisterAnyUnitEventBJ (upgrade, EVENT_PLAYER_UNIT_UPGRADE_FINISH)
 endfunction

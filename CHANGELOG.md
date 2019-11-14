@@ -5,7 +5,8 @@ a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
-- N/A
+### Fixed
+- Towers no longer upgrade multiple times if the player has enough gold.
 
 ## [1.6.7] - 2019-11-03
 
