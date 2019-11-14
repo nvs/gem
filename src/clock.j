@@ -28,10 +28,10 @@ function Clock__Start takes nothing returns nothing
 	set context = -1
 	loop
 		set context = context + 1
-		exitwhen BlzGetFrameByName ("TimerDialog", context) != null
+		set Clock___Frame = BlzGetFrameByName ("TimerDialogValue", context)
+		exitwhen BlzFrameIsVisible (Clock___Frame)
 	endloop
 
-	set Clock___Frame = BlzGetFrameByName ("TimerDialogValue", context)
 	call BlzFrameSetText (Clock___Frame, "00:00:00")
 
 	call Run__Every (0.10, function Clock___Update)

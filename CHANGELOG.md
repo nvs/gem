@@ -7,6 +7,8 @@ a full list of changes to the project, please consult the commit log.
 
 ### Fixed
 - Towers no longer upgrade multiple times if the player has enough gold.
+- Reforged Beta (1.32) compatibility:
+    - Game clock time now appears.
 
 ## [1.6.7] - 2019-11-03
 
