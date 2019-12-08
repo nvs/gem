@@ -114,8 +114,8 @@ do
 				.. 'The monsters will not spawn until you keep one.|n|n'
 
 				.. '|cffb19cd9Don\'t worry if you leak!|r|n'
-				.. 'You cannot lose from leaking until you reach '
-				.. 'Level 10.|n|n'
+				.. 'You cannot lose from leaking until you reach Level 10. '
+				.. 'After that, however, you only have one life!|n|n'
 
 				.. '|cfffdfd96Find your gold mine near the center.|r|n'
 				.. 'Recipes and FAQs are there too.|n|n'
