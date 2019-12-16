@@ -5,6 +5,10 @@ a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
+- N/A
+
+## [1.6.8] - 2019-12-15
+
 ### Fixed
 - Towers no longer upgrade multiple times if the player has enough gold.
 
@@ -640,7 +644,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.7...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.8...master
+[1.6.8]: https://github.com/nvs/gem/compare/v1.6.7...v1.6.8
 [1.6.7]: https://github.com/nvs/gem/compare/v1.6.6...v1.6.7
 [1.6.6]: https://github.com/nvs/gem/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/nvs/gem/compare/v1.6.4...v1.6.5
