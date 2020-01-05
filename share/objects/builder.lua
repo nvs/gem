@@ -188,6 +188,10 @@ do
 				.. 'Toggle mazing on and off. This can only be used before '
 				.. 'placing the first gem at game start.|n|n'
 
+				.. '|cffff6991-extra|r|n'
+				.. 'Toggle Extra Chance on and off. This can only be used '
+				.. 'before placing the first gem at game start.|n|n'
+
 				.. '|cffff6991-debug|r|n'
 				.. 'Atempt to recover from a variety of issues.'
 		}

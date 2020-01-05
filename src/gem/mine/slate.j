@@ -1,6 +1,7 @@
 globals
 	constant integer Gem_Mine_Slate___BUTTON_ID = 'GMSB'
 	constant integer Gem_Mine_Slate___PLACEHOLDER_ID = 'GMSP'
+	constant integer Gem_Mine_Slate___NO_EXTRA_ID = 'GMSN'
 
 	constant string Gem_Mine_Slate___ORDER = "fanofknives"
 	constant integer Gem_Mine_Slate___ORDER_ID = OrderId (Gem_Mine_Slate___ORDER)
@@ -29,5 +30,5 @@ endfunction
 
 function Gem_Mine_Slate__Initialize takes trigger rule returns nothing
 	call Trigger__Try (rule, function Gem_Mine_Slate___Button)
-	call Gem_Mine__Add_Research (Gem_Mine_Slate___BUTTON_ID, Gem_Mine_Slate___PLACEHOLDER_ID)
+	call Gem_Mine__Add_Research (Gem_Mine_Slate___BUTTON_ID, Gem_Mine_Slate___PLACEHOLDER_ID, Gem_Mine_Slate___NO_EXTRA_ID)
 endfunction

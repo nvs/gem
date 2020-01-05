@@ -33,6 +33,7 @@ globals
 	constant real Gem_Extra_Chance___Type_Flawed = 0.238
 	constant real Gem_Extra_Chance___Type_Chipped = 0.096
 
+	boolean array Gem_Extra_Chance___Activated
 	integer array Gem_Extra_Chance___Current_Target
 	integer array Gem_Extra_Chance___Current_Bonus
 	integer array Gem_Extra_Chance___Previous_Target
@@ -48,6 +49,10 @@ endglobals
 
 function Gem_Extra_Chance__Is_Active takes player whom returns boolean
 	return Gem_Extra_Chance___Current_Target [GetPlayerId (whom)] > 0
+endfunction
+
+function Gem_Extra_Chance__Activated takes player whom returns boolean
+	return Gem_Extra_Chance___Activated [GetPlayerId (whom)]
 endfunction
 
 function Gem_Extra_Chance__Current_Target takes player whom returns integer
@@ -512,6 +517,7 @@ function Gem_Extra_Chance___On_Finish takes nothing returns boolean
 		set has_target = Gem_Selection_Slate__Has (whom, target)
 	endif
 
+	set Gem_Extra_Chance___Activated [whom_id] = true
 	set Gem_Extra_Chance___Current_Target [whom_id] = 0
 	set Gem_Extra_Chance___Current_Bonus [whom_id] = 0
 

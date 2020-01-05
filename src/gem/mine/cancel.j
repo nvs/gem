@@ -1,6 +1,7 @@
 globals
 	constant integer Gem_Mine_Cancel___BUTTON_ID = 'GMCB'
 	constant integer Gem_Mine_Cancel___PLACEHOLDER_ID = 'GMCP'
+	constant integer Gem_Mine_Cancel___NO_EXTRA_ID = 'GMCN'
 
 	constant string Gem_Mine_Cancel___ORDER = "neutralspell"
 	constant integer Gem_Mine_Cancel___ORDER_ID = OrderId (Gem_Mine_Cancel___ORDER)
@@ -40,5 +41,5 @@ endfunction
 
 function Gem_Mine_Cancel__Initialize takes trigger rule returns nothing
 	call Trigger__Try (rule, function Gem_Mine_Cancel___Button)
-	call Gem_Mine__Add_Research (Gem_Mine_Cancel___BUTTON_ID, Gem_Mine_Cancel___PLACEHOLDER_ID)
+	call Gem_Mine__Add_Research (Gem_Mine_Cancel___BUTTON_ID, Gem_Mine_Cancel___PLACEHOLDER_ID, Gem_Mine_Cancel___NO_EXTRA_ID)
 endfunction

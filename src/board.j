@@ -114,6 +114,8 @@ function Board___Title takes player whom returns string
 		endif
 
 		set extra_chance = Color (color, name + " (" + I2S (bonus) + "x)")
+	elseif Commands__Is_No_Extra_Chance (whom) then
+		set extra_chance = Color__White ("Off")
 	else
 		set extra_chance = Color__White ("N/A")
 	endif
@@ -140,6 +142,10 @@ function Board___Title takes player whom returns string
 		endif
 
 		set title = title + " — ID: " + Color (color, I2S (Gem__GAME_ID))
+
+		if Commands__Is_No_Extra_Chance (whom) then
+			set title = title + " — " + Color__White ("XC")
+		endif
 	endif
 
 	return title

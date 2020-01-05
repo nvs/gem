@@ -1,6 +1,7 @@
 globals
 	constant integer Gem_Mine_Type___BUTTON_ID = 'GMTB'
 	constant integer Gem_Mine_Type___PLACEHOLDER_ID = 'GMTP'
+	constant integer Gem_Mine_Type___NO_EXTRA_ID = 'GMTN'
 
 	constant string Gem_Mine_Type___ORDER = "thunderclap"
 	constant integer Gem_Mine_Type___ORDER_ID = OrderId (Gem_Mine_Type___ORDER)
@@ -29,5 +30,5 @@ endfunction
 
 function Gem_Mine_Type__Initialize takes trigger rule returns nothing
 	call Trigger__Try (rule, function Gem_Mine_Type___Button)
-	call Gem_Mine__Add_Research (Gem_Mine_Type___BUTTON_ID, Gem_Mine_Type___PLACEHOLDER_ID)
+	call Gem_Mine__Add_Research (Gem_Mine_Type___BUTTON_ID, Gem_Mine_Type___PLACEHOLDER_ID, Gem_Mine_Type___NO_EXTRA_ID)
 endfunction

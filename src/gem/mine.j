@@ -4,14 +4,35 @@ globals
 	integer Gem_Mine___Size = 0
 	integer array Gem_Mine___Buttons
 	integer array Gem_Mine___Placeholders
+	integer array Gem_Mine___No_Extra
 endglobals
 
-function Gem_Mine__Add_Research takes integer active, integer placeholder returns nothing
+function Gem_Mine__Add_Research takes integer active, integer placeholder, integer no_extra returns nothing
 	local integer index = Gem_Mine___Size
 	set Gem_Mine___Size = index + 1
 
 	set Gem_Mine___Placeholders [index] = placeholder
 	set Gem_Mine___Buttons [index] = active
+	set Gem_Mine___No_Extra [index] = no_extra
+endfunction
+
+function Gem_Mine__Swap_Placeholders takes player whom returns nothing
+	local integer whom_id = GetPlayerId (whom)
+	local unit mine = Gem_Mine___Mines [whom_id]
+	local integer index = -1
+
+	loop
+		set index = index + 1
+		exitwhen index >= Gem_Mine___Size
+
+		if Commands__Is_No_Extra_Chance (whom) then
+			call UnitRemoveAbility (mine, Gem_Mine___Placeholders [index])
+			call UnitAddAbility (mine, Gem_Mine___No_Extra [index])
+		else
+			call UnitRemoveAbility (mine, Gem_Mine___No_Extra [index])
+			call UnitAddAbility (mine, Gem_Mine___Placeholders [index])
+		endif
+	endloop
 endfunction
 
 function Gem_Mine___Research takes nothing returns boolean
@@ -31,7 +52,7 @@ function Gem_Mine___Research takes nothing returns boolean
 	set whom_id = GetPlayerId (whom)
 	set level = GetPlayerTechCount (whom, Gem_Chance___RESEARCH, true)
 
-	if level < 8 then
+	if level < 8 or Commands__Is_No_Extra_Chance (whom) then
 		return true
 	endif
 

@@ -4,7 +4,10 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-- N/A
+### Added
+- `-extra` command:
+    - This toggles Extra Chance on and off.
+    - Can only be used before placing a gem at game start.
 
 ## [1.6.8] - 2019-12-15
 ### Fixed

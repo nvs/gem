@@ -6,20 +6,43 @@ local id = require ('lib.gem.id')
 
 local cancel = {
 	active = id (globals.Gem_Mine_Cancel___BUTTON_ID),
-	placeholder = id (globals.Gem_Mine_Cancel___PLACEHOLDER_ID)
+	placeholder = id (globals.Gem_Mine_Cancel___PLACEHOLDER_ID),
+	no_extra = id (globals.Gem_Mine_Cancel___NO_EXTRA_ID)
 }
 
 local perfect = {
 	active = id (globals.Gem_Mine_Type___BUTTON_ID),
-	placeholder = id (globals.Gem_Mine_Type___PLACEHOLDER_ID)
+	placeholder = id (globals.Gem_Mine_Type___PLACEHOLDER_ID),
+	no_extra = id (globals.Gem_Mine_Type___NO_EXTRA_ID)
 }
 
 local slate = {
 	active = id (globals.Gem_Mine_Slate___BUTTON_ID),
-	placeholder = id (globals.Gem_Mine_Slate___PLACEHOLDER_ID)
+	placeholder = id (globals.Gem_Mine_Slate___PLACEHOLDER_ID),
+	no_extra = id (globals.Gem_Mine_Slate___NO_EXTRA_ID)
 }
 
 local information = id (globals.Gem_Mine_Information___BUTTON_ID)
+
+-- No Extra Chance:
+objects.R001 = {
+	type = 'upgrade',
+	base = 'Roch',
+	glob = {
+		type = 'integer',
+		value = 0
+	},
+	ginh = {
+		type = 'integer',
+		value = 1
+	},
+	gnam = {
+		type = 'string',
+		values = {
+			[1] = 'Extra Chance enabled'
+		}
+	}
+}
 
 local function placeholder (active)
 	return {
@@ -90,6 +113,13 @@ local function placeholder (active)
 	}
 end
 
+local function no_extra (active)
+	local ability = placeholder (active)
+	ability.areq.value = 'R001'
+	ability.arqa.value = 1
+	return ability
+end
+
 -- # Mine
 do
 	local mine = objects ['h01V']
@@ -121,7 +151,6 @@ do
 end
 
 -- # Remove Objects
-objects ['R001'] = nil
 objects ['h03Q'] = nil
 objects ['h042'] = nil
 objects ['h01W'] = nil
@@ -211,6 +240,7 @@ objects [cancel.active] = {
 
 -- # Mine Cancel (Placeholder)
 objects [cancel.placeholder] = placeholder (cancel.active)
+objects [cancel.no_extra] = no_extra (cancel.active)
 
 -- # Mine Type (Active)
 objects [perfect.active] = {
@@ -297,6 +327,7 @@ objects [perfect.active] = {
 
 -- # Mine Type (Placeholder)
 objects [perfect.placeholder] = placeholder (perfect.active)
+objects [perfect.no_extra] = no_extra (perfect.active)
 
 -- # Mine Slate (Active)
 objects [slate.active] = {
@@ -384,6 +415,7 @@ objects [slate.active] = {
 
 -- # Mine Slate (Placeholder)
 objects [slate.placeholder] = placeholder (slate.active)
+objects [slate.no_extra] = no_extra (slate.active)
 
 -- # Mine Information
 do
