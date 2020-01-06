@@ -3,6 +3,8 @@ globals
 	timerdialog Settings___Countdown = null
 
 	constant real Settings___COUNTDOWN_TIME = 10.00
+
+	string Settings___WELCOME_TEXT = null
 endglobals
 
 function Settings___Setup_Mode takes nothing returns nothing
@@ -57,6 +59,27 @@ function Settings___Begin_Game takes nothing returns nothing
 	endloop
 endfunction
 
+function Settings__Display_Welcome takes string text returns nothing
+	local real time = 10.0 - Time__To_Seconds (Time__Now ())
+
+	if time < 0.005 then
+		set time = 0.005
+	endif
+
+	if text == null then
+		set text = "\n"
+	endif
+
+	if Zeta__Is_OK () then
+		set text = Settings___WELCOME_TEXT + "\n" + text
+	else
+		set text = Settings___WELCOME_TEXT
+	endif
+
+	call ClearTextMessages ()
+	call DisplayTimedTextToPlayer (GetLocalPlayer (), 0, 0.5, time, text)
+endfunction
+
 // This function is guaranteed to run after map initialization, and currently
 // handles setting up the game start.
 function Settings__Setup takes nothing returns boolean
@@ -92,8 +115,6 @@ function Settings__Setup takes nothing returns boolean
 	if Zeta__Is_OK () then
 		set text = text + "Please report any bugs or errors\n"
 		set text = text + "encountered. Thanks.\n"
-		set text = text + "\n"
-		set text = text + "\n"
 	else
 		call Cheat ("Hi. If you've stumbled here, then you should be made")
 		call Cheat ("aware that this serves no purpose but to inform")
@@ -147,8 +168,8 @@ function Settings__Setup takes nothing returns boolean
 		set text = text + "contain cheats and/or bugs!\n"
 	endif
 
-	call ClearTextMessages ()
-	call DisplayTimedTextToPlayer (GetLocalPlayer (), Settings___TEXT_DISPLAY_X, Settings___TEXT_DISPLAY_Y, Settings___COUNTDOWN_TIME, text)
+	set Settings___WELCOME_TEXT = text
+	call Settings__Display_Welcome (null)
 
 	// Ensure that the unit selected is the Miner, and that the camera is
 	// focused on it initially.
