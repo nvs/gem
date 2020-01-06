@@ -4,16 +4,13 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-
 - N/A
 
 ## [1.6.8] - 2019-12-15
-
 ### Fixed
 - Towers no longer upgrade multiple times if the player has enough gold.
 
 ## [1.6.7] - 2019-11-03
-
 ### Fixed
 - Units dying too quickly after spawning could break level advancement.
 - Unit scale could be wrong on cancelling or finishing an upgrade.
@@ -22,7 +19,6 @@ a full list of changes to the project, please consult the commit log.
 - Swap no longer works with killed or removed units.
 
 ## [1.6.6] - 2019-08-29
-
 ### Changed
 - The small delay after selecting a target with swap has been removed. This
   allows quicker completion of the move.
@@ -35,14 +31,12 @@ a full list of changes to the project, please consult the commit log.
 - Further tooltip improvements.
 
 ## [1.6.5] - 2019-08-16
-
 ### Fixed
 - The Extra Chance target is intended to be immutable while placing gems.
   However, it could be cancelled, thus refunding gold and yielding the
   Extra Chance benefit to the placed gems.
 
 ## [1.6.4] - 2019-08-16
-
 ### Added
 - `-bars` command:
     - This toggles status bars on and off for player owned towers. This
@@ -60,7 +54,6 @@ a full list of changes to the project, please consult the commit log.
   leaked or a monster is still alive.
 
 ## [1.6.3] - 2019-08-10
-
 ### Fixed
 - The Poison ability on Emeralds and Jades has been corrected:
     - It was dealing `4` spell damage per second at all qualities and
@@ -70,13 +63,11 @@ a full list of changes to the project, please consult the commit log.
 - And more tooltip fixes.
 
 ## [1.6.2] - 2019-08-07
-
 ### Fixed
 - More tooltip fixes.
 - The correct player is now sad when they leak.
 
 ## [1.6.1] - 2019-08-06
-
 ### Changed
 - Adjust boss appearance rates. Remember, this is purely cosmetic.
 
@@ -88,7 +79,6 @@ a full list of changes to the project, please consult the commit log.
 - Shorten length of leak warning.
 
 ## [1.6.0] - 2019-08-03
-
 ### Added
 - `-maze` command:
     - This toggles between mazing and no-mazing modes.
@@ -272,13 +262,11 @@ a full list of changes to the project, please consult the commit log.
 - The Anti-Stuck ability has been removed as it has been rendered redundant.
 
 ## [1.5.5] - 2019-04-28
-
 ### Fixed
 - Enhance patch 1.31 compatibility. Earlier 1.5 versions may not work in the
   upcoming patch.
 
 ## [1.5.4] - 2019-01-28
-
 ### Fixed
 - Resolved issue introduced in 1.5.2 that caused online (either Battle.net
   or LAN) games involving a single player to create invalid replays.
@@ -286,7 +274,6 @@ a full list of changes to the project, please consult the commit log.
   game start.
 
 ## [1.5.3] - 2019-01-20
-
 ### Fixed
 - Attack type tooltips were broken.
 - Checkpoint pathing will no longer break for creeps that are forced to
@@ -296,7 +283,6 @@ a full list of changes to the project, please consult the commit log.
   if there was one.
 
 ## [1.5.2] - 2019-01-12
-
 ### Added
 - Introduced a game identifier to help verify screenshot/replay pairing when
   submitting games to the leaderboard. This is not a unique game identifier.
@@ -319,7 +305,6 @@ a full list of changes to the project, please consult the commit log.
 - Slates can no longer be moved outside of a player's area.
 
 ## [1.5.1] - 2018-11-24
-
 ### Added
 - Introduced a new effect to indicate that the player can make a slate. In
   part, this is due to a peculiar, and unsolved, issue where slate names do
@@ -338,7 +323,6 @@ a full list of changes to the project, please consult the commit log.
   have been resolved.
 
 ## [1.5.0] - 2018-11-16
-
 ### Added
 - Combine (3x) has been added, allowing three of a kind to skip a gem
   quality.
@@ -429,19 +413,16 @@ a full list of changes to the project, please consult the commit log.
 - Leaving no longer removes a player's maze or statistics.
 
 ## [1.4.3] - 2018-04-13
-
 ### Fixed
 - Enchanted Emerald was applying stun on every hit.
 
 ## [1.4.2] - 2018-04-12
-
 ### Fixed
 - The following issues caused by patch 1.29.0 have been resolved:
     - Broken stuns.
     - Scoreboard spacing/width.
 
 ## [1.4.1] - 2017-10-01
-
 ### Removed
 - The `-reminders` command has been removed.
 
@@ -458,7 +439,6 @@ a full list of changes to the project, please consult the commit log.
 - Anti-stuck will no longer cause units to path through towers.
 
 ## [1.4.0] - 2017-07-13
-
 ### Added
 - Hotkey support has been enabled on the Extra Chance windows.
 - Added hotkey support for slate teleportation.
@@ -511,7 +491,6 @@ a full list of changes to the project, please consult the commit log.
 - Anti-stuck removes unit pathing temporarily instead of permanently.
 
 ## [1.3.3] - 2017-04-06
-
 ### Fixed
 - An incompatible change in the 1.28.0 patch broke behavior for the
   following:
@@ -521,7 +500,6 @@ a full list of changes to the project, please consult the commit log.
     - Bloodstone
 
 ## [1.3.2] - 2017-04-05
-
 ### Fixed
 - An incompatible change in the 1.28.0 patch broke behavior for the
   following:
@@ -530,7 +508,6 @@ a full list of changes to the project, please consult the commit log.
     - Ancient Slate
 
 ## [1.3.1] - 2016-11-12
-
 ### Fixed
 - Structures that accumulated 70+ kills were becoming spell immune. This
   broke the following functionality:
@@ -567,7 +544,6 @@ a full list of changes to the project, please consult the commit log.
   Chance) to disable a player's control, essentially ending their game.
 
 ## [1.2.0] - 2016-08-10
-
 ### Changed
 - Slates can now be repaired.
 - The result of a selection or combination action (e.g. Combine, Downgrade,
@@ -587,7 +563,6 @@ a full list of changes to the project, please consult the commit log.
   to Combine will no longer appear.
 
 ## [1.1.0] - 2016-07-19
-
 ### Changed
 - Cancelling an upgrade previously returned only a partial refund. Now the
   full amount is returned.
@@ -597,7 +572,6 @@ a full list of changes to the project, please consult the commit log.
   FPS and responsiveness for many players throughout the game.
 
 ## 1.0.0 - 2016-07-09
-
 ### Added
 - A host bot can now specify the game mode via HCL, thus bypassing the need
   for players to select game settings.
