@@ -30,6 +30,7 @@ function Commands___Maze takes nothing returns boolean
 	local integer count = 0
 
 	local boolean started
+	local string status
 
 	set started = Gem_Rank__Get_Level (whom_id) > 1
 	set started = started or Gem_Placement__Placed (whom) > 0
@@ -44,11 +45,21 @@ function Commands___Maze takes nothing returns boolean
 	set buildable = Commands___No_Maze [whom_id]
 
 	if buildable then
+		set status = "enabled"
 		set source = 'Zbks'
 		set target = 'Zdrg'
 	else
+		set status = "disabled"
 		set source = 'Zdrg'
 		set target = 'Zbks'
+	endif
+
+	set status = "Mazing has been " + status
+
+	if Clock__Started () < 0 then
+		call Settings__Display_Welcome (status)
+	else
+		call DisplayTextToPlayer (whom, 0.0, 0.0, status)
 	endif
 
 	loop
