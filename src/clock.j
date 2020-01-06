@@ -1,5 +1,5 @@
 globals
-	integer Clock___Start = 0
+	integer Clock___Start = -1
 	timerdialog Clock___Dialog = null
 	framehandle Clock___Frame = null
 endglobals
