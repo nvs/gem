@@ -41,7 +41,6 @@ function Settings___Begin_Game takes nothing returns nothing
 	call DestroyTimer (Settings___Timer)
 	set Settings___Timer = null
 
-	call Board__Setup ()
 	call Clock__Start ()
 
 	set index = 0
@@ -186,6 +185,7 @@ function Settings__Setup takes nothing returns boolean
 		exitwhen index == Gem__MAXIMUM_PLAYERS
 	endloop
 
+	call Board__Setup ()
 	call TimerStart (Settings___Timer, Settings___COUNTDOWN_TIME, false, function Settings___Begin_Game)
 	set Settings___Countdown = CreateTimerDialog (Settings___Timer)
 	call TimerDialogSetTitle (Settings___Countdown, "Game starts in:")
