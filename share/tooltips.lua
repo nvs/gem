@@ -243,6 +243,10 @@ do
 		bonuses (input, output)
 		recipe (input, output)
 
+		if output [#output] == ' ' then
+			output [#output] = nil
+		end
+
 		return table.concat (output, '|n')
 	end
 
@@ -3027,7 +3031,7 @@ one-hit a combination slate.|n|n
 Unlike standard towers, creeps can walk directly over slates. The teleport
 ability, which can only be used once, allows slates to be positioned almost
 anywhere you want in your maze. Keep in mind slate stacking rules (see the
-teleport ability on slates for details).]] .. '|n '
+teleport ability on slates for details).]]
 
 objects.A03A.atp1.values [1] = '|cfffed312Special Tower FAQ|r'
 objects.A03A.aub1.values [1] = text [[
@@ -3046,7 +3050,7 @@ gem, allowing you to combine and make the special.|n|n
 Sometimes you may get lucky and be offered all parts of a recipe using the
 five gems of a single build phase. This will give you the option to create
 that special as a one-hit, instantly giving you the special without having
-to collect pieces.]] .. '|n '
+to collect pieces.]]
 
 local is_buff = {
 	buff = '|cff00ff00',
@@ -3355,7 +3359,7 @@ gems.|n|n
 		quality.flawed,
 		quality.normal,
 		quality.flawless,
-		quality.perfect) .. '|n|r'
+		quality.perfect) .. '|r'
 end
 
 objects.A00E.atp1.values [1] = '|cfffed312Gem Quality (Maxed)'
