@@ -1,6 +1,6 @@
 globals
 	constant trigger Run___RUNNER = CreateTrigger ()
-	constant trigger Run___SCHEDULER = CreateTrigger ()
+	constant timer Run___SCHEDULER = CreateTimer ()
 
 	constant integer Run__NULL = 0
 
@@ -318,6 +318,8 @@ endfunction
 function Run__Initialize takes nothing returns nothing
 	set Run___Schedule = Node__New ()
 
-	call TriggerRegisterTimerEvent (Run___SCHEDULER, Time__PERIOD, true)
-	call Trigger__Try (Run___SCHEDULER, function Run___Tick)
+	// It would be preferable to use the trigger try/catch mechanism.
+	// However, in the interest of avoiding desyncs in 1.32.0.14481, this is
+	// shifted to a timer.
+	call TimerStart (Run___SCHEDULER, Time__PERIOD, true, function Run___Tick)
 endfunction

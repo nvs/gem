@@ -4,7 +4,8 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-- N/A
+### Fixed
+- A Warcraft III bug in 1.32.0 could cause desyncs and other map issues.
 
 ## [1.6.9] - 2020-01-05
 ### Added
