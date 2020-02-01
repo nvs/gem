@@ -17,7 +17,7 @@ do
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = 'Keep [|cffffcc00Z|r]'
+				[1] = 'Keep'
 			}
 		}
 	end
@@ -39,7 +39,7 @@ do
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = 'Downgrade [|cffffcc00X|r]'
+				[1] = 'Downgrade'
 			}
 		}
 	end

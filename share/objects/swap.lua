@@ -224,7 +224,7 @@ local function ability ()
 		atp1 = {
 			type = 'string',
 			values = {
-				[1] = 'S|cffffcc00w|rap'
+				[1] = 'Swap'
 			}
 		},
 

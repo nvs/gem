@@ -6,6 +6,7 @@ a full list of changes to the project, please consult the commit log.
 ## [Unreleased]
 ### Fixed
 - A Warcraft III bug in 1.32.0 could cause desyncs and other map issues.
+- Minor UI changes due to new 1.32 features (e.g. hotkeys).
 
 ## [1.6.9] - 2020-01-05
 ### Added

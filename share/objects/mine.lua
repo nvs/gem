@@ -224,7 +224,7 @@ objects [cancel.active] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance |cffffcc00C|rancel'
+			[1] = 'Extra Chance Cancel'
 		}
 	},
 
@@ -311,7 +311,7 @@ objects [perfect.active] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance |cffffcc00T|rype'
+			[1] = 'Extra Chance Type'
 		}
 	},
 
@@ -398,7 +398,7 @@ objects [slate.active] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance |cffffcc00S|rlate'
+			[1] = 'Extra Chance Slate'
 		}
 	},
 

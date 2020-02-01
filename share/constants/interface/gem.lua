@@ -84,7 +84,7 @@ FrameDef.TRAINING = 'Purchasing'
 -- Quests:
 FrameDef.QUESTSMAIN = '|r'
 FrameDef.QUESTSOPTIONAL = '|r'
-FrameDef.UPPER_BUTTON_QUEST_TIP = 'Information (|c00fed312F9|r)'
+FrameDef.UPPER_BUTTON_QUEST_TIP = 'Information'
 FrameDef.KEY_QUESTS = 'Information (|c00fed312F9|r)'
 FrameDef.QUESTS = 'Information'
 FrameDef.UPPER_BUTTON_QUEST_UBER = 'This dialog displays information related to |c00fed312Gem TD+|r.'

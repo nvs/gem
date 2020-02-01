@@ -83,7 +83,7 @@ objects [combine.x2] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x2) [|cffffcc00C|r]'
+			[1] = 'Combine (x2)'
 		}
 	},
 
@@ -166,7 +166,7 @@ objects [combine.x3] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x3) [|cffffcc00V|r]'
+			[1] = 'Combine (x3)'
 		}
 	},
 
@@ -249,7 +249,7 @@ objects [combine.x4] = {
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x4) [|cffffcc00V|r]'
+			[1] = 'Combine (x4)'
 		}
 	},
 

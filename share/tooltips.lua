@@ -3341,7 +3341,7 @@ Gem Quality %s]],
 
 	objects.R000.gnam.values [index] = next
 	objects.R000.gtp1.values [index] = text ([=[
-Increase to |cfffed312%s|r [|cfffed312O|r]]=],
+Increase to |cfffed312%s|r]=],
 		next)
 	objects.R000.gub1.values [index] = text ([[
 Increase gem quality to permanently improve the chance to get better

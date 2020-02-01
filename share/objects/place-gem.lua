@@ -1,0 +1,3 @@
+local map = ...
+
+map.objects.h006.utip.value = 'Place random gem'
