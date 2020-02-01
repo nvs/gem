@@ -42,10 +42,11 @@ globals
 
 	player Cheats___PLAYER = Player (0)
 
-	trigger Cheats___INVINCIBILITY = null
-	trigger Cheats___NO_MANA = null
+	timer Cheats___INVINCIBILITY = null
+	timer Cheats___NO_MANA = null
 	trigger Cheats___RESOURCES = null
 	trigger Cheats___BUILD = null
+	timer Cheats___BUILD_TRAIN = null
 
 	unit Cheats___ATTACKER = null
 	unit Cheats___VICTIM = null
@@ -65,10 +66,14 @@ endfunction
 function Cheats___Is_Detected takes nothing returns nothing
 	set Cheats___Detected = true
 
-	call DestroyTrigger (Cheats___INVINCIBILITY)
-	call DestroyTrigger (Cheats___NO_MANA)
+	call PauseTimer (Cheats___INVINCIBILITY)
+	call DestroyTimer (Cheats___INVINCIBILITY)
+	call PauseTimer (Cheats___NO_MANA)
+	call DestroyTimer (Cheats___NO_MANA)
 	call DestroyTrigger (Cheats___RESOURCES)
 	call DestroyTrigger (Cheats___BUILD)
+	call PauseTimer (Cheats___BUILD_TRAIN)
+	call DestroyTimer (Cheats___BUILD_TRAIN)
 
 	call RemoveUnit (Cheats___ATTACKER)
 	call RemoveUnit (Cheats___VICTIM)
@@ -81,6 +86,7 @@ function Cheats___Is_Detected takes nothing returns nothing
 	set Cheats___NO_MANA = null
 	set Cheats___RESOURCES = null
 	set Cheats___BUILD = null
+	set Cheats___BUILD_TRAIN = null
 
 	set Cheats___ATTACKER = null
 	set Cheats___VICTIM = null
@@ -118,15 +124,15 @@ function Cheats___Resources takes nothing returns boolean
 endfunction
 
 function Cheats___Fast_Build takes nothing returns boolean
-	if GetTriggerEventId () == EVENT_PLAYER_UNIT_TRAIN_FINISH then
-		call RemoveUnit (GetTrainedUnit ())
-		call Cheats___Is_Detected ()
-	else
-		call IssueImmediateOrderById (Cheats___TRAINER, Cheats___CANCEL_ORDER_ID)
-		call IssueImmediateOrderById (Cheats___TRAINER, Cheats___UNIT_ID)
-	endif
+	call RemoveUnit (GetTrainedUnit ())
+	call Cheats___Is_Detected ()
 
 	return false
+endfunction
+
+function Cheats___Fast_Build_Train takes nothing returns nothing
+	call IssueImmediateOrderById (Cheats___TRAINER, Cheats___CANCEL_ORDER_ID)
+	call IssueImmediateOrderById (Cheats___TRAINER, Cheats___UNIT_ID)
 endfunction
 
 function Cheats__Initialize takes nothing returns boolean
@@ -152,9 +158,8 @@ function Cheats__Initialize takes nothing returns boolean
 	set Cheats___LIFE = GetUnitState (Cheats___VICTIM, UNIT_STATE_MAX_LIFE)
 	set Cheats___DAMAGE = Cheats___LIFE - 1.
 
-	set Cheats___INVINCIBILITY = CreateTrigger ()
-	call TriggerRegisterTimerEvent (Cheats___INVINCIBILITY, Cheats___INVINCIBILITY_PERIOD, true)
-	call TriggerAddCondition (Cheats___INVINCIBILITY, Condition (function Cheats___Invincibility))
+	set Cheats___INVINCIBILITY = CreateTimer ()
+	call TimerStart (Cheats___INVINCIBILITY, Cheats___INVINCIBILITY_PERIOD, true, function Cheats___Invincibility)
 
 	// Infinite mana: `thereisnospoon`.
 	set Cheats___CASTER = CreateUnit (Cheats___PLAYER, Cheats___UNIT_ID, 0., 0., 0.)
@@ -162,9 +167,8 @@ function Cheats__Initialize takes nothing returns boolean
 	call ShowUnit (Cheats___CASTER, false)
 	call UnitAddAbility (Cheats___CASTER, Cheats___MANA_ID)
 
-	set Cheats___NO_MANA = CreateTrigger ()
-	call TriggerRegisterTimerEvent (Cheats___NO_MANA, Cheats___NO_MANA_PERIOD, true)
-	call TriggerAddCondition (Cheats___NO_MANA, Condition (function Cheats___No_Mana))
+	set Cheats___NO_MANA = CreateTimer ()
+	call TimerStart (Cheats___NO_MANA, Cheats___NO_MANA_PERIOD, true, function Cheats___No_Mana)
 
 	// Gold: `keysersoze`.
 	// Lumber: `leafittome`.
@@ -181,9 +185,11 @@ function Cheats__Initialize takes nothing returns boolean
 
 	set Cheats___BUILD = CreateTrigger ()
 	call TriggerRegisterPlayerUnitEvent (Cheats___BUILD, Cheats___PLAYER, EVENT_PLAYER_UNIT_TRAIN_FINISH, null)
-	call TriggerRegisterTimerEvent (Cheats___BUILD, Cheats___BUILD_PERIOD, true)
 	call TriggerAddCondition (Cheats___BUILD, Condition (function Cheats___Fast_Build))
-	call TriggerEvaluate (Cheats___BUILD)
+
+	set Cheats___BUILD_TRAIN = CreateTimer ()
+	call TimerStart (Cheats___BUILD_TRAIN, Cheats___BUILD_PERIOD, true, function Cheats___Fast_Build_Train)
+	call Cheats___Fast_Build_Train ()
 
 	return false
 endfunction
