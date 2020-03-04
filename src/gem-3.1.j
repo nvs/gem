@@ -2774,7 +2774,6 @@ function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P1_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (0))
-	call Gem_Swap__Clear_Round (Player (0))
 	call Gem_Spawn__Stop (0)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[1]*2)),Player(0),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[1]=(udg_RLevel[1]+1)
@@ -2795,6 +2794,7 @@ function Trig_New_Level_P1_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[1],function Trig_New_Level_P1_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[0],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (0))
 endfunction
 function InitTrig_New_Level_P1 takes nothing returns nothing
 	set gg_trg_New_Level_P1=CreateTrigger()
@@ -2848,7 +2848,6 @@ function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P2_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (1))
-	call Gem_Swap__Clear_Round (Player (1))
 	call Gem_Spawn__Stop (1)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[2]*2)),Player(1),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[2]=(udg_RLevel[2]+1)
@@ -2869,6 +2868,7 @@ function Trig_New_Level_P2_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[2],function Trig_New_Level_P2_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[1],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (1))
 endfunction
 function InitTrig_New_Level_P2 takes nothing returns nothing
 	set gg_trg_New_Level_P2=CreateTrigger()
@@ -2922,7 +2922,6 @@ function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P3_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (2))
-	call Gem_Swap__Clear_Round (Player (2))
 	call Gem_Spawn__Stop (2)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[3]*2)),Player(2),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[3]=(udg_RLevel[3]+1)
@@ -2943,6 +2942,7 @@ function Trig_New_Level_P3_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[3],function Trig_New_Level_P3_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[2],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (2))
 endfunction
 function InitTrig_New_Level_P3 takes nothing returns nothing
 	set gg_trg_New_Level_P3=CreateTrigger()
@@ -2996,7 +2996,6 @@ function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P4_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (3))
-	call Gem_Swap__Clear_Round (Player (3))
 	call Gem_Spawn__Stop (3)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[4]*2)),Player(3),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[4]=(udg_RLevel[4]+1)
@@ -3017,6 +3016,7 @@ function Trig_New_Level_P4_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[4],function Trig_New_Level_P4_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[3],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (3))
 endfunction
 function InitTrig_New_Level_P4 takes nothing returns nothing
 	set gg_trg_New_Level_P4=CreateTrigger()
@@ -3070,7 +3070,6 @@ function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P5_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (4))
-	call Gem_Swap__Clear_Round (Player (4))
 	call Gem_Spawn__Stop (4)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[5]*2)),Player(4),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[5]=(udg_RLevel[5]+1)
@@ -3091,6 +3090,7 @@ function Trig_New_Level_P5_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[5],function Trig_New_Level_P5_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[4],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (4))
 endfunction
 function InitTrig_New_Level_P5 takes nothing returns nothing
 	set gg_trg_New_Level_P5=CreateTrigger()
@@ -3144,7 +3144,6 @@ function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P6_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (5))
-	call Gem_Swap__Clear_Round (Player (5))
 	call Gem_Spawn__Stop (5)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[6]*2)),Player(5),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[6]=(udg_RLevel[6]+1)
@@ -3165,6 +3164,7 @@ function Trig_New_Level_P6_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[6],function Trig_New_Level_P6_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[5],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (5))
 endfunction
 function InitTrig_New_Level_P6 takes nothing returns nothing
 	set gg_trg_New_Level_P6=CreateTrigger()
@@ -3218,7 +3218,6 @@ function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P7_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (6))
-	call Gem_Swap__Clear_Round (Player (6))
 	call Gem_Spawn__Stop (6)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[7]*2)),Player(6),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[7]=(udg_RLevel[7]+1)
@@ -3239,6 +3238,7 @@ function Trig_New_Level_P7_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[7],function Trig_New_Level_P7_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[6],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (6))
 endfunction
 function InitTrig_New_Level_P7 takes nothing returns nothing
 	set gg_trg_New_Level_P7=CreateTrigger()
@@ -3292,7 +3292,6 @@ function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 endfunction
 function Trig_New_Level_P8_Actions takes nothing returns nothing
 	call Gem_Rank__Clear (Player (7))
-	call Gem_Swap__Clear_Round (Player (7))
 	call Gem_Spawn__Stop (7)
 	call AdjustPlayerStateBJ((5+(udg_RLevel[8]*2)),Player(7),PLAYER_STATE_RESOURCE_GOLD)
 	set udg_RLevel[8]=(udg_RLevel[8]+1)
@@ -3313,6 +3312,7 @@ function Trig_New_Level_P8_Actions takes nothing returns nothing
 		call ForGroupBJ(udg_UnitGroup[8],function Trig_New_Level_P8_Func018002)
 	endif
 	call QuestMessage(bj_FORCE_PLAYER[7],bj_QUESTMESSAGE_COMPLETED,"                                                     |cffffff00Place 5 new gems|r")
+	call Gem_Swap__Clear_Round (Player (7))
 endfunction
 function InitTrig_New_Level_P8 takes nothing returns nothing
 	set gg_trg_New_Level_P8=CreateTrigger()

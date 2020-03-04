@@ -4,6 +4,8 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
+### Fixed
+- Swap could incur no cost when used as the last monster was killed.
 
 ## [1.6.10] - 2010-02-01
 ### Fixed

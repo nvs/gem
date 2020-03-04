@@ -115,6 +115,11 @@ function Gem_Swap___A takes nothing returns boolean
 		return true
 	endif
 
+	// Deduct the mana cost now instead of at `EFFECT`.  This ensures it
+	// will be done, even if the nature of the target changes before
+	// `EFFECT` occurs.
+	call Unit_State__Set (builder, UNIT_STATE_MANA, 0)
+
 	set Gem_Swap___Marked [whom_id] = target
 	set Gem_Swap___Effect [whom_id] = AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl", GetUnitX (target), GetUnitY (target))
 
