@@ -1,9 +1,9 @@
 local map = ...
 
--- Set force names to be more informative.
-map.information.forces [1].name = string.format ('%s by %s',
-	map.globals.Gem__NAME, map.globals.Gem__MAINTAINER)
-map.information.forces [2].name = map.globals.Gem__WEBSITE_DISCORD
+-- Adjust the force names in 1.32.  More W3I information is exposed in
+-- various places.
+map.information.forces [1].name = map.globals.Gem__NAME
+map.information.forces [2].name = ' '
 
 -- Ensure that default player names are `Player #`.
 for index, player in ipairs (map.information.players) do
