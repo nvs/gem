@@ -272,7 +272,7 @@ do
 				local extended = tooltip (input)
 
 				if label == 'upgrade' then
-					normal = 'Upg|cfffed312r|rade to ' .. normal
+					normal = 'Upgrade to ' .. normal
 				end
 
 				local object = assert (objects [button.id])
