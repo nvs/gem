@@ -116,11 +116,6 @@ function Gem_Slate___Ancient takes nothing returns boolean
 	call UnitDamageTarget (attacker, victim, damage, true, true, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
 
 	set tag = CreateTextTag ()
-
-	if GetHandleId (tag) == 0 then
-		call BJDebugMsg ("Error: Gem_Slate___Ancient (): `texttag` limit reached")
-	endif
-
 	call SetTextTagText (tag, I2S (damage) + " Damage!", 0.023)
 	call SetTextTagPos (tag, x, y, 0.00)
 	call SetTextTagColor (tag, 255, 255, 0, 255)

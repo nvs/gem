@@ -187,10 +187,6 @@ function Gem_Extra_Chance___Extra_Chanced takes unit placed returns nothing
 	set x = GetUnitX (placed)
 	set y = GetUnitY (placed)
 
-	if GetHandleId (tag) == 0 then
-		call BJDebugMsg ("Error: Gem_Extra_Chance___Extra_Chanced (): `texttag` limit reached")
-	endif
-
 	call SetTextTagText (tag, Gem_Extra_Chance__MESSAGE, 0.023)
 	call SetTextTagPos (tag, x, y, 0.0)
 	call SetTextTagPermanent (tag, false)
