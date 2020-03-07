@@ -15,11 +15,7 @@ local discord = color_link (map.globals.Gem__WEBSITE_DISCORD)
 local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY)
 
 map.information.map.description = string.format ([[
-%s by %s
-- %s
-- %s
-
-Released: %s]],
+%s by %s|n- %s|n- %s|n|nReleased: %s]],
 	map.globals.Gem__NAME_FULL, maintainer,
 	repository, discord, map.settings.date)
 
