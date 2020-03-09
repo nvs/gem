@@ -5,6 +5,7 @@ function config takes nothing returns nothing
 	local player o
 	local player p
 
+	call SetMapName ("TRIGSTR_001")
 	call SetTeams (2)
 	call SetPlayers (9)
 

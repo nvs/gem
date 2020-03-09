@@ -34,3 +34,5 @@ map.settings.output.name = string.format ('%s %s.w3x',
 
 map.information.loading.subtitle = map.globals.Gem__NAME_FULL
 map.information.loading.title = 'Version ' .. version
+
+map.strings [1] = map.header.name
