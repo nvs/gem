@@ -101,14 +101,11 @@ function Settings__Setup takes nothing returns boolean
 	endif
 
 	set text = text + Color__Gold ("Welcome to " + Gem__NAME + "!") + "\n"
-	set text = text + "For map information, including a list of\n"
-	set text = text + "changes, see " + Color__Gold ("Information (F9)") + ".\n"
-	set text = text + "\n"
 	set text = text + "For the latest news, to find other players,\n"
 	set text = text + "or to view the leaderboards, visit:\n"
 	set text = text + "\n"
-	set text = text + "- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n"
 	set text = text + "- " + Color__Link (Gem__WEBSITE_DISCORD) + "\n"
+	set text = text + "- " + Color__Link (Gem__WEBSITE_REPOSITORY) + "\n"
 	set text = text + "\n"
 
 	if Zeta__Is_OK () then
@@ -167,7 +164,7 @@ function Settings__Setup takes nothing returns boolean
 		set text = text + "contain cheats and/or bugs!\n"
 	endif
 
-	set Settings___WELCOME_TEXT = text
+	set Settings___WELCOME_TEXT = text + "\n\n\n"
 	call Settings__Display_Welcome (null)
 
 	// Ensure that the unit selected is the Miner, and that the camera is
