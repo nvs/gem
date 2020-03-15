@@ -911,7 +911,7 @@ local recipes = {
 		{
 			'Flawed Aquamarine',
 			'Flawed Opal',
-			'Flaed Topaz'
+			'Flawed Topaz'
 		}
 	},
 
