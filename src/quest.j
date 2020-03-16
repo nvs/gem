@@ -28,9 +28,19 @@ function Quest__Setup takes quest the_quest, string title, string icon, string t
 	call QuestSetDiscovered (the_quest, true)
 	call QuestSetCompleted (the_quest, false)
 	call QuestSetDescription (the_quest, text)
+
+	// Prevent the quest indicator from displaying.
+    call BlzFrameClick (BlzGetFrameByName ("UpperButtonBarQuestsButton", 0))
 endfunction
 
 // Adds an item to `the_quest`, using the provided `text` as the description.
 function Quest__Item takes quest the_quest, string text returns nothing
 	call QuestItemSetDescription (QuestCreateItem (the_quest), text)
+endfunction
+
+function Quest__Initialize takes nothing returns nothing
+    call BlzFrameClick (BlzGetFrameByName ("UpperButtonBarQuestsButton", 0))
+    call BlzFrameClick (BlzGetFrameByName ("QuestAcceptButton", 0))
+    call BlzFrameSetSize (BlzGetFrameByName ("QuestItemListContainer", 0), 0.01, 0.01)
+    call BlzFrameSetSize (BlzGetFrameByName ("QuestItemListScrollBar", 0), 0.001, 0.001)
 endfunction
