@@ -9,3 +9,5 @@ map.information.forces [2].name = ' '
 for index, player in ipairs (map.information.players) do
 	player.name = string.format ('Player %d', index)
 end
+
+map.information.map.author = map.globals.Gem__MAINTAINER
