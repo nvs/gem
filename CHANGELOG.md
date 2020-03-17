@@ -7,6 +7,7 @@ a full list of changes to the project, please consult the commit log.
 ### Fixed
 - Swap could incur no cost when used as the last monster was killed.
 - The map name would not appear on the friend's list.
+- Minor UI changes related to 1.32.
 
 ## [1.6.10] - 2010-02-01
 ### Fixed
