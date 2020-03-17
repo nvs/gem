@@ -4,6 +4,9 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
+- N/A
+
+## [1.6.11] - 2010-03-19
 ### Fixed
 - Swap could incur no cost when used as the last monster was killed.
 - The map name would not appear on the friend's list.
@@ -632,7 +635,8 @@ a full list of changes to the project, please consult the commit log.
 - The Information tab will no longer flash throughout the game.
 - The Damage Test can no longer spawn unleveled.
 
-[Unreleased]: https://github.com/nvs/gem/compare/v1.6.10...master
+[Unreleased]: https://github.com/nvs/gem/compare/v1.6.11...master
+[1.6.11]: https://github.com/nvs/gem/compare/v1.6.10...v1.6.11
 [1.6.10]: https://github.com/nvs/gem/compare/v1.6.9...v1.6.10
 [1.6.9]: https://github.com/nvs/gem/compare/v1.6.8...v1.6.9
 [1.6.8]: https://github.com/nvs/gem/compare/v1.6.7...v1.6.8
