@@ -3333,6 +3333,11 @@ local qualities = {
 	}
 }
 
+objects.R000.ghk1 = {
+	type = 'string',
+	values = {}
+}
+
 for index, quality in ipairs (qualities) do
 	local current = 'Gem Quality ' .. quality.roman
 	local next = text ([[
@@ -3360,6 +3365,7 @@ gems.|n|n
 		quality.normal,
 		quality.flawless,
 		quality.perfect) .. '|r'
+	objects.R000.ghk1.values [index] = 'O'
 end
 
 objects.A00E.atp1.values [1] = '|cfffed312Gem Quality (Maxed)'
