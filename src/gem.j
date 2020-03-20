@@ -7,7 +7,7 @@ globals
 	constant string Gem__NAME_PATH = "Gem TD Plus"
 	constant string Gem__NAME_FULL = "Gem Tower Defense Plus"
 
-	constant string Gem__MAINTAINER = "NVS#12914"
+	constant string Gem__MAINTAINER = "NVS#12194"
 
 	constant string Gem__WEBSITE_DISCORD = "https://discord.gg/PxNNp77"
 	constant string Gem__WEBSITE_REPOSITORY = "https://github.com/nvs/gem"
