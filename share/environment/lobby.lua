@@ -5,6 +5,8 @@ local map = ...
 map.information.forces [1].name = map.globals.Gem__NAME
 map.information.forces [2].name = ' '
 
+map.information.forces [2] = nil
+
 -- Ensure that default player names are `Player #`.
 for index, player in ipairs (map.information.players) do
 	player.name = string.format ('Player %d', index)

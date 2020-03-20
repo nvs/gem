@@ -6,8 +6,8 @@ function config takes nothing returns nothing
 	local player p
 
 	call SetMapName ("TRIGSTR_001")
-	call SetTeams (2)
-	call SetPlayers (9)
+	call SetTeams (1)
+	call SetPlayers (8)
 
 	call SetGamePlacement(MAP_PLACEMENT_FIXED)
 	call DefineStartLocation(0,-2304.0,7424.0)
@@ -32,7 +32,6 @@ function config takes nothing returns nothing
 
 		// Neutrals, specifically the gamblers in the middle.
 		if i == 8 then
-			call SetPlayerController(p, MAP_CONTROL_NEUTRAL)
 		// Used to temporary hold the player's units while placing gems.
 		elseif i == 9 then
 			call SetPlayerController(p, MAP_CONTROL_RESCUABLE)
