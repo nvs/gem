@@ -4,7 +4,9 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
-- N/A
+### Fixed
+- Auras from gems gathered and then consumed in a combination continued to
+  apply to other towers for the rest of the round.
 
 ## [1.6.11] - 2010-03-19
 ### Fixed

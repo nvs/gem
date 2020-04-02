@@ -199,6 +199,7 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	call SetUnitPosition (replacement, GetUnitX (original), GetUnitY (original))
 	call ShowUnit (original, false)
 	call PauseUnit (original, true)
+	call SetUnitOwner (original, Player (PLAYER_NEUTRAL_PASSIVE), false)
 	call GroupAddUnit (units, original)
 	call Gem_Swap__Update (the_player, original, replacement)
 
@@ -214,6 +215,7 @@ function Gem_Combination___Recipe takes nothing returns boolean
 				set kills = kills + Unit_User_Data__Get (the_part)
 				call ShowUnit (the_part, false)
 				call PauseUnit (the_part, true)
+				call SetUnitOwner (the_part, Player (PLAYER_NEUTRAL_PASSIVE), false)
 				call GroupAddUnit (units, the_part)
 
 				// Slates do not get replaced by rocks.
