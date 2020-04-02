@@ -8,13 +8,13 @@ a full list of changes to the project, please consult the commit log.
 - Auras from gems gathered and then consumed in a combination continued to
   apply to other towers for the rest of the round.
 
-## [1.6.11] - 2010-03-19
+## [1.6.11] - 2020-03-19
 ### Fixed
 - Swap could incur no cost when used as the last monster was killed.
 - The map name would not appear on the friend's list.
 - Minor UI changes related to 1.32.
 
-## [1.6.10] - 2010-02-01
+## [1.6.10] - 2020-02-01
 ### Fixed
 - A Warcraft III bug in 1.32.0 could cause desyncs and other map issues.
 - Minor UI changes due to new 1.32 features (e.g. hotkeys).
