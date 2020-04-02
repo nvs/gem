@@ -9,6 +9,7 @@ a full list of changes to the project, please consult the commit log.
 ### Fixed
 - Auras from gems gathered and then consumed in a combination continued to
   apply to other towers for the rest of the round.
+- The `-maze` command could be used on Level 1 after placing all gems.
 
 ## [1.6.11] - 2020-03-19
 ### Fixed

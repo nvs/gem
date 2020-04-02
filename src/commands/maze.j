@@ -34,6 +34,7 @@ function Commands___Maze takes nothing returns boolean
 
 	set started = Gem_Rank__Get_Level (whom_id) > 1
 	set started = started or Gem_Placement__Placed (whom) > 0
+	set started = started or udg_RaceBuildingPeriod [whom_id + 1]
 	set started = started or Gem_Rank__Get_Start (whom_id, 1) > 0
 
 	if started then
