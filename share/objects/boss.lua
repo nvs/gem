@@ -258,8 +258,8 @@ create_boss {
 	id = 'H052',
 	name = 'Sesamia',
 	label = 'Recognized',
-	model = 'Buildings\\NightElf\\AncientOfWonder\\AncientOfWonder.mdl',
-	scale = 0.72
+	model = 'Units\\NightElf\\SpiritOfVengeance\\SpiritOfVengeance.mdl',
+	scale = 0.82
 }
 
 create_boss {
