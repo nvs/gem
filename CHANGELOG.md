@@ -4,6 +4,8 @@ This file presents a list of changes from the perspective of the player. For
 a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
+### Fixed
+- Address the `-maze` command broken in 1.6.12.
 
 ## [1.6.12] - 2020-04-01
 ### Fixed

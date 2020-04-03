@@ -29,13 +29,26 @@ function Commands___Maze takes nothing returns boolean
 	local integer index = 0
 	local integer count = 0
 
-	local boolean started
+	local boolean started = false
 	local string status
 
-	set started = Gem_Rank__Get_Level (whom_id) > 1
-	set started = started or Gem_Placement__Placed (whom) > 0
-	set started = started or udg_RaceBuildingPeriod [whom_id + 1]
-	set started = started or Gem_Rank__Get_Start (whom_id, 1) > 0
+	// The game does not start until the clock does.
+	if Clock__Started () < 0 then
+
+	// This indicates that the damage phase for Level 1 has started.
+	elseif Gem_Rank__Get_Start (whom_id, 1) > 0 then
+		set started = true
+
+	// The user has placed a gem.
+	elseif Gem_Placement__Placed (whom) > 0 then
+		set started = true
+
+	// The user has placed all gems.  Note that checking the clock
+	// earlier extends the ability to use this check.  Otherwise, this would
+	// return a false positive.
+	elseif Gem_Placement__Placed (whom) == 0 and Gem_Placement__Total (whom) == 0 then
+		set started = true
+	endif
 
 	if started then
 		call DisplayTextToPlayer (whom, 0.0, 0.0, "The `-maze` command can only be used before placing a gem at game start")
