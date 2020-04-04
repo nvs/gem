@@ -24,11 +24,5 @@ return {
 		'share/tooltips.lua',
 
 		'share/imports/import-directory.lua'
-	},
-
-	wurst = {
-		dependencies = {
-			'lib/wurst-stdlib'
-		}
 	}
 }
