@@ -66,7 +66,6 @@ function config takes nothing returns nothing
 	set i = 11
 	loop
 		set p = Player (i)
-		call SetPlayerName (p, "Monsters")
 		call SetPlayerColor (p, PLAYER_COLOR_BROWN)
 		call SetPlayerRacePreference (p, RACE_PREF_UNDEAD)
 		call SetPlayerRaceSelectable (p, false)
