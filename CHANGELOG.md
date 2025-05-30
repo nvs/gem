@@ -7,6 +7,7 @@ For a full list of changes to the project, please consult the commit log.
 
 ### Fixed
 
+- A player might be charged less than full cost when using Extra Chance.
 - Various tooltip fixes.
 - Remove sound from critters in the middle. *Squeak!*
 - Remove Range Check from Star Yellow Sapphire.
