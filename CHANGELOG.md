@@ -14,6 +14,8 @@ For a full list of changes to the project, please consult the commit log.
 - Remove Range Check from Star Yellow Sapphire.
 - Death of the Random unit could halt game progress.
 - Restore incorrect unit protraits to their previous (less bad) versions.
+- Fix (again) gold not being rewarded sometimes on kill when combining.
+- Prevent Opal Haste aura from persisting in various situations.
 
 ### Changed
 
