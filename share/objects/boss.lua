@@ -191,7 +191,7 @@ local function create_boss (input)
 		-- Name
 		boss.unam = {
 			type = 'string',
-			value = ' - ' .. input.label,
+			value = '- ' .. input.label,
 		}
 
 		-- Name - Editor Suffix
