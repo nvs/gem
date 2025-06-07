@@ -22,16 +22,16 @@ local list = {
 	'h016', -- Star Ruby
 	'h01A', -- Silver
 	'h01B', -- Gold
-	'h01O'  -- Blood Stone
+	'h01O', -- Blood Stone
 }
 
-for _, id in ipairs (list) do
-	local unit = objects [id]
+for _, id in ipairs(list) do
+	local unit = objects[id]
 
 	if unit then
 		unit.ulum = {
 			type = 'integer',
-			value = 0
+			value = 0,
 		}
 	end
 end

@@ -1,6 +1,6 @@
 local map = ...
 
-map.settings.date = map.settings.date or require ('lib.gem.date')
+map.settings.date = map.settings.date or require('lib.gem.date')
 
 local function color_red (text)
 	return '|cff' .. map.globals.Color__RED .. text .. '|r'
@@ -10,16 +10,22 @@ local function color_link (text)
 	return '|cff' .. map.globals.Color__LINK .. text .. '|r'
 end
 
-local maintainer = color_red (map.globals.Gem__MAINTAINER)
-local discord = color_link (map.globals.Gem__WEBSITE_DISCORD)
-local repository = color_link (map.globals.Gem__WEBSITE_REPOSITORY)
+local maintainer = color_red(map.globals.Gem__MAINTAINER)
+local discord = color_link(map.globals.Gem__WEBSITE_DISCORD)
+local repository = color_link(map.globals.Gem__WEBSITE_REPOSITORY)
 
-map.information.map.description = string.format ([[
+map.information.map.description = string.format(
+	[[
 %s by %s|n- %s|n- %s|n|nReleased: %s]],
-	map.globals.Gem__NAME_FULL, maintainer,
-	repository, discord, map.settings.date)
+	map.globals.Gem__NAME_FULL,
+	maintainer,
+	repository,
+	discord,
+	map.settings.date
+)
 
-map.information.loading.text = string.format ([[
+map.information.loading.text = string.format(
+	[[
 An updated version of Gem Tower Defense,
 a map originally created by %s.
 
@@ -32,4 +38,8 @@ or to view the leaderboards, visit:
 - %s
 
 Please report any bugs or errors encountered.]],
-	color_red ('Bryvx'), maintainer, repository, discord)
+	color_red('Bryvx'),
+	maintainer,
+	repository,
+	discord
+)

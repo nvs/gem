@@ -54,8 +54,7 @@ FrameDef.DAMAGETIP_MELEE = ''
 	.. '120% damage to Red armor|n'
 	.. '60% damage to Yellow armor|n'
 	.. '20% damage to Pink armor'
-FrameDef.DAMAGETIP_NORMAL = ''
-	.. '175% damage to Blue armor'
+FrameDef.DAMAGETIP_NORMAL = '' .. '175% damage to Blue armor'
 FrameDef.DAMAGETIP_PIERCE = ''
 	.. '175% damage to Pink armor|n'
 	.. '80% damage to other armors'
@@ -87,7 +86,8 @@ FrameDef.QUESTSOPTIONAL = '|r'
 FrameDef.UPPER_BUTTON_QUEST_TIP = 'Information'
 FrameDef.KEY_QUESTS = 'Information (|c00fed312F9|r)'
 FrameDef.QUESTS = 'Information'
-FrameDef.UPPER_BUTTON_QUEST_UBER = 'This dialog displays information related to |c00fed312Gem TD+|r.'
+FrameDef.UPPER_BUTTON_QUEST_UBER =
+	'This dialog displays information related to |c00fed312Gem TD+|r.'
 
 -- Icon - Attack Type Chaos (Topaz):
 CustomSkin.InfoPanelIconDamageChaos = 'Gem\\Attack\\Topaz.blp'
@@ -154,8 +154,7 @@ CustomSkin.InfoPanelIconArmorSmall = 'Gem\\Armor\\Red.blp'
 CustomSkin.InfoPanelIconArmorSmallNeutral = 'Gem\\Armor\\Red.blp'
 
 -- Icon - Idle Worker:
-CustomSkin.IdlePeon =
-	'ReplaceableTextures\\CommandButtons\\BTNShaman.blp'
+CustomSkin.IdlePeon = 'ReplaceableTextures\\CommandButtons\\BTNShaman.blp'
 
 -- Icon - Lumber:
 CustomSkin.LumberIcon =

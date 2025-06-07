@@ -3,7 +3,7 @@ local objects = map.objects
 
 -- # Spell Information
 do
-	local info = objects ['A05P']
+	local info = objects['A05P']
 
 	-- ## Text
 
@@ -14,9 +14,6 @@ do
 			.. '- 5% Fan of Knives (80)|n'
 			.. '- 5% Lightning (85)|n'
 			.. '- 5% Carrion Swarm (125)|n'
-			.. '- 5% Armor Reduction (5)'
+			.. '- 5% Armor Reduction (5)',
 	}
 end
-
-
-

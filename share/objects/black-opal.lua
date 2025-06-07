@@ -9,7 +9,7 @@ do
 		-- Hotkey
 		unit.uhot = {
 			type = 'string',
-			value = 'R'
+			value = 'R',
 		}
 	end
 end

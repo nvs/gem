@@ -2,7 +2,7 @@ local map = ...
 local objects = map.objects
 
 -- # Slate Teleport Hotkey / Cooldown
-objects ['A02J'] = {
+objects['A02J'] = {
 	type = 'ability',
 	base = 'ANcl',
 
@@ -17,43 +17,43 @@ objects ['A02J'] = {
 	-- Button Position (X)
 	abpx = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 
 	-- Button Position (Y)
 	abpy = {
 		type = 'integer',
-		value = 2
+		value = 2,
 	},
 
 	-- Caster
 	acat = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Caster Attachment Pointer 1
 	acap = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Effect
 	aeat = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Target
 	atat = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Target Attachment Point 1
 	ata0 = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- ## Stats
@@ -61,13 +61,13 @@ objects ['A02J'] = {
 	-- Hero Ability
 	aher = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 
 	-- Levels
 	alev = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 
 	-- ## Data
@@ -77,8 +77,8 @@ objects ['A02J'] = {
 		data = 4,
 		type = 'unreal',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- Disable Other Abilities
@@ -86,8 +86,8 @@ objects ['A02J'] = {
 		data = 5,
 		type = 'integer',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- Folow Through Time
@@ -95,8 +95,8 @@ objects ['A02J'] = {
 		data = 1,
 		type = 'unreal',
 		values = {
-			[1] = 1.0
-		}
+			[1] = 1.0,
+		},
 	},
 
 	-- Options
@@ -104,8 +104,8 @@ objects ['A02J'] = {
 		data = 3,
 		type = 'integer',
 		values = {
-			[1] = 1
-		}
+			[1] = 1,
+		},
 	},
 
 	-- Target Type
@@ -113,32 +113,32 @@ objects ['A02J'] = {
 		data = 2,
 		type = 'integer',
 		values = {
-			[1] = 2
-		}
+			[1] = 2,
+		},
 	},
 
 	-- Cooldown
 	acdn = {
 		type = 'unreal',
 		values = {
-			[1] = 1.0
-		}
+			[1] = 1.0,
+		},
 	},
 
 	-- Duration (Normal)
 	adur = {
 		type = 'unreal',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- Duration (Hero)
 	ahdu = {
 		type = 'unreal',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- ## Stats
@@ -147,16 +147,16 @@ objects ['A02J'] = {
 	aran = {
 		type = 'unreal',
 		values = {
-			[1] = 99999
-		}
+			[1] = 99999,
+		},
 	},
 
 	-- Effects
 	aeff = {
 		type = 'string',
 		values = {
-			[1] = ''
-		}
+			[1] = '',
+		},
 	},
 
 	-- ## Techtree
@@ -164,7 +164,7 @@ objects ['A02J'] = {
 	-- Requires
 	areq = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- ## Text
@@ -172,21 +172,21 @@ objects ['A02J'] = {
 	-- Hotkey
 	ahky = {
 		type = 'string',
-		value = 'T'
+		value = 'T',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Slate Teleport'
+		value = 'Slate Teleport',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = '|c00ffcc00T|releport'
-		}
+			[1] = '|c00ffcc00T|releport',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -194,11 +194,11 @@ objects ['A02J'] = {
 		type = 'string',
 		values = {
 			[1] = 'Teleports the slate to the targeted point.|n|n'
-			.. 'A basic slate cannot stack upon a like basic slate or the '
-			.. 'combination slate it makes. A combination slate cannot '
-			.. 'stack on a like combination slate or either of the basic '
-			.. 'slates from its recipe.|n|n'
-			.. 'Can only be used once per slate.'
-		}
-	}
+				.. 'A basic slate cannot stack upon a like basic slate or the '
+				.. 'combination slate it makes. A combination slate cannot '
+				.. 'stack on a like combination slate or either of the basic '
+				.. 'slates from its recipe.|n|n'
+				.. 'Can only be used once per slate.',
+		},
+	},
 }

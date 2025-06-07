@@ -8,15 +8,15 @@ local buttons = {
 	-- Gem Quality
 	{
 		id = 'A00E',
-		icon = 'ReplaceableTextures\\PassiveButtons\\PASOrbOfDarkness.blp'
-	}
+		icon = 'ReplaceableTextures\\PassiveButtons\\PASOrbOfDarkness.blp',
+	},
 }
 
 -- Deleting an object does not seem possible. However, it appears an object
 -- can be overwritten, preserving existing information. We switch to using
 -- Evasion as a base.
-for _, button in ipairs (buttons) do
-	local ability = objects [button.id]
+for _, button in ipairs(buttons) do
+	local ability = objects[button.id]
 
 	if ability then
 		ability.base = 'ACev'
@@ -26,7 +26,7 @@ for _, button in ipairs (buttons) do
 		-- Icon - Normal
 		ability.aart = {
 			type = 'string',
-			value = button.icon
+			value = button.icon,
 		}
 
 		-- # Data/Stats
@@ -36,8 +36,8 @@ for _, button in ipairs (buttons) do
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		}
 	end
 end

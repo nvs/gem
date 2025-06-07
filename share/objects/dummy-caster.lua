@@ -4,7 +4,7 @@ local objects = map.objects
 -- # Dummy Caster
 
 -- This base object is used by both Wurst and Nestharus.
-objects ['DUCA'] = {
+objects['DUCA'] = {
 	type = 'unit',
 	base = 'nfr2',
 
@@ -13,7 +13,7 @@ objects ['DUCA'] = {
 	-- Normal
 	uabi = {
 		type = 'string',
-		value = 'Aloc,Avul'
+		value = 'Aloc,Avul',
 	},
 
 	-- ## Art
@@ -21,49 +21,49 @@ objects ['DUCA'] = {
 	-- Animation - Blend Time
 	uble = {
 		type = 'real',
-		value = 0
+		value = 0,
 	},
 
 	-- Animation - Cast Backswing
 	ucbs = {
 		type = 'unreal',
-		value = 0
+		value = 0,
 	},
 
 	-- Animation - Cast Point
 	ucpt = {
 		type = 'unreal',
-		value = 0
+		value = 0,
 	},
 
 	-- Ground Texture
 	uubs = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Maximum Pitch Angle (Degrees)
 	umxp = {
 		type = 'real',
-		value = 0
+		value = 0,
 	},
 
 	-- Minimum Pitch Angle (Degrees)
 	umxr = {
 		type = 'real',
-		value = 0
+		value = 0,
 	},
 
 	-- Scaling Value
 	usca = {
 		type = 'real',
-		value = 0.01
+		value = 0.01,
 	},
 
 	-- Shadow Texture (Building)
 	ushb = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- ## Editor
@@ -71,7 +71,7 @@ objects ['DUCA'] = {
 	-- Placeable In Editor
 	uine = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 
 	-- ## Pathing
@@ -79,13 +79,13 @@ objects ['DUCA'] = {
 	-- Collision Size
 	ucol = {
 		type = 'unreal',
-		value = 0
+		value = 0,
 	},
 
 	-- Pathing Map
 	upat = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- ## Sound
@@ -93,7 +93,7 @@ objects ['DUCA'] = {
 	-- Unit Sound Set
 	usnd = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- ## Stats
@@ -101,13 +101,13 @@ objects ['DUCA'] = {
 	-- Food Cost
 	ufoo = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 
 	-- Hide Minimap Display
 	uhom = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 
 	-- ## Text
@@ -115,12 +115,12 @@ objects ['DUCA'] = {
 	-- Editor Suffix
 	unsf = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Name
 	unam = {
 		type = 'string',
-		value = 'Dummy Caster'
-	}
+		value = 'Dummy Caster',
+	},
 }

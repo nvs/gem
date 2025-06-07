@@ -5,49 +5,49 @@ local globals = map.globals
 local ids
 
 do
-	local id = require ('lib.gem.id')
+	local id = require('lib.gem.id')
 
 	ids = {
-		id (globals.Gem_Special__DARK_EMERALD_1),
-		id (globals.Gem_Special__DARK_EMERALD_2),
+		id(globals.Gem_Special__DARK_EMERALD_1),
+		id(globals.Gem_Special__DARK_EMERALD_2),
 	}
 end
 
 -- Enchanted Emerald
-objects [ids [2]].ugol.value = 185
-objects [ids [2]].ua1b.value = 166
+objects[ids[2]].ugol.value = 185
+objects[ids[2]].ua1b.value = 166
 
-for _, id in ipairs (ids) do
-	local unit = objects [id]
+for _, id in ipairs(ids) do
+	local unit = objects[id]
 
 	-- Attack 1 - Area of Effect (Full Damage)
 	unit.ua1f = {
 		type = 'integer',
-		value = 256
+		value = 256,
 	}
 
 	-- Techtree - Upgrades Used
 	unit.upgr = {
 		type = 'string',
-		value = 'GDEB'
+		value = 'GDEB',
 	}
 
 	-- Attack 1 - Area of Effect Targets
 	unit.ua1p = {
 		type = 'string',
-		value = 'enemy'
+		value = 'enemy',
 	}
 
 	-- Attack 1 - Weapon Type
 	unit.ua1w = {
 		type = 'string',
-		value = 'mbounce'
+		value = 'mbounce',
 	}
 
 	-- Attack 1 - Damage Loss Factor
 	unit.udl1 = {
 		type = 'unreal',
-		value = 0.00
+		value = 0.00,
 	}
 end
 
@@ -58,19 +58,19 @@ objects.GDEB = {
 	greq = {
 		type = 'string',
 		values = {
-			[1] = ''
-		}
+			[1] = '',
+		},
 	},
 
 	glvl = {
 		type = 'integer',
-		value = 10
+		value = 10,
 	},
 
 	gmo1 = {
 		type = 'unreal',
-		value = 1
-	}
+		value = 1,
+	},
 }
 
 -- # Dark Emerald Information
@@ -80,7 +80,7 @@ do
 	-- ## Text
 	do
 		-- Tooltip - Normal - Extended
-		ability.aub1.values [1] = ''
+		ability.aub1.values[1] = ''
 			.. '- 12.5% chance to stun for 1.5 seconds.|n'
 			.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
 			.. '    - Causes attacks to bounce to an additional nearby '
@@ -92,7 +92,7 @@ end
 do
 	local ability = {
 		type = 'ability',
-		base = 'ACev'
+		base = 'ACev',
 	}
 	objects.A01A = ability
 
@@ -101,19 +101,19 @@ do
 		-- Button Position - Normal (X)
 		ability.abpx = {
 			type = 'integer',
-			value = 3
+			value = 3,
 		}
 
 		-- Button Position - Normal (Y)
 		ability.abpy = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		}
 
 		-- Icon - Normal
 		ability.aart = {
 			type = 'string',
-			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp'
+			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp',
 		}
 	end
 
@@ -124,8 +124,8 @@ do
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		}
 	end
 
@@ -134,7 +134,7 @@ do
 		-- Race
 		ability.arac = {
 			type = 'string',
-			value = 'human'
+			value = 'human',
 		}
 	end
 
@@ -143,21 +143,21 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Enchanted Emerald)'
+			value = '(Enchanted Emerald)',
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Abilities'
+			value = 'Abilities',
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cff33ff33Enchanted Emerald Abilities|r'
-			}
+				[1] = '|cff33ff33Enchanted Emerald Abilities|r',
+			},
 		}
 
 		-- Tooltip - Normal - Extended
@@ -165,10 +165,10 @@ do
 			type = 'string',
 			values = {
 				[1] = '- 12.5% chance to stun for 1.5 seconds.|n'
-				.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
-				.. '    - Causes attacks to bounce to an additional nearby '
-				.. 'enemy.|n'
-			}
+					.. '- Each additional Dark Emerald or Enchanted Emerald:|n'
+					.. '    - Causes attacks to bounce to an additional nearby '
+					.. 'enemy.|n',
+			},
 		}
 	end
 end

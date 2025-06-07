@@ -2,20 +2,20 @@ local map = ...
 local globals = map.globals
 local objects = map.objects
 
-local id = require ('lib.gem.id')
+local id = require('lib.gem.id')
 
 local combine = {
-	x2 = id (globals.Gem_Selection_Combine__X2_ID),
-	x3 = id (globals.Gem_Selection_Combine__X3_ID),
-	x4 = id (globals.Gem_Selection_Combine__X4_ID)
+	x2 = id(globals.Gem_Selection_Combine__X2_ID),
+	x3 = id(globals.Gem_Selection_Combine__X3_ID),
+	x4 = id(globals.Gem_Selection_Combine__X4_ID),
 }
 
 -- # Remove Objects
-objects ['A00A'] = nil
-objects ['A007'] = nil
+objects['A00A'] = nil
+objects['A007'] = nil
 
 -- # Gem Selection Combine (x2)
-objects [combine.x2] = {
+objects[combine.x2] = {
 	type = 'ability',
 	base = 'AAns',
 
@@ -24,19 +24,19 @@ objects [combine.x2] = {
 	-- Button Position - Normal (X)
 	abpx = {
 		type = 'integer',
-		value = 2
+		value = 2,
 	},
 
 	-- Button Position - Normal (Y)
 	abpy = {
 		type = 'integer',
-		value = 2
+		value = 2,
 	},
 
 	-- Icon - Normal
 	aart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfFrost.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfFrost.blp',
 	},
 
 	-- ## Data
@@ -46,8 +46,8 @@ objects [combine.x2] = {
 		data = 5,
 		type = 'string',
 		values = {
-			[1] = globals.Gem_Selection_Combine___X2_ORDER
-		}
+			[1] = globals.Gem_Selection_Combine___X2_ORDER,
+		},
 	},
 
 	-- Gold Cost
@@ -55,8 +55,8 @@ objects [combine.x2] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- ## Text
@@ -64,27 +64,27 @@ objects [combine.x2] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Selection)'
+		value = '(Selection)',
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'C'
+		value = 'C',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Combine (x2)'
+		value = 'Combine (x2)',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x2)'
-		}
+			[1] = 'Combine (x2)',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -92,13 +92,13 @@ objects [combine.x2] = {
 		type = 'string',
 		values = {
 			[1] = 'Combine two gems of the same type and quality, creating a '
-				.. 'gem one quality higher.'
-		}
-	}
+				.. 'gem one quality higher.',
+		},
+	},
 }
 
 -- # Gem Selection Combine (x3)
-objects [combine.x3] = {
+objects[combine.x3] = {
 	type = 'ability',
 	base = 'AAns',
 
@@ -107,19 +107,19 @@ objects [combine.x3] = {
 	-- Button Position - Normal (X)
 	abpx = {
 		type = 'integer',
-		value = 3
+		value = 3,
 	},
 
 	-- Button Position - Normal (Y)
 	abpy = {
 		type = 'integer',
-		value = 2
+		value = 2,
 	},
 
 	-- Icon - Normal
 	aart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp',
 	},
 
 	-- ## Data
@@ -129,8 +129,8 @@ objects [combine.x3] = {
 		data = 5,
 		type = 'string',
 		values = {
-			[1] = globals.Gem_Selection_Combine___X3_ORDER
-		}
+			[1] = globals.Gem_Selection_Combine___X3_ORDER,
+		},
 	},
 
 	-- Gold Cost
@@ -138,8 +138,8 @@ objects [combine.x3] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- ## Text
@@ -147,27 +147,27 @@ objects [combine.x3] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Selection)'
+		value = '(Selection)',
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'V'
+		value = 'V',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Combine (x3)'
+		value = 'Combine (x3)',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x3)'
-		}
+			[1] = 'Combine (x3)',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -175,13 +175,13 @@ objects [combine.x3] = {
 		type = 'string',
 		values = {
 			[1] = 'Combine three gems of the same type and quality, creating a '
-				.. 'gem two qualities higher.'
-		}
-	}
+				.. 'gem two qualities higher.',
+		},
+	},
 }
 
 -- # Gem Selection Combine (x4)
-objects [combine.x4] = {
+objects[combine.x4] = {
 	type = 'ability',
 	base = 'AAns',
 
@@ -190,19 +190,19 @@ objects [combine.x4] = {
 	-- Button Position - Normal (X)
 	abpx = {
 		type = 'integer',
-		value = 3
+		value = 3,
 	},
 
 	-- Button Position - Normal (Y)
 	abpy = {
 		type = 'integer',
-		value = 2
+		value = 2,
 	},
 
 	-- Icon - Normal
 	aart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp',
 	},
 
 	-- ## Data
@@ -212,8 +212,8 @@ objects [combine.x4] = {
 		data = 5,
 		type = 'string',
 		values = {
-			[1] = globals.Gem_Selection_Combine___X4_ORDER
-		}
+			[1] = globals.Gem_Selection_Combine___X4_ORDER,
+		},
 	},
 
 	-- Gold Cost
@@ -221,8 +221,8 @@ objects [combine.x4] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- ## Text
@@ -230,27 +230,27 @@ objects [combine.x4] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Selection)'
+		value = '(Selection)',
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'V'
+		value = 'V',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Combine (x4)'
+		value = 'Combine (x4)',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Combine (x4)'
-		}
+			[1] = 'Combine (x4)',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -258,7 +258,7 @@ objects [combine.x4] = {
 		type = 'string',
 		values = {
 			[1] = 'Combine four gems of the same type and quality, creating a '
-				.. 'gem two qualities higher.'
-		}
-	}
+				.. 'gem two qualities higher.',
+		},
+	},
 }

@@ -9,7 +9,7 @@ do
 	do
 		-- Armor Bonus
 		ability.Had1.values = {
-			[1] = 0
+			[1] = 0,
 		}
 	end
 

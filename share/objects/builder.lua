@@ -1,6 +1,5 @@
 local map = ...
 
-
 -- # Builder
 do
 	local builder = map.objects.u000
@@ -9,7 +8,7 @@ do
 	do
 		-- Normal
 		builder.uabi.value =
-			builder.uabi.value:gsub ('A06Z', 'GBIn'):gsub ('A02Y', 'GSAA')
+			builder.uabi.value:gsub('A06Z', 'GBIn'):gsub('A02Y', 'GSAA')
 	end
 
 	-- ## Stats
@@ -17,13 +16,13 @@ do
 		-- Mana Initial Amount
 		builder.umpi = {
 			type = 'integer',
-			value = 10
+			value = 10,
 		}
 
 		-- Mana Maximum
 		builder.umpm = {
 			type = 'integer',
-			value = 10
+			value = 10,
 		}
 	end
 end
@@ -32,7 +31,7 @@ end
 do
 	local ability = {
 		type = 'ability',
-		base = 'AInv'
+		base = 'AInv',
 	}
 	map.objects.GBIn = ability
 
@@ -42,28 +41,28 @@ do
 		ability.inv5 = {
 			data = 5,
 			type = 'integer',
-			values = { 0 }
+			values = { 0 },
 		}
 
 		-- Can Get Items
 		ability.inv4 = {
 			data = 4,
 			type = 'integer',
-			values = { 0 }
+			values = { 0 },
 		}
 
 		-- Can Use Items
 		ability.inv3 = {
 			data = 3,
 			type = 'integer',
-			values = { 0 }
+			values = { 0 },
 		}
 
 		-- Item Capacity
 		ability.inv1 = {
 			data = 1,
 			type = 'integer',
-			values = { 2 }
+			values = { 2 },
 		}
 	end
 end
@@ -72,7 +71,7 @@ end
 do
 	local item = {
 		type = 'item',
-		base = 'kybl'
+		base = 'kybl',
 	}
 	map.objects.gmi1 = item
 
@@ -82,7 +81,7 @@ do
 		item.iico = {
 			type = 'string',
 			value = 'ReplaceableTextures\\CommandButtons\\'
-				.. 'BTNManual.blp'
+				.. 'BTNManual.blp',
 		}
 	end
 
@@ -91,19 +90,19 @@ do
 		-- Description
 		item.ides = {
 			type = 'string',
-			value = ''
+			value = '',
 		}
 
 		-- Name
 		item.unam = {
 			type = 'string',
-			value = '|cfffed312New Player Tips|r'
+			value = '|cfffed312New Player Tips|r',
 		}
 
 		-- Tooltip - Basic
 		item.utip = {
 			type = 'string',
-			value = ''
+			value = '',
 		}
 
 		-- Tooltip - Extended
@@ -112,22 +111,17 @@ do
 			value = ''
 				.. '|cffffb347Place five gems every level.|r|n'
 				.. 'The monsters will not spawn until you keep one.|n|n'
-
 				.. '|cffb19cd9Don\'t worry if you leak!|r|n'
 				.. 'You cannot lose from leaking until you reach Level 10. '
 				.. 'After that, however, you only have one life!|n|n'
-
 				.. '|cfffdfd96Find your gold mine near the center.|r|n'
 				.. 'Recipes and FAQs are there too.|n|n'
-
 				.. '|cff77dd77Get better stuff!|r|n'
 				.. 'Upgrade quality at your mine for stronger gems.|n|n'
-
 				.. '|cff779ecbLearn the recipes.|r|n'
 				.. 'Combinations are powerful, and all gems are in one.|n|n'
-
 				.. '|cffff6991Maze to win!|r|n'
-				.. 'Try to spiral around or connect checkpoints.'
+				.. 'Try to spiral around or connect checkpoints.',
 		}
 	end
 end
@@ -136,7 +130,7 @@ end
 do
 	local item = {
 		type = 'item',
-		base = 'kybl'
+		base = 'kybl',
 	}
 	map.objects.gmi2 = item
 
@@ -146,7 +140,7 @@ do
 		item.iico = {
 			type = 'string',
 			value = 'ReplaceableTextures\\CommandButtons\\'
-				.. 'BTNManual3.blp'
+				.. 'BTNManual3.blp',
 		}
 	end
 
@@ -155,19 +149,19 @@ do
 		-- Description
 		item.ides = {
 			type = 'string',
-			value = ''
+			value = '',
 		}
 
 		-- Name
 		item.unam = {
 			type = 'string',
-			value = '|cfffed312Commands|r'
+			value = '|cfffed312Commands|r',
 		}
 
 		-- Tooltip - Basic
 		item.utip = {
 			type = 'string',
-			value = ''
+			value = '',
 		}
 
 		-- Tooltip - Extended
@@ -177,23 +171,18 @@ do
 				.. '|cffff6991-zoom value|r|n'
 				.. 'Sets the camera to the specified value. The default '
 				.. 'Warcraft 3 zoom is 1650. A common value is 2400.|n|n'
-
 				.. '|cffff6991-air|r|n'
 				.. 'Display air rounds.|n|n'
-
 				.. '|cffff6991-bars|r|n'
 				.. 'Toggle showing status bars for your towers.|n|n'
-
 				.. '|cffff6991-maze|r|n'
 				.. 'Toggle mazing on and off. This can only be used before '
 				.. 'placing the first gem at game start.|n|n'
-
 				.. '|cffff6991-extra|r|n'
 				.. 'Toggle Extra Chance on and off. This can only be used '
 				.. 'before placing the first gem at game start.|n|n'
-
 				.. '|cffff6991-debug|r|n'
-				.. 'Atempt to recover from a variety of issues.'
+				.. 'Atempt to recover from a variety of issues.',
 		}
 	end
 end

@@ -2,10 +2,10 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local id = require ('lib.gem.id')
+local id = require('lib.gem.id')
 
 -- # Silver
-local unit = objects [id (globals.Gem_Special__SILVER_1)]
+local unit = objects[id(globals.Gem_Special__SILVER_1)]
 
 -- ## Combat - Attack 1
 do

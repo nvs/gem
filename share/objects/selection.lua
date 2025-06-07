@@ -3,44 +3,44 @@ local objects = map.objects
 
 -- Keep
 do
-	local ability = objects ['A009']
+	local ability = objects['A009']
 
 	-- ## Text
 	do
 		-- Hotkey - Normal
 		ability.ahky = {
 			type = 'string',
-			value = 'Z'
+			value = 'Z',
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = 'Keep'
-			}
+				[1] = 'Keep',
+			},
 		}
 	end
 end
 
 -- Downgrade
 do
-	local ability = objects ['A02G']
+	local ability = objects['A02G']
 
 	-- ## Text
 	do
 		-- Hotkey - Normal
 		ability.ahky = {
 			type = 'string',
-			value = 'X'
+			value = 'X',
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = 'Downgrade'
-			}
+				[1] = 'Downgrade',
+			},
 		}
 	end
 end

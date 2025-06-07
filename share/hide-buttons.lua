@@ -16,21 +16,21 @@ local abilities = {
 
 	-- Viper
 	'A074',
-	'A075'
+	'A075',
 }
 
 local x = {
 	type = 'integer',
-	value = 0
+	value = 0,
 }
 
 local y = {
 	type = 'integer',
-	value = -11
+	value = -11,
 }
 
-for _, ability in ipairs (abilities) do
-	local object = assert (objects [ability])
+for _, ability in ipairs(abilities) do
+	local object = assert(objects[ability])
 
 	object.abpx = x
 	object.abpy = y

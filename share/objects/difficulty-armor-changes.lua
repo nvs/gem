@@ -54,20 +54,20 @@ local units = {
 	[48] = { 'h04J', 15 },
 	[49] = { 'h04O', 35 },
 	[50] = { 'h04P', 35 },
-	[51] = { 'H04B', 40 }
+	[51] = { 'H04B', 40 },
 }
 
-for level, pair in ipairs (units) do
-	local id = pair [1]
-	local armor = pair [2]
+for level, pair in ipairs(units) do
+	local id = pair[1]
+	local armor = pair[2]
 
-	local unit = objects [id]
+	local unit = objects[id]
 
 	if unit then
 		-- Combat: Defense Base
 		unit.udef = {
 			type = 'integer',
-			value = armor
+			value = armor,
 		}
 	end
 

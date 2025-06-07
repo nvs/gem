@@ -2,15 +2,15 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local id = require ('lib.gem.id')
+local id = require('lib.gem.id')
 
 -- # Star Yellow Sapphire
-local unit = objects [id (globals.Gem_Special__YELLOW_SAPPHIRE_2)]
+local unit = objects[id(globals.Gem_Special__YELLOW_SAPPHIRE_2)]
 
 -- ## Abilities
 do
 	-- Normal
-	unit.uabi.value = unit.uabi.value:gsub ('A06T,', '')
+	unit.uabi.value = unit.uabi.value:gsub('A06T,', '')
 end
 
 -- ## Combat - Attack 1

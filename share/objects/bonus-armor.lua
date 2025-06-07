@@ -18,13 +18,13 @@ local list = {
 }
 
 -- # Bonus Armor Ability
-for id, armor in pairs (list) do
+for id, armor in pairs(list) do
 	local ability = {
 		type = 'ability',
-		base = 'AId1'
+		base = 'AId1',
 	}
 
-	objects [id] = ability
+	objects[id] = ability
 
 	-- ## Data
 	do
@@ -32,8 +32,8 @@ for id, armor in pairs (list) do
 			data = 1,
 			type = 'integer',
 			values = {
-				[1] = armor
-			}
+				[1] = armor,
+			},
 		}
 	end
 
@@ -41,7 +41,7 @@ for id, armor in pairs (list) do
 	do
 		ability.aite = {
 			type = 'integer',
-			value = 0
+			value = 0,
 		}
 	end
 
@@ -50,13 +50,13 @@ for id, armor in pairs (list) do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(' .. armor .. ')'
+			value = '(' .. armor .. ')',
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Bonus Armor'
+			value = 'Bonus Armor',
 		}
 	end
 end

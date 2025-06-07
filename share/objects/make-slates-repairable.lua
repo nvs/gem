@@ -18,16 +18,16 @@ local slates = {
 
 	'n00C', -- Damage
 	'n00E', -- Range
-	'n00F'  -- Viper
+	'n00F', -- Viper
 }
 
-for _, id in ipairs (slates) do
-	local unit = objects [id]
+for _, id in ipairs(slates) do
+	local unit = objects[id]
 
 	if unit then
 		unit.utyp = {
 			type = 'string',
-			value = 'mechanical,standon,ancient'
+			value = 'mechanical,standon,ancient',
 		}
 	end
 end
