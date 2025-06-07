@@ -2,19 +2,19 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local id = require ('lib.gem.id')
+local id = require('lib.gem.id')
 
 -- Remove swap from existing towers.
 do
 	local list = {
-		id (globals.Gem_Special__BLACK_OPAL_1),
-		id (globals.Gem_Special__BLACK_OPAL_2),
-		id (globals.Gem_Special__RED_CRYSTAL_3)
+		id(globals.Gem_Special__BLACK_OPAL_1),
+		id(globals.Gem_Special__BLACK_OPAL_2),
+		id(globals.Gem_Special__RED_CRYSTAL_3),
 	}
 
-	for _, object in ipairs (list) do
-		objects [object].uabi.value =
-			objects [object].uabi.value:gsub ('A05L,', '')
+	for _, object in ipairs(list) do
+		objects[object].uabi.value =
+			objects[object].uabi.value:gsub('A05L,', '')
 	end
 end
 
@@ -28,49 +28,49 @@ local function ability ()
 		-- Icon - Normal
 		aart = {
 			type = 'string',
-			value = nil
+			value = nil,
 		},
 
 		-- Button Position (X)
 		abpx = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		},
 
 		-- Button Position (Y)
 		abpy = {
 			type = 'integer',
-			value = 2
+			value = 2,
 		},
 
 		-- Caster
 		acat = {
 			type = 'string',
-			value = ''
+			value = '',
 		},
 
 		-- Caster Attachment Pointer 1
 		acap = {
 			type = 'string',
-			value = ''
+			value = '',
 		},
 
 		-- Effect
 		aeat = {
 			type = 'string',
-			value = ''
+			value = '',
 		},
 
 		-- Target
 		atat = {
 			type = 'string',
-			value = ''
+			value = '',
 		},
 
 		-- Target Attachment Point 1
 		ata0 = {
 			type = 'string',
-			value = ''
+			value = '',
 		},
 
 		-- ## Stats
@@ -78,13 +78,13 @@ local function ability ()
 		-- Hero Ability
 		aher = {
 			type = 'integer',
-			value = 0
+			value = 0,
 		},
 
 		-- Levels
 		alev = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		},
 
 		-- ## Data
@@ -94,8 +94,8 @@ local function ability ()
 			data = 4,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		},
 
 		-- Disable Other Abilities
@@ -103,8 +103,8 @@ local function ability ()
 			data = 5,
 			type = 'integer',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		},
 
 		-- Folow Through Time
@@ -112,8 +112,8 @@ local function ability ()
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0.0
-			}
+				[1] = 0.0,
+			},
 		},
 
 		-- Options
@@ -121,8 +121,8 @@ local function ability ()
 			data = 3,
 			type = 'integer',
 			values = {
-				[1] = 1
-			}
+				[1] = 1,
+			},
 		},
 
 		-- Target Type
@@ -130,32 +130,32 @@ local function ability ()
 			data = 2,
 			type = 'integer',
 			values = {
-				[1] = 1
-			}
+				[1] = 1,
+			},
 		},
 
 		-- Cooldown
 		acdn = {
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		},
 
 		-- Duration (Normal)
 		adur = {
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		},
 
 		-- Duration (Hero)
 		ahdu = {
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		},
 
 		-- ## Stats
@@ -164,32 +164,32 @@ local function ability ()
 		aran = {
 			type = 'unreal',
 			values = {
-				[1] = 99999
-			}
+				[1] = 99999,
+			},
 		},
 
 		-- Effects
 		aeff = {
 			type = 'string',
 			values = {
-				[1] = ''
-			}
+				[1] = '',
+			},
 		},
 
 		-- Mana Cost
 		amcs = {
 			type = 'integer',
 			values = {
-				[1] = globals.Gem_Swap___COST
-			}
+				[1] = globals.Gem_Swap___COST,
+			},
 		},
 
 		-- Targets Allowed
 		atar = {
 			type = 'string',
 			values = {
-				[1] = 'player,structure,nonancient'
-			}
+				[1] = 'player,structure,nonancient',
+			},
 		},
 
 		-- ## Techtree
@@ -197,7 +197,7 @@ local function ability ()
 		-- Requires
 		areq = {
 			type = 'string',
-			value = ''
+			value = '',
 		},
 
 		-- ## Text
@@ -205,34 +205,34 @@ local function ability ()
 		-- Hotkey
 		ahky = {
 			type = 'string',
-			value = 'W'
+			value = 'W',
 		},
 
 		-- Editor Suffix
 		ansf = {
 			type = 'string',
-			value = nil
+			value = nil,
 		},
 
 		-- Name
 		anam = {
 			type = 'string',
-			value = 'Swap'
+			value = 'Swap',
 		},
 
 		-- Tooltip - Normal
 		atp1 = {
 			type = 'string',
 			values = {
-				[1] = 'Swap'
-			}
+				[1] = 'Swap',
+			},
 		},
 
 		-- Tooltip - Normal - Extended
 		aub1 = {
 			type = 'string',
-			values = {}
-		}
+			values = {},
+		},
 	}
 end
 
@@ -242,7 +242,7 @@ local description = 'Provides the ability to swap the location of any two '
 
 -- # Swap 'A'
 do
-	local GSAA = ability ()
+	local GSAA = ability()
 	objects.GSAA = GSAA
 
 	-- ## Art
@@ -254,13 +254,14 @@ do
 	GSAA.ansf.value = '(A)'
 
 	-- Tooltip - Normal - Extended
-	GSAA.aub1.values [1] = description ..'|n'
+	GSAA.aub1.values[1] = description
+		.. '|n'
 		.. '|cffc3dbffMark a tower to be swapped.|r'
 end
 
 -- # Swap 'B'
 do
-	local GSAB = ability ()
+	local GSAB = ability()
 	objects.GSAB = GSAB
 
 	-- ## Art
@@ -272,12 +273,13 @@ do
 	GSAB.ansf.value = '(B)'
 
 	-- Tooltip - Normal - Extended
-	GSAB.aub1.values [1] = description .. '|n'
+	GSAB.aub1.values[1] = description
+		.. '|n'
 		.. '|cffc3dbffSwap a tower with the previously marked structure. '
 		.. 'If the same target is specified, then the sequence is reset.|r'
 
 	-- ## Stats
 
 	-- Mana Cost
-	GSAB.amcs.values [1] = 0
+	GSAB.amcs.values[1] = 0
 end

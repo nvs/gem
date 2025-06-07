@@ -3,35 +3,35 @@ local objects = map.objects
 
 local ids = {
 	immolation = 'A075',
-	aura = 'A076'
+	aura = 'A076',
 }
 
 -- # Viper Slate Immolation
 do
 	local ability = {
 		type = 'ability',
-		base = 'ACev'
+		base = 'ACev',
 	}
-	objects [ids.immolation] = ability
+	objects[ids.immolation] = ability
 
 	-- ## Art
 	do
 		-- Button Position - Normal (X)
 		ability.abpx = {
 			type = 'integer',
-			value = 2
+			value = 2,
 		}
 
 		-- Button Position - Normal (Y)
 		ability.abpy = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		}
 
 		-- Icon - Normal
 		ability.aart = {
 			type = 'string',
-			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp'
+			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp',
 		}
 	end
 
@@ -42,8 +42,8 @@ do
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		}
 	end
 
@@ -53,30 +53,30 @@ do
 		ability.aare = {
 			type = 'unreal',
 			values = {
-				[1] = 400
-			}
+				[1] = 400,
+			},
 		}
 
 		-- Cooldown
 		ability.acdn = {
 			type = 'unreal',
-			values = {}
+			values = {},
 		}
 
 		for level = 1, 11 do
-			ability.acdn.values [level] = 50 * (1 + 0.1 * (level - 1))
+			ability.acdn.values[level] = 50 * (1 + 0.1 * (level - 1))
 		end
 
 		-- Levels
 		ability.alev = {
 			type = 'integer',
-			value = 11
+			value = 11,
 		}
 
 		-- Race
 		ability.arac = {
 			type = 'string',
-			value = 'human'
+			value = 'human',
 		}
 	end
 
@@ -85,48 +85,48 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Viper Slate)'
+			value = '(Viper Slate)',
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Abilities II'
+			value = 'Abilities II',
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cff33ff33Viper Slate Abilities 2|r'
-			}
+				[1] = '|cff33ff33Viper Slate Abilities 2|r',
+			},
 		}
 
 		-- Tooltip - Normal - Extended
 		ability.aub1 = {
 			type = 'string',
-			values = {}
+			values = {},
 		}
 
 		local text = 'Enemies within <%s,Area1> range will receive'
 			.. ' <%s,Cool%d> spell damage per second.'
 
 		for level = 1, 11 do
-			ability.aub1.values [level] = string.format (
-				text, ids.immolation, ids.immolation, level)
+			ability.aub1.values[level] =
+				string.format(text, ids.immolation, ids.immolation, level)
 		end
 	end
 end
 
 -- # Viper Slate Aura
 do
-	local ability = objects [ids.aura]
+	local ability = objects[ids.aura]
 
 	-- ## Data
 	do
 		-- Attack Damage Increase
 		for level = 1, 11 do
-			ability.Cac1.values [level] = 0.10 + 0.03 * (level - 1)
+			ability.Cac1.values[level] = 0.10 + 0.03 * (level - 1)
 		end
 	end
 
@@ -134,11 +134,11 @@ do
 	do
 		-- Tooltip - Normal - Extended
 		local text = 'Grants a <%s,DataA%d,%%>%% increased damage aura to '
-		 .. 'friendly structures within <%s,Area%d> range.'
+			.. 'friendly structures within <%s,Area%d> range.'
 
-		 for level = 1, 11 do
-			 ability.aub1.values [level] = string.format (
-				 text, ids.aura, level, ids.aura, level)
-		 end
+		for level = 1, 11 do
+			ability.aub1.values[level] =
+				string.format(text, ids.aura, level, ids.aura, level)
+		end
 	end
 end

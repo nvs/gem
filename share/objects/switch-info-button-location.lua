@@ -133,34 +133,34 @@ local abilities = {
 	['A01B'] = true, -- Star Yellow Sapphire
 	['A06T'] = false, -- Star Yellow Sapphire 2
 
-	['A068'] = true -- Stone of Bryvx
+	['A068'] = true, -- Stone of Bryvx
 }
 
 local column = {
 	type = 'integer',
-	value = 3
+	value = 3,
 }
 
 -- Shift to the last column.
-for id, update in pairs (abilities) do
+for id, update in pairs(abilities) do
 	if update then
 		-- Art - Button Position - Normal (X)
-		objects [id].abpx = column
+		objects[id].abpx = column
 	end
 end
 
 -- Lucky Charm
 --
 -- Art - Button Position - Normal (X)
-objects ['A02X'].abpx.value = 2
+objects['A02X'].abpx.value = 2
 
 local row = {
 	type = 'integer',
-	value = 1
+	value = 1,
 }
 
 -- Shift to the middle row.
-for id in pairs (abilities) do
+for id in pairs(abilities) do
 	-- Art - Button Position - Normal (Y)
-	objects [id].abpy = row
+	objects[id].abpy = row
 end

@@ -4,16 +4,16 @@ return {
 	output = {
 		directories = {
 			build = 'tmp',
-			optimize = 'tmp/optimize'
+			optimize = 'tmp/optimize',
 		},
-		name = 'Gem TD Plus.w3x'
+		name = 'Gem TD Plus.w3x',
 	},
 
 	source = {
 		directory = 'src',
 		include = {
-			'lib/patch/1.31.1'
-		}
+			'lib/patch/1.31.1',
+		},
 	},
 
 	build = {
@@ -23,6 +23,6 @@ return {
 		'share/hide-buttons.lua',
 		'share/tooltips.lua',
 
-		'share/imports/import-directory.lua'
-	}
+		'share/imports/import-directory.lua',
+	},
 }

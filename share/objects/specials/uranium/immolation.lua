@@ -2,35 +2,35 @@ local map = ...
 local objects = map.objects
 
 local ids = {
-	immolation = 'A00K'
+	immolation = 'A00K',
 }
 
 -- # Uranium Immolation
 do
 	local ability = {
 		type = 'ability',
-		base = 'ACev'
+		base = 'ACev',
 	}
-	objects [ids.immolation] = ability
+	objects[ids.immolation] = ability
 
 	-- ## Art
 	do
 		-- Button Position - Normal (X)
 		ability.abpx = {
 			type = 'integer',
-			value = 3
+			value = 3,
 		}
 
 		-- Button Position - Normal (Y)
 		ability.abpy = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		}
 
 		-- Icon - Normal
 		ability.aart = {
 			type = 'string',
-			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp'
+			value = 'ReplaceableTextures\\PassiveButtons\\PASBTNStatUp.blp',
 		}
 	end
 
@@ -41,8 +41,8 @@ do
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		}
 	end
 
@@ -52,30 +52,30 @@ do
 		ability.aare = {
 			type = 'unreal',
 			values = {
-				[1] = 500
-			}
+				[1] = 500,
+			},
 		}
 
 		-- Cooldown
 		ability.acdn = {
 			type = 'unreal',
-			values = {}
+			values = {},
 		}
 
 		for level = 1, 11 do
-			ability.acdn.values [level] = 200 * (1 + 0.1 * (level - 1))
+			ability.acdn.values[level] = 200 * (1 + 0.1 * (level - 1))
 		end
 
 		-- Levels
 		ability.alev = {
 			type = 'integer',
-			value = 11
+			value = 11,
 		}
 
 		-- Race
 		ability.arac = {
 			type = 'string',
-			value = 'human'
+			value = 'human',
 		}
 	end
 
@@ -84,35 +84,35 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Uranium)'
+			value = '(Uranium)',
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Abilities II'
+			value = 'Abilities II',
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cff33ff33Uranium Abilities 2|r'
-			}
+				[1] = '|cff33ff33Uranium Abilities 2|r',
+			},
 		}
 
 		-- Tooltip - Normal - Extended
 		ability.aub1 = {
 			type = 'string',
-			values = {}
+			values = {},
 		}
 
 		local text = 'Enemies within <%s,Area1> range will receive'
 			.. ' <%s,Cool%d> spell damage per second.'
 
 		for level = 1, 11 do
-			ability.aub1.values [level] = string.format (
-				text, ids.immolation, ids.immolation, level)
+			ability.aub1.values[level] =
+				string.format(text, ids.immolation, ids.immolation, level)
 		end
 	end
 end

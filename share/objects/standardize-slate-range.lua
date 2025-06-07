@@ -19,17 +19,17 @@ local slates = {
 	'n009', -- Spell
 	'n00A', -- Elder
 
-	'n00C'  -- Damage
+	'n00C', -- Damage
 }
 
-for _, id in ipairs (slates) do
-	local slate = objects [id]
+for _, id in ipairs(slates) do
+	local slate = objects[id]
 
 	if slate then
 		-- Combat: Attack 1 - Range
 		slate.ua1r = {
 			type = 'integer',
-			value = 128
+			value = 128,
 		}
 	end
 end

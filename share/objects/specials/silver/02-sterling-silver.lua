@@ -2,11 +2,11 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local deep_copy = require ('lib.gem.deep_copy')
-local id = require ('lib.gem.id')
+local deep_copy = require('lib.gem.deep_copy')
+local id = require('lib.gem.id')
 
 -- # Silver
-local unit = objects [id (globals.Gem_Special__SILVER_2)]
+local unit = objects[id(globals.Gem_Special__SILVER_2)]
 
 -- ## Abilities
 do
@@ -29,4 +29,4 @@ do
 end
 
 -- # Silver 2 Information
-objects.A050 = deep_copy (objects.A00L)
+objects.A050 = deep_copy(objects.A00L)

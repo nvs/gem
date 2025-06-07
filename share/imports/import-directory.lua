@@ -1,3 +1,3 @@
 local map = ...
 
-map.imports ['share/imports/map'] = true
+map.imports['share/imports/map'] = true

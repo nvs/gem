@@ -6,7 +6,7 @@ local objects = map.objects
 -- This system makes use of Cargo Hold (`'Abun'`) to disable a unit's attack.
 
 -- ## Disarm Buff
-objects ['UDDB'] = {
+objects['UDDB'] = {
 	type = 'buff',
 	base = 'Basl',
 
@@ -15,19 +15,19 @@ objects ['UDDB'] = {
 	-- Icon
 	fart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNBattleStations.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNBattleStations.blp',
 	},
 
 	-- Target
 	ftat = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- Target Attachment Point 1
 	fta0 = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	-- ### Text
@@ -35,30 +35,30 @@ objects ['UDDB'] = {
 	-- Editor Suffix
 	fnsf = {
 		type = 'string',
-		value = '(Unit Disarm)'
+		value = '(Unit Disarm)',
 	},
 
 	-- Name (Editor Only)
 	fnam = {
 		type = 'string',
-		value = 'Disarm Buff'
+		value = 'Disarm Buff',
 	},
 
 	-- Tooltip
 	ftip = {
 		type = 'string',
-		value = 'Disarmed'
+		value = 'Disarmed',
 	},
 
 	-- Tooltip - Extended
 	fube = {
 		type = 'string',
-		value = 'This unit is disarmed: it cannot attack.'
-	}
+		value = 'This unit is disarmed: it cannot attack.',
+	},
 }
 
 -- ## Disarm Temporary
-objects ['UDDT'] = {
+objects['UDDT'] = {
 	type = 'ability',
 	base = 'Aasl',
 
@@ -68,16 +68,16 @@ objects ['UDDT'] = {
 	aare = {
 		type = 'unreal',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- Buffs
 	abuf = {
 		type = 'string',
 		values = {
-			[1] = 'UDDB'
-		}
+			[1] = 'UDDB',
+		},
 	},
 
 	-- Movement Speed Factor
@@ -85,16 +85,16 @@ objects ['UDDT'] = {
 		data = 1,
 		type = 'unreal',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- Targets Allowed
 	atar = {
 		type = 'string',
 		values = {
-			[1] = 'self'
-		}
+			[1] = 'self',
+		},
 	},
 
 	-- ### Text
@@ -102,18 +102,18 @@ objects ['UDDT'] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Unit Disarm)'
+		value = '(Unit Disarm)',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Disarm Temporary'
-	}
+		value = 'Disarm Temporary',
+	},
 }
 
 -- ## Disarm Ability
-objects ['UDDA'] = {
+objects['UDDA'] = {
 	type = 'ability',
 	base = 'Abun',
 
@@ -124,8 +124,8 @@ objects ['UDDA'] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- ### Text
@@ -133,12 +133,12 @@ objects ['UDDA'] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Unit Disarm)'
+		value = '(Unit Disarm)',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Disarm Ability'
-	}
+		value = 'Disarm Ability',
+	},
 }

@@ -2,27 +2,27 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local id = require ('lib.gem.id')
+local id = require('lib.gem.id')
 
 local cancel = {
-	active = id (globals.Gem_Mine_Cancel___BUTTON_ID),
-	placeholder = id (globals.Gem_Mine_Cancel___PLACEHOLDER_ID),
-	no_extra = id (globals.Gem_Mine_Cancel___NO_EXTRA_ID)
+	active = id(globals.Gem_Mine_Cancel___BUTTON_ID),
+	placeholder = id(globals.Gem_Mine_Cancel___PLACEHOLDER_ID),
+	no_extra = id(globals.Gem_Mine_Cancel___NO_EXTRA_ID),
 }
 
 local perfect = {
-	active = id (globals.Gem_Mine_Type___BUTTON_ID),
-	placeholder = id (globals.Gem_Mine_Type___PLACEHOLDER_ID),
-	no_extra = id (globals.Gem_Mine_Type___NO_EXTRA_ID)
+	active = id(globals.Gem_Mine_Type___BUTTON_ID),
+	placeholder = id(globals.Gem_Mine_Type___PLACEHOLDER_ID),
+	no_extra = id(globals.Gem_Mine_Type___NO_EXTRA_ID),
 }
 
 local slate = {
-	active = id (globals.Gem_Mine_Slate___BUTTON_ID),
-	placeholder = id (globals.Gem_Mine_Slate___PLACEHOLDER_ID),
-	no_extra = id (globals.Gem_Mine_Slate___NO_EXTRA_ID)
+	active = id(globals.Gem_Mine_Slate___BUTTON_ID),
+	placeholder = id(globals.Gem_Mine_Slate___PLACEHOLDER_ID),
+	no_extra = id(globals.Gem_Mine_Slate___NO_EXTRA_ID),
 }
 
-local information = id (globals.Gem_Mine_Information___BUTTON_ID)
+local information = id(globals.Gem_Mine_Information___BUTTON_ID)
 
 -- No Extra Chance:
 objects.R001 = {
@@ -30,18 +30,18 @@ objects.R001 = {
 	base = 'Roch',
 	glob = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 	ginh = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 	gnam = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance enabled'
-		}
-	}
+			[1] = 'Extra Chance enabled',
+		},
+	},
 }
 
 local function placeholder (active)
@@ -52,13 +52,13 @@ local function placeholder (active)
 		-- ## Art
 
 		-- Button Position - Normal (X)
-		abpx = objects [active].abpx,
+		abpx = objects[active].abpx,
 
 		-- Button Position - Normal (Y)
-		abpy = objects [active].abpy,
+		abpy = objects[active].abpy,
 
 		-- Icon - Normal
-		aart = objects [active].aart,
+		aart = objects[active].aart,
 
 		-- ## Data
 
@@ -67,8 +67,8 @@ local function placeholder (active)
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		},
 
 		-- ## Techtree
@@ -76,19 +76,19 @@ local function placeholder (active)
 		-- Check Dependencies
 		achd = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		},
 
 		-- Requirements
 		areq = {
 			type = 'string',
-			value = 'R000'
+			value = 'R000',
 		},
 
 		-- Requirements - Levels
 		arqa = {
 			type = 'string',
-			value = '8'
+			value = '8',
 		},
 
 		-- ## Text
@@ -96,25 +96,25 @@ local function placeholder (active)
 		-- Editor Suffix
 		ansf = {
 			type = 'string',
-			value = '(Mine - Placeholder)'
+			value = '(Mine - Placeholder)',
 		},
 
 		-- Hotkey - Normal
-		ahky = objects [active].ahky,
+		ahky = objects[active].ahky,
 
 		-- Name
-		anam = objects [active].anam,
+		anam = objects[active].anam,
 
 		-- Tooltip - Normal
-		atp1 = objects [active].atp1,
+		atp1 = objects[active].atp1,
 
 		-- Tooltip - Normal - Extended
-		aub1 = objects [active].aub1
+		aub1 = objects[active].aub1,
 	}
 end
 
 local function no_extra (active)
-	local ability = placeholder (active)
+	local ability = placeholder(active)
 	ability.areq.value = 'R001'
 	ability.arqa.value = 1
 	return ability
@@ -122,7 +122,7 @@ end
 
 -- # Mine
 do
-	local mine = objects ['h01V']
+	local mine = objects['h01V']
 
 	-- ## Abilities
 
@@ -133,7 +133,7 @@ do
 		perfect.placeholder,
 		slate.placeholder,
 		information,
-		'Avul'
+		'Avul',
 	}
 
 	-- ## Stats
@@ -142,7 +142,7 @@ do
 		mine.uhpm.value = 30
 	end
 
-	mine.uabi.value = mine.uabi.value .. table.concat (abilities, ',')
+	mine.uabi.value = mine.uabi.value .. table.concat(abilities, ',')
 
 	-- ## Techtree
 
@@ -151,12 +151,12 @@ do
 end
 
 -- # Remove Objects
-objects ['h03Q'] = nil
-objects ['h042'] = nil
-objects ['h01W'] = nil
+objects['h03Q'] = nil
+objects['h042'] = nil
+objects['h01W'] = nil
 
 -- # Mine Cancel (Active)
-objects [cancel.active] = {
+objects[cancel.active] = {
 	type = 'ability',
 	base = 'AAns',
 
@@ -165,19 +165,19 @@ objects [cancel.active] = {
 	-- Button Position - Normal (X)
 	abpx = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 
 	-- Button Position - Normal (Y)
 	abpy = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 
 	-- Icon - Normal
 	aart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNStaffOfNegation.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNStaffOfNegation.blp',
 	},
 
 	-- ## Data
@@ -187,8 +187,8 @@ objects [cancel.active] = {
 		data = 5,
 		type = 'string',
 		values = {
-			[1] = globals.Gem_Mine_Cancel___ORDER
-		}
+			[1] = globals.Gem_Mine_Cancel___ORDER,
+		},
 	},
 
 	-- Gold Cost
@@ -196,8 +196,8 @@ objects [cancel.active] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = 0
-		}
+			[1] = 0,
+		},
 	},
 
 	-- ## Text
@@ -205,27 +205,27 @@ objects [cancel.active] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Mine - Active)',
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'C'
+		value = 'C',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Extra Chance Cancel'
+		value = 'Extra Chance Cancel',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance Cancel'
-		}
+			[1] = 'Extra Chance Cancel',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -233,17 +233,17 @@ objects [cancel.active] = {
 		type = 'string',
 		values = {
 			[1] = 'Cancels Extra Chance, clearing the currently '
-				.. 'set target and refunding gold.'
-		}
-	}
+				.. 'set target and refunding gold.',
+		},
+	},
 }
 
 -- # Mine Cancel (Placeholder)
-objects [cancel.placeholder] = placeholder (cancel.active)
-objects [cancel.no_extra] = no_extra (cancel.active)
+objects[cancel.placeholder] = placeholder(cancel.active)
+objects[cancel.no_extra] = no_extra(cancel.active)
 
 -- # Mine Type (Active)
-objects [perfect.active] = {
+objects[perfect.active] = {
 	type = 'ability',
 	base = 'AAns',
 
@@ -252,19 +252,19 @@ objects [perfect.active] = {
 	-- Button Position - Normal (X)
 	abpx = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 
 	-- Button Position - Normal (Y)
 	abpy = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 
 	-- Icon - Normal
 	aart = {
 		type = 'string',
-		value = 'ReplaceableTextures\\CommandButtons\\BTNRune.blp'
+		value = 'ReplaceableTextures\\CommandButtons\\BTNRune.blp',
 	},
 
 	-- ## Data
@@ -274,8 +274,8 @@ objects [perfect.active] = {
 		data = 5,
 		type = 'string',
 		values = {
-			[1] = globals.Gem_Mine_Type___ORDER
-		}
+			[1] = globals.Gem_Mine_Type___ORDER,
+		},
 	},
 
 	-- Gold Cost
@@ -283,8 +283,8 @@ objects [perfect.active] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = globals.Gem_Extra_Chance__TYPE_COST
-		}
+			[1] = globals.Gem_Extra_Chance__TYPE_COST,
+		},
 	},
 
 	-- ## Text
@@ -292,27 +292,27 @@ objects [perfect.active] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Mine - Active)',
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'T'
+		value = 'T',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Extra Chance Type'
+		value = 'Extra Chance Type',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance Type'
-		}
+			[1] = 'Extra Chance Type',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -320,17 +320,17 @@ objects [perfect.active] = {
 		type = 'string',
 		values = {
 			[1] = 'Sets the target to the selected Perfect, increasing the '
-				.. 'chances to get all qualities of the chosen type.'
-		}
-	}
+				.. 'chances to get all qualities of the chosen type.',
+		},
+	},
 }
 
 -- # Mine Type (Placeholder)
-objects [perfect.placeholder] = placeholder (perfect.active)
-objects [perfect.no_extra] = no_extra (perfect.active)
+objects[perfect.placeholder] = placeholder(perfect.active)
+objects[perfect.no_extra] = no_extra(perfect.active)
 
 -- # Mine Slate (Active)
-objects [slate.active] = {
+objects[slate.active] = {
 	type = 'ability',
 	base = 'AAns',
 
@@ -339,13 +339,13 @@ objects [slate.active] = {
 	-- Button Position - Normal (X)
 	abpx = {
 		type = 'integer',
-		value = 2
+		value = 2,
 	},
 
 	-- Button Position - Normal (Y)
 	abpy = {
 		type = 'integer',
-		value = 1
+		value = 1,
 	},
 
 	-- Icon - Normal
@@ -361,8 +361,8 @@ objects [slate.active] = {
 		data = 5,
 		type = 'string',
 		values = {
-			[1] = globals.Gem_Mine_Slate___ORDER
-		}
+			[1] = globals.Gem_Mine_Slate___ORDER,
+		},
 	},
 
 	-- Gold Cost
@@ -370,8 +370,8 @@ objects [slate.active] = {
 		data = 1,
 		type = 'integer',
 		values = {
-			[1] = globals.Gem_Extra_Chance__SLATE_COST
-		}
+			[1] = globals.Gem_Extra_Chance__SLATE_COST,
+		},
 	},
 
 	-- ## Text
@@ -379,27 +379,27 @@ objects [slate.active] = {
 	-- Editor Suffix
 	ansf = {
 		type = 'string',
-		value = '(Mine - Active)'
+		value = '(Mine - Active)',
 	},
 
 	-- Hotkey - Normal
 	ahky = {
 		type = 'string',
-		value = 'S'
+		value = 'S',
 	},
 
 	-- Name
 	anam = {
 		type = 'string',
-		value = 'Extra Chance Slate'
+		value = 'Extra Chance Slate',
 	},
 
 	-- Tooltip - Normal
 	atp1 = {
 		type = 'string',
 		values = {
-			[1] = 'Extra Chance Slate'
-		}
+			[1] = 'Extra Chance Slate',
+		},
 	},
 
 	-- Tooltip - Normal - Extended
@@ -408,36 +408,36 @@ objects [slate.active] = {
 		values = {
 			[1] = 'Sets the target to the chosen base slate, increasing '
 				.. 'chances to get the component Normal and Flawed pieces '
-				.. 'of both base slates that make a combination.'
-		}
-	}
+				.. 'of both base slates that make a combination.',
+		},
+	},
 }
 
 -- # Mine Slate (Placeholder)
-objects [slate.placeholder] = placeholder (slate.active)
-objects [slate.no_extra] = no_extra (slate.active)
+objects[slate.placeholder] = placeholder(slate.active)
+objects[slate.no_extra] = no_extra(slate.active)
 
 -- # Mine Information
 do
 	local ability = {
 		type = 'ability',
-		base = 'ACev'
+		base = 'ACev',
 	}
 
-	objects [information] = ability
+	objects[information] = ability
 
 	-- ## Art
 	do
 		-- Button Position - Normal (X)
 		ability.abpx = {
 			type = 'integer',
-			value = 3
+			value = 3,
 		}
 
 		-- Button Position - Normal (Y)
 		ability.abpy = {
 			type = 'integer',
-			value = 1
+			value = 1,
 		}
 
 		-- Icon - Normal
@@ -445,7 +445,7 @@ do
 			type = 'string',
 			value = 'ReplaceableTextures\\'
 				.. 'PassiveButtons\\'
-				.. 'PASBTNElunesBlessing.blp'
+				.. 'PASBTNElunesBlessing.blp',
 		}
 	end
 
@@ -456,8 +456,8 @@ do
 			data = 1,
 			type = 'unreal',
 			values = {
-				[1] = 0
-			}
+				[1] = 0,
+			},
 		}
 	end
 
@@ -466,21 +466,21 @@ do
 		-- Editor Suffix
 		ability.ansf = {
 			type = 'string',
-			value = '(Mine)'
+			value = '(Mine)',
 		}
 
 		-- Name
 		ability.anam = {
 			type = 'string',
-			value = 'Extra Chance Information'
+			value = 'Extra Chance Information',
 		}
 
 		-- Tooltip - Normal
 		ability.atp1 = {
 			type = 'string',
 			values = {
-				[1] = '|cffffcc00Extra Chance Information|r'
-			}
+				[1] = '|cffffcc00Extra Chance Information|r',
+			},
 		}
 
 		-- Tooltip - Normal - Extended
@@ -493,26 +493,22 @@ do
 					.. ' indicating that Extra Chance is active. The'
 					.. ' previous target is shown in grey when no current'
 					.. ' target is set.|n'
-
 					.. '-'
 					.. ' There are two Extra Chance classes: Perfects and'
 					.. ' Slates.|n'
-
 					.. '-'
 					.. ' The bonus starts at 0x, and will increase by'
 					.. ' 1x only when the current target is in the same'
 					.. ' class as the previous target.|n'
-
 					.. '-'
 					.. ' Not using Extra Chance for a round will cause the'
 					.. ' bonus to decrease by 1x.|n'
-
 					.. '-'
 					.. ' Hitting the target will cause the bonus to'
 					.. ' decrease by 4x. If this would reduce the bonus'
 					.. ' below 0x, then the target and bonus are'
-					.. ' cleared.|n'
-			}
+					.. ' cleared.|n',
+			},
 		}
 	end
 end

@@ -11,15 +11,15 @@ local abilities = {
 	'A074', -- Viper Slate
 	'A016', -- Uranium 235
 	'A03F', -- Mighty Malachite
-	'A02F' -- Fire Star
+	'A02F', -- Fire Star
 }
 
 local targets = {
 	data = 3,
 	type = 'integer',
-	values = { 0 }
+	values = { 0 },
 }
 
-for _, ability in ipairs (abilities) do
-	objects [ability].Efk3 = targets
+for _, ability in ipairs(abilities) do
+	objects[ability].Efk3 = targets
 end

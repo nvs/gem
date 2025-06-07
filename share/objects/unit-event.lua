@@ -2,38 +2,38 @@ local map = ...
 local objects = map.objects
 
 -- Unit Event: Detect Leave.
-objects ['UEDL'] = {
+objects['UEDL'] = {
 	type = 'ability',
 	base = 'Adef',
 
 	anam = {
 		type = 'string',
-		value = 'Detect Leave'
+		value = 'Detect Leave',
 	},
 
 	ansf = {
 		type = 'string',
-		value = '(Unit Event)'
+		value = '(Unit Event)',
 	},
 
 	aart = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	auar = {
 		type = 'string',
-		value = ''
+		value = '',
 	},
 
 	arac = {
 		type = 'string',
-		value = 'other'
-	}
+		value = 'other',
+	},
 }
 
 -- Unit Event: Detect Damage
-objects ['UEDD'] = {
+objects['UEDD'] = {
 	type = 'ability',
 	base = 'AIsr',
 
@@ -44,19 +44,19 @@ objects ['UEDD'] = {
 
 	ansf = {
 		type = 'string',
-		value = '(Unit Event)'
+		value = '(Unit Event)',
 	},
 
 	aite = {
 		type = 'integer',
-		value = 0
+		value = 0,
 	},
 
 	isr2 = {
 		data = 2,
 		type = 'unreal',
 		values = {
-			[1] = 2.0
-		}
-	}
+			[1] = 2.0,
+		},
+	},
 }

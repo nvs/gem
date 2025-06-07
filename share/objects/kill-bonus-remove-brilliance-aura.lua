@@ -16,19 +16,19 @@ local list = {
 	'A021', -- 09
 	'A020', -- 10
 	'A01Y', -- 11
-	'A025'  -- 25
+	'A025', -- 25
 }
 
-for _, id in ipairs (list) do
-	local unit = objects [id]
+for _, id in ipairs(list) do
+	local unit = objects[id]
 
 	if unit then
 		-- Targets Allowed
 		unit.atar = {
 			type = 'string',
 			values = {
-				[1] = 'none'
-			}
+				[1] = 'none',
+			},
 		}
 	end
 end

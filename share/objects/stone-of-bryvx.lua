@@ -16,7 +16,7 @@ do
 		-- Tooltip - Normal - Extended
 		ability.aub1.values = {
 			'Grants <A068,DataA1,%>% increased damage to friendly '
-			.. 'structures within <A068,Area1> range.'
+				.. 'structures within <A068,Area1> range.',
 		}
 	end
 end

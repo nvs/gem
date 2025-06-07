@@ -2,10 +2,10 @@ local map = ...
 local objects = map.objects
 local globals = map.globals
 
-local id = require ('lib.gem.id')
+local id = require('lib.gem.id')
 
 -- # Fire Star
-local unit = objects [id (globals.Gem_Special__STAR_RUBY_3)]
+local unit = objects[id(globals.Gem_Special__STAR_RUBY_3)]
 
 -- ## Stats
 do
@@ -27,23 +27,23 @@ do
 	do
 		-- Area of Effect
 		for level = 1, 11 do
-			ability.aare.values [level] = 600
+			ability.aare.values[level] = 600
 		end
 
 		-- Cooldown
 		for level = 1, 11 do
-			ability.acdn.values [level] = 0.5
+			ability.acdn.values[level] = 0.5
 		end
 
 		-- Level
 		ability.alev = {
 			type = 'integer',
-			value = 11
+			value = 11,
 		}
 
 		-- Targets Allowed
 		for level = 1, 11 do
-			ability.atar.values [level] = 'enemies'
+			ability.atar.values[level] = 'enemies'
 		end
 	end
 
@@ -68,8 +68,8 @@ do
 			.. 'refreshes this duration.'
 
 		for level = 1, 11 do
-			ability.aub1.values [level] = string.format (
-				text, radius, damage + per * (level - 1))
+			ability.aub1.values[level] =
+				string.format(text, radius, damage + per * (level - 1))
 		end
 	end
 end

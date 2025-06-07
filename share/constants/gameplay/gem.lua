@@ -30,7 +30,7 @@ Misc.UpgradeRefundRate = 1.0 -- Building Upgrade
 
 Misc.DamageBonusChaos = -- Topaz
 	'0.50,1.00,0.60,0.70,1.60,1.00,0.75,1.20'
-Misc.DamageBonusHero =  -- Ruby
+Misc.DamageBonusHero = -- Ruby
 	'1.80,0.80,1.00,0.50,1.00,1.00,0.75,0.80'
 Misc.DamageBonusMagic = -- Water - Aquamarine / Opal
 	'1.00,1.90,0.80,0.70,1.00,0.40,0.75,1.00'
