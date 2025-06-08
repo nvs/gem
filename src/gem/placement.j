@@ -324,6 +324,29 @@ function Gem_Placement___Placement takes nothing returns boolean
 	return false
 endfunction
 
+// When the placement unit dies, refund its lumber.
+function Gem_Placement___Death takes nothing returns boolean
+	local unit dead = Unit_Event__The_Unit ()
+	local player owner
+	local integer lumber
+
+	if GetUnitTypeId (dead) != Gem_Placement___PLACEMENT_UNIT_ID then
+		return false
+	endif
+
+	set owner = GetOwningPlayer (dead)
+
+	// It makes no sense that this unit should die when placement is not
+	// active. However, go ahead and ensure that is the case.
+	if Gem_Placement__Is_Active (owner) then
+		set lumber = GetPlayerState (owner, PLAYER_STATE_RESOURCE_LUMBER)
+		set lumber = lumber + Gem_Placement___PLACEMENT_UNIT_COST
+		call SetPlayerState (owner, PLAYER_STATE_RESOURCE_LUMBER, lumber)
+	endif
+
+	return false
+endfunction
+
 function Gem_Placement__Initialize takes nothing returns boolean
 	local player the_player
 	local integer index__player
@@ -336,6 +359,8 @@ function Gem_Placement__Initialize takes nothing returns boolean
 
 	set trigger__placement = CreateTrigger ()
 	call TriggerAddCondition (trigger__placement, Condition (function Gem_Placement___Placement))
+
+	call Unit_Event__On_Death (Condition (function Gem_Placement___Death))
 
 	set index__player = 0
 	loop
