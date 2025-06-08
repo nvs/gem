@@ -11,6 +11,7 @@ For a full list of changes to the project, please consult the commit log.
 - Remove sound from critters in the middle. *Squeak!*
 - Remove Range Check from Star Yellow Sapphire.
 - Death of the Random unit could halt game progress.
+- Restore incorrect unit protraits to their previous (less bad) versions.
 
 ### Changed
 
