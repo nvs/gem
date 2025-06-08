@@ -51,6 +51,15 @@ local function create_critter (input)
 		}
 	end
 
+	-- Sound
+	do
+		-- Unit Set Sound
+		critter.usnd = {
+			type = 'string',
+			value = 'None',
+		}
+	end
+
 	-- Text
 	do
 		-- Name
