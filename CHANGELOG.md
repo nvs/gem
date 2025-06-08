@@ -12,6 +12,11 @@ For a full list of changes to the project, please consult the commit log.
 - Remove Range Check from Star Yellow Sapphire.
 - Death of the Random unit could halt game progress.
 
+### Changed
+
+- Attacking structures of another player now interrupts the attack instead
+  of removing the attacking unit.
+
 ## [1.6.14] - 2023-05-24
 
 ### Fixed
