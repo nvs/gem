@@ -5,7 +5,9 @@ For a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
-- N/A
+### Changed
+
+- Remove sound from critters in the middle. *Squeak!*
 
 ## [1.6.14] - 2023-05-24
 
