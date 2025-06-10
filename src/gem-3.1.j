@@ -1419,42 +1419,34 @@ endfunction
 function Trig_Slate_move_Conditions takes nothing returns boolean
 	return GetSpellAbilityId () == 'A02J'
 endfunction
-function Trig_Slate_move_Func019002002 takes nothing returns nothing
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetEnumUnit()), GetUnitY (GetEnumUnit())))
-endfunction
 function Trig_Slate_move_Actions takes nothing returns nothing
 	local unit slate = GetSpellAbilityUnit ()
-	local real x = GetUnitX (slate)
-	local real y = GetUnitY (slate)
-	local group slates
-	local boolean is_stacking
 	local player owner = GetOwningPlayer (slate)
 	local integer owner_id = GetPlayerId (owner)
+	local real x = GetSpellTargetX ()
+	local real y = GetSpellTargetY ()
 	local rect area = udg_GA [owner_id + 1]
+	local boolean moved
+	local string sfx
 
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", x, y))
-
-	set x = GetSpellTargetX ()
-	set y = GetSpellTargetY ()
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (slate), GetUnitY (slate)))
 
 	if x < GetRectMinX (area) or GetRectMaxX (area) < x or y < GetRectMinY (area) or GetRectMaxY (area) < y then
 		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Cannot move a slate outside your area!"))
-
 		return
 	endif
 
-	set slates = Gem_Slate_Stacking__Get_Stacking_At (slate, x, y)
-	set is_stacking = CountUnitsInGroup (slates) > 0
-
-	if is_stacking then
-		call ForGroup (slates, function Trig_Slate_move_Func019002002)
-		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Moving to that location would cause Slate Stacking!"))
+	if Commands___Smart_Teleport [owner_id] then
+		set moved = Gem_Slate__Smart_Teleport (slate, x, y)
 	else
-		call SetUnitPosition (slate, x, y)
-		call UnitRemoveAbility (slate, 'A02J')
+		set moved = Gem_Slate__Teleport (slate, x, y)
 	endif
 
-	call DestroyGroup (slates)
+	if moved then
+		set sfx = "Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl"
+		call DestroyEffect (AddSpecialEffect (sfx, GetUnitX (slate), GetUnitY (slate)))
+		call UnitRemoveAbility (slate, 'A02J')
+	endif
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing
 	set gg_trg_Slate_move=CreateTrigger()
