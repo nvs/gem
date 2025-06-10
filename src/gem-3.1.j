@@ -1215,7 +1215,6 @@ function InitTrig_Gem_Awards_Upgrade_debug takes nothing returns nothing
 endfunction
 function Trig_Player_Leaves_Control_Enum takes nothing returns nothing
 	call SetUnitInvulnerable (GetEnumUnit (), false)
-	call SetUnitOwner (GetEnumUnit (), bj_groupEnumOwningPlayer, true)
 endfunction
 function Trig_Player_Leaves_Actions takes nothing returns nothing
 	local player whom = GetTriggerPlayer ()
@@ -2266,7 +2265,6 @@ function Trig_Finish_Build_Race_P1_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P1_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(0),true)
 endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (0))
@@ -2328,7 +2326,6 @@ function Trig_Finish_Build_Race_P2_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P2_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(1),true)
 endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (1))
@@ -2390,7 +2387,6 @@ function Trig_Finish_Build_Race_P3_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P3_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(2),true)
 endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (2))
@@ -2452,7 +2448,6 @@ function Trig_Finish_Build_Race_P4_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P4_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(3),true)
 endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (3))
@@ -2514,7 +2509,6 @@ function Trig_Finish_Build_Race_P5_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P5_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(4),true)
 endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (4))
@@ -2576,7 +2570,6 @@ function Trig_Finish_Build_Race_P6_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P6_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(5),true)
 endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (5))
@@ -2638,7 +2631,6 @@ function Trig_Finish_Build_Race_P7_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P7_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(6),true)
 endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (6))
@@ -2700,7 +2692,6 @@ function Trig_Finish_Build_Race_P8_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P8_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(7),true)
 endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (7))
@@ -2759,7 +2750,6 @@ function Trig_New_Level_P1_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[1])
 endfunction
 function Trig_New_Level_P1_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -2833,7 +2823,6 @@ function Trig_New_Level_P2_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[2])
 endfunction
 function Trig_New_Level_P2_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -2907,7 +2896,6 @@ function Trig_New_Level_P3_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[3])
 endfunction
 function Trig_New_Level_P3_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -2981,7 +2969,6 @@ function Trig_New_Level_P4_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[4])
 endfunction
 function Trig_New_Level_P4_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3055,7 +3042,6 @@ function Trig_New_Level_P5_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[5])
 endfunction
 function Trig_New_Level_P5_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3129,7 +3115,6 @@ function Trig_New_Level_P6_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[6])
 endfunction
 function Trig_New_Level_P6_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3203,7 +3188,6 @@ function Trig_New_Level_P7_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[7])
 endfunction
 function Trig_New_Level_P7_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3277,7 +3261,6 @@ function Trig_New_Level_P8_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[8])
 endfunction
 function Trig_New_Level_P8_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)

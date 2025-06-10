@@ -303,7 +303,8 @@ function Gem_Placement___Placement takes nothing returns boolean
 	call TriggerEvaluate (Gem_Placement___ON_PRE_PLACEMENT)
 
 	call Gem_Ground_Textures__Prepare ()
-	set Gem_Placement___The_Unit = PlaceRandomUnit (Gem_Placement___POOL [index__player], the_player, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
+	//set Gem_Placement___The_Unit = PlaceRandomUnit (Gem_Placement___POOL [index__player], the_player, GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
+	set Gem_Placement___The_Unit = CreateUnit (the_player, 'n00A', GetUnitX (old), GetUnitY (old), GetUnitFacing (old))
 	call Gem_Ground_Textures__Register (Gem_Placement___The_Unit)
 
 	call RemoveUnit (old)
