@@ -118,6 +118,8 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 		set bonus = Gem_Extra_Chance___Previous_Bonus [whom_id]
 	endif
 
+	set bonus = 10
+
 	// Refund the old current target's cost, if one exists.
 	if Gem_Extra_Chance__Is_Active (whom) then
 		if Gem_Gems__Is_Gem (Gem_Extra_Chance___Current_Target [whom_id]) then

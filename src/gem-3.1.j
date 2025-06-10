@@ -1215,7 +1215,6 @@ function InitTrig_Gem_Awards_Upgrade_debug takes nothing returns nothing
 endfunction
 function Trig_Player_Leaves_Control_Enum takes nothing returns nothing
 	call SetUnitInvulnerable (GetEnumUnit (), false)
-	call SetUnitOwner (GetEnumUnit (), bj_groupEnumOwningPlayer, true)
 endfunction
 function Trig_Player_Leaves_Actions takes nothing returns nothing
 	local player whom = GetTriggerPlayer ()
@@ -1419,42 +1418,34 @@ endfunction
 function Trig_Slate_move_Conditions takes nothing returns boolean
 	return GetSpellAbilityId () == 'A02J'
 endfunction
-function Trig_Slate_move_Func019002002 takes nothing returns nothing
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\ThunderClap\\ThunderClapCaster.mdl", GetUnitX (GetEnumUnit()), GetUnitY (GetEnumUnit())))
-endfunction
 function Trig_Slate_move_Actions takes nothing returns nothing
 	local unit slate = GetSpellAbilityUnit ()
-	local real x = GetUnitX (slate)
-	local real y = GetUnitY (slate)
-	local group slates
-	local boolean is_stacking
 	local player owner = GetOwningPlayer (slate)
 	local integer owner_id = GetPlayerId (owner)
+	local real x = GetSpellTargetX ()
+	local real y = GetSpellTargetY ()
 	local rect area = udg_GA [owner_id + 1]
+	local boolean moved
+	local string sfx
 
-	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", x, y))
-
-	set x = GetSpellTargetX ()
-	set y = GetSpellTargetY ()
+	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl", GetUnitX (slate), GetUnitY (slate)))
 
 	if x < GetRectMinX (area) or GetRectMaxX (area) < x or y < GetRectMinY (area) or GetRectMaxY (area) < y then
 		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Cannot move a slate outside your area!"))
-
 		return
 	endif
 
-	set slates = Gem_Slate_Stacking__Get_Stacking_At (slate, x, y)
-	set is_stacking = CountUnitsInGroup (slates) > 0
-
-	if is_stacking then
-		call ForGroup (slates, function Trig_Slate_move_Func019002002)
-		call DisplayTextToPlayer (owner, 0., 0., Color ("ffff00", "Moving to that location would cause Slate Stacking!"))
+	if Commands___Smart_Teleport [owner_id] then
+		set moved = Gem_Slate__Smart_Teleport (slate, x, y)
 	else
-		call SetUnitPosition (slate, x, y)
-		call UnitRemoveAbility (slate, 'A02J')
+		set moved = Gem_Slate__Teleport (slate, x, y)
 	endif
 
-	call DestroyGroup (slates)
+	if moved then
+		set sfx = "Abilities\\Spells\\Items\\AIre\\AIreTarget.mdl"
+		call DestroyEffect (AddSpecialEffect (sfx, GetUnitX (slate), GetUnitY (slate)))
+		call UnitRemoveAbility (slate, 'A02J')
+	endif
 endfunction
 function InitTrig_Slate_move takes nothing returns nothing
 	set gg_trg_Slate_move=CreateTrigger()
@@ -2274,7 +2265,6 @@ function Trig_Finish_Build_Race_P1_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P1_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(0),true)
 endfunction
 function Trig_Finish_Build_Race_P1_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (0))
@@ -2336,7 +2326,6 @@ function Trig_Finish_Build_Race_P2_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P2_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(1),true)
 endfunction
 function Trig_Finish_Build_Race_P2_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (1))
@@ -2398,7 +2387,6 @@ function Trig_Finish_Build_Race_P3_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P3_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(2),true)
 endfunction
 function Trig_Finish_Build_Race_P3_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (2))
@@ -2460,7 +2448,6 @@ function Trig_Finish_Build_Race_P4_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P4_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(3),true)
 endfunction
 function Trig_Finish_Build_Race_P4_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (3))
@@ -2522,7 +2509,6 @@ function Trig_Finish_Build_Race_P5_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P5_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(4),true)
 endfunction
 function Trig_Finish_Build_Race_P5_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (4))
@@ -2584,7 +2570,6 @@ function Trig_Finish_Build_Race_P6_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P6_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(5),true)
 endfunction
 function Trig_Finish_Build_Race_P6_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (5))
@@ -2646,7 +2631,6 @@ function Trig_Finish_Build_Race_P7_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P7_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(6),true)
 endfunction
 function Trig_Finish_Build_Race_P7_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (6))
@@ -2708,7 +2692,6 @@ function Trig_Finish_Build_Race_P8_Func026002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),false)
 endfunction
 function Trig_Finish_Build_Race_P8_Func027002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(7),true)
 endfunction
 function Trig_Finish_Build_Race_P8_Actions takes nothing returns nothing
 	call Miner_Flashing (Player (7))
@@ -2767,7 +2750,6 @@ function Trig_New_Level_P1_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[1])
 endfunction
 function Trig_New_Level_P1_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P1_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -2841,7 +2823,6 @@ function Trig_New_Level_P2_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[2])
 endfunction
 function Trig_New_Level_P2_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P2_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -2915,7 +2896,6 @@ function Trig_New_Level_P3_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[3])
 endfunction
 function Trig_New_Level_P3_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P3_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -2989,7 +2969,6 @@ function Trig_New_Level_P4_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[4])
 endfunction
 function Trig_New_Level_P4_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P4_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3063,7 +3042,6 @@ function Trig_New_Level_P5_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[5])
 endfunction
 function Trig_New_Level_P5_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P5_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3137,7 +3115,6 @@ function Trig_New_Level_P6_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[6])
 endfunction
 function Trig_New_Level_P6_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P6_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3211,7 +3188,6 @@ function Trig_New_Level_P7_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[7])
 endfunction
 function Trig_New_Level_P7_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P7_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)
@@ -3285,7 +3261,6 @@ function Trig_New_Level_P8_Func016002 takes nothing returns nothing
 	call GroupAddUnitSimple(GetEnumUnit(),udg_UnitGroup[8])
 endfunction
 function Trig_New_Level_P8_Func017002 takes nothing returns nothing
-	call SetUnitOwner(GetEnumUnit(),Player(9),true)
 endfunction
 function Trig_New_Level_P8_Func018002 takes nothing returns nothing
 	call SetUnitInvulnerable(GetEnumUnit(),true)

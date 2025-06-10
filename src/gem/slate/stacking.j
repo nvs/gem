@@ -1,8 +1,9 @@
 globals
 	unit Gem_Slate_Stacking___Target = null
+	constant real Gem_Slate_Stacking___RADIUS = 220.0
 endglobals
 
-function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y returns group
+function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y, real radius returns group
 	local integer slate_id
 	local group stacking
 	local group in_range
@@ -16,6 +17,10 @@ function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y re
 		return null
 	endif
 
+	if radius < 0.00 then
+		return null
+	endif
+
 	set slate_id = GetUnitTypeId (slate)
 
 	if not Gem_Slate__Is_Slate (slate_id) then
@@ -25,7 +30,7 @@ function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y re
 	set in_range = CreateGroup ()
 	set stacking = CreateGroup ()
 
-	call GroupEnumUnitsInRange (in_range, x, y, 220, null)
+	call GroupEnumUnitsInRange (in_range, x, y, radius, null)
 
 	// Ignore the target itself.
 	call GroupRemoveUnit (in_range, slate)
@@ -61,11 +66,23 @@ function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y re
 	return stacking
 endfunction
 
+function Gem_Slate_Stacking__Get_Stacking_At takes unit slate, real x, real y returns group
+	return Gem_Slate_Stacking__Get_Stacking_At (slate, x, y, Gem_Slate_Stacking___RADIUS)
+endfunction
+
+function Gem_Slate_Stacking__Get_Stacking takes unit slate, real radius returns group
+	return Gem_Slate_Stacking__Get_Stacking_At (slate, GetUnitX (slate), GetUnitY (slate), radius)
+endfunction
+
 function Gem_Slate_Stacking__Get_Stacking takes unit slate returns group
 	return Gem_Slate_Stacking__Get_Stacking_At (slate, GetUnitX (slate), GetUnitY (slate))
 endfunction
 
 function Gem_Slate_Stacking__Is_Stacking_At takes unit slate, real x, real y returns boolean
+return Gem_Slate_Stacking__Is_Stacking_At (slate, x, y, Gem_Slate_Stacking___RADIUS)
+endfunction
+
+function Gem_Slate_Stacking__Is_Stacking_At takes unit slate, real x, real y, real radius returns boolean
 	local group slates = Gem_Slate_Stacking__Get_Stacking_At (slate, x, y)
 	local boolean is_stacking = CountUnitsInGroup (slates) > 0
 
@@ -75,7 +92,11 @@ function Gem_Slate_Stacking__Is_Stacking_At takes unit slate, real x, real y ret
 endfunction
 
 function Gem_Slate_Stacking__Is_Stacking takes unit slate returns boolean
-	return Gem_Slate_Stacking__Is_Stacking_At (slate, GetUnitX (slate), GetUnitY (slate))
+	return Gem_Slate_Stacking__Is_Stacking (slate, Gem_Slate_Stacking___RADIUS)
+endfunction
+
+function Gem_Slate_Stacking__Is_Stacking takes unit slate, real radius returns boolean
+	return Gem_Slate_Stacking__Is_Stacking_At (slate, GetUnitX (slate), GetUnitY (slate), radius)
 endfunction
 
 function Gem_Slate_Stacking__Move takes unit slate returns nothing
