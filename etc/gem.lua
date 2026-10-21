@@ -22,6 +22,7 @@ return {
 		'share/objects',
 		'share/hide-buttons.lua',
 		'share/tooltips.lua',
+		'share/fix/unit-portraits.lua',
 
 		'share/imports/import-directory.lua',
 	},
