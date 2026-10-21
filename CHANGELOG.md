@@ -8,6 +8,7 @@ For a full list of changes to the project, please consult the commit log.
 ### Fixed
 
 - Various tooltip fixes.
+- Remove sound from critters in the middle. *Squeak!*
 
 ## [1.6.14] - 2023-05-24
 
