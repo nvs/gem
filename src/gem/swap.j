@@ -37,6 +37,11 @@ function Gem_Swap___Swap takes unit A, unit B returns nothing
 	call SetUnitPosition (B, Ax, Ay)
 	call ShowUnit (B, true)
 
+	// If either swapped gem is an Opal, we need to refresh the auras.
+	if 0 < GetUnitAbilityLevel(A, 'S008') or 0 < GetUnitAbilityLevel(B, 'S008') then
+		call Gem_Fix_Opal_Aura__Refresh(GetOwningPlayer(A))
+	endif
+
 	call DestroyEffect (AddSpecialEffect (path, Ax, Ay))
 	call DestroyEffect (AddSpecialEffect (path, Bx, By))
 	call DestroyEffect (AddSpecialEffect ("Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl", Bx, By))

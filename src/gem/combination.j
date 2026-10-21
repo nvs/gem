@@ -159,6 +159,8 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	local group units
 	local unit rock
 
+	local boolean hasOpal = false
+
 	if GetSpellAbilityId () != 'A10R' then
 		return false
 	endif
@@ -198,8 +200,11 @@ function Gem_Combination___Recipe takes nothing returns boolean
 	// for slates, which can be positioned anywhere.
 	call SetUnitPosition (replacement, GetUnitX (original), GetUnitY (original))
 	call ShowUnit (original, false)
+	if 0 < GetUnitAbilityLevel(original, 'S008') then
+		call UnitRemoveAbility (original, 'S008')
+		set hasOpal = true
+	endif
 	call PauseUnit (original, true)
-	call SetUnitOwner (original, Player (PLAYER_NEUTRAL_PASSIVE), false)
 	call GroupAddUnit (units, original)
 	call Gem_Swap__Update (the_player, original, replacement)
 
@@ -215,7 +220,10 @@ function Gem_Combination___Recipe takes nothing returns boolean
 				set kills = kills + Unit_User_Data__Get (the_part)
 				call ShowUnit (the_part, false)
 				call PauseUnit (the_part, true)
-				call SetUnitOwner (the_part, Player (PLAYER_NEUTRAL_PASSIVE), false)
+				if 0 < GetUnitAbilityLevel(the_part, 'S008') then
+					call UnitRemoveAbility (the_part, 'S008')
+					set hasOpal = true
+				endif
 				call GroupAddUnit (units, the_part)
 
 				// Slates do not get replaced by rocks.
@@ -229,6 +237,10 @@ function Gem_Combination___Recipe takes nothing returns boolean
 		set index = index + 1
 		exitwhen index >= combination_size
 	endloop
+
+	if hasOpal then
+		call Gem_Fix_Opal_Aura__Refresh(the_player)
+	endif
 
 	call DisplayTextToPlayer (the_player, 0.00, 0.00, "- " + GetUnitName (replacement) + Color ("ffff00", " has been created with ") + I2S (kills) + Color ("ffff00", " kills saved from its combined gems."))
 

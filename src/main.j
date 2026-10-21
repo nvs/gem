@@ -226,6 +226,7 @@ function main takes nothing returns nothing
 	call TriggerAddCondition (initialize, Condition (function Gem_Combination__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Movement__Initialize))
 	call TriggerAddCondition (initialize, Condition (function Gem_Critters__Initialize))
+	call TriggerAddCondition (initialize, Condition (function Gem_Fix_Opal_Aura__Initialize))
 
 	call TriggerEvaluate (initialize)
 	call DestroyTrigger (initialize)
