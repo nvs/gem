@@ -43,6 +43,7 @@ globals
 	constant integer ERROR__NOT_GEM_PLAYER = ID ()
 	constant integer ERROR__PLACEMENT_HAS_STARTED = ID ()
 	constant integer ERROR__NOT_TYPE_OR_SLATE = ID ()
+	constant integer ERROR__NOT_ENOUGH_GOLD = ID ()
 
 	constant string Gem_Extra_Chance__MESSAGE = Color ("ffff00", "Extra Chanced!")
 endglobals
@@ -133,6 +134,13 @@ function Gem_Extra_Chance__Set takes player whom, integer target returns boolean
 		set cost = Gem_Extra_Chance__TYPE_COST
 	else
 		set cost = Gem_Extra_Chance__SLATE_COST
+	endif
+
+	// Ensure the player still has the necessary gold. It is possible,
+	// albeit rare, for this to decrease in multiplayer games.
+	if GetPlayerState (whom, PLAYER_STATE_RESOURCE_GOLD) < cost then
+		call Error (ERROR__NOT_ENOUGH_GOLD, null)
+		return false
 	endif
 
 	// Charge the cost for the new current target.

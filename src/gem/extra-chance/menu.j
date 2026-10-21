@@ -43,6 +43,8 @@ function Gem_Extra_Chance_Menu___Button takes nothing returns boolean
 	elseif not Gem_Extra_Chance__Set (whom, target) then
 		if Error__Code == ERROR__PLACEMENT_HAS_STARTED then
 			call DisplayTextToPlayer (whom, 0, 0, "Extra Chance cannot be changed during placement")
+		elseif Error__Code == ERROR__NOT_ENOUGH_GOLD then
+			call DisplayTextToPlayer (whom, 0, 0, "Not enough gold to fund Extra Chance")
 		endif
 	else
 		set previous = Gem_Extra_Chance__Previous_Target (whom)
