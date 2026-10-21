@@ -126,6 +126,10 @@ function Gem_Special_Fire_Star___On_Damage takes nothing returns boolean
 		return true
 	endif
 
+	if not Gem_Player__Is_Monster (GetOwningPlayer (target)) then
+		return true
+	endif
+
 	call BlzSetEventDamage (0.0)
 	call Gem_Special_Fire_Star___Mark (source, target)
 
