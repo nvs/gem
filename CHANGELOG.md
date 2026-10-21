@@ -5,6 +5,10 @@ For a full list of changes to the project, please consult the commit log.
 
 ## [Unreleased]
 
+- N/A
+
+## [1.6.15] - 2026-10-21
+
 ### Fixed
 
 - Address stuns broken due to 3.0.1 release.
@@ -785,6 +789,7 @@ For a full list of changes to the project, please consult the commit log.
 [1.6.12]: https://github.com/nvs/gem/compare/v1.6.11...v1.6.12
 [1.6.13]: https://github.com/nvs/gem/compare/v1.6.12...v1.6.13
 [1.6.14]: https://github.com/nvs/gem/compare/v1.6.13...v1.6.14
+[1.6.15]: https://github.com/nvs/gem/compare/v1.6.14...v1.6.15
 [1.6.2]: https://github.com/nvs/gem/compare/v1.6.1...v1.6.2
 [1.6.3]: https://github.com/nvs/gem/compare/v1.6.2...v1.6.3
 [1.6.4]: https://github.com/nvs/gem/compare/v1.6.3...v1.6.4
