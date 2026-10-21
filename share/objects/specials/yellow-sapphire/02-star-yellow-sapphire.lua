@@ -10,7 +10,7 @@ local unit = objects[id(globals.Gem_Special__YELLOW_SAPPHIRE_2)]
 -- ## Abilities
 do
 	-- Normal
-	unit.uabi.value = unit.uabi.value:gsub('A06T,', '')
+	unit.uabi.value = 'A01B'
 end
 
 -- ## Combat - Attack 1
