@@ -2763,7 +2763,7 @@ for level = 1, 11 do
 		targets = 'none',
 		abilities = {
 			[1] = immolation,
-			[2] = abilities.unholy_aura('A00W', 'Irradite'),
+			[2] = abilities.unholy_aura('A00W', 'Irradiate'),
 		},
 		buttons = {
 			information = {
