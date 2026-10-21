@@ -1831,7 +1831,7 @@ function Trig_Players_attacking_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_Players_attacking_Actions takes nothing returns nothing
-	call KillUnit(GetAttacker())
+	call BlzUnitInterruptAttack (GetAttacker())
 endfunction
 function InitTrig_Players_attacking takes nothing returns nothing
 	set gg_trg_Players_attacking=CreateTrigger()
