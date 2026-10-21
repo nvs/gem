@@ -114,7 +114,7 @@ objects['USSA'] = {
 	adur = {
 		type = 'unreal',
 		values = {
-			[1] = 0,
+			[1] = 99999,
 		},
 	},
 
@@ -122,7 +122,7 @@ objects['USSA'] = {
 	ahdu = {
 		type = 'unreal',
 		values = {
-			[1] = 0,
+			[1] = 99999,
 		},
 	},
 
